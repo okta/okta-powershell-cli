@@ -1,0 +1,23 @@
+# ChannelBinding
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Required** | [**RequiredEnum**](RequiredEnum.md) |  | [optional] 
+**Style** | **String** |  | [optional] 
+
+## Examples
+
+- Prepare the resource
+```powershell
+$ChannelBinding = Initialize-PSOpenAPIToolsChannelBinding  -Required null `
+ -Style null
+```
+
+- Convert the resource to JSON
+```powershell
+$ChannelBinding | ConvertTo-JSON
+```
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

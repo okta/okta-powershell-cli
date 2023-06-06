@@ -1,0 +1,21 @@
+# VersionObject
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Minimum** | **String** |  | [optional] 
+
+## Examples
+
+- Prepare the resource
+```powershell
+$VersionObject = Initialize-PSOpenAPIToolsVersionObject  -Minimum null
+```
+
+- Convert the resource to JSON
+```powershell
+$VersionObject | ConvertTo-JSON
+```
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
