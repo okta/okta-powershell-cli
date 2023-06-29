@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SwaApplicationSettingsApplication = Initialize-PSOpenAPIToolsSwaApplicationSettingsApplication  -ButtonField null `
+$SwaApplicationSettingsApplication = Initialize-Okta.PowerShellSwaApplicationSettingsApplication  -ButtonField null `
  -ButtonSelector null `
  -Checkbox null `
  -ExtraFieldSelector null `

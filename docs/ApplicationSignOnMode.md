@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ApplicationSignOnMode = Initialize-PSOpenAPIToolsApplicationSignOnMode 
+$ApplicationSignOnMode = Initialize-Okta.PowerShellApplicationSignOnMode 
 ```
 
 - Convert the resource to JSON

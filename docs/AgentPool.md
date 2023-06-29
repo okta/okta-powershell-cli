@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AgentPool = Initialize-PSOpenAPIToolsAgentPool  -Agents null `
+$AgentPool = Initialize-Okta.PowerShellAgentPool  -Agents null `
  -Id null `
  -Name null `
  -OperationalStatus null `

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BasicAuthApplicationAllOf = Initialize-PSOpenAPIToolsBasicAuthApplicationAllOf  -Credentials null `
+$BasicAuthApplicationAllOf = Initialize-Okta.PowerShellBasicAuthApplicationAllOf  -Credentials null `
  -Name null `
  -Settings null
 ```

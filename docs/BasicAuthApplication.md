@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BasicAuthApplication = Initialize-PSOpenAPIToolsBasicAuthApplication  -Accessibility null `
+$BasicAuthApplication = Initialize-Okta.PowerShellBasicAuthApplication  -Accessibility null `
  -Created null `
  -Features null `
  -Id null `

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SessionStatus = Initialize-PSOpenAPIToolsSessionStatus 
+$SessionStatus = Initialize-Okta.PowerShellSessionStatus 
 ```
 
 - Convert the resource to JSON

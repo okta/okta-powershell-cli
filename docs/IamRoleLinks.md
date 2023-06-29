@@ -3,14 +3,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Self** | [**HrefObject**](HrefObject.md) |  | [optional] 
+**Self** | [**HrefObjectSelfLink**](HrefObjectSelfLink.md) |  | [optional] 
 **Permissions** | [**HrefObject**](HrefObject.md) |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$IamRoleLinks = Initialize-PSOpenAPIToolsIamRoleLinks  -Self null `
+$IamRoleLinks = Initialize-Okta.PowerShellIamRoleLinks  -Self null `
  -Permissions null
 ```
 

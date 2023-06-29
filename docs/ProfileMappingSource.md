@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProfileMappingSource = Initialize-PSOpenAPIToolsProfileMappingSource  -Id null `
+$ProfileMappingSource = Initialize-Okta.PowerShellProfileMappingSource  -Id null `
  -Name null `
  -Type null `
  -Links null

@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PrincipalRateLimitEntity = Initialize-PSOpenAPIToolsPrincipalRateLimitEntity  -CreatedBy null `
+$PrincipalRateLimitEntity = Initialize-Okta.PowerShellPrincipalRateLimitEntity  -CreatedBy null `
  -CreatedDate null `
  -DefaultConcurrencyPercentage null `
  -DefaultPercentage null `

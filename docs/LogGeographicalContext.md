@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogGeographicalContext = Initialize-PSOpenAPIToolsLogGeographicalContext  -City null `
+$LogGeographicalContext = Initialize-Okta.PowerShellLogGeographicalContext  -City null `
  -Country null `
  -Geolocation null `
  -PostalCode null `

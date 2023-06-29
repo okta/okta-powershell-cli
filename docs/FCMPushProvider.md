@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$FCMPushProvider = Initialize-PSOpenAPIToolsFCMPushProvider  -Id null `
+$FCMPushProvider = Initialize-Okta.PowerShellFCMPushProvider  -Id null `
  -LastUpdatedDate null `
  -Name null `
  -ProviderType null `

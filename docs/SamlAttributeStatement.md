@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SamlAttributeStatement = Initialize-PSOpenAPIToolsSamlAttributeStatement  -FilterType null `
+$SamlAttributeStatement = Initialize-Okta.PowerShellSamlAttributeStatement  -FilterType null `
  -FilterValue null `
  -Name null `
  -Namespace null `

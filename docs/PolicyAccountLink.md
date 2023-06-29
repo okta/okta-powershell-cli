@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PolicyAccountLink = Initialize-PSOpenAPIToolsPolicyAccountLink  -Action null `
+$PolicyAccountLink = Initialize-Okta.PowerShellPolicyAccountLink  -Action null `
  -VarFilter null
 ```
 

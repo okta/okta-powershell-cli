@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$FeatureStage = Initialize-PSOpenAPIToolsFeatureStage  -State null `
+$FeatureStage = Initialize-Okta.PowerShellFeatureStage  -State null `
  -Value null
 ```
 

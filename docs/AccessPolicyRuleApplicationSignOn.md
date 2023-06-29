@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccessPolicyRuleApplicationSignOn = Initialize-PSOpenAPIToolsAccessPolicyRuleApplicationSignOn  -Access null `
+$AccessPolicyRuleApplicationSignOn = Initialize-Okta.PowerShellAccessPolicyRuleApplicationSignOn  -Access null `
  -VerificationMethod null
 ```
 

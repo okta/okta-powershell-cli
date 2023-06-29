@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OpenIdConnectApplicationType = Initialize-PSOpenAPIToolsOpenIdConnectApplicationType 
+$OpenIdConnectApplicationType = Initialize-Okta.PowerShellOpenIdConnectApplicationType 
 ```
 
 - Convert the resource to JSON

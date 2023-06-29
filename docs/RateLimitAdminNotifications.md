@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$RateLimitAdminNotifications = Initialize-PSOpenAPIToolsRateLimitAdminNotifications  -NotificationsEnabled null
+$RateLimitAdminNotifications = Initialize-Okta.PowerShellRateLimitAdminNotifications  -NotificationsEnabled null
 ```
 
 - Convert the resource to JSON

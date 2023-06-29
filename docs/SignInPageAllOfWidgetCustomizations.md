@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SignInPageAllOfWidgetCustomizations = Initialize-PSOpenAPIToolsSignInPageAllOfWidgetCustomizations  -SignInLabel null `
+$SignInPageAllOfWidgetCustomizations = Initialize-Okta.PowerShellSignInPageAllOfWidgetCustomizations  -SignInLabel null `
  -UsernameLabel null `
  -UsernameInfoTip null `
  -PasswordLabel null `

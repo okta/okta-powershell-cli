@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UserSchemaAttributeMasterType = Initialize-PSOpenAPIToolsUserSchemaAttributeMasterType 
+$UserSchemaAttributeMasterType = Initialize-Okta.PowerShellUserSchemaAttributeMasterType 
 ```
 
 - Convert the resource to JSON

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ApplicationCredentialsOAuthClient = Initialize-PSOpenAPIToolsApplicationCredentialsOAuthClient  -AutoKeyRotation null `
+$ApplicationCredentialsOAuthClient = Initialize-Okta.PowerShellApplicationCredentialsOAuthClient  -AutoKeyRotation null `
  -ClientId null `
  -ClientSecret null `
  -TokenEndpointAuthMethod null

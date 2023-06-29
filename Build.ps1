@@ -46,19 +46,19 @@ function Get-FunctionsToExport {
 }
 
 $ScriptDir = Split-Path $script:MyInvocation.MyCommand.Path
-$FunctionPath = 'Api', 'Model', 'Client' | ForEach-Object {Join-Path "$ScriptDir\src\PSOpenAPITools\" $_}
+$FunctionPath = 'Api', 'Model', 'Client' | ForEach-Object {Join-Path "$ScriptDir\src\Okta.PowerShell\" $_}
 
 $Manifest = @{
-    Path = "$ScriptDir\src\PSOpenAPITools\PSOpenAPITools.psd1"
+    Path = "$ScriptDir\src\Okta.PowerShell\Okta.PowerShell.psd1"
 
     Author = 'OpenAPI Generator Team'
     CompanyName = 'openapitools.org'
-    Description = 'PSOpenAPITools - the PowerShell module for Okta Management'
+    Description = 'Okta.PowerShell - the PowerShell module for Okta Management'
 
-    ModuleVersion = '0.1.2'
+    ModuleVersion = '0.1.0-beta01'
 
-    RootModule = 'PSOpenAPITools.psm1'
-    Guid = '{FFDAB940-B33A-4CE1-8DDB-C75E80CB3525}' # Has to be static, otherwise each new build will be considered different module
+    RootModule = 'Okta.PowerShell.psm1'
+    Guid = '{4B885760-4148-4B8B-A4A8-C0394EABC6D5}' # Has to be static, otherwise each new build will be considered different module
 
     PowerShellVersion = '6.2'
 

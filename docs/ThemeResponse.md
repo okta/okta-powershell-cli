@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ThemeResponse = Initialize-PSOpenAPIToolsThemeResponse  -BackgroundImage null `
+$ThemeResponse = Initialize-Okta.PowerShellThemeResponse  -BackgroundImage null `
  -EmailTemplateTouchPointVariant null `
  -EndUserDashboardTouchPointVariant null `
  -ErrorPageTouchPointVariant null `

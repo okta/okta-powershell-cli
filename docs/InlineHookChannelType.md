@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$InlineHookChannelType = Initialize-PSOpenAPIToolsInlineHookChannelType 
+$InlineHookChannelType = Initialize-Okta.PowerShellInlineHookChannelType 
 ```
 
 - Convert the resource to JSON

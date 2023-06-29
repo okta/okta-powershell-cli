@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProtocolAlgorithmTypeSignatureScope = Initialize-PSOpenAPIToolsProtocolAlgorithmTypeSignatureScope 
+$ProtocolAlgorithmTypeSignatureScope = Initialize-Okta.PowerShellProtocolAlgorithmTypeSignatureScope 
 ```
 
 - Convert the resource to JSON

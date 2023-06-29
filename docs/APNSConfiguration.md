@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$APNSConfiguration = Initialize-PSOpenAPIToolsAPNSConfiguration  -FileName null `
+$APNSConfiguration = Initialize-Okta.PowerShellAPNSConfiguration  -FileName null `
  -KeyId null `
  -TeamId null `
  -TokenSigningKey null

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GroupRuleConditions = Initialize-PSOpenAPIToolsGroupRuleConditions  -Expression null `
+$GroupRuleConditions = Initialize-Okta.PowerShellGroupRuleConditions  -Expression null `
  -People null
 ```
 

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$FCMConfiguration = Initialize-PSOpenAPIToolsFCMConfiguration  -FileName null `
+$FCMConfiguration = Initialize-Okta.PowerShellFCMConfiguration  -FileName null `
  -ProjectId null `
  -ServiceAccountJson null
 ```

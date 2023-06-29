@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ForgotPasswordResponse = Initialize-PSOpenAPIToolsForgotPasswordResponse  -ResetPasswordUrl null
+$ForgotPasswordResponse = Initialize-Okta.PowerShellForgotPasswordResponse  -ResetPasswordUrl null
 ```
 
 - Convert the resource to JSON

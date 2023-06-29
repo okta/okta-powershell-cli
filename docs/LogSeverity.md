@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogSeverity = Initialize-PSOpenAPIToolsLogSeverity 
+$LogSeverity = Initialize-Okta.PowerShellLogSeverity 
 ```
 
 - Convert the resource to JSON

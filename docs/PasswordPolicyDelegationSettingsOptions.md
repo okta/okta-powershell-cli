@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PasswordPolicyDelegationSettingsOptions = Initialize-PSOpenAPIToolsPasswordPolicyDelegationSettingsOptions  -SkipUnlock null
+$PasswordPolicyDelegationSettingsOptions = Initialize-Okta.PowerShellPasswordPolicyDelegationSettingsOptions  -SkipUnlock null
 ```
 
 - Convert the resource to JSON

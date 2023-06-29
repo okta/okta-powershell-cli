@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EmailDomainStatus = Initialize-PSOpenAPIToolsEmailDomainStatus 
+$EmailDomainStatus = Initialize-Okta.PowerShellEmailDomainStatus 
 ```
 
 - Convert the resource to JSON

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PasswordPolicyPasswordSettings = Initialize-PSOpenAPIToolsPasswordPolicyPasswordSettings  -Age null `
+$PasswordPolicyPasswordSettings = Initialize-Okta.PowerShellPasswordPolicyPasswordSettings  -Age null `
  -Complexity null `
  -Lockout null
 ```

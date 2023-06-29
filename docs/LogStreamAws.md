@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogStreamAws = Initialize-PSOpenAPIToolsLogStreamAws  -Created null `
+$LogStreamAws = Initialize-Okta.PowerShellLogStreamAws  -Created null `
  -Id null `
  -LastUpdated null `
  -Name null `

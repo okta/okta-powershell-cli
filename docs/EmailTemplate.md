@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EmailTemplate = Initialize-PSOpenAPIToolsEmailTemplate  -Name null `
+$EmailTemplate = Initialize-Okta.PowerShellEmailTemplate  -Name null `
  -Embedded null `
  -Links null
 ```

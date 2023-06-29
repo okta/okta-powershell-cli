@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OktaSignOnPolicyRuleConditions = Initialize-PSOpenAPIToolsOktaSignOnPolicyRuleConditions  -App null `
+$OktaSignOnPolicyRuleConditions = Initialize-Okta.PowerShellOktaSignOnPolicyRuleConditions  -App null `
  -Apps null `
  -AuthContext null `
  -AuthProvider null `

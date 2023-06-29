@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogGeolocation = Initialize-PSOpenAPIToolsLogGeolocation  -Lat null `
+$LogGeolocation = Initialize-Okta.PowerShellLogGeolocation  -Lat null `
  -Lon null
 ```
 

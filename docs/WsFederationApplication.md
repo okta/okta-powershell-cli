@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WsFederationApplication = Initialize-PSOpenAPIToolsWsFederationApplication  -Accessibility null `
+$WsFederationApplication = Initialize-Okta.PowerShellWsFederationApplication  -Accessibility null `
  -Created null `
  -Features null `
  -Id null `

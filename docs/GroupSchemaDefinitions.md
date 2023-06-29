@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GroupSchemaDefinitions = Initialize-PSOpenAPIToolsGroupSchemaDefinitions  -Base null `
+$GroupSchemaDefinitions = Initialize-Okta.PowerShellGroupSchemaDefinitions  -Base null `
  -Custom null
 ```
 

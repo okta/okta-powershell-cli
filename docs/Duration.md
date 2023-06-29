@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Duration = Initialize-PSOpenAPIToolsDuration  -Number null `
+$Duration = Initialize-Okta.PowerShellDuration  -Number null `
  -Unit null
 ```
 

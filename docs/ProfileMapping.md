@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **String** |  | [optional] [readonly] 
-**Properties** | [**System.Collections.Hashtable**](ProfileMappingProperty.md) |  | [optional] [readonly] 
+**Properties** | [**System.Collections.Hashtable**](ProfileMappingProperty.md) |  | [optional] 
 **Source** | [**ProfileMappingSource**](ProfileMappingSource.md) |  | [optional] 
 **Target** | [**ProfileMappingSource**](ProfileMappingSource.md) |  | [optional] 
 **Links** | [**System.Collections.Hashtable**](SystemCollectionsHashtable.md) |  | [optional] [readonly] 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProfileMapping = Initialize-PSOpenAPIToolsProfileMapping  -Id null `
+$ProfileMapping = Initialize-Okta.PowerShellProfileMapping  -Id null `
  -Properties null `
  -Source null `
  -Target null `

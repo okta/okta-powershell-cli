@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DeviceLinks = Initialize-PSOpenAPIToolsDeviceLinks  -Self null `
+$DeviceLinks = Initialize-Okta.PowerShellDeviceLinks  -Self null `
  -Users null `
  -Activate null `
  -Deactivate null `

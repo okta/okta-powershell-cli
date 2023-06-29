@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PasswordCredentialHashAlgorithm = Initialize-PSOpenAPIToolsPasswordCredentialHashAlgorithm 
+$PasswordCredentialHashAlgorithm = Initialize-Okta.PowerShellPasswordCredentialHashAlgorithm 
 ```
 
 - Convert the resource to JSON

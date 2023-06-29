@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DeviceAssurance = Initialize-PSOpenAPIToolsDeviceAssurance  -CreatedBy null `
+$DeviceAssurance = Initialize-Okta.PowerShellDeviceAssurance  -CreatedBy null `
  -CreatedDate null `
  -DiskEncryptionType null `
  -Id null `

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ResourceSetBindingMember = Initialize-PSOpenAPIToolsResourceSetBindingMember  -Created null `
+$ResourceSetBindingMember = Initialize-Okta.PowerShellResourceSetBindingMember  -Created null `
  -Id null `
  -LastUpdated null `
  -Links null

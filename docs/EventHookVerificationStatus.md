@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EventHookVerificationStatus = Initialize-PSOpenAPIToolsEventHookVerificationStatus 
+$EventHookVerificationStatus = Initialize-Okta.PowerShellEventHookVerificationStatus 
 ```
 
 - Convert the resource to JSON

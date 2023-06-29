@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EmailPreview = Initialize-PSOpenAPIToolsEmailPreview  -Body null `
+$EmailPreview = Initialize-Okta.PowerShellEmailPreview  -Body null `
  -Subject null `
  -Links null
 ```

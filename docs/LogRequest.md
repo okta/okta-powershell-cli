@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogRequest = Initialize-PSOpenAPIToolsLogRequest  -IpChain null
+$LogRequest = Initialize-Okta.PowerShellLogRequest  -IpChain null
 ```
 
 - Convert the resource to JSON

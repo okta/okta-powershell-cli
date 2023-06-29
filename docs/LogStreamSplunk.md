@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogStreamSplunk = Initialize-PSOpenAPIToolsLogStreamSplunk  -Created null `
+$LogStreamSplunk = Initialize-Okta.PowerShellLogStreamSplunk  -Created null `
  -Id null `
  -LastUpdated null `
  -Name null `

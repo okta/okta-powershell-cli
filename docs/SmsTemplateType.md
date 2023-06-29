@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SmsTemplateType = Initialize-PSOpenAPIToolsSmsTemplateType 
+$SmsTemplateType = Initialize-Okta.PowerShellSmsTemplateType 
 ```
 
 - Convert the resource to JSON

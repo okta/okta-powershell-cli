@@ -8,19 +8,17 @@ Name | Type | Description | Notes
 **Id** | **String** | Unique key for the role | [optional] [readonly] 
 **Label** | **String** | Unique label for the role | 
 **LastUpdated** | **System.DateTime** | Timestamp when the role was last updated | [optional] [readonly] 
-**Permissions** | [**RolePermissionType[]**](RolePermissionType.md) | Array of permissions that the role will grant. See [Permission Types](https://developer.okta.com/docs/concepts/role-assignment/#permission-types). | 
 **Links** | [**IamRoleLinks**](IamRoleLinks.md) |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$IamRole = Initialize-PSOpenAPIToolsIamRole  -Created null `
+$IamRole = Initialize-Okta.PowerShellIamRole  -Created null `
  -Description null `
  -Id null `
  -Label null `
  -LastUpdated null `
- -Permissions null `
  -Links null
 ```
 

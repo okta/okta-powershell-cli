@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$TokenAuthorizationServerPolicyRuleAction = Initialize-PSOpenAPIToolsTokenAuthorizationServerPolicyRuleAction  -AccessTokenLifetimeMinutes null `
+$TokenAuthorizationServerPolicyRuleAction = Initialize-Okta.PowerShellTokenAuthorizationServerPolicyRuleAction  -AccessTokenLifetimeMinutes null `
  -InlineHook null `
  -RefreshTokenLifetimeMinutes null `
  -RefreshTokenWindowMinutes null

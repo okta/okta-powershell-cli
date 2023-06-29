@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PlatformPolicyRuleCondition = Initialize-PSOpenAPIToolsPlatformPolicyRuleCondition  -Exclude null `
+$PlatformPolicyRuleCondition = Initialize-Okta.PowerShellPlatformPolicyRuleCondition  -Exclude null `
  -Include null
 ```
 

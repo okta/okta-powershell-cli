@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OpenIdConnectApplicationSettings = Initialize-PSOpenAPIToolsOpenIdConnectApplicationSettings  -IdentityStoreId null `
+$OpenIdConnectApplicationSettings = Initialize-Okta.PowerShellOpenIdConnectApplicationSettings  -IdentityStoreId null `
  -ImplicitAssignment null `
  -InlineHookId null `
  -Notes null `

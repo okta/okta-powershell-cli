@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogCredentialType = Initialize-PSOpenAPIToolsLogCredentialType 
+$LogCredentialType = Initialize-Okta.PowerShellLogCredentialType 
 ```
 
 - Convert the resource to JSON

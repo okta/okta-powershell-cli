@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PasswordPolicyRuleActionsAllOf = Initialize-PSOpenAPIToolsPasswordPolicyRuleActionsAllOf  -PasswordChange null `
+$PasswordPolicyRuleActionsAllOf = Initialize-Okta.PowerShellPasswordPolicyRuleActionsAllOf  -PasswordChange null `
  -SelfServicePasswordReset null `
  -SelfServiceUnlock null
 ```

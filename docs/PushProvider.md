@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PushProvider = Initialize-PSOpenAPIToolsPushProvider  -Id null `
+$PushProvider = Initialize-Okta.PowerShellPushProvider  -Id null `
  -LastUpdatedDate null `
  -Name null `
  -ProviderType null `

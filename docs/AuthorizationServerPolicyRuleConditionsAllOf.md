@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AuthorizationServerPolicyRuleConditionsAllOf = Initialize-PSOpenAPIToolsAuthorizationServerPolicyRuleConditionsAllOf  -Clients null `
+$AuthorizationServerPolicyRuleConditionsAllOf = Initialize-Okta.PowerShellAuthorizationServerPolicyRuleConditionsAllOf  -Clients null `
  -GrantTypes null `
  -People null `
  -Scopes null

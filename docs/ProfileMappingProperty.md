@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProfileMappingProperty = Initialize-PSOpenAPIToolsProfileMappingProperty  -Expression null `
+$ProfileMappingProperty = Initialize-Okta.PowerShellProfileMappingProperty  -Expression null `
  -PushStatus null
 ```
 

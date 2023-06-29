@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PasswordPolicyRuleAction = Initialize-PSOpenAPIToolsPasswordPolicyRuleAction  -Access null
+$PasswordPolicyRuleAction = Initialize-Okta.PowerShellPasswordPolicyRuleAction  -Access null
 ```
 
 - Convert the resource to JSON

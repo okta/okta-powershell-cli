@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EnabledStatus = Initialize-PSOpenAPIToolsEnabledStatus 
+$EnabledStatus = Initialize-Okta.PowerShellEnabledStatus 
 ```
 
 - Convert the resource to JSON

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$NetworkZoneType = Initialize-PSOpenAPIToolsNetworkZoneType 
+$NetworkZoneType = Initialize-Okta.PowerShellNetworkZoneType 
 ```
 
 - Convert the resource to JSON

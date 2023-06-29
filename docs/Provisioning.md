@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Provisioning = Initialize-PSOpenAPIToolsProvisioning  -Action null `
+$Provisioning = Initialize-Okta.PowerShellProvisioning  -Action null `
  -Conditions null `
  -Groups null `
  -ProfileMaster null

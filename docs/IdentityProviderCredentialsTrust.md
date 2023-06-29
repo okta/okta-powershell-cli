@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$IdentityProviderCredentialsTrust = Initialize-PSOpenAPIToolsIdentityProviderCredentialsTrust  -Audience null `
+$IdentityProviderCredentialsTrust = Initialize-Okta.PowerShellIdentityProviderCredentialsTrust  -Audience null `
  -Issuer null `
  -Kid null `
  -Revocation null `

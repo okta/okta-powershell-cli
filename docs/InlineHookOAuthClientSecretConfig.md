@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$InlineHookOAuthClientSecretConfig = Initialize-PSOpenAPIToolsInlineHookOAuthClientSecretConfig  -ClientSecret null `
+$InlineHookOAuthClientSecretConfig = Initialize-Okta.PowerShellInlineHookOAuthClientSecretConfig  -ClientSecret null `
  -AuthScheme null `
  -Headers null `
  -Method null `

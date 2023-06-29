@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SchemeApplicationCredentialsAllOf = Initialize-PSOpenAPIToolsSchemeApplicationCredentialsAllOf  -Password null `
+$SchemeApplicationCredentialsAllOf = Initialize-Okta.PowerShellSchemeApplicationCredentialsAllOf  -Password null `
  -RevealPassword null `
  -Scheme null `
  -Signing null `

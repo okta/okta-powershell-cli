@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$IdentityProvider = Initialize-PSOpenAPIToolsIdentityProvider  -Created null `
+$IdentityProvider = Initialize-Okta.PowerShellIdentityProvider  -Created null `
  -Id null `
  -IssuerMode null `
  -LastUpdated null `

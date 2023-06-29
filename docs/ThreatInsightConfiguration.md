@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ThreatInsightConfiguration = Initialize-PSOpenAPIToolsThreatInsightConfiguration  -Action null `
+$ThreatInsightConfiguration = Initialize-Okta.PowerShellThreatInsightConfiguration  -Action null `
  -Created null `
  -ExcludeZones null `
  -LastUpdated null `

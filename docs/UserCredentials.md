@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UserCredentials = Initialize-PSOpenAPIToolsUserCredentials  -Password null `
+$UserCredentials = Initialize-Okta.PowerShellUserCredentials  -Password null `
  -Provider null `
  -RecoveryQuestion null
 ```

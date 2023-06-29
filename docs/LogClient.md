@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogClient = Initialize-PSOpenAPIToolsLogClient  -Device null `
+$LogClient = Initialize-Okta.PowerShellLogClient  -Device null `
  -GeographicalContext null `
  -Id null `
  -IpAddress null `

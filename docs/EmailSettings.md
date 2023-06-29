@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EmailSettings = Initialize-PSOpenAPIToolsEmailSettings  -Recipients null
+$EmailSettings = Initialize-Okta.PowerShellEmailSettings  -Recipients null
 ```
 
 - Convert the resource to JSON

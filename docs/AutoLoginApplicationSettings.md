@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AutoLoginApplicationSettings = Initialize-PSOpenAPIToolsAutoLoginApplicationSettings  -IdentityStoreId null `
+$AutoLoginApplicationSettings = Initialize-Okta.PowerShellAutoLoginApplicationSettings  -IdentityStoreId null `
  -ImplicitAssignment null `
  -InlineHookId null `
  -Notes null `

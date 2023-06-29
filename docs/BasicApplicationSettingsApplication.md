@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BasicApplicationSettingsApplication = Initialize-PSOpenAPIToolsBasicApplicationSettingsApplication  -AuthURL null `
+$BasicApplicationSettingsApplication = Initialize-Okta.PowerShellBasicApplicationSettingsApplication  -AuthURL null `
  -Url null
 ```
 

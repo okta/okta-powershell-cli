@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BouncesRemoveListError = Initialize-PSOpenAPIToolsBouncesRemoveListError  -EmailAddress null `
+$BouncesRemoveListError = Initialize-Okta.PowerShellBouncesRemoveListError  -EmailAddress null `
  -Reason null
 ```
 

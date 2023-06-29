@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GroupLinks = Initialize-PSOpenAPIToolsGroupLinks  -Apps null `
+$GroupLinks = Initialize-Okta.PowerShellGroupLinks  -Apps null `
  -Logo null `
  -Self null `
  -Source null `

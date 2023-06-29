@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$FactorStatus = Initialize-PSOpenAPIToolsFactorStatus 
+$FactorStatus = Initialize-Okta.PowerShellFactorStatus 
 ```
 
 - Convert the resource to JSON

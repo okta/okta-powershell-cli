@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProvisioningConnection = Initialize-PSOpenAPIToolsProvisioningConnection  -AuthScheme null `
+$ProvisioningConnection = Initialize-Okta.PowerShellProvisioningConnection  -AuthScheme null `
  -Status null `
  -Links null
 ```

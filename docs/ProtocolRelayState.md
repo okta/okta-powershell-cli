@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProtocolRelayState = Initialize-PSOpenAPIToolsProtocolRelayState  -Format null
+$ProtocolRelayState = Initialize-Okta.PowerShellProtocolRelayState  -Format null
 ```
 
 - Convert the resource to JSON

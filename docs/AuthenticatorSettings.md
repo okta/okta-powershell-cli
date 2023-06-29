@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AuthenticatorSettings = Initialize-PSOpenAPIToolsAuthenticatorSettings  -AllowedFor null `
+$AuthenticatorSettings = Initialize-Okta.PowerShellAuthenticatorSettings  -AllowedFor null `
  -AppInstanceId null `
  -ChannelBinding null `
  -Compliance null `

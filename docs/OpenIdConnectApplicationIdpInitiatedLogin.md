@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OpenIdConnectApplicationIdpInitiatedLogin = Initialize-PSOpenAPIToolsOpenIdConnectApplicationIdpInitiatedLogin  -DefaultScope null `
+$OpenIdConnectApplicationIdpInitiatedLogin = Initialize-Okta.PowerShellOpenIdConnectApplicationIdpInitiatedLogin  -DefaultScope null `
  -Mode null
 ```
 

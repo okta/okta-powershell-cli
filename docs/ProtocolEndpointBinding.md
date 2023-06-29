@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProtocolEndpointBinding = Initialize-PSOpenAPIToolsProtocolEndpointBinding 
+$ProtocolEndpointBinding = Initialize-Okta.PowerShellProtocolEndpointBinding 
 ```
 
 - Convert the resource to JSON

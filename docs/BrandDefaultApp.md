@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BrandDefaultApp = Initialize-PSOpenAPIToolsBrandDefaultApp  -AppInstanceId null `
+$BrandDefaultApp = Initialize-Okta.PowerShellBrandDefaultApp  -AppInstanceId null `
  -AppLinkName null
 ```
 

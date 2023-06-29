@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ReleaseChannel = Initialize-PSOpenAPIToolsReleaseChannel 
+$ReleaseChannel = Initialize-Okta.PowerShellReleaseChannel 
 ```
 
 - Convert the resource to JSON

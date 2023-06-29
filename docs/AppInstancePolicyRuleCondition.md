@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AppInstancePolicyRuleCondition = Initialize-PSOpenAPIToolsAppInstancePolicyRuleCondition  -Exclude null `
+$AppInstancePolicyRuleCondition = Initialize-Okta.PowerShellAppInstancePolicyRuleCondition  -Exclude null `
  -Include null
 ```
 

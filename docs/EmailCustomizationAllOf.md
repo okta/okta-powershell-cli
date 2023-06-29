@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EmailCustomizationAllOf = Initialize-PSOpenAPIToolsEmailCustomizationAllOf  -Created null `
+$EmailCustomizationAllOf = Initialize-Okta.PowerShellEmailCustomizationAllOf  -Created null `
  -Id null `
  -IsDefault null `
  -Language null `

@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UserSchema = Initialize-PSOpenAPIToolsUserSchema  -Schema null `
+$UserSchema = Initialize-Okta.PowerShellUserSchema  -Schema null `
  -Created null `
  -Definitions null `
  -Id null `

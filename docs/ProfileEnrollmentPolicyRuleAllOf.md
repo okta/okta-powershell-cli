@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProfileEnrollmentPolicyRuleAllOf = Initialize-PSOpenAPIToolsProfileEnrollmentPolicyRuleAllOf  -Actions null `
+$ProfileEnrollmentPolicyRuleAllOf = Initialize-Okta.PowerShellProfileEnrollmentPolicyRuleAllOf  -Actions null `
  -Conditions null
 ```
 

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AutoLoginApplicationSettingsSignOn = Initialize-PSOpenAPIToolsAutoLoginApplicationSettingsSignOn  -LoginUrl null `
+$AutoLoginApplicationSettingsSignOn = Initialize-Okta.PowerShellAutoLoginApplicationSettingsSignOn  -LoginUrl null `
  -RedirectUrl null
 ```
 

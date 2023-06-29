@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BehaviorRuleVelocity = Initialize-PSOpenAPIToolsBehaviorRuleVelocity  -Created null `
+$BehaviorRuleVelocity = Initialize-Okta.PowerShellBehaviorRuleVelocity  -Created null `
  -Id null `
  -LastUpdated null `
  -Name null `

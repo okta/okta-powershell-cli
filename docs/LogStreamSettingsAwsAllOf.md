@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogStreamSettingsAwsAllOf = Initialize-PSOpenAPIToolsLogStreamSettingsAwsAllOf  -AccountId null `
+$LogStreamSettingsAwsAllOf = Initialize-Okta.PowerShellLogStreamSettingsAwsAllOf  -AccountId null `
  -EventSourceName null `
  -Region null
 ```

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AppAndInstanceType = Initialize-PSOpenAPIToolsAppAndInstanceType 
+$AppAndInstanceType = Initialize-Okta.PowerShellAppAndInstanceType 
 ```
 
 - Convert the resource to JSON

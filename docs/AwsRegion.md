@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AwsRegion = Initialize-PSOpenAPIToolsAwsRegion 
+$AwsRegion = Initialize-Okta.PowerShellAwsRegion 
 ```
 
 - Convert the resource to JSON

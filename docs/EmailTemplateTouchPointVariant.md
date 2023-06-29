@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EmailTemplateTouchPointVariant = Initialize-PSOpenAPIToolsEmailTemplateTouchPointVariant 
+$EmailTemplateTouchPointVariant = Initialize-Okta.PowerShellEmailTemplateTouchPointVariant 
 ```
 
 - Convert the resource to JSON

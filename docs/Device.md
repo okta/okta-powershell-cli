@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Device = Initialize-PSOpenAPIToolsDevice  -Created null `
+$Device = Initialize-Okta.PowerShellDevice  -Created null `
  -Id null `
  -LastUpdated null `
  -VarProfile null `

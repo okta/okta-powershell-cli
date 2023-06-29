@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GroupRuleStatus = Initialize-PSOpenAPIToolsGroupRuleStatus 
+$GroupRuleStatus = Initialize-Okta.PowerShellGroupRuleStatus 
 ```
 
 - Convert the resource to JSON

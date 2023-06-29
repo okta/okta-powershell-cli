@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HrefObject = Initialize-PSOpenAPIToolsHrefObject  -Hints null `
+$HrefObject = Initialize-Okta.PowerShellHrefObject  -Hints null `
  -Href null `
  -Name null `
  -Type null

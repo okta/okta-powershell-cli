@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$TrustedOriginScope = Initialize-PSOpenAPIToolsTrustedOriginScope  -AllowedOktaApps null `
+$TrustedOriginScope = Initialize-Okta.PowerShellTrustedOriginScope  -AllowedOktaApps null `
  -Type null
 ```
 

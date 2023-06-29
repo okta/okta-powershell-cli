@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BehaviorRuleSettingsAnomalousDevice = Initialize-PSOpenAPIToolsBehaviorRuleSettingsAnomalousDevice  -MaxEventsUsedForEvaluation null `
+$BehaviorRuleSettingsAnomalousDevice = Initialize-Okta.PowerShellBehaviorRuleSettingsAnomalousDevice  -MaxEventsUsedForEvaluation null `
  -MinEventsNeededForEvaluation null
 ```
 

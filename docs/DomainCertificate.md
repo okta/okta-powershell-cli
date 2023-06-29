@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainCertificate = Initialize-PSOpenAPIToolsDomainCertificate  -Certificate null `
+$DomainCertificate = Initialize-Okta.PowerShellDomainCertificate  -Certificate null `
  -CertificateChain null `
  -PrivateKey null `
  -Type null

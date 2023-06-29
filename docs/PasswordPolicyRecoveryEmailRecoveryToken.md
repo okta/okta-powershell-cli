@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PasswordPolicyRecoveryEmailRecoveryToken = Initialize-PSOpenAPIToolsPasswordPolicyRecoveryEmailRecoveryToken  -TokenLifetimeMinutes null
+$PasswordPolicyRecoveryEmailRecoveryToken = Initialize-Okta.PowerShellPasswordPolicyRecoveryEmailRecoveryToken  -TokenLifetimeMinutes null
 ```
 
 - Convert the resource to JSON

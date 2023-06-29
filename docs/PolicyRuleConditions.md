@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PolicyRuleConditions = Initialize-PSOpenAPIToolsPolicyRuleConditions  -App null `
+$PolicyRuleConditions = Initialize-Okta.PowerShellPolicyRuleConditions  -App null `
  -Apps null `
  -AuthContext null `
  -AuthProvider null `

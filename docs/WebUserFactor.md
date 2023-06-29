@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WebUserFactor = Initialize-PSOpenAPIToolsWebUserFactor  -Created null `
+$WebUserFactor = Initialize-Okta.PowerShellWebUserFactor  -Created null `
  -FactorType null `
  -Id null `
  -LastUpdated null `

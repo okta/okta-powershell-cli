@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OAuth2ClaimConditions = Initialize-PSOpenAPIToolsOAuth2ClaimConditions  -Scopes null
+$OAuth2ClaimConditions = Initialize-Okta.PowerShellOAuth2ClaimConditions  -Scopes null
 ```
 
 - Convert the resource to JSON

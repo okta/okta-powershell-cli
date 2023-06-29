@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccessPolicyRule = Initialize-PSOpenAPIToolsAccessPolicyRule  -Created null `
+$AccessPolicyRule = Initialize-Okta.PowerShellAccessPolicyRule  -Created null `
  -Id null `
  -LastUpdated null `
  -Name null `

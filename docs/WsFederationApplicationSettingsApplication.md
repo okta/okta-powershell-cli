@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WsFederationApplicationSettingsApplication = Initialize-PSOpenAPIToolsWsFederationApplicationSettingsApplication  -AttributeStatements null `
+$WsFederationApplicationSettingsApplication = Initialize-Okta.PowerShellWsFederationApplicationSettingsApplication  -AttributeStatements null `
  -AudienceRestriction null `
  -AuthnContextClassRef null `
  -GroupFilter null `

@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ApiToken = Initialize-PSOpenAPIToolsApiToken  -ClientName null `
+$ApiToken = Initialize-Okta.PowerShellApiToken  -ClientName null `
  -Created null `
  -ExpiresAt null `
  -Id null `

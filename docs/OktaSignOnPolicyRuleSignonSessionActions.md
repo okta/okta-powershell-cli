@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OktaSignOnPolicyRuleSignonSessionActions = Initialize-PSOpenAPIToolsOktaSignOnPolicyRuleSignonSessionActions  -MaxSessionIdleMinutes null `
+$OktaSignOnPolicyRuleSignonSessionActions = Initialize-Okta.PowerShellOktaSignOnPolicyRuleSignonSessionActions  -MaxSessionIdleMinutes null `
  -MaxSessionLifetimeMinutes null `
  -UsePersistentCookie null
 ```

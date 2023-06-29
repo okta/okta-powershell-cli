@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogStreamType = Initialize-PSOpenAPIToolsLogStreamType 
+$LogStreamType = Initialize-Okta.PowerShellLogStreamType 
 ```
 
 - Convert the resource to JSON

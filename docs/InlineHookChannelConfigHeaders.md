@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$InlineHookChannelConfigHeaders = Initialize-PSOpenAPIToolsInlineHookChannelConfigHeaders  -Key null `
+$InlineHookChannelConfigHeaders = Initialize-Okta.PowerShellInlineHookChannelConfigHeaders  -Key null `
  -Value null
 ```
 

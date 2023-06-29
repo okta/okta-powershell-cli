@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PlatformConditionOperatingSystemVersionMatchType = Initialize-PSOpenAPIToolsPlatformConditionOperatingSystemVersionMatchType 
+$PlatformConditionOperatingSystemVersionMatchType = Initialize-Okta.PowerShellPlatformConditionOperatingSystemVersionMatchType 
 ```
 
 - Convert the resource to JSON

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MDMEnrollmentPolicyRuleCondition = Initialize-PSOpenAPIToolsMDMEnrollmentPolicyRuleCondition  -BlockNonSafeAndroid null `
+$MDMEnrollmentPolicyRuleCondition = Initialize-Okta.PowerShellMDMEnrollmentPolicyRuleCondition  -BlockNonSafeAndroid null `
  -Enrollment null
 ```
 

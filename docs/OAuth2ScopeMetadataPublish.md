@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OAuth2ScopeMetadataPublish = Initialize-PSOpenAPIToolsOAuth2ScopeMetadataPublish 
+$OAuth2ScopeMetadataPublish = Initialize-Okta.PowerShellOAuth2ScopeMetadataPublish 
 ```
 
 - Convert the resource to JSON

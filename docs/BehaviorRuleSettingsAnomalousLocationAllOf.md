@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BehaviorRuleSettingsAnomalousLocationAllOf = Initialize-PSOpenAPIToolsBehaviorRuleSettingsAnomalousLocationAllOf  -Granularity null `
+$BehaviorRuleSettingsAnomalousLocationAllOf = Initialize-Okta.PowerShellBehaviorRuleSettingsAnomalousLocationAllOf  -Granularity null `
  -RadiusKilometers null
 ```
 

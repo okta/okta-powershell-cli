@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ActivateFactorRequest = Initialize-PSOpenAPIToolsActivateFactorRequest  -Attestation null `
+$ActivateFactorRequest = Initialize-Okta.PowerShellActivateFactorRequest  -Attestation null `
  -ClientData null `
  -PassCode null `
  -RegistrationData null `

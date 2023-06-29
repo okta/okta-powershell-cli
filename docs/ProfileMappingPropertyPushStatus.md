@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProfileMappingPropertyPushStatus = Initialize-PSOpenAPIToolsProfileMappingPropertyPushStatus 
+$ProfileMappingPropertyPushStatus = Initialize-Okta.PowerShellProfileMappingPropertyPushStatus 
 ```
 
 - Convert the resource to JSON

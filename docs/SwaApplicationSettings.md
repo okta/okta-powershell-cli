@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SwaApplicationSettings = Initialize-PSOpenAPIToolsSwaApplicationSettings  -IdentityStoreId null `
+$SwaApplicationSettings = Initialize-Okta.PowerShellSwaApplicationSettings  -IdentityStoreId null `
  -ImplicitAssignment null `
  -InlineHookId null `
  -Notes null `

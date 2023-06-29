@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CallUserFactorProfile = Initialize-PSOpenAPIToolsCallUserFactorProfile  -PhoneExtension null `
+$CallUserFactorProfile = Initialize-Okta.PowerShellCallUserFactorProfile  -PhoneExtension null `
  -PhoneNumber null
 ```
 

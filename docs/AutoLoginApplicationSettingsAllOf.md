@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AutoLoginApplicationSettingsAllOf = Initialize-PSOpenAPIToolsAutoLoginApplicationSettingsAllOf  -SignOn null
+$AutoLoginApplicationSettingsAllOf = Initialize-Okta.PowerShellAutoLoginApplicationSettingsAllOf  -SignOn null
 ```
 
 - Convert the resource to JSON

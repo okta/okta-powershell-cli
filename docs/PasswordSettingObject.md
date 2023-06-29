@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PasswordSettingObject = Initialize-PSOpenAPIToolsPasswordSettingObject  -Change null `
+$PasswordSettingObject = Initialize-Okta.PowerShellPasswordSettingObject  -Change null `
  -Seed null `
  -Status null
 ```

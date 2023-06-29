@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$FipsEnum = Initialize-PSOpenAPIToolsFipsEnum 
+$FipsEnum = Initialize-Okta.PowerShellFipsEnum 
 ```
 
 - Convert the resource to JSON

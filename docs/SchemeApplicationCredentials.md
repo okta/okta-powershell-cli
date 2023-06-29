@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SchemeApplicationCredentials = Initialize-PSOpenAPIToolsSchemeApplicationCredentials  -Signing null `
+$SchemeApplicationCredentials = Initialize-Okta.PowerShellSchemeApplicationCredentials  -Signing null `
  -UserNameTemplate null `
  -Password null `
  -RevealPassword null `

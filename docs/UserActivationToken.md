@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UserActivationToken = Initialize-PSOpenAPIToolsUserActivationToken  -ActivationToken null `
+$UserActivationToken = Initialize-Okta.PowerShellUserActivationToken  -ActivationToken null `
  -ActivationUrl null
 ```
 

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Compliance = Initialize-PSOpenAPIToolsCompliance  -Fips null
+$Compliance = Initialize-Okta.PowerShellCompliance  -Fips null
 ```
 
 - Convert the resource to JSON

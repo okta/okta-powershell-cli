@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EventSubscriptions = Initialize-PSOpenAPIToolsEventSubscriptions  -Items null `
+$EventSubscriptions = Initialize-Okta.PowerShellEventSubscriptions  -Items null `
  -Type null
 ```
 

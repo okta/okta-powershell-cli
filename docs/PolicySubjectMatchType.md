@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PolicySubjectMatchType = Initialize-PSOpenAPIToolsPolicySubjectMatchType 
+$PolicySubjectMatchType = Initialize-Okta.PowerShellPolicySubjectMatchType 
 ```
 
 - Convert the resource to JSON

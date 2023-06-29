@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$IdentityProviderCredentials = Initialize-PSOpenAPIToolsIdentityProviderCredentials  -Client null `
+$IdentityProviderCredentials = Initialize-Okta.PowerShellIdentityProviderCredentials  -Client null `
  -Signing null `
  -Trust null
 ```

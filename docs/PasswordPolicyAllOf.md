@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PasswordPolicyAllOf = Initialize-PSOpenAPIToolsPasswordPolicyAllOf  -Conditions null `
+$PasswordPolicyAllOf = Initialize-Okta.PowerShellPasswordPolicyAllOf  -Conditions null `
  -Settings null
 ```
 

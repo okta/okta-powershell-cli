@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$TokenUserFactorProfile = Initialize-PSOpenAPIToolsTokenUserFactorProfile  -CredentialId null
+$TokenUserFactorProfile = Initialize-Okta.PowerShellTokenUserFactorProfile  -CredentialId null
 ```
 
 - Convert the resource to JSON

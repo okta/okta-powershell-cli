@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VerifyFactorRequest = Initialize-PSOpenAPIToolsVerifyFactorRequest  -ActivationToken null `
+$VerifyFactorRequest = Initialize-Okta.PowerShellVerifyFactorRequest  -ActivationToken null `
  -Answer null `
  -Attestation null `
  -ClientData null `

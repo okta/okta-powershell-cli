@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccessPolicyRuleConditionsAllOf = Initialize-PSOpenAPIToolsAccessPolicyRuleConditionsAllOf  -Device null `
+$AccessPolicyRuleConditionsAllOf = Initialize-Okta.PowerShellAccessPolicyRuleConditionsAllOf  -Device null `
  -ElCondition null `
  -UserType null
 ```

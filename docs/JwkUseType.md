@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$JwkUseType = Initialize-PSOpenAPIToolsJwkUseType 
+$JwkUseType = Initialize-Okta.PowerShellJwkUseType 
 ```
 
 - Convert the resource to JSON

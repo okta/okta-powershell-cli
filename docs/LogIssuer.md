@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogIssuer = Initialize-PSOpenAPIToolsLogIssuer  -Id null `
+$LogIssuer = Initialize-Okta.PowerShellLogIssuer  -Id null `
  -Type null
 ```
 

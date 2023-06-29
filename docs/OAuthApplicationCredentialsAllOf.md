@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OAuthApplicationCredentialsAllOf = Initialize-PSOpenAPIToolsOAuthApplicationCredentialsAllOf  -OauthClient null
+$OAuthApplicationCredentialsAllOf = Initialize-Okta.PowerShellOAuthApplicationCredentialsAllOf  -OauthClient null
 ```
 
 - Convert the resource to JSON

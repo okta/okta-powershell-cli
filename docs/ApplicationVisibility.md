@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ApplicationVisibility = Initialize-PSOpenAPIToolsApplicationVisibility  -AppLinks null `
+$ApplicationVisibility = Initialize-Okta.PowerShellApplicationVisibility  -AppLinks null `
  -AutoLaunch null `
  -AutoSubmitToolbar null `
  -Hide null

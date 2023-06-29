@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OpenIdConnectApplicationSettingsClient = Initialize-PSOpenAPIToolsOpenIdConnectApplicationSettingsClient  -ApplicationType null `
+$OpenIdConnectApplicationSettingsClient = Initialize-Okta.PowerShellOpenIdConnectApplicationSettingsClient  -ApplicationType null `
  -ClientUri null `
  -ConsentMethod null `
  -GrantTypes null `

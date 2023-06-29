@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Session = Initialize-PSOpenAPIToolsSession  -Amr null `
+$Session = Initialize-Okta.PowerShellSession  -Amr null `
  -CreatedAt null `
  -ExpiresAt null `
  -Id null `

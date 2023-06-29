@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainCertificateMetadata = Initialize-PSOpenAPIToolsDomainCertificateMetadata  -Expiration null `
+$DomainCertificateMetadata = Initialize-Okta.PowerShellDomainCertificateMetadata  -Expiration null `
  -Fingerprint null `
  -Subject null
 ```

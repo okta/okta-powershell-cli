@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$InlineHookChannelHttp = Initialize-PSOpenAPIToolsInlineHookChannelHttp  -Type null `
+$InlineHookChannelHttp = Initialize-Okta.PowerShellInlineHookChannelHttp  -Type null `
  -Version null `
  -Config null
 ```

@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BehaviorRuleAnomalousLocation = Initialize-PSOpenAPIToolsBehaviorRuleAnomalousLocation  -Created null `
+$BehaviorRuleAnomalousLocation = Initialize-Okta.PowerShellBehaviorRuleAnomalousLocation  -Created null `
  -Id null `
  -LastUpdated null `
  -Name null `

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogStreamSplunkAllOf = Initialize-PSOpenAPIToolsLogStreamSplunkAllOf  -Settings null
+$LogStreamSplunkAllOf = Initialize-Okta.PowerShellLogStreamSplunkAllOf  -Settings null
 ```
 
 - Convert the resource to JSON

@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BehaviorRule = Initialize-PSOpenAPIToolsBehaviorRule  -Created null `
+$BehaviorRule = Initialize-Okta.PowerShellBehaviorRule  -Created null `
  -Id null `
  -LastUpdated null `
  -Name null `

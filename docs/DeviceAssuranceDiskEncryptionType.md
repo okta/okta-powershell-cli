@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DeviceAssuranceDiskEncryptionType = Initialize-PSOpenAPIToolsDeviceAssuranceDiskEncryptionType  -Include null
+$DeviceAssuranceDiskEncryptionType = Initialize-Okta.PowerShellDeviceAssuranceDiskEncryptionType  -Include null
 ```
 
 - Convert the resource to JSON

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OrgOktaSupportSetting = Initialize-PSOpenAPIToolsOrgOktaSupportSetting 
+$OrgOktaSupportSetting = Initialize-Okta.PowerShellOrgOktaSupportSetting 
 ```
 
 - Convert the resource to JSON

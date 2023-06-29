@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PolicyRuleType = Initialize-PSOpenAPIToolsPolicyRuleType 
+$PolicyRuleType = Initialize-Okta.PowerShellPolicyRuleType 
 ```
 
 - Convert the resource to JSON

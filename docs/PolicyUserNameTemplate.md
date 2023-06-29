@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PolicyUserNameTemplate = Initialize-PSOpenAPIToolsPolicyUserNameTemplate  -Template null
+$PolicyUserNameTemplate = Initialize-Okta.PowerShellPolicyUserNameTemplate  -Template null
 ```
 
 - Convert the resource to JSON

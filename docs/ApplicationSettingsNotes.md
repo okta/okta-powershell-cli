@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ApplicationSettingsNotes = Initialize-PSOpenAPIToolsApplicationSettingsNotes  -Admin null `
+$ApplicationSettingsNotes = Initialize-Okta.PowerShellApplicationSettingsNotes  -Admin null `
  -Enduser null
 ```
 

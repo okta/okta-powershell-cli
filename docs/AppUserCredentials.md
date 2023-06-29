@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AppUserCredentials = Initialize-PSOpenAPIToolsAppUserCredentials  -Password null `
+$AppUserCredentials = Initialize-Okta.PowerShellAppUserCredentials  -Password null `
  -UserName null
 ```
 

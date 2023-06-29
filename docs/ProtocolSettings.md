@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProtocolSettings = Initialize-PSOpenAPIToolsProtocolSettings  -NameFormat null
+$ProtocolSettings = Initialize-Okta.PowerShellProtocolSettings  -NameFormat null
 ```
 
 - Convert the resource to JSON

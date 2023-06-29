@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BouncesRemoveListResult = Initialize-PSOpenAPIToolsBouncesRemoveListResult  -Errors null
+$BouncesRemoveListResult = Initialize-Okta.PowerShellBouncesRemoveListResult  -Errors null
 ```
 
 - Convert the resource to JSON

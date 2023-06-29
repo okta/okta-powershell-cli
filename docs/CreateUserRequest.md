@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CreateUserRequest = Initialize-PSOpenAPIToolsCreateUserRequest  -Credentials null `
+$CreateUserRequest = Initialize-Okta.PowerShellCreateUserRequest  -Credentials null `
  -GroupIds null `
  -VarProfile null `
  -Type null

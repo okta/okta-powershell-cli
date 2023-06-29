@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogActor = Initialize-PSOpenAPIToolsLogActor  -AlternateId null `
+$LogActor = Initialize-Okta.PowerShellLogActor  -AlternateId null `
  -Detail null `
  -DisplayName null `
  -Id null `

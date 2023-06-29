@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CAPTCHAInstance = Initialize-PSOpenAPIToolsCAPTCHAInstance  -Id null `
+$CAPTCHAInstance = Initialize-Okta.PowerShellCAPTCHAInstance  -Id null `
  -Name null `
  -SecretKey null `
  -SiteKey null `

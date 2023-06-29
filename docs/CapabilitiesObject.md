@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CapabilitiesObject = Initialize-PSOpenAPIToolsCapabilitiesObject  -Create null `
+$CapabilitiesObject = Initialize-Okta.PowerShellCapabilitiesObject  -Create null `
  -Update null
 ```
 

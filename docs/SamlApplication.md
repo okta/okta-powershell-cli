@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SamlApplication = Initialize-PSOpenAPIToolsSamlApplication  -Accessibility null `
+$SamlApplication = Initialize-Okta.PowerShellSamlApplication  -Accessibility null `
  -Created null `
  -Features null `
  -Id null `

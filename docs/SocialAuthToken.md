@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SocialAuthToken = Initialize-PSOpenAPIToolsSocialAuthToken  -ExpiresAt null `
+$SocialAuthToken = Initialize-Okta.PowerShellSocialAuthToken  -ExpiresAt null `
  -Id null `
  -Scopes null `
  -Token null `

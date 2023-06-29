@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PasswordPolicyPasswordSettingsComplexity = Initialize-PSOpenAPIToolsPasswordPolicyPasswordSettingsComplexity  -Dictionary null `
+$PasswordPolicyPasswordSettingsComplexity = Initialize-Okta.PowerShellPasswordPolicyPasswordSettingsComplexity  -Dictionary null `
  -ExcludeAttributes null `
  -ExcludeUsername null `
  -MinLength null `

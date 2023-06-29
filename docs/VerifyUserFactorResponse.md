@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VerifyUserFactorResponse = Initialize-PSOpenAPIToolsVerifyUserFactorResponse  -ExpiresAt null `
+$VerifyUserFactorResponse = Initialize-Okta.PowerShellVerifyUserFactorResponse  -ExpiresAt null `
  -FactorResult null `
  -FactorResultMessage null `
  -Embedded null `

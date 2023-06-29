@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EmailDomainResponse = Initialize-PSOpenAPIToolsEmailDomainResponse  -DnsValidationRecords null `
+$EmailDomainResponse = Initialize-Okta.PowerShellEmailDomainResponse  -DnsValidationRecords null `
  -Domain null `
  -Id null `
  -ValidationStatus null `

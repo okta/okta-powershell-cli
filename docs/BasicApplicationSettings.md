@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BasicApplicationSettings = Initialize-PSOpenAPIToolsBasicApplicationSettings  -IdentityStoreId null `
+$BasicApplicationSettings = Initialize-Okta.PowerShellBasicApplicationSettings  -IdentityStoreId null `
  -ImplicitAssignment null `
  -InlineHookId null `
  -Notes null `

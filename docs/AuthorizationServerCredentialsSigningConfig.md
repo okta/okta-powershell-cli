@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AuthorizationServerCredentialsSigningConfig = Initialize-PSOpenAPIToolsAuthorizationServerCredentialsSigningConfig  -Kid null `
+$AuthorizationServerCredentialsSigningConfig = Initialize-Okta.PowerShellAuthorizationServerCredentialsSigningConfig  -Kid null `
  -LastRotated null `
  -NextRotation null `
  -RotationMode null `

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$APNSPushProvider = Initialize-PSOpenAPIToolsAPNSPushProvider  -Id null `
+$APNSPushProvider = Initialize-Okta.PowerShellAPNSPushProvider  -Id null `
  -LastUpdatedDate null `
  -Name null `
  -ProviderType null `

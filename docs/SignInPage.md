@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SignInPage = Initialize-PSOpenAPIToolsSignInPage  -PageContent null `
+$SignInPage = Initialize-Okta.PowerShellSignInPage  -PageContent null `
  -WidgetCustomizations null `
  -WidgetVersion null
 ```

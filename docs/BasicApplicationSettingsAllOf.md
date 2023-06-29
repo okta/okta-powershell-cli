@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BasicApplicationSettingsAllOf = Initialize-PSOpenAPIToolsBasicApplicationSettingsAllOf  -App null
+$BasicApplicationSettingsAllOf = Initialize-Okta.PowerShellBasicApplicationSettingsAllOf  -App null
 ```
 
 - Convert the resource to JSON

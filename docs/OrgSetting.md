@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OrgSetting = Initialize-PSOpenAPIToolsOrgSetting  -Address1 null `
+$OrgSetting = Initialize-Okta.PowerShellOrgSetting  -Address1 null `
  -Address2 null `
  -City null `
  -CompanyName null `

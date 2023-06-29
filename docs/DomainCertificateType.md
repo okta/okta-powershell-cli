@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainCertificateType = Initialize-PSOpenAPIToolsDomainCertificateType 
+$DomainCertificateType = Initialize-Okta.PowerShellDomainCertificateType 
 ```
 
 - Convert the resource to JSON

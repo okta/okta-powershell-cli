@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProvisioningDeprovisionedCondition = Initialize-PSOpenAPIToolsProvisioningDeprovisionedCondition  -Action null
+$ProvisioningDeprovisionedCondition = Initialize-Okta.PowerShellProvisioningDeprovisionedCondition  -Action null
 ```
 
 - Convert the resource to JSON

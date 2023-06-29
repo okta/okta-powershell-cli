@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VerifyUserFactorResult = Initialize-PSOpenAPIToolsVerifyUserFactorResult 
+$VerifyUserFactorResult = Initialize-Okta.PowerShellVerifyUserFactorResult 
 ```
 
 - Convert the resource to JSON

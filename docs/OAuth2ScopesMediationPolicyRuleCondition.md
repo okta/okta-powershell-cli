@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OAuth2ScopesMediationPolicyRuleCondition = Initialize-PSOpenAPIToolsOAuth2ScopesMediationPolicyRuleCondition  -Include null
+$OAuth2ScopesMediationPolicyRuleCondition = Initialize-Okta.PowerShellOAuth2ScopesMediationPolicyRuleCondition  -Include null
 ```
 
 - Convert the resource to JSON

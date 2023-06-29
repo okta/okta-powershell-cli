@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Agent = Initialize-PSOpenAPIToolsAgent  -Id null `
+$Agent = Initialize-Okta.PowerShellAgent  -Id null `
  -IsHidden null `
  -IsLatestGAedVersion null `
  -LastConnection null `

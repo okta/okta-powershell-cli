@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ResourceSetBindingAddMembersRequest = Initialize-PSOpenAPIToolsResourceSetBindingAddMembersRequest  -Additions null
+$ResourceSetBindingAddMembersRequest = Initialize-Okta.PowerShellResourceSetBindingAddMembersRequest  -Additions null
 ```
 
 - Convert the resource to JSON

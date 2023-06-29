@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SessionIdentityProviderType = Initialize-PSOpenAPIToolsSessionIdentityProviderType 
+$SessionIdentityProviderType = Initialize-Okta.PowerShellSessionIdentityProviderType 
 ```
 
 - Convert the resource to JSON

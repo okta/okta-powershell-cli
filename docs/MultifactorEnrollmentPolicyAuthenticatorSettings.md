@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MultifactorEnrollmentPolicyAuthenticatorSettings = Initialize-PSOpenAPIToolsMultifactorEnrollmentPolicyAuthenticatorSettings  -Enroll null `
+$MultifactorEnrollmentPolicyAuthenticatorSettings = Initialize-Okta.PowerShellMultifactorEnrollmentPolicyAuthenticatorSettings  -Enroll null `
  -Key null
 ```
 

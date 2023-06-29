@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProtocolEndpoint = Initialize-PSOpenAPIToolsProtocolEndpoint  -Binding null `
+$ProtocolEndpoint = Initialize-Okta.PowerShellProtocolEndpoint  -Binding null `
  -Destination null `
  -Type null `
  -Url null

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogUserAgent = Initialize-PSOpenAPIToolsLogUserAgent  -Browser null `
+$LogUserAgent = Initialize-Okta.PowerShellLogUserAgent  -Browser null `
  -Os null `
  -RawUserAgent null
 ```

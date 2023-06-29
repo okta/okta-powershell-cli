@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PerClientRateLimitSettingsUseCaseModeOverrides = Initialize-PSOpenAPIToolsPerClientRateLimitSettingsUseCaseModeOverrides  -LOGINPAGE null `
+$PerClientRateLimitSettingsUseCaseModeOverrides = Initialize-Okta.PowerShellPerClientRateLimitSettingsUseCaseModeOverrides  -LOGINPAGE null `
  -OAUTH2AUTHORIZE null `
  -OIEAPPINTENT null
 ```

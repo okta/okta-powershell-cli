@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PasswordPolicyPasswordSettingsAge = Initialize-PSOpenAPIToolsPasswordPolicyPasswordSettingsAge  -ExpireWarnDays null `
+$PasswordPolicyPasswordSettingsAge = Initialize-Okta.PowerShellPasswordPolicyPasswordSettingsAge  -ExpireWarnDays null `
  -HistoryCount null `
  -MaxAgeDays null `
  -MinAgeMinutes null

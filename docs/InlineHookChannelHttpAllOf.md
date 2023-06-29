@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$InlineHookChannelHttpAllOf = Initialize-PSOpenAPIToolsInlineHookChannelHttpAllOf  -Config null
+$InlineHookChannelHttpAllOf = Initialize-Okta.PowerShellInlineHookChannelHttpAllOf  -Config null
 ```
 
 - Convert the resource to JSON

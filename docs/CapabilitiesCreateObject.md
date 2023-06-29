@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CapabilitiesCreateObject = Initialize-PSOpenAPIToolsCapabilitiesCreateObject  -LifecycleCreate null
+$CapabilitiesCreateObject = Initialize-Okta.PowerShellCapabilitiesCreateObject  -LifecycleCreate null
 ```
 
 - Convert the resource to JSON

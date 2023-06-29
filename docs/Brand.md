@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Brand = Initialize-PSOpenAPIToolsBrand  -AgreeToCustomPrivacyPolicy null `
+$Brand = Initialize-Okta.PowerShellBrand  -AgreeToCustomPrivacyPolicy null `
  -CustomPrivacyPolicyUrl null `
  -DefaultApp null `
  -DisplayLanguage null `

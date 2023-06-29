@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$InlineHookOAuthPrivateKeyJwtConfig = Initialize-PSOpenAPIToolsInlineHookOAuthPrivateKeyJwtConfig  -HookKeyId null `
+$InlineHookOAuthPrivateKeyJwtConfig = Initialize-Okta.PowerShellInlineHookOAuthPrivateKeyJwtConfig  -HookKeyId null `
  -AuthScheme null `
  -Headers null `
  -Method null `

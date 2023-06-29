@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Group = Initialize-PSOpenAPIToolsGroup  -Created null `
+$Group = Initialize-Okta.PowerShellGroup  -Created null `
  -Id null `
  -LastMembershipUpdated null `
  -LastUpdated null `

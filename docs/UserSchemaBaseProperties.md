@@ -39,7 +39,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UserSchemaBaseProperties = Initialize-PSOpenAPIToolsUserSchemaBaseProperties  -City null `
+$UserSchemaBaseProperties = Initialize-Okta.PowerShellUserSchemaBaseProperties  -City null `
  -CostCenter null `
  -CountryCode null `
  -Department null `

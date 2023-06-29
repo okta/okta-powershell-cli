@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AutoLoginApplication = Initialize-PSOpenAPIToolsAutoLoginApplication  -Accessibility null `
+$AutoLoginApplication = Initialize-Okta.PowerShellAutoLoginApplication  -Accessibility null `
  -Created null `
  -Features null `
  -Id null `

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainLinks = Initialize-PSOpenAPIToolsDomainLinks  -Brand null `
+$DomainLinks = Initialize-Okta.PowerShellDomainLinks  -Brand null `
  -Certificate null `
  -Self null `
  -Verify null

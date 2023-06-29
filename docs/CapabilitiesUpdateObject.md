@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CapabilitiesUpdateObject = Initialize-PSOpenAPIToolsCapabilitiesUpdateObject  -LifecycleDeactivate null `
+$CapabilitiesUpdateObject = Initialize-Okta.PowerShellCapabilitiesUpdateObject  -LifecycleDeactivate null `
  -Password null `
  -VarProfile null
 ```

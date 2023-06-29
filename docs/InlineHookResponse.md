@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$InlineHookResponse = Initialize-PSOpenAPIToolsInlineHookResponse  -Commands null
+$InlineHookResponse = Initialize-Okta.PowerShellInlineHookResponse  -Commands null
 ```
 
 - Convert the resource to JSON

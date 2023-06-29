@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ModelError = Initialize-PSOpenAPIToolsModelError  -ErrorCauses null `
+$ModelError = Initialize-Okta.PowerShellModelError  -ErrorCauses null `
  -ErrorCode null `
  -ErrorId null `
  -ErrorLink null `

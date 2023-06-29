@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$KeyRequest = Initialize-PSOpenAPIToolsKeyRequest  -Name null
+$KeyRequest = Initialize-Okta.PowerShellKeyRequest  -Name null
 ```
 
 - Convert the resource to JSON

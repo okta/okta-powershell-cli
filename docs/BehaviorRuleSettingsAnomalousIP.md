@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BehaviorRuleSettingsAnomalousIP = Initialize-PSOpenAPIToolsBehaviorRuleSettingsAnomalousIP  -MaxEventsUsedForEvaluation null `
+$BehaviorRuleSettingsAnomalousIP = Initialize-Okta.PowerShellBehaviorRuleSettingsAnomalousIP  -MaxEventsUsedForEvaluation null `
  -MinEventsNeededForEvaluation null
 ```
 

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccessPolicyAllOf = Initialize-PSOpenAPIToolsAccessPolicyAllOf  -Conditions null
+$AccessPolicyAllOf = Initialize-Okta.PowerShellAccessPolicyAllOf  -Conditions null
 ```
 
 - Convert the resource to JSON

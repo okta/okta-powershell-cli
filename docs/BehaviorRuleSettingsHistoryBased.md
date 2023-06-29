@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BehaviorRuleSettingsHistoryBased = Initialize-PSOpenAPIToolsBehaviorRuleSettingsHistoryBased  -MaxEventsUsedForEvaluation null `
+$BehaviorRuleSettingsHistoryBased = Initialize-Okta.PowerShellBehaviorRuleSettingsHistoryBased  -MaxEventsUsedForEvaluation null `
  -MinEventsNeededForEvaluation null
 ```
 

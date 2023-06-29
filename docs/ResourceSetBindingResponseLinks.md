@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ResourceSetBindingResponseLinks = Initialize-PSOpenAPIToolsResourceSetBindingResponseLinks  -Self null `
+$ResourceSetBindingResponseLinks = Initialize-Okta.PowerShellResourceSetBindingResponseLinks  -Self null `
  -Bindings null `
  -ResourceSet null
 ```

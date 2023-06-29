@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ContextPolicyRuleCondition = Initialize-PSOpenAPIToolsContextPolicyRuleCondition  -Migrated null `
+$ContextPolicyRuleCondition = Initialize-Okta.PowerShellContextPolicyRuleCondition  -Migrated null `
  -Platform null `
  -Rooted null `
  -TrustLevel null `

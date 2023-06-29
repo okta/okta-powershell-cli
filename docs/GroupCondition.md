@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GroupCondition = Initialize-PSOpenAPIToolsGroupCondition  -Exclude null `
+$GroupCondition = Initialize-Okta.PowerShellGroupCondition  -Exclude null `
  -Include null
 ```
 

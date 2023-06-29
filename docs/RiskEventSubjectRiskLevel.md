@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$RiskEventSubjectRiskLevel = Initialize-PSOpenAPIToolsRiskEventSubjectRiskLevel 
+$RiskEventSubjectRiskLevel = Initialize-Okta.PowerShellRiskEventSubjectRiskLevel 
 ```
 
 - Convert the resource to JSON

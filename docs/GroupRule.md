@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GroupRule = Initialize-PSOpenAPIToolsGroupRule  -Actions null `
+$GroupRule = Initialize-Okta.PowerShellGroupRule  -Actions null `
  -Conditions null `
  -Created null `
  -Id null `

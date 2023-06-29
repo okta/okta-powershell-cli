@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EventHookChannelConfigHeader = Initialize-PSOpenAPIToolsEventHookChannelConfigHeader  -Key null `
+$EventHookChannelConfigHeader = Initialize-Okta.PowerShellEventHookChannelConfigHeader  -Key null `
  -Value null
 ```
 

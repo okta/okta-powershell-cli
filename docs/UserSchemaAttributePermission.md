@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UserSchemaAttributePermission = Initialize-PSOpenAPIToolsUserSchemaAttributePermission  -Action null `
+$UserSchemaAttributePermission = Initialize-Okta.PowerShellUserSchemaAttributePermission  -Action null `
  -Principal null
 ```
 

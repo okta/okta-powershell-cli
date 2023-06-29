@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UserTypeCondition = Initialize-PSOpenAPIToolsUserTypeCondition  -Exclude null `
+$UserTypeCondition = Initialize-Okta.PowerShellUserTypeCondition  -Exclude null `
  -Include null
 ```
 

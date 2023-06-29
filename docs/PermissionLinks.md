@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PermissionLinks = Initialize-PSOpenAPIToolsPermissionLinks  -Self null `
+$PermissionLinks = Initialize-Okta.PowerShellPermissionLinks  -Self null `
  -Role null
 ```
 

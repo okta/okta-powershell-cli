@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PolicyAccountLinkFilter = Initialize-PSOpenAPIToolsPolicyAccountLinkFilter  -Groups null
+$PolicyAccountLinkFilter = Initialize-Okta.PowerShellPolicyAccountLinkFilter  -Groups null
 ```
 
 - Convert the resource to JSON

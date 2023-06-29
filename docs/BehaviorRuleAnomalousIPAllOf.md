@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BehaviorRuleAnomalousIPAllOf = Initialize-PSOpenAPIToolsBehaviorRuleAnomalousIPAllOf  -Settings null
+$BehaviorRuleAnomalousIPAllOf = Initialize-Okta.PowerShellBehaviorRuleAnomalousIPAllOf  -Settings null
 ```
 
 - Convert the resource to JSON

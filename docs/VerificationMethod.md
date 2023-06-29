@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VerificationMethod = Initialize-PSOpenAPIToolsVerificationMethod  -Constraints null `
+$VerificationMethod = Initialize-Okta.PowerShellVerificationMethod  -Constraints null `
  -FactorMode null `
  -ReauthenticateIn null `
  -Type null

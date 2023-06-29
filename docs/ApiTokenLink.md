@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ApiTokenLink = Initialize-PSOpenAPIToolsApiTokenLink  -Self null
+$ApiTokenLink = Initialize-Okta.PowerShellApiTokenLink  -Self null
 ```
 
 - Convert the resource to JSON

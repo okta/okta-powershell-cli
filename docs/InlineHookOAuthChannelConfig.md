@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$InlineHookOAuthChannelConfig = Initialize-PSOpenAPIToolsInlineHookOAuthChannelConfig  -AuthType null
+$InlineHookOAuthChannelConfig = Initialize-Okta.PowerShellInlineHookOAuthChannelConfig  -AuthType null
 ```
 
 - Convert the resource to JSON

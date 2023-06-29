@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GrantOrTokenStatus = Initialize-PSOpenAPIToolsGrantOrTokenStatus 
+$GrantOrTokenStatus = Initialize-Okta.PowerShellGrantOrTokenStatus 
 ```
 
 - Convert the resource to JSON

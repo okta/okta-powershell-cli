@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PushUserFactorAllOf = Initialize-PSOpenAPIToolsPushUserFactorAllOf  -ExpiresAt null `
+$PushUserFactorAllOf = Initialize-Okta.PowerShellPushUserFactorAllOf  -ExpiresAt null `
  -FactorResult null `
  -VarProfile null
 ```

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AuthorizationServerPolicyRuleActionsAllOf = Initialize-PSOpenAPIToolsAuthorizationServerPolicyRuleActionsAllOf  -Token null
+$AuthorizationServerPolicyRuleActionsAllOf = Initialize-Okta.PowerShellAuthorizationServerPolicyRuleActionsAllOf  -Token null
 ```
 
 - Convert the resource to JSON

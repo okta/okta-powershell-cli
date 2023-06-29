@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ApplicationSettingsNotificationsVpnNetwork = Initialize-PSOpenAPIToolsApplicationSettingsNotificationsVpnNetwork  -Connection null `
+$ApplicationSettingsNotificationsVpnNetwork = Initialize-Okta.PowerShellApplicationSettingsNotificationsVpnNetwork  -Connection null `
  -Exclude null `
  -Include null
 ```

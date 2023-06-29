@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogStream = Initialize-PSOpenAPIToolsLogStream  -Created null `
+$LogStream = Initialize-Okta.PowerShellLogStream  -Created null `
  -Id null `
  -LastUpdated null `
  -Name null `

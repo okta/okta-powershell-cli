@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PolicyRuleActionsEnrollSelf = Initialize-PSOpenAPIToolsPolicyRuleActionsEnrollSelf 
+$PolicyRuleActionsEnrollSelf = Initialize-Okta.PowerShellPolicyRuleActionsEnrollSelf 
 ```
 
 - Convert the resource to JSON

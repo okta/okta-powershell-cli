@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$IamRoles = Initialize-PSOpenAPIToolsIamRoles  -Roles null `
+$IamRoles = Initialize-Okta.PowerShellIamRoles  -Roles null `
  -Links null
 ```
 

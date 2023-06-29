@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PolicyAccess = Initialize-PSOpenAPIToolsPolicyAccess 
+$PolicyAccess = Initialize-Okta.PowerShellPolicyAccess 
 ```
 
 - Convert the resource to JSON

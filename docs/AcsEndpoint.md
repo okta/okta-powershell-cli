@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AcsEndpoint = Initialize-PSOpenAPIToolsAcsEndpoint  -Index null `
+$AcsEndpoint = Initialize-Okta.PowerShellAcsEndpoint  -Index null `
  -Url null
 ```
 

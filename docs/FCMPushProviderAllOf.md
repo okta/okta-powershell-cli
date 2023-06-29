@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$FCMPushProviderAllOf = Initialize-PSOpenAPIToolsFCMPushProviderAllOf  -Configuration null
+$FCMPushProviderAllOf = Initialize-Okta.PowerShellFCMPushProviderAllOf  -Configuration null
 ```
 
 - Convert the resource to JSON

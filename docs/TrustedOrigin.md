@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$TrustedOrigin = Initialize-PSOpenAPIToolsTrustedOrigin  -Created null `
+$TrustedOrigin = Initialize-Okta.PowerShellTrustedOrigin  -Created null `
  -CreatedBy null `
  -Id null `
  -LastUpdated null `

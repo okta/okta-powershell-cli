@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DNSRecord = Initialize-PSOpenAPIToolsDNSRecord  -Expiration null `
+$DNSRecord = Initialize-Okta.PowerShellDNSRecord  -Expiration null `
  -Fqdn null `
  -RecordType null `
  -Values null

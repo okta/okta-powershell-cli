@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SignOnInlineHook = Initialize-PSOpenAPIToolsSignOnInlineHook  -Id null
+$SignOnInlineHook = Initialize-Okta.PowerShellSignOnInlineHook  -Id null
 ```
 
 - Convert the resource to JSON

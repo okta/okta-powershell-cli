@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$RiskScorePolicyRuleCondition = Initialize-PSOpenAPIToolsRiskScorePolicyRuleCondition  -Level null
+$RiskScorePolicyRuleCondition = Initialize-Okta.PowerShellRiskScorePolicyRuleCondition  -Level null
 ```
 
 - Convert the resource to JSON

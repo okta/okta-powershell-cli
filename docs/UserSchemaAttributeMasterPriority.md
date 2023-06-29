@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UserSchemaAttributeMasterPriority = Initialize-PSOpenAPIToolsUserSchemaAttributeMasterPriority  -Type null `
+$UserSchemaAttributeMasterPriority = Initialize-Okta.PowerShellUserSchemaAttributeMasterPriority  -Type null `
  -Value null
 ```
 

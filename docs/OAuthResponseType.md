@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OAuthResponseType = Initialize-PSOpenAPIToolsOAuthResponseType 
+$OAuthResponseType = Initialize-Okta.PowerShellOAuthResponseType 
 ```
 
 - Convert the resource to JSON

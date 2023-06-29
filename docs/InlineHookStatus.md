@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$InlineHookStatus = Initialize-PSOpenAPIToolsInlineHookStatus 
+$InlineHookStatus = Initialize-Okta.PowerShellInlineHookStatus 
 ```
 
 - Convert the resource to JSON

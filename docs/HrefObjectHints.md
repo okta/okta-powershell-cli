@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HrefObjectHints = Initialize-PSOpenAPIToolsHrefObjectHints  -Allow null
+$HrefObjectHints = Initialize-Okta.PowerShellHrefObjectHints  -Allow null
 ```
 
 - Convert the resource to JSON

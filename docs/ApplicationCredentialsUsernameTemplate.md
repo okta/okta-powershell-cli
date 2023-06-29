@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ApplicationCredentialsUsernameTemplate = Initialize-PSOpenAPIToolsApplicationCredentialsUsernameTemplate  -PushStatus null `
+$ApplicationCredentialsUsernameTemplate = Initialize-Okta.PowerShellApplicationCredentialsUsernameTemplate  -PushStatus null `
  -Suffix null `
  -Template null `
  -Type null

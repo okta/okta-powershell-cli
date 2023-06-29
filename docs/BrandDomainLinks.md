@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BrandDomainLinks = Initialize-PSOpenAPIToolsBrandDomainLinks  -Self null `
+$BrandDomainLinks = Initialize-Okta.PowerShellBrandDomainLinks  -Self null `
  -Brand null `
  -Domain null
 ```

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BrandLinks = Initialize-PSOpenAPIToolsBrandLinks  -Self null `
+$BrandLinks = Initialize-Okta.PowerShellBrandLinks  -Self null `
  -Themes null
 ```
 

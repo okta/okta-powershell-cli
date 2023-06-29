@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$RiskProviderAction = Initialize-PSOpenAPIToolsRiskProviderAction 
+$RiskProviderAction = Initialize-Okta.PowerShellRiskProviderAction 
 ```
 
 - Convert the resource to JSON

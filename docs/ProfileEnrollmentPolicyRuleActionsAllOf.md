@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProfileEnrollmentPolicyRuleActionsAllOf = Initialize-PSOpenAPIToolsProfileEnrollmentPolicyRuleActionsAllOf  -ProfileEnrollment null
+$ProfileEnrollmentPolicyRuleActionsAllOf = Initialize-Okta.PowerShellProfileEnrollmentPolicyRuleActionsAllOf  -ProfileEnrollment null
 ```
 
 - Convert the resource to JSON

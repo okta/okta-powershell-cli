@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OAuthGrantType = Initialize-PSOpenAPIToolsOAuthGrantType 
+$OAuthGrantType = Initialize-Okta.PowerShellOAuthGrantType 
 ```
 
 - Convert the resource to JSON

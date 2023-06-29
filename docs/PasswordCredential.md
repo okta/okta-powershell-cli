@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PasswordCredential = Initialize-PSOpenAPIToolsPasswordCredential  -Hash null `
+$PasswordCredential = Initialize-Okta.PowerShellPasswordCredential  -Hash null `
  -Hook null `
  -Value null
 ```

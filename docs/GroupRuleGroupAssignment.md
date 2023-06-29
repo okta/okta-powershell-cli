@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GroupRuleGroupAssignment = Initialize-PSOpenAPIToolsGroupRuleGroupAssignment  -GroupIds null
+$GroupRuleGroupAssignment = Initialize-Okta.PowerShellGroupRuleGroupAssignment  -GroupIds null
 ```
 
 - Convert the resource to JSON

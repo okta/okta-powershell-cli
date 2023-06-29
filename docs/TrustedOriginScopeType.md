@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$TrustedOriginScopeType = Initialize-PSOpenAPIToolsTrustedOriginScopeType 
+$TrustedOriginScopeType = Initialize-Okta.PowerShellTrustedOriginScopeType 
 ```
 
 - Convert the resource to JSON

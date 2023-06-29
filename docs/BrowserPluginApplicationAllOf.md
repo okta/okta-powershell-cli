@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BrowserPluginApplicationAllOf = Initialize-PSOpenAPIToolsBrowserPluginApplicationAllOf  -Credentials null `
+$BrowserPluginApplicationAllOf = Initialize-Okta.PowerShellBrowserPluginApplicationAllOf  -Credentials null `
  -Name null `
  -Settings null
 ```

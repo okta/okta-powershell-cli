@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogOutcome = Initialize-PSOpenAPIToolsLogOutcome  -Reason null `
+$LogOutcome = Initialize-Okta.PowerShellLogOutcome  -Reason null `
  -Result null
 ```
 

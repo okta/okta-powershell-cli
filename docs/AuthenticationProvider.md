@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AuthenticationProvider = Initialize-PSOpenAPIToolsAuthenticationProvider  -Name null `
+$AuthenticationProvider = Initialize-Okta.PowerShellAuthenticationProvider  -Name null `
  -Type null
 ```
 

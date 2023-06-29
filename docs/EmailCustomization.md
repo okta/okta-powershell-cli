@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EmailCustomization = Initialize-PSOpenAPIToolsEmailCustomization  -Body null `
+$EmailCustomization = Initialize-Okta.PowerShellEmailCustomization  -Body null `
  -Subject null `
  -Created null `
  -Id null `

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PasswordPolicyRecoveryQuestionComplexity = Initialize-PSOpenAPIToolsPasswordPolicyRecoveryQuestionComplexity  -MinLength null
+$PasswordPolicyRecoveryQuestionComplexity = Initialize-Okta.PowerShellPasswordPolicyRecoveryQuestionComplexity  -MinLength null
 ```
 
 - Convert the resource to JSON

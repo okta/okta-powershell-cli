@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ApplicationLayout = Initialize-PSOpenAPIToolsApplicationLayout  -Elements null `
+$ApplicationLayout = Initialize-Okta.PowerShellApplicationLayout  -Elements null `
  -Label null `
  -Options null `
  -Rule null `

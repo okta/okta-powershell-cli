@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CsrMetadataSubjectAltNames = Initialize-PSOpenAPIToolsCsrMetadataSubjectAltNames  -DnsNames null
+$CsrMetadataSubjectAltNames = Initialize-Okta.PowerShellCsrMetadataSubjectAltNames  -DnsNames null
 ```
 
 - Convert the resource to JSON

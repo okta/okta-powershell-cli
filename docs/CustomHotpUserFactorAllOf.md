@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CustomHotpUserFactorAllOf = Initialize-PSOpenAPIToolsCustomHotpUserFactorAllOf  -FactorProfileId null `
+$CustomHotpUserFactorAllOf = Initialize-Okta.PowerShellCustomHotpUserFactorAllOf  -FactorProfileId null `
  -VarProfile null
 ```
 

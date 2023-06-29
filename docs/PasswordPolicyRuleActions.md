@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PasswordPolicyRuleActions = Initialize-PSOpenAPIToolsPasswordPolicyRuleActions  -Enroll null `
+$PasswordPolicyRuleActions = Initialize-Okta.PowerShellPasswordPolicyRuleActions  -Enroll null `
  -Idp null `
  -PasswordChange null `
  -SelfServicePasswordReset null `

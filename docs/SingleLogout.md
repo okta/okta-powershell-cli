@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SingleLogout = Initialize-PSOpenAPIToolsSingleLogout  -Enabled null `
+$SingleLogout = Initialize-Okta.PowerShellSingleLogout  -Enabled null `
  -Issuer null `
  -LogoutUrl null
 ```

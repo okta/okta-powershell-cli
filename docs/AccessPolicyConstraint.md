@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccessPolicyConstraint = Initialize-PSOpenAPIToolsAccessPolicyConstraint  -Methods null `
+$AccessPolicyConstraint = Initialize-Okta.PowerShellAccessPolicyConstraint  -Methods null `
  -ReauthenticateIn null `
  -Types null
 ```

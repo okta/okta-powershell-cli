@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccessPolicyRuleCustomCondition = Initialize-PSOpenAPIToolsAccessPolicyRuleCustomCondition  -Condition null
+$AccessPolicyRuleCustomCondition = Initialize-Okta.PowerShellAccessPolicyRuleCustomCondition  -Condition null
 ```
 
 - Convert the resource to JSON

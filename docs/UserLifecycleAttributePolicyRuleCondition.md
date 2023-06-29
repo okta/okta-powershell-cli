@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UserLifecycleAttributePolicyRuleCondition = Initialize-PSOpenAPIToolsUserLifecycleAttributePolicyRuleCondition  -AttributeName null `
+$UserLifecycleAttributePolicyRuleCondition = Initialize-Okta.PowerShellUserLifecycleAttributePolicyRuleCondition  -AttributeName null `
  -MatchingValue null
 ```
 

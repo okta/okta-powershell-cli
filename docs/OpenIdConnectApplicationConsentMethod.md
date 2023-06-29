@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OpenIdConnectApplicationConsentMethod = Initialize-PSOpenAPIToolsOpenIdConnectApplicationConsentMethod 
+$OpenIdConnectApplicationConsentMethod = Initialize-Okta.PowerShellOpenIdConnectApplicationConsentMethod 
 ```
 
 - Convert the resource to JSON

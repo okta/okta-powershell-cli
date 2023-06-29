@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BehaviorRuleType = Initialize-PSOpenAPIToolsBehaviorRuleType 
+$BehaviorRuleType = Initialize-Okta.PowerShellBehaviorRuleType 
 ```
 
 - Convert the resource to JSON

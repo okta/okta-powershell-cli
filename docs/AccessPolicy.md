@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccessPolicy = Initialize-PSOpenAPIToolsAccessPolicy  -Created null `
+$AccessPolicy = Initialize-Okta.PowerShellAccessPolicy  -Created null `
  -Description null `
  -Id null `
  -LastUpdated null `

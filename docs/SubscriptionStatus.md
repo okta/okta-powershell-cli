@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SubscriptionStatus = Initialize-PSOpenAPIToolsSubscriptionStatus 
+$SubscriptionStatus = Initialize-Okta.PowerShellSubscriptionStatus 
 ```
 
 - Convert the resource to JSON

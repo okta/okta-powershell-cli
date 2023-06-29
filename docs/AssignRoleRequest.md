@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AssignRoleRequest = Initialize-PSOpenAPIToolsAssignRoleRequest  -Type null
+$AssignRoleRequest = Initialize-Okta.PowerShellAssignRoleRequest  -Type null
 ```
 
 - Convert the resource to JSON

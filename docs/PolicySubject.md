@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PolicySubject = Initialize-PSOpenAPIToolsPolicySubject  -VarFilter null `
+$PolicySubject = Initialize-Okta.PowerShellPolicySubject  -VarFilter null `
  -Format null `
  -MatchAttribute null `
  -MatchType null `

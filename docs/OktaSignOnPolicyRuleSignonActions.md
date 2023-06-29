@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OktaSignOnPolicyRuleSignonActions = Initialize-PSOpenAPIToolsOktaSignOnPolicyRuleSignonActions  -Access null `
+$OktaSignOnPolicyRuleSignonActions = Initialize-Okta.PowerShellOktaSignOnPolicyRuleSignonActions  -Access null `
  -FactorLifetime null `
  -FactorPromptMode null `
  -RememberDeviceByDefault null `

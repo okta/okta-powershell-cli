@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GroupRuleExpression = Initialize-PSOpenAPIToolsGroupRuleExpression  -Type null `
+$GroupRuleExpression = Initialize-Okta.PowerShellGroupRuleExpression  -Type null `
  -Value null
 ```
 

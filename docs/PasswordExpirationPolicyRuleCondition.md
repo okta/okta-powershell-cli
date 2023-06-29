@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PasswordExpirationPolicyRuleCondition = Initialize-PSOpenAPIToolsPasswordExpirationPolicyRuleCondition  -Number null `
+$PasswordExpirationPolicyRuleCondition = Initialize-Okta.PowerShellPasswordExpirationPolicyRuleCondition  -Number null `
  -Unit null
 ```
 

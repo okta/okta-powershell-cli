@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProfileEnrollmentPolicy = Initialize-PSOpenAPIToolsProfileEnrollmentPolicy  -Created null `
+$ProfileEnrollmentPolicy = Initialize-Okta.PowerShellProfileEnrollmentPolicy  -Created null `
  -Description null `
  -Id null `
  -LastUpdated null `

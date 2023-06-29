@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OAuthEndpointAuthenticationMethod = Initialize-PSOpenAPIToolsOAuthEndpointAuthenticationMethod 
+$OAuthEndpointAuthenticationMethod = Initialize-Okta.PowerShellOAuthEndpointAuthenticationMethod 
 ```
 
 - Convert the resource to JSON
