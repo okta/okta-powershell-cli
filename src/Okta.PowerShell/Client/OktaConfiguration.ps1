@@ -27,15 +27,19 @@ function Get-OktaConfiguration {
         $Configuration["BaseUrl"] = "https://subdomain.okta.com";
     }
 
-    if (!$Configuration.containsKey("Username")) {
-        $Configuration["Username"] = $null
-    }
-    if (!$Configuration.containsKey("Password")) {
-        $Configuration["Password"] = $null
-    }
     if (!$Configuration.containsKey("AccessToken")) {
         $Configuration["AccessToken"] = $null
     }
+
+    if (!$Configuration.containsKey("ClientId")) {
+        $Configuration["ClientId"] = $null
+    }
+
+    
+    if (!$Configuration.containsKey("Scope")) {
+        $Configuration["Scope"] = $null
+    }
+   
     if (!$Configuration.containsKey("Cookie")) {
         $Configuration["Cookie"] = $null
     }
@@ -50,10 +54,6 @@ function Get-OktaConfiguration {
 
     if (!$Configuration["ApiKeyPrefix"]) {
         $Configuration["ApiKeyPrefix"] = @{}
-    }
-
-    if (!$Configuration.containsKey("SkipCertificateCheck")) {
-        $Configuration["SkipCertificateCheck"] = $false
     }
 
     if (!$Configuration.containsKey("Proxy")) {
@@ -118,17 +118,14 @@ function Set-OktaConfiguration {
     [CmdletBinding()]
     Param(
         [string]$BaseUrl,
-        [AllowEmptyString()]
-        [string]$Username,
-        [AllowEmptyString()]
-        [string]$Password,
+        [string]$ClientId,
+        [string]$Scope,
         [hashtable]$ApiKey,
         [hashtable]$ApiKeyPrefix,
         [AllowEmptyString()]
         [string]$Cookie,
         [AllowEmptyString()]
         [string]$AccessToken,
-        [switch]$SkipCertificateCheck,
         [hashtable]$DefaultHeaders,
         [System.Object]$Proxy,
         [switch]$PassThru
@@ -145,12 +142,12 @@ function Set-OktaConfiguration {
             $Script:Configuration["BaseUrl"] = $BaseUrl
         }
 
-        If ($Username) {
-            $Script:Configuration['Username'] = $Username
+        If ($ClientId) {
+            $Script:Configuration["ClientId"] = $ClientId
         }
 
-        If ($Password) {
-            $Script:Configuration['Password'] = $Password
+        If ($Scope) {
+            $Script:Configuration["Scope"] = "openapi " + $Scope
         }
 
         If ($ApiKey) {
@@ -167,12 +164,6 @@ function Set-OktaConfiguration {
 
         If ($AccessToken) {
             $Script:Configuration['AccessToken'] = $AccessToken
-        }
-
-        If ($SkipCertificateCheck.IsPresent) {
-            $Script:Configuration['SkipCertificateCheck'] = $true
-        } else {
-            $Script:Configuration['SkipCertificateCheck'] = $false
         }
 
         If ($DefaultHeaders) {
