@@ -21,5 +21,12 @@
         "apiTests": false,
         "modelTests": false,
         "isOAuth": true
+    },
+    "files": {
+        "okta_authenticationApi.mustache":{
+            "destinationFilename": "OktaAuthenticationApi.ps1",
+            "templateType": "SupportingFiles",
+            "folder": "/src/Okta.PowerShell/Api"
+        }
     }
 }
