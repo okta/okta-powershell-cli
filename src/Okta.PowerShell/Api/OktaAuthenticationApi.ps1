@@ -94,7 +94,7 @@ function Invoke-EstablishAccessToken {
             $Configuration.AccessToken = $TokenVarResult.Response.access_token
         }
 
-        Write-Host "Your token has been successfully retrieved and set to your $Configuration"        
+        Write-Host "Your token has been successfully retrieved and set to your configuration"        
     }
 }
 
