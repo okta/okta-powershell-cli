@@ -65,6 +65,11 @@ function Invoke-OktaActivateIdentityProvider {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'POST' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -165,6 +170,11 @@ function Copy-OktaIdentityProviderKey {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'POST' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -248,6 +258,11 @@ function New-OktaIdentityProvider {
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
+
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
 
         $LocalVarResult = Invoke-OktaApiClient -Method 'POST' `
                                 -Uri $LocalVarUri `
@@ -333,6 +348,11 @@ function New-OktaIdentityProviderKey {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'POST' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -411,6 +431,11 @@ function Invoke-OktaDeactivateIdentityProvider {
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
+
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
 
         $LocalVarResult = Invoke-OktaApiClient -Method 'POST' `
                                 -Uri $LocalVarUri `
@@ -491,6 +516,11 @@ function Invoke-OktaDeleteIdentityProvider {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'DELETE' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -569,6 +599,11 @@ function Invoke-OktaDeleteIdentityProviderKey {
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
+
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
 
         $LocalVarResult = Invoke-OktaApiClient -Method 'DELETE' `
                                 -Uri $LocalVarUri `
@@ -664,6 +699,11 @@ function New-OktaCsrForIdentityProvider {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'POST' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -754,6 +794,11 @@ function New-OktaIdentityProviderSigningKey {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'POST' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -843,6 +888,11 @@ function Get-OktaCsrForIdentityProvider {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'GET' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -921,6 +971,11 @@ function Get-OktaIdentityProvider {
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
+
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
 
         $LocalVarResult = Invoke-OktaApiClient -Method 'GET' `
                                 -Uri $LocalVarUri `
@@ -1011,6 +1066,11 @@ function Get-OktaIdentityProviderApplicationUser {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'GET' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -1089,6 +1149,11 @@ function Get-OktaIdentityProviderKey {
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
+
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
 
         $LocalVarResult = Invoke-OktaApiClient -Method 'GET' `
                                 -Uri $LocalVarUri `
@@ -1178,6 +1243,11 @@ function Get-OktaIdentityProviderSigningKey {
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
+
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
 
         $LocalVarResult = Invoke-OktaApiClient -Method 'GET' `
                                 -Uri $LocalVarUri `
@@ -1283,6 +1353,11 @@ function Invoke-OktaLinkUserToIdentityProvider {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'POST' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -1362,6 +1437,11 @@ function Invoke-OktaListCsrsForIdentityProvider {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'GET' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -1440,6 +1520,11 @@ function Invoke-OktaListIdentityProviderApplicationUsers {
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
+
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
 
         $LocalVarResult = Invoke-OktaApiClient -Method 'GET' `
                                 -Uri $LocalVarUri `
@@ -1530,6 +1615,11 @@ function Invoke-OktaListIdentityProviderKeys {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'GET' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -1608,6 +1698,11 @@ function Invoke-OktaListIdentityProviderSigningKeys {
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
+
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
 
         $LocalVarResult = Invoke-OktaApiClient -Method 'GET' `
                                 -Uri $LocalVarUri `
@@ -1718,6 +1813,11 @@ function Invoke-OktaListIdentityProviders {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'GET' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -1806,6 +1906,11 @@ function Invoke-OktaListSocialAuthTokens {
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
+
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
 
         $LocalVarResult = Invoke-OktaApiClient -Method 'GET' `
                                 -Uri $LocalVarUri `
@@ -1911,6 +2016,11 @@ function Publish-OktaCsrForIdentityProvider {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'POST' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -2000,6 +2110,11 @@ function Revoke-OktaCsrForIdentityProvider {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'DELETE' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -2088,6 +2203,11 @@ function Invoke-OktaUnlinkUserFromIdentityProvider {
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
+
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
 
         $LocalVarResult = Invoke-OktaApiClient -Method 'DELETE' `
                                 -Uri $LocalVarUri `
@@ -2182,6 +2302,11 @@ function Update-OktaIdentityProvider {
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
+
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
 
         $LocalVarResult = Invoke-OktaApiClient -Method 'PUT' `
                                 -Uri $LocalVarUri `

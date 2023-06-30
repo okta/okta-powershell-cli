@@ -765,6 +765,7 @@ docs/WsFederationApplicationSettingsApplication.md
 src/Okta.PowerShell/Api/OktaAgentPoolsApi.ps1
 src/Okta.PowerShell/Api/OktaApiTokenApi.ps1
 src/Okta.PowerShell/Api/OktaApplicationApi.ps1
+src/Okta.PowerShell/Api/OktaAuthenticationApi.ps1
 src/Okta.PowerShell/Api/OktaAuthenticatorApi.ps1
 src/Okta.PowerShell/Api/OktaAuthorizationServerApi.ps1
 src/Okta.PowerShell/Api/OktaBehaviorApi.ps1

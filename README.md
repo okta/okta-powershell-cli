@@ -33,6 +33,44 @@ To uninstall the module, simply run:
 Remove-Module -FullyQualifiedName @{ModuleName = "Okta.PowerShell"; ModuleVersion = "0.1.0-beta01"}
 ```
 
+## Getting Started
+
+The PowerShell CLI uses the [device authorization flow](https://developer.okta.com/docs/guides/device-authorization-grant/main/) to obtain an access token, so it requires, at least, three configuration values. These are the
+values for the [Okta Org
+domain](https://developer.okta.com/docs/guides/find-your-domain/main/), the client ID of the [OIDC Native Application](https://developer.okta.com/blog/2021/11/12/native-sso) and the scope for the API grants you are gonna need. For example, if you are going to get groups then you will need the grant `okta.group.read` configured in your scope.
+
+1. Set your configuration
+
+```sh
+$Configuration = Get-OktaConfiguration
+$Configuration.BaseUrl = 'https://myorg.okta.com'
+$Configuration.ClientId = 'MY_CLIENT_ID'
+$Configuration.Scope = "okta.group.read"
+```
+
+2. Authorize your device
+
+```sh
+Invoke-OktaEstablishAccessToken
+```
+> Note: You have to open the browser and navigate to the provided URL to complete the flow. Once the device is authorized, fo back to the PowerShell terminal.
+
+3. Invoke commands
+
+```sh
+Invoke-OktaListGroups
+
+id                    : 00g9erf7s3ydK79IX5d7
+created               : 5/5/23 1:45:05 PM
+lastUpdated           : 5/5/23 1:45:05 PM
+lastMembershipUpdated : 5/5/23 1:45:05 PM
+objectClass           : {okta:user_group}
+type                  : OKTA_GROUP
+profile               : @{name=Sales; description=}
+_links                : @{logo=System.Object[]; users=; apps=}
+```
+
+> Note: For more details about commands, check out the [documentation for API endpoints](Documentation_for_API_Endpoints)
 <a id="tests"></a>
 ## Tests
 
