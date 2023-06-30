@@ -14,7 +14,7 @@ Establishes the access token via the device code flow
 
 #>
 
-function Invoke-EstablishAccessToken {
+function Invoke-OktaEstablishAccessToken {
     Process {
         'Calling method: Update-GroupRule' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
@@ -77,7 +77,7 @@ function Invoke-EstablishAccessToken {
         #define timeout
         while ($keepPolling) {
             try {
-                $TokenVarResult = Fetch-AccessToken -DeviceCode $DeviceCode
+                $TokenVarResult = Fetch-OktaAccessToken -DeviceCode $DeviceCode
 
                 if ($TokenVarResult.StatusCode -eq 200) {
                     $keepPolling = $false
@@ -110,7 +110,7 @@ Code obtained via the device flow
 
 #>
 
-function Fetch-AccessToken {
+function Fetch-OktaAccessToken {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
@@ -119,7 +119,7 @@ function Fetch-AccessToken {
     )
 
     Process {
-        'Calling method: Fetch-AccessToken' | Write-Debug
+        'Calling method: Fetch-OktaAccessToken' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         $LocalVarAccepts = @()
