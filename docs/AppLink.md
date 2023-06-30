@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AppLink = Initialize-PSOpenAPIToolsAppLink  -AppAssignmentId null `
+$AppLink = Initialize-Okta.PowerShellAppLink  -AppAssignmentId null `
  -AppInstanceId null `
  -AppName null `
  -CredentialsSetup null `

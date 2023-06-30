@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PasswordCredentialHash = Initialize-PSOpenAPIToolsPasswordCredentialHash  -Algorithm null `
+$PasswordCredentialHash = Initialize-Okta.PowerShellPasswordCredentialHash  -Algorithm null `
  -Salt null `
  -SaltOrder null `
  -Value null `

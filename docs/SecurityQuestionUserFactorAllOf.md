@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SecurityQuestionUserFactorAllOf = Initialize-PSOpenAPIToolsSecurityQuestionUserFactorAllOf  -VarProfile null
+$SecurityQuestionUserFactorAllOf = Initialize-Okta.PowerShellSecurityQuestionUserFactorAllOf  -VarProfile null
 ```
 
 - Convert the resource to JSON

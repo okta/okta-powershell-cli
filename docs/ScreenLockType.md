@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ScreenLockType = Initialize-PSOpenAPIToolsScreenLockType 
+$ScreenLockType = Initialize-Okta.PowerShellScreenLockType 
 ```
 
 - Convert the resource to JSON

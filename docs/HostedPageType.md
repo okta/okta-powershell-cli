@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HostedPageType = Initialize-PSOpenAPIToolsHostedPageType 
+$HostedPageType = Initialize-Okta.PowerShellHostedPageType 
 ```
 
 - Convert the resource to JSON

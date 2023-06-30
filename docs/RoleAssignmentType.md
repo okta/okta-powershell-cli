@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$RoleAssignmentType = Initialize-PSOpenAPIToolsRoleAssignmentType 
+$RoleAssignmentType = Initialize-Okta.PowerShellRoleAssignmentType 
 ```
 
 - Convert the resource to JSON

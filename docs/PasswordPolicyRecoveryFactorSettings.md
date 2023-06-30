@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PasswordPolicyRecoveryFactorSettings = Initialize-PSOpenAPIToolsPasswordPolicyRecoveryFactorSettings  -Status null
+$PasswordPolicyRecoveryFactorSettings = Initialize-Okta.PowerShellPasswordPolicyRecoveryFactorSettings  -Status null
 ```
 
 - Convert the resource to JSON

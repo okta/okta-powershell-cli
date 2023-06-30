@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CallUserFactor = Initialize-PSOpenAPIToolsCallUserFactor  -Created null `
+$CallUserFactor = Initialize-Okta.PowerShellCallUserFactor  -Created null `
  -FactorType null `
  -Id null `
  -LastUpdated null `

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OktaSignOnPolicyFactorPromptMode = Initialize-PSOpenAPIToolsOktaSignOnPolicyFactorPromptMode 
+$OktaSignOnPolicyFactorPromptMode = Initialize-Okta.PowerShellOktaSignOnPolicyFactorPromptMode 
 ```
 
 - Convert the resource to JSON

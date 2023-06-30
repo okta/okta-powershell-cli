@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CatalogApplicationStatus = Initialize-PSOpenAPIToolsCatalogApplicationStatus 
+$CatalogApplicationStatus = Initialize-Okta.PowerShellCatalogApplicationStatus 
 ```
 
 - Convert the resource to JSON

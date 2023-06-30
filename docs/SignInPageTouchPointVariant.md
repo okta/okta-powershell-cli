@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SignInPageTouchPointVariant = Initialize-PSOpenAPIToolsSignInPageTouchPointVariant 
+$SignInPageTouchPointVariant = Initialize-Okta.PowerShellSignInPageTouchPointVariant 
 ```
 
 - Convert the resource to JSON

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProtocolType = Initialize-PSOpenAPIToolsProtocolType 
+$ProtocolType = Initialize-Okta.PowerShellProtocolType 
 ```
 
 - Convert the resource to JSON

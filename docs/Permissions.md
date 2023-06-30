@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Permissions = Initialize-PSOpenAPIToolsPermissions  -Permissions null
+$Permissions = Initialize-Okta.PowerShellPermissions  -Permissions null
 ```
 
 - Convert the resource to JSON

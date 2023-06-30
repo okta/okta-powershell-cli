@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$TokenUserFactor = Initialize-PSOpenAPIToolsTokenUserFactor  -Created null `
+$TokenUserFactor = Initialize-Okta.PowerShellTokenUserFactor  -Created null `
  -FactorType null `
  -Id null `
  -LastUpdated null `

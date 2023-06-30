@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BookmarkApplicationAllOf = Initialize-PSOpenAPIToolsBookmarkApplicationAllOf  -Credentials null `
+$BookmarkApplicationAllOf = Initialize-Okta.PowerShellBookmarkApplicationAllOf  -Credentials null `
  -Name null `
  -Settings null
 ```

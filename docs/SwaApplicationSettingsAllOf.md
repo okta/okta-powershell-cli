@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SwaApplicationSettingsAllOf = Initialize-PSOpenAPIToolsSwaApplicationSettingsAllOf  -App null
+$SwaApplicationSettingsAllOf = Initialize-Okta.PowerShellSwaApplicationSettingsAllOf  -App null
 ```
 
 - Convert the resource to JSON

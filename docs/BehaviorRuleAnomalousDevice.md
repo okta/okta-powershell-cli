@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BehaviorRuleAnomalousDevice = Initialize-PSOpenAPIToolsBehaviorRuleAnomalousDevice  -Created null `
+$BehaviorRuleAnomalousDevice = Initialize-Okta.PowerShellBehaviorRuleAnomalousDevice  -Created null `
  -Id null `
  -LastUpdated null `
  -Name null `

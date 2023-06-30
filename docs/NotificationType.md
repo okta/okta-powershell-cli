@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$NotificationType = Initialize-PSOpenAPIToolsNotificationType 
+$NotificationType = Initialize-Okta.PowerShellNotificationType 
 ```
 
 - Convert the resource to JSON

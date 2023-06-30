@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GroupOwner = Initialize-PSOpenAPIToolsGroupOwner  -DisplayName null `
+$GroupOwner = Initialize-Okta.PowerShellGroupOwner  -DisplayName null `
  -Id null `
  -LastUpdated null `
  -OriginId null `

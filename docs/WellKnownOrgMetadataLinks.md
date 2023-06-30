@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WellKnownOrgMetadataLinks = Initialize-PSOpenAPIToolsWellKnownOrgMetadataLinks  -Alternate null `
+$WellKnownOrgMetadataLinks = Initialize-Okta.PowerShellWellKnownOrgMetadataLinks  -Alternate null `
  -Organization null
 ```
 

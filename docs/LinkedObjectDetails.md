@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LinkedObjectDetails = Initialize-PSOpenAPIToolsLinkedObjectDetails  -Description null `
+$LinkedObjectDetails = Initialize-Okta.PowerShellLinkedObjectDetails  -Description null `
  -Name null `
  -Title null `
  -Type null

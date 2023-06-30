@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OpenIdConnectApplicationSettingsRefreshToken = Initialize-PSOpenAPIToolsOpenIdConnectApplicationSettingsRefreshToken  -Leeway null `
+$OpenIdConnectApplicationSettingsRefreshToken = Initialize-Okta.PowerShellOpenIdConnectApplicationSettingsRefreshToken  -Leeway null `
  -RotationType null
 ```
 

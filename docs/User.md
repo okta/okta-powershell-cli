@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$User = Initialize-PSOpenAPIToolsUser  -Activated null `
+$User = Initialize-Okta.PowerShellUser  -Activated null `
  -Created null `
  -Credentials null `
  -Id null `

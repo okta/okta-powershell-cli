@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ImageUploadResponse = Initialize-PSOpenAPIToolsImageUploadResponse  -Url null
+$ImageUploadResponse = Initialize-Okta.PowerShellImageUploadResponse  -Url null
 ```
 
 - Convert the resource to JSON

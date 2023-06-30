@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OAuth2Token = Initialize-PSOpenAPIToolsOAuth2Token  -ClientId null `
+$OAuth2Token = Initialize-Okta.PowerShellOAuth2Token  -ClientId null `
  -Created null `
  -ExpiresAt null `
  -Id null `

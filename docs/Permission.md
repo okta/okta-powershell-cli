@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Permission = Initialize-PSOpenAPIToolsPermission  -Created null `
+$Permission = Initialize-Okta.PowerShellPermission  -Created null `
  -Label null `
  -LastUpdated null `
  -Links null

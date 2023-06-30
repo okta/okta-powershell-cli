@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$FeatureType = Initialize-PSOpenAPIToolsFeatureType 
+$FeatureType = Initialize-Okta.PowerShellFeatureType 
 ```
 
 - Convert the resource to JSON

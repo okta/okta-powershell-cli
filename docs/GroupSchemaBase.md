@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GroupSchemaBase = Initialize-PSOpenAPIToolsGroupSchemaBase  -Id null `
+$GroupSchemaBase = Initialize-Okta.PowerShellGroupSchemaBase  -Id null `
  -Properties null `
  -Required null `
  -Type null

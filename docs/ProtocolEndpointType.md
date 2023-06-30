@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProtocolEndpointType = Initialize-PSOpenAPIToolsProtocolEndpointType 
+$ProtocolEndpointType = Initialize-Okta.PowerShellProtocolEndpointType 
 ```
 
 - Convert the resource to JSON

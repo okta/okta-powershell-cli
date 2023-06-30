@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AutoUpdateSchedule = Initialize-PSOpenAPIToolsAutoUpdateSchedule  -Cron null `
+$AutoUpdateSchedule = Initialize-Okta.PowerShellAutoUpdateSchedule  -Cron null `
  -Delay null `
  -Duration null `
  -LastUpdated null `

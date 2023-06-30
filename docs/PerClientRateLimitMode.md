@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PerClientRateLimitMode = Initialize-PSOpenAPIToolsPerClientRateLimitMode 
+$PerClientRateLimitMode = Initialize-Okta.PowerShellPerClientRateLimitMode 
 ```
 
 - Convert the resource to JSON

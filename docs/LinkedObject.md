@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LinkedObject = Initialize-PSOpenAPIToolsLinkedObject  -Associated null `
+$LinkedObject = Initialize-Okta.PowerShellLinkedObject  -Associated null `
  -Primary null `
  -Links null
 ```

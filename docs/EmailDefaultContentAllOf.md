@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EmailDefaultContentAllOf = Initialize-PSOpenAPIToolsEmailDefaultContentAllOf  -Links null
+$EmailDefaultContentAllOf = Initialize-Okta.PowerShellEmailDefaultContentAllOf  -Links null
 ```
 
 - Convert the resource to JSON

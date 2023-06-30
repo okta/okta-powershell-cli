@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$RecoveryQuestionCredential = Initialize-PSOpenAPIToolsRecoveryQuestionCredential  -Answer null `
+$RecoveryQuestionCredential = Initialize-Okta.PowerShellRecoveryQuestionCredential  -Answer null `
  -Question null
 ```
 

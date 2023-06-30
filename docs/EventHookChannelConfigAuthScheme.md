@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EventHookChannelConfigAuthScheme = Initialize-PSOpenAPIToolsEventHookChannelConfigAuthScheme  -Key null `
+$EventHookChannelConfigAuthScheme = Initialize-Okta.PowerShellEventHookChannelConfigAuthScheme  -Key null `
  -Type null `
  -Value null
 ```

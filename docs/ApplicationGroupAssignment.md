@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ApplicationGroupAssignment = Initialize-PSOpenAPIToolsApplicationGroupAssignment  -Id null `
+$ApplicationGroupAssignment = Initialize-Okta.PowerShellApplicationGroupAssignment  -Id null `
  -LastUpdated null `
  -Priority null `
  -VarProfile null `

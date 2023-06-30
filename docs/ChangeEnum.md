@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ChangeEnum = Initialize-PSOpenAPIToolsChangeEnum 
+$ChangeEnum = Initialize-Okta.PowerShellChangeEnum 
 ```
 
 - Convert the resource to JSON

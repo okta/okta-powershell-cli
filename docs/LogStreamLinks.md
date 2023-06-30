@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogStreamLinks = Initialize-PSOpenAPIToolsLogStreamLinks  -Self null `
+$LogStreamLinks = Initialize-Okta.PowerShellLogStreamLinks  -Self null `
  -Activate null `
  -Deactivate null
 ```

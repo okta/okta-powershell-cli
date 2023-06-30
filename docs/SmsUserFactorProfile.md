@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SmsUserFactorProfile = Initialize-PSOpenAPIToolsSmsUserFactorProfile  -PhoneNumber null
+$SmsUserFactorProfile = Initialize-Okta.PowerShellSmsUserFactorProfile  -PhoneNumber null
 ```
 
 - Convert the resource to JSON

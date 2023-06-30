@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UserSchemaAttributeScope = Initialize-PSOpenAPIToolsUserSchemaAttributeScope 
+$UserSchemaAttributeScope = Initialize-Okta.PowerShellUserSchemaAttributeScope 
 ```
 
 - Convert the resource to JSON

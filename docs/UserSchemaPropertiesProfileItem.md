@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UserSchemaPropertiesProfileItem = Initialize-PSOpenAPIToolsUserSchemaPropertiesProfileItem  -Ref null
+$UserSchemaPropertiesProfileItem = Initialize-Okta.PowerShellUserSchemaPropertiesProfileItem  -Ref null
 ```
 
 - Convert the resource to JSON

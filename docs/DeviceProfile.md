@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DeviceProfile = Initialize-PSOpenAPIToolsDeviceProfile  -DisplayName null `
+$DeviceProfile = Initialize-Okta.PowerShellDeviceProfile  -DisplayName null `
  -Imei null `
  -Manufacturer null `
  -Meid null `

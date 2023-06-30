@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$IdentityProviderPolicyAllOf = Initialize-PSOpenAPIToolsIdentityProviderPolicyAllOf  -AccountLink null `
+$IdentityProviderPolicyAllOf = Initialize-Okta.PowerShellIdentityProviderPolicyAllOf  -AccountLink null `
  -Conditions null `
  -MaxClockSkew null `
  -Provisioning null `

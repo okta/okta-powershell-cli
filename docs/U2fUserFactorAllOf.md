@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$U2fUserFactorAllOf = Initialize-PSOpenAPIToolsU2fUserFactorAllOf  -VarProfile null
+$U2fUserFactorAllOf = Initialize-Okta.PowerShellU2fUserFactorAllOf  -VarProfile null
 ```
 
 - Convert the resource to JSON

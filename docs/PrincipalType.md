@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PrincipalType = Initialize-PSOpenAPIToolsPrincipalType 
+$PrincipalType = Initialize-Okta.PowerShellPrincipalType 
 ```
 
 - Convert the resource to JSON

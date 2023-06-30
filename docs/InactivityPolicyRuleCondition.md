@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$InactivityPolicyRuleCondition = Initialize-PSOpenAPIToolsInactivityPolicyRuleCondition  -Number null `
+$InactivityPolicyRuleCondition = Initialize-Okta.PowerShellInactivityPolicyRuleCondition  -Number null `
  -Unit null
 ```
 

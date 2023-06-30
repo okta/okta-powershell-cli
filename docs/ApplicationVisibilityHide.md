@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ApplicationVisibilityHide = Initialize-PSOpenAPIToolsApplicationVisibilityHide  -IOS null `
+$ApplicationVisibilityHide = Initialize-Okta.PowerShellApplicationVisibilityHide  -IOS null `
  -Web null
 ```
 

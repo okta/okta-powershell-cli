@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProvisioningConnectionAuthScheme = Initialize-PSOpenAPIToolsProvisioningConnectionAuthScheme 
+$ProvisioningConnectionAuthScheme = Initialize-Okta.PowerShellProvisioningConnectionAuthScheme 
 ```
 
 - Convert the resource to JSON

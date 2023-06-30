@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SmsUserFactor = Initialize-PSOpenAPIToolsSmsUserFactor  -Created null `
+$SmsUserFactor = Initialize-Okta.PowerShellSmsUserFactor  -Created null `
  -FactorType null `
  -Id null `
  -LastUpdated null `

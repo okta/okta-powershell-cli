@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BookmarkApplication = Initialize-PSOpenAPIToolsBookmarkApplication  -Accessibility null `
+$BookmarkApplication = Initialize-Okta.PowerShellBookmarkApplication  -Accessibility null `
  -Created null `
  -Features null `
  -Id null `

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PasswordPolicyRecoveryQuestion = Initialize-PSOpenAPIToolsPasswordPolicyRecoveryQuestion  -Properties null `
+$PasswordPolicyRecoveryQuestion = Initialize-Okta.PowerShellPasswordPolicyRecoveryQuestion  -Properties null `
  -Status null
 ```
 

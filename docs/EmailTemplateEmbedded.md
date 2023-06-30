@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EmailTemplateEmbedded = Initialize-PSOpenAPIToolsEmailTemplateEmbedded  -Settings null `
+$EmailTemplateEmbedded = Initialize-Okta.PowerShellEmailTemplateEmbedded  -Settings null `
  -CustomizationCount null
 ```
 

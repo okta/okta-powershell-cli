@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainValidationStatus = Initialize-PSOpenAPIToolsDomainValidationStatus 
+$DomainValidationStatus = Initialize-Okta.PowerShellDomainValidationStatus 
 ```
 
 - Convert the resource to JSON

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogStreamSettingsSplunkAllOf = Initialize-PSOpenAPIToolsLogStreamSettingsSplunkAllOf  -VarHost null `
+$LogStreamSettingsSplunkAllOf = Initialize-Okta.PowerShellLogStreamSettingsSplunkAllOf  -VarHost null `
  -Token null
 ```
 

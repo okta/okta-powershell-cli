@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PolicyRuleAuthContextType = Initialize-PSOpenAPIToolsPolicyRuleAuthContextType 
+$PolicyRuleAuthContextType = Initialize-Okta.PowerShellPolicyRuleAuthContextType 
 ```
 
 - Convert the resource to JSON

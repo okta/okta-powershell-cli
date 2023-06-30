@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$RolePermissionType = Initialize-PSOpenAPIToolsRolePermissionType 
+$RolePermissionType = Initialize-Okta.PowerShellRolePermissionType 
 ```
 
 - Convert the resource to JSON

@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccessPolicyRuleConditions = Initialize-PSOpenAPIToolsAccessPolicyRuleConditions  -App null `
+$AccessPolicyRuleConditions = Initialize-Okta.PowerShellAccessPolicyRuleConditions  -App null `
  -Apps null `
  -AuthContext null `
  -AuthProvider null `

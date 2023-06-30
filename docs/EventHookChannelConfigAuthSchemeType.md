@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EventHookChannelConfigAuthSchemeType = Initialize-PSOpenAPIToolsEventHookChannelConfigAuthSchemeType 
+$EventHookChannelConfigAuthSchemeType = Initialize-Okta.PowerShellEventHookChannelConfigAuthSchemeType 
 ```
 
 - Convert the resource to JSON

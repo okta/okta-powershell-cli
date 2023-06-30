@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SecurityQuestion = Initialize-PSOpenAPIToolsSecurityQuestion  -Answer null `
+$SecurityQuestion = Initialize-Okta.PowerShellSecurityQuestion  -Answer null `
  -Question null `
  -QuestionText null
 ```

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BehaviorRuleSettingsVelocity = Initialize-PSOpenAPIToolsBehaviorRuleSettingsVelocity  -VelocityKph null
+$BehaviorRuleSettingsVelocity = Initialize-Okta.PowerShellBehaviorRuleSettingsVelocity  -VelocityKph null
 ```
 
 - Convert the resource to JSON

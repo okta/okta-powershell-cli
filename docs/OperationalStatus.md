@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OperationalStatus = Initialize-PSOpenAPIToolsOperationalStatus 
+$OperationalStatus = Initialize-Okta.PowerShellOperationalStatus 
 ```
 
 - Convert the resource to JSON

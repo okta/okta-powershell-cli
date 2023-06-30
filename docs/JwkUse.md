@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$JwkUse = Initialize-PSOpenAPIToolsJwkUse  -Use null
+$JwkUse = Initialize-Okta.PowerShellJwkUse  -Use null
 ```
 
 - Convert the resource to JSON

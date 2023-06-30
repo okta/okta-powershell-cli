@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AuthenticatorType = Initialize-PSOpenAPIToolsAuthenticatorType 
+$AuthenticatorType = Initialize-Okta.PowerShellAuthenticatorType 
 ```
 
 - Convert the resource to JSON

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$IdentityProviderPolicyProvider = Initialize-PSOpenAPIToolsIdentityProviderPolicyProvider 
+$IdentityProviderPolicyProvider = Initialize-Okta.PowerShellIdentityProviderPolicyProvider 
 ```
 
 - Convert the resource to JSON

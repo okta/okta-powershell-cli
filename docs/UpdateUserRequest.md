@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UpdateUserRequest = Initialize-PSOpenAPIToolsUpdateUserRequest  -Credentials null `
+$UpdateUserRequest = Initialize-Okta.PowerShellUpdateUserRequest  -Credentials null `
  -VarProfile null
 ```
 

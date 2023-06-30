@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PasswordDictionaryCommon = Initialize-PSOpenAPIToolsPasswordDictionaryCommon  -Exclude null
+$PasswordDictionaryCommon = Initialize-Okta.PowerShellPasswordDictionaryCommon  -Exclude null
 ```
 
 - Convert the resource to JSON

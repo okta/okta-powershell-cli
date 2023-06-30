@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OpenIdConnectApplicationSettingsAllOf = Initialize-PSOpenAPIToolsOpenIdConnectApplicationSettingsAllOf  -OauthClient null
+$OpenIdConnectApplicationSettingsAllOf = Initialize-Okta.PowerShellOpenIdConnectApplicationSettingsAllOf  -OauthClient null
 ```
 
 - Convert the resource to JSON

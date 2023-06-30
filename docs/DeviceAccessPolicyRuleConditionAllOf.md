@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DeviceAccessPolicyRuleConditionAllOf = Initialize-PSOpenAPIToolsDeviceAccessPolicyRuleConditionAllOf  -Managed null `
+$DeviceAccessPolicyRuleConditionAllOf = Initialize-Okta.PowerShellDeviceAccessPolicyRuleConditionAllOf  -Managed null `
  -Registered null
 ```
 

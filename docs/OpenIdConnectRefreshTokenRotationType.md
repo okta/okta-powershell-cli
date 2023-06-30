@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OpenIdConnectRefreshTokenRotationType = Initialize-PSOpenAPIToolsOpenIdConnectRefreshTokenRotationType 
+$OpenIdConnectRefreshTokenRotationType = Initialize-Okta.PowerShellOpenIdConnectRefreshTokenRotationType 
 ```
 
 - Convert the resource to JSON

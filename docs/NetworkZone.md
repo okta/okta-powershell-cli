@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$NetworkZone = Initialize-PSOpenAPIToolsNetworkZone  -Asns null `
+$NetworkZone = Initialize-Okta.PowerShellNetworkZone  -Asns null `
  -Created null `
  -Gateways null `
  -Id null `

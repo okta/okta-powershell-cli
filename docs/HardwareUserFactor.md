@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HardwareUserFactor = Initialize-PSOpenAPIToolsHardwareUserFactor  -Created null `
+$HardwareUserFactor = Initialize-Okta.PowerShellHardwareUserFactor  -Created null `
  -FactorType null `
  -Id null `
  -LastUpdated null `

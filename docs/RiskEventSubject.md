@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$RiskEventSubject = Initialize-PSOpenAPIToolsRiskEventSubject  -Ip null `
+$RiskEventSubject = Initialize-Okta.PowerShellRiskEventSubject  -Ip null `
  -Message null `
  -RiskLevel null
 ```

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ResourceSetResourcesLinks = Initialize-PSOpenAPIToolsResourceSetResourcesLinks  -Next null `
+$ResourceSetResourcesLinks = Initialize-Okta.PowerShellResourceSetResourcesLinks  -Next null `
  -ResourceSet null
 ```
 

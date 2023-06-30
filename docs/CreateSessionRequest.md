@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CreateSessionRequest = Initialize-PSOpenAPIToolsCreateSessionRequest  -SessionToken null
+$CreateSessionRequest = Initialize-Okta.PowerShellCreateSessionRequest  -SessionToken null
 ```
 
 - Convert the resource to JSON

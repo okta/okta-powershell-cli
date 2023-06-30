@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BrandRequest = Initialize-PSOpenAPIToolsBrandRequest  -AgreeToCustomPrivacyPolicy null `
+$BrandRequest = Initialize-Okta.PowerShellBrandRequest  -AgreeToCustomPrivacyPolicy null `
  -CustomPrivacyPolicyUrl null `
  -Name null `
  -RemovePoweredByOkta null

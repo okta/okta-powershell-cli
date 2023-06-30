@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UserIdentifierConditionEvaluatorPattern = Initialize-PSOpenAPIToolsUserIdentifierConditionEvaluatorPattern  -MatchType null `
+$UserIdentifierConditionEvaluatorPattern = Initialize-Okta.PowerShellUserIdentifierConditionEvaluatorPattern  -MatchType null `
  -Value null
 ```
 

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PolicyPlatformType = Initialize-PSOpenAPIToolsPolicyPlatformType 
+$PolicyPlatformType = Initialize-Okta.PowerShellPolicyPlatformType 
 ```
 
 - Convert the resource to JSON

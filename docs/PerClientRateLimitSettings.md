@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PerClientRateLimitSettings = Initialize-PSOpenAPIToolsPerClientRateLimitSettings  -DefaultMode null `
+$PerClientRateLimitSettings = Initialize-Okta.PowerShellPerClientRateLimitSettings  -DefaultMode null `
  -UseCaseModeOverrides null
 ```
 

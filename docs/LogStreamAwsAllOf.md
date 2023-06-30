@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogStreamAwsAllOf = Initialize-PSOpenAPIToolsLogStreamAwsAllOf  -Settings null
+$LogStreamAwsAllOf = Initialize-Okta.PowerShellLogStreamAwsAllOf  -Settings null
 ```
 
 - Convert the resource to JSON

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DiskEncryptionType = Initialize-PSOpenAPIToolsDiskEncryptionType 
+$DiskEncryptionType = Initialize-Okta.PowerShellDiskEncryptionType 
 ```
 
 - Convert the resource to JSON

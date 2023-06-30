@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$TokenAuthorizationServerPolicyRuleActionInlineHook = Initialize-PSOpenAPIToolsTokenAuthorizationServerPolicyRuleActionInlineHook  -Id null
+$TokenAuthorizationServerPolicyRuleActionInlineHook = Initialize-Okta.PowerShellTokenAuthorizationServerPolicyRuleActionInlineHook  -Id null
 ```
 
 - Convert the resource to JSON

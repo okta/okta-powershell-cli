@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LifecycleDeactivateSettingObject = Initialize-PSOpenAPIToolsLifecycleDeactivateSettingObject  -Status null
+$LifecycleDeactivateSettingObject = Initialize-Okta.PowerShellLifecycleDeactivateSettingObject  -Status null
 ```
 
 - Convert the resource to JSON

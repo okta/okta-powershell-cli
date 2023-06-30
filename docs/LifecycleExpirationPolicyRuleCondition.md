@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LifecycleExpirationPolicyRuleCondition = Initialize-PSOpenAPIToolsLifecycleExpirationPolicyRuleCondition  -LifecycleStatus null `
+$LifecycleExpirationPolicyRuleCondition = Initialize-Okta.PowerShellLifecycleExpirationPolicyRuleCondition  -LifecycleStatus null `
  -Number null `
  -Unit null
 ```

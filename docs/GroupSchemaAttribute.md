@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GroupSchemaAttribute = Initialize-PSOpenAPIToolsGroupSchemaAttribute  -Description null `
+$GroupSchemaAttribute = Initialize-Okta.PowerShellGroupSchemaAttribute  -Description null `
  -Enum null `
  -ExternalName null `
  -ExternalNamespace null `

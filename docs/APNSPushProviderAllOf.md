@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$APNSPushProviderAllOf = Initialize-PSOpenAPIToolsAPNSPushProviderAllOf  -Configuration null
+$APNSPushProviderAllOf = Initialize-Okta.PowerShellAPNSPushProviderAllOf  -Configuration null
 ```
 
 - Convert the resource to JSON

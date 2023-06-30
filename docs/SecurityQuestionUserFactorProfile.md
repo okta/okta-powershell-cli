@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SecurityQuestionUserFactorProfile = Initialize-PSOpenAPIToolsSecurityQuestionUserFactorProfile  -Answer null `
+$SecurityQuestionUserFactorProfile = Initialize-Okta.PowerShellSecurityQuestionUserFactorProfile  -Answer null `
  -Question null `
  -QuestionText null
 ```

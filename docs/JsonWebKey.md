@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$JsonWebKey = Initialize-PSOpenAPIToolsJsonWebKey  -Alg null `
+$JsonWebKey = Initialize-Okta.PowerShellJsonWebKey  -Alg null `
  -Created null `
  -E null `
  -ExpiresAt null `

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$IdentityProviderCredentialsTrustRevocation = Initialize-PSOpenAPIToolsIdentityProviderCredentialsTrustRevocation 
+$IdentityProviderCredentialsTrustRevocation = Initialize-Okta.PowerShellIdentityProviderCredentialsTrustRevocation 
 ```
 
 - Convert the resource to JSON

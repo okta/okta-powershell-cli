@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProfileEnrollmentPolicyRuleProfileAttribute = Initialize-PSOpenAPIToolsProfileEnrollmentPolicyRuleProfileAttribute  -Label null `
+$ProfileEnrollmentPolicyRuleProfileAttribute = Initialize-Okta.PowerShellProfileEnrollmentPolicyRuleProfileAttribute  -Label null `
  -Name null `
  -Required null
 ```

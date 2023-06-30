@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Authenticator = Initialize-PSOpenAPIToolsAuthenticator  -Created null `
+$Authenticator = Initialize-Okta.PowerShellAuthenticator  -Created null `
  -Id null `
  -Key null `
  -LastUpdated null `

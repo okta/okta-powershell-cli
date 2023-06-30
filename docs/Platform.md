@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Platform = Initialize-PSOpenAPIToolsPlatform 
+$Platform = Initialize-Okta.PowerShellPlatform 
 ```
 
 - Convert the resource to JSON

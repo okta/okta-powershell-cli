@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProvisioningGroupsAction = Initialize-PSOpenAPIToolsProvisioningGroupsAction 
+$ProvisioningGroupsAction = Initialize-Okta.PowerShellProvisioningGroupsAction 
 ```
 
 - Convert the resource to JSON

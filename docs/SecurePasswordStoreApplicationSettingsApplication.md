@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SecurePasswordStoreApplicationSettingsApplication = Initialize-PSOpenAPIToolsSecurePasswordStoreApplicationSettingsApplication  -OptionalField1 null `
+$SecurePasswordStoreApplicationSettingsApplication = Initialize-Okta.PowerShellSecurePasswordStoreApplicationSettingsApplication  -OptionalField1 null `
  -OptionalField1Value null `
  -OptionalField2 null `
  -OptionalField2Value null `

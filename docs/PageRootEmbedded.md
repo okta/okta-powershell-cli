@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PageRootEmbedded = Initialize-PSOpenAPIToolsPageRootEmbedded  -Default null `
+$PageRootEmbedded = Initialize-Okta.PowerShellPageRootEmbedded  -Default null `
  -Customized null `
  -CustomizedUrl null `
  -Preview null `

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DeviceAssuranceScreenLockType = Initialize-PSOpenAPIToolsDeviceAssuranceScreenLockType  -Include null
+$DeviceAssuranceScreenLockType = Initialize-Okta.PowerShellDeviceAssuranceScreenLockType  -Include null
 ```
 
 - Convert the resource to JSON

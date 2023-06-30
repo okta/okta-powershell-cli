@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogSecurityContext = Initialize-PSOpenAPIToolsLogSecurityContext  -AsNumber null `
+$LogSecurityContext = Initialize-Okta.PowerShellLogSecurityContext  -AsNumber null `
  -AsOrg null `
  -Domain null `
  -Isp null `

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AuthorizationServerCredentialsRotationMode = Initialize-PSOpenAPIToolsAuthorizationServerCredentialsRotationMode 
+$AuthorizationServerCredentialsRotationMode = Initialize-Okta.PowerShellAuthorizationServerCredentialsRotationMode 
 ```
 
 - Convert the resource to JSON

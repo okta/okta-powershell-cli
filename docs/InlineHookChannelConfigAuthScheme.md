@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$InlineHookChannelConfigAuthScheme = Initialize-PSOpenAPIToolsInlineHookChannelConfigAuthScheme  -Key null `
+$InlineHookChannelConfigAuthScheme = Initialize-Okta.PowerShellInlineHookChannelConfigAuthScheme  -Key null `
  -Type null `
  -Value null
 ```

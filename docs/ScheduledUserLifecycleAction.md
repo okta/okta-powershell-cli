@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ScheduledUserLifecycleAction = Initialize-PSOpenAPIToolsScheduledUserLifecycleAction  -Status null
+$ScheduledUserLifecycleAction = Initialize-Okta.PowerShellScheduledUserLifecycleAction  -Status null
 ```
 
 - Convert the resource to JSON

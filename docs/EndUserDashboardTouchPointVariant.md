@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EndUserDashboardTouchPointVariant = Initialize-PSOpenAPIToolsEndUserDashboardTouchPointVariant 
+$EndUserDashboardTouchPointVariant = Initialize-Okta.PowerShellEndUserDashboardTouchPointVariant 
 ```
 
 - Convert the resource to JSON

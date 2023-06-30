@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Domain = Initialize-PSOpenAPIToolsDomain  -BrandId null `
+$Domain = Initialize-Okta.PowerShellDomain  -BrandId null `
  -CertificateSourceType null `
  -DnsRecords null `
  -Domain null `

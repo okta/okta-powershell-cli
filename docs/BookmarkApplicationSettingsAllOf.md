@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BookmarkApplicationSettingsAllOf = Initialize-PSOpenAPIToolsBookmarkApplicationSettingsAllOf  -App null
+$BookmarkApplicationSettingsAllOf = Initialize-Okta.PowerShellBookmarkApplicationSettingsAllOf  -App null
 ```
 
 - Convert the resource to JSON

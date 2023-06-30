@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OrgOktaCommunicationSetting = Initialize-PSOpenAPIToolsOrgOktaCommunicationSetting  -OptOutEmailUsers null `
+$OrgOktaCommunicationSetting = Initialize-Okta.PowerShellOrgOktaCommunicationSetting  -OptOutEmailUsers null `
  -Links null
 ```
 

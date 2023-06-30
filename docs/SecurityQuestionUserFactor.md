@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SecurityQuestionUserFactor = Initialize-PSOpenAPIToolsSecurityQuestionUserFactor  -Created null `
+$SecurityQuestionUserFactor = Initialize-Okta.PowerShellSecurityQuestionUserFactor  -Created null `
  -FactorType null `
  -Id null `
  -LastUpdated null `

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EventSubscriptionType = Initialize-PSOpenAPIToolsEventSubscriptionType 
+$EventSubscriptionType = Initialize-Okta.PowerShellEventSubscriptionType 
 ```
 
 - Convert the resource to JSON

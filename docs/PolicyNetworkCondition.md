@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PolicyNetworkCondition = Initialize-PSOpenAPIToolsPolicyNetworkCondition  -Connection null `
+$PolicyNetworkCondition = Initialize-Okta.PowerShellPolicyNetworkCondition  -Connection null `
  -Exclude null `
  -Include null
 ```

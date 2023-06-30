@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$RiskProvider = Initialize-PSOpenAPIToolsRiskProvider  -Action null `
+$RiskProvider = Initialize-Okta.PowerShellRiskProvider  -Action null `
  -ClientId null `
  -Created null `
  -Id null `

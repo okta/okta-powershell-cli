@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MDMEnrollmentPolicyEnrollment = Initialize-PSOpenAPIToolsMDMEnrollmentPolicyEnrollment 
+$MDMEnrollmentPolicyEnrollment = Initialize-Okta.PowerShellMDMEnrollmentPolicyEnrollment 
 ```
 
 - Convert the resource to JSON

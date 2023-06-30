@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientPolicyCondition = Initialize-PSOpenAPIToolsClientPolicyCondition  -Include null
+$ClientPolicyCondition = Initialize-Okta.PowerShellClientPolicyCondition  -Include null
 ```
 
 - Convert the resource to JSON

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SecurePasswordStoreApplicationAllOf = Initialize-PSOpenAPIToolsSecurePasswordStoreApplicationAllOf  -Credentials null `
+$SecurePasswordStoreApplicationAllOf = Initialize-Okta.PowerShellSecurePasswordStoreApplicationAllOf  -Credentials null `
  -Name null `
  -Settings null
 ```

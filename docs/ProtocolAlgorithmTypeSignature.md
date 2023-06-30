@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProtocolAlgorithmTypeSignature = Initialize-PSOpenAPIToolsProtocolAlgorithmTypeSignature  -Algorithm null `
+$ProtocolAlgorithmTypeSignature = Initialize-Okta.PowerShellProtocolAlgorithmTypeSignature  -Algorithm null `
  -Scope null
 ```
 

@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PossessionConstraint = Initialize-PSOpenAPIToolsPossessionConstraint  -Methods null `
+$PossessionConstraint = Initialize-Okta.PowerShellPossessionConstraint  -Methods null `
  -ReauthenticateIn null `
  -Types null `
  -DeviceBound null `

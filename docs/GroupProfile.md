@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GroupProfile = Initialize-PSOpenAPIToolsGroupProfile  -Description null `
+$GroupProfile = Initialize-Okta.PowerShellGroupProfile  -Description null `
  -Name null
 ```
 

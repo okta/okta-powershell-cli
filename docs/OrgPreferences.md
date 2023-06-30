@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OrgPreferences = Initialize-PSOpenAPIToolsOrgPreferences  -ShowEndUserFooter null `
+$OrgPreferences = Initialize-Okta.PowerShellOrgPreferences  -ShowEndUserFooter null `
  -Links null
 ```
 

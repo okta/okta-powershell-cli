@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProvisioningDeprovisionedAction = Initialize-PSOpenAPIToolsProvisioningDeprovisionedAction 
+$ProvisioningDeprovisionedAction = Initialize-Okta.PowerShellProvisioningDeprovisionedAction 
 ```
 
 - Convert the resource to JSON

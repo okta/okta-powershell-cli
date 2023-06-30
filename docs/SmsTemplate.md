@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SmsTemplate = Initialize-PSOpenAPIToolsSmsTemplate  -Created null `
+$SmsTemplate = Initialize-Okta.PowerShellSmsTemplate  -Created null `
  -Id null `
  -LastUpdated null `
  -Name null `

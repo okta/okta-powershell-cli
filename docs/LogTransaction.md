@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogTransaction = Initialize-PSOpenAPIToolsLogTransaction  -Detail null `
+$LogTransaction = Initialize-Okta.PowerShellLogTransaction  -Detail null `
  -Id null `
  -Type null
 ```

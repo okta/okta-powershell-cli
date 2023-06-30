@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DNSRecordType = Initialize-PSOpenAPIToolsDNSRecordType 
+$DNSRecordType = Initialize-Okta.PowerShellDNSRecordType 
 ```
 
 - Convert the resource to JSON

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UserSchemaDefinitions = Initialize-PSOpenAPIToolsUserSchemaDefinitions  -Base null `
+$UserSchemaDefinitions = Initialize-Okta.PowerShellUserSchemaDefinitions  -Base null `
  -Custom null
 ```
 

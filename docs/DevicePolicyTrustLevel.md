@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DevicePolicyTrustLevel = Initialize-PSOpenAPIToolsDevicePolicyTrustLevel 
+$DevicePolicyTrustLevel = Initialize-Okta.PowerShellDevicePolicyTrustLevel 
 ```
 
 - Convert the resource to JSON

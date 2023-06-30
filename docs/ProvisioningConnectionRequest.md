@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProvisioningConnectionRequest = Initialize-PSOpenAPIToolsProvisioningConnectionRequest  -VarProfile null
+$ProvisioningConnectionRequest = Initialize-Okta.PowerShellProvisioningConnectionRequest  -VarProfile null
 ```
 
 - Convert the resource to JSON

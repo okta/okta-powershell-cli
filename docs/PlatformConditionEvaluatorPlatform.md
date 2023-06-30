@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PlatformConditionEvaluatorPlatform = Initialize-PSOpenAPIToolsPlatformConditionEvaluatorPlatform  -Os null `
+$PlatformConditionEvaluatorPlatform = Initialize-Okta.PowerShellPlatformConditionEvaluatorPlatform  -Os null `
  -Type null
 ```
 

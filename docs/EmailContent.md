@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EmailContent = Initialize-PSOpenAPIToolsEmailContent  -Body null `
+$EmailContent = Initialize-Okta.PowerShellEmailContent  -Body null `
  -Subject null
 ```
 

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EmailUserFactorProfile = Initialize-PSOpenAPIToolsEmailUserFactorProfile  -Email null
+$EmailUserFactorProfile = Initialize-Okta.PowerShellEmailUserFactorProfile  -Email null
 ```
 
 - Convert the resource to JSON

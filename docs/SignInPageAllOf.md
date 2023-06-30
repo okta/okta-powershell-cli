@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SignInPageAllOf = Initialize-PSOpenAPIToolsSignInPageAllOf  -WidgetCustomizations null `
+$SignInPageAllOf = Initialize-Okta.PowerShellSignInPageAllOf  -WidgetCustomizations null `
  -WidgetVersion null
 ```
 

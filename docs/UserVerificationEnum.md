@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UserVerificationEnum = Initialize-PSOpenAPIToolsUserVerificationEnum 
+$UserVerificationEnum = Initialize-Okta.PowerShellUserVerificationEnum 
 ```
 
 - Convert the resource to JSON

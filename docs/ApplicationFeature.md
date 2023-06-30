@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ApplicationFeature = Initialize-PSOpenAPIToolsApplicationFeature  -Capabilities null `
+$ApplicationFeature = Initialize-Okta.PowerShellApplicationFeature  -Capabilities null `
  -Description null `
  -Name null `
  -Status null `

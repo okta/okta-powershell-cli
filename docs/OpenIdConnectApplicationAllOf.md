@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OpenIdConnectApplicationAllOf = Initialize-PSOpenAPIToolsOpenIdConnectApplicationAllOf  -Credentials null `
+$OpenIdConnectApplicationAllOf = Initialize-Okta.PowerShellOpenIdConnectApplicationAllOf  -Credentials null `
  -Name null `
  -Settings null
 ```

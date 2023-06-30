@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UpdateDomain = Initialize-PSOpenAPIToolsUpdateDomain  -BrandId null
+$UpdateDomain = Initialize-Okta.PowerShellUpdateDomain  -BrandId null
 ```
 
 - Convert the resource to JSON

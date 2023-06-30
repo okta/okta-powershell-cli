@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$IdentityProviderCredentialsSigning = Initialize-PSOpenAPIToolsIdentityProviderCredentialsSigning  -Kid null
+$IdentityProviderCredentialsSigning = Initialize-Okta.PowerShellIdentityProviderCredentialsSigning  -Kid null
 ```
 
 - Convert the resource to JSON

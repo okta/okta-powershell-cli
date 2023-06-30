@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BrowserPluginApplication = Initialize-PSOpenAPIToolsBrowserPluginApplication  -Accessibility null `
+$BrowserPluginApplication = Initialize-Okta.PowerShellBrowserPluginApplication  -Accessibility null `
  -Created null `
  -Features null `
  -Id null `

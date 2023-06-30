@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OAuth2Claim = Initialize-PSOpenAPIToolsOAuth2Claim  -AlwaysIncludeInToken null `
+$OAuth2Claim = Initialize-Okta.PowerShellOAuth2Claim  -AlwaysIncludeInToken null `
  -ClaimType null `
  -Conditions null `
  -GroupFilterType null `

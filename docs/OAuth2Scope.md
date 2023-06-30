@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OAuth2Scope = Initialize-PSOpenAPIToolsOAuth2Scope  -Consent null `
+$OAuth2Scope = Initialize-Okta.PowerShellOAuth2Scope  -Consent null `
  -Default null `
  -Description null `
  -DisplayName null `

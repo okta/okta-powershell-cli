@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Subscription = Initialize-PSOpenAPIToolsSubscription  -Channels null `
+$Subscription = Initialize-Okta.PowerShellSubscription  -Channels null `
  -NotificationType null `
  -Status null `
  -Links null

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EmailPreviewLinks = Initialize-PSOpenAPIToolsEmailPreviewLinks  -Self null `
+$EmailPreviewLinks = Initialize-Okta.PowerShellEmailPreviewLinks  -Self null `
  -ContentSource null `
  -Template null `
  -Test null `

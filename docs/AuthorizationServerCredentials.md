@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AuthorizationServerCredentials = Initialize-PSOpenAPIToolsAuthorizationServerCredentials  -Signing null
+$AuthorizationServerCredentials = Initialize-Okta.PowerShellAuthorizationServerCredentials  -Signing null
 ```
 
 - Convert the resource to JSON

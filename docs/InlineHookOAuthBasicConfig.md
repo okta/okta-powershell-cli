@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$InlineHookOAuthBasicConfig = Initialize-PSOpenAPIToolsInlineHookOAuthBasicConfig  -AuthType null `
+$InlineHookOAuthBasicConfig = Initialize-Okta.PowerShellInlineHookOAuthBasicConfig  -AuthType null `
  -ClientId null `
  -Scope null `
  -TokenUrl null `

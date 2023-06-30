@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ApplicationAccessibility = Initialize-PSOpenAPIToolsApplicationAccessibility  -ErrorRedirectUrl null `
+$ApplicationAccessibility = Initialize-Okta.PowerShellApplicationAccessibility  -ErrorRedirectUrl null `
  -LoginRedirectUrl null `
  -SelfService null
 ```

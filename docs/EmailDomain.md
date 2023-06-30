@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EmailDomain = Initialize-PSOpenAPIToolsEmailDomain  -Domain null `
+$EmailDomain = Initialize-Okta.PowerShellEmailDomain  -Domain null `
  -DisplayName null `
  -UserName null
 ```

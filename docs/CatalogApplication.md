@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CatalogApplication = Initialize-PSOpenAPIToolsCatalogApplication  -Category null `
+$CatalogApplication = Initialize-Okta.PowerShellCatalogApplication  -Category null `
  -Description null `
  -DisplayName null `
  -Features null `

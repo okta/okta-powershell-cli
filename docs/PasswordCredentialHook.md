@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PasswordCredentialHook = Initialize-PSOpenAPIToolsPasswordCredentialHook  -Type null
+$PasswordCredentialHook = Initialize-Okta.PowerShellPasswordCredentialHook  -Type null
 ```
 
 - Convert the resource to JSON

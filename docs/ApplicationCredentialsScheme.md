@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ApplicationCredentialsScheme = Initialize-PSOpenAPIToolsApplicationCredentialsScheme 
+$ApplicationCredentialsScheme = Initialize-Okta.PowerShellApplicationCredentialsScheme 
 ```
 
 - Convert the resource to JSON

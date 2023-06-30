@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AllowedForEnum = Initialize-PSOpenAPIToolsAllowedForEnum 
+$AllowedForEnum = Initialize-Okta.PowerShellAllowedForEnum 
 ```
 
 - Convert the resource to JSON

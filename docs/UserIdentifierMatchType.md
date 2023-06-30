@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UserIdentifierMatchType = Initialize-PSOpenAPIToolsUserIdentifierMatchType 
+$UserIdentifierMatchType = Initialize-Okta.PowerShellUserIdentifierMatchType 
 ```
 
 - Convert the resource to JSON

@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogAuthenticationContext = Initialize-PSOpenAPIToolsLogAuthenticationContext  -AuthenticationProvider null `
+$LogAuthenticationContext = Initialize-Okta.PowerShellLogAuthenticationContext  -AuthenticationProvider null `
  -AuthenticationStep null `
  -CredentialProvider null `
  -CredentialType null `

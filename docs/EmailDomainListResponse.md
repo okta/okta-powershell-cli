@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EmailDomainListResponse = Initialize-PSOpenAPIToolsEmailDomainListResponse  -EmailDomains null
+$EmailDomainListResponse = Initialize-Okta.PowerShellEmailDomainListResponse  -EmailDomains null
 ```
 
 - Convert the resource to JSON

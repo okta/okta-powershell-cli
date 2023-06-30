@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CAPTCHAType = Initialize-PSOpenAPIToolsCAPTCHAType 
+$CAPTCHAType = Initialize-Okta.PowerShellCAPTCHAType 
 ```
 
 - Convert the resource to JSON

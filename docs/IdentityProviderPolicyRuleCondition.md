@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$IdentityProviderPolicyRuleCondition = Initialize-PSOpenAPIToolsIdentityProviderPolicyRuleCondition  -IdpIds null `
+$IdentityProviderPolicyRuleCondition = Initialize-Okta.PowerShellIdentityProviderPolicyRuleCondition  -IdpIds null `
  -Provider null
 ```
 

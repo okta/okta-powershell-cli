@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AgentUpdateInstanceStatus = Initialize-PSOpenAPIToolsAgentUpdateInstanceStatus 
+$AgentUpdateInstanceStatus = Initialize-Okta.PowerShellAgentUpdateInstanceStatus 
 ```
 
 - Convert the resource to JSON

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$IamRolesLinks = Initialize-PSOpenAPIToolsIamRolesLinks  -Next null
+$IamRolesLinks = Initialize-Okta.PowerShellIamRolesLinks  -Next null
 ```
 
 - Convert the resource to JSON

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WsFederationApplicationSettings = Initialize-PSOpenAPIToolsWsFederationApplicationSettings  -IdentityStoreId null `
+$WsFederationApplicationSettings = Initialize-Okta.PowerShellWsFederationApplicationSettings  -IdentityStoreId null `
  -ImplicitAssignment null `
  -InlineHookId null `
  -Notes null `

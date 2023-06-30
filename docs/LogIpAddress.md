@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogIpAddress = Initialize-PSOpenAPIToolsLogIpAddress  -GeographicalContext null `
+$LogIpAddress = Initialize-Okta.PowerShellLogIpAddress  -GeographicalContext null `
  -Ip null `
  -Source null `
  -Version null

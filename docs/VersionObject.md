@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VersionObject = Initialize-PSOpenAPIToolsVersionObject  -Minimum null
+$VersionObject = Initialize-Okta.PowerShellVersionObject  -Minimum null
 ```
 
 - Convert the resource to JSON

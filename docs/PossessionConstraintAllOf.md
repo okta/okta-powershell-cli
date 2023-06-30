@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PossessionConstraintAllOf = Initialize-PSOpenAPIToolsPossessionConstraintAllOf  -DeviceBound null `
+$PossessionConstraintAllOf = Initialize-Okta.PowerShellPossessionConstraintAllOf  -DeviceBound null `
  -HardwareProtection null `
  -PhishingResistant null `
  -UserPresence null

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PasswordPolicyAuthenticationProviderType = Initialize-PSOpenAPIToolsPasswordPolicyAuthenticationProviderType 
+$PasswordPolicyAuthenticationProviderType = Initialize-Okta.PowerShellPasswordPolicyAuthenticationProviderType 
 ```
 
 - Convert the resource to JSON

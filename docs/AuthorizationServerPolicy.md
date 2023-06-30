@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AuthorizationServerPolicy = Initialize-PSOpenAPIToolsAuthorizationServerPolicy  -Created null `
+$AuthorizationServerPolicy = Initialize-Okta.PowerShellAuthorizationServerPolicy  -Created null `
  -Description null `
  -Id null `
  -LastUpdated null `

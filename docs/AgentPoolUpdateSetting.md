@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AgentPoolUpdateSetting = Initialize-PSOpenAPIToolsAgentPoolUpdateSetting  -AgentType null `
+$AgentPoolUpdateSetting = Initialize-Okta.PowerShellAgentPoolUpdateSetting  -AgentType null `
  -ContinueOnError null `
  -LatestVersion null `
  -MinimalSupportedVersion null `

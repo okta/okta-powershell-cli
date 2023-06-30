@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PipelineType = Initialize-PSOpenAPIToolsPipelineType 
+$PipelineType = Initialize-Okta.PowerShellPipelineType 
 ```
 
 - Convert the resource to JSON

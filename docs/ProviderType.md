@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProviderType = Initialize-PSOpenAPIToolsProviderType 
+$ProviderType = Initialize-Okta.PowerShellProviderType 
 ```
 
 - Convert the resource to JSON

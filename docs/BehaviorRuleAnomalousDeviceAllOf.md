@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BehaviorRuleAnomalousDeviceAllOf = Initialize-PSOpenAPIToolsBehaviorRuleAnomalousDeviceAllOf  -Settings null
+$BehaviorRuleAnomalousDeviceAllOf = Initialize-Okta.PowerShellBehaviorRuleAnomalousDeviceAllOf  -Settings null
 ```
 
 - Convert the resource to JSON

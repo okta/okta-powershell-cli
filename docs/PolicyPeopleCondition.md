@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PolicyPeopleCondition = Initialize-PSOpenAPIToolsPolicyPeopleCondition  -Groups null `
+$PolicyPeopleCondition = Initialize-Okta.PowerShellPolicyPeopleCondition  -Groups null `
  -Users null
 ```
 

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CreateBrandRequest = Initialize-PSOpenAPIToolsCreateBrandRequest  -Name null
+$CreateBrandRequest = Initialize-Okta.PowerShellCreateBrandRequest  -Name null
 ```
 
 - Convert the resource to JSON

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LifecycleStatus = Initialize-PSOpenAPIToolsLifecycleStatus 
+$LifecycleStatus = Initialize-Okta.PowerShellLifecycleStatus 
 ```
 
 - Convert the resource to JSON

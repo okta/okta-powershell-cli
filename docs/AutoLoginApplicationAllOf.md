@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AutoLoginApplicationAllOf = Initialize-PSOpenAPIToolsAutoLoginApplicationAllOf  -Credentials null `
+$AutoLoginApplicationAllOf = Initialize-Okta.PowerShellAutoLoginApplicationAllOf  -Credentials null `
  -Name null `
  -Settings null
 ```

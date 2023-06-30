@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogStreamSchema = Initialize-PSOpenAPIToolsLogStreamSchema  -Schema null `
+$LogStreamSchema = Initialize-Okta.PowerShellLogStreamSchema  -Schema null `
  -Created null `
  -ErrorMessage null `
  -Id null `

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DeviceStatus = Initialize-PSOpenAPIToolsDeviceStatus 
+$DeviceStatus = Initialize-Okta.PowerShellDeviceStatus 
 ```
 
 - Convert the resource to JSON

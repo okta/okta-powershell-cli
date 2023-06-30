@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OrgContactType = Initialize-PSOpenAPIToolsOrgContactType 
+$OrgContactType = Initialize-Okta.PowerShellOrgContactType 
 ```
 
 - Convert the resource to JSON

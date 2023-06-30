@@ -39,7 +39,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UserProfile = Initialize-PSOpenAPIToolsUserProfile  -City null `
+$UserProfile = Initialize-Okta.PowerShellUserProfile  -City null `
  -CostCenter null `
  -CountryCode null `
  -Department null `

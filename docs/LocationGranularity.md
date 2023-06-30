@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LocationGranularity = Initialize-PSOpenAPIToolsLocationGranularity 
+$LocationGranularity = Initialize-Okta.PowerShellLocationGranularity 
 ```
 
 - Convert the resource to JSON

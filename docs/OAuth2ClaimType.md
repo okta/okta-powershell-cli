@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OAuth2ClaimType = Initialize-PSOpenAPIToolsOAuth2ClaimType 
+$OAuth2ClaimType = Initialize-Okta.PowerShellOAuth2ClaimType 
 ```
 
 - Convert the resource to JSON

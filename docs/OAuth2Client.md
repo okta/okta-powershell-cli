@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OAuth2Client = Initialize-PSOpenAPIToolsOAuth2Client  -ClientId null `
+$OAuth2Client = Initialize-Okta.PowerShellOAuth2Client  -ClientId null `
  -ClientName null `
  -ClientUri null `
  -LogoUri null `

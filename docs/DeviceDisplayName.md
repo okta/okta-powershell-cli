@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DeviceDisplayName = Initialize-PSOpenAPIToolsDeviceDisplayName  -Sensitive null `
+$DeviceDisplayName = Initialize-Okta.PowerShellDeviceDisplayName  -Sensitive null `
  -Value null
 ```
 

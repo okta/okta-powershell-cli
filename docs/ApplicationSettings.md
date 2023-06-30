@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ApplicationSettings = Initialize-PSOpenAPIToolsApplicationSettings  -IdentityStoreId null `
+$ApplicationSettings = Initialize-Okta.PowerShellApplicationSettings  -IdentityStoreId null `
  -ImplicitAssignment null `
  -InlineHookId null `
  -Notes null `

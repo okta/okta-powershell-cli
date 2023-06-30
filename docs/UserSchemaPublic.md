@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UserSchemaPublic = Initialize-PSOpenAPIToolsUserSchemaPublic  -Id null `
+$UserSchemaPublic = Initialize-Okta.PowerShellUserSchemaPublic  -Id null `
  -Properties null `
  -Required null `
  -Type null

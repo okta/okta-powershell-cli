@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogCredentialProvider = Initialize-PSOpenAPIToolsLogCredentialProvider 
+$LogCredentialProvider = Initialize-Okta.PowerShellLogCredentialProvider 
 ```
 
 - Convert the resource to JSON

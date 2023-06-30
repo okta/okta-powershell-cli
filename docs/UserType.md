@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UserType = Initialize-PSOpenAPIToolsUserType  -Created null `
+$UserType = Initialize-Okta.PowerShellUserType  -Created null `
  -CreatedBy null `
  -Default null `
  -Description null `

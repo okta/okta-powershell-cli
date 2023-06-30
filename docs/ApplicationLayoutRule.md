@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ApplicationLayoutRule = Initialize-PSOpenAPIToolsApplicationLayoutRule  -Effect null `
+$ApplicationLayoutRule = Initialize-Okta.PowerShellApplicationLayoutRule  -Effect null `
  -Condition null
 ```
 

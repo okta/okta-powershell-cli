@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PasswordPolicyRecoveryFactors = Initialize-PSOpenAPIToolsPasswordPolicyRecoveryFactors  -OktaCall null `
+$PasswordPolicyRecoveryFactors = Initialize-Okta.PowerShellPasswordPolicyRecoveryFactors  -OktaCall null `
  -OktaEmail null `
  -OktaSms null `
  -RecoveryQuestion null

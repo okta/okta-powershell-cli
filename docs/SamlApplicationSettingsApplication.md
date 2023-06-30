@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SamlApplicationSettingsApplication = Initialize-PSOpenAPIToolsSamlApplicationSettingsApplication  -AcsUrl null `
+$SamlApplicationSettingsApplication = Initialize-Okta.PowerShellSamlApplicationSettingsApplication  -AcsUrl null `
  -AudRestriction null `
  -BaseUrl null
 ```

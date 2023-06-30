@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$IssuerMode = Initialize-PSOpenAPIToolsIssuerMode 
+$IssuerMode = Initialize-Okta.PowerShellIssuerMode 
 ```
 
 - Convert the resource to JSON

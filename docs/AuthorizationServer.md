@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AuthorizationServer = Initialize-PSOpenAPIToolsAuthorizationServer  -Audiences null `
+$AuthorizationServer = Initialize-Okta.PowerShellAuthorizationServer  -Audiences null `
  -Created null `
  -Credentials null `
  -Description null `

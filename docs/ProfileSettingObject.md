@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProfileSettingObject = Initialize-PSOpenAPIToolsProfileSettingObject  -Status null
+$ProfileSettingObject = Initialize-Okta.PowerShellProfileSettingObject  -Status null
 ```
 
 - Convert the resource to JSON

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LoadingPageTouchPointVariant = Initialize-PSOpenAPIToolsLoadingPageTouchPointVariant 
+$LoadingPageTouchPointVariant = Initialize-Okta.PowerShellLoadingPageTouchPointVariant 
 ```
 
 - Convert the resource to JSON

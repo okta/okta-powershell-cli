@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OktaSignOnPolicy = Initialize-PSOpenAPIToolsOktaSignOnPolicy  -Created null `
+$OktaSignOnPolicy = Initialize-Okta.PowerShellOktaSignOnPolicy  -Created null `
  -Description null `
  -Id null `
  -LastUpdated null `

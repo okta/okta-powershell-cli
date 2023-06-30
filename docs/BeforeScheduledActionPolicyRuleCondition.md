@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BeforeScheduledActionPolicyRuleCondition = Initialize-PSOpenAPIToolsBeforeScheduledActionPolicyRuleCondition  -Duration null `
+$BeforeScheduledActionPolicyRuleCondition = Initialize-Okta.PowerShellBeforeScheduledActionPolicyRuleCondition  -Duration null `
  -LifecycleAction null
 ```
 

@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BehaviorRuleAnomalousIP = Initialize-PSOpenAPIToolsBehaviorRuleAnomalousIP  -Created null `
+$BehaviorRuleAnomalousIP = Initialize-Okta.PowerShellBehaviorRuleAnomalousIP  -Created null `
  -Id null `
  -LastUpdated null `
  -Name null `

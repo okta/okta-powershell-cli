@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GrantTypePolicyRuleCondition = Initialize-PSOpenAPIToolsGrantTypePolicyRuleCondition  -Include null
+$GrantTypePolicyRuleCondition = Initialize-Okta.PowerShellGrantTypePolicyRuleCondition  -Include null
 ```
 
 - Convert the resource to JSON

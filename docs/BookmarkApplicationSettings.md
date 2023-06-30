@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BookmarkApplicationSettings = Initialize-PSOpenAPIToolsBookmarkApplicationSettings  -IdentityStoreId null `
+$BookmarkApplicationSettings = Initialize-Okta.PowerShellBookmarkApplicationSettings  -IdentityStoreId null `
  -ImplicitAssignment null `
  -InlineHookId null `
  -Notes null `

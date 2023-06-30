@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MultifactorEnrollmentPolicyAuthenticatorSettingsEnroll = Initialize-PSOpenAPIToolsMultifactorEnrollmentPolicyAuthenticatorSettingsEnroll  -Self null
+$MultifactorEnrollmentPolicyAuthenticatorSettingsEnroll = Initialize-Okta.PowerShellMultifactorEnrollmentPolicyAuthenticatorSettingsEnroll  -Self null
 ```
 
 - Convert the resource to JSON

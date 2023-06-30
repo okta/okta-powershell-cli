@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProvisioningSuspendedAction = Initialize-PSOpenAPIToolsProvisioningSuspendedAction 
+$ProvisioningSuspendedAction = Initialize-Okta.PowerShellProvisioningSuspendedAction 
 ```
 
 - Convert the resource to JSON

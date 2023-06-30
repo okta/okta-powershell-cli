@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GroupSchema = Initialize-PSOpenAPIToolsGroupSchema  -Schema null `
+$GroupSchema = Initialize-Okta.PowerShellGroupSchema  -Schema null `
  -Created null `
  -Definitions null `
  -Description null `

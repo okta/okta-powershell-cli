@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$NetworkZoneAddress = Initialize-PSOpenAPIToolsNetworkZoneAddress  -Type null `
+$NetworkZoneAddress = Initialize-Okta.PowerShellNetworkZoneAddress  -Type null `
  -Value null
 ```
 

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$IdpPolicyRuleAction = Initialize-PSOpenAPIToolsIdpPolicyRuleAction  -Providers null
+$IdpPolicyRuleAction = Initialize-Okta.PowerShellIdpPolicyRuleAction  -Providers null
 ```
 
 - Convert the resource to JSON

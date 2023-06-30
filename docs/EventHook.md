@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EventHook = Initialize-PSOpenAPIToolsEventHook  -Channel null `
+$EventHook = Initialize-Okta.PowerShellEventHook  -Channel null `
  -Created null `
  -CreatedBy null `
  -Events null `

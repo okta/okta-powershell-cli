@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DevicePolicyMDMFramework = Initialize-PSOpenAPIToolsDevicePolicyMDMFramework 
+$DevicePolicyMDMFramework = Initialize-Okta.PowerShellDevicePolicyMDMFramework 
 ```
 
 - Convert the resource to JSON

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$TempPassword = Initialize-PSOpenAPIToolsTempPassword  -TempPassword null
+$TempPassword = Initialize-Okta.PowerShellTempPassword  -TempPassword null
 ```
 
 - Convert the resource to JSON

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OrgOktaSupportSettingsObj = Initialize-PSOpenAPIToolsOrgOktaSupportSettingsObj  -Expiration null `
+$OrgOktaSupportSettingsObj = Initialize-Okta.PowerShellOrgOktaSupportSettingsObj  -Expiration null `
  -Support null `
  -Links null
 ```

@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Feature = Initialize-PSOpenAPIToolsFeature  -Description null `
+$Feature = Initialize-Okta.PowerShellFeature  -Description null `
  -Id null `
  -Name null `
  -Stage null `

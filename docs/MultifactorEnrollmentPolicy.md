@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MultifactorEnrollmentPolicy = Initialize-PSOpenAPIToolsMultifactorEnrollmentPolicy  -Created null `
+$MultifactorEnrollmentPolicy = Initialize-Okta.PowerShellMultifactorEnrollmentPolicy  -Created null `
  -Description null `
  -Id null `
  -LastUpdated null `

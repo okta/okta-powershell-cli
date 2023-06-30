@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogEvent = Initialize-PSOpenAPIToolsLogEvent  -Actor null `
+$LogEvent = Initialize-Okta.PowerShellLogEvent  -Actor null `
  -AuthenticationContext null `
  -Client null `
  -DebugContext null `

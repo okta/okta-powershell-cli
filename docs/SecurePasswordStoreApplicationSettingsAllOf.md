@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SecurePasswordStoreApplicationSettingsAllOf = Initialize-PSOpenAPIToolsSecurePasswordStoreApplicationSettingsAllOf  -App null
+$SecurePasswordStoreApplicationSettingsAllOf = Initialize-Okta.PowerShellSecurePasswordStoreApplicationSettingsAllOf  -App null
 ```
 
 - Convert the resource to JSON

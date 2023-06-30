@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogTarget = Initialize-PSOpenAPIToolsLogTarget  -AlternateId null `
+$LogTarget = Initialize-Okta.PowerShellLogTarget  -AlternateId null `
  -DetailEntry null `
  -DisplayName null `
  -Id null `

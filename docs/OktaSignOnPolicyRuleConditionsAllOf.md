@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OktaSignOnPolicyRuleConditionsAllOf = Initialize-PSOpenAPIToolsOktaSignOnPolicyRuleConditionsAllOf  -AuthContext null `
+$OktaSignOnPolicyRuleConditionsAllOf = Initialize-Okta.PowerShellOktaSignOnPolicyRuleConditionsAllOf  -AuthContext null `
  -Network null `
  -People null
 ```

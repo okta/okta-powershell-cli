@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BaseEmailDomain = Initialize-PSOpenAPIToolsBaseEmailDomain  -DisplayName null `
+$BaseEmailDomain = Initialize-Okta.PowerShellBaseEmailDomain  -DisplayName null `
  -UserName null
 ```
 

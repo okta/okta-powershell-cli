@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WebUserFactorProfile = Initialize-PSOpenAPIToolsWebUserFactorProfile  -CredentialId null
+$WebUserFactorProfile = Initialize-Okta.PowerShellWebUserFactorProfile  -CredentialId null
 ```
 
 - Convert the resource to JSON

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UserNextLogin = Initialize-PSOpenAPIToolsUserNextLogin 
+$UserNextLogin = Initialize-Okta.PowerShellUserNextLogin 
 ```
 
 - Convert the resource to JSON

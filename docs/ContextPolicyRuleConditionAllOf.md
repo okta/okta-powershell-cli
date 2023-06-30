@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ContextPolicyRuleConditionAllOf = Initialize-PSOpenAPIToolsContextPolicyRuleConditionAllOf  -Expression null
+$ContextPolicyRuleConditionAllOf = Initialize-Okta.PowerShellContextPolicyRuleConditionAllOf  -Expression null
 ```
 
 - Convert the resource to JSON

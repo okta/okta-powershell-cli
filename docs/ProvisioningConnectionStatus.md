@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProvisioningConnectionStatus = Initialize-PSOpenAPIToolsProvisioningConnectionStatus 
+$ProvisioningConnectionStatus = Initialize-Okta.PowerShellProvisioningConnectionStatus 
 ```
 
 - Convert the resource to JSON

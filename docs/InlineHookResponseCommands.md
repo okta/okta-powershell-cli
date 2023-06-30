@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$InlineHookResponseCommands = Initialize-PSOpenAPIToolsInlineHookResponseCommands  -Type null `
+$InlineHookResponseCommands = Initialize-Okta.PowerShellInlineHookResponseCommands  -Type null `
  -Value null
 ```
 

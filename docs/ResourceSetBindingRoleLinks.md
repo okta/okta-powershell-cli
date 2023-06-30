@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ResourceSetBindingRoleLinks = Initialize-PSOpenAPIToolsResourceSetBindingRoleLinks  -Self null `
+$ResourceSetBindingRoleLinks = Initialize-Okta.PowerShellResourceSetBindingRoleLinks  -Self null `
  -Members null
 ```
 

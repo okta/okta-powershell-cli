@@ -34,7 +34,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SamlApplicationSettingsSignOn = Initialize-PSOpenAPIToolsSamlApplicationSettingsSignOn  -AcsEndpoints null `
+$SamlApplicationSettingsSignOn = Initialize-Okta.PowerShellSamlApplicationSettingsSignOn  -AcsEndpoints null `
  -AllowMultipleAcsEndpoints null `
  -AssertionSigned null `
  -AttributeStatements null `

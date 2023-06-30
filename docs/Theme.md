@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Theme = Initialize-PSOpenAPIToolsTheme  -BackgroundImage null `
+$Theme = Initialize-Okta.PowerShellTheme  -BackgroundImage null `
  -EmailTemplateTouchPointVariant null `
  -EndUserDashboardTouchPointVariant null `
  -ErrorPageTouchPointVariant null `

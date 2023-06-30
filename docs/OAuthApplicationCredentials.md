@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OAuthApplicationCredentials = Initialize-PSOpenAPIToolsOAuthApplicationCredentials  -Signing null `
+$OAuthApplicationCredentials = Initialize-Okta.PowerShellOAuthApplicationCredentials  -Signing null `
  -UserNameTemplate null `
  -OauthClient null
 ```

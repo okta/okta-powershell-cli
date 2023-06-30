@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DevicePolicyRuleConditionPlatform = Initialize-PSOpenAPIToolsDevicePolicyRuleConditionPlatform  -SupportedMDMFrameworks null `
+$DevicePolicyRuleConditionPlatform = Initialize-Okta.PowerShellDevicePolicyRuleConditionPlatform  -SupportedMDMFrameworks null `
  -Types null
 ```
 

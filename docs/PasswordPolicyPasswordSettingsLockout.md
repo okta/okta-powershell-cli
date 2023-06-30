@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PasswordPolicyPasswordSettingsLockout = Initialize-PSOpenAPIToolsPasswordPolicyPasswordSettingsLockout  -AutoUnlockMinutes null `
+$PasswordPolicyPasswordSettingsLockout = Initialize-Okta.PowerShellPasswordPolicyPasswordSettingsLockout  -AutoUnlockMinutes null `
  -MaxAttempts null `
  -ShowLockoutFailures null `
  -UserLockoutNotificationChannels null

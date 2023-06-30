@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CsrMetadataSubject = Initialize-PSOpenAPIToolsCsrMetadataSubject  -CommonName null `
+$CsrMetadataSubject = Initialize-Okta.PowerShellCsrMetadataSubject  -CommonName null `
  -CountryName null `
  -LocalityName null `
  -OrganizationalUnitName null `

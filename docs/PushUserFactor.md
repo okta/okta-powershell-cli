@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PushUserFactor = Initialize-PSOpenAPIToolsPushUserFactor  -Created null `
+$PushUserFactor = Initialize-Okta.PowerShellPushUserFactor  -Created null `
  -FactorType null `
  -Id null `
  -LastUpdated null `

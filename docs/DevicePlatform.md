@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DevicePlatform = Initialize-PSOpenAPIToolsDevicePlatform 
+$DevicePlatform = Initialize-Okta.PowerShellDevicePlatform 
 ```
 
 - Convert the resource to JSON

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ErrorPageTouchPointVariant = Initialize-PSOpenAPIToolsErrorPageTouchPointVariant 
+$ErrorPageTouchPointVariant = Initialize-Okta.PowerShellErrorPageTouchPointVariant 
 ```
 
 - Convert the resource to JSON

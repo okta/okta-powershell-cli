@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccessPolicyRuleAllOf = Initialize-PSOpenAPIToolsAccessPolicyRuleAllOf  -Actions null `
+$AccessPolicyRuleAllOf = Initialize-Okta.PowerShellAccessPolicyRuleAllOf  -Actions null `
  -Conditions null
 ```
 

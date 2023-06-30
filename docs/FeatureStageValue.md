@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$FeatureStageValue = Initialize-PSOpenAPIToolsFeatureStageValue 
+$FeatureStageValue = Initialize-Okta.PowerShellFeatureStageValue 
 ```
 
 - Convert the resource to JSON

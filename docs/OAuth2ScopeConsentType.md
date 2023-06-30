@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OAuth2ScopeConsentType = Initialize-PSOpenAPIToolsOAuth2ScopeConsentType 
+$OAuth2ScopeConsentType = Initialize-Okta.PowerShellOAuth2ScopeConsentType 
 ```
 
 - Convert the resource to JSON

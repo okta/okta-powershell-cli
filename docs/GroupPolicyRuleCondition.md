@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GroupPolicyRuleCondition = Initialize-PSOpenAPIToolsGroupPolicyRuleCondition  -Exclude null `
+$GroupPolicyRuleCondition = Initialize-Okta.PowerShellGroupPolicyRuleCondition  -Exclude null `
  -Include null
 ```
 

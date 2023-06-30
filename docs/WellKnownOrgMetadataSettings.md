@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WellKnownOrgMetadataSettings = Initialize-PSOpenAPIToolsWellKnownOrgMetadataSettings  -AnalyticsCollectionEnabled null `
+$WellKnownOrgMetadataSettings = Initialize-Okta.PowerShellWellKnownOrgMetadataSettings  -AnalyticsCollectionEnabled null `
  -BugReportingEnabled null `
  -OmEnabled null
 ```

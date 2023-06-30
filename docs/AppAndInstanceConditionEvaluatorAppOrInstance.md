@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AppAndInstanceConditionEvaluatorAppOrInstance = Initialize-PSOpenAPIToolsAppAndInstanceConditionEvaluatorAppOrInstance  -Id null `
+$AppAndInstanceConditionEvaluatorAppOrInstance = Initialize-Okta.PowerShellAppAndInstanceConditionEvaluatorAppOrInstance  -Id null `
  -Name null `
  -Type null
 ```

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AuthenticatorProviderConfigurationUserNameTemplate = Initialize-PSOpenAPIToolsAuthenticatorProviderConfigurationUserNameTemplate  -Template null
+$AuthenticatorProviderConfigurationUserNameTemplate = Initialize-Okta.PowerShellAuthenticatorProviderConfigurationUserNameTemplate  -Template null
 ```
 
 - Convert the resource to JSON

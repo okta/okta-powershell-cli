@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProvisioningConnectionProfile = Initialize-PSOpenAPIToolsProvisioningConnectionProfile  -AuthScheme null `
+$ProvisioningConnectionProfile = Initialize-Okta.PowerShellProvisioningConnectionProfile  -AuthScheme null `
  -Token null
 ```
 

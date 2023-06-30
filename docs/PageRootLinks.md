@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PageRootLinks = Initialize-PSOpenAPIToolsPageRootLinks  -Self null `
+$PageRootLinks = Initialize-Okta.PowerShellPageRootLinks  -Self null `
  -Default null `
  -Customized null `
  -Preview null

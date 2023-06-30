@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ApplicationCredentialsSigningUse = Initialize-PSOpenAPIToolsApplicationCredentialsSigningUse 
+$ApplicationCredentialsSigningUse = Initialize-Okta.PowerShellApplicationCredentialsSigningUse 
 ```
 
 - Convert the resource to JSON

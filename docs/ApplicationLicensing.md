@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ApplicationLicensing = Initialize-PSOpenAPIToolsApplicationLicensing  -SeatCount null
+$ApplicationLicensing = Initialize-Okta.PowerShellApplicationLicensing  -SeatCount null
 ```
 
 - Convert the resource to JSON

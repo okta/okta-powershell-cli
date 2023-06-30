@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SpCertificate = Initialize-PSOpenAPIToolsSpCertificate  -X5c null
+$SpCertificate = Initialize-Okta.PowerShellSpCertificate  -X5c null
 ```
 
 - Convert the resource to JSON

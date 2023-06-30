@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WsFederationApplicationAllOf = Initialize-PSOpenAPIToolsWsFederationApplicationAllOf  -Name null `
+$WsFederationApplicationAllOf = Initialize-Okta.PowerShellWsFederationApplicationAllOf  -Name null `
  -Settings null
 ```
 

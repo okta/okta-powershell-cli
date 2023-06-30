@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$KnowledgeConstraint = Initialize-PSOpenAPIToolsKnowledgeConstraint  -Methods null `
+$KnowledgeConstraint = Initialize-Okta.PowerShellKnowledgeConstraint  -Methods null `
  -ReauthenticateIn null `
  -Types null
 ```

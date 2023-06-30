@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Csr = Initialize-PSOpenAPIToolsCsr  -Created null `
+$Csr = Initialize-Okta.PowerShellCsr  -Created null `
  -Csr null `
  -Id null `
  -Kty null

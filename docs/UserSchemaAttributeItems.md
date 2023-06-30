@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UserSchemaAttributeItems = Initialize-PSOpenAPIToolsUserSchemaAttributeItems  -Enum null `
+$UserSchemaAttributeItems = Initialize-Okta.PowerShellUserSchemaAttributeItems  -Enum null `
  -OneOf null `
  -Type null
 ```

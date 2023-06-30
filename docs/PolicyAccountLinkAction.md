@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PolicyAccountLinkAction = Initialize-PSOpenAPIToolsPolicyAccountLinkAction 
+$PolicyAccountLinkAction = Initialize-Okta.PowerShellPolicyAccountLinkAction 
 ```
 
 - Convert the resource to JSON

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CallUserFactorAllOf = Initialize-PSOpenAPIToolsCallUserFactorAllOf  -VarProfile null
+$CallUserFactorAllOf = Initialize-Okta.PowerShellCallUserFactorAllOf  -VarProfile null
 ```
 
 - Convert the resource to JSON

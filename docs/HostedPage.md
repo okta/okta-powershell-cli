@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HostedPage = Initialize-PSOpenAPIToolsHostedPage  -Type null `
+$HostedPage = Initialize-Okta.PowerShellHostedPage  -Type null `
  -Url null
 ```
 

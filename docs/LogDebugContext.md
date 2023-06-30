@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LogDebugContext = Initialize-PSOpenAPIToolsLogDebugContext  -DebugData null
+$LogDebugContext = Initialize-Okta.PowerShellLogDebugContext  -DebugData null
 ```
 
 - Convert the resource to JSON

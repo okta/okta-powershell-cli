@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LinkedObjectDetailsType = Initialize-PSOpenAPIToolsLinkedObjectDetailsType 
+$LinkedObjectDetailsType = Initialize-Okta.PowerShellLinkedObjectDetailsType 
 ```
 
 - Convert the resource to JSON

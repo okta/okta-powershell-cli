@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DeviceAccessPolicyRuleCondition = Initialize-PSOpenAPIToolsDeviceAccessPolicyRuleCondition  -Migrated null `
+$DeviceAccessPolicyRuleCondition = Initialize-Okta.PowerShellDeviceAccessPolicyRuleCondition  -Migrated null `
  -Platform null `
  -Rooted null `
  -TrustLevel null `

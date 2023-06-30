@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CustomHotpUserFactor = Initialize-PSOpenAPIToolsCustomHotpUserFactor  -Created null `
+$CustomHotpUserFactor = Initialize-Okta.PowerShellCustomHotpUserFactor  -Created null `
  -FactorType null `
  -Id null `
  -LastUpdated null `

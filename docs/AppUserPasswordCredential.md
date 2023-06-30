@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AppUserPasswordCredential = Initialize-PSOpenAPIToolsAppUserPasswordCredential  -Value null
+$AppUserPasswordCredential = Initialize-Okta.PowerShellAppUserPasswordCredential  -Value null
 ```
 
 - Convert the resource to JSON

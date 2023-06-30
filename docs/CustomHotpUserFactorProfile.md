@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CustomHotpUserFactorProfile = Initialize-PSOpenAPIToolsCustomHotpUserFactorProfile  -SharedSecret null
+$CustomHotpUserFactorProfile = Initialize-Okta.PowerShellCustomHotpUserFactorProfile  -SharedSecret null
 ```
 
 - Convert the resource to JSON

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HardwareUserFactorAllOf = Initialize-PSOpenAPIToolsHardwareUserFactorAllOf  -VarProfile null
+$HardwareUserFactorAllOf = Initialize-Okta.PowerShellHardwareUserFactorAllOf  -VarProfile null
 ```
 
 - Convert the resource to JSON

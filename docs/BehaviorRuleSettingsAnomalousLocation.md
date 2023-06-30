@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BehaviorRuleSettingsAnomalousLocation = Initialize-PSOpenAPIToolsBehaviorRuleSettingsAnomalousLocation  -MaxEventsUsedForEvaluation null `
+$BehaviorRuleSettingsAnomalousLocation = Initialize-Okta.PowerShellBehaviorRuleSettingsAnomalousLocation  -MaxEventsUsedForEvaluation null `
  -MinEventsNeededForEvaluation null `
  -Granularity null `
  -RadiusKilometers null

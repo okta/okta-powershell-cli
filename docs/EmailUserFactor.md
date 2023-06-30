@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EmailUserFactor = Initialize-PSOpenAPIToolsEmailUserFactor  -Created null `
+$EmailUserFactor = Initialize-Okta.PowerShellEmailUserFactor  -Created null `
  -FactorType null `
  -Id null `
  -LastUpdated null `

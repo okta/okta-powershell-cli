@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UserSchemaAttributeUnion = Initialize-PSOpenAPIToolsUserSchemaAttributeUnion 
+$UserSchemaAttributeUnion = Initialize-Okta.PowerShellUserSchemaAttributeUnion 
 ```
 
 - Convert the resource to JSON

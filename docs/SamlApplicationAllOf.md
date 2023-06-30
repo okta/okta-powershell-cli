@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SamlApplicationAllOf = Initialize-PSOpenAPIToolsSamlApplicationAllOf  -Credentials null `
+$SamlApplicationAllOf = Initialize-Okta.PowerShellSamlApplicationAllOf  -Credentials null `
  -Name null `
  -Settings null
 ```

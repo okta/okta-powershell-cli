@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$IdpPolicyRuleActionProvider = Initialize-PSOpenAPIToolsIdpPolicyRuleActionProvider  -Id null `
+$IdpPolicyRuleActionProvider = Initialize-Okta.PowerShellIdpPolicyRuleActionProvider  -Id null `
  -Type null
 ```
 

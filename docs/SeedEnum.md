@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SeedEnum = Initialize-PSOpenAPIToolsSeedEnum 
+$SeedEnum = Initialize-Okta.PowerShellSeedEnum 
 ```
 
 - Convert the resource to JSON

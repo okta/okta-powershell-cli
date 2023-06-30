@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OAuth2ScopeConsentGrant = Initialize-PSOpenAPIToolsOAuth2ScopeConsentGrant  -ClientId null `
+$OAuth2ScopeConsentGrant = Initialize-Okta.PowerShellOAuth2ScopeConsentGrant  -ClientId null `
  -Created null `
  -CreatedBy null `
  -Id null `

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UserIdentifierPolicyRuleCondition = Initialize-PSOpenAPIToolsUserIdentifierPolicyRuleCondition  -Attribute null `
+$UserIdentifierPolicyRuleCondition = Initialize-Okta.PowerShellUserIdentifierPolicyRuleCondition  -Attribute null `
  -Patterns null `
  -Type null
 ```

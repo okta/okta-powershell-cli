@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ErrorErrorCausesInner = Initialize-PSOpenAPIToolsErrorErrorCausesInner  -ErrorSummary null
+$ErrorErrorCausesInner = Initialize-Okta.PowerShellErrorErrorCausesInner  -ErrorSummary null
 ```
 
 - Convert the resource to JSON

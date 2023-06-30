@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EmailCustomizationAllOfLinks = Initialize-PSOpenAPIToolsEmailCustomizationAllOfLinks  -Self null `
+$EmailCustomizationAllOfLinks = Initialize-Okta.PowerShellEmailCustomizationAllOfLinks  -Self null `
  -Template null `
  -Preview null `
  -Test null

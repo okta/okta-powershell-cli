@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SessionAuthenticationMethod = Initialize-PSOpenAPIToolsSessionAuthenticationMethod 
+$SessionAuthenticationMethod = Initialize-Okta.PowerShellSessionAuthenticationMethod 
 ```
 
 - Convert the resource to JSON

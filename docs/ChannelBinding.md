@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ChannelBinding = Initialize-PSOpenAPIToolsChannelBinding  -Required null `
+$ChannelBinding = Initialize-Okta.PowerShellChannelBinding  -Required null `
  -Style null
 ```
 

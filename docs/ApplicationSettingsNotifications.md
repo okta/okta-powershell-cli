@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ApplicationSettingsNotifications = Initialize-PSOpenAPIToolsApplicationSettingsNotifications  -Vpn null
+$ApplicationSettingsNotifications = Initialize-Okta.PowerShellApplicationSettingsNotifications  -Vpn null
 ```
 
 - Convert the resource to JSON

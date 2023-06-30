@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ApplicationLinks = Initialize-PSOpenAPIToolsApplicationLinks  -AccessPolicy null `
+$ApplicationLinks = Initialize-Okta.PowerShellApplicationLinks  -AccessPolicy null `
  -Activate null `
  -Deactivate null `
  -Groups null `

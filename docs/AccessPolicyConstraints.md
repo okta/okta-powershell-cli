@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccessPolicyConstraints = Initialize-PSOpenAPIToolsAccessPolicyConstraints  -Knowledge null `
+$AccessPolicyConstraints = Initialize-Okta.PowerShellAccessPolicyConstraints  -Knowledge null `
  -Possession null
 ```
 

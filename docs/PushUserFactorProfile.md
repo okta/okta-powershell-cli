@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PushUserFactorProfile = Initialize-PSOpenAPIToolsPushUserFactorProfile  -CredentialId null `
+$PushUserFactorProfile = Initialize-Okta.PowerShellPushUserFactorProfile  -CredentialId null `
  -DeviceToken null `
  -DeviceType null `
  -Name null `

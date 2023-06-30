@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OrgContactUser = Initialize-PSOpenAPIToolsOrgContactUser  -UserId null `
+$OrgContactUser = Initialize-Okta.PowerShellOrgContactUser  -UserId null `
  -Links null
 ```
 

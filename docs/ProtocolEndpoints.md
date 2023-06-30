@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProtocolEndpoints = Initialize-PSOpenAPIToolsProtocolEndpoints  -Acs null `
+$ProtocolEndpoints = Initialize-Okta.PowerShellProtocolEndpoints  -Acs null `
  -Authorization null `
  -Jwks null `
  -Metadata null `

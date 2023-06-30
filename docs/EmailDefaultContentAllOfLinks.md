@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EmailDefaultContentAllOfLinks = Initialize-PSOpenAPIToolsEmailDefaultContentAllOfLinks  -Self null `
+$EmailDefaultContentAllOfLinks = Initialize-Okta.PowerShellEmailDefaultContentAllOfLinks  -Self null `
  -Template null `
  -Preview null `
  -Test null

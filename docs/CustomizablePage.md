@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CustomizablePage = Initialize-PSOpenAPIToolsCustomizablePage  -PageContent null
+$CustomizablePage = Initialize-Okta.PowerShellCustomizablePage  -PageContent null
 ```
 
 - Convert the resource to JSON

@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Application = Initialize-PSOpenAPIToolsApplication  -Accessibility null `
+$Application = Initialize-Okta.PowerShellApplication  -Accessibility null `
  -Created null `
  -Features null `
  -Id null `

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EmailTemplateLinks = Initialize-PSOpenAPIToolsEmailTemplateLinks  -Self null `
+$EmailTemplateLinks = Initialize-Okta.PowerShellEmailTemplateLinks  -Self null `
  -Settings null `
  -DefaultContent null `
  -Customizations null `

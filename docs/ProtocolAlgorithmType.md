@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProtocolAlgorithmType = Initialize-PSOpenAPIToolsProtocolAlgorithmType  -Signature null
+$ProtocolAlgorithmType = Initialize-Okta.PowerShellProtocolAlgorithmType  -Signature null
 ```
 
 - Convert the resource to JSON

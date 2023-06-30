@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OAuth2ClaimGroupFilterType = Initialize-PSOpenAPIToolsOAuth2ClaimGroupFilterType 
+$OAuth2ClaimGroupFilterType = Initialize-Okta.PowerShellOAuth2ClaimGroupFilterType 
 ```
 
 - Convert the resource to JSON

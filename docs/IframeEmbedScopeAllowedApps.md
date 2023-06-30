@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$IframeEmbedScopeAllowedApps = Initialize-PSOpenAPIToolsIframeEmbedScopeAllowedApps 
+$IframeEmbedScopeAllowedApps = Initialize-Okta.PowerShellIframeEmbedScopeAllowedApps 
 ```
 
 - Convert the resource to JSON

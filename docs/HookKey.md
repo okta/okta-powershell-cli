@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HookKey = Initialize-PSOpenAPIToolsHookKey  -Created null `
+$HookKey = Initialize-Okta.PowerShellHookKey  -Created null `
  -Id null `
  -IsUsed null `
  -KeyId null `

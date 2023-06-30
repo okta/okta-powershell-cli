@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GroupOwnerOriginType = Initialize-PSOpenAPIToolsGroupOwnerOriginType 
+$GroupOwnerOriginType = Initialize-Okta.PowerShellGroupOwnerOriginType 
 ```
 
 - Convert the resource to JSON

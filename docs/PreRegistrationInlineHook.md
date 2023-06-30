@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PreRegistrationInlineHook = Initialize-PSOpenAPIToolsPreRegistrationInlineHook  -InlineHookId null
+$PreRegistrationInlineHook = Initialize-Okta.PowerShellPreRegistrationInlineHook  -InlineHookId null
 ```
 
 - Convert the resource to JSON

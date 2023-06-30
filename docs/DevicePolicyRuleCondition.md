@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DevicePolicyRuleCondition = Initialize-PSOpenAPIToolsDevicePolicyRuleCondition  -Migrated null `
+$DevicePolicyRuleCondition = Initialize-Okta.PowerShellDevicePolicyRuleCondition  -Migrated null `
  -Platform null `
  -Rooted null `
  -TrustLevel null

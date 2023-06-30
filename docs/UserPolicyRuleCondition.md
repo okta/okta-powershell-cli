@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UserPolicyRuleCondition = Initialize-PSOpenAPIToolsUserPolicyRuleCondition  -Exclude null `
+$UserPolicyRuleCondition = Initialize-Okta.PowerShellUserPolicyRuleCondition  -Exclude null `
  -Inactivity null `
  -Include null `
  -LifecycleExpiration null `

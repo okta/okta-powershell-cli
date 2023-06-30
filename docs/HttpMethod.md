@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HttpMethod = Initialize-PSOpenAPIToolsHttpMethod 
+$HttpMethod = Initialize-Okta.PowerShellHttpMethod 
 ```
 
 - Convert the resource to JSON
