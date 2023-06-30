@@ -75,6 +75,11 @@ function Add-OktaAllAppsAsTargetToRole {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'PUT' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -184,6 +189,11 @@ function Add-OktaApplicationInstanceTargetToAppAdminRoleGivenToGroup {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'PUT' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -283,6 +293,11 @@ function Add-OktaApplicationTargetToAdminRoleForUser {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'PUT' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -381,6 +396,11 @@ function Add-OktaApplicationTargetToAdminRoleGivenToGroup {
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
+
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
 
         $LocalVarResult = Invoke-OktaApiClient -Method 'PUT' `
                                 -Uri $LocalVarUri `
@@ -491,6 +511,11 @@ function Add-OktaApplicationTargetToAppAdminRoleForUser {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'PUT' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -590,6 +615,11 @@ function Add-OktaGroupTargetToGroupAdministratorRoleForGroup {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'PUT' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -688,6 +718,11 @@ function Add-OktaGroupTargetToRole {
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
+
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
 
         $LocalVarResult = Invoke-OktaApiClient -Method 'PUT' `
                                 -Uri $LocalVarUri `
@@ -798,6 +833,11 @@ function Invoke-OktaListApplicationTargetsForApplicationAdministratorRoleForGrou
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'GET' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -906,6 +946,11 @@ function Invoke-OktaListApplicationTargetsForApplicationAdministratorRoleForUser
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
+
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
 
         $LocalVarResult = Invoke-OktaApiClient -Method 'GET' `
                                 -Uri $LocalVarUri `
@@ -1016,6 +1061,11 @@ function Invoke-OktaListGroupTargetsForGroupRole {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'GET' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -1124,6 +1174,11 @@ function Invoke-OktaListGroupTargetsForRole {
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
+
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
 
         $LocalVarResult = Invoke-OktaApiClient -Method 'GET' `
                                 -Uri $LocalVarUri `
@@ -1234,6 +1289,11 @@ function Remove-OktaApplicationTargetFromAdministratorRoleForUser {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'DELETE' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -1343,6 +1403,11 @@ function Remove-OktaApplicationTargetFromAdministratorRoleGivenToGroup {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'DELETE' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -1441,6 +1506,11 @@ function Remove-OktaApplicationTargetFromApplicationAdministratorRoleForUser {
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
+
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
 
         $LocalVarResult = Invoke-OktaApiClient -Method 'DELETE' `
                                 -Uri $LocalVarUri `
@@ -1541,6 +1611,11 @@ function Remove-OktaApplicationTargetFromApplicationAdministratorRoleGivenToGrou
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'DELETE' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -1640,6 +1715,11 @@ function Remove-OktaGroupTargetFromGroupAdministratorRoleGivenToGroup {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'DELETE' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -1738,6 +1818,11 @@ function Remove-OktaGroupTargetFromRole {
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
+
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
 
         $LocalVarResult = Invoke-OktaApiClient -Method 'DELETE' `
                                 -Uri $LocalVarUri `

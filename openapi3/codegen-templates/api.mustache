@@ -205,13 +205,19 @@ function {{{vendorExtensions.x-powershell-method-name}}} {
         }
         {{/isBasicBasic}}
         {{#isBasicBearer}}
+        {{! if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        } }} 
+        {{/isBasicBearer}}
+
+        {{/authMethods}}
+        {{! Added by default }}
         if ($Configuration["AccessToken"]) {
             $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
             Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
         }
-        {{/isBasicBearer}}
 
-        {{/authMethods}}
         $LocalVarResult = Invoke-{{{apiNamePrefix}}}ApiClient -Method '{{httpMethod}}' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `

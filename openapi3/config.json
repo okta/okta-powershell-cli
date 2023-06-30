@@ -2,7 +2,7 @@
     "packageName" : "Okta.PowerShell",
     "isApiKey" : false,
     "isBasicBearer" : true,
-    "isBasic": false,
+    "isBasicBasic": false,
     "apiNamePrefix": "Okta",
     "templateDir": "./codegen-templates",
     "outputDir" : "../",
@@ -19,9 +19,13 @@
     "gitRepoId" : "okta-powershell-cli", 
     "globalProperties": {
         "apiTests": false,
-        "modelTests": false,
-        "isOAuth": true
+        "modelTests": false
     },
+    "authMethods": [{
+        "isApiKey" : false,
+        "isBasicBearer" : true,
+        "isBasicBasic": false
+    }],
     "files": {
         "okta_authenticationApi.mustache":{
             "destinationFilename": "OktaAuthenticationApi.ps1",
