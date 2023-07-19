@@ -74,11 +74,12 @@ Describe -tag 'Okta.PowerShell' -name 'OktaUserApi' {
                 email = 'john.doe@mail.com'
             }
 
-            $CreateUserRequest = Initialize-OktaCreateUserRequest -VarProfile $UserProfile -GroupIds 'foo' -WithHttpInfo
-            $TestResult = New-OktaUser -Body $CreateUserRequest
+            $CreateUserRequest = Initialize-OktaCreateUserRequest -VarProfile $UserProfile -GroupIds 'foo' 
+            $TestResult = New-OktaUser -Body $CreateUserRequest -WithHttpInfo
 
             Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
             $TestResult.StatusCode | Should -Be 200
+            $TestResult.Headers | Should -Be -Not $null
             $TestResult.Response.Id | Should -Be "00u8zkhk9tWf3aWsq1d7"
             $TestResult.Response.Status | Should -Be 'ACTIVE'        
             $TestResult.Response.Profile.FirstName | Should -Be 'John'
@@ -88,7 +89,7 @@ Describe -tag 'Okta.PowerShell' -name 'OktaUserApi' {
             $TestResult.Response._Links | Should -Not -BeNullOrEmpty
         }
 
-        It 'Test Failures' {
+        It 'Test New-User propagates failures from inner modules' {
             Mock -ModuleName Okta.PowerShell Invoke-WebRequest {  throw 'Error Test'} -Verifiable 
             
             $CreateUserRequest = Initialize-OktaCreateUserRequest -VarProfile $UserProfile -GroupIds 'foo'
@@ -96,6 +97,11 @@ Describe -tag 'Okta.PowerShell' -name 'OktaUserApi' {
             { New-OktaUser -Body $CreateUserRequest } | Should -Throw -ExpectedMessage 'Error Test'
 
             Assert-MockCalled -ModuleName Okta.PowerShell Invoke-WebRequest -Times 1
+        }
+
+        It 'Test New-User fails with missing mandatory params' {
+           
+            { New-OktaUser } | Should -Throw -ExpectedMessage 'Error! The required parameter Body missing when calling createUser.'
         }
     }
 
