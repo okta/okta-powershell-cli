@@ -105,150 +105,54 @@ Describe -tag 'Okta.PowerShell' -name 'OktaUserApi' {
         }
     }
 
-    Context 'Rename-OktaPassword' {
-        It 'Test Rename-OktaPassword' {
-            #$TestResult = Rename-OktaPassword -UserId "TEST_VALUE" -ChangePasswordRequest "TEST_VALUE" -Strict "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Rename-OktaRecoveryQuestion' {
-        It 'Test Rename-OktaRecoveryQuestion' {
-            #$TestResult = Rename-OktaRecoveryQuestion -UserId "TEST_VALUE" -UserCredentials "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Clear-OktaUserSessions' {
-        It 'Test Clear-OktaUserSessions' {
-            #$TestResult = Clear-OktaUserSessions -UserId "TEST_VALUE" -OauthTokens "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
     Context 'Invoke-OktaDeactivateOrDeleteUser' {
-        It 'Test Invoke-OktaDeactivateOrDeleteUser' {
-            #$TestResult = Invoke-OktaDeactivateOrDeleteUser -UserId "TEST_VALUE" -SendEmail "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
+        It 'Test Invoke-OktaDeactivateOrDeleteUser' -ForEach @(
+            @{ SendEmail = $False; Expected = 200}
+            @{ Name = $True; Expected = 200}) {
+            
+            $Response = @{
+                Response   = @{} 
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
 
-    Context 'Invoke-OktaDeactivateUser' {
-        It 'Test Invoke-OktaDeactivateUser' {
-            #$TestResult = Invoke-OktaDeactivateUser -UserId "TEST_VALUE" -SendEmail "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+            
+            $TestResult = Invoke-OktaDeactivateOrDeleteUser -UserId "TEST_VALUE" -SendEmail $SendEmail -WithHttpInfo
 
-    Context 'Invoke-OktaExpirePassword' {
-        It 'Test Invoke-OktaExpirePassword' {
-            #$TestResult = Invoke-OktaExpirePassword -UserId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaExpirePasswordAndGetTemporaryPassword' {
-        It 'Test Invoke-OktaExpirePasswordAndGetTemporaryPassword' {
-            #$TestResult = Invoke-OktaExpirePasswordAndGetTemporaryPassword -UserId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaForgotPassword' {
-        It 'Test Invoke-OktaForgotPassword' {
-            #$TestResult = Invoke-OktaForgotPassword -UserId "TEST_VALUE" -SendEmail "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaForgotPasswordSetNewPassword' {
-        It 'Test Invoke-OktaForgotPasswordSetNewPassword' {
-            #$TestResult = Invoke-OktaForgotPasswordSetNewPassword -UserId "TEST_VALUE" -UserCredentials "TEST_VALUE" -SendEmail "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Get-OktaLinkedObjectsForUser' {
-        It 'Test Get-OktaLinkedObjectsForUser' {
-            #$TestResult = Get-OktaLinkedObjectsForUser -UserId "TEST_VALUE" -RelationshipName "TEST_VALUE" -After "TEST_VALUE" -Limit "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Get-OktaRefreshTokenForUserAndClient' {
-        It 'Test Get-OktaRefreshTokenForUserAndClient' {
-            #$TestResult = Get-OktaRefreshTokenForUserAndClient -UserId "TEST_VALUE" -ClientId "TEST_VALUE" -TokenId "TEST_VALUE" -Expand "TEST_VALUE" -Limit "TEST_VALUE" -After "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+            $TestResult.StatusCode | Should -Be $Expected
+            
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
         }
     }
 
     Context 'Get-OktaUser' {
         It 'Test Get-OktaUser' {
-            #$TestResult = Get-OktaUser -UserId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+            $Content = '{"id":"00u8zn2tz7xE1AsSl1d7","status":"DEPROVISIONED","created":"2023-07-19T19:27:41.000Z","activated":"2023-07-19T19:27:42.000Z","statusChanged":"2023-07-19T19:27:43.000Z","lastLogin":null,"lastUpdated":"2023-07-19T19:27:43.000Z","passwordChanged":"2023-07-19T19:27:42.000Z","type":{"id":"oty1fddpcr6cnPEPG1d7"},"profile":{"firstName":"John","lastName":"Doe","mobilePhone":null,"nickName":"johny-ActivateUser-407005a6-09cd-4c8a-bf52-e145d44f320a","secondEmail":null,"login":"john.doe@mail.com","email":"john.doe@mail.com"},"credentials":{"provider":{"type":"OKTA","name":"OKTA"}},"_links":{"schema":{"href":"https://testorg.com/api/v1/meta/schemas/user/osc1fddpcr6cnPEPG1d7"},"activate":{"href":"https://testorg.com/api/v1/users/00u8zn2tz7xE1AsSl1d7/lifecycle/activate","method":"POST"},"self":{"href":"https://testorg.com/api/v1/users/00u8zn2tz7xE1AsSl1d7"},"resetFactors":{"href":"https://testorg.com/api/v1/users/00u8zn2tz7xE1AsSl1d7/lifecycle/reset_factors","method":"POST"},"type":{"href":"https://testorg.com/api/v1/meta/types/user/oty1fddpcr6cnPEPG1d7"},"delete":{"href":"https://testorg.com/api/v1/users/00u8zn2tz7xE1AsSl1d7","method":"DELETE"}}}' | ConvertFrom-Json
+            
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+
+            $TestResult = Get-OktaUser -UserId "foo"
+            
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+
+            $TestResult.Id | Should -Be "00u8zn2tz7xE1AsSl1d7"
+            $TestResult.Status | Should -Be 'DEPROVISIONED'        
+            $TestResult.Profile.FirstName | Should -Be 'John'
+            $TestResult.Profile.LastName | Should -Be 'Doe'
+            $TestResult.Profile.Login | Should -Be 'john.doe@mail.com'
+            $TestResult.Profile.Email | Should -Be 'john.doe@mail.com'
+            $TestResult._Links | Should -Not -BeNullOrEmpty
         }
     }
 
-    Context 'Get-OktaUserGrant' {
-        It 'Test Get-OktaUserGrant' {
-            #$TestResult = Get-OktaUserGrant -UserId "TEST_VALUE" -GrantId "TEST_VALUE" -Expand "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaListAppLinks' {
-        It 'Test Invoke-OktaListAppLinks' {
-            #$TestResult = Invoke-OktaListAppLinks -UserId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaListGrantsForUserAndClient' {
-        It 'Test Invoke-OktaListGrantsForUserAndClient' {
-            #$TestResult = Invoke-OktaListGrantsForUserAndClient -UserId "TEST_VALUE" -ClientId "TEST_VALUE" -Expand "TEST_VALUE" -After "TEST_VALUE" -Limit "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaListRefreshTokensForUserAndClient' {
-        It 'Test Invoke-OktaListRefreshTokensForUserAndClient' {
-            #$TestResult = Invoke-OktaListRefreshTokensForUserAndClient -UserId "TEST_VALUE" -ClientId "TEST_VALUE" -Expand "TEST_VALUE" -After "TEST_VALUE" -Limit "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaListUserClients' {
-        It 'Test Invoke-OktaListUserClients' {
-            #$TestResult = Invoke-OktaListUserClients -UserId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaListUserGrants' {
-        It 'Test Invoke-OktaListUserGrants' {
-            #$TestResult = Invoke-OktaListUserGrants -UserId "TEST_VALUE" -ScopeId "TEST_VALUE" -Expand "TEST_VALUE" -After "TEST_VALUE" -Limit "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
+   
     Context 'Invoke-OktaListUserGroups' {
         It 'Test Invoke-OktaListUserGroups' {
             #$TestResult = Invoke-OktaListUserGroups -UserId "TEST_VALUE"
@@ -267,6 +171,20 @@ Describe -tag 'Okta.PowerShell' -name 'OktaUserApi' {
 
     Context 'Invoke-OktaListUsers' {
         It 'Test Invoke-OktaListUsers' {
+            
+            $Content = '{"id":"00u8zn2tz7xE1AsSl1d7","status":"DEPROVISIONED","created":"2023-07-19T19:27:41.000Z","activated":"2023-07-19T19:27:42.000Z","statusChanged":"2023-07-19T19:27:43.000Z","lastLogin":null,"lastUpdated":"2023-07-19T19:27:43.000Z","passwordChanged":"2023-07-19T19:27:42.000Z","type":{"id":"oty1fddpcr6cnPEPG1d7"},"profile":{"firstName":"John","lastName":"Doe","mobilePhone":null,"nickName":"johny-ActivateUser-407005a6-09cd-4c8a-bf52-e145d44f320a","secondEmail":null,"login":"john.doe@mail.com","email":"john.doe@mail.com"},"credentials":{"provider":{"type":"OKTA","name":"OKTA"}},"_links":{"schema":{"href":"https://testorg.com/api/v1/meta/schemas/user/osc1fddpcr6cnPEPG1d7"},"activate":{"href":"https://testorg.com/api/v1/users/00u8zn2tz7xE1AsSl1d7/lifecycle/activate","method":"POST"},"self":{"href":"https://testorg.com/api/v1/users/00u8zn2tz7xE1AsSl1d7"},"resetFactors":{"href":"https://testorg.com/api/v1/users/00u8zn2tz7xE1AsSl1d7/lifecycle/reset_factors","method":"POST"},"type":{"href":"https://testorg.com/api/v1/meta/types/user/oty1fddpcr6cnPEPG1d7"},"delete":{"href":"https://testorg.com/api/v1/users/00u8zn2tz7xE1AsSl1d7","method":"DELETE"}}}' | ConvertFrom-Json
+            
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+
+            $TestResult = Get-OktaUser -UserId "foo"
+            
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
             #$TestResult = Invoke-OktaListUsers -Q "TEST_VALUE" -After "TEST_VALUE" -Limit "TEST_VALUE" -Filter "TEST_VALUE" -Search "TEST_VALUE" -SortBy "TEST_VALUE" -SortOrder "TEST_VALUE"
             #$TestResult | Should -BeOfType TODO
             #$TestResult.property | Should -Be 0
