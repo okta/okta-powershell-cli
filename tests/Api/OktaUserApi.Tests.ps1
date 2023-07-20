@@ -152,26 +152,58 @@ Describe -tag 'Okta.PowerShell' -name 'OktaUserApi' {
         }
     }
 
-   
-    Context 'Invoke-OktaListUserGroups' {
-        It 'Test Invoke-OktaListUserGroups' {
-            #$TestResult = Invoke-OktaListUserGroups -UserId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaListUserIdentityProviders' {
-        It 'Test Invoke-OktaListUserIdentityProviders' {
-            #$TestResult = Invoke-OktaListUserIdentityProviders -UserId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
     Context 'Invoke-OktaListUsers' {
         It 'Test Invoke-OktaListUsers' {
             
+            $Content = '[{"id":"00u8zn2tz7xE1AsSl1d7","status":"DEPROVISIONED","created":"2023-07-19T19:27:41.000Z","activated":"2023-07-19T19:27:42.000Z","statusChanged":"2023-07-19T19:27:43.000Z","lastLogin":null,"lastUpdated":"2023-07-19T19:27:43.000Z","passwordChanged":"2023-07-19T19:27:42.000Z","type":{"id":"oty1fddpcr6cnPEPG1d7"},"profile":{"firstName":"John","lastName":"Doe","mobilePhone":null,"nickName":"johny-ActivateUser-407005a6-09cd-4c8a-bf52-e145d44f320a","secondEmail":null,"login":"john.doe@mail.com","email":"john.doe@mail.com"},"credentials":{"provider":{"type":"OKTA","name":"OKTA"}},"_links":{"schema":{"href":"https://testorg.com/api/v1/meta/schemas/user/osc1fddpcr6cnPEPG1d7"},"activate":{"href":"https://testorg.com/api/v1/users/00u8zn2tz7xE1AsSl1d7/lifecycle/activate","method":"POST"},"self":{"href":"https://testorg.com/api/v1/users/00u8zn2tz7xE1AsSl1d7"},"resetFactors":{"href":"https://testorg.com/api/v1/users/00u8zn2tz7xE1AsSl1d7/lifecycle/reset_factors","method":"POST"},"type":{"href":"https://testorg.com/api/v1/meta/types/user/oty1fddpcr6cnPEPG1d7"},"delete":{"href":"https://testorg.com/api/v1/users/00u8zn2tz7xE1AsSl1d7","method":"DELETE"}}}]' | ConvertFrom-Json
+            
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+
+            $TestResult = Invoke-OktaListUsers 
+            
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+
+            $TestResult.Count | Should -Be 1
+            $TestResult[0].Id | Should -Be "00u8zn2tz7xE1AsSl1d7"
+            $TestResult[0].Status | Should -Be 'DEPROVISIONED'        
+            $TestResult[0].Profile.FirstName | Should -Be 'John'
+            $TestResult[0].Profile.LastName | Should -Be 'Doe'
+            $TestResult[0].Profile.Login | Should -Be 'john.doe@mail.com'
+            $TestResult[0].Profile.Email | Should -Be 'john.doe@mail.com'
+            $TestResult[0]._Links | Should -Not -BeNullOrEmpty
+        }
+
+        It 'Test Invoke-OktaListUsers link headers' {
+
+            $Content = '[{"id":"00u8zn2tz7xE1AsSl1d7","status":"DEPROVISIONED","created":"2023-07-19T19:27:41.000Z","activated":"2023-07-19T19:27:42.000Z","statusChanged":"2023-07-19T19:27:43.000Z","lastLogin":null,"lastUpdated":"2023-07-19T19:27:43.000Z","passwordChanged":"2023-07-19T19:27:42.000Z","type":{"id":"oty1fddpcr6cnPEPG1d7"},"profile":{"firstName":"John","lastName":"Doe","mobilePhone":null,"nickName":"johny-ActivateUser-407005a6-09cd-4c8a-bf52-e145d44f320a","secondEmail":null,"login":"john.doe@mail.com","email":"john.doe@mail.com"},"credentials":{"provider":{"type":"OKTA","name":"OKTA"}},"_links":{"schema":{"href":"https://testorg.com/api/v1/meta/schemas/user/osc1fddpcr6cnPEPG1d7"},"activate":{"href":"https://testorg.com/api/v1/users/00u8zn2tz7xE1AsSl1d7/lifecycle/activate","method":"POST"},"self":{"href":"https://testorg.com/api/v1/users/00u8zn2tz7xE1AsSl1d7"},"resetFactors":{"href":"https://testorg.com/api/v1/users/00u8zn2tz7xE1AsSl1d7/lifecycle/reset_factors","method":"POST"},"type":{"href":"https://testorg.com/api/v1/meta/types/user/oty1fddpcr6cnPEPG1d7"},"delete":{"href":"https://testorg.com/api/v1/users/00u8zn2tz7xE1AsSl1d7","method":"DELETE"}}}]' | ConvertFrom-Json
+            
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json"); "link" = @('<https://testorg.com/api/v1/apps?after=0oa1fddpfxzYoj4ij1d7&limit=1>; rel="next"', '<https://testorg.com/api/v1/apps?after=0oa1fddpc73mCAqnT1d7&limit=1>; rel="self"')}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+
+            $TestResult = Invoke-OktaListUsers -Limit 1 -WithHttpInfo
+            
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+            
+            $TestResult.Response.Count | Should -Be 1
+            $TestResult.Headers['link'].Count | Should -Be 2
+            $TestResult.Headers['link'][0] | Should -Be '<https://testorg.com/api/v1/apps?after=0oa1fddpfxzYoj4ij1d7&limit=1>; rel="next"'
+            $TestResult.Headers['link'][1] | Should -Be '<https://testorg.com/api/v1/apps?after=0oa1fddpc73mCAqnT1d7&limit=1>; rel="self"'
+        }
+    }
+
+    Context 'Invoke-OktaPartialUpdateUser' {
+        It 'Test Invoke-OktaPartialUpdateUser' {
             $Content = '{"id":"00u8zn2tz7xE1AsSl1d7","status":"DEPROVISIONED","created":"2023-07-19T19:27:41.000Z","activated":"2023-07-19T19:27:42.000Z","statusChanged":"2023-07-19T19:27:43.000Z","lastLogin":null,"lastUpdated":"2023-07-19T19:27:43.000Z","passwordChanged":"2023-07-19T19:27:42.000Z","type":{"id":"oty1fddpcr6cnPEPG1d7"},"profile":{"firstName":"John","lastName":"Doe","mobilePhone":null,"nickName":"johny-ActivateUser-407005a6-09cd-4c8a-bf52-e145d44f320a","secondEmail":null,"login":"john.doe@mail.com","email":"john.doe@mail.com"},"credentials":{"provider":{"type":"OKTA","name":"OKTA"}},"_links":{"schema":{"href":"https://testorg.com/api/v1/meta/schemas/user/osc1fddpcr6cnPEPG1d7"},"activate":{"href":"https://testorg.com/api/v1/users/00u8zn2tz7xE1AsSl1d7/lifecycle/activate","method":"POST"},"self":{"href":"https://testorg.com/api/v1/users/00u8zn2tz7xE1AsSl1d7"},"resetFactors":{"href":"https://testorg.com/api/v1/users/00u8zn2tz7xE1AsSl1d7/lifecycle/reset_factors","method":"POST"},"type":{"href":"https://testorg.com/api/v1/meta/types/user/oty1fddpcr6cnPEPG1d7"},"delete":{"href":"https://testorg.com/api/v1/users/00u8zn2tz7xE1AsSl1d7","method":"DELETE"}}}' | ConvertFrom-Json
             
             $Response = @{
@@ -182,133 +214,51 @@ Describe -tag 'Okta.PowerShell' -name 'OktaUserApi' {
 
             Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
 
-            $TestResult = Get-OktaUser -UserId "foo"
+            $TestResult = Invoke-OktaPartialUpdateUser -UserId "foo" -User @{}
             
             Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
-            #$TestResult = Invoke-OktaListUsers -Q "TEST_VALUE" -After "TEST_VALUE" -Limit "TEST_VALUE" -Filter "TEST_VALUE" -Search "TEST_VALUE" -SortBy "TEST_VALUE" -SortOrder "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
 
-    Context 'Invoke-OktaPartialUpdateUser' {
-        It 'Test Invoke-OktaPartialUpdateUser' {
-            #$TestResult = Invoke-OktaPartialUpdateUser -UserId "TEST_VALUE" -User "TEST_VALUE" -Strict "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+            $TestResult.Id | Should -Be "00u8zn2tz7xE1AsSl1d7"
+            $TestResult.Status | Should -Be 'DEPROVISIONED'        
+            $TestResult.Profile.FirstName | Should -Be 'John'
+            $TestResult.Profile.LastName | Should -Be 'Doe'
+            $TestResult.Profile.Login | Should -Be 'john.doe@mail.com'
+            $TestResult.Profile.Email | Should -Be 'john.doe@mail.com'
+            $TestResult._Links | Should -Not -BeNullOrEmpty
         }
-    }
-
-    Context 'Invoke-OktaReactivateUser' {
-        It 'Test Invoke-OktaReactivateUser' {
-            #$TestResult = Invoke-OktaReactivateUser -UserId "TEST_VALUE" -SendEmail "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Remove-OktaLinkedObjectForUser' {
-        It 'Test Remove-OktaLinkedObjectForUser' {
-            #$TestResult = Remove-OktaLinkedObjectForUser -UserId "TEST_VALUE" -RelationshipName "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Reset-OktaFactors' {
-        It 'Test Reset-OktaFactors' {
-            #$TestResult = Reset-OktaFactors -UserId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Reset-OktaPassword' {
-        It 'Test Reset-OktaPassword' {
-            #$TestResult = Reset-OktaPassword -UserId "TEST_VALUE" -SendEmail "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Revoke-OktaGrantsForUserAndClient' {
-        It 'Test Revoke-OktaGrantsForUserAndClient' {
-            #$TestResult = Revoke-OktaGrantsForUserAndClient -UserId "TEST_VALUE" -ClientId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Revoke-OktaTokenForUserAndClient' {
-        It 'Test Revoke-OktaTokenForUserAndClient' {
-            #$TestResult = Revoke-OktaTokenForUserAndClient -UserId "TEST_VALUE" -ClientId "TEST_VALUE" -TokenId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Revoke-OktaTokensForUserAndClient' {
-        It 'Test Revoke-OktaTokensForUserAndClient' {
-            #$TestResult = Revoke-OktaTokensForUserAndClient -UserId "TEST_VALUE" -ClientId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Revoke-OktaUserGrant' {
-        It 'Test Revoke-OktaUserGrant' {
-            #$TestResult = Revoke-OktaUserGrant -UserId "TEST_VALUE" -GrantId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Revoke-OktaUserGrants' {
-        It 'Test Revoke-OktaUserGrants' {
-            #$TestResult = Revoke-OktaUserGrants -UserId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Set-OktaLinkedObjectForUser' {
-        It 'Test Set-OktaLinkedObjectForUser' {
-            #$TestResult = Set-OktaLinkedObjectForUser -AssociatedUserId "TEST_VALUE" -PrimaryRelationshipName "TEST_VALUE" -PrimaryUserId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Suspend-OktaUser' {
-        It 'Test Suspend-OktaUser' {
-            #$TestResult = Suspend-OktaUser -UserId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Unlock-OktaUser' {
-        It 'Test Unlock-OktaUser' {
-            #$TestResult = Unlock-OktaUser -UserId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaUnsuspendUser' {
-        It 'Test Invoke-OktaUnsuspendUser' {
-            #$TestResult = Invoke-OktaUnsuspendUser -UserId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+        It 'Test Invoke-OktaPartialUpdateUser fails when user is null' {
+      
+            { Invoke-OktaPartialUpdateUser -UserId "foo" } | Should -Throw -ExpectedMessage 'Error! The required parameter `User` missing when calling partialUpdateUser.'     
         }
     }
 
     Context 'Update-OktaUser' {
         It 'Test Update-OktaUser' {
-            #$TestResult = Update-OktaUser -UserId "TEST_VALUE" -User "TEST_VALUE" -Strict "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+            $Content = '{"id":"00u8zn2tz7xE1AsSl1d7","status":"DEPROVISIONED","created":"2023-07-19T19:27:41.000Z","activated":"2023-07-19T19:27:42.000Z","statusChanged":"2023-07-19T19:27:43.000Z","lastLogin":null,"lastUpdated":"2023-07-19T19:27:43.000Z","passwordChanged":"2023-07-19T19:27:42.000Z","type":{"id":"oty1fddpcr6cnPEPG1d7"},"profile":{"firstName":"John","lastName":"Doe","mobilePhone":null,"nickName":"johny-ActivateUser-407005a6-09cd-4c8a-bf52-e145d44f320a","secondEmail":null,"login":"john.doe@mail.com","email":"john.doe@mail.com"},"credentials":{"provider":{"type":"OKTA","name":"OKTA"}},"_links":{"schema":{"href":"https://testorg.com/api/v1/meta/schemas/user/osc1fddpcr6cnPEPG1d7"},"activate":{"href":"https://testorg.com/api/v1/users/00u8zn2tz7xE1AsSl1d7/lifecycle/activate","method":"POST"},"self":{"href":"https://testorg.com/api/v1/users/00u8zn2tz7xE1AsSl1d7"},"resetFactors":{"href":"https://testorg.com/api/v1/users/00u8zn2tz7xE1AsSl1d7/lifecycle/reset_factors","method":"POST"},"type":{"href":"https://testorg.com/api/v1/meta/types/user/oty1fddpcr6cnPEPG1d7"},"delete":{"href":"https://testorg.com/api/v1/users/00u8zn2tz7xE1AsSl1d7","method":"DELETE"}}}' | ConvertFrom-Json
+            
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+
+            $TestResult = Update-OktaUser -UserId "foo" -User @{}
+            
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+
+            $TestResult.Id | Should -Be "00u8zn2tz7xE1AsSl1d7"
+            $TestResult.Status | Should -Be 'DEPROVISIONED'        
+            $TestResult.Profile.FirstName | Should -Be 'John'
+            $TestResult.Profile.LastName | Should -Be 'Doe'
+            $TestResult.Profile.Login | Should -Be 'john.doe@mail.com'
+            $TestResult.Profile.Email | Should -Be 'john.doe@mail.com'
+            $TestResult._Links | Should -Not -BeNullOrEmpty
+        }
+        It 'Test Update-OktaUser fails when user is null' {
+      
+            { Update-OktaUser -UserId "foo" } | Should -Throw -ExpectedMessage 'Error! The required parameter `User` missing when calling UpdateUser.'     
         }
     }
-
 }
