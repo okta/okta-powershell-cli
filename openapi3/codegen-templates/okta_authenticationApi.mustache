@@ -1,0 +1,164 @@
+{{> partial_header}}
+
+<#
+.SYNOPSIS
+
+Establishes the access token via the device code flow
+
+#>
+
+function Invoke-OktaEstablishAccessToken {
+    Process {
+        'Calling method: Update-GroupRule' | Write-Debug
+        $PSBoundParameters | Out-DebugParameter | Write-Debug
+
+        $LocalVarAccepts = @()
+        $LocalVarContentTypes = @()
+        $LocalVarQueryParameters = @{}
+        $LocalVarHeaderParameters = @{}
+        $LocalVarFormParameters = @{}
+        $LocalVarPathParameters = @{}
+        $LocalVarCookieParameters = @{}
+        $LocalVarBodyParameter = $null
+
+        $Configuration = Get-{{{apiNamePrefix}}}Configuration
+        # HTTP header 'Accept' (if needed)
+        $LocalVarAccepts = @('application/json')
+
+        # HTTP header 'Content-Type'
+        $LocalVarContentTypes = @('application/x-www-form-urlencoded')
+
+        $LocalVarUri = '/oauth2/v1/device/authorize'
+      
+        $body = @{ 
+                    client_id = $Configuration.ClientId
+                    scope = 'openid ' + $Configuration.Scope
+                }
+
+        $LocalVarFormParameters = $body
+
+        $LocalVarResult = Invoke-{{{apiNamePrefix}}}ApiClient -Method 'POST' `
+                                -Uri $LocalVarUri `
+                                -Accepts $LocalVarAccepts `
+                                -ContentTypes $LocalVarContentTypes `
+                                -Body $LocalVarBodyParameter `
+                                -HeaderParameters $LocalVarHeaderParameters `
+                                -QueryParameters $LocalVarQueryParameters `
+                                -FormParameters $LocalVarFormParameters `
+                                -CookieParameters $LocalVarCookieParameters `
+                                -ReturnType "PSCustomObject" `
+                                -IsBodyNullable $false
+
+        if ($LocalVarResult.StatusCode -ne 200) {
+            Write-Error "Authorization failed"
+            
+            if ($WithHttpInfo.IsPresent) {
+                return $LocalVarResult
+            } else {
+                return $LocalVarResult["Response"]
+            }
+        }
+        
+        $DeviceUrl = $LocalVarResult.Response.verification_uri_complete 
+        $DeviceCode = $LocalVarResult.Response.device_code
+
+        Write-Host "Open your browser and navigate to the following URL to begin the Okta device authorization for the Powershell CLI: " $DeviceUrl
+        
+        $keepPolling = $true
+        $CountPolling = 1
+        $TokenVarResult = $null
+        #define timeout
+        while ($keepPolling) {
+            try {
+                $TokenVarResult = Fetch-OktaAccessToken -DeviceCode $DeviceCode
+
+                if ($TokenVarResult.StatusCode -eq 200) {
+                    $keepPolling = $false
+                }
+            }
+            catch {
+                $CountPolling++
+                $DebugMessage = "Polling count: " + $CountPolling
+                Write-Debug $DebugMessage
+            }
+        }
+
+        if ($null -ne $TokenVarResult) {
+            $Configuration.AccessToken = $TokenVarResult.Response.access_token
+        }
+
+        Write-Host "Your token has been successfully retrieved and set to your configuration"        
+    }
+}
+
+<#
+.SYNOPSIS
+
+Fetches an access token via the device code flow
+
+.PARAMETER DeviceCode
+
+Code obtained via the device flow
+
+
+#>
+
+function Fetch-OktaAccessToken {
+    [CmdletBinding()]
+    Param (
+        [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
+        [String]
+        ${DeviceCode}
+    )
+
+    Process {
+        'Calling method: Fetch-OktaAccessToken' | Write-Debug
+        $PSBoundParameters | Out-DebugParameter | Write-Debug
+
+        $LocalVarAccepts = @()
+        $LocalVarContentTypes = @()
+        $LocalVarQueryParameters = @{}
+        $LocalVarHeaderParameters = @{}
+        $LocalVarFormParameters = @{}
+        $LocalVarPathParameters = @{}
+        $LocalVarCookieParameters = @{}
+        $LocalVarBodyParameter = $null
+
+        $Configuration = Get-{{{apiNamePrefix}}}Configuration
+        # HTTP header 'Accept' (if needed)
+        $LocalVarAccepts = @('application/json')
+
+        # HTTP header 'Content-Type'
+        $LocalVarContentTypes = @('application/x-www-form-urlencoded')
+
+        $LocalVarUri = '/oauth2/v1/token'
+      
+        $body = @{ 
+                    client_id = $Configuration.ClientId
+                    device_code = $DeviceCode
+                    grant_type = 'urn:ietf:params:oauth:grant-type:device_code'
+                }
+
+        $LocalVarFormParameters = $body
+
+        $LocalVarResult = Invoke-{{{apiNamePrefix}}}ApiClient -Method 'POST' `
+                                -Uri $LocalVarUri `
+                                -Accepts $LocalVarAccepts `
+                                -ContentTypes $LocalVarContentTypes `
+                                -Body $LocalVarBodyParameter `
+                                -HeaderParameters $LocalVarHeaderParameters `
+                                -QueryParameters $LocalVarQueryParameters `
+                                -FormParameters $LocalVarFormParameters `
+                                -CookieParameters $LocalVarCookieParameters `
+                                -ReturnType "PSCustomObject" `
+                                -IsBodyNullable $false
+
+        if ($LocalVarResult.StatusCode -ne 200) {
+            $DebugMessage = "Status Code " + $LocalVarResult.StatusCode + ". Continue polling." 
+            Write-Debug $DebugMessage
+        }
+        
+        return $LocalVarResult
+    }
+   
+}
