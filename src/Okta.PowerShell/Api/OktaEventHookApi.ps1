@@ -65,6 +65,11 @@ function Invoke-OktaActivateEventHook {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'POST' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -149,6 +154,11 @@ function New-OktaEventHook {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'POST' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -227,6 +237,11 @@ function Invoke-OktaDeactivateEventHook {
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
+
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
 
         $LocalVarResult = Invoke-OktaApiClient -Method 'POST' `
                                 -Uri $LocalVarUri `
@@ -307,6 +322,11 @@ function Invoke-OktaDeleteEventHook {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'DELETE' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -386,6 +406,11 @@ function Get-OktaEventHook {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'GET' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -454,6 +479,11 @@ function Invoke-OktaListEventHooks {
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
+
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
 
         $LocalVarResult = Invoke-OktaApiClient -Method 'GET' `
                                 -Uri $LocalVarUri `
@@ -549,6 +579,11 @@ function Update-OktaEventHook {
         }
 
 
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
         $LocalVarResult = Invoke-OktaApiClient -Method 'PUT' `
                                 -Uri $LocalVarUri `
                                 -Accepts $LocalVarAccepts `
@@ -627,6 +662,11 @@ function Test-OktaEventHook {
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
+
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
 
         $LocalVarResult = Invoke-OktaApiClient -Method 'POST' `
                                 -Uri $LocalVarUri `
