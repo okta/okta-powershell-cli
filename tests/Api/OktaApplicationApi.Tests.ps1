@@ -149,54 +149,6 @@ Describe -tag 'Okta.PowerShell' -name 'OktaOktaApplicationApi' {
         }
     }
 
-    Context 'Invoke-OktaDeactivateApplication' {
-        It 'Test Invoke-OktaDeactivateApplication' {
-            #$TestResult = Invoke-OktaDeactivateApplication -AppId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaDeactivateDefaultProvisioningConnectionForApplication' {
-        It 'Test Invoke-OktaDeactivateDefaultProvisioningConnectionForApplication' {
-            #$TestResult = Invoke-OktaDeactivateDefaultProvisioningConnectionForApplication -AppId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaDeleteApplication' {
-        It 'Test Invoke-OktaDeleteApplication' {
-            #$TestResult = Invoke-OktaDeleteApplication -AppId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaDeleteApplicationGroupAssignment' {
-        It 'Test Invoke-OktaDeleteApplicationGroupAssignment' {
-            #$TestResult = Invoke-OktaDeleteApplicationGroupAssignment -AppId "TEST_VALUE" -GroupId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaDeleteApplicationUser' {
-        It 'Test Invoke-OktaDeleteApplicationUser' {
-            #$TestResult = Invoke-OktaDeleteApplicationUser -AppId "TEST_VALUE" -UserId "TEST_VALUE" -SendEmail "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'New-OktaApplicationKey' {
-        It 'Test New-OktaApplicationKey' {
-            #$TestResult = New-OktaApplicationKey -AppId "TEST_VALUE" -ValidityYears "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
     Context 'New-OktaCsrForApplication' {
         It 'Test New-OktaCsrForApplication' {
             #$TestResult = New-OktaCsrForApplication -AppId "TEST_VALUE" -Metadata "TEST_VALUE"
@@ -212,31 +164,6 @@ Describe -tag 'Okta.PowerShell' -name 'OktaOktaApplicationApi' {
             #$TestResult.property | Should -Be 0
         }
     }
-
-    Context 'Get-OktaApplicationGroupAssignment' {
-        It 'Test Get-OktaApplicationGroupAssignment' {
-            #$TestResult = Get-OktaApplicationGroupAssignment -AppId "TEST_VALUE" -GroupId "TEST_VALUE" -Expand "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Get-OktaApplicationKey' {
-        It 'Test Get-OktaApplicationKey' {
-            #$TestResult = Get-OktaApplicationKey -AppId "TEST_VALUE" -KeyId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Get-OktaApplicationUser' {
-        It 'Test Get-OktaApplicationUser' {
-            #$TestResult = Get-OktaApplicationUser -AppId "TEST_VALUE" -UserId "TEST_VALUE" -Expand "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
     Context 'Get-OktaCsrForApplication' {
         It 'Test Get-OktaCsrForApplication' {
             #$TestResult = Get-OktaCsrForApplication -AppId "TEST_VALUE" -CsrId "TEST_VALUE"
@@ -252,63 +179,6 @@ Describe -tag 'Okta.PowerShell' -name 'OktaOktaApplicationApi' {
             #$TestResult.property | Should -Be 0
         }
     }
-
-    Context 'Get-OktaFeatureForApplication' {
-        It 'Test Get-OktaFeatureForApplication' {
-            #$TestResult = Get-OktaFeatureForApplication -AppId "TEST_VALUE" -Name "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Get-OktaOAuth2TokenForApplication' {
-        It 'Test Get-OktaOAuth2TokenForApplication' {
-            #$TestResult = Get-OktaOAuth2TokenForApplication -AppId "TEST_VALUE" -TokenId "TEST_VALUE" -Expand "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Get-OktaScopeConsentGrant' {
-        It 'Test Get-OktaScopeConsentGrant' {
-            #$TestResult = Get-OktaScopeConsentGrant -AppId "TEST_VALUE" -GrantId "TEST_VALUE" -Expand "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Grant-OktaConsentToScope' {
-        It 'Test Grant-OktaConsentToScope' {
-            #$TestResult = Grant-OktaConsentToScope -AppId "TEST_VALUE" -OAuth2ScopeConsentGrant "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaListApplicationGroupAssignments' {
-        It 'Test Invoke-OktaListApplicationGroupAssignments' {
-            #$TestResult = Invoke-OktaListApplicationGroupAssignments -AppId "TEST_VALUE" -Q "TEST_VALUE" -After "TEST_VALUE" -Limit "TEST_VALUE" -Expand "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaListApplicationKeys' {
-        It 'Test Invoke-OktaListApplicationKeys' {
-            #$TestResult = Invoke-OktaListApplicationKeys -AppId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaListApplicationUsers' {
-        It 'Test Invoke-OktaListApplicationUsers' {
-            #$TestResult = Invoke-OktaListApplicationUsers -AppId "TEST_VALUE" -Q "TEST_VALUE" -QueryScope "TEST_VALUE" -After "TEST_VALUE" -Limit "TEST_VALUE" -Filter "TEST_VALUE" -Expand "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
     Context 'Invoke-OktaListApplications' {
         It 'Test Invoke-OktaListApplications' {
             #$TestResult = Invoke-OktaListApplications -Q "TEST_VALUE" -After "TEST_VALUE" -Limit "TEST_VALUE" -Filter "TEST_VALUE" -Expand "TEST_VALUE" -IncludeNonDeleted "TEST_VALUE"
@@ -325,78 +195,6 @@ Describe -tag 'Okta.PowerShell' -name 'OktaOktaApplicationApi' {
         }
     }
 
-    Context 'Invoke-OktaListFeaturesForApplication' {
-        It 'Test Invoke-OktaListFeaturesForApplication' {
-            #$TestResult = Invoke-OktaListFeaturesForApplication -AppId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaListOAuth2TokensForApplication' {
-        It 'Test Invoke-OktaListOAuth2TokensForApplication' {
-            #$TestResult = Invoke-OktaListOAuth2TokensForApplication -AppId "TEST_VALUE" -Expand "TEST_VALUE" -After "TEST_VALUE" -Limit "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaListScopeConsentGrants' {
-        It 'Test Invoke-OktaListScopeConsentGrants' {
-            #$TestResult = Invoke-OktaListScopeConsentGrants -AppId "TEST_VALUE" -Expand "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Publish-OktaCsrFromApplication' {
-        It 'Test Publish-OktaCsrFromApplication' {
-            #$TestResult = Publish-OktaCsrFromApplication -AppId "TEST_VALUE" -CsrId "TEST_VALUE" -Body "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Revoke-OktaCsrFromApplication' {
-        It 'Test Revoke-OktaCsrFromApplication' {
-            #$TestResult = Revoke-OktaCsrFromApplication -AppId "TEST_VALUE" -CsrId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Revoke-OktaOAuth2TokenForApplication' {
-        It 'Test Revoke-OktaOAuth2TokenForApplication' {
-            #$TestResult = Revoke-OktaOAuth2TokenForApplication -AppId "TEST_VALUE" -TokenId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Revoke-OktaOAuth2TokensForApplication' {
-        It 'Test Revoke-OktaOAuth2TokensForApplication' {
-            #$TestResult = Revoke-OktaOAuth2TokensForApplication -AppId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Revoke-OktaScopeConsentGrant' {
-        It 'Test Revoke-OktaScopeConsentGrant' {
-            #$TestResult = Revoke-OktaScopeConsentGrant -AppId "TEST_VALUE" -GrantId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Set-OktaDefaultProvisioningConnectionForApplication' {
-        It 'Test Set-OktaDefaultProvisioningConnectionForApplication' {
-            #$TestResult = Set-OktaDefaultProvisioningConnectionForApplication -AppId "TEST_VALUE" -ProvisioningConnectionRequest "TEST_VALUE" -Activate "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
     Context 'Update-OktaApplication' {
         It 'Test Update-OktaApplication' {
             #$TestResult = Update-OktaApplication -AppId "TEST_VALUE" -Application "TEST_VALUE"
@@ -404,29 +202,4 @@ Describe -tag 'Okta.PowerShell' -name 'OktaOktaApplicationApi' {
             #$TestResult.property | Should -Be 0
         }
     }
-
-    Context 'Update-OktaApplicationUser' {
-        It 'Test Update-OktaApplicationUser' {
-            #$TestResult = Update-OktaApplicationUser -AppId "TEST_VALUE" -UserId "TEST_VALUE" -AppUser "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Update-OktaFeatureForApplication' {
-        It 'Test Update-OktaFeatureForApplication' {
-            #$TestResult = Update-OktaFeatureForApplication -AppId "TEST_VALUE" -Name "TEST_VALUE" -CapabilitiesObject "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaUploadApplicationLogo' {
-        It 'Test Invoke-OktaUploadApplicationLogo' {
-            #$TestResult = Invoke-OktaUploadApplicationLogo -AppId "TEST_VALUE" -File "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
 }
