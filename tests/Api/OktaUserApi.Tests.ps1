@@ -90,6 +90,14 @@ Describe -tag 'Okta.PowerShell' -name 'OktaUserApi' {
         }
 
         It 'Test New-User propagates failures from inner modules' {
+
+            $UserProfile = [PSCustomObject]@{
+                firstName = 'John'
+                lastName = 'Doe'
+                login = 'john.doe@mail.com'
+                email = 'john.doe@mail.com'
+            }
+            
             Mock -ModuleName Okta.PowerShell Invoke-WebRequest {  throw 'Error Test'} -Verifiable 
             
             $CreateUserRequest = Initialize-OktaCreateUserRequest -VarProfile $UserProfile -GroupIds 'foo'
