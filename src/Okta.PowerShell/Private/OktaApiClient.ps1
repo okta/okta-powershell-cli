@@ -131,7 +131,7 @@ function Invoke-OktaApiClient {
         }
     }
 
-    $OktaUserAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome + " Okta.PowerShell/0.1.0-beta01"
+    $OktaUserAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome + " Okta.PowerShell/0.1.0"
 
     if ($SkipCertificateCheck -eq $true) {
         if ($null -eq $Configuration["Proxy"]) {

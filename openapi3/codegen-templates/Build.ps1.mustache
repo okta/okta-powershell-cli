@@ -63,6 +63,9 @@ $Manifest = @{
     ReleaseNotes = '{{{.}}}'
     {{/releaseNotes}}
 
+    
+    ModuleVersion = '{{{packageVersion}}}'
+    
     {{#psData}}
     PrivateData = @{
         PSData = @{
@@ -71,7 +74,6 @@ $Manifest = @{
     }
 
     {{/psData}}
-    ModuleVersion = '{{{packageVersion}}}'
 
     RootModule = '{{{packageName}}}.psm1'
     Guid = '{{packageGuid}}' # Has to be static, otherwise each new build will be considered different module
@@ -86,4 +88,4 @@ $Manifest = @{
 
 }
 
-New-ModuleManifest @Manifest
+New-ModuleManifest @Manifest -Prerelease "beta"
