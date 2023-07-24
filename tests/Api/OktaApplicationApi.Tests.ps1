@@ -7,340 +7,271 @@
 #
 
 Describe -tag 'Okta.PowerShell' -name 'OktaOktaApplicationApi' {
-    Context 'Invoke-OktaActivateApplication' {
-        It 'Test Invoke-OktaActivateApplication' {
-            #$TestResult = Invoke-OktaActivateApplication -AppId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaActivateDefaultProvisioningConnectionForApplication' {
-        It 'Test Invoke-OktaActivateDefaultProvisioningConnectionForApplication' {
-            #$TestResult = Invoke-OktaActivateDefaultProvisioningConnectionForApplication -AppId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Set-OktaApplicationPolicy' {
-        It 'Test Set-OktaApplicationPolicy' {
-            #$TestResult = Set-OktaApplicationPolicy -AppId "TEST_VALUE" -PolicyId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Set-OktaUserToApplication' {
-        It 'Test Set-OktaUserToApplication' {
-            #$TestResult = Set-OktaUserToApplication -AppId "TEST_VALUE" -AppUser "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Copy-OktaApplicationKey' {
-        It 'Test Copy-OktaApplicationKey' {
-            #$TestResult = Copy-OktaApplicationKey -AppId "TEST_VALUE" -KeyId "TEST_VALUE" -TargetAid "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
     Context 'New-OktaApplication' {
-        It 'Test New-OktaApplication' {
-            #$TestResult = New-OktaApplication -Application "TEST_VALUE" -Activate "TEST_VALUE" -OktaAccessGatewayAgent "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
+        It 'Initialize-OktaBasicAuthApplication' {
+            # a simple test to create an object
+            $Settings = Initialize-OktaBasicApplicationSettings -App @{ Url = "https://example.com/login.html"; AuthURL = "https://example.com/auth.html" }
 
-    Context 'New-OktaApplicationGroupAssignment' {
-        It 'Test New-OktaApplicationGroupAssignment' {
-            #$TestResult = New-OktaApplicationGroupAssignment -AppId "TEST_VALUE" -GroupId "TEST_VALUE" -ApplicationGroupAssignment "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
+            $Settings.App.Url | Should -Be "https://example.com/login.html"
+            $Settings.App.AuthURL | Should -Be "https://example.com/auth.html"
 
-    Context 'Invoke-OktaDeactivateApplication' {
-        It 'Test Invoke-OktaDeactivateApplication' {
-            #$TestResult = Invoke-OktaDeactivateApplication -AppId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+            $NewObject = Initialize-OktaBasicAuthApplication -Label "New App" -SignOnMode "BASIC_AUTH" -Settings $Settings
+            $NewObject.Label | Should -Be "New App"
+            $NewObject.Name | Should -Be "template_basic_auth"
+            $NewObject.SignOnMode | Should -Be "BASIC_AUTH"
+            $NewObject.Settings.App.Url | Should -Be "https://example.com/login.html"
+            $NewObject.Settings.App.AuthURL | Should -Be "https://example.com/auth.html"
         }
-    }
+        
+        It 'Test New-OktaApplication BasicAuthApplication' {
 
-    Context 'Invoke-OktaDeactivateDefaultProvisioningConnectionForApplication' {
-        It 'Test Invoke-OktaDeactivateDefaultProvisioningConnectionForApplication' {
-            #$TestResult = Invoke-OktaDeactivateDefaultProvisioningConnectionForApplication -AppId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+            $Content = '{"id":"0oa90v3f09cUtZfI11d7","name":"template_basic_auth","label":"New App","status":"ACTIVE","lastUpdated":"2023-07-20T19:38:13.000Z","created":"2023-07-20T19:38:12.000Z","accessibility":{"selfService":false,"errorRedirectUrl":null,"loginRedirectUrl":null},"visibility":{"autoLaunch":false,"autoSubmitToolbar":false,"hide":{"iOS":false,"web":false},"appLinks":{"login":true}},"features":[],"signOnMode":"BASIC_AUTH","credentials":{"scheme":"EDIT_USERNAME_AND_PASSWORD","userNameTemplate":{"template":"${source.login}","type":"BUILT_IN"},"revealPassword":false,"signing":{}},"settings":{"app":{"loginUrlRegex":null,"authURL":"https://example.com/auth.html","url":"https://example.com/login.html"},"notifications":{"vpn":{"network":{"connection":"DISABLED"},"message":null,"helpUrl":null}},"manualProvisioning":false,"implicitAssignment":false,"notes":{"admin":null,"enduser":null}},"_links":{"uploadLogo":{"href":"https://testorg.com/api/v1/apps/0oa90v3f09cUtZfI11d7/logo","hints":{"allow":["POST"]}},"appLinks":[{"name":"login","href":"https://testorg.com/home/template_basic_auth/0oa90v3f09cUtZfI11d7/2873","type":"text/html"}],"profileEnrollment":{"href":"https://testorg.com/api/v1/policies/rst1fddpitF6oUuZA1d7"},"policies":{"href":"https://testorg.com/api/v1/apps/0oa90v3f09cUtZfI11d7/policies","hints":{"allow":["PUT"]}},"groups":{"href":"https://testorg.com/api/v1/apps/0oa90v3f09cUtZfI11d7/groups"},"logo":[{"name":"medium","href":"https://op3static.oktacdn.com/assets/img/logos/default.6770228fb0dab49a1695ef440a5279bb.png","type":"image/png"}],"accessPolicy":{"href":"https://testorg.com/api/v1/policies/rst1fddpir2HgIar61d7"},"users":{"href":"https://testorg.com/api/v1/apps/0oa90v3f09cUtZfI11d7/users"},"deactivate":{"href":"https://testorg.com/api/v1/apps/0oa90v3f09cUtZfI11d7/lifecycle/deactivate"}}}' | ConvertFrom-Json
+
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+
+            $Settings = Initialize-OktaBasicApplicationSettings -App @{ Url = "https://example.com/login.html"; AuthURL = "https://example.com/auth.html" }
+            $NewObject = Initialize-OktaBasicAuthApplication -Label "New App" -SignOnMode "BASIC_AUTH" -Settings $Settings
+            
+            $TestResult = New-OktaApplication -Application $NewObject 
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+
+            $TestResult.Id | Should -Be 0oa90v3f09cUtZfI11d7
+            $TestResult.Label | Should -Be "New App"
+            $TestResult.Name | Should -Be "template_basic_auth"
+            $TestResult.SignOnMode | Should -Be "BASIC_AUTH"
+            $TestResult.Settings.App.Url | Should -Be "https://example.com/login.html"
+            $TestResult.Settings.App.AuthURL | Should -Be "https://example.com/auth.html"
+            $TestResult.Status | Should -Be "ACTIVE"
         }
-    }
 
-    Context 'Invoke-OktaDeleteApplication' {
-        It 'Test Invoke-OktaDeleteApplication' {
-            #$TestResult = Invoke-OktaDeleteApplication -AppId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+        It 'Initialize-OktaBookmarkApplication' {
+            # a simple test to create an object
+            $Settings = Initialize-OktaBookmarkApplicationSettings -App @{ Url = "https://example.com/bookmark.htm"; RequestIntegration = $False }
+
+            $Settings.App.Url | Should -Be "https://example.com/bookmark.htm"
+            $Settings.App.RequestIntegration | Should -Be $False
+
+            $NewObject = Initialize-OktaBookmarkApplication -Label "New App" -SignOnMode "BOOKMARK" -Settings $Settings
+            $NewObject.Label | Should -Be "New App"
+            $NewObject.Name | Should -Be "bookmark"
+            $NewObject.SignOnMode | Should -Be "BOOKMARK"
+            $NewObject.Settings.App.Url | Should -Be "https://example.com/bookmark.htm"
+            $NewObject.Settings.App.RequestIntegration | Should -Be $False
         }
-    }
 
-    Context 'Invoke-OktaDeleteApplicationGroupAssignment' {
-        It 'Test Invoke-OktaDeleteApplicationGroupAssignment' {
-            #$TestResult = Invoke-OktaDeleteApplicationGroupAssignment -AppId "TEST_VALUE" -GroupId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+        It 'Test New-OktaApplication BookmarkApplication' {
+
+            $Content = '{"id":"0oa93ehgmd33pwOu51d7","name":"bookmark","label":"New App","status":"ACTIVE","lastUpdated":"2023-07-24T14:33:38.000Z","created":"2023-07-24T14:33:38.000Z","accessibility":{"selfService":false,"errorRedirectUrl":null,"loginRedirectUrl":null},"visibility":{"autoLaunch":false,"autoSubmitToolbar":false,"hide":{"iOS":false,"web":false},"appLinks":{"login":true}},"features":[],"signOnMode":"BOOKMARK","credentials":{"userNameTemplate":{"template":"${source.login}","type":"BUILT_IN"},"signing":{}},"settings":{"app":{"requestIntegration":false,"url":"https://example.com/bookmark.htm"},"notifications":{"vpn":{"network":{"connection":"DISABLED"},"message":null,"helpUrl":null}},"manualProvisioning":false,"implicitAssignment":false,"notes":{"admin":null,"enduser":null}},"_links":{"uploadLogo":{"href":"https://testorg.com/api/v1/apps/0oa93ehgmd33pwOu51d7/logo","hints":{"allow":["POST"]}},"appLinks":[{"name":"login","href":"https://testorg.com/home/bookmark/0oa93ehgmd33pwOu51d7/2557","type":"text/html"}],"profileEnrollment":{"href":"https://testorg.com/api/v1/policies/rst1fddpitF6oUuZA1d7"},"policies":{"href":"https://testorg.com/api/v1/apps/0oa93ehgmd33pwOu51d7/policies","hints":{"allow":["PUT"]}},"groups":{"href":"https://testorg.com/api/v1/apps/0oa93ehgmd33pwOu51d7/groups"},"logo":[{"name":"medium","href":"https://op3static.oktacdn.com/assets/img/logos/bookmark-app.b81c03e2607468e5b5f9c9351c99313e.png","type":"image/png"}],"accessPolicy":{"href":"https://testorg.com/api/v1/policies/rst1fddpir2HgIar61d7"},"users":{"href":"https://testorg.com/api/v1/apps/0oa93ehgmd33pwOu51d7/users"},"deactivate":{"href":"https://testorg.com/api/v1/apps/0oa93ehgmd33pwOu51d7/lifecycle/deactivate"}}}' | ConvertFrom-Json
+
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+
+            $Settings = Initialize-OktaBookmarkApplicationSettings -App @{ Url = "https://example.com/bookmark.htm"; RequestIntegration = $False }
+            $NewObject = Initialize-OktaBookmarkApplication -Label "New App" -SignOnMode "BOOKMARK" -Settings $Settings
+            
+            $TestResult = New-OktaApplication -Application $NewObject 
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+
+            $TestResult.Id | Should -Be '0oa93ehgmd33pwOu51d7'
+            $TestResult.Label | Should -Be "New App"
+            $TestResult.Name | Should -Be "bookmark"
+            $TestResult.SignOnMode | Should -Be "BOOKMARK"
+            $TestResult.Settings.App.Url | Should -Be "https://example.com/bookmark.htm"
+            $TestResult.Settings.App.RequestIntegration | Should -Be $False
+            $TestResult.Status | Should -Be "ACTIVE"
         }
-    }
 
-    Context 'Invoke-OktaDeleteApplicationUser' {
-        It 'Test Invoke-OktaDeleteApplicationUser' {
-            #$TestResult = Invoke-OktaDeleteApplicationUser -AppId "TEST_VALUE" -UserId "TEST_VALUE" -SendEmail "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+        It 'Test Initialize-OktaOpenIdConnectApplication' {
+           
+            $OAuthClient = [PSCustomObject]@{
+                Client_Uri = "https://example.com/client"
+                Logo_Uri = "https://example.com/assets/images/logo-new.png"
+                Response_Types = @("token", "id_token", "code")
+                Redirect_Uris = @("https://example.com/oauth2/callback", "myapp://callback")
+                Post_Logout_Redirect_Uris = @("https://example.com/postlogout", "myapp://postlogoutcallback")
+                Grant_Types = @("implicit", "authorization_code")
+                Application_Type = "native"
+                Tos_Uri = "https://example.com/client/tos"
+                Policy_Uri = "https://example.com/client/policy"
+            }
+            # a simple test to create an object
+            $Settings = Initialize-OktaOpenIdConnectApplicationSettings -OauthClient $OAuthClient
+
+            $Settings.OauthClient.Client_Uri | Should -Be "https://example.com/client"
+            $Settings.OauthClient.Logo_Uri | Should -Be "https://example.com/assets/images/logo-new.png"
+            $Settings.OauthClient.Redirect_Uris.Count | Should -Be 2
+            $Settings.OauthClient.Post_Logout_Redirect_Uris.Count | Should -Be 2
+            $Settings.OauthClient.Grant_Types.Count | Should -Be 2
+            $Settings.OauthClient.Application_Type | Should -Be "native"
+            $Settings.OauthClient.Tos_Uri | Should -Be "https://example.com/client/tos"
+            $Settings.OauthClient.Policy_Uri | Should -Be "https://example.com/client/policy"
+
+            $NewObject = Initialize-OktaOpenIdConnectApplication -Label "New App" -SignOnMode "OPENID_CONNECT" -Settings $Settings
+            $NewObject.Label | Should -Be "New App"
+            $NewObject.Name | Should -Be "oidc_client"
+            $NewObject.SignOnMode | Should -Be "OPENID_CONNECT"
+            
+            $NewObject.Settings.OauthClient.Client_Uri | Should -Be "https://example.com/client"
+            $NewObject.Settings.OauthClient.Logo_Uri | Should -Be "https://example.com/assets/images/logo-new.png"
+            $NewObject.Settings.OauthClient.Redirect_Uris.Count | Should -Be 2
+            $NewObject.Settings.OauthClient.Post_Logout_Redirect_Uris.Count | Should -Be 2
+            $NewObject.Settings.OauthClient.Grant_Types.Count | Should -Be 2
+            $NewObject.Settings.OauthClient.Application_Type | Should -Be "native"
+            $NewObject.Settings.oauthClient.Tos_Uri | Should -Be "https://example.com/client/tos"
+            $NewObject.Settings.oauthClient.Policy_Uri | Should -Be "https://example.com/client/policy"
         }
-    }
 
-    Context 'New-OktaApplicationKey' {
-        It 'Test New-OktaApplicationKey' {
-            #$TestResult = New-OktaApplicationKey -AppId "TEST_VALUE" -ValidityYears "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
+        It 'Test New-OktaApplication OpenIdConnectApplication' {
 
-    Context 'New-OktaCsrForApplication' {
-        It 'Test New-OktaCsrForApplication' {
-            #$TestResult = New-OktaCsrForApplication -AppId "TEST_VALUE" -Metadata "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+            $Content = '{"id":"0oa91jmjzqVR7DLGD1d7","name":"oidc_client","label":"New App","status":"ACTIVE","lastUpdated":"2023-07-21T16:35:08.000Z","created":"2023-07-21T16:35:07.000Z","accessibility":{"selfService":false,"errorRedirectUrl":null,"loginRedirectUrl":null},"visibility":{"autoLaunch":false,"autoSubmitToolbar":false,"hide":{"iOS":true,"web":true},"appLinks":{"oidc_client_link":true}},"features":[],"signOnMode":"OPENID_CONNECT","credentials":{"userNameTemplate":{"template":"${source.login}","type":"BUILT_IN"},"signing":{"kid":"syExwWcnwaVzJzFiCAF5noLRJsteW9BA9sdKyh7a_4c"},"oauthClient":{"autoKeyRotation":true,"client_id":"AddOpenIdConnectApp_TestClientId","client_secret":"7VgHPmL93yoz1dvYcG5_p6UwbNGj0g-u8D-WIKgmgceGzbBPAqkcfOByPFTTrfHo","token_endpoint_auth_method":"client_secret_post","pkce_required":true}},"settings":{"app":{},"notifications":{"vpn":{"network":{"connection":"DISABLED"},"message":null,"helpUrl":null}},"manualProvisioning":false,"implicitAssignment":false,"notes":{"admin":null,"enduser":null},"oauthClient":{"client_uri":"https://example.com/client","logo_uri":"https://example.com/assets/images/logo-new.png","redirect_uris":["https://example.com/oauth2/callback","myapp://callback"],"post_logout_redirect_uris":["https://example.com/postlogout","myapp://postlogoutcallback"],"response_types":["token","id_token","code"],"grant_types":["implicit","authorization_code"],"jwks":{"keys":[{"kty":"RSA","id":"pks91k82r1Ky0r0Y91d7","status":"ACTIVE","kid":"SIGNING_KEY","use":null,"e":"AQAB","n":"MIIBIzANBgkqhkiG9w0BAQEFAAOCARAAMIIBCwKCAQIAnFo/4e91na8x/BsPkNS5QkwankewxJ1uZU6p827W/gkRcNHtNi/cE644W5OVdB4UaXV6koT+TsC1prhUEhRR3g5ggE0B/lwYqBaLq/Ejy19Crc4XYU3Aah67Y6HiHWcHGZ+BbpebtTixJv/UYW/Gw+k8M+zj4O001mOeBPpwlEiZZLIo33m/Xkfn28jaCFqTQBJHr67IQh4zEUFs4e5D5D6UE8ee93yeSUJyhbifeIgYh3tS/+ZW4Uo1KLIc0rcLRrnEMsS3aOQbrv/SEKij+Syx4KXI0Gi2xMdXctnFOVT6NM6/EkLxFp2POEdv9SNBtTvXcxIGRwK51W4Jdgh/xZcCAwEAAQ=="}]},"application_type":"native","tos_uri":"https://example.com/client/tos","policy_uri":"https://example.com/client/policy","consent_method":"TRUSTED","issuer_mode":"DYNAMIC","idp_initiated_login":{"mode":"DISABLED","default_scope":[]},"wildcard_redirect":"DISABLED"}},"_links":{"uploadLogo":{"href":"https://testorg.com/api/v1/apps/0oa91jmjzqVR7DLGD1d7/logo","hints":{"allow":["POST"]}},"appLinks":[{"name":"oidc_client_link","href":"https://testorg.com/home/oidc_client/0oa91jmjzqVR7DLGD1d7/aln177a159h7Zf52X0g8","type":"text/html"}],"profileEnrollment":{"href":"https://testorg.com/api/v1/policies/rst1fddpitF6oUuZA1d7"},"policies":{"href":"https://testorg.com/api/v1/apps/0oa91jmjzqVR7DLGD1d7/policies","hints":{"allow":["PUT"]}},"groups":{"href":"https://testorg.com/api/v1/apps/0oa91jmjzqVR7DLGD1d7/groups"},"logo":[{"name":"medium","href":"https://op3static.oktacdn.com/assets/img/logos/default.6770228fb0dab49a1695ef440a5279bb.png","type":"image/png"}],"clientCredentials":[{"name":"secrets","href":"https://testorg.com/api/v1/apps/0oa91jmjzqVR7DLGD1d7/credentials/secrets"}],"accessPolicy":{"href":"https://testorg.com/api/v1/policies/rst1fddpir2HgIar61d7"},"users":{"href":"https://testorg.com/api/v1/apps/0oa91jmjzqVR7DLGD1d7/users"},"deactivate":{"href":"https://testorg.com/api/v1/apps/0oa91jmjzqVR7DLGD1d7/lifecycle/deactivate"}}}' | ConvertFrom-Json
+
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+
+            $OAuthClient = [PSCustomObject]@{
+                Client_Uri = "https://example.com/client"
+                Logo_Uri = "https://example.com/assets/images/logo-new.png"
+                Response_Types = @("token", "id_token", "code")
+                Redirect_Uris = @("https://example.com/oauth2/callback", "myapp://callback")
+                Post_Logout_Redirect_Uris = @("https://example.com/postlogout", "myapp://postlogoutcallback")
+                Grant_Types = @("implicit", "authorization_code")
+                Application_Type = "native"
+                Tos_Uri = "https://example.com/client/tos"
+                Policy_Uri = "https://example.com/client/policy"
+            }
+            # a simple test to create an object
+            $Settings = Initialize-OktaOpenIdConnectApplicationSettings -OauthClient $OAuthClient
+            
+            $NewObject = Initialize-OktaOpenIdConnectApplication -Label "New App" -SignOnMode "OPENID_CONNECT" -Settings $Settings
+            
+            $TestResult = New-OktaApplication -Application $NewObject 
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+
+            $TestResult.Id | Should -Be '0oa91jmjzqVR7DLGD1d7'
+            $TestResult.Label | Should -Be "New App"
+            $TestResult.Name | Should -Be "oidc_client"
+            $TestResult.SignOnMode | Should -Be "OPENID_CONNECT"
+            $TestResult.Status | Should -Be "ACTIVE"
+            
+            # TODO make Case consistent (i.e ClientUri) 
+            $TestResult.Settings.OauthClient.Client_Uri | Should -Be "https://example.com/client"
+            $TestResult.Settings.OauthClient.Logo_Uri | Should -Be "https://example.com/assets/images/logo-new.png"
+            $TestResult.Settings.OauthClient.Redirect_Uris.Count | Should -Be 2
+            $TestResult.Settings.OauthClient.Post_Logout_Redirect_Uris.Count | Should -Be 2
+            $TestResult.Settings.OauthClient.Grant_Types.Count | Should -Be 2            
+            $TestResult.Settings.OauthClient.idp_initiated_login | Should -Not -Be $null   
+            $TestResult.Settings.OauthClient.Application_Type | Should -Be "native"     
+            $TestResult.Settings.OauthClient.Consent_Method | Should -Be "trusted"  
+            $TestResult.Settings.OauthClient.Tos_Uri | Should -Be "https://example.com/client/tos"            
         }
     }
 
     Context 'Get-OktaApplication' {
         It 'Test Get-OktaApplication' {
-            #$TestResult = Get-OktaApplication -AppId "TEST_VALUE" -Expand "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
+            $Content = '{"id":"0oa91jmjzqVR7DLGD1d7","name":"oidc_client","label":"New App","status":"ACTIVE","lastUpdated":"2023-07-21T16:35:08.000Z","created":"2023-07-21T16:35:07.000Z","accessibility":{"selfService":false,"errorRedirectUrl":null,"loginRedirectUrl":null},"visibility":{"autoLaunch":false,"autoSubmitToolbar":false,"hide":{"iOS":true,"web":true},"appLinks":{"oidc_client_link":true}},"features":[],"signOnMode":"OPENID_CONNECT","credentials":{"userNameTemplate":{"template":"${source.login}","type":"BUILT_IN"},"signing":{"kid":"syExwWcnwaVzJzFiCAF5noLRJsteW9BA9sdKyh7a_4c"},"oauthClient":{"autoKeyRotation":true,"client_id":"AddOpenIdConnectApp_TestClientId","client_secret":"7VgHPmL93yoz1dvYcG5_p6UwbNGj0g-u8D-WIKgmgceGzbBPAqkcfOByPFTTrfHo","token_endpoint_auth_method":"client_secret_post","pkce_required":true}},"settings":{"app":{},"notifications":{"vpn":{"network":{"connection":"DISABLED"},"message":null,"helpUrl":null}},"manualProvisioning":false,"implicitAssignment":false,"notes":{"admin":null,"enduser":null},"oauthClient":{"client_uri":"https://example.com/client","logo_uri":"https://example.com/assets/images/logo-new.png","redirect_uris":["https://example.com/oauth2/callback","myapp://callback"],"post_logout_redirect_uris":["https://example.com/postlogout","myapp://postlogoutcallback"],"response_types":["token","id_token","code"],"grant_types":["implicit","authorization_code"],"jwks":{"keys":[{"kty":"RSA","id":"pks91k82r1Ky0r0Y91d7","status":"ACTIVE","kid":"SIGNING_KEY","use":null,"e":"AQAB","n":"MIIBIzANBgkqhkiG9w0BAQEFAAOCARAAMIIBCwKCAQIAnFo/4e91na8x/BsPkNS5QkwankewxJ1uZU6p827W/gkRcNHtNi/cE644W5OVdB4UaXV6koT+TsC1prhUEhRR3g5ggE0B/lwYqBaLq/Ejy19Crc4XYU3Aah67Y6HiHWcHGZ+BbpebtTixJv/UYW/Gw+k8M+zj4O001mOeBPpwlEiZZLIo33m/Xkfn28jaCFqTQBJHr67IQh4zEUFs4e5D5D6UE8ee93yeSUJyhbifeIgYh3tS/+ZW4Uo1KLIc0rcLRrnEMsS3aOQbrv/SEKij+Syx4KXI0Gi2xMdXctnFOVT6NM6/EkLxFp2POEdv9SNBtTvXcxIGRwK51W4Jdgh/xZcCAwEAAQ=="}]},"application_type":"native","tos_uri":"https://example.com/client/tos","policy_uri":"https://example.com/client/policy","consent_method":"TRUSTED","issuer_mode":"DYNAMIC","idp_initiated_login":{"mode":"DISABLED","default_scope":[]},"wildcard_redirect":"DISABLED"}},"_links":{"uploadLogo":{"href":"https://testorg.com/api/v1/apps/0oa91jmjzqVR7DLGD1d7/logo","hints":{"allow":["POST"]}},"appLinks":[{"name":"oidc_client_link","href":"https://testorg.com/home/oidc_client/0oa91jmjzqVR7DLGD1d7/aln177a159h7Zf52X0g8","type":"text/html"}],"profileEnrollment":{"href":"https://testorg.com/api/v1/policies/rst1fddpitF6oUuZA1d7"},"policies":{"href":"https://testorg.com/api/v1/apps/0oa91jmjzqVR7DLGD1d7/policies","hints":{"allow":["PUT"]}},"groups":{"href":"https://testorg.com/api/v1/apps/0oa91jmjzqVR7DLGD1d7/groups"},"logo":[{"name":"medium","href":"https://op3static.oktacdn.com/assets/img/logos/default.6770228fb0dab49a1695ef440a5279bb.png","type":"image/png"}],"clientCredentials":[{"name":"secrets","href":"https://testorg.com/api/v1/apps/0oa91jmjzqVR7DLGD1d7/credentials/secrets"}],"accessPolicy":{"href":"https://testorg.com/api/v1/policies/rst1fddpir2HgIar61d7"},"users":{"href":"https://testorg.com/api/v1/apps/0oa91jmjzqVR7DLGD1d7/users"},"deactivate":{"href":"https://testorg.com/api/v1/apps/0oa91jmjzqVR7DLGD1d7/lifecycle/deactivate"}}}' | ConvertFrom-Json
 
-    Context 'Get-OktaApplicationGroupAssignment' {
-        It 'Test Get-OktaApplicationGroupAssignment' {
-            #$TestResult = Get-OktaApplicationGroupAssignment -AppId "TEST_VALUE" -GroupId "TEST_VALUE" -Expand "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
 
-    Context 'Get-OktaApplicationKey' {
-        It 'Test Get-OktaApplicationKey' {
-            #$TestResult = Get-OktaApplicationKey -AppId "TEST_VALUE" -KeyId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
 
-    Context 'Get-OktaApplicationUser' {
-        It 'Test Get-OktaApplicationUser' {
-            #$TestResult = Get-OktaApplicationUser -AppId "TEST_VALUE" -UserId "TEST_VALUE" -Expand "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
+            $TestResult = Get-OktaApplication -AppId "foo"
 
-    Context 'Get-OktaCsrForApplication' {
-        It 'Test Get-OktaCsrForApplication' {
-            #$TestResult = Get-OktaCsrForApplication -AppId "TEST_VALUE" -CsrId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
 
-    Context 'Get-OktaDefaultProvisioningConnectionForApplication' {
-        It 'Test Get-OktaDefaultProvisioningConnectionForApplication' {
-            #$TestResult = Get-OktaDefaultProvisioningConnectionForApplication -AppId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
+            $TestResult.Id | Should -Be '0oa91jmjzqVR7DLGD1d7'
+            $TestResult.Label | Should -Be "New App"
+            $TestResult.Name | Should -Be "oidc_client"
+            $TestResult.SignOnMode | Should -Be "OPENID_CONNECT"
+            $TestResult.Status | Should -Be "ACTIVE"
+            
+            $TestResult.Settings.OauthClient.Client_Uri | Should -Be "https://example.com/client"
+            $TestResult.Settings.OauthClient.Logo_Uri | Should -Be "https://example.com/assets/images/logo-new.png"
+            $TestResult.Settings.OauthClient.Redirect_Uris.Count | Should -Be 2
+            $TestResult.Settings.OauthClient.Post_Logout_Redirect_Uris.Count | Should -Be 2
+            $TestResult.Settings.OauthClient.Grant_Types.Count | Should -Be 2            
+            $TestResult.Settings.OauthClient.idp_initiated_login | Should -Not -Be $null   
+            $TestResult.Settings.OauthClient.Application_Type | Should -Be "native"     
+            $TestResult.Settings.OauthClient.Consent_Method | Should -Be "trusted"  
+            $TestResult.Settings.OauthClient.Tos_Uri | Should -Be "https://example.com/client/tos"   
 
-    Context 'Get-OktaFeatureForApplication' {
-        It 'Test Get-OktaFeatureForApplication' {
-            #$TestResult = Get-OktaFeatureForApplication -AppId "TEST_VALUE" -Name "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Get-OktaOAuth2TokenForApplication' {
-        It 'Test Get-OktaOAuth2TokenForApplication' {
-            #$TestResult = Get-OktaOAuth2TokenForApplication -AppId "TEST_VALUE" -TokenId "TEST_VALUE" -Expand "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Get-OktaScopeConsentGrant' {
-        It 'Test Get-OktaScopeConsentGrant' {
-            #$TestResult = Get-OktaScopeConsentGrant -AppId "TEST_VALUE" -GrantId "TEST_VALUE" -Expand "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Grant-OktaConsentToScope' {
-        It 'Test Grant-OktaConsentToScope' {
-            #$TestResult = Grant-OktaConsentToScope -AppId "TEST_VALUE" -OAuth2ScopeConsentGrant "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaListApplicationGroupAssignments' {
-        It 'Test Invoke-OktaListApplicationGroupAssignments' {
-            #$TestResult = Invoke-OktaListApplicationGroupAssignments -AppId "TEST_VALUE" -Q "TEST_VALUE" -After "TEST_VALUE" -Limit "TEST_VALUE" -Expand "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaListApplicationKeys' {
-        It 'Test Invoke-OktaListApplicationKeys' {
-            #$TestResult = Invoke-OktaListApplicationKeys -AppId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaListApplicationUsers' {
-        It 'Test Invoke-OktaListApplicationUsers' {
-            #$TestResult = Invoke-OktaListApplicationUsers -AppId "TEST_VALUE" -Q "TEST_VALUE" -QueryScope "TEST_VALUE" -After "TEST_VALUE" -Limit "TEST_VALUE" -Filter "TEST_VALUE" -Expand "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
         }
     }
 
     Context 'Invoke-OktaListApplications' {
         It 'Test Invoke-OktaListApplications' {
-            #$TestResult = Invoke-OktaListApplications -Q "TEST_VALUE" -After "TEST_VALUE" -Limit "TEST_VALUE" -Filter "TEST_VALUE" -Expand "TEST_VALUE" -IncludeNonDeleted "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+            $Content = '[{"id":"0oa90v3f09cUtZfI11d7","name":"template_basic_auth","label":"New App","status":"ACTIVE","lastUpdated":"2023-07-20T19:38:13.000Z","created":"2023-07-20T19:38:12.000Z","accessibility":{"selfService":false,"errorRedirectUrl":null,"loginRedirectUrl":null},"visibility":{"autoLaunch":false,"autoSubmitToolbar":false,"hide":{"iOS":false,"web":false},"appLinks":{"login":true}},"features":[],"signOnMode":"BASIC_AUTH","credentials":{"scheme":"EDIT_USERNAME_AND_PASSWORD","userNameTemplate":{"template":"${source.login}","type":"BUILT_IN"},"revealPassword":false,"signing":{}},"settings":{"app":{"loginUrlRegex":null,"authURL":"https://example.com/auth.html","url":"https://example.com/login.html"},"notifications":{"vpn":{"network":{"connection":"DISABLED"},"message":null,"helpUrl":null}},"manualProvisioning":false,"implicitAssignment":false,"notes":{"admin":null,"enduser":null}},"_links":{"uploadLogo":{"href":"https://testorg.com/api/v1/apps/0oa90v3f09cUtZfI11d7/logo","hints":{"allow":["POST"]}},"appLinks":[{"name":"login","href":"https://testorg.com/home/template_basic_auth/0oa90v3f09cUtZfI11d7/2873","type":"text/html"}],"profileEnrollment":{"href":"https://testorg.com/api/v1/policies/rst1fddpitF6oUuZA1d7"},"policies":{"href":"https://testorg.com/api/v1/apps/0oa90v3f09cUtZfI11d7/policies","hints":{"allow":["PUT"]}},"groups":{"href":"https://testorg.com/api/v1/apps/0oa90v3f09cUtZfI11d7/groups"},"logo":[{"name":"medium","href":"https://op3static.oktacdn.com/assets/img/logos/default.6770228fb0dab49a1695ef440a5279bb.png","type":"image/png"}],"accessPolicy":{"href":"https://testorg.com/api/v1/policies/rst1fddpir2HgIar61d7"},"users":{"href":"https://testorg.com/api/v1/apps/0oa90v3f09cUtZfI11d7/users"},"deactivate":{"href":"https://testorg.com/api/v1/apps/0oa90v3f09cUtZfI11d7/lifecycle/deactivate"}}}]' | ConvertFrom-Json
+
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+
+            $TestResult = Invoke-OktaListApplications 
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+
+            $TestResult.Count | Should -Be 1
+            $TestResult[0].Id | Should -Be 0oa90v3f09cUtZfI11d7
+            $TestResult[0].Label | Should -Be "New App"
+            $TestResult[0].Name | Should -Be "template_basic_auth"
+            $TestResult[0].SignOnMode | Should -Be "BASIC_AUTH"
+            $TestResult[0].Settings.App.Url | Should -Be "https://example.com/login.html"
+            $TestResult[0].Settings.App.AuthURL | Should -Be "https://example.com/auth.html"
+            $TestResult[0].Status | Should -Be "ACTIVE"
         }
     }
 
-    Context 'Invoke-OktaListCsrsForApplication' {
-        It 'Test Invoke-OktaListCsrsForApplication' {
-            #$TestResult = Invoke-OktaListCsrsForApplication -AppId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaListFeaturesForApplication' {
-        It 'Test Invoke-OktaListFeaturesForApplication' {
-            #$TestResult = Invoke-OktaListFeaturesForApplication -AppId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaListOAuth2TokensForApplication' {
-        It 'Test Invoke-OktaListOAuth2TokensForApplication' {
-            #$TestResult = Invoke-OktaListOAuth2TokensForApplication -AppId "TEST_VALUE" -Expand "TEST_VALUE" -After "TEST_VALUE" -Limit "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaListScopeConsentGrants' {
-        It 'Test Invoke-OktaListScopeConsentGrants' {
-            #$TestResult = Invoke-OktaListScopeConsentGrants -AppId "TEST_VALUE" -Expand "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Publish-OktaCsrFromApplication' {
-        It 'Test Publish-OktaCsrFromApplication' {
-            #$TestResult = Publish-OktaCsrFromApplication -AppId "TEST_VALUE" -CsrId "TEST_VALUE" -Body "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Revoke-OktaCsrFromApplication' {
-        It 'Test Revoke-OktaCsrFromApplication' {
-            #$TestResult = Revoke-OktaCsrFromApplication -AppId "TEST_VALUE" -CsrId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Revoke-OktaOAuth2TokenForApplication' {
-        It 'Test Revoke-OktaOAuth2TokenForApplication' {
-            #$TestResult = Revoke-OktaOAuth2TokenForApplication -AppId "TEST_VALUE" -TokenId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Revoke-OktaOAuth2TokensForApplication' {
-        It 'Test Revoke-OktaOAuth2TokensForApplication' {
-            #$TestResult = Revoke-OktaOAuth2TokensForApplication -AppId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Revoke-OktaScopeConsentGrant' {
-        It 'Test Revoke-OktaScopeConsentGrant' {
-            #$TestResult = Revoke-OktaScopeConsentGrant -AppId "TEST_VALUE" -GrantId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Set-OktaDefaultProvisioningConnectionForApplication' {
-        It 'Test Set-OktaDefaultProvisioningConnectionForApplication' {
-            #$TestResult = Set-OktaDefaultProvisioningConnectionForApplication -AppId "TEST_VALUE" -ProvisioningConnectionRequest "TEST_VALUE" -Activate "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
 
     Context 'Update-OktaApplication' {
         It 'Test Update-OktaApplication' {
-            #$TestResult = Update-OktaApplication -AppId "TEST_VALUE" -Application "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+            
+            $Content = '{"id":"0oa93ehgmd33pwOu51d7","name":"bookmark","label":"New App","status":"ACTIVE","lastUpdated":"2023-07-24T14:33:38.000Z","created":"2023-07-24T14:33:38.000Z","accessibility":{"selfService":false,"errorRedirectUrl":null,"loginRedirectUrl":null},"visibility":{"autoLaunch":false,"autoSubmitToolbar":false,"hide":{"iOS":false,"web":false},"appLinks":{"login":true}},"features":[],"signOnMode":"BOOKMARK","credentials":{"userNameTemplate":{"template":"${source.login}","type":"BUILT_IN"},"signing":{}},"settings":{"app":{"requestIntegration":false,"url":"https://example.com/bookmark.htm"},"notifications":{"vpn":{"network":{"connection":"DISABLED"},"message":null,"helpUrl":null}},"manualProvisioning":false,"implicitAssignment":false,"notes":{"admin":null,"enduser":null}},"_links":{"uploadLogo":{"href":"https://testorg.com/api/v1/apps/0oa93ehgmd33pwOu51d7/logo","hints":{"allow":["POST"]}},"appLinks":[{"name":"login","href":"https://testorg.com/home/bookmark/0oa93ehgmd33pwOu51d7/2557","type":"text/html"}],"profileEnrollment":{"href":"https://testorg.com/api/v1/policies/rst1fddpitF6oUuZA1d7"},"policies":{"href":"https://testorg.com/api/v1/apps/0oa93ehgmd33pwOu51d7/policies","hints":{"allow":["PUT"]}},"groups":{"href":"https://testorg.com/api/v1/apps/0oa93ehgmd33pwOu51d7/groups"},"logo":[{"name":"medium","href":"https://op3static.oktacdn.com/assets/img/logos/bookmark-app.b81c03e2607468e5b5f9c9351c99313e.png","type":"image/png"}],"accessPolicy":{"href":"https://testorg.com/api/v1/policies/rst1fddpir2HgIar61d7"},"users":{"href":"https://testorg.com/api/v1/apps/0oa93ehgmd33pwOu51d7/users"},"deactivate":{"href":"https://testorg.com/api/v1/apps/0oa93ehgmd33pwOu51d7/lifecycle/deactivate"}}}' | ConvertFrom-Json
+
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+
+            $TestResult = Update-OktaApplication -Application @{} -AppId "foo" 
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+
+            $TestResult.Id | Should -Be '0oa93ehgmd33pwOu51d7'
+            $TestResult.Label | Should -Be "New App"
+            $TestResult.Name | Should -Be "bookmark"
+            $TestResult.SignOnMode | Should -Be "BOOKMARK"
+            $TestResult.Settings.App.Url | Should -Be "https://example.com/bookmark.htm"
+            $TestResult.Settings.App.RequestIntegration | Should -Be $False
+            $TestResult.Status | Should -Be "ACTIVE"
         }
     }
-
-    Context 'Update-OktaApplicationUser' {
-        It 'Test Update-OktaApplicationUser' {
-            #$TestResult = Update-OktaApplicationUser -AppId "TEST_VALUE" -UserId "TEST_VALUE" -AppUser "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Update-OktaFeatureForApplication' {
-        It 'Test Update-OktaFeatureForApplication' {
-            #$TestResult = Update-OktaFeatureForApplication -AppId "TEST_VALUE" -Name "TEST_VALUE" -CapabilitiesObject "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaUploadApplicationLogo' {
-        It 'Test Invoke-OktaUploadApplicationLogo' {
-            #$TestResult = Invoke-OktaUploadApplicationLogo -AppId "TEST_VALUE" -File "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
 }

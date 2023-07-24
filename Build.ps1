@@ -55,7 +55,7 @@ $Manifest = @{
     CompanyName = 'openapitools.org'
     Description = 'Okta.PowerShell - the PowerShell module for Okta Management'
 
-    ModuleVersion = '0.1.0-beta01'
+    ModuleVersion = '0.1.0'
 
     RootModule = 'Okta.PowerShell.psm1'
     Guid = '{90ADC7E7-1A72-4F4C-A431-D4871B258FDC}' # Has to be static, otherwise each new build will be considered different module
