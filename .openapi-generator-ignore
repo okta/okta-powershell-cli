@@ -7,6 +7,13 @@
 # As an example, the C# client generator defines ApiClient.cs.
 # You can make changes and tell OpenAPI Generator to ignore just this file by uncommenting the following line:
 #ApiClient.cs
+**/ISynchronousClient.cs
+appveyor.yml
+**/*AllOf.cs
+*.sln
+git_push.sh
+README.md
+.gitignore
 
 # You can match any string of characters against a directory, file or extension with a single asterisk (*):
 #foo/*/qux
@@ -19,5 +26,6 @@
 # You can also negate patterns with an exclamation (!).
 # For example, you can ignore all files in a docs folder with the file extension .md:
 #docs/*.md
+**/*AllOf.md
 # Then explicitly reverse the ignore rule for a single file:
 #!docs/README.md

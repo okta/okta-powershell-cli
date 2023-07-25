@@ -1,106 +1,48 @@
-# {{packageName}}.{{apiPackage}}.{{classname}}{{#description}}
-{{.}}{{/description}}
+# Documentation for API Endpoints
 
 All URIs are relative to *{{{basePath}}}*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-{{#operations}}{{#operation}}[**{{vendorExtensions.x-powershell-method-name}}**]({{classname}}.md#{{vendorExtensions.x-powershell-method-name-lowercase}}) | **{{httpMethod}}** {{path}} | {{summary}}
-{{/operation}}{{/operations}}
+Class | Method | HTTP request | Description
+------------ | ------------- | ------------- | -------------
+{{#apiInfo}}{{#apis}}{{#operations}}{{#operation}}*{{classname}}* | [**{{vendorExtensions.x-powershell-method-name}}**]({{apiDocPath}}{{classname}}.md#{{vendorExtensions.x-powershell-method-name-lowercase}}) | **{{httpMethod}}** {{path}} | {{{summary}}}
+{{/operation}}{{/operations}}{{/apis}}{{/apiInfo}}
 
-{{#operations}}
-{{#operation}}
-<a id="{{{vendorExtensions.x-powershell-method-name-lowercase}}}"></a>
-# **{{{vendorExtensions.x-powershell-method-name}}}**
-> {{{returnType}}}{{^returnType}}void{{/returnType}} {{{vendorExtensions.x-powershell-method-name}}}<br>
-{{#allParams}}
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-{{paramName}}] <{{{vendorExtensions.x-powershell-data-type}}}><br>
-{{/allParams}}
+# Documentation for Models
 
-{{{summary}}}{{#notes}}
+{{#modelPackage}}
+{{#models}}{{#model}} - [{{{modelPackage}}}.{{{classname}}}]({{modelDocPath}}{{{classname}}}.md)
+{{/model}}{{/models}}
+{{/modelPackage}}
+{{^modelPackage}}
+No model defined in this package
+{{/modelPackage}}
 
-{{{.}}}{{/notes}}
+<a id="documentation-for-authorization"></a>
+## Documentation for Authorization
 
-### Example
-```powershell
-{{#hasAuthMethods}}
-# general setting of the PowerShell module, e.g. base URL, authentication, etc
-$Configuration = Get-OktaConfiguration
+{{^authMethods}}Endpoints do not require authorization.{{/authMethods}}
+{{#hasAuthMethods}}Authentication schemes defined for the API:{{/hasAuthMethods}}
 {{#authMethods}}
+<a id="{{name}}"></a>
+### {{name}}
+
+{{#isApiKey}}- **Type**: API key
+
+- **API key parameter name**: {{keyParamName}}
+- **Location**: {{#isKeyInQuery}}URL query string{{/isKeyInQuery}}{{#isKeyInHeader}}HTTP header{{/isKeyInHeader}}
+{{/isApiKey}}
 {{#isBasic}}
-# Configure HTTP basic authorization: {{{name}}}
-$Configuration.Username = "YOUR_USERNAME"
-$Configuration.Password = "YOUR_PASSWORD"
+
+- **Type**: HTTP basic authentication
 {{/isBasic}}
 {{#isOAuth}}
-# Configure your client ID and scope for authorization
-$Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+
+- **Type**: OAuth
+- **Flow**: {{flow}}
+- **Authorization URL**: {{authorizationUrl}}
+- **Scopes**: {{^scopes}}N/A{{/scopes}}
+{{#scopes}}  - {{scope}}: {{description}}
+{{/scopes}}
 {{/isOAuth}}
-{{#isHttpSignature}}
-# Configure HttpSignature for authorization :{{name}}
-$httpSigningParams = @{
-    KeyId = "xxxxxx1776876789ac747/xxxxxxx564612d31a62c01/xxxxxxxa1d7564612d31a66ee8"
-    KeyFilePath = "C:\SecretKey.txt"
-    HttpSigningHeader = @("(request-target)","Host","Date","Digest")
-    HashAlgorithm = "sha256"
-}
-Set-ConfigurationHttpSigning $httpSigningParams
-{{/isHttpSignature}}
 
 {{/authMethods}}
-{{/hasAuthMethods}}
-{{#allParams}}
-{{^isArray}}
-{{#isModel}}
-{{{vendorExtensions.x-powershell-example}}} # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
-{{/isModel}}
-{{^isModel}}
-${{paramName}} = {{{vendorExtensions.x-powershell-example}}} # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
-{{/isModel}}
-{{/isArray}}
-{{#isArray}}
-{{#items.isModel}}
-{{{vendorExtensions.x-powershell-example}}} # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
-{{/items.isModel}}
-{{^items.isModel}}
-${{paramName}} = {{{vendorExtensions.x-powershell-example}}} # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
-{{/items.isModel}}
-{{/isArray}}
-{{/allParams}}
-
-{{#summary}}
-# {{{.}}}
-{{/summary}}
-try {
-    $Result = {{{vendorExtensions.x-powershell-method-name}}}{{#allParams}} -{{paramName}} ${{paramName}}{{/allParams}}
-} catch {
-    Write-Host ("Exception occurred when calling {{{vendorExtensions.x-powershell-method-name}}}: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
-    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
-}
-```
-
-### Parameters
-{{^allParams}}This endpoint does not need any parameter.{{/allParams}}{{#allParams}}{{#-last}}
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------{{/-last}}{{/allParams}}
-{{#allParams}} **{{paramName}}** | {{#isFile}}**{{dataType}}**{{/isFile}}{{#isPrimitiveType}}**{{dataType}}**{{/isPrimitiveType}}{{^isPrimitiveType}}{{^isFile}}[**{{dataType}}**]({{#isContainer}}{{baseType}}{{/isContainer}}{{^isContainer}}{{dataType}}{{/isContainer}}.md){{/isFile}}{{/isPrimitiveType}}| {{description}} | {{^required}}[optional] {{/required}}{{#defaultValue}}[default to {{.}}]{{/defaultValue}}
-{{/allParams}}
-
-### Return type
-
-{{#returnType}}{{#returnTypeIsPrimitive}}**{{{returnType}}}**{{/returnTypeIsPrimitive}}{{^returnTypeIsPrimitive}}[**{{{returnType}}}**]({{returnBaseType}}.md) (PSCustomObject){{/returnTypeIsPrimitive}}{{/returnType}}{{^returnType}}void (empty response body){{/returnType}}
-
-### Authorization
-
-{{^authMethods}}No authorization required{{/authMethods}}{{#authMethods}}[{{{name}}}](../README.md#{{{name}}}){{^-last}}, {{/-last}}{{/authMethods}}
-
-### HTTP request headers
-
- - **Content-Type**: {{#consumes}}{{{mediaType}}}{{^-last}}, {{/-last}}{{/consumes}}{{^consumes}}Not defined{{/consumes}}
- - **Accept**: {{#produces}}{{{mediaType}}}{{^-last}}, {{/-last}}{{/produces}}{{^produces}}Not defined{{/produces}}
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-{{/operation}}
-{{/operations}}
