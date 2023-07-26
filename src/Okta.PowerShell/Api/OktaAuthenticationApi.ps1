@@ -16,7 +16,7 @@ Establishes the access token via the device code flow
 
 function Invoke-OktaEstablishAccessToken {
     Process {
-        'Calling method: Update-GroupRule' | Write-Debug
+        'Calling method: Invoke-OktaEstablishAccessToken' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         $LocalVarAccepts = @()
