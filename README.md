@@ -41,7 +41,7 @@ The latest release can always be found on the [releases page][github-releases]. 
 
 ## Need help?
  
-If you run into problems using the SDK, you can
+If you run into problems using the Okta PowerShell CLI, you can
  
 * Ask questions on the [Okta Developer Forums][devforum]
 * Post [issues][github-issues] here on GitHub (for code errors)
@@ -105,7 +105,7 @@ domain](https://developer.okta.com/docs/guides/find-your-domain/main/), the clie
 $Configuration = Get-OktaConfiguration
 $Configuration.BaseUrl = 'https://myorg.okta.com'
 $Configuration.ClientId = 'MY_CLIENT_ID'
-$Configuration.Scope = "okta.group.read"
+$Configuration.Scope = "okta.groups.read" # or "okta.groups.read okta.apps.read"
 ```
 
 2. Authorize your device
@@ -113,7 +113,7 @@ $Configuration.Scope = "okta.group.read"
 ```sh
 Invoke-OktaEstablishAccessToken
 ```
-> Note: You have to open the browser and navigate to the provided URL to complete the flow. Once the device is authorized, fo back to the PowerShell terminal.
+> Note: You have to open the browser and navigate to the provided URL to complete the flow. Once the device is authorized, go back to the PowerShell terminal.
 
 3. Invoke commands
 
