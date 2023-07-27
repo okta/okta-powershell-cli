@@ -40,42 +40,94 @@ Describe -tag 'Okta.PowerShell' -name 'OktaOktaPolicyApi' {
     }
 
     Context 'New-OktaPolicyRule' {
-        It 'Test New-OktaPolicyRule' {
-            #$TestResult = New-OktaPolicyRule -PolicyId "TEST_VALUE" -PolicyRule "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
+        It 'Test New-OktaPolicyRule AccessPolicyRule' {
+           
+            $Content = '{"id":"rul95pzcmoMhPS4CA1d7","status":"ACTIVE","name":"New policy rule","priority":1,"created":"2023-07-27T16:41:45.000Z","lastUpdated":"2023-07-27T16:41:45.000Z","system":false,"conditions":{"people":{"users":{"exclude":[]}},"network":{"connection":"ANYWHERE"},"userType":{"include":[],"exclude":[]}},"actions":{"appSignOn":{"access":"DENY","verificationMethod":{"factorMode":"1FA","type":"ASSURANCE","reauthenticateIn":"PT43800H"}}},"_links":{"self":{"href":"https://testorg.com/api/v1/policies/rst1fddpir2HgIar61d7/rules/rul95pzcmoMhPS4CA1d7","hints":{"allow":["GET","PUT","DELETE"]}},"deactivate":{"href":"https://testorg.com/api/v1/policies/rst1fddpir2HgIar61d7/rules/rul95pzcmoMhPS4CA1d7/lifecycle/deactivate","hints":{"allow":["POST"]}}},"type":"ACCESS_POLICY"}' | ConvertFrom-Json -Depth 10
 
-    Context 'Invoke-OktaDeactivatePolicy' {
-        It 'Test Invoke-OktaDeactivatePolicy' {
-            #$TestResult = Invoke-OktaDeactivatePolicy -PolicyId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
 
-    Context 'Invoke-OktaDeactivatePolicyRule' {
-        It 'Test Invoke-OktaDeactivatePolicyRule' {
-            #$TestResult = Invoke-OktaDeactivatePolicyRule -PolicyId "TEST_VALUE" -RuleId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+           
+            $VerificationMethod = Initialize-OktaVerificationMethod -Type 'ASSURANCE' -FactorMode '1FA' -ReauthenticateIn 'PT43800H'
+            $SignOn = Initialize-OktaAccessPolicyRuleApplicationSignOn -Access 'DENY' -VerificationMethod $VerificationMethod
+            $Actions = Initialize-OktaAccessPolicyRuleActions -AppSignOn $SignOn
+            $PolicyRule = Initialize-OktaAccessPolicyRule -Priority 1 -Status 'ACTIVE' -Name 'New policy rule' -Type 'ACCESS_POLICY' -Actions $Actions
+            
+            $PolicyRule.Name | Should -Be 'New policy rule'
+            $PolicyRule.Status | Should -Be 'ACTIVE'
+            $PolicyRule.Type | Should -Be 'ACCESS_POLICY'
+            $PolicyRule.Actions.AppSignOn.Access | Should -Be 'DENY'
+            $PolicyRule.Actions.AppSignOn.VerificationMethod.Type | Should -Be 'ASSURANCE'
+            $PolicyRule.Actions.AppSignOn.VerificationMethod.FactorMode | Should -Be '1FA'
+            $PolicyRule.Actions.AppSignOn.VerificationMethod.ReauthenticateIn | Should -Be 'PT43800H'
 
-    Context 'Invoke-OktaDeletePolicy' {
-        It 'Test Invoke-OktaDeletePolicy' {
-            #$TestResult = Invoke-OktaDeletePolicy -PolicyId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
 
-    Context 'Invoke-OktaDeletePolicyRule' {
-        It 'Test Invoke-OktaDeletePolicyRule' {
-            #$TestResult = Invoke-OktaDeletePolicyRule -PolicyId "TEST_VALUE" -RuleId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+            $CreatedPolicyRule = New-OktaPolicyRule -PolicyId "foo" -PolicyRule $PolicyRule
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+           
+            $CreatedPolicyRule.Id | Should -Be 'rul95pzcmoMhPS4CA1d7'
+            $CreatedPolicyRule.Name | Should -Be 'New policy rule'
+            $CreatedPolicyRule.Status | Should -Be 'ACTIVE'
+            $CreatedPolicyRule.Type | Should -Be 'ACCESS_POLICY'
+            $CreatedPolicyRule.Actions.AppSignOn.Access | Should -Be 'DENY'
+            $CreatedPolicyRule.Actions.AppSignOn.VerificationMethod.Type | Should -Be 'ASSURANCE'
+            $CreatedPolicyRule.Actions.AppSignOn.VerificationMethod.FactorMode | Should -Be '1FA'
+            $CreatedPolicyRule.Actions.AppSignOn.VerificationMethod.ReauthenticateIn | Should -Be 'PT43800H'
+        }
+
+        It 'Test New-OktaPolicyRule SignOnCloudPolicyRule' {
+           
+            $Content = '{"id":"0pr95tqgmg58HjnyH1d7","status":"ACTIVE","name":"New policy rule","priority":3,"created":"2023-07-27T19:24:06.000Z","lastUpdated":"2023-07-27T19:24:06.000Z","system":false,"conditions":{"people":{"users":{"exclude":[]}},"network":{"connection":"ANYWHERE"},"authContext":{"authType":"ANY"},"identityProvider":{"provider":"ANY"}},"actions":{"signon":{"access":"ALLOW","requireFactor":true,"primaryFactor":"PASSWORD_IDP_ANY_FACTOR","factorPromptMode":"ALWAYS","rememberDeviceByDefault":false,"session":{"usePersistentCookie":false,"maxSessionIdleMinutes":720,"maxSessionLifetimeMinutes":800}}},"_links":{"self":{"href":"https://dotnet-sdk-oie.oktapreview.com/api/v1/policies/00p95ttx8bVQnUNtX1d7/rules/0pr95tqgmg58HjnyH1d7","hints":{"allow":["GET","PUT","DELETE"]}},"deactivate":{"href":"https://dotnet-sdk-oie.oktapreview.com/api/v1/policies/00p95ttx8bVQnUNtX1d7/rules/0pr95tqgmg58HjnyH1d7/lifecycle/deactivate","hints":{"allow":["POST"]}}},"type":"SIGN_ON"}' | ConvertFrom-Json
+
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+           
+            $SignOnSessions = Initialize-OktaOktaSignOnPolicyRuleSignonSessionActions -MaxSessionIdleMinutes 720 -MaxSessionLifetimeMinutes 800 -UsePersistentCookie $False
+            $SignOn = Initialize-OktaOktaSignOnPolicyRuleSignonActions -Access 'ALLOW' -FactorLifetime 10 -RememberDeviceByDefault $False -RequireFactor $True -FactorPromptMode 'ALWAYS' -Session $SignOnSessions
+            $Actions = Initialize-OktaOktaSignOnPolicyRuleActions -SignOn $SignOn
+            $Conditions = Initialize-OktaOktaSignOnPolicyRuleConditions -AuthContext @{ AuthType = 'ANY'} -Network @{Connection = "ANYWHERE"}
+            
+            $PolicyRule = Initialize-OktaOktaSignOnPolicyRule -Priority 1 -Status 'ACTIVE' -Name 'New policy rule' -Type 'SIGN_ON' -Actions $Actions -Conditions $Conditions
+            
+            $PolicyRule.Name | Should -Be 'New policy rule'
+            $PolicyRule.Status | Should -Be 'ACTIVE'
+            $PolicyRule.Type | Should -Be 'SIGN_ON'
+            $PolicyRule.Conditions.AuthContext.AuthType | Should -Be 'ANY'
+            $PolicyRule.Conditions.Network.Connection | Should -Be 'ANYWHERE'
+            $PolicyRule.Actions.SignOn.Access | Should -Be 'ALLOW'
+            $PolicyRule.Actions.SignOn.RequireFactor | Should -Be $True
+            $PolicyRule.Actions.SignOn.FactorPromptMode | Should -Be 'ALWAYS'
+            $PolicyRule.Actions.SignOn.Session.UsePersistentCookie | Should -Be $False
+            $PolicyRule.Actions.SignOn.Session.MaxSessionIdleMinutes | Should -Be 720
+            $PolicyRule.Actions.SignOn.Session.MaxSessionLifetimeMinutes | Should -Be 800
+            
+            $CreatedPolicyRule = New-OktaPolicyRule -PolicyId "foo" -PolicyRule $PolicyRule
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+           
+            $CreatedPolicyRule.Id | Should -Be '0pr95tqgmg58HjnyH1d7'
+            $CreatedPolicyRule.Name | Should -Be 'New policy rule'
+            $CreatedPolicyRule.Status | Should -Be 'ACTIVE'
+            $CreatedPolicyRule.Type | Should -Be 'SIGN_ON'
+            $CreatedPolicyRule.Conditions.AuthContext.AuthType | Should -Be 'ANY'
+            $CreatedPolicyRule.Conditions.Network.Connection | Should -Be 'ANYWHERE'
+            $CreatedPolicyRule.Actions.SignOn.Access | Should -Be 'ALLOW'
+            $CreatedPolicyRule.Actions.SignOn.RequireFactor | Should -Be $True
+            $CreatedPolicyRule.Actions.SignOn.FactorPromptMode | Should -Be 'ALWAYS'
+            $CreatedPolicyRule.Actions.SignOn.Session.UsePersistentCookie | Should -Be $False
+            $CreatedPolicyRule.Actions.SignOn.Session.MaxSessionIdleMinutes | Should -Be 720
+            $CreatedPolicyRule.Actions.SignOn.Session.MaxSessionLifetimeMinutes | Should -Be 800
+            
         }
     }
 
