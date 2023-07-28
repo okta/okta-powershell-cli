@@ -82,7 +82,7 @@ Describe -tag 'Okta.PowerShell' -name 'OktaOktaPolicyApi' {
 
         It 'Test New-OktaPolicyRule SignOnCloudPolicyRule' {
            
-            $Content = '{"id":"0pr95tqgmg58HjnyH1d7","status":"ACTIVE","name":"New policy rule","priority":3,"created":"2023-07-27T19:24:06.000Z","lastUpdated":"2023-07-27T19:24:06.000Z","system":false,"conditions":{"people":{"users":{"exclude":[]}},"network":{"connection":"ANYWHERE"},"authContext":{"authType":"ANY"},"identityProvider":{"provider":"ANY"}},"actions":{"signon":{"access":"ALLOW","requireFactor":true,"primaryFactor":"PASSWORD_IDP_ANY_FACTOR","factorPromptMode":"ALWAYS","rememberDeviceByDefault":false,"session":{"usePersistentCookie":false,"maxSessionIdleMinutes":720,"maxSessionLifetimeMinutes":800}}},"_links":{"self":{"href":"https://dotnet-sdk-oie.oktapreview.com/api/v1/policies/00p95ttx8bVQnUNtX1d7/rules/0pr95tqgmg58HjnyH1d7","hints":{"allow":["GET","PUT","DELETE"]}},"deactivate":{"href":"https://dotnet-sdk-oie.oktapreview.com/api/v1/policies/00p95ttx8bVQnUNtX1d7/rules/0pr95tqgmg58HjnyH1d7/lifecycle/deactivate","hints":{"allow":["POST"]}}},"type":"SIGN_ON"}' | ConvertFrom-Json
+            $Content = '{"id":"0pr95tqgmg58HjnyH1d7","status":"ACTIVE","name":"New policy rule","priority":3,"created":"2023-07-27T19:24:06.000Z","lastUpdated":"2023-07-27T19:24:06.000Z","system":false,"conditions":{"people":{"users":{"exclude":[]}},"network":{"connection":"ANYWHERE"},"authContext":{"authType":"ANY"},"identityProvider":{"provider":"ANY"}},"actions":{"signon":{"access":"ALLOW","requireFactor":true,"primaryFactor":"PASSWORD_IDP_ANY_FACTOR","factorPromptMode":"ALWAYS","rememberDeviceByDefault":false,"session":{"usePersistentCookie":false,"maxSessionIdleMinutes":720,"maxSessionLifetimeMinutes":800}}},"_links":{"self":{"href":"https://testorg.com/api/v1/policies/00p95ttx8bVQnUNtX1d7/rules/0pr95tqgmg58HjnyH1d7","hints":{"allow":["GET","PUT","DELETE"]}},"deactivate":{"href":"https://testorg.com/api/v1/policies/00p95ttx8bVQnUNtX1d7/rules/0pr95tqgmg58HjnyH1d7/lifecycle/deactivate","hints":{"allow":["POST"]}}},"type":"SIGN_ON"}' | ConvertFrom-Json
 
             $Response = @{
                 Response   = $Content
@@ -129,53 +129,201 @@ Describe -tag 'Okta.PowerShell' -name 'OktaOktaPolicyApi' {
             $CreatedPolicyRule.Actions.SignOn.Session.MaxSessionLifetimeMinutes | Should -Be 800
             
         }
+
+        It 'Test New-OktaPolicyRule SignOnDenyPolicyRule' {
+           
+            $Content = '{"id":"0pr95vfyyp4iSrvnD1d7","status":"ACTIVE","name":"New policy rule","priority":3,"created":"2023-07-27T20:40:01.000Z","lastUpdated":"2023-07-27T20:40:01.000Z","system":false,"conditions":{"people":{"users":{"exclude":[]}},"network":{"connection":"ANYWHERE"},"authContext":{"authType":"ANY"},"identityProvider":{"provider":"ANY"}},"actions":{"signon":{"access":"DENY","requireFactor":false,"primaryFactor":"PASSWORD_IDP","rememberDeviceByDefault":false,"session":{"usePersistentCookie":false,"maxSessionIdleMinutes":120,"maxSessionLifetimeMinutes":0}}},"_links":{"self":{"href":"https://testorg.com/api/v1/policies/00p95v3vec6OddYXu1d7/rules/0pr95vfyyp4iSrvnD1d7","hints":{"allow":["GET","PUT","DELETE"]}},"deactivate":{"href":"https://testorg.com/api/v1/policies/00p95v3vec6OddYXu1d7/rules/0pr95vfyyp4iSrvnD1d7/lifecycle/deactivate","hints":{"allow":["POST"]}}},"type":"SIGN_ON"}' | ConvertFrom-Json
+
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+           
+            $SignOn = Initialize-OktaOktaSignOnPolicyRuleSignonActions -Access 'DENY' -RequireFactor $False
+            $Actions = Initialize-OktaOktaSignOnPolicyRuleActions -SignOn $SignOn
+            $Conditions = Initialize-OktaOktaSignOnPolicyRuleConditions -AuthContext @{ AuthType = 'ANY'} -Network @{Connection = "ANYWHERE"}
+            
+            $PolicyRule = Initialize-OktaOktaSignOnPolicyRule -Priority 1 -Status 'ACTIVE' -Name 'New policy rule' -Type 'SIGN_ON' -Actions $Actions -Conditions $Conditions
+            
+            $PolicyRule.Name | Should -Be 'New policy rule'
+            $PolicyRule.Status | Should -Be 'ACTIVE'
+            $PolicyRule.Type | Should -Be 'SIGN_ON'
+            $PolicyRule.Conditions.AuthContext.AuthType | Should -Be 'ANY'
+            $PolicyRule.Conditions.Network.Connection | Should -Be 'ANYWHERE'
+            $PolicyRule.Actions.SignOn.Access | Should -Be 'DENY'
+            $PolicyRule.Actions.SignOn.RequireFactor | Should -Be $False
+            
+            $CreatedPolicyRule = New-OktaPolicyRule -PolicyId "foo" -PolicyRule $PolicyRule
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+           
+            $CreatedPolicyRule.Id | Should -Be '0pr95vfyyp4iSrvnD1d7'
+            $CreatedPolicyRule.Name | Should -Be 'New policy rule'
+            $CreatedPolicyRule.Status | Should -Be 'ACTIVE'
+            $CreatedPolicyRule.Type | Should -Be 'SIGN_ON'
+            $CreatedPolicyRule.Conditions.AuthContext.AuthType | Should -Be 'ANY'
+            $CreatedPolicyRule.Conditions.Network.Connection | Should -Be 'ANYWHERE'
+            $CreatedPolicyRule.Actions.SignOn.Access | Should -Be 'DENY'
+            $CreatedPolicyRule.Actions.SignOn.RequireFactor | Should -Be $False
+        }
     }
 
     Context 'Get-OktaPolicy' {
         It 'Test Get-OktaPolicy' {
-            #$TestResult = Get-OktaPolicy -PolicyId "TEST_VALUE" -Expand "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+            $Content = '{"id":"00p95v3vec6OddYXu1d7","status":"ACTIVE","name":"New policy","description":"The default policy applies in all situations if no other policy applies.","priority":1,"system":false,"conditions":{"people":{"groups":{"include":["00g1fddpciTLogTJx1d7"]}}},"created":"2023-07-27T20:40:00.000Z","lastUpdated":"2023-07-27T20:40:00.000Z","_links":{"self":{"href":"https://testorg.com/api/v1/policies/00p95v3vec6OddYXu1d7","hints":{"allow":["GET","PUT","DELETE"]}},"rules":{"href":"https://testorg.com/api/v1/policies/00p95v3vec6OddYXu1d7/rules","hints":{"allow":["GET","POST"]}},"deactivate":{"href":"https://testorg.com/api/v1/policies/00p95v3vec6OddYXu1d7/lifecycle/deactivate","hints":{"allow":["POST"]}}},"type":"OKTA_SIGN_ON"}' | ConvertFrom-Json
+            
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+            
+            $NewPolicy = Get-OktaPolicy -PolicyId "foo"
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+            
+            $NewPolicy.Id | Should -Be '00p95v3vec6OddYXu1d7'
+            $NewPolicy.Status | Should -Be 'ACTIVE'
+            $NewPolicy.Priority | Should -Be 1
+            $NewPolicy.Description | Should -Be 'The default policy applies in all situations if no other policy applies.'
+            $NewPolicy.Conditions.People.Groups.Include | Should -Be '00g1fddpciTLogTJx1d7'
         }
     }
 
     Context 'Get-OktaPolicyRule' {
         It 'Test Get-OktaPolicyRule' {
-            #$TestResult = Get-OktaPolicyRule -PolicyId "TEST_VALUE" -RuleId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+           
+            $Content = '{"id":"0pr95vfyyp4iSrvnD1d7","status":"ACTIVE","name":"New policy rule","priority":3,"created":"2023-07-27T20:40:01.000Z","lastUpdated":"2023-07-27T20:40:01.000Z","system":false,"conditions":{"people":{"users":{"exclude":[]}},"network":{"connection":"ANYWHERE"},"authContext":{"authType":"ANY"},"identityProvider":{"provider":"ANY"}},"actions":{"signon":{"access":"DENY","requireFactor":false,"primaryFactor":"PASSWORD_IDP","rememberDeviceByDefault":false,"session":{"usePersistentCookie":false,"maxSessionIdleMinutes":120,"maxSessionLifetimeMinutes":0}}},"_links":{"self":{"href":"https://testorg.com/api/v1/policies/00p95v3vec6OddYXu1d7/rules/0pr95vfyyp4iSrvnD1d7","hints":{"allow":["GET","PUT","DELETE"]}},"deactivate":{"href":"https://testorg.com/api/v1/policies/00p95v3vec6OddYXu1d7/rules/0pr95vfyyp4iSrvnD1d7/lifecycle/deactivate","hints":{"allow":["POST"]}}},"type":"SIGN_ON"}' | ConvertFrom-Json
+
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+
+            $PolicyRule = Get-OktaPolicyRule -PolicyId "foo" -RuleId "bar"
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+           
+            $PolicyRule.Id | Should -Be '0pr95vfyyp4iSrvnD1d7'
+            $PolicyRule.Name | Should -Be 'New policy rule'
+            $PolicyRule.Status | Should -Be 'ACTIVE'
+            $PolicyRule.Type | Should -Be 'SIGN_ON'
+            $PolicyRule.Conditions.AuthContext.AuthType | Should -Be 'ANY'
+            $PolicyRule.Conditions.Network.Connection | Should -Be 'ANYWHERE'
+            $PolicyRule.Actions.SignOn.Access | Should -Be 'DENY'
+            $PolicyRule.Actions.SignOn.RequireFactor | Should -Be $False
         }
     }
 
     Context 'Invoke-OktaListPolicies' {
         It 'Test Invoke-OktaListPolicies' {
-            #$TestResult = Invoke-OktaListPolicies -Type "TEST_VALUE" -Status "TEST_VALUE" -Expand "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+            $Content = '[{"id":"00p95v3vec6OddYXu1d7","status":"ACTIVE","name":"New policy","description":"The default policy applies in all situations if no other policy applies.","priority":1,"system":false,"conditions":{"people":{"groups":{"include":["00g1fddpciTLogTJx1d7"]}}},"created":"2023-07-27T20:40:00.000Z","lastUpdated":"2023-07-27T20:40:00.000Z","_links":{"self":{"href":"https://testorg.com/api/v1/policies/00p95v3vec6OddYXu1d7","hints":{"allow":["GET","PUT","DELETE"]}},"rules":{"href":"https://testorg.com/api/v1/policies/00p95v3vec6OddYXu1d7/rules","hints":{"allow":["GET","POST"]}},"deactivate":{"href":"https://testorg.com/api/v1/policies/00p95v3vec6OddYXu1d7/lifecycle/deactivate","hints":{"allow":["POST"]}}},"type":"OKTA_SIGN_ON"}]' | ConvertFrom-Json
+            
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+            
+            $Policies = Invoke-OktaListPolicies -Type "foo"
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+            
+            $Policies.Count | Should -Be 1
+            $Policies[0].Id | Should -Be '00p95v3vec6OddYXu1d7'
+            $Policies[0].Status | Should -Be 'ACTIVE'
+            $Policies[0].Priority | Should -Be 1
+            $Policies[0].Description | Should -Be 'The default policy applies in all situations if no other policy applies.'
+            $Policies[0].Conditions.People.Groups.Include | Should -Be '00g1fddpciTLogTJx1d7'
         }
     }
 
     Context 'Invoke-OktaListPolicyRules' {
         It 'Test Invoke-OktaListPolicyRules' {
-            #$TestResult = Invoke-OktaListPolicyRules -PolicyId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+            $Content = '[{"id":"0pr95vfyyp4iSrvnD1d7","status":"ACTIVE","name":"New policy rule","priority":3,"created":"2023-07-27T20:40:01.000Z","lastUpdated":"2023-07-27T20:40:01.000Z","system":false,"conditions":{"people":{"users":{"exclude":[]}},"network":{"connection":"ANYWHERE"},"authContext":{"authType":"ANY"},"identityProvider":{"provider":"ANY"}},"actions":{"signon":{"access":"DENY","requireFactor":false,"primaryFactor":"PASSWORD_IDP","rememberDeviceByDefault":false,"session":{"usePersistentCookie":false,"maxSessionIdleMinutes":120,"maxSessionLifetimeMinutes":0}}},"_links":{"self":{"href":"https://testorg.com/api/v1/policies/00p95v3vec6OddYXu1d7/rules/0pr95vfyyp4iSrvnD1d7","hints":{"allow":["GET","PUT","DELETE"]}},"deactivate":{"href":"https://testorg.com/api/v1/policies/00p95v3vec6OddYXu1d7/rules/0pr95vfyyp4iSrvnD1d7/lifecycle/deactivate","hints":{"allow":["POST"]}}},"type":"SIGN_ON"}]' | ConvertFrom-Json
+
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+
+            $PolicyRules = Invoke-OktaListPolicyRules -PolicyId "foo"
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+           
+            $PolicyRules.Count | Should -Be 1
+            $PolicyRules[0].Id | Should -Be '0pr95vfyyp4iSrvnD1d7'
+            $PolicyRules[0].Name | Should -Be 'New policy rule'
+            $PolicyRules[0].Status | Should -Be 'ACTIVE'
+            $PolicyRules[0].Type | Should -Be 'SIGN_ON'
+            $PolicyRules[0].Conditions.AuthContext.AuthType | Should -Be 'ANY'
+            $PolicyRules[0].Conditions.Network.Connection | Should -Be 'ANYWHERE'
+            $PolicyRules[0].Actions.SignOn.Access | Should -Be 'DENY'
+            $PolicyRules[0].Actions.SignOn.RequireFactor | Should -Be $False
         }
     }
 
     Context 'Update-OktaPolicy' {
         It 'Test Update-OktaPolicy' {
-            #$TestResult = Update-OktaPolicy -PolicyId "TEST_VALUE" -Policy "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+            $Content = '{"id":"00p95v3vec6OddYXu1d7","status":"ACTIVE","name":"New policy","description":"The default policy applies in all situations if no other policy applies.","priority":1,"system":false,"conditions":{"people":{"groups":{"include":["00g1fddpciTLogTJx1d7"]}}},"created":"2023-07-27T20:40:00.000Z","lastUpdated":"2023-07-27T20:40:00.000Z","_links":{"self":{"href":"https://testorg.com/api/v1/policies/00p95v3vec6OddYXu1d7","hints":{"allow":["GET","PUT","DELETE"]}},"rules":{"href":"https://testorg.com/api/v1/policies/00p95v3vec6OddYXu1d7/rules","hints":{"allow":["GET","POST"]}},"deactivate":{"href":"https://testorg.com/api/v1/policies/00p95v3vec6OddYXu1d7/lifecycle/deactivate","hints":{"allow":["POST"]}}},"type":"OKTA_SIGN_ON"}' | ConvertFrom-Json
+            
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+            
+            $Policy = Update-OktaPolicy -PolicyId "foo" -Policy @{}
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+            
+            $Policy.Id | Should -Be '00p95v3vec6OddYXu1d7'
+            $Policy.Status | Should -Be 'ACTIVE'
+            $Policy.Priority | Should -Be 1
+            $Policy.Description | Should -Be 'The default policy applies in all situations if no other policy applies.'
+            $Policy.Conditions.People.Groups.Include | Should -Be '00g1fddpciTLogTJx1d7'
         }
     }
 
     Context 'Update-OktaPolicyRule' {
         It 'Test Update-OktaPolicyRule' {
-            #$TestResult = Update-OktaPolicyRule -PolicyId "TEST_VALUE" -RuleId "TEST_VALUE" -PolicyRule "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+            $Content = '{"id":"0pr95vfyyp4iSrvnD1d7","status":"ACTIVE","name":"New policy rule","priority":3,"created":"2023-07-27T20:40:01.000Z","lastUpdated":"2023-07-27T20:40:01.000Z","system":false,"conditions":{"people":{"users":{"exclude":[]}},"network":{"connection":"ANYWHERE"},"authContext":{"authType":"ANY"},"identityProvider":{"provider":"ANY"}},"actions":{"signon":{"access":"DENY","requireFactor":false,"primaryFactor":"PASSWORD_IDP","rememberDeviceByDefault":false,"session":{"usePersistentCookie":false,"maxSessionIdleMinutes":120,"maxSessionLifetimeMinutes":0}}},"_links":{"self":{"href":"https://testorg.com/api/v1/policies/00p95v3vec6OddYXu1d7/rules/0pr95vfyyp4iSrvnD1d7","hints":{"allow":["GET","PUT","DELETE"]}},"deactivate":{"href":"https://testorg.com/api/v1/policies/00p95v3vec6OddYXu1d7/rules/0pr95vfyyp4iSrvnD1d7/lifecycle/deactivate","hints":{"allow":["POST"]}}},"type":"SIGN_ON"}' | ConvertFrom-Json
+
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+
+            $PolicyRule = Update-OktaPolicyRule -PolicyId "foo" -RuleId "bar" -PolicyRule @{}
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+           
+            $PolicyRule.Id | Should -Be '0pr95vfyyp4iSrvnD1d7'
+            $PolicyRule.Name | Should -Be 'New policy rule'
+            $PolicyRule.Status | Should -Be 'ACTIVE'
+            $PolicyRule.Type | Should -Be 'SIGN_ON'
+            $PolicyRule.Conditions.AuthContext.AuthType | Should -Be 'ANY'
+            $PolicyRule.Conditions.Network.Connection | Should -Be 'ANYWHERE'
+            $PolicyRule.Actions.SignOn.Access | Should -Be 'DENY'
+            $PolicyRule.Actions.SignOn.RequireFactor | Should -Be $False
         }
     }
 
