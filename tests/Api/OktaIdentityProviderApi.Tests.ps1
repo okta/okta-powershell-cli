@@ -28,7 +28,7 @@ Describe -tag 'Okta.PowerShell' -name 'OktaOktaIdentityProviderApi' {
             
             $IdpCredentialsClient = Initialize-OktaIdentityProviderCredentialsClient -ClientId "your-client-id" -ClientSecret "your-client-secret"
             $IdpCredentials = Initialize-OktaIdentityProviderCredentials -Client $IdpCredentialsClient
-            $Protocol = Initialize-OktaProtocol -Credentials $IdpCredentials -Type 'OAUTH2' -Algorithms @("public_profile", "email" ) 
+            $Protocol = Initialize-OktaProtocol -Credentials $IdpCredentials -Type 'OAUTH2' 
             $AccountLink = Initialize-OktaPolicyAccountLink -Action 'AUTO'
             $Conditions = Initialize-OktaProvisioningConditions -Deprovisioned @{Action = "NONE"} -Suspended @{Action = "NONE"} 
             $Provisioning = Initialize-OktaProvisioning -Action 'AUTO' -ProfileMaster $True -Conditions $Conditions -Groups @{Action = "NONE"}
@@ -41,7 +41,6 @@ Describe -tag 'Okta.PowerShell' -name 'OktaOktaIdentityProviderApi' {
             $NewIdp.Protocol.Credentials.Client.Client_Id | Should -Be "your-client-id"
             $NewIdp.Protocol.Credentials.Client.Client_Secret | Should -Be "your-client-secret"
             $NewIdp.Protocol.Type | Should -Be "OAUTH2"
-            $NewIdp.Protocol.Algorithms.Count | Should -Be 2
             $NewIdp.Policy.AccountLink.Action | Should -Be "AUTO"
             $NewIdp.Policy.Provisioning.Action | Should -Be "AUTO"
             $NewIdp.Policy.Provisioning.ProfileMaster | Should -Be $True
@@ -75,6 +74,100 @@ Describe -tag 'Okta.PowerShell' -name 'OktaOktaIdentityProviderApi' {
             $NewIdp.Policy.AccountLink.Action | Should -Be "AUTO"
             $NewIdp.Policy.Provisioning.Action | Should -Be "AUTO"
             $NewIdp.Policy.Provisioning.ProfileMaster | Should -Be $True
+            $NewIdp.Policy.Provisioning.Conditions.Deprovisioned.Action | Should -Be "NONE"
+            $NewIdp.Policy.Provisioning.Conditions.Suspended.Action | Should -Be "NONE"
+            $NewIdp.Policy.Provisioning.Groups.Action | Should -Be "NONE"
+            $NewIdp.Policy.Subject.UserNameTemplate.Template  | Should -Be "idpuser.email"
+            $NewIdp.Policy.Subject.MatchType  | Should -Be "USERNAME"
+        }
+
+        It 'Test Initialize-OktaIdentityProvider GenericOIDC' {
+            
+            $IdpCredentialsClient = Initialize-OktaIdentityProviderCredentialsClient -ClientId "your-client-id" -ClientSecret "your-client-secret"
+            $IdpCredentials = Initialize-OktaIdentityProviderCredentials -Client $IdpCredentialsClient
+           
+            $AlgoRequest = [PSCustomObject]@{
+                    Signature = [PSCustomObject]@{
+                        Algorithm = "SHA-256"
+                        Scope = "REQUEST"
+                    }
+                }
+            
+            $AlgoResponse = [PSCustomObject]@{
+                Signature = [PSCustomObject]@{
+                    Algorithm = "SHA-256"
+                    Scope = "ANY"
+                }
+            }    
+            
+            $Algorithms = Initialize-OktaProtocolAlgorithms -Request $AlgoRequest -Response $AlgoResponse
+
+            $Endpoints = Initialize-OktaProtocolEndpoints -Acs @{
+                Binding = "HTTP-POST"
+                Type = "INSTANCE"
+            }
+            
+            $Protocol = Initialize-OktaProtocol -Credentials $IdpCredentials -Type 'OAUTH2' -Algorithms $Algorithms -Endpoints $Endpoints -Scopes @("openid", "profile") -Issuer @{Url = "https://idp.example.com"}
+           
+            $AccountLink = Initialize-OktaPolicyAccountLink -Action 'AUTO'
+            $Conditions = Initialize-OktaProvisioningConditions -Deprovisioned @{Action = "NONE"} -Suspended @{Action = "NONE"} 
+            $Provisioning = Initialize-OktaProvisioning -Action 'AUTO' -ProfileMaster $True -Conditions $Conditions -Groups @{Action = "NONE"}
+            $Subject = Initialize-OktaPolicySubject -UserNameTemplate @{Template = "idpuser.email"} -MatchType "USERNAME" 
+            $Policy = Initialize-OktaIdentityProviderPolicy -AccountLink $AccountLink -Provisioning $Provisioning -Subject $Subject
+            $NewIdp = Initialize-OktaIdentityProvider -Name "New idp" -Type "OIDC" -Protocol $Protocol -Policy $Policy
+
+            $NewIdp.Name | Should -Be "New idp"
+            $NewIdp.Type | Should -Be "OIDC"
+            $NewIdp.Protocol.Credentials.Client.Client_Id | Should -Be "your-client-id"
+            $NewIdp.Protocol.Credentials.Client.Client_Secret | Should -Be "your-client-secret"
+            $NewIdp.Protocol.Type | Should -Be "OAUTH2"
+           
+            $NewIdp.Protocol.Algorithms.Request.Signature.Algorithm | Should -Be 'SHA-256'
+            $NewIdp.Protocol.Algorithms.Request.Signature.Scope | Should -Be 'REQUEST'
+            $NewIdp.Protocol.Algorithms.Response.Signature.Algorithm | Should -Be 'SHA-256'
+            $NewIdp.Protocol.Algorithms.Response.Signature.Scope | Should -Be 'ANY'
+            
+            $NewIdp.Protocol.Endpoints.Acs.Binding | Should -Be 'HTTP-POST'
+            $NewIdp.Protocol.Endpoints.Acs.Type | Should -Be 'INSTANCE'
+            $NewIdp.Protocol.Issuer.Url | Should -Be "https://idp.example.com"
+            $NewIdp.Policy.AccountLink.Action | Should -Be "AUTO"
+            $NewIdp.Policy.Provisioning.Action | Should -Be "AUTO"
+            $NewIdp.Policy.Provisioning.ProfileMaster | Should -Be $True
+            $NewIdp.Policy.Provisioning.Conditions.Deprovisioned.Action | Should -Be "NONE"
+            $NewIdp.Policy.Provisioning.Conditions.Suspended.Action | Should -Be "NONE"
+            $NewIdp.Policy.Provisioning.Groups.Action | Should -Be "NONE"
+            $NewIdp.Policy.Subject.UserNameTemplate.Template  | Should -Be "idpuser.email"
+            $NewIdp.Policy.Subject.MatchType  | Should -Be "USERNAME"
+        }
+
+        It 'Test New-OktaIdentityProvider GenericOIDC' {
+            $Content = '{"id":"0oa97ur0uxAyr6cyC1d7","issuerMode":"DYNAMIC","name":"New idp","status":"ACTIVE","created":"2023-07-31T17:40:34.000Z","lastUpdated":"2023-07-31T17:40:34.000Z","protocol":{"type":"OIDC","endpoints":{"authorization":{"url":"https://idp.example.com/authorize","binding":"HTTP-REDIRECT"},"token":{"url":"https://idp.example.com/token","binding":"HTTP-POST"},"userInfo":{"url":"https://idp.example.com/userinfo","binding":"HTTP-REDIRECT"},"jwks":{"url":"https://idp.example.com/keys","binding":"HTTP-REDIRECT"}},"scopes":["openid","profile","email"],"issuer":{"url":"https://idp.example.com"},"credentials":{"client":{"client_id":"your-client-id","client_secret":"your-client-secret"}}},"policy":{"provisioning":{"action":"AUTO","profileMaster":false,"groups":{"action":"NONE"},"conditions":{"deprovisioned":{"action":"NONE"},"suspended":{"action":"NONE"}}},"accountLink":{"filter":null,"action":"AUTO"},"subject":{"userNameTemplate":{"template":"idpuser.email"},"filter":null,"matchType":"USERNAME","matchAttribute":null},"maxClockSkew":0},"type":"OIDC","_links":{"authorize":{"href":"https://testorg.com/oauth2/v1/authorize?idp=0oa97ur0uxAyr6cyC1d7&client_id={clientId}&response_type={responseType}&response_mode={responseMode}&scope={scopes}&redirect_uri={redirectUri}&state={state}&nonce={nonce}","templated":true,"hints":{"allow":["GET"]}},"clientRedirectUri":{"href":"https://testorg.com/oauth2/v1/authorize/callback","hints":{"allow":["POST"]}}}}' | ConvertFrom-Json
+
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+
+            $NewIdp = New-OktaIdentityProvider -IdentityProvider @{}
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+
+            $NewIdp.Name | Should -Be "New idp"
+            $NewIdp.Type | Should -Be "OIDC"
+            $NewIdp.IssuerMode | Should -Be "DYNAMIC"
+            $NewIdp.Protocol.Credentials.Client.Client_Id | Should -Be "your-client-id"
+            $NewIdp.Protocol.Credentials.Client.Client_Secret | Should -Be "your-client-secret"
+            $NewIdp.Protocol.Type | Should -Be "OIDC"
+            
+            $NewIdp.Protocol.Endpoints.Token.Binding | Should -Be 'HTTP-POST'
+            $NewIdp.Protocol.Endpoints.Token.Url | Should -Be 'https://idp.example.com/token'
+            $NewIdp.Protocol.Issuer.Url | Should -Be "https://idp.example.com"
+            $NewIdp.Policy.AccountLink.Action | Should -Be "AUTO"
+            $NewIdp.Policy.Provisioning.Action | Should -Be "AUTO"
+            $NewIdp.Policy.Provisioning.ProfileMaster | Should -Be $False
             $NewIdp.Policy.Provisioning.Conditions.Deprovisioned.Action | Should -Be "NONE"
             $NewIdp.Policy.Provisioning.Conditions.Suspended.Action | Should -Be "NONE"
             $NewIdp.Policy.Provisioning.Groups.Action | Should -Be "NONE"
