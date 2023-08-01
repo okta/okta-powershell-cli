@@ -7,22 +7,6 @@
 #
 
 Describe -tag 'Okta.PowerShell' -name 'OktaOktaIdentityProviderApi' {
-    Context 'Invoke-OktaActivateIdentityProvider' {
-        It 'Test Invoke-OktaActivateIdentityProvider' {
-            #$TestResult = Invoke-OktaActivateIdentityProvider -IdpId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Copy-OktaIdentityProviderKey' {
-        It 'Test Copy-OktaIdentityProviderKey' {
-            #$TestResult = Copy-OktaIdentityProviderKey -IdpId "TEST_VALUE" -KeyId "TEST_VALUE" -TargetIdpId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
     Context 'New-OktaIdentityProvider' {
         It 'Test Initialize-OktaIdentityProvider Facebook' {
             
@@ -177,178 +161,275 @@ Describe -tag 'Okta.PowerShell' -name 'OktaOktaIdentityProviderApi' {
     }
 
     Context 'New-OktaIdentityProviderKey' {
-        It 'Test New-OktaIdentityProviderKey' {
-            #$TestResult = New-OktaIdentityProviderKey -JsonWebKey "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+        It 'Test Initialize-OktaJsonWebKey' {    
+            $Date = (Get-Date)
+            $JsonWebKey = Initialize-OktaJsonWebKey -Alg "MyAlg" -Created (Get-Date) -E "MyE" -ExpiresAt $Date -KeyOps "MyKeyOps" -Kid "MyKid" -Kty "MyKty" -LastUpdated (Get-Date) -N "MyN" -Status "MyStatus" -Use "MyUse" -X5c "MyX5c" -X5t "MyX5t" -X5tS256 "MyX5tS256" -X5u "MyX5u"
+            $JsonWebKey.Alg | Should -Be "MyAlg"
+            $JsonWebKey.E | Should -Be "MyE"
+            $JsonWebKey.ExpiresAt | Should -Be $Date
+            $JsonWebKey.Key_ops | Should -Be "MyKeyOps"
+            $JsonWebKey.Kid | Should -Be "MyKid"
+            $JsonWebKey.Kty | Should -Be "MyKty"
+            $JsonWebKey.N | Should -Be "MyN"
+            $JsonWebKey.Use | Should -Be "MyUse"
+            $JsonWebKey.X5c | Should -Be "MyX5c"
+            $JsonWebKey.X5u | Should -Be "MyX5u"
+            
+            # TODO: Fix property
+            #$JsonWebKey.X5t#S256 | Should -Be "MyX5c"          
         }
-    }
 
-    Context 'Invoke-OktaDeactivateIdentityProvider' {
-        It 'Test Invoke-OktaDeactivateIdentityProvider' {
-            #$TestResult = Invoke-OktaDeactivateIdentityProvider -IdpId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+        It 'Test New-OktaIdentityProviderKey' {    
+            $Content = '{"kty":"RSA","created":"2023-08-01T13:33:59.000Z","lastUpdated":"2023-08-01T13:33:59.000Z","expiresAt":"2025-12-18T22:23:32.000Z","alg":"RSA","kid":"5256aa84-8ad2-4545-b75c-39cff0bf951a","use":"sig","x5c":["MIIDnjCCAoagAwIBAgIGAVG3MN+PMA0GCSqGSIb3DQEBBQUAMIGPMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5p"],"x5t#S256":"wzPVobIrveR1x-PCbjsFGNV-6zn7Rm9KuOWOG4Rk6jE","e":"AQAB","n":"tcnyvuVCrsFEKCwHDenS3Ocjed8eWDv3zLtD2K_iZfE8BMj2wpTfn6Ry8zCYey3mWlKdxIybnV9amrujGRnE0ab6Q16v9D6RlFQLOG6dwqoRKuZy33Uyg8PGdEudZjGbWuKCqqXEp-UKALJHV-k4wWeVH8g5d1n3KyR2TVajVJpCrPhLFmq1Il4G_IUnPe4MvjXqB6CpKkog1-ThWsItPRJPAM-RweFHXq7KfChXsYE7Mmfuly8sDQlvBmQyxZnFHVuiPfCvGHJjpvHy11YlHdOjfgqHRvZbmo30-y0X_oY_yV4YEJ00LL6eJWU4wi7ViY3HP6_VCdRjHoRdr5L_Dw"}' | ConvertFrom-Json
+
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+
+            $NewKey = New-OktaIdentityProviderKey -JsonWebKey @{}
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+
+            $NewKey.X5c | Should -Contain "MIIDnjCCAoagAwIBAgIGAVG3MN+PMA0GCSqGSIb3DQEBBQUAMIGPMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5p"
         }
+        
     }
-
-    Context 'Invoke-OktaDeleteIdentityProvider' {
-        It 'Test Invoke-OktaDeleteIdentityProvider' {
-            #$TestResult = Invoke-OktaDeleteIdentityProvider -IdpId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
-    Context 'Invoke-OktaDeleteIdentityProviderKey' {
-        It 'Test Invoke-OktaDeleteIdentityProviderKey' {
-            #$TestResult = Invoke-OktaDeleteIdentityProviderKey -KeyId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
     Context 'New-OktaCsrForIdentityProvider' {
+        It 'Test Initialize-OktaCsrMetadata' {
+            
+            $Subject = Initialize-OktaCsrMetadataSubject -CountryName "US" -StateOrProvinceName "California" -CommonName "SP Issuer" -LocalityName "San Francisco" -OrganizationName "Okta" -OrganizationalUnitName "Dev"
+            $SubjectAltNames = Initialize-OktaCsrMetadataSubjectAltNames -DnsNames @("dev.okta.com")
+            $Metadata = Initialize-OktaCsrMetadata -Subject $Subject -SubjectAltNames $SubjectAltNames
+
+            $Metadata.Subject.CountryName | Should -Be "US"
+            $Metadata.Subject.StateOrProvinceName | Should -Be "California"
+            $Metadata.Subject.CommonName | Should -Be "SP Issuer"
+            $Metadata.Subject.LocalityName | Should -Be "San Francisco"
+            $Metadata.Subject.OrganizationName | Should -Be "Okta"
+            $Metadata.Subject.OrganizationalUnitName | Should -Be "Dev"
+            $Metadata.SubjectAltNames.DnsNames | Should -Contain "dev.okta.com"
+        }
+
         It 'Test New-OktaCsrForIdentityProvider' {
-            #$TestResult = New-OktaCsrForIdentityProvider -IdpId "TEST_VALUE" -Metadata "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+            
+            $Content = '{"id":"n-qQkgRh4GUubsiBHzeaF5P9IudfIg0hgJhaZczxNrk","created":"2023-08-01T13:57:55.000Z","csr":"MIIC4DCCAcgCAQAwcTELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xEzARBgNVBAoMCk9rdGEsIEluYy4xDDAKBgNVBAsMA0RldjESMBAGA1UEAwwJU1AgSXNzdWVyMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmyH4mMrZGnDw/Xds86uvNkw3hZxffK2alpnNmGjgVyiFWP9WfUZbojgUf2mfbU8tc75adW4QeCTPzbAjvo8+X8rNJaOLfROhtuHPMJu9OoQndco3ALyJFGsyyAb+6G927zDB42VvkBuy0Syt6TxVtOEy4O6ZBLqbad7/DmD2eThCzgtC3dD1XwGaxvgh02k/t2K3TqUI/ygBefQCsbusesCp8M9GyfuGnAxCFr7BlmtyVvOnyENjHZMfdardP3W/C1ZF10sn8E0BLxiDbTyd0NJ6JDft/GS+kdPgiIG2n8OyWqyLN/1w+o9MvlGjt6PH82stwgms6FlIZRKsAjYWJQIDAQABoCowKAYJKoZIhvcNAQkOMRswGTAXBgNVHREEEDAOggxkZXYub2t0YS5jb20wDQYJKoZIhvcNAQELBQADggEBAFAx5B6B/KkB3DtAZAdQ1QMGh6AwZRorN5qwjNhD+6iaV0jZbEf9Q1u1Mdi3eDV2tOfLpCSmpObhzQVScn2isU+0vKjkpjqNYIg0m7o8/0IiAZkbwaY7B34+iCdYEmDFm9oH7VY8OS8pGDYKu828VqZIWZpT//COBy4Ay+YntyFwkWL2XRGdcKwxWNyzgEu/YGN1r0OnvlSByi5UlnAtDsQ1FWy480NW6Xg7xtQotzMa5tHg6G8te/ZcIYLCVFHywcNffqJu3FpsiPaeyoxpByCeEnVJOQsP2ikY27G8WFNlhPS+eOwp7tVzy8UvDEyZ/qCX32pR+XR4gjJlYBDKFyw=","kty":"RSA","_links":{"publish":{"href":"https://testorg.com/api/v1/idps/0oa98mm9bqtXe8z6x1d7/credentials/csrs/n-qQkgRh4GUubsiBHzeaF5P9IudfIg0hgJhaZczxNrk/lifecycle/publish","hints":{"allow":["POST"]}},"self":{"href":"https://testorg.com/api/v1/idps/0oa98mm9bqtXe8z6x1d7/credentials/csrs/n-qQkgRh4GUubsiBHzeaF5P9IudfIg0hgJhaZczxNrk","hints":{"allow":["GET","DELETE"]}}}}' | ConvertFrom-Json  
+            
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+
+            $NewCsr = New-OktaCsrForIdentityProvider -Metadata @{} -IdpId "foo"
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+        
+            $NewCsr.Csr | Should -Be "MIIC4DCCAcgCAQAwcTELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xEzARBgNVBAoMCk9rdGEsIEluYy4xDDAKBgNVBAsMA0RldjESMBAGA1UEAwwJU1AgSXNzdWVyMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmyH4mMrZGnDw/Xds86uvNkw3hZxffK2alpnNmGjgVyiFWP9WfUZbojgUf2mfbU8tc75adW4QeCTPzbAjvo8+X8rNJaOLfROhtuHPMJu9OoQndco3ALyJFGsyyAb+6G927zDB42VvkBuy0Syt6TxVtOEy4O6ZBLqbad7/DmD2eThCzgtC3dD1XwGaxvgh02k/t2K3TqUI/ygBefQCsbusesCp8M9GyfuGnAxCFr7BlmtyVvOnyENjHZMfdardP3W/C1ZF10sn8E0BLxiDbTyd0NJ6JDft/GS+kdPgiIG2n8OyWqyLN/1w+o9MvlGjt6PH82stwgms6FlIZRKsAjYWJQIDAQABoCowKAYJKoZIhvcNAQkOMRswGTAXBgNVHREEEDAOggxkZXYub2t0YS5jb20wDQYJKoZIhvcNAQELBQADggEBAFAx5B6B/KkB3DtAZAdQ1QMGh6AwZRorN5qwjNhD+6iaV0jZbEf9Q1u1Mdi3eDV2tOfLpCSmpObhzQVScn2isU+0vKjkpjqNYIg0m7o8/0IiAZkbwaY7B34+iCdYEmDFm9oH7VY8OS8pGDYKu828VqZIWZpT//COBy4Ay+YntyFwkWL2XRGdcKwxWNyzgEu/YGN1r0OnvlSByi5UlnAtDsQ1FWy480NW6Xg7xtQotzMa5tHg6G8te/ZcIYLCVFHywcNffqJu3FpsiPaeyoxpByCeEnVJOQsP2ikY27G8WFNlhPS+eOwp7tVzy8UvDEyZ/qCX32pR+XR4gjJlYBDKFyw="
         }
     }
 
-    Context 'New-OktaIdentityProviderSigningKey' {
-        It 'Test New-OktaIdentityProviderSigningKey' {
-            #$TestResult = New-OktaIdentityProviderSigningKey -IdpId "TEST_VALUE" -ValidityYears "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
-
+   
     Context 'Get-OktaCsrForIdentityProvider' {
         It 'Test Get-OktaCsrForIdentityProvider' {
-            #$TestResult = Get-OktaCsrForIdentityProvider -IdpId "TEST_VALUE" -CsrId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+            $Content = '{"id":"n-qQkgRh4GUubsiBHzeaF5P9IudfIg0hgJhaZczxNrk","created":"2023-08-01T13:57:55.000Z","csr":"MIIC4DCCAcgCAQAwcTELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xEzARBgNVBAoMCk9rdGEsIEluYy4xDDAKBgNVBAsMA0RldjESMBAGA1UEAwwJU1AgSXNzdWVyMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmyH4mMrZGnDw/Xds86uvNkw3hZxffK2alpnNmGjgVyiFWP9WfUZbojgUf2mfbU8tc75adW4QeCTPzbAjvo8+X8rNJaOLfROhtuHPMJu9OoQndco3ALyJFGsyyAb+6G927zDB42VvkBuy0Syt6TxVtOEy4O6ZBLqbad7/DmD2eThCzgtC3dD1XwGaxvgh02k/t2K3TqUI/ygBefQCsbusesCp8M9GyfuGnAxCFr7BlmtyVvOnyENjHZMfdardP3W/C1ZF10sn8E0BLxiDbTyd0NJ6JDft/GS+kdPgiIG2n8OyWqyLN/1w+o9MvlGjt6PH82stwgms6FlIZRKsAjYWJQIDAQABoCowKAYJKoZIhvcNAQkOMRswGTAXBgNVHREEEDAOggxkZXYub2t0YS5jb20wDQYJKoZIhvcNAQELBQADggEBAFAx5B6B/KkB3DtAZAdQ1QMGh6AwZRorN5qwjNhD+6iaV0jZbEf9Q1u1Mdi3eDV2tOfLpCSmpObhzQVScn2isU+0vKjkpjqNYIg0m7o8/0IiAZkbwaY7B34+iCdYEmDFm9oH7VY8OS8pGDYKu828VqZIWZpT//COBy4Ay+YntyFwkWL2XRGdcKwxWNyzgEu/YGN1r0OnvlSByi5UlnAtDsQ1FWy480NW6Xg7xtQotzMa5tHg6G8te/ZcIYLCVFHywcNffqJu3FpsiPaeyoxpByCeEnVJOQsP2ikY27G8WFNlhPS+eOwp7tVzy8UvDEyZ/qCX32pR+XR4gjJlYBDKFyw=","kty":"RSA","_links":{"publish":{"href":"https://testorg.com/api/v1/idps/0oa98mm9bqtXe8z6x1d7/credentials/csrs/n-qQkgRh4GUubsiBHzeaF5P9IudfIg0hgJhaZczxNrk/lifecycle/publish","hints":{"allow":["POST"]}},"self":{"href":"https://testorg.com/api/v1/idps/0oa98mm9bqtXe8z6x1d7/credentials/csrs/n-qQkgRh4GUubsiBHzeaF5P9IudfIg0hgJhaZczxNrk","hints":{"allow":["GET","DELETE"]}}}}' | ConvertFrom-Json  
+            
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+
+            $NewCsr = Get-OktaCsrForIdentityProvider -IdpId "foo" -CsrId "bar"
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+        
+            $NewCsr.Csr | Should -Be "MIIC4DCCAcgCAQAwcTELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xEzARBgNVBAoMCk9rdGEsIEluYy4xDDAKBgNVBAsMA0RldjESMBAGA1UEAwwJU1AgSXNzdWVyMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmyH4mMrZGnDw/Xds86uvNkw3hZxffK2alpnNmGjgVyiFWP9WfUZbojgUf2mfbU8tc75adW4QeCTPzbAjvo8+X8rNJaOLfROhtuHPMJu9OoQndco3ALyJFGsyyAb+6G927zDB42VvkBuy0Syt6TxVtOEy4O6ZBLqbad7/DmD2eThCzgtC3dD1XwGaxvgh02k/t2K3TqUI/ygBefQCsbusesCp8M9GyfuGnAxCFr7BlmtyVvOnyENjHZMfdardP3W/C1ZF10sn8E0BLxiDbTyd0NJ6JDft/GS+kdPgiIG2n8OyWqyLN/1w+o9MvlGjt6PH82stwgms6FlIZRKsAjYWJQIDAQABoCowKAYJKoZIhvcNAQkOMRswGTAXBgNVHREEEDAOggxkZXYub2t0YS5jb20wDQYJKoZIhvcNAQELBQADggEBAFAx5B6B/KkB3DtAZAdQ1QMGh6AwZRorN5qwjNhD+6iaV0jZbEf9Q1u1Mdi3eDV2tOfLpCSmpObhzQVScn2isU+0vKjkpjqNYIg0m7o8/0IiAZkbwaY7B34+iCdYEmDFm9oH7VY8OS8pGDYKu828VqZIWZpT//COBy4Ay+YntyFwkWL2XRGdcKwxWNyzgEu/YGN1r0OnvlSByi5UlnAtDsQ1FWy480NW6Xg7xtQotzMa5tHg6G8te/ZcIYLCVFHywcNffqJu3FpsiPaeyoxpByCeEnVJOQsP2ikY27G8WFNlhPS+eOwp7tVzy8UvDEyZ/qCX32pR+XR4gjJlYBDKFyw="
         }
     }
 
     Context 'Get-OktaIdentityProvider' {
-        It 'Test Get-OktaIdentityProvider' {
-            #$TestResult = Get-OktaIdentityProvider -IdpId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
+        It 'Test Get-OktaIdentityProvider' { 
+            $Content = '{"id":"0oa97ur0uxAyr6cyC1d7","issuerMode":"DYNAMIC","name":"New idp","status":"ACTIVE","created":"2023-07-31T17:40:34.000Z","lastUpdated":"2023-07-31T17:40:34.000Z","protocol":{"type":"OIDC","endpoints":{"authorization":{"url":"https://idp.example.com/authorize","binding":"HTTP-REDIRECT"},"token":{"url":"https://idp.example.com/token","binding":"HTTP-POST"},"userInfo":{"url":"https://idp.example.com/userinfo","binding":"HTTP-REDIRECT"},"jwks":{"url":"https://idp.example.com/keys","binding":"HTTP-REDIRECT"}},"scopes":["openid","profile","email"],"issuer":{"url":"https://idp.example.com"},"credentials":{"client":{"client_id":"your-client-id","client_secret":"your-client-secret"}}},"policy":{"provisioning":{"action":"AUTO","profileMaster":false,"groups":{"action":"NONE"},"conditions":{"deprovisioned":{"action":"NONE"},"suspended":{"action":"NONE"}}},"accountLink":{"filter":null,"action":"AUTO"},"subject":{"userNameTemplate":{"template":"idpuser.email"},"filter":null,"matchType":"USERNAME","matchAttribute":null},"maxClockSkew":0},"type":"OIDC","_links":{"authorize":{"href":"https://testorg.com/oauth2/v1/authorize?idp=0oa97ur0uxAyr6cyC1d7&client_id={clientId}&response_type={responseType}&response_mode={responseMode}&scope={scopes}&redirect_uri={redirectUri}&state={state}&nonce={nonce}","templated":true,"hints":{"allow":["GET"]}},"clientRedirectUri":{"href":"https://testorg.com/oauth2/v1/authorize/callback","hints":{"allow":["POST"]}}}}' | ConvertFrom-Json
 
-    Context 'Get-OktaIdentityProviderApplicationUser' {
-        It 'Test Get-OktaIdentityProviderApplicationUser' {
-            #$TestResult = Get-OktaIdentityProviderApplicationUser -IdpId "TEST_VALUE" -UserId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+
+            $NewIdp = Get-OktaIdentityProvider -IdpId "foo"
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+
+            $NewIdp.Id | Should -Be "0oa97ur0uxAyr6cyC1d7"
+            $NewIdp.Name | Should -Be "New idp"
+            $NewIdp.Type | Should -Be "OIDC"
+            $NewIdp.IssuerMode | Should -Be "DYNAMIC"
+            $NewIdp.Protocol.Credentials.Client.Client_Id | Should -Be "your-client-id"
+            $NewIdp.Protocol.Credentials.Client.Client_Secret | Should -Be "your-client-secret"
+            $NewIdp.Protocol.Type | Should -Be "OIDC"
+            
+            $NewIdp.Protocol.Endpoints.Token.Binding | Should -Be 'HTTP-POST'
+            $NewIdp.Protocol.Endpoints.Token.Url | Should -Be 'https://idp.example.com/token'
+            $NewIdp.Protocol.Issuer.Url | Should -Be "https://idp.example.com"
+            $NewIdp.Policy.AccountLink.Action | Should -Be "AUTO"
+            $NewIdp.Policy.Provisioning.Action | Should -Be "AUTO"
+            $NewIdp.Policy.Provisioning.ProfileMaster | Should -Be $False
+            $NewIdp.Policy.Provisioning.Conditions.Deprovisioned.Action | Should -Be "NONE"
+            $NewIdp.Policy.Provisioning.Conditions.Suspended.Action | Should -Be "NONE"
+            $NewIdp.Policy.Provisioning.Groups.Action | Should -Be "NONE"
+            $NewIdp.Policy.Subject.UserNameTemplate.Template  | Should -Be "idpuser.email"
+            $NewIdp.Policy.Subject.MatchType  | Should -Be "USERNAME"
         }
     }
 
     Context 'Get-OktaIdentityProviderKey' {
         It 'Test Get-OktaIdentityProviderKey' {
-            #$TestResult = Get-OktaIdentityProviderKey -KeyId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
+            $Content = '{"kty":"RSA","created":"2023-08-01T13:33:59.000Z","lastUpdated":"2023-08-01T13:33:59.000Z","expiresAt":"2025-12-18T22:23:32.000Z","alg":"RSA","kid":"5256aa84-8ad2-4545-b75c-39cff0bf951a","use":"sig","x5c":["MIIDnjCCAoagAwIBAgIGAVG3MN+PMA0GCSqGSIb3DQEBBQUAMIGPMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5p"],"x5t#S256":"wzPVobIrveR1x-PCbjsFGNV-6zn7Rm9KuOWOG4Rk6jE","e":"AQAB","n":"tcnyvuVCrsFEKCwHDenS3Ocjed8eWDv3zLtD2K_iZfE8BMj2wpTfn6Ry8zCYey3mWlKdxIybnV9amrujGRnE0ab6Q16v9D6RlFQLOG6dwqoRKuZy33Uyg8PGdEudZjGbWuKCqqXEp-UKALJHV-k4wWeVH8g5d1n3KyR2TVajVJpCrPhLFmq1Il4G_IUnPe4MvjXqB6CpKkog1-ThWsItPRJPAM-RweFHXq7KfChXsYE7Mmfuly8sDQlvBmQyxZnFHVuiPfCvGHJjpvHy11YlHdOjfgqHRvZbmo30-y0X_oY_yV4YEJ00LL6eJWU4wi7ViY3HP6_VCdRjHoRdr5L_Dw"}' | ConvertFrom-Json
 
-    Context 'Get-OktaIdentityProviderSigningKey' {
-        It 'Test Get-OktaIdentityProviderSigningKey' {
-            #$TestResult = Get-OktaIdentityProviderSigningKey -IdpId "TEST_VALUE" -KeyId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
 
-    Context 'Invoke-OktaLinkUserToIdentityProvider' {
-        It 'Test Invoke-OktaLinkUserToIdentityProvider' {
-            #$TestResult = Invoke-OktaLinkUserToIdentityProvider -IdpId "TEST_VALUE" -UserId "TEST_VALUE" -UserIdentityProviderLinkRequest "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+
+            $NewKey = Get-OktaIdentityProviderKey -KeyId "foo"
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+
+            $NewKey.X5c | Should -Contain "MIIDnjCCAoagAwIBAgIGAVG3MN+PMA0GCSqGSIb3DQEBBQUAMIGPMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5p"
         }
     }
 
     Context 'Invoke-OktaListCsrsForIdentityProvider' {
         It 'Test Invoke-OktaListCsrsForIdentityProvider' {
-            #$TestResult = Invoke-OktaListCsrsForIdentityProvider -IdpId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+            $Content = '[{"id":"n-qQkgRh4GUubsiBHzeaF5P9IudfIg0hgJhaZczxNrk","created":"2023-08-01T13:57:55.000Z","csr":"MIIC4DCCAcgCAQAwcTELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xEzARBgNVBAoMCk9rdGEsIEluYy4xDDAKBgNVBAsMA0RldjESMBAGA1UEAwwJU1AgSXNzdWVyMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmyH4mMrZGnDw/Xds86uvNkw3hZxffK2alpnNmGjgVyiFWP9WfUZbojgUf2mfbU8tc75adW4QeCTPzbAjvo8+X8rNJaOLfROhtuHPMJu9OoQndco3ALyJFGsyyAb+6G927zDB42VvkBuy0Syt6TxVtOEy4O6ZBLqbad7/DmD2eThCzgtC3dD1XwGaxvgh02k/t2K3TqUI/ygBefQCsbusesCp8M9GyfuGnAxCFr7BlmtyVvOnyENjHZMfdardP3W/C1ZF10sn8E0BLxiDbTyd0NJ6JDft/GS+kdPgiIG2n8OyWqyLN/1w+o9MvlGjt6PH82stwgms6FlIZRKsAjYWJQIDAQABoCowKAYJKoZIhvcNAQkOMRswGTAXBgNVHREEEDAOggxkZXYub2t0YS5jb20wDQYJKoZIhvcNAQELBQADggEBAFAx5B6B/KkB3DtAZAdQ1QMGh6AwZRorN5qwjNhD+6iaV0jZbEf9Q1u1Mdi3eDV2tOfLpCSmpObhzQVScn2isU+0vKjkpjqNYIg0m7o8/0IiAZkbwaY7B34+iCdYEmDFm9oH7VY8OS8pGDYKu828VqZIWZpT//COBy4Ay+YntyFwkWL2XRGdcKwxWNyzgEu/YGN1r0OnvlSByi5UlnAtDsQ1FWy480NW6Xg7xtQotzMa5tHg6G8te/ZcIYLCVFHywcNffqJu3FpsiPaeyoxpByCeEnVJOQsP2ikY27G8WFNlhPS+eOwp7tVzy8UvDEyZ/qCX32pR+XR4gjJlYBDKFyw=","kty":"RSA","_links":{"publish":{"href":"https://testorg.com/api/v1/idps/0oa98mm9bqtXe8z6x1d7/credentials/csrs/n-qQkgRh4GUubsiBHzeaF5P9IudfIg0hgJhaZczxNrk/lifecycle/publish","hints":{"allow":["POST"]}},"self":{"href":"https://testorg.com/api/v1/idps/0oa98mm9bqtXe8z6x1d7/credentials/csrs/n-qQkgRh4GUubsiBHzeaF5P9IudfIg0hgJhaZczxNrk","hints":{"allow":["GET","DELETE"]}}}}]' | ConvertFrom-Json  
+            
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+
+            $CsrList = Invoke-OktaListCsrsForIdentityProvider -IdpId "foo" 
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+            
+            $CsrList.Count | Should -Be 1
+            $CsrList[0].Csr | Should -Be "MIIC4DCCAcgCAQAwcTELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xEzARBgNVBAoMCk9rdGEsIEluYy4xDDAKBgNVBAsMA0RldjESMBAGA1UEAwwJU1AgSXNzdWVyMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmyH4mMrZGnDw/Xds86uvNkw3hZxffK2alpnNmGjgVyiFWP9WfUZbojgUf2mfbU8tc75adW4QeCTPzbAjvo8+X8rNJaOLfROhtuHPMJu9OoQndco3ALyJFGsyyAb+6G927zDB42VvkBuy0Syt6TxVtOEy4O6ZBLqbad7/DmD2eThCzgtC3dD1XwGaxvgh02k/t2K3TqUI/ygBefQCsbusesCp8M9GyfuGnAxCFr7BlmtyVvOnyENjHZMfdardP3W/C1ZF10sn8E0BLxiDbTyd0NJ6JDft/GS+kdPgiIG2n8OyWqyLN/1w+o9MvlGjt6PH82stwgms6FlIZRKsAjYWJQIDAQABoCowKAYJKoZIhvcNAQkOMRswGTAXBgNVHREEEDAOggxkZXYub2t0YS5jb20wDQYJKoZIhvcNAQELBQADggEBAFAx5B6B/KkB3DtAZAdQ1QMGh6AwZRorN5qwjNhD+6iaV0jZbEf9Q1u1Mdi3eDV2tOfLpCSmpObhzQVScn2isU+0vKjkpjqNYIg0m7o8/0IiAZkbwaY7B34+iCdYEmDFm9oH7VY8OS8pGDYKu828VqZIWZpT//COBy4Ay+YntyFwkWL2XRGdcKwxWNyzgEu/YGN1r0OnvlSByi5UlnAtDsQ1FWy480NW6Xg7xtQotzMa5tHg6G8te/ZcIYLCVFHywcNffqJu3FpsiPaeyoxpByCeEnVJOQsP2ikY27G8WFNlhPS+eOwp7tVzy8UvDEyZ/qCX32pR+XR4gjJlYBDKFyw="
         }
     }
 
-    Context 'Invoke-OktaListIdentityProviderApplicationUsers' {
-        It 'Test Invoke-OktaListIdentityProviderApplicationUsers' {
-            #$TestResult = Invoke-OktaListIdentityProviderApplicationUsers -IdpId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
 
     Context 'Invoke-OktaListIdentityProviderKeys' {
         It 'Test Invoke-OktaListIdentityProviderKeys' {
-            #$TestResult = Invoke-OktaListIdentityProviderKeys -After "TEST_VALUE" -Limit "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
+            $Content = '[{"kty":"RSA","created":"2023-08-01T13:33:59.000Z","lastUpdated":"2023-08-01T13:33:59.000Z","expiresAt":"2025-12-18T22:23:32.000Z","alg":"RSA","kid":"5256aa84-8ad2-4545-b75c-39cff0bf951a","use":"sig","x5c":["MIIDnjCCAoagAwIBAgIGAVG3MN+PMA0GCSqGSIb3DQEBBQUAMIGPMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5p"],"x5t#S256":"wzPVobIrveR1x-PCbjsFGNV-6zn7Rm9KuOWOG4Rk6jE","e":"AQAB","n":"tcnyvuVCrsFEKCwHDenS3Ocjed8eWDv3zLtD2K_iZfE8BMj2wpTfn6Ry8zCYey3mWlKdxIybnV9amrujGRnE0ab6Q16v9D6RlFQLOG6dwqoRKuZy33Uyg8PGdEudZjGbWuKCqqXEp-UKALJHV-k4wWeVH8g5d1n3KyR2TVajVJpCrPhLFmq1Il4G_IUnPe4MvjXqB6CpKkog1-ThWsItPRJPAM-RweFHXq7KfChXsYE7Mmfuly8sDQlvBmQyxZnFHVuiPfCvGHJjpvHy11YlHdOjfgqHRvZbmo30-y0X_oY_yV4YEJ00LL6eJWU4wi7ViY3HP6_VCdRjHoRdr5L_Dw"}]' | ConvertFrom-Json
 
-    Context 'Invoke-OktaListIdentityProviderSigningKeys' {
-        It 'Test Invoke-OktaListIdentityProviderSigningKeys' {
-            #$TestResult = Invoke-OktaListIdentityProviderSigningKeys -IdpId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+
+            $Keys = Invoke-OktaListIdentityProviderKeys 
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+
+            $Keys.Count | Should -Be 1
+            $Keys[0].X5c | Should -Contain "MIIDnjCCAoagAwIBAgIGAVG3MN+PMA0GCSqGSIb3DQEBBQUAMIGPMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5p"
         }
     }
 
     Context 'Invoke-OktaListIdentityProviders' {
         It 'Test Invoke-OktaListIdentityProviders' {
-            #$TestResult = Invoke-OktaListIdentityProviders -Q "TEST_VALUE" -After "TEST_VALUE" -Limit "TEST_VALUE" -Type "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
+            $Content = '[{"id":"0oa97ur0uxAyr6cyC1d7","issuerMode":"DYNAMIC","name":"New idp","status":"ACTIVE","created":"2023-07-31T17:40:34.000Z","lastUpdated":"2023-07-31T17:40:34.000Z","protocol":{"type":"OIDC","endpoints":{"authorization":{"url":"https://idp.example.com/authorize","binding":"HTTP-REDIRECT"},"token":{"url":"https://idp.example.com/token","binding":"HTTP-POST"},"userInfo":{"url":"https://idp.example.com/userinfo","binding":"HTTP-REDIRECT"},"jwks":{"url":"https://idp.example.com/keys","binding":"HTTP-REDIRECT"}},"scopes":["openid","profile","email"],"issuer":{"url":"https://idp.example.com"},"credentials":{"client":{"client_id":"your-client-id","client_secret":"your-client-secret"}}},"policy":{"provisioning":{"action":"AUTO","profileMaster":false,"groups":{"action":"NONE"},"conditions":{"deprovisioned":{"action":"NONE"},"suspended":{"action":"NONE"}}},"accountLink":{"filter":null,"action":"AUTO"},"subject":{"userNameTemplate":{"template":"idpuser.email"},"filter":null,"matchType":"USERNAME","matchAttribute":null},"maxClockSkew":0},"type":"OIDC","_links":{"authorize":{"href":"https://testorg.com/oauth2/v1/authorize?idp=0oa97ur0uxAyr6cyC1d7&client_id={clientId}&response_type={responseType}&response_mode={responseMode}&scope={scopes}&redirect_uri={redirectUri}&state={state}&nonce={nonce}","templated":true,"hints":{"allow":["GET"]}},"clientRedirectUri":{"href":"https://testorg.com/oauth2/v1/authorize/callback","hints":{"allow":["POST"]}}}}]' | ConvertFrom-Json
 
-    Context 'Invoke-OktaListSocialAuthTokens' {
-        It 'Test Invoke-OktaListSocialAuthTokens' {
-            #$TestResult = Invoke-OktaListSocialAuthTokens -IdpId "TEST_VALUE" -UserId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
 
-    Context 'Publish-OktaCsrForIdentityProvider' {
-        It 'Test Publish-OktaCsrForIdentityProvider' {
-            #$TestResult = Publish-OktaCsrForIdentityProvider -IdpId "TEST_VALUE" -CsrId "TEST_VALUE" -Body "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
 
-    Context 'Revoke-OktaCsrForIdentityProvider' {
-        It 'Test Revoke-OktaCsrForIdentityProvider' {
-            #$TestResult = Revoke-OktaCsrForIdentityProvider -IdpId "TEST_VALUE" -CsrId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
-        }
-    }
+            $Idps = Invoke-OktaListIdentityProviders
 
-    Context 'Invoke-OktaUnlinkUserFromIdentityProvider' {
-        It 'Test Invoke-OktaUnlinkUserFromIdentityProvider' {
-            #$TestResult = Invoke-OktaUnlinkUserFromIdentityProvider -IdpId "TEST_VALUE" -UserId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+
+            $Idps.Count | Should -Be 1
+            $Idps[0].Id | Should -Be "0oa97ur0uxAyr6cyC1d7"
+            $Idps[0].Name | Should -Be "New idp"
+            $Idps[0].Type | Should -Be "OIDC"
+            $Idps[0].IssuerMode | Should -Be "DYNAMIC"
+            $Idps[0].Protocol.Credentials.Client.Client_Id | Should -Be "your-client-id"
+            $Idps[0].Protocol.Credentials.Client.Client_Secret | Should -Be "your-client-secret"
+            $Idps[0].Protocol.Type | Should -Be "OIDC"
+            
+            $Idps[0].Protocol.Endpoints.Token.Binding | Should -Be 'HTTP-POST'
+            $Idps[0].Protocol.Endpoints.Token.Url | Should -Be 'https://idp.example.com/token'
+            $Idps[0].Protocol.Issuer.Url | Should -Be "https://idp.example.com"
+            $Idps[0].Policy.AccountLink.Action | Should -Be "AUTO"
+            $Idps[0].Policy.Provisioning.Action | Should -Be "AUTO"
+            $Idps[0].Policy.Provisioning.ProfileMaster | Should -Be $False
+            $Idps[0].Policy.Provisioning.Conditions.Deprovisioned.Action | Should -Be "NONE"
+            $Idps[0].Policy.Provisioning.Conditions.Suspended.Action | Should -Be "NONE"
+            $Idps[0].Policy.Provisioning.Groups.Action | Should -Be "NONE"
+            $Idps[0].Policy.Subject.UserNameTemplate.Template  | Should -Be "idpuser.email"
+            $Idps[0].Policy.Subject.MatchType  | Should -Be "USERNAME"
         }
     }
 
     Context 'Update-OktaIdentityProvider' {
         It 'Test Update-OktaIdentityProvider' {
-            #$TestResult = Update-OktaIdentityProvider -IdpId "TEST_VALUE" -IdentityProvider "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+            $Content = '{"id":"0oa97ur0uxAyr6cyC1d7","issuerMode":"DYNAMIC","name":"New idp","status":"ACTIVE","created":"2023-07-31T17:40:34.000Z","lastUpdated":"2023-07-31T17:40:34.000Z","protocol":{"type":"OIDC","endpoints":{"authorization":{"url":"https://idp.example.com/authorize","binding":"HTTP-REDIRECT"},"token":{"url":"https://idp.example.com/token","binding":"HTTP-POST"},"userInfo":{"url":"https://idp.example.com/userinfo","binding":"HTTP-REDIRECT"},"jwks":{"url":"https://idp.example.com/keys","binding":"HTTP-REDIRECT"}},"scopes":["openid","profile","email"],"issuer":{"url":"https://idp.example.com"},"credentials":{"client":{"client_id":"your-client-id","client_secret":"your-client-secret"}}},"policy":{"provisioning":{"action":"AUTO","profileMaster":false,"groups":{"action":"NONE"},"conditions":{"deprovisioned":{"action":"NONE"},"suspended":{"action":"NONE"}}},"accountLink":{"filter":null,"action":"AUTO"},"subject":{"userNameTemplate":{"template":"idpuser.email"},"filter":null,"matchType":"USERNAME","matchAttribute":null},"maxClockSkew":0},"type":"OIDC","_links":{"authorize":{"href":"https://testorg.com/oauth2/v1/authorize?idp=0oa97ur0uxAyr6cyC1d7&client_id={clientId}&response_type={responseType}&response_mode={responseMode}&scope={scopes}&redirect_uri={redirectUri}&state={state}&nonce={nonce}","templated":true,"hints":{"allow":["GET"]}},"clientRedirectUri":{"href":"https://testorg.com/oauth2/v1/authorize/callback","hints":{"allow":["POST"]}}}}' | ConvertFrom-Json
+
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+
+            $NewIdp = Update-OktaIdentityProvider -IdentityProvider @{} -IdpId "foo"
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+
+            $NewIdp.Id | Should -Be "0oa97ur0uxAyr6cyC1d7"
+            $NewIdp.Name | Should -Be "New idp"
+            $NewIdp.Type | Should -Be "OIDC"
+            $NewIdp.IssuerMode | Should -Be "DYNAMIC"
+            $NewIdp.Protocol.Credentials.Client.Client_Id | Should -Be "your-client-id"
+            $NewIdp.Protocol.Credentials.Client.Client_Secret | Should -Be "your-client-secret"
+            $NewIdp.Protocol.Type | Should -Be "OIDC"
+            
+            $NewIdp.Protocol.Endpoints.Token.Binding | Should -Be 'HTTP-POST'
+            $NewIdp.Protocol.Endpoints.Token.Url | Should -Be 'https://idp.example.com/token'
+            $NewIdp.Protocol.Issuer.Url | Should -Be "https://idp.example.com"
+            $NewIdp.Policy.AccountLink.Action | Should -Be "AUTO"
+            $NewIdp.Policy.Provisioning.Action | Should -Be "AUTO"
+            $NewIdp.Policy.Provisioning.ProfileMaster | Should -Be $False
+            $NewIdp.Policy.Provisioning.Conditions.Deprovisioned.Action | Should -Be "NONE"
+            $NewIdp.Policy.Provisioning.Conditions.Suspended.Action | Should -Be "NONE"
+            $NewIdp.Policy.Provisioning.Groups.Action | Should -Be "NONE"
+            $NewIdp.Policy.Subject.UserNameTemplate.Template  | Should -Be "idpuser.email"
+            $NewIdp.Policy.Subject.MatchType  | Should -Be "USERNAME"
         }
     }
 
