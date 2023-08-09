@@ -89,6 +89,16 @@ Invoke-Pester
 
 For troubleshooting, please run `$DebugPreference = 'Continue'` to turn on debugging and disable it with `$DebugPreference = 'SilentlyContinue'` when done with the troubleshooting.
 
+## Security recommendations
+
+We recommend limiting the access permissions of your Okta.PowerShell scripts to only authorized users. 
+
+Add the appropriate users or groups and assign the necessary permissions to the `OktaConfiguration.ps1` file (Full Control, Read & Execute, etc.), and remove any unnecessary users or groups from the list.
+
+:Warning: The `OktaConfiguration.ps1` file contains secrets, so we recommend using least privilege access to the configuration file.
+
+> Note: For more information about PowerShell script security, check out [the official PowerShell security guide](https://learn.microsoft.com/en-us/mem/configmgr/apps/deploy-use/learn-script-security).
+
 ## Usage guide
 
 ### Prerequisites 
