@@ -3,6 +3,7 @@
 version: 2.1
 
 orbs:
+  windows: circleci/windows@5.0
   general-platform-helpers: okta/general-platform-helpers@1.8
 
 # Define a job to be invoked later in a workflow.
