@@ -72,4 +72,4 @@ $Manifest = @{
 
 }
 
-New-ModuleManifest @Manifest -Prerelease "beta"
+New-ModuleManifest @Manifest -Prerelease "beta" -Verbose
