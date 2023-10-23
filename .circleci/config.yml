@@ -27,7 +27,7 @@ jobs:
     steps:
       - run:
           name: "test stage"
-          command: "echo test stage "
+          command: "echo test stage"
   package:
     docker:
       - image: cimg/base:stable
