@@ -10,7 +10,8 @@ orbs:
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   build:
-    executor: win/default
+    executor:  
+      name: windows/default
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
