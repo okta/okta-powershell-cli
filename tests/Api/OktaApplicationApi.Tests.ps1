@@ -247,6 +247,38 @@ Describe -tag 'Okta.PowerShell' -name 'OktaOktaApplicationApi' {
         }
     }
 
+    Context 'Invoke-OktaListWithApplicationsPaging' {
+        It 'Test Invoke-OktaListApplications' {
+            $Content = '[{"id":"0oa90v3f09cUtZfI11d7","name":"template_basic_auth","label":"New App","status":"ACTIVE","lastUpdated":"2023-07-20T19:38:13.000Z","created":"2023-07-20T19:38:12.000Z","accessibility":{"selfService":false,"errorRedirectUrl":null,"loginRedirectUrl":null},"visibility":{"autoLaunch":false,"autoSubmitToolbar":false,"hide":{"iOS":false,"web":false},"appLinks":{"login":true}},"features":[],"signOnMode":"BASIC_AUTH","credentials":{"scheme":"EDIT_USERNAME_AND_PASSWORD","userNameTemplate":{"template":"${source.login}","type":"BUILT_IN"},"revealPassword":false,"signing":{}},"settings":{"app":{"loginUrlRegex":null,"authURL":"https://example.com/auth.html","url":"https://example.com/login.html"},"notifications":{"vpn":{"network":{"connection":"DISABLED"},"message":null,"helpUrl":null}},"manualProvisioning":false,"implicitAssignment":false,"notes":{"admin":null,"enduser":null}},"_links":{"uploadLogo":{"href":"https://testorg.com/api/v1/apps/0oa90v3f09cUtZfI11d7/logo","hints":{"allow":["POST"]}},"appLinks":[{"name":"login","href":"https://testorg.com/home/template_basic_auth/0oa90v3f09cUtZfI11d7/2873","type":"text/html"}],"profileEnrollment":{"href":"https://testorg.com/api/v1/policies/rst1fddpitF6oUuZA1d7"},"policies":{"href":"https://testorg.com/api/v1/apps/0oa90v3f09cUtZfI11d7/policies","hints":{"allow":["PUT"]}},"groups":{"href":"https://testorg.com/api/v1/apps/0oa90v3f09cUtZfI11d7/groups"},"logo":[{"name":"medium","href":"https://op3static.oktacdn.com/assets/img/logos/default.6770228fb0dab49a1695ef440a5279bb.png","type":"image/png"}],"accessPolicy":{"href":"https://testorg.com/api/v1/policies/rst1fddpir2HgIar61d7"},"users":{"href":"https://testorg.com/api/v1/apps/0oa90v3f09cUtZfI11d7/users"},"deactivate":{"href":"https://testorg.com/api/v1/apps/0oa90v3f09cUtZfI11d7/lifecycle/deactivate"}}}]' | ConvertFrom-Json
+
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")
+                             "Link" = @("<https://myorg.oktapreview.com/api/v1/apps?after=0oa1fddpfxzYoj4ij1d7&limit=2>; rel=`"next`"")
+                            }
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+
+            $TestResult = Invoke-OktaListApplications -WithHttpInfo
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+
+            $TestResult.Response.Count | Should -Be 1
+            $TestResult.NextPageUri | Should -Be "https://myorg.oktapreview.com/api/v1/apps?after=0oa1fddpfxzYoj4ij1d7&limit=2"
+
+            # $TestResult.Count | Should -Be 1
+            # $TestResult[0].Id | Should -Be 0oa90v3f09cUtZfI11d7
+            # $TestResult[0].Label | Should -Be "New App"
+            # $TestResult[0].Name | Should -Be "template_basic_auth"
+            # $TestResult[0].SignOnMode | Should -Be "BASIC_AUTH"
+            # $TestResult[0].Settings.App.Url | Should -Be "https://example.com/login.html"
+            # $TestResult[0].Settings.App.AuthURL | Should -Be "https://example.com/auth.html"
+            # $TestResult[0].Status | Should -Be "ACTIVE"
+        }
+    }
+
 
     Context 'Update-OktaApplication' {
         It 'Test Update-OktaApplication' {
