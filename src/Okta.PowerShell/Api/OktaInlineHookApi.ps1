@@ -18,6 +18,11 @@ No description available.
 .PARAMETER InlineHookId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -32,6 +37,9 @@ function Invoke-OktaActivateInlineHook {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${InlineHookId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -58,6 +66,23 @@ function Invoke-OktaActivateInlineHook {
             throw "Error! The required parameter `InlineHookId` missing when calling activateInlineHook."
         }
         $LocalVarUri = $LocalVarUri.replace('{inlineHookId}', [System.Web.HTTPUtility]::UrlEncode($InlineHookId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -111,6 +136,11 @@ No description available.
 .PARAMETER InlineHook
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -125,6 +155,9 @@ function New-OktaInlineHook {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [PSCustomObject]
         ${InlineHook},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -150,6 +183,23 @@ function New-OktaInlineHook {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/inlineHooks'
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if (!$InlineHook) {
             throw "Error! The required parameter `InlineHook` missing when calling createInlineHook."
@@ -209,6 +259,11 @@ No description available.
 .PARAMETER InlineHookId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -223,6 +278,9 @@ function Invoke-OktaDeactivateInlineHook {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${InlineHookId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -249,6 +307,23 @@ function Invoke-OktaDeactivateInlineHook {
             throw "Error! The required parameter `InlineHookId` missing when calling deactivateInlineHook."
         }
         $LocalVarUri = $LocalVarUri.replace('{inlineHookId}', [System.Web.HTTPUtility]::UrlEncode($InlineHookId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -302,6 +377,11 @@ No description available.
 .PARAMETER InlineHookId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -316,6 +396,9 @@ function Invoke-OktaDeleteInlineHook {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${InlineHookId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -342,6 +425,23 @@ function Invoke-OktaDeleteInlineHook {
             throw "Error! The required parameter `InlineHookId` missing when calling deleteInlineHook."
         }
         $LocalVarUri = $LocalVarUri.replace('{inlineHookId}', [System.Web.HTTPUtility]::UrlEncode($InlineHookId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -398,6 +498,11 @@ No description available.
 .PARAMETER PayloadData
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -415,6 +520,9 @@ function Invoke-OktaExecuteInlineHook {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [SystemCollectionsHashtable]
         ${PayloadData},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -444,6 +552,23 @@ function Invoke-OktaExecuteInlineHook {
             throw "Error! The required parameter `InlineHookId` missing when calling executeInlineHook."
         }
         $LocalVarUri = $LocalVarUri.replace('{inlineHookId}', [System.Web.HTTPUtility]::UrlEncode($InlineHookId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if (!$PayloadData) {
             throw "Error! The required parameter `PayloadData` missing when calling executeInlineHook."
@@ -503,6 +628,11 @@ No description available.
 .PARAMETER InlineHookId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -517,6 +647,9 @@ function Get-OktaInlineHook {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${InlineHookId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -543,6 +676,23 @@ function Get-OktaInlineHook {
             throw "Error! The required parameter `InlineHookId` missing when calling getInlineHook."
         }
         $LocalVarUri = $LocalVarUri.replace('{inlineHookId}', [System.Web.HTTPUtility]::UrlEncode($InlineHookId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -596,6 +746,11 @@ No description available.
 .PARAMETER Type
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -610,6 +765,9 @@ function Invoke-OktaListInlineHooks {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${Type},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -632,6 +790,23 @@ function Invoke-OktaListInlineHooks {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/inlineHooks'
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Type) {
             $LocalVarQueryParameters['type'] = $Type
@@ -692,6 +867,11 @@ No description available.
 .PARAMETER InlineHook
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -709,6 +889,9 @@ function Update-OktaInlineHook {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [PSCustomObject]
         ${InlineHook},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -738,6 +921,23 @@ function Update-OktaInlineHook {
             throw "Error! The required parameter `InlineHookId` missing when calling updateInlineHook."
         }
         $LocalVarUri = $LocalVarUri.replace('{inlineHookId}', [System.Web.HTTPUtility]::UrlEncode($InlineHookId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if (!$InlineHook) {
             throw "Error! The required parameter `InlineHook` missing when calling updateInlineHook."

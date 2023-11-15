@@ -18,6 +18,11 @@ No description available.
 .PARAMETER DeviceId
 `id` of the device
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -32,6 +37,9 @@ function Invoke-OktaActivateDevice {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${DeviceId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -58,6 +66,23 @@ function Invoke-OktaActivateDevice {
             throw "Error! The required parameter `DeviceId` missing when calling activateDevice."
         }
         $LocalVarUri = $LocalVarUri.replace('{deviceId}', [System.Web.HTTPUtility]::UrlEncode($DeviceId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -111,6 +136,11 @@ No description available.
 .PARAMETER DeviceId
 `id` of the device
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -125,6 +155,9 @@ function Invoke-OktaDeactivateDevice {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${DeviceId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -151,6 +184,23 @@ function Invoke-OktaDeactivateDevice {
             throw "Error! The required parameter `DeviceId` missing when calling deactivateDevice."
         }
         $LocalVarUri = $LocalVarUri.replace('{deviceId}', [System.Web.HTTPUtility]::UrlEncode($DeviceId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -204,6 +254,11 @@ No description available.
 .PARAMETER DeviceId
 `id` of the device
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -218,6 +273,9 @@ function Invoke-OktaDeleteDevice {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${DeviceId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -244,6 +302,23 @@ function Invoke-OktaDeleteDevice {
             throw "Error! The required parameter `DeviceId` missing when calling deleteDevice."
         }
         $LocalVarUri = $LocalVarUri.replace('{deviceId}', [System.Web.HTTPUtility]::UrlEncode($DeviceId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -297,6 +372,11 @@ No description available.
 .PARAMETER DeviceId
 `id` of the device
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -311,6 +391,9 @@ function Get-OktaDevice {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${DeviceId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -337,6 +420,23 @@ function Get-OktaDevice {
             throw "Error! The required parameter `DeviceId` missing when calling getDevice."
         }
         $LocalVarUri = $LocalVarUri.replace('{deviceId}', [System.Web.HTTPUtility]::UrlEncode($DeviceId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -396,6 +496,11 @@ A limit on the number of objects to return.
 .PARAMETER Search
 SCIM filter expression that filters the results. Searches include all Device `profile` properties, as well as the Device `id`, `status` and `lastUpdated` properties.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -416,6 +521,9 @@ function Invoke-OktaListDevices {
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${Search},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -438,6 +546,23 @@ function Invoke-OktaListDevices {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/devices'
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($After) {
             $LocalVarQueryParameters['after'] = $After
@@ -503,6 +628,11 @@ No description available.
 .PARAMETER DeviceId
 `id` of the device
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -517,6 +647,9 @@ function Suspend-OktaDevice {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${DeviceId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -543,6 +676,23 @@ function Suspend-OktaDevice {
             throw "Error! The required parameter `DeviceId` missing when calling suspendDevice."
         }
         $LocalVarUri = $LocalVarUri.replace('{deviceId}', [System.Web.HTTPUtility]::UrlEncode($DeviceId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -596,6 +746,11 @@ No description available.
 .PARAMETER DeviceId
 `id` of the device
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -610,6 +765,9 @@ function Invoke-OktaUnsuspendDevice {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${DeviceId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -636,6 +794,23 @@ function Invoke-OktaUnsuspendDevice {
             throw "Error! The required parameter `DeviceId` missing when calling unsuspendDevice."
         }
         $LocalVarUri = $LocalVarUri.replace('{deviceId}', [System.Web.HTTPUtility]::UrlEncode($DeviceId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]

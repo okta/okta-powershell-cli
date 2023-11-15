@@ -18,6 +18,11 @@ No description available.
 .PARAMETER ZoneId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -32,6 +37,9 @@ function Invoke-OktaActivateNetworkZone {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${ZoneId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -58,6 +66,23 @@ function Invoke-OktaActivateNetworkZone {
             throw "Error! The required parameter `ZoneId` missing when calling activateNetworkZone."
         }
         $LocalVarUri = $LocalVarUri.replace('{zoneId}', [System.Web.HTTPUtility]::UrlEncode($ZoneId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -111,6 +136,11 @@ No description available.
 .PARAMETER Zone
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -125,6 +155,9 @@ function New-OktaNetworkZone {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [PSCustomObject]
         ${Zone},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -150,6 +183,23 @@ function New-OktaNetworkZone {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/zones'
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if (!$Zone) {
             throw "Error! The required parameter `Zone` missing when calling createNetworkZone."
@@ -209,6 +259,11 @@ No description available.
 .PARAMETER ZoneId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -223,6 +278,9 @@ function Invoke-OktaDeactivateNetworkZone {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${ZoneId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -249,6 +307,23 @@ function Invoke-OktaDeactivateNetworkZone {
             throw "Error! The required parameter `ZoneId` missing when calling deactivateNetworkZone."
         }
         $LocalVarUri = $LocalVarUri.replace('{zoneId}', [System.Web.HTTPUtility]::UrlEncode($ZoneId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -302,6 +377,11 @@ No description available.
 .PARAMETER ZoneId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -316,6 +396,9 @@ function Invoke-OktaDeleteNetworkZone {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${ZoneId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -342,6 +425,23 @@ function Invoke-OktaDeleteNetworkZone {
             throw "Error! The required parameter `ZoneId` missing when calling deleteNetworkZone."
         }
         $LocalVarUri = $LocalVarUri.replace('{zoneId}', [System.Web.HTTPUtility]::UrlEncode($ZoneId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -395,6 +495,11 @@ No description available.
 .PARAMETER ZoneId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -409,6 +514,9 @@ function Get-OktaNetworkZone {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${ZoneId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -435,6 +543,23 @@ function Get-OktaNetworkZone {
             throw "Error! The required parameter `ZoneId` missing when calling getNetworkZone."
         }
         $LocalVarUri = $LocalVarUri.replace('{zoneId}', [System.Web.HTTPUtility]::UrlEncode($ZoneId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -494,6 +619,11 @@ Specifies the number of results for a page
 .PARAMETER Filter
 Filters zones by usage or id expression
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -514,6 +644,9 @@ function Invoke-OktaListNetworkZones {
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${Filter},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -536,6 +669,23 @@ function Invoke-OktaListNetworkZones {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/zones'
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($After) {
             $LocalVarQueryParameters['after'] = $After
@@ -604,6 +754,11 @@ No description available.
 .PARAMETER Zone
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -621,6 +776,9 @@ function Update-OktaNetworkZone {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [PSCustomObject]
         ${Zone},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -650,6 +808,23 @@ function Update-OktaNetworkZone {
             throw "Error! The required parameter `ZoneId` missing when calling updateNetworkZone."
         }
         $LocalVarUri = $LocalVarUri.replace('{zoneId}', [System.Web.HTTPUtility]::UrlEncode($ZoneId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if (!$Zone) {
             throw "Error! The required parameter `Zone` missing when calling updateNetworkZone."

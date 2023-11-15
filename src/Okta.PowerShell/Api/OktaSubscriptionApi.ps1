@@ -21,6 +21,11 @@ No description available.
 .PARAMETER NotificationType
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -38,6 +43,9 @@ function Get-OktaRoleSubscriptionByNotificationType {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${NotificationType},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -68,6 +76,23 @@ function Get-OktaRoleSubscriptionByNotificationType {
             throw "Error! The required parameter `NotificationType` missing when calling getRoleSubscriptionByNotificationType."
         }
         $LocalVarUri = $LocalVarUri.replace('{notificationType}', [System.Web.HTTPUtility]::UrlEncode($NotificationType))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -124,6 +149,11 @@ No description available.
 .PARAMETER NotificationType
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -141,6 +171,9 @@ function Get-OktaUserSubscriptionByNotificationType {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${NotificationType},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -171,6 +204,23 @@ function Get-OktaUserSubscriptionByNotificationType {
             throw "Error! The required parameter `NotificationType` missing when calling getUserSubscriptionByNotificationType."
         }
         $LocalVarUri = $LocalVarUri.replace('{notificationType}', [System.Web.HTTPUtility]::UrlEncode($NotificationType))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -224,6 +274,11 @@ No description available.
 .PARAMETER RoleTypeOrRoleId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -238,6 +293,9 @@ function Invoke-OktaListRoleSubscriptions {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${RoleTypeOrRoleId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -264,6 +322,23 @@ function Invoke-OktaListRoleSubscriptions {
             throw "Error! The required parameter `RoleTypeOrRoleId` missing when calling listRoleSubscriptions."
         }
         $LocalVarUri = $LocalVarUri.replace('{roleTypeOrRoleId}', [System.Web.HTTPUtility]::UrlEncode($RoleTypeOrRoleId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -317,6 +392,11 @@ No description available.
 .PARAMETER UserId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -331,6 +411,9 @@ function Invoke-OktaListUserSubscriptions {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${UserId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -357,6 +440,23 @@ function Invoke-OktaListUserSubscriptions {
             throw "Error! The required parameter `UserId` missing when calling listUserSubscriptions."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -413,6 +513,11 @@ No description available.
 .PARAMETER NotificationType
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -430,6 +535,9 @@ function Invoke-OktaSubscribeRoleSubscriptionByNotificationType {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${NotificationType},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -460,6 +568,23 @@ function Invoke-OktaSubscribeRoleSubscriptionByNotificationType {
             throw "Error! The required parameter `NotificationType` missing when calling subscribeRoleSubscriptionByNotificationType."
         }
         $LocalVarUri = $LocalVarUri.replace('{notificationType}', [System.Web.HTTPUtility]::UrlEncode($NotificationType))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -516,6 +641,11 @@ No description available.
 .PARAMETER NotificationType
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -533,6 +663,9 @@ function Invoke-OktaSubscribeUserSubscriptionByNotificationType {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${NotificationType},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -563,6 +696,23 @@ function Invoke-OktaSubscribeUserSubscriptionByNotificationType {
             throw "Error! The required parameter `NotificationType` missing when calling subscribeUserSubscriptionByNotificationType."
         }
         $LocalVarUri = $LocalVarUri.replace('{notificationType}', [System.Web.HTTPUtility]::UrlEncode($NotificationType))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -619,6 +769,11 @@ No description available.
 .PARAMETER NotificationType
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -636,6 +791,9 @@ function Invoke-OktaUnsubscribeRoleSubscriptionByNotificationType {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${NotificationType},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -666,6 +824,23 @@ function Invoke-OktaUnsubscribeRoleSubscriptionByNotificationType {
             throw "Error! The required parameter `NotificationType` missing when calling unsubscribeRoleSubscriptionByNotificationType."
         }
         $LocalVarUri = $LocalVarUri.replace('{notificationType}', [System.Web.HTTPUtility]::UrlEncode($NotificationType))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -722,6 +897,11 @@ No description available.
 .PARAMETER NotificationType
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -739,6 +919,9 @@ function Invoke-OktaUnsubscribeUserSubscriptionByNotificationType {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${NotificationType},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -769,6 +952,23 @@ function Invoke-OktaUnsubscribeUserSubscriptionByNotificationType {
             throw "Error! The required parameter `NotificationType` missing when calling unsubscribeUserSubscriptionByNotificationType."
         }
         $LocalVarUri = $LocalVarUri.replace('{notificationType}', [System.Web.HTTPUtility]::UrlEncode($NotificationType))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]

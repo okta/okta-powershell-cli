@@ -36,6 +36,11 @@ No description available.
 .PARAMETER After
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -68,6 +73,9 @@ function Get-OktaLogs {
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${After},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -90,6 +98,23 @@ function Get-OktaLogs {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/logs'
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Since) {
             $LocalVarQueryParameters['since'] = $Since

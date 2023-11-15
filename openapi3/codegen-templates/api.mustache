@@ -21,6 +21,11 @@
 Select the return type (optional): {{#produces}}{{{mediaType}}}{{^-last}}, {{/-last}}{{/produces}}
 
 {{/vendorExtensions.x-powershell-select-accept}}
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -49,6 +54,9 @@ function {{{vendorExtensions.x-powershell-method-name}}} {
         [ValidateSet({{#produces}}"{{{mediaType}}}"{{^-last}}, {{/-last}}{{/produces}})]
         $ReturnType,
         {{/vendorExtensions.x-powershell-select-accept}}
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -93,6 +101,23 @@ function {{{vendorExtensions.x-powershell-method-name}}} {
         $LocalVarUri = $LocalVarUri.replace('{<baseName>}', [System.Web.HTTPUtility]::UrlEncode($<paramName>))
         </pathParams>
         <={{ }}=>
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         {{#headerParams}}
         {{#required}}

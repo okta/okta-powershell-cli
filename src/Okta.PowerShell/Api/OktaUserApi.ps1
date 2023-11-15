@@ -21,6 +21,11 @@ No description available.
 .PARAMETER SendEmail
 Sends an activation email to the user if true
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -38,6 +43,9 @@ function Invoke-OktaActivateUser {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [Boolean]
         ${SendEmail},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -64,6 +72,23 @@ function Invoke-OktaActivateUser {
             throw "Error! The required parameter `UserId` missing when calling activateUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if (!$SendEmail) {
             throw "Error! The required parameter `SendEmail` missing when calling activateUser."
@@ -128,6 +153,11 @@ No description available.
 .PARAMETER Strict
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -148,6 +178,9 @@ function Rename-OktaPassword {
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Boolean]]
         ${Strict},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -177,6 +210,23 @@ function Rename-OktaPassword {
             throw "Error! The required parameter `UserId` missing when calling changePassword."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Strict) {
             $LocalVarQueryParameters['strict'] = $Strict
@@ -243,6 +293,11 @@ No description available.
 .PARAMETER UserCredentials
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -260,6 +315,9 @@ function Rename-OktaRecoveryQuestion {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [PSCustomObject]
         ${UserCredentials},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -289,6 +347,23 @@ function Rename-OktaRecoveryQuestion {
             throw "Error! The required parameter `UserId` missing when calling changeRecoveryQuestion."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if (!$UserCredentials) {
             throw "Error! The required parameter `UserCredentials` missing when calling changeRecoveryQuestion."
@@ -351,6 +426,11 @@ No description available.
 .PARAMETER OauthTokens
 Revoke issued OpenID Connect and OAuth refresh and access tokens
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -368,6 +448,9 @@ function Clear-OktaUserSessions {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Boolean]]
         ${OauthTokens},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -394,6 +477,23 @@ function Clear-OktaUserSessions {
             throw "Error! The required parameter `UserId` missing when calling clearUserSessions."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($OauthTokens) {
             $LocalVarQueryParameters['oauthTokens'] = $OauthTokens
@@ -460,6 +560,11 @@ Indicates whether to create a user with a specified authentication provider
 .PARAMETER NextLogin
 With activate=true, set nextLogin to ""changePassword"" to have the password be EXPIRED, so user must change it the next time they log in.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -483,6 +588,9 @@ function New-OktaUser {
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [PSCustomObject]
         ${NextLogin},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -508,6 +616,23 @@ function New-OktaUser {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/users'
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Activate) {
             $LocalVarQueryParameters['activate'] = $Activate
@@ -582,6 +707,11 @@ No description available.
 .PARAMETER SendEmail
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -599,6 +729,9 @@ function Invoke-OktaDeactivateOrDeleteUser {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Boolean]]
         ${SendEmail},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -625,6 +758,23 @@ function Invoke-OktaDeactivateOrDeleteUser {
             throw "Error! The required parameter `UserId` missing when calling deactivateOrDeleteUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($SendEmail) {
             $LocalVarQueryParameters['sendEmail'] = $SendEmail
@@ -685,6 +835,11 @@ No description available.
 .PARAMETER SendEmail
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -702,6 +857,9 @@ function Invoke-OktaDeactivateUser {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Boolean]]
         ${SendEmail},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -728,6 +886,23 @@ function Invoke-OktaDeactivateUser {
             throw "Error! The required parameter `UserId` missing when calling deactivateUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($SendEmail) {
             $LocalVarQueryParameters['sendEmail'] = $SendEmail
@@ -785,6 +960,11 @@ No description available.
 .PARAMETER UserId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -799,6 +979,9 @@ function Invoke-OktaExpirePassword {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${UserId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -825,6 +1008,23 @@ function Invoke-OktaExpirePassword {
             throw "Error! The required parameter `UserId` missing when calling expirePassword."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -878,6 +1078,11 @@ No description available.
 .PARAMETER UserId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -892,6 +1097,9 @@ function Invoke-OktaExpirePasswordAndGetTemporaryPassword {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${UserId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -918,6 +1126,23 @@ function Invoke-OktaExpirePasswordAndGetTemporaryPassword {
             throw "Error! The required parameter `UserId` missing when calling expirePasswordAndGetTemporaryPassword."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -974,6 +1199,11 @@ No description available.
 .PARAMETER SendEmail
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -991,6 +1221,9 @@ function Invoke-OktaForgotPassword {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Boolean]]
         ${SendEmail},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -1017,6 +1250,23 @@ function Invoke-OktaForgotPassword {
             throw "Error! The required parameter `UserId` missing when calling forgotPassword."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($SendEmail) {
             $LocalVarQueryParameters['sendEmail'] = $SendEmail
@@ -1080,6 +1330,11 @@ No description available.
 .PARAMETER SendEmail
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -1100,6 +1355,9 @@ function Invoke-OktaForgotPasswordSetNewPassword {
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Boolean]]
         ${SendEmail},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -1129,6 +1387,23 @@ function Invoke-OktaForgotPasswordSetNewPassword {
             throw "Error! The required parameter `UserId` missing when calling forgotPasswordSetNewPassword."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($SendEmail) {
             $LocalVarQueryParameters['sendEmail'] = $SendEmail
@@ -1201,6 +1476,11 @@ No description available.
 .PARAMETER Limit
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -1224,6 +1504,9 @@ function Get-OktaLinkedObjectsForUser {
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Int32]]
         ${Limit},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -1254,6 +1537,23 @@ function Get-OktaLinkedObjectsForUser {
             throw "Error! The required parameter `RelationshipName` missing when calling getLinkedObjectsForUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{relationshipName}', [System.Web.HTTPUtility]::UrlEncode($RelationshipName))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($After) {
             $LocalVarQueryParameters['after'] = $After
@@ -1330,6 +1630,11 @@ No description available.
 .PARAMETER After
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -1359,6 +1664,9 @@ function Get-OktaRefreshTokenForUserAndClient {
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${After},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -1393,6 +1701,23 @@ function Get-OktaRefreshTokenForUserAndClient {
             throw "Error! The required parameter `TokenId` missing when calling getRefreshTokenForUserAndClient."
         }
         $LocalVarUri = $LocalVarUri.replace('{tokenId}', [System.Web.HTTPUtility]::UrlEncode($TokenId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Expand) {
             $LocalVarQueryParameters['expand'] = $Expand
@@ -1458,6 +1783,11 @@ No description available.
 .PARAMETER UserId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -1472,6 +1802,9 @@ function Get-OktaUser {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${UserId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -1498,6 +1831,23 @@ function Get-OktaUser {
             throw "Error! The required parameter `UserId` missing when calling getUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -1557,6 +1907,11 @@ No description available.
 .PARAMETER Expand
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -1577,6 +1932,9 @@ function Get-OktaUserGrant {
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${Expand},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -1607,6 +1965,23 @@ function Get-OktaUserGrant {
             throw "Error! The required parameter `GrantId` missing when calling getUserGrant."
         }
         $LocalVarUri = $LocalVarUri.replace('{grantId}', [System.Web.HTTPUtility]::UrlEncode($GrantId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Expand) {
             $LocalVarQueryParameters['expand'] = $Expand
@@ -1664,6 +2039,11 @@ No description available.
 .PARAMETER UserId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -1678,6 +2058,9 @@ function Invoke-OktaListAppLinks {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${UserId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -1704,6 +2087,23 @@ function Invoke-OktaListAppLinks {
             throw "Error! The required parameter `UserId` missing when calling listAppLinks."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -1769,6 +2169,11 @@ No description available.
 .PARAMETER Limit
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -1795,6 +2200,9 @@ function Invoke-OktaListGrantsForUserAndClient {
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Int32]]
         ${Limit},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -1825,6 +2233,23 @@ function Invoke-OktaListGrantsForUserAndClient {
             throw "Error! The required parameter `ClientId` missing when calling listGrantsForUserAndClient."
         }
         $LocalVarUri = $LocalVarUri.replace('{clientId}', [System.Web.HTTPUtility]::UrlEncode($ClientId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Expand) {
             $LocalVarQueryParameters['expand'] = $Expand
@@ -1902,6 +2327,11 @@ No description available.
 .PARAMETER Limit
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -1928,6 +2358,9 @@ function Invoke-OktaListRefreshTokensForUserAndClient {
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Int32]]
         ${Limit},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -1958,6 +2391,23 @@ function Invoke-OktaListRefreshTokensForUserAndClient {
             throw "Error! The required parameter `ClientId` missing when calling listRefreshTokensForUserAndClient."
         }
         $LocalVarUri = $LocalVarUri.replace('{clientId}', [System.Web.HTTPUtility]::UrlEncode($ClientId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Expand) {
             $LocalVarQueryParameters['expand'] = $Expand
@@ -2023,6 +2473,11 @@ No description available.
 .PARAMETER UserId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -2037,6 +2492,9 @@ function Invoke-OktaListUserClients {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${UserId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -2063,6 +2521,23 @@ function Invoke-OktaListUserClients {
             throw "Error! The required parameter `UserId` missing when calling listUserClients."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -2128,6 +2603,11 @@ No description available.
 .PARAMETER Limit
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -2154,6 +2634,9 @@ function Invoke-OktaListUserGrants {
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Int32]]
         ${Limit},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -2180,6 +2663,23 @@ function Invoke-OktaListUserGrants {
             throw "Error! The required parameter `UserId` missing when calling listUserGrants."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($ScopeId) {
             $LocalVarQueryParameters['scopeId'] = $ScopeId
@@ -2249,6 +2749,11 @@ No description available.
 .PARAMETER UserId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -2263,6 +2768,9 @@ function Invoke-OktaListUserGroups {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${UserId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -2289,6 +2797,23 @@ function Invoke-OktaListUserGroups {
             throw "Error! The required parameter `UserId` missing when calling listUserGroups."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -2342,6 +2867,11 @@ No description available.
 .PARAMETER UserId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -2356,6 +2886,9 @@ function Invoke-OktaListUserIdentityProviders {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${UserId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -2382,6 +2915,23 @@ function Invoke-OktaListUserIdentityProviders {
             throw "Error! The required parameter `UserId` missing when calling listUserIdentityProviders."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -2453,6 +3003,11 @@ No description available.
 .PARAMETER SortOrder
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -2485,6 +3040,9 @@ function Invoke-OktaListUsers {
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${SortOrder},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -2507,6 +3065,23 @@ function Invoke-OktaListUsers {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/users'
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Q) {
             $LocalVarQueryParameters['q'] = $Q
@@ -2594,6 +3169,11 @@ No description available.
 .PARAMETER Strict
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -2614,6 +3194,9 @@ function Invoke-OktaPartialUpdateUser {
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Boolean]]
         ${Strict},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -2643,6 +3226,23 @@ function Invoke-OktaPartialUpdateUser {
             throw "Error! The required parameter `UserId` missing when calling partialUpdateUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Strict) {
             $LocalVarQueryParameters['strict'] = $Strict
@@ -2709,6 +3309,11 @@ No description available.
 .PARAMETER SendEmail
 Sends an activation email to the user if true
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -2726,6 +3331,9 @@ function Invoke-OktaReactivateUser {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Boolean]]
         ${SendEmail},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -2752,6 +3360,23 @@ function Invoke-OktaReactivateUser {
             throw "Error! The required parameter `UserId` missing when calling reactivateUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($SendEmail) {
             $LocalVarQueryParameters['sendEmail'] = $SendEmail
@@ -2812,6 +3437,11 @@ No description available.
 .PARAMETER RelationshipName
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -2829,6 +3459,9 @@ function Remove-OktaLinkedObjectForUser {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${RelationshipName},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -2859,6 +3492,23 @@ function Remove-OktaLinkedObjectForUser {
             throw "Error! The required parameter `RelationshipName` missing when calling removeLinkedObjectForUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{relationshipName}', [System.Web.HTTPUtility]::UrlEncode($RelationshipName))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -2912,6 +3562,11 @@ No description available.
 .PARAMETER UserId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -2926,6 +3581,9 @@ function Reset-OktaFactors {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${UserId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -2952,6 +3610,23 @@ function Reset-OktaFactors {
             throw "Error! The required parameter `UserId` missing when calling resetFactors."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -3008,6 +3683,11 @@ No description available.
 .PARAMETER SendEmail
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -3025,6 +3705,9 @@ function Reset-OktaPassword {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [Boolean]
         ${SendEmail},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -3051,6 +3734,23 @@ function Reset-OktaPassword {
             throw "Error! The required parameter `UserId` missing when calling resetPassword."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if (!$SendEmail) {
             throw "Error! The required parameter `SendEmail` missing when calling resetPassword."
@@ -3112,6 +3812,11 @@ No description available.
 .PARAMETER ClientId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -3129,6 +3834,9 @@ function Revoke-OktaGrantsForUserAndClient {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${ClientId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -3159,6 +3867,23 @@ function Revoke-OktaGrantsForUserAndClient {
             throw "Error! The required parameter `ClientId` missing when calling revokeGrantsForUserAndClient."
         }
         $LocalVarUri = $LocalVarUri.replace('{clientId}', [System.Web.HTTPUtility]::UrlEncode($ClientId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -3218,6 +3943,11 @@ No description available.
 .PARAMETER TokenId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -3238,6 +3968,9 @@ function Revoke-OktaTokenForUserAndClient {
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${TokenId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -3272,6 +4005,23 @@ function Revoke-OktaTokenForUserAndClient {
             throw "Error! The required parameter `TokenId` missing when calling revokeTokenForUserAndClient."
         }
         $LocalVarUri = $LocalVarUri.replace('{tokenId}', [System.Web.HTTPUtility]::UrlEncode($TokenId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -3328,6 +4078,11 @@ No description available.
 .PARAMETER ClientId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -3345,6 +4100,9 @@ function Revoke-OktaTokensForUserAndClient {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${ClientId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -3375,6 +4133,23 @@ function Revoke-OktaTokensForUserAndClient {
             throw "Error! The required parameter `ClientId` missing when calling revokeTokensForUserAndClient."
         }
         $LocalVarUri = $LocalVarUri.replace('{clientId}', [System.Web.HTTPUtility]::UrlEncode($ClientId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -3431,6 +4206,11 @@ No description available.
 .PARAMETER GrantId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -3448,6 +4228,9 @@ function Revoke-OktaUserGrant {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${GrantId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -3478,6 +4261,23 @@ function Revoke-OktaUserGrant {
             throw "Error! The required parameter `GrantId` missing when calling revokeUserGrant."
         }
         $LocalVarUri = $LocalVarUri.replace('{grantId}', [System.Web.HTTPUtility]::UrlEncode($GrantId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -3531,6 +4331,11 @@ No description available.
 .PARAMETER UserId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -3545,6 +4350,9 @@ function Revoke-OktaUserGrants {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${UserId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -3571,6 +4379,23 @@ function Revoke-OktaUserGrants {
             throw "Error! The required parameter `UserId` missing when calling revokeUserGrants."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -3630,6 +4455,11 @@ No description available.
 .PARAMETER PrimaryUserId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -3650,6 +4480,9 @@ function Set-OktaLinkedObjectForUser {
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${PrimaryUserId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -3684,6 +4517,23 @@ function Set-OktaLinkedObjectForUser {
             throw "Error! The required parameter `PrimaryUserId` missing when calling setLinkedObjectForUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{primaryUserId}', [System.Web.HTTPUtility]::UrlEncode($PrimaryUserId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
 
         if ($Configuration["AccessToken"]) {
@@ -3732,6 +4582,11 @@ No description available.
 .PARAMETER UserId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -3746,6 +4601,9 @@ function Suspend-OktaUser {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${UserId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -3772,6 +4630,23 @@ function Suspend-OktaUser {
             throw "Error! The required parameter `UserId` missing when calling suspendUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -3825,6 +4700,11 @@ No description available.
 .PARAMETER UserId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -3839,6 +4719,9 @@ function Unlock-OktaUser {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${UserId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -3865,6 +4748,23 @@ function Unlock-OktaUser {
             throw "Error! The required parameter `UserId` missing when calling unlockUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -3918,6 +4818,11 @@ No description available.
 .PARAMETER UserId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -3932,6 +4837,9 @@ function Invoke-OktaUnsuspendUser {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${UserId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -3958,6 +4866,23 @@ function Invoke-OktaUnsuspendUser {
             throw "Error! The required parameter `UserId` missing when calling unsuspendUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -4017,6 +4942,11 @@ No description available.
 .PARAMETER Strict
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -4037,6 +4967,9 @@ function Update-OktaUser {
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Boolean]]
         ${Strict},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -4066,6 +4999,23 @@ function Update-OktaUser {
             throw "Error! The required parameter `UserId` missing when calling updateUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
+
+        if ($Uri) {
+            if ($Uri.StartsWith("http")){
+                # We need relative URI
+                $LocalUri = [uri]$Uri
+                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
+                $i = 0
+                foreach($QueryStringObject in $ParsedQueryString) {
+                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
+                    $i++
+                }
+                $LocalVarUri = $LocalUri.LocalPath
+            }
+            else {
+                $LocalVarUri = $Uri
+            }
+        }
 
         if ($Strict) {
             $LocalVarQueryParameters['strict'] = $Strict
