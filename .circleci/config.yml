@@ -23,7 +23,7 @@ jobs:
       - persist_to_workspace: # Allows for sharing of build-workspace (containing downloaded dependencies) (optional)
           root: ~/workspace
           paths:
-            - ./
+            - .
   test:
     executor:  
       name: windows/default
