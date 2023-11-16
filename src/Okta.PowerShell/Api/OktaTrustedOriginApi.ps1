@@ -68,20 +68,9 @@ function Invoke-OktaActivateOrigin {
         $LocalVarUri = $LocalVarUri.replace('{trustedOriginId}', [System.Web.HTTPUtility]::UrlEncode($TrustedOriginId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -185,20 +174,9 @@ function New-OktaOrigin {
         $LocalVarUri = '/api/v1/trustedOrigins'
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if (!$TrustedOrigin) {
@@ -309,20 +287,9 @@ function Invoke-OktaDeactivateOrigin {
         $LocalVarUri = $LocalVarUri.replace('{trustedOriginId}', [System.Web.HTTPUtility]::UrlEncode($TrustedOriginId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -427,20 +394,9 @@ function Invoke-OktaDeleteOrigin {
         $LocalVarUri = $LocalVarUri.replace('{trustedOriginId}', [System.Web.HTTPUtility]::UrlEncode($TrustedOriginId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -545,20 +501,9 @@ function Get-OktaOrigin {
         $LocalVarUri = $LocalVarUri.replace('{trustedOriginId}', [System.Web.HTTPUtility]::UrlEncode($TrustedOriginId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -677,20 +622,9 @@ function Invoke-OktaListOrigins {
         $LocalVarUri = '/api/v1/trustedOrigins'
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Q) {
@@ -820,20 +754,9 @@ function Update-OktaOrigin {
         $LocalVarUri = $LocalVarUri.replace('{trustedOriginId}', [System.Web.HTTPUtility]::UrlEncode($TrustedOriginId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if (!$TrustedOrigin) {

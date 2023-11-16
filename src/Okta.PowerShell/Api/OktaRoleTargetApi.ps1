@@ -78,20 +78,9 @@ function Add-OktaAllAppsAsTargetToRole {
         $LocalVarUri = $LocalVarUri.replace('{roleId}', [System.Web.HTTPUtility]::UrlEncode($RoleId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -226,20 +215,9 @@ function Add-OktaApplicationInstanceTargetToAppAdminRoleGivenToGroup {
         $LocalVarUri = $LocalVarUri.replace('{applicationId}', [System.Web.HTTPUtility]::UrlEncode($ApplicationId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -364,20 +342,9 @@ function Add-OktaApplicationTargetToAdminRoleForUser {
         $LocalVarUri = $LocalVarUri.replace('{appName}', [System.Web.HTTPUtility]::UrlEncode($AppName))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -502,20 +469,9 @@ function Add-OktaApplicationTargetToAdminRoleGivenToGroup {
         $LocalVarUri = $LocalVarUri.replace('{appName}', [System.Web.HTTPUtility]::UrlEncode($AppName))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -650,20 +606,9 @@ function Add-OktaApplicationTargetToAppAdminRoleForUser {
         $LocalVarUri = $LocalVarUri.replace('{applicationId}', [System.Web.HTTPUtility]::UrlEncode($ApplicationId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -788,20 +733,9 @@ function Add-OktaGroupTargetToGroupAdministratorRoleForGroup {
         $LocalVarUri = $LocalVarUri.replace('{targetGroupId}', [System.Web.HTTPUtility]::UrlEncode($TargetGroupId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -926,20 +860,9 @@ function Add-OktaGroupTargetToRole {
         $LocalVarUri = $LocalVarUri.replace('{groupId}', [System.Web.HTTPUtility]::UrlEncode($GroupId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -1066,20 +989,9 @@ function Invoke-OktaListApplicationTargetsForApplicationAdministratorRoleForGrou
         $LocalVarUri = $LocalVarUri.replace('{roleId}', [System.Web.HTTPUtility]::UrlEncode($RoleId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($After) {
@@ -1214,20 +1126,9 @@ function Invoke-OktaListApplicationTargetsForApplicationAdministratorRoleForUser
         $LocalVarUri = $LocalVarUri.replace('{roleId}', [System.Web.HTTPUtility]::UrlEncode($RoleId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($After) {
@@ -1362,20 +1263,9 @@ function Invoke-OktaListGroupTargetsForGroupRole {
         $LocalVarUri = $LocalVarUri.replace('{roleId}', [System.Web.HTTPUtility]::UrlEncode($RoleId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($After) {
@@ -1510,20 +1400,9 @@ function Invoke-OktaListGroupTargetsForRole {
         $LocalVarUri = $LocalVarUri.replace('{roleId}', [System.Web.HTTPUtility]::UrlEncode($RoleId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($After) {
@@ -1666,20 +1545,9 @@ function Remove-OktaApplicationTargetFromAdministratorRoleForUser {
         $LocalVarUri = $LocalVarUri.replace('{applicationId}', [System.Web.HTTPUtility]::UrlEncode($ApplicationId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -1814,20 +1682,9 @@ function Remove-OktaApplicationTargetFromAdministratorRoleGivenToGroup {
         $LocalVarUri = $LocalVarUri.replace('{applicationId}', [System.Web.HTTPUtility]::UrlEncode($ApplicationId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -1952,20 +1809,9 @@ function Remove-OktaApplicationTargetFromApplicationAdministratorRoleForUser {
         $LocalVarUri = $LocalVarUri.replace('{appName}', [System.Web.HTTPUtility]::UrlEncode($AppName))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -2090,20 +1936,9 @@ function Remove-OktaApplicationTargetFromApplicationAdministratorRoleGivenToGrou
         $LocalVarUri = $LocalVarUri.replace('{appName}', [System.Web.HTTPUtility]::UrlEncode($AppName))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -2228,20 +2063,9 @@ function Remove-OktaGroupTargetFromGroupAdministratorRoleGivenToGroup {
         $LocalVarUri = $LocalVarUri.replace('{targetGroupId}', [System.Web.HTTPUtility]::UrlEncode($TargetGroupId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -2366,20 +2190,9 @@ function Remove-OktaGroupTargetFromRole {
         $LocalVarUri = $LocalVarUri.replace('{groupId}', [System.Web.HTTPUtility]::UrlEncode($GroupId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {

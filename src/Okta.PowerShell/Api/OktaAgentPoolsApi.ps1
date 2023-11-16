@@ -78,20 +78,9 @@ function Invoke-OktaActivateAgentPoolsUpdate {
         $LocalVarUri = $LocalVarUri.replace('{updateId}', [System.Web.HTTPUtility]::UrlEncode($UpdateId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -205,20 +194,9 @@ function New-OktaAgentPoolsUpdate {
         $LocalVarUri = $LocalVarUri.replace('{poolId}', [System.Web.HTTPUtility]::UrlEncode($PoolId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if (!$AgentPoolUpdate) {
@@ -339,20 +317,9 @@ function Invoke-OktaDeactivateAgentPoolsUpdate {
         $LocalVarUri = $LocalVarUri.replace('{updateId}', [System.Web.HTTPUtility]::UrlEncode($UpdateId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -467,20 +434,9 @@ function Invoke-OktaDeleteAgentPoolsUpdate {
         $LocalVarUri = $LocalVarUri.replace('{updateId}', [System.Web.HTTPUtility]::UrlEncode($UpdateId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -593,20 +549,9 @@ function Get-OktaAgentPools {
         $LocalVarUri = '/api/v1/agentPools'
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($LimitPerPoolType) {
@@ -733,20 +678,9 @@ function Get-OktaAgentPoolsUpdateInstance {
         $LocalVarUri = $LocalVarUri.replace('{updateId}', [System.Web.HTTPUtility]::UrlEncode($UpdateId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -851,20 +785,9 @@ function Get-OktaAgentPoolsUpdateSettings {
         $LocalVarUri = $LocalVarUri.replace('{poolId}', [System.Web.HTTPUtility]::UrlEncode($PoolId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -975,20 +898,9 @@ function Get-OktaAgentPoolsUpdates {
         $LocalVarUri = $LocalVarUri.replace('{poolId}', [System.Web.HTTPUtility]::UrlEncode($PoolId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Scheduled) {
@@ -1107,20 +1019,9 @@ function Suspend-OktaAgentPoolsUpdate {
         $LocalVarUri = $LocalVarUri.replace('{updateId}', [System.Web.HTTPUtility]::UrlEncode($UpdateId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -1235,20 +1136,9 @@ function Resume-OktaAgentPoolsUpdate {
         $LocalVarUri = $LocalVarUri.replace('{updateId}', [System.Web.HTTPUtility]::UrlEncode($UpdateId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -1363,20 +1253,9 @@ function Invoke-OktaRetryAgentPoolsUpdate {
         $LocalVarUri = $LocalVarUri.replace('{updateId}', [System.Web.HTTPUtility]::UrlEncode($UpdateId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -1490,20 +1369,9 @@ function Set-OktaAgentPoolsUpdateSettings {
         $LocalVarUri = $LocalVarUri.replace('{poolId}', [System.Web.HTTPUtility]::UrlEncode($PoolId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if (!$AgentPoolUpdateSetting) {
@@ -1624,20 +1492,9 @@ function Stop-OktaAgentPoolsUpdate {
         $LocalVarUri = $LocalVarUri.replace('{updateId}', [System.Web.HTTPUtility]::UrlEncode($UpdateId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -1761,20 +1618,9 @@ function Update-OktaAgentPoolsUpdate {
         $LocalVarUri = $LocalVarUri.replace('{updateId}', [System.Web.HTTPUtility]::UrlEncode($UpdateId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if (!$AgentPoolUpdate) {

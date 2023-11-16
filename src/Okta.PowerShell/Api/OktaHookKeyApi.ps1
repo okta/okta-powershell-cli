@@ -67,20 +67,9 @@ function Add-OktaHookKey {
         $LocalVarUri = '/api/v1/hook-keys'
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if (!$KeyRequest) {
@@ -191,20 +180,9 @@ function Invoke-OktaDeleteHookKey {
         $LocalVarUri = $LocalVarUri.replace('{hookKeyId}', [System.Web.HTTPUtility]::UrlEncode($HookKeyId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -309,20 +287,9 @@ function Get-OktaHookKey {
         $LocalVarUri = $LocalVarUri.replace('{hookKeyId}', [System.Web.HTTPUtility]::UrlEncode($HookKeyId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -427,20 +394,9 @@ function Get-OktaPublicKey {
         $LocalVarUri = $LocalVarUri.replace('{keyId}', [System.Web.HTTPUtility]::UrlEncode($KeyId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -535,20 +491,9 @@ function Invoke-OktaListHookKeys {
         $LocalVarUri = '/api/v1/hook-keys'
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -662,20 +607,9 @@ function Invoke-OktaReplaceHookKey {
         $LocalVarUri = $LocalVarUri.replace('{hookKeyId}', [System.Web.HTTPUtility]::UrlEncode($HookKeyId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if (!$KeyRequest) {

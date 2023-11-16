@@ -68,20 +68,9 @@ function Get-OktaFeature {
         $LocalVarUri = $LocalVarUri.replace('{featureId}', [System.Web.HTTPUtility]::UrlEncode($FeatureId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -186,20 +175,9 @@ function Invoke-OktaListFeatureDependencies {
         $LocalVarUri = $LocalVarUri.replace('{featureId}', [System.Web.HTTPUtility]::UrlEncode($FeatureId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -304,20 +282,9 @@ function Invoke-OktaListFeatureDependents {
         $LocalVarUri = $LocalVarUri.replace('{featureId}', [System.Web.HTTPUtility]::UrlEncode($FeatureId))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -412,20 +379,9 @@ function Invoke-OktaListFeatures {
         $LocalVarUri = '/api/v1/features'
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -546,20 +502,9 @@ function Update-OktaFeatureLifecycle {
         $LocalVarUri = $LocalVarUri.replace('{lifecycle}', [System.Web.HTTPUtility]::UrlEncode($Lifecycle))
 
         if ($Uri) {
-            if ($Uri.StartsWith("http")){
-                # We need relative URI
-                $LocalUri = [uri]$Uri
-                $ParsedQueryString = [System.Web.HttpUtility]::ParseQueryString($LocalUri.Query)
-                $i = 0
-                foreach($QueryStringObject in $ParsedQueryString) {
-                    $LocalVarQueryParameters[$QueryStringObject] = $ParsedQueryString[$i]
-                    $i++
-                }
-                $LocalVarUri = $LocalUri.LocalPath
-            }
-            else {
-                $LocalVarUri = $Uri
-            }
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
         if ($Mode) {

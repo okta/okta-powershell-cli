@@ -285,17 +285,17 @@ Describe -tag 'Okta.PowerShell' -name 'OktaOktaApplicationApi' {
                 Response   = $Content
                 StatusCode = 200
                 Headers = @{ "Content-Type" = @("application/json")
-                             "Link" = @("<https://myorg.oktapreview.com/api/v1/apps?after=foo&limit=2>; rel=`"next`"")
+                             "Link" = @("<https://myorg.oktapreview.com/api/v1/apps?after=bar&limit=2>; rel=`"next`"")
                             }
             }
 
             Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable @PesterBoundParameters
 
-            $TestResult = Invoke-OktaListApplications -Uri "myPagedUri" -WithHttpInfo
+            $TestResult = Invoke-OktaListApplications -Uri "https://myorg.oktapreview.com/api/v1/apps?after=foo&limit=2" -WithHttpInfo
 
-            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1 -Scope It -ParameterFilter { $Uri -eq  "myPagedUri" }
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1 -Scope It -ParameterFilter { $Uri -eq  "/api/v1/apps" -and $QueryParameters["limit"] -eq 2 -and $QueryParameters["after"] -eq "foo" }
 
-            $TestResult.NextPageUri | Should -Be "https://myorg.oktapreview.com/api/v1/apps?after=foo&limit=2"
+            $TestResult.NextPageUri | Should -Be "https://myorg.oktapreview.com/api/v1/apps?after=bar&limit=2"
 
             $TestResult.Response.Count | Should -Be 1
             $TestResult.Response[0].Id | Should -Be 0oa90v3f09cUtZfI11d7
