@@ -24,7 +24,7 @@ jobs:
       - run:
           name: "Import Module" 
           command: |
-              pwsh Import-Module -Name './src/Okta.PowerShell' -Verbose;
+              pwsh -Command "Import-Module -Name './src/Okta.PowerShell' -Verbose;"
       - persist_to_workspace: # Allows for sharing of build-workspace (containing downloaded dependencies) (optional)
           root: .
           paths:
