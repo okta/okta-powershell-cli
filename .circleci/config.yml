@@ -16,7 +16,7 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
-      - run: dotnet tool install --global PowerShell
+      - run: dotnet tool install --global PowerShell --version 7.0
       - run:
           name: "build stage"
           command: |
