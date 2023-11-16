@@ -39,8 +39,8 @@ jobs:
           at: workspace
       - run:
           name: "Run Test"
-          shell: powershell.exe
-          command: Install-Module Pester -Repository 'PSGallery' -Force -SkipPublisherCheck;Invoke-Pester;
+          command: |
+              pwsh -Command "Import-Module -Name './src/Okta.PowerShell' -Verbose;Install-Module Pester -Repository 'PSGallery' -Force -SkipPublisherCheck;Invoke-Pester;"
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
