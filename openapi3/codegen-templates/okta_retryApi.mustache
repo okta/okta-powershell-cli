@@ -1,0 +1,153 @@
+{{> partial_header}}
+
+<#
+.SYNOPSIS
+
+Indicate if a request should be retried
+
+.DESCRIPTION
+
+Indicate if a request should be retried
+
+.PARAMETER StatusCode
+
+StatusCode of the response
+
+.PARAMETER RetryCount
+
+Indicate how many times the request was already retried
+
+.PARAMETER ElapsedTimeInSeconds
+
+Indicate the elapsed time since the request was executed for the first time
+
+.OUTPUTS
+
+bool
+#>
+
+function ShouldRetry {
+    Param (
+     [Parameter(Mandatory)]
+     [Int]$StatusCode,
+     [Parameter(Mandatory)]
+     [Int]$RetryCount,
+     [Parameter(Mandatory)]
+     [Int]$ElapsedTimeInSeconds
+    )
+    #Write-Verbose "Evaluating Status Code: "  $StatusCode
+    $Configuration = Get-Configuration
+    
+    if (($StatusCode -eq 429) -and ($RetryCount -lt $Configuration.MaxRetries) -and ($ElapsedTimeInSeconds -lt $Configuration.MaxRetries)){
+        return $true
+    }
+
+    return $false
+}
+
+<#
+.SYNOPSIS
+
+Calculate the time to delay the next retry request execution
+
+.DESCRIPTION
+
+Calculate the time to delay the next retry request execution
+
+.PARAMETER Headers
+
+The response's headers
+
+.OUTPUTS
+
+int
+#>
+
+function CalculateDelayInSeconds {
+    Param (
+    [Parameter(Mandatory)]
+    [AllowEmptyCollection()]
+    [String[]]$Headers
+    )
+    
+    Write-Verbose "Calculating the delay to retry the request"
+
+    $Configuration = Get-Configuration
+    $Now = Get-Date
+
+    if ($null -eq $Headers.'X-Rate-Limit-Reset') {
+        $RateLimitReset = $Now.AddSeconds(5)
+    }
+    else {
+        $RateLimitReset = Get-Date -Date $Headers.'X-Rate-Limit-Reset'
+    }
+
+    
+    $RetryAtUtcTime = $RateLimitReset.ToUniversalTime()
+    #Write-Verbose "X-Rate-Limit-Reset: " $RateLimitReset 
+
+    if ($null -eq $Headers.'Date') {
+        $Date = $Now    
+    }
+    else {
+        $Date = Get-Date -Date $Headers.'Date'
+    }
+
+    $RequestUtcDate = $Date.ToUniversalTime()
+    #Write-Verbose "Request Date: " $Date
+
+    $BackoffInSeconds = 0
+    if (($null -ne $RetryAtUtcTime) -and ($null -ne $RequestUtcDate)){
+        $BackoffInSecondsAux = (New-TimeSpan -Start $RequestUtcDate -End $RetryAtUtcTime).Seconds + 1 #delta
+
+        if (($Configuration.RequestTimeoutInSeconds -gt 0) -and ($BackoffInSeconds -lt $Configuration.RequestTimeoutInSeconds)){
+            $BackoffInSeconds = $BackoffInSecondsAux
+        }
+    }
+    #Write-Verbose "Backoff in Seconds: " $BackoffInSeconds
+    return $BackoffInSeconds
+}
+
+<#
+.SYNOPSIS
+
+Add the corresponding headers to an existing headers list in order to perform a retry request
+
+.DESCRIPTION
+
+Add the corresponding headers to an existing headers list in order to perform a retry request
+
+.PARAMETER Headers
+
+The response's headers
+
+.PARAMETER RequestId
+
+The request ID
+
+.PARAMETER RetryCount
+
+The number of retry attempts including the upcoming retry (i.e request was executed 2 times and a new retry is gonna be executed. RetryCount should be 30)
+
+.OUTPUTS
+
+[hashtable]$Headers
+#>
+
+function AddRetryHeaders {
+    Param(
+        [Parameter(Mandatory)]
+        [AllowEmptyCollection()]
+        [hashtable]$Headers,
+        [Parameter(Mandatory)]
+        [String]$RequestId,
+        [Parameter(Mandatory)]
+        [int]$RetryCount
+    )
+    
+    $Headers["X-Okta-Retry-For"] = $RequestId
+    $Headers["X-Okta-Retry-Count"] = $RetryCount
+    #Write-Verbose "Adding retry headers > RequestId: " $RequestId " RetryCount: " $RetryCount
+
+    return $Headers
+}

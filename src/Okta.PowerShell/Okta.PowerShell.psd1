@@ -18,7 +18,7 @@ ModuleVersion = '0.1.0'
 # CompatiblePSEditions = @()
 
 # ID used to uniquely identify this module
-GUID = 'e6457eb2-f37a-4963-9fec-182ed8b8f392'
+GUID = '1967c124-c33c-489a-a20b-51eb5ae10434'
 
 # Author of this module
 Author = 'OpenAPI Generator Team'
@@ -1412,10 +1412,13 @@ FunctionsToExport = 'Invoke-OktaActivateAgentPoolsUpdate', 'New-OktaAgentPoolsUp
                'Initialize-OktaWsFederationApplicationSettingsApplication', 
                'ConvertFrom-OktaJsonToWsFederationApplicationSettingsApplication', 
                'Get-OktaConfiguration', 'Set-OktaConfiguration', 
+               'Set-ConfigurationMaxRetries', 'Set-ConfigurationTimeoutInSeconds', 
                'Set-OktaConfigurationApiKey', 'Set-OktaConfigurationApiKeyPrefix', 
                'Set-OktaConfigurationDefaultHeader', 'Get-OktaHostSetting', 
                'Get-OktaUrlFromHostSetting', 'Set-OktaConfigurationHttpSigning', 
-               'Get-OktaConfigurationHttpSigning', 'Invoke-ParseAbsoluteUri'
+               'Get-OktaConfigurationHttpSigning', 'ShouldRetry', 
+               'CalculateDelayInSeconds', 'AddRetryHeaders', 
+               'Invoke-ParseAbsoluteUri'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()

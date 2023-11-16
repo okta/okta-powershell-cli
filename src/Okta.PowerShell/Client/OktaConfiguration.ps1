@@ -60,6 +60,14 @@ function Get-OktaConfiguration {
         $Configuration["Proxy"] = $null
     }
 
+    if (!$Configuration.containsKey("MaxRetries")) {
+        $Configuration["MaxRetries"] = $null
+    }
+
+    if (!$Configuration.containsKey("TimeoutInSeconds")) {
+        $Configuration["TimeoutInSeconds"] = $null
+    }
+
     Return $Configuration
 
 }
@@ -106,6 +114,12 @@ Proxy setting in the HTTP request, e.g.
 $proxy = [System.Net.WebRequest]::GetSystemWebProxy()
 $proxy.Credentials = [System.Net.CredentialCache]::DefaultCredentials
 
+.PARAMETER MaxRetries
+Specify the number of times a request should be retried
+
+.PARAMETER TimeoutInSeconds
+Specify the timeout for a request
+
 .PARAMETER PassThru
 Return an object of the Configuration
 
@@ -128,6 +142,8 @@ function Set-OktaConfiguration {
         [string]$AccessToken,
         [hashtable]$DefaultHeaders,
         [System.Object]$Proxy,
+        [int]$MaxRetries,
+        [int]$TimeoutInSeconds,
         [switch]$PassThru
     )
 
@@ -179,9 +195,65 @@ function Set-OktaConfiguration {
             $Script:Configuration['Proxy'] = $null
         }
 
+         If ($MaxRetries) {
+            $Script:Configuration['MaxRetries'] = $MaxRetries
+        }
+
+        If ($TimeoutInSeconds) {
+            $Script:Configuration['TimeoutInSeconds'] = $TimeoutInSeconds
+        }
+
         If ($PassThru.IsPresent) {
             $Script:Configuration
         }
+    }
+}
+
+<#
+.SYNOPSIS
+
+Set the max retries value.
+
+.DESCRIPTION
+
+Set the max retries value.
+
+.OUTPUTS
+
+None
+#>
+
+function Set-ConfigurationMaxRetries {
+    [CmdletBinding()]
+    Param(
+        [int]$MaxRetries        
+    )
+    Process {
+        $Script:Configuration["MaxRetries"] = $MaxRetries
+    }
+}
+
+<#
+.SYNOPSIS
+
+Set the request timeout value.
+
+.DESCRIPTION
+
+Set the request timeout value.
+
+.OUTPUTS
+
+None
+#>
+
+function Set-ConfigurationTimeoutInSeconds {
+    [CmdletBinding()]
+    Param(
+        [int]$TimeoutInSeconds        
+    )
+    Process {
+        $Script:Configuration["TimeoutInSeconds"] = $TimeoutInSeconds
     }
 }
 
