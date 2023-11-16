@@ -35,7 +35,7 @@ jobs:
       - run:
           name: "Check dir"
           shell: powershell.exe
-          command: dir workspace
+          command: dir workspace/src/Okta.PowerShell
       - run:
           name: "Run Test"
           shell: powershell.exe
