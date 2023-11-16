@@ -24,7 +24,10 @@ jobs:
           root: ~/project
           paths:
             - src
+            - Build.ps1
   test:
+    requires:
+      - build
     executor:  
       name: windows/default
     # Add steps to the job
