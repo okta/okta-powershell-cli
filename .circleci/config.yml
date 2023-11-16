@@ -35,7 +35,7 @@ jobs:
       - run:
           name: "Check dir"
           shell: powershell.exe
-          command: cd workspace & dir
+          command: dir /workspace
       - run:
           name: "Run Test"
           shell: powershell.exe
