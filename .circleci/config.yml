@@ -39,7 +39,7 @@ jobs:
       - run:
           name: "Run Test"
           shell: powershell.exe
-          command: $(workspace/build.ps1) -and $(Import-Module -Name 'workspace/src/Okta.PowerShell') -and $(Install-Module Pester -Force) -and $(Invoke-Pester)
+          command: $(Import-Module -Name 'workspace/src/Okta.PowerShell') -and $(Install-Module Pester -Force) -and $(Invoke-Pester)
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
