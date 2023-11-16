@@ -42,7 +42,7 @@ workflows:
   build:
     jobs:
       - build
-  build:
+  test:
     jobs:
       - test
   semgrep:
