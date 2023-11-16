@@ -40,12 +40,10 @@ jobs:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  build:
+  build-test:
     jobs:
       - build
-  test:
-    jobs:
-      - test
+      - test:
           requires:
             - build
   semgrep:
