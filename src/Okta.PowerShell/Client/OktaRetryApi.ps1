@@ -43,10 +43,16 @@ function ShouldRetry {
      [Int]$ElapsedTimeInSeconds
     )
     #Write-Verbose "Evaluating Status Code: "  $StatusCode
-    $Configuration = Get-Configuration
+    $Configuration = Get-OktaConfiguration
     
-    if (($StatusCode -eq 429) -and ($RetryCount -lt $Configuration.MaxRetries) -and ($ElapsedTimeInSeconds -lt $Configuration.MaxRetries)){
-        return $true
+    if ($null -eq $Configuration.MaxRetries -or $Configuration.MaxRetries -le 0 ) {
+        return $false
+    }
+
+    if (($StatusCode -eq 429) -and ($RetryCount -lt $Configuration.MaxRetries) -and 
+        ($null -eq $Configuration.TimeoutInSeconds -or ($Configuration.TimeoutInSeconds -gt 0 -and $ElapsedTimeInSeconds -lt $Configuration.TimeoutInSeconds))){
+        
+         return $true
     }
 
     return $false
