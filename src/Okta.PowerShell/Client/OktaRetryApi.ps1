@@ -79,45 +79,30 @@ int
 function CalculateDelayInSeconds {
     Param (
     [Parameter(Mandatory)]
-    [AllowEmptyCollection()]
-    [String[]]$Headers
+    [hashtable]$Headers
     )
     
     Write-Verbose "Calculating the delay to retry the request"
 
-    $Configuration = Get-Configuration
-    $Now = Get-Date
+    $Configuration = Get-OktaConfiguration
 
-    if ($null -eq $Headers.'X-Rate-Limit-Reset') {
-        $RateLimitReset = $Now.AddSeconds(5)
+    if ($null -eq $Headers['X-Rate-Limit-Reset']) {
+        throw "Error! The required header `X-Rate-Limit-Reset` missing when calling CalculateDelayInSeconds." 
     }
-    else {
-        $RateLimitReset = Get-Date -Date $Headers.'X-Rate-Limit-Reset'
-    }
-
     
+    $RateLimitReset = Get-Date -Date $Headers["X-Rate-Limit-Reset"]
     $RetryAtUtcTime = $RateLimitReset.ToUniversalTime()
-    #Write-Verbose "X-Rate-Limit-Reset: " $RateLimitReset 
+    
 
     if ($null -eq $Headers.'Date') {
-        $Date = $Now    
-    }
-    else {
-        $Date = Get-Date -Date $Headers.'Date'
+        throw "Error! The required header `Date` missing when calling CalculateDelayInSeconds."    
     }
 
+    $Date = Get-Date -Date $Headers.'Date'
     $RequestUtcDate = $Date.ToUniversalTime()
-    #Write-Verbose "Request Date: " $Date
-
-    $BackoffInSeconds = 0
-    if (($null -ne $RetryAtUtcTime) -and ($null -ne $RequestUtcDate)){
-        $BackoffInSecondsAux = (New-TimeSpan -Start $RequestUtcDate -End $RetryAtUtcTime).Seconds + 1 #delta
-
-        if (($Configuration.RequestTimeoutInSeconds -gt 0) -and ($BackoffInSeconds -lt $Configuration.RequestTimeoutInSeconds)){
-            $BackoffInSeconds = $BackoffInSecondsAux
-        }
-    }
-    #Write-Verbose "Backoff in Seconds: " $BackoffInSeconds
+    
+    $BackoffInSeconds = (New-TimeSpan -Start $RequestUtcDate -End $RetryAtUtcTime).Seconds + 1 #delta
+    
     return $BackoffInSeconds
 }
 

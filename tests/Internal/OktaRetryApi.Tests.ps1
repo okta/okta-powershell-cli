@@ -118,4 +118,57 @@ Describe -tag 'Okta.PowerShell' -name 'OktaRetryApi' {
             $Result | Should -Be $False
         }
     }
+
+    Context 'CalculateDelayInSeconds' {
+        It 'Should calculate delay when all the params are correctly provided' {
+            
+            $Config = @{
+                MaxRetries   = 2
+                TimeoutInSeconds = 2
+            }
+
+            $Now = Get-Date # Used as a reference for the test. Indicates when the request was executed
+            $ResetDate = $Now.AddSeconds(3) # Indicates when one should retry
+            
+            Mock -ModuleName Okta.PowerShell Get-OktaConfiguration { return $Config } -Verifiable
+
+            $Headers = @{"X-Rate-Limit-Reset" = $ResetDate; "Date" = $Now}
+
+            # $BackoffInSeconds = (New-TimeSpan -Start $RequestUtcDate -End $RetryAtUtcTime).Seconds + 1 #delta
+            $Result = CalculateDelayInSeconds -Headers $Headers
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Get-OktaConfiguration -Times 1
+
+            $Result | Should -Be 4
+        }
+
+        It 'Should fail if mandatory headers are not provided' {
+            
+            $Config = @{
+                MaxRetries   = 2
+                TimeoutInSeconds = 2
+            }
+
+            $Now = Get-Date # Used as a reference for the test. Indicates when the request was executed
+            $ResetDate = $Now.AddSeconds(3) # Indicates when one should retry
+            
+            Mock -ModuleName Okta.PowerShell Get-OktaConfiguration { return $Config } -Verifiable
+
+            $Headers = @{"Date" = $Now} # "X-Rate-Limit-Reset" = $ResetDate; not included
+
+            # $BackoffInSeconds = (New-TimeSpan -Start $RequestUtcDate -End $RetryAtUtcTime).Seconds + 1 #delta
+            { CalculateDelayInSeconds -Headers $Headers } | Should -Throw -ExpectedMessage "Error! The required header `X-Rate-Limit-Reset` missing when calling CalculateDelayInSeconds."
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Get-OktaConfiguration -Times 1
+
+            $Headers = @{ "X-Rate-Limit-Reset" = $ResetDate} # "Date" = $Now; not included
+
+            # $BackoffInSeconds = (New-TimeSpan -Start $RequestUtcDate -End $RetryAtUtcTime).Seconds + 1 #delta
+            { CalculateDelayInSeconds -Headers $Headers } | Should -Throw -ExpectedMessage "Error! The required header `Date` missing when calling CalculateDelayInSeconds."
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Get-OktaConfiguration -Times 1
+
+
+        }
+    }
 }

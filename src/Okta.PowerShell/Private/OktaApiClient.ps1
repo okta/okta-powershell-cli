@@ -194,7 +194,7 @@ function Invoke-OktaApiClient {
             $ElapsedTimeInSeconds = (New-TimeSpan -Start $StartTime -End $(Get-Date)).TotalSeconds
 
             if (ShouldRetry -StatusCode $StatusCode -RetryCount $RetryCount -ElapsedTimeInSeconds $ElapsedTimeInSeconds) {
-                $WaitInSeconds = CalculateDelayInSeconds -Headers $HeaderParameters 
+                $WaitInSeconds = CalculateDelayInSeconds -Headers [System.Net.WebHeaderCollection]$Headers$Headers 
 
                 if ($WaitInSeconds -gt 0) {
                     $RetryCount = $RetryCount + 1

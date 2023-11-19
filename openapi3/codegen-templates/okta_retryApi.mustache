@@ -98,13 +98,9 @@ function CalculateDelayInSeconds {
 
     $BackoffInSeconds = 0
     if (($null -ne $RetryAtUtcTime) -and ($null -ne $RequestUtcDate)){
-        $BackoffInSecondsAux = (New-TimeSpan -Start $RequestUtcDate -End $RetryAtUtcTime).Seconds + 1 #delta
-
-        if (($Configuration.RequestTimeoutInSeconds -gt 0) -and ($BackoffInSeconds -lt $Configuration.RequestTimeoutInSeconds)){
-            $BackoffInSeconds = $BackoffInSecondsAux
-        }
+        $BackoffInSeconds = (New-TimeSpan -Start $RequestUtcDate -End $RetryAtUtcTime).Seconds + 1 #delta
     }
-    #Write-Verbose "Backoff in Seconds: " $BackoffInSeconds
+    
     return $BackoffInSeconds
 }
 
