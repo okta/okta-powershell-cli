@@ -18,7 +18,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -118,7 +118,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 

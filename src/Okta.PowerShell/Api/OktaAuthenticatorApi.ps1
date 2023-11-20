@@ -21,7 +21,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -131,7 +131,7 @@ Whether to execute the activation lifecycle operation when Okta creates the auth
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -250,7 +250,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -357,7 +357,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -461,7 +461,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -564,7 +564,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 

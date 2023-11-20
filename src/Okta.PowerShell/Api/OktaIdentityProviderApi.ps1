@@ -21,7 +21,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -134,7 +134,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -256,7 +256,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -368,7 +368,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -480,7 +480,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -587,7 +587,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -694,7 +694,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -804,7 +804,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -926,7 +926,7 @@ expiry of the IdP Key Credential
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -1044,7 +1044,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -1158,7 +1158,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -1268,7 +1268,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -1382,7 +1382,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -1492,7 +1492,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -1612,7 +1612,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -1738,7 +1738,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -1845,7 +1845,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -1955,7 +1955,7 @@ Specifies the number of key results in a page
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -2069,7 +2069,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -2185,7 +2185,7 @@ Filters IdPs by type
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -2316,7 +2316,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -2436,7 +2436,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -2565,7 +2565,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -2682,7 +2682,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -2799,7 +2799,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 

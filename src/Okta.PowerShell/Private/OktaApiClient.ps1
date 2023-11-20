@@ -133,59 +133,102 @@ function Invoke-OktaApiClient {
 
     $OktaUserAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome + " Okta.PowerShell/0.1.0"
 
-    if ($SkipCertificateCheck -eq $true) {
-        if ($null -eq $Configuration["Proxy"]) {
-            # skip certification check, no proxy
-            $Response = Invoke-WebRequest -Uri $UriBuilder.Uri `
-                                      -Method $Method `
-                                      -Headers $HeaderParameters `
-                                      -Body $RequestBody `
-                                      -ErrorAction Stop `
-                                      -UseBasicParsing `
-                                      -SkipCertificateCheck `
-                                      -UserAgent $OktaUserAgent
-        } else {
-            # skip certification check, use proxy
-            $Response = Invoke-WebRequest -Uri $UriBuilder.Uri `
-                                      -Method $Method `
-                                      -Headers $HeaderParameters `
-                                      -Body $RequestBody `
-                                      -ErrorAction Stop `
-                                      -UseBasicParsing `
-                                      -SkipCertificateCheck `
-                                      -Proxy $Configuration["Proxy"].GetProxy($UriBuilder.Uri) `
-                                      -ProxyUseDefaultCredentials `
-                                      -UserAgent $OktaUserAgent
-        }
-    } else {
-        if ($null -eq $Configuration["Proxy"]) {
-            # perform certification check, no proxy
-            $Response = Invoke-WebRequest -Uri $UriBuilder.Uri `
-                                      -Method $Method `
-                                      -Headers $HeaderParameters `
-                                      -Body $RequestBody `
-                                      -ErrorAction Stop `
-                                      -UseBasicParsing `
-                                      -UserAgent $OktaUserAgent
-        } else {
-            # perform certification check, use proxy
-            $Response = Invoke-WebRequest -Uri $UriBuilder.Uri `
-                                      -Method $Method `
-                                      -Headers $HeaderParameters `
-                                      -Body $RequestBody `
-                                      -ErrorAction Stop `
-                                      -UseBasicParsing `
-                                      -Proxy $Configuration["Proxy"].GetProxy($UriBuilder.Uri) `
-                                      -ProxyUseDefaultCredentials `
-                                      -UserAgent $OktaUserAgent
-        }
-    }
 
+    # Setting up vars for retry
+    $RetryFlag = $true
+    $RetryCount = 0
+    $WaitInMilliseconds = 0
+    $StartTime = Get-Date
+    
+    do {
+        if ($SkipCertificateCheck -eq $true) {
+            if ($null -eq $Configuration["Proxy"]) {
+                # skip certification check, no proxy
+                $RawResponse = Invoke-WebRequest -Uri $UriBuilder.Uri `
+                                        -Method $Method `
+                                        -Headers $HeaderParameters `
+                                        -Body $RequestBody `
+                                        -ErrorAction Stop `
+                                        -UseBasicParsing `
+                                        -SkipCertificateCheck `
+                                        -UserAgent $OktaUserAgent
+            } else {
+                # skip certification check, use proxy
+                $RawResponse = Invoke-WebRequest -Uri $UriBuilder.Uri `
+                                        -Method $Method `
+                                        -Headers $HeaderParameters `
+                                        -Body $RequestBody `
+                                        -ErrorAction Stop `
+                                        -UseBasicParsing `
+                                        -SkipCertificateCheck `
+                                        -Proxy $Configuration["Proxy"].GetProxy($UriBuilder.Uri) `
+                                        -ProxyUseDefaultCredentials `
+                                        -UserAgent $OktaUserAgent
+            }
+        } else {
+            if ($null -eq $Configuration["Proxy"]) {
+                # perform certification check, no proxy
+                $RawResponse = Invoke-WebRequest -Uri $UriBuilder.Uri `
+                                        -Method $Method `
+                                        -Headers $HeaderParameters `
+                                        -Body $RequestBody `
+                                        -ErrorAction Stop `
+                                        -UseBasicParsing `
+                                        -UserAgent $OktaUserAgent
+            } else {
+                # perform certification check, use proxy
+                $RawResponse = Invoke-WebRequest -Uri $UriBuilder.Uri `
+                                        -Method $Method `
+                                        -Headers $HeaderParameters `
+                                        -Body $RequestBody `
+                                        -ErrorAction Stop `
+                                        -UseBasicParsing `
+                                        -Proxy $Configuration["Proxy"].GetProxy($UriBuilder.Uri) `
+                                        -ProxyUseDefaultCredentials `
+                                        -UserAgent $OktaUserAgent
+            }
+
+            $Response = DeserializeResponse -Response $RawResponse.Content -ReturnType $ReturnType -ContentTypes $RawResponse.Headers["Content-Type"]
+            $StatusCode = $RawResponse.StatusCode
+            $Headers = $RawResponse.Headers
+            $ElapsedTimeInMilliseconds  = CalculateElapsedTime -StartTime $StartTime
+
+            if (ShouldRetry -StatusCode $StatusCode -RetryCount $RetryCount -ElapsedTime $ElapsedTimeInMilliseconds) {
+                $WaitInMilliseconds = CalculateDelay -Headers $Headers 
+
+                if ($WaitInMilliseconds -gt 0) {
+                    $RetryCount = $RetryCount + 1
+                    $RequestId = $Headers['X-Okta-Request-Id'][0]
+                    AddRetryHeaders -Headers $HeaderParameters -RequestId $RequestId -RetryCount $RetryCount
+                    Start-Sleep -Milliseconds $WaitInMilliseconds
+                }
+                else {
+                    $RetryFlag = $false
+                }
+            }
+            else {
+                $RetryFlag = $false
+            }        
+        }
+    } while($RetryFlag)
+    
     return @{
-        Response = DeserializeResponse -Response $Response.Content -ReturnType $ReturnType -ContentTypes $Response.Headers["Content-Type"]
-        StatusCode = $Response.StatusCode
-        Headers = $Response.Headers
+        Response = $Response
+        StatusCode = $StatusCode
+        Headers = $Headers
     }
+}
+
+# Calculate the elapsed time given a datetime in milliseconds
+function CalculateElapsedTime{
+    Param(
+        [Parameter(Mandatory)]
+        [datetime]$StartTime 
+    )
+
+    $ElapsedTimeInMilliseconds = (New-TimeSpan -Start $StartTime -End $(Get-Date)).TotalMilliseconds
+
+    return $ElapsedTimeInMilliseconds
 }
 
 # Select JSON MIME if present, otherwise choose the first one if available
