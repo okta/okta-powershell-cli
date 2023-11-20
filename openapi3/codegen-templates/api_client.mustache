@@ -146,7 +146,7 @@ function Invoke-{{{apiNamePrefix}}}ApiClient {
 
     {{/hasHttpSignatureMethods}}
 
-    # Setting up vars for retry
+ # Setting up vars for retry
     $RetryFlag = $true
     $RetryCount = 0
     $WaitInSeconds = 0
@@ -200,18 +200,17 @@ function Invoke-{{{apiNamePrefix}}}ApiClient {
                                         -UserAgent $OktaUserAgent
             }
 
-            $Response = DeserializeResponse -Response $RawResponse -ReturnType $ReturnType -ContentTypes $RawResponse.Headers["Content-Type"]
+            $Response = DeserializeResponse -Response $RawResponse.Content -ReturnType $ReturnType -ContentTypes $RawResponse.Headers["Content-Type"]
             $StatusCode = $RawResponse.StatusCode
             $Headers = $RawResponse.Headers
-            $ElapsedTimeInSeconds = (New-TimeSpan -Start $StartTime -End $(Get-Date)).TotalSeconds
+            $ElapsedTimeInSeconds = CalculateElapsedTimeInSeconds -StartTime $StartTime
 
             if (ShouldRetry -StatusCode $StatusCode -RetryCount $RetryCount -ElapsedTimeInSeconds $ElapsedTimeInSeconds) {
-                $WaitInSeconds = CalculateDelayInSeconds -Headers $HeaderParameters 
+                $WaitInSeconds = CalculateDelayInSeconds -Headers $Headers 
 
-                if ($WaitInSeconds -gt 0 -and (($Configuration.TimeoutInSeconds -gt 0) -and ($WaitInSeconds -lt $Configuration.TimeoutInSeconds))) {
+                if ($WaitInSeconds -gt 0) {
                     $RetryCount = $RetryCount + 1
                     $RequestId = $Headers['X-Okta-Request-Id'][0]
-                    
                     AddRetryHeaders -Headers $HeaderParameters -RequestId $RequestId -RetryCount $RetryCount
                     Start-Sleep -Seconds $WaitInSeconds
                 }
@@ -226,10 +225,21 @@ function Invoke-{{{apiNamePrefix}}}ApiClient {
     } while($RetryFlag)
     
     return @{
-        Response = DeserializeResponse -Response $Response.Content -ReturnType $ReturnType -ContentTypes $Response.Headers["Content-Type"]
-        StatusCode = $Response.StatusCode
-        Headers = $Response.Headers
+        Response = $Response
+        StatusCode = $StatusCode
+        Headers = $Headers
     }
+}
+
+function CalculateElapsedTimeInSeconds{
+    Param(
+        [Parameter(Mandatory)]
+        [datetime]$StartTime 
+    )
+
+    $ElapsedTimeInSeconds = (New-TimeSpan -Start $StartTime -End $(Get-Date)).TotalSeconds
+
+    return $ElapsedTimeInSeconds
 }
 
 # Select JSON MIME if present, otherwise choose the first one if available

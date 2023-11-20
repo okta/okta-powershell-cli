@@ -36,10 +36,16 @@ function ShouldRetry {
      [Int]$ElapsedTimeInSeconds
     )
     #Write-Verbose "Evaluating Status Code: "  $StatusCode
-    $Configuration = Get-Configuration
+    $Configuration = Get-OktaConfiguration
     
-    if (($StatusCode -eq 429) -and ($RetryCount -lt $Configuration.MaxRetries) -and ($ElapsedTimeInSeconds -lt $Configuration.MaxRetries)){
-        return $true
+    if ($null -eq $Configuration.MaxRetries -or $Configuration.MaxRetries -le 0 ) {
+        return $false
+    }
+
+    if (($StatusCode -eq 429) -and ($RetryCount -lt $Configuration.MaxRetries) -and 
+        ($null -eq $Configuration.TimeoutInSeconds -or ($Configuration.TimeoutInSeconds -gt 0 -and $ElapsedTimeInSeconds -lt $Configuration.TimeoutInSeconds))){
+        
+         return $true
     }
 
     return $false
@@ -66,40 +72,29 @@ int
 function CalculateDelayInSeconds {
     Param (
     [Parameter(Mandatory)]
-    [AllowEmptyCollection()]
-    [String[]]$Headers
+    [hashtable]$Headers
     )
     
     Write-Verbose "Calculating the delay to retry the request"
 
-    $Configuration = Get-Configuration
-    $Now = Get-Date
+    $Configuration = Get-OktaConfiguration
 
-    if ($null -eq $Headers.'X-Rate-Limit-Reset') {
-        $RateLimitReset = $Now.AddSeconds(5)
+    if ($null -eq $Headers['X-Rate-Limit-Reset']) {
+        throw "Error! The required header `X-Rate-Limit-Reset` missing when calling CalculateDelayInSeconds." 
     }
-    else {
-        $RateLimitReset = Get-Date -Date $Headers.'X-Rate-Limit-Reset'
-    }
-
     
+    $RateLimitReset = Get-Date -Date $Headers["X-Rate-Limit-Reset"][0]
     $RetryAtUtcTime = $RateLimitReset.ToUniversalTime()
-    #Write-Verbose "X-Rate-Limit-Reset: " $RateLimitReset 
+    
 
-    if ($null -eq $Headers.'Date') {
-        $Date = $Now    
-    }
-    else {
-        $Date = Get-Date -Date $Headers.'Date'
+    if ($null -eq $Headers["Date"]) {
+        throw "Error! The required header `Date` missing when calling CalculateDelayInSeconds."    
     }
 
+    $Date = Get-Date -Date $Headers["Date"][0]
     $RequestUtcDate = $Date.ToUniversalTime()
-    #Write-Verbose "Request Date: " $Date
-
-    $BackoffInSeconds = 0
-    if (($null -ne $RetryAtUtcTime) -and ($null -ne $RequestUtcDate)){
-        $BackoffInSeconds = (New-TimeSpan -Start $RequestUtcDate -End $RetryAtUtcTime).Seconds + 1 #delta
-    }
+    
+    $BackoffInSeconds = (New-TimeSpan -Start $RequestUtcDate -End $RetryAtUtcTime).Seconds + 1 #delta
     
     return $BackoffInSeconds
 }
