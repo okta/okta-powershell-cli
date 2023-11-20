@@ -132,7 +132,7 @@ Describe -tag 'Okta.PowerShell' -name 'OktaRetryApi' {
             
             Mock -ModuleName Okta.PowerShell Get-OktaConfiguration { return $Config } -Verifiable
 
-            $Headers = @{"X-Rate-Limit-Reset" = $ResetDate; "Date" = $Now}
+            $Headers = @{"X-Rate-Limit-Reset" = @($ResetDate); "Date" = @($Now)}
 
             # $BackoffInSeconds = (New-TimeSpan -Start $RequestUtcDate -End $RetryAtUtcTime).Seconds + 1 #delta
             $Result = CalculateDelayInSeconds -Headers $Headers
@@ -154,21 +154,33 @@ Describe -tag 'Okta.PowerShell' -name 'OktaRetryApi' {
             
             Mock -ModuleName Okta.PowerShell Get-OktaConfiguration { return $Config } -Verifiable
 
-            $Headers = @{"Date" = $Now} # "X-Rate-Limit-Reset" = $ResetDate; not included
+            $Headers = @{"Date" = @($Now)} # "X-Rate-Limit-Reset" = $ResetDate; not included
 
             # $BackoffInSeconds = (New-TimeSpan -Start $RequestUtcDate -End $RetryAtUtcTime).Seconds + 1 #delta
             { CalculateDelayInSeconds -Headers $Headers } | Should -Throw -ExpectedMessage "Error! The required header `X-Rate-Limit-Reset` missing when calling CalculateDelayInSeconds."
 
             Assert-MockCalled -ModuleName Okta.PowerShell Get-OktaConfiguration -Times 1
 
-            $Headers = @{ "X-Rate-Limit-Reset" = $ResetDate} # "Date" = $Now; not included
+            $Headers = @{ "X-Rate-Limit-Reset" = @($ResetDate)} # "Date" = $Now; not included
 
             # $BackoffInSeconds = (New-TimeSpan -Start $RequestUtcDate -End $RetryAtUtcTime).Seconds + 1 #delta
             { CalculateDelayInSeconds -Headers $Headers } | Should -Throw -ExpectedMessage "Error! The required header `Date` missing when calling CalculateDelayInSeconds."
 
             Assert-MockCalled -ModuleName Okta.PowerShell Get-OktaConfiguration -Times 1
+        }
+    }
 
+    Context 'AddRetryHeaders' {
+        It 'Should add headers' {
+            $Headers = @{}
 
+            # $Headers["X-Okta-Retry-For"] = $RequestId
+            # $Headers["X-Okta-Retry-Count"] = $RetryCount
+
+            $Result = AddRetryHeaders -Headers $Headers -RequestId "foo" -RetryCount 5
+
+            $Result["X-Okta-Retry-For"] | Should -Be "foo"
+            $Result["X-Okta-Retry-Count"] | Should -Be 5
         }
     }
 }

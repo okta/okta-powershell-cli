@@ -90,15 +90,15 @@ function CalculateDelayInSeconds {
         throw "Error! The required header `X-Rate-Limit-Reset` missing when calling CalculateDelayInSeconds." 
     }
     
-    $RateLimitReset = Get-Date -Date $Headers["X-Rate-Limit-Reset"]
+    $RateLimitReset = Get-Date -Date $Headers["X-Rate-Limit-Reset"][0]
     $RetryAtUtcTime = $RateLimitReset.ToUniversalTime()
     
 
-    if ($null -eq $Headers.'Date') {
+    if ($null -eq $Headers["Date"]) {
         throw "Error! The required header `Date` missing when calling CalculateDelayInSeconds."    
     }
 
-    $Date = Get-Date -Date $Headers.'Date'
+    $Date = Get-Date -Date $Headers["Date"][0]
     $RequestUtcDate = $Date.ToUniversalTime()
     
     $BackoffInSeconds = (New-TimeSpan -Start $RequestUtcDate -End $RetryAtUtcTime).Seconds + 1 #delta

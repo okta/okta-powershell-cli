@@ -188,23 +188,17 @@ function Invoke-OktaApiClient {
                                         -UserAgent $OktaUserAgent
             }
 
-            $Response = DeserializeResponse -Response $RawResponse -ReturnType $ReturnType -ContentTypes $RawResponse.Headers["Content-Type"]
+            $Response = DeserializeResponse -Response $RawResponse.Content -ReturnType $ReturnType -ContentTypes $RawResponse.Headers["Content-Type"]
             $StatusCode = $RawResponse.StatusCode
             $Headers = $RawResponse.Headers
             $ElapsedTimeInSeconds = (New-TimeSpan -Start $StartTime -End $(Get-Date)).TotalSeconds
 
             if (ShouldRetry -StatusCode $StatusCode -RetryCount $RetryCount -ElapsedTimeInSeconds $ElapsedTimeInSeconds) {
-                $WaitInSeconds = CalculateDelayInSeconds -Headers [System.Net.WebHeaderCollection]$Headers$Headers 
+                $WaitInSeconds = CalculateDelayInSeconds -Headers $Headers 
 
                 if ($WaitInSeconds -gt 0) {
                     $RetryCount = $RetryCount + 1
-                    if ($null -eq $RequestId) {
-                        $RequestId = 'foo'
-                    }
-                    else {
-                        $RequestId = $Headers['X-Okta-Request-Id'][0]
-                    }
-                    
+                    $RequestId = $Headers['X-Okta-Request-Id'][0]
                     AddRetryHeaders -Headers $HeaderParameters -RequestId $RequestId -RetryCount $RetryCount
                     Start-Sleep -Seconds $WaitInSeconds
                 }
@@ -219,9 +213,9 @@ function Invoke-OktaApiClient {
     } while($RetryFlag)
     
     return @{
-        Response = DeserializeResponse -Response $Response.Content -ReturnType $ReturnType -ContentTypes $Response.Headers["Content-Type"]
-        StatusCode = $Response.StatusCode
-        Headers = $Response.Headers
+        Response = $Response
+        StatusCode = $StatusCode
+        Headers = $Headers
     }
 }
 
