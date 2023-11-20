@@ -191,7 +191,7 @@ function Invoke-OktaApiClient {
             $Response = DeserializeResponse -Response $RawResponse.Content -ReturnType $ReturnType -ContentTypes $RawResponse.Headers["Content-Type"]
             $StatusCode = $RawResponse.StatusCode
             $Headers = $RawResponse.Headers
-            $ElapsedTimeInSeconds = (New-TimeSpan -Start $StartTime -End $(Get-Date)).TotalSeconds
+            $ElapsedTimeInSeconds = CalculateElapsedTimeInSeconds -StartTime $StartTime
 
             if (ShouldRetry -StatusCode $StatusCode -RetryCount $RetryCount -ElapsedTimeInSeconds $ElapsedTimeInSeconds) {
                 $WaitInSeconds = CalculateDelayInSeconds -Headers $Headers 
@@ -217,6 +217,17 @@ function Invoke-OktaApiClient {
         StatusCode = $StatusCode
         Headers = $Headers
     }
+}
+
+function CalculateElapsedTimeInSeconds{
+    Param(
+        [Parameter(Mandatory)]
+        [datetime]$StartTime 
+    )
+
+    $ElapsedTimeInSeconds = (New-TimeSpan -Start $StartTime -End $(Get-Date)).TotalSeconds
+
+    return $ElapsedTimeInSeconds
 }
 
 # Select JSON MIME if present, otherwise choose the first one if available
