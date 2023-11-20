@@ -18,6 +18,11 @@ No description available.
 .PARAMETER IdpId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -32,6 +37,9 @@ function Invoke-OktaActivateIdentityProvider {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${IdpId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -59,6 +67,12 @@ function Invoke-OktaActivateIdentityProvider {
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
 
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
+
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
@@ -83,6 +97,15 @@ function Invoke-OktaActivateIdentityProvider {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -108,6 +131,11 @@ No description available.
 .PARAMETER TargetIdpId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -128,6 +156,9 @@ function Copy-OktaIdentityProviderKey {
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${TargetIdpId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -159,6 +190,12 @@ function Copy-OktaIdentityProviderKey {
         }
         $LocalVarUri = $LocalVarUri.replace('{keyId}', [System.Web.HTTPUtility]::UrlEncode($KeyId))
 
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
+
         if (!$TargetIdpId) {
             throw "Error! The required parameter `TargetIdpId` missing when calling cloneIdentityProviderKey."
         }
@@ -188,6 +225,15 @@ function Copy-OktaIdentityProviderKey {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -207,6 +253,11 @@ No description available.
 .PARAMETER IdentityProvider
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -221,6 +272,9 @@ function New-OktaIdentityProvider {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [PSCustomObject]
         ${IdentityProvider},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -246,6 +300,12 @@ function New-OktaIdentityProvider {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/idps'
+
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
 
         if (!$IdentityProvider) {
             throw "Error! The required parameter `IdentityProvider` missing when calling createIdentityProvider."
@@ -277,6 +337,15 @@ function New-OktaIdentityProvider {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -296,6 +365,11 @@ No description available.
 .PARAMETER JsonWebKey
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -310,6 +384,9 @@ function New-OktaIdentityProviderKey {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [PSCustomObject]
         ${JsonWebKey},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -335,6 +412,12 @@ function New-OktaIdentityProviderKey {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/idps/credentials/keys'
+
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
 
         if (!$JsonWebKey) {
             throw "Error! The required parameter `JsonWebKey` missing when calling createIdentityProviderKey."
@@ -366,6 +449,15 @@ function New-OktaIdentityProviderKey {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -385,6 +477,11 @@ No description available.
 .PARAMETER IdpId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -399,6 +496,9 @@ function Invoke-OktaDeactivateIdentityProvider {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${IdpId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -426,6 +526,12 @@ function Invoke-OktaDeactivateIdentityProvider {
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
 
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
+
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
@@ -450,6 +556,15 @@ function Invoke-OktaDeactivateIdentityProvider {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -469,6 +584,11 @@ No description available.
 .PARAMETER IdpId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -483,6 +603,9 @@ function Invoke-OktaDeleteIdentityProvider {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${IdpId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -510,6 +633,12 @@ function Invoke-OktaDeleteIdentityProvider {
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
 
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
+
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
@@ -534,6 +663,15 @@ function Invoke-OktaDeleteIdentityProvider {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -553,6 +691,11 @@ No description available.
 .PARAMETER KeyId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -567,6 +710,9 @@ function Invoke-OktaDeleteIdentityProviderKey {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${KeyId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -594,6 +740,12 @@ function Invoke-OktaDeleteIdentityProviderKey {
         }
         $LocalVarUri = $LocalVarUri.replace('{keyId}', [System.Web.HTTPUtility]::UrlEncode($KeyId))
 
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
+
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
@@ -618,6 +770,15 @@ function Invoke-OktaDeleteIdentityProviderKey {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -640,6 +801,11 @@ No description available.
 .PARAMETER Metadata
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -657,6 +823,9 @@ function New-OktaCsrForIdentityProvider {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [PSCustomObject]
         ${Metadata},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -686,6 +855,12 @@ function New-OktaCsrForIdentityProvider {
             throw "Error! The required parameter `IdpId` missing when calling generateCsrForIdentityProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
+
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
 
         if (!$Metadata) {
             throw "Error! The required parameter `Metadata` missing when calling generateCsrForIdentityProvider."
@@ -717,6 +892,15 @@ function New-OktaCsrForIdentityProvider {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -739,6 +923,11 @@ No description available.
 .PARAMETER ValidityYears
 expiry of the IdP Key Credential
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -756,6 +945,9 @@ function New-OktaIdentityProviderSigningKey {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [Int32]
         ${ValidityYears},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -782,6 +974,12 @@ function New-OktaIdentityProviderSigningKey {
             throw "Error! The required parameter `IdpId` missing when calling generateIdentityProviderSigningKey."
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
+
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
 
         if (!$ValidityYears) {
             throw "Error! The required parameter `ValidityYears` missing when calling generateIdentityProviderSigningKey."
@@ -812,6 +1010,15 @@ function New-OktaIdentityProviderSigningKey {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -834,6 +1041,11 @@ No description available.
 .PARAMETER CsrId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -851,6 +1063,9 @@ function Get-OktaCsrForIdentityProvider {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${CsrId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -882,6 +1097,12 @@ function Get-OktaCsrForIdentityProvider {
         }
         $LocalVarUri = $LocalVarUri.replace('{csrId}', [System.Web.HTTPUtility]::UrlEncode($CsrId))
 
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
+
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
@@ -906,6 +1127,15 @@ function Get-OktaCsrForIdentityProvider {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -925,6 +1155,11 @@ No description available.
 .PARAMETER IdpId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -939,6 +1174,9 @@ function Get-OktaIdentityProvider {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${IdpId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -966,6 +1204,12 @@ function Get-OktaIdentityProvider {
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
 
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
+
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
@@ -990,6 +1234,15 @@ function Get-OktaIdentityProvider {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -1012,6 +1265,11 @@ No description available.
 .PARAMETER UserId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -1029,6 +1287,9 @@ function Get-OktaIdentityProviderApplicationUser {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${UserId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -1060,6 +1321,12 @@ function Get-OktaIdentityProviderApplicationUser {
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
 
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
+
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
@@ -1084,6 +1351,15 @@ function Get-OktaIdentityProviderApplicationUser {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -1103,6 +1379,11 @@ No description available.
 .PARAMETER KeyId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -1117,6 +1398,9 @@ function Get-OktaIdentityProviderKey {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${KeyId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -1144,6 +1428,12 @@ function Get-OktaIdentityProviderKey {
         }
         $LocalVarUri = $LocalVarUri.replace('{keyId}', [System.Web.HTTPUtility]::UrlEncode($KeyId))
 
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
+
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
@@ -1168,6 +1458,15 @@ function Get-OktaIdentityProviderKey {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -1190,6 +1489,11 @@ No description available.
 .PARAMETER KeyId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -1207,6 +1511,9 @@ function Get-OktaIdentityProviderSigningKey {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${KeyId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -1238,6 +1545,12 @@ function Get-OktaIdentityProviderSigningKey {
         }
         $LocalVarUri = $LocalVarUri.replace('{keyId}', [System.Web.HTTPUtility]::UrlEncode($KeyId))
 
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
+
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
@@ -1262,6 +1575,15 @@ function Get-OktaIdentityProviderSigningKey {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -1287,6 +1609,11 @@ No description available.
 .PARAMETER UserIdentityProviderLinkRequest
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -1307,6 +1634,9 @@ function Invoke-OktaLinkUserToIdentityProvider {
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [PSCustomObject]
         ${UserIdentityProviderLinkRequest},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -1341,6 +1671,12 @@ function Invoke-OktaLinkUserToIdentityProvider {
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
 
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
+
         if (!$UserIdentityProviderLinkRequest) {
             throw "Error! The required parameter `UserIdentityProviderLinkRequest` missing when calling linkUserToIdentityProvider."
         }
@@ -1371,6 +1707,15 @@ function Invoke-OktaLinkUserToIdentityProvider {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -1390,6 +1735,11 @@ No description available.
 .PARAMETER IdpId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -1404,6 +1754,9 @@ function Invoke-OktaListCsrsForIdentityProvider {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${IdpId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -1431,6 +1784,12 @@ function Invoke-OktaListCsrsForIdentityProvider {
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
 
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
+
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
@@ -1455,6 +1814,15 @@ function Invoke-OktaListCsrsForIdentityProvider {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -1474,6 +1842,11 @@ No description available.
 .PARAMETER IdpId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -1488,6 +1861,9 @@ function Invoke-OktaListIdentityProviderApplicationUsers {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${IdpId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -1515,6 +1891,12 @@ function Invoke-OktaListIdentityProviderApplicationUsers {
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
 
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
+
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
@@ -1539,6 +1921,15 @@ function Invoke-OktaListIdentityProviderApplicationUsers {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -1561,6 +1952,11 @@ Specifies the pagination cursor for the next page of keys
 .PARAMETER Limit
 Specifies the number of key results in a page
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -1578,6 +1974,9 @@ function Invoke-OktaListIdentityProviderKeys {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Int32]]
         ${Limit},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -1600,6 +1999,12 @@ function Invoke-OktaListIdentityProviderKeys {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/idps/credentials/keys'
+
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
 
         if ($After) {
             $LocalVarQueryParameters['after'] = $After
@@ -1633,6 +2038,15 @@ function Invoke-OktaListIdentityProviderKeys {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -1652,6 +2066,11 @@ No description available.
 .PARAMETER IdpId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -1666,6 +2085,9 @@ function Invoke-OktaListIdentityProviderSigningKeys {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${IdpId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -1693,6 +2115,12 @@ function Invoke-OktaListIdentityProviderSigningKeys {
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
 
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
+
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
@@ -1717,6 +2145,15 @@ function Invoke-OktaListIdentityProviderSigningKeys {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -1745,6 +2182,11 @@ Specifies the number of IdP results in a page
 .PARAMETER Type
 Filters IdPs by type
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -1768,6 +2210,9 @@ function Invoke-OktaListIdentityProviders {
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${Type},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -1790,6 +2235,12 @@ function Invoke-OktaListIdentityProviders {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/idps'
+
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
 
         if ($Q) {
             $LocalVarQueryParameters['q'] = $Q
@@ -1831,6 +2282,15 @@ function Invoke-OktaListIdentityProviders {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -1853,6 +2313,11 @@ No description available.
 .PARAMETER UserId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -1870,6 +2335,9 @@ function Invoke-OktaListSocialAuthTokens {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${UserId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -1901,6 +2369,12 @@ function Invoke-OktaListSocialAuthTokens {
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
 
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
+
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
@@ -1925,6 +2399,15 @@ function Invoke-OktaListSocialAuthTokens {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -1950,6 +2433,11 @@ No description available.
 .PARAMETER Body
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -1970,6 +2458,9 @@ function Publish-OktaCsrForIdentityProvider {
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.IO.FileInfo]
         ${Body},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -2004,6 +2495,12 @@ function Publish-OktaCsrForIdentityProvider {
         }
         $LocalVarUri = $LocalVarUri.replace('{csrId}', [System.Web.HTTPUtility]::UrlEncode($CsrId))
 
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
+
         if (!$Body) {
             throw "Error! The required parameter `Body` missing when calling publishCsrForIdentityProvider."
         }
@@ -2034,6 +2531,15 @@ function Publish-OktaCsrForIdentityProvider {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -2056,6 +2562,11 @@ No description available.
 .PARAMETER CsrId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -2073,6 +2584,9 @@ function Revoke-OktaCsrForIdentityProvider {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${CsrId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -2104,6 +2618,12 @@ function Revoke-OktaCsrForIdentityProvider {
         }
         $LocalVarUri = $LocalVarUri.replace('{csrId}', [System.Web.HTTPUtility]::UrlEncode($CsrId))
 
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
+
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
@@ -2128,6 +2648,15 @@ function Revoke-OktaCsrForIdentityProvider {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -2150,6 +2679,11 @@ No description available.
 .PARAMETER UserId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -2167,6 +2701,9 @@ function Invoke-OktaUnlinkUserFromIdentityProvider {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${UserId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -2198,6 +2735,12 @@ function Invoke-OktaUnlinkUserFromIdentityProvider {
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
 
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
+
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
@@ -2222,6 +2765,15 @@ function Invoke-OktaUnlinkUserFromIdentityProvider {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -2244,6 +2796,11 @@ No description available.
 .PARAMETER IdentityProvider
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -2261,6 +2818,9 @@ function Update-OktaIdentityProvider {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [PSCustomObject]
         ${IdentityProvider},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -2290,6 +2850,12 @@ function Update-OktaIdentityProvider {
             throw "Error! The required parameter `IdpId` missing when calling updateIdentityProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
+
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
 
         if (!$IdentityProvider) {
             throw "Error! The required parameter `IdentityProvider` missing when calling updateIdentityProvider."
@@ -2321,6 +2887,15 @@ function Update-OktaIdentityProvider {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]

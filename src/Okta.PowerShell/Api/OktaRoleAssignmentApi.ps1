@@ -24,6 +24,11 @@ No description available.
 .PARAMETER DisableNotifications
 Setting this to `true` grants the group third-party admin status
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -44,6 +49,9 @@ function Set-OktaRoleToGroup {
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Boolean]]
         ${DisableNotifications},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -73,6 +81,12 @@ function Set-OktaRoleToGroup {
             throw "Error! The required parameter `GroupId` missing when calling assignRoleToGroup."
         }
         $LocalVarUri = $LocalVarUri.replace('{groupId}', [System.Web.HTTPUtility]::UrlEncode($GroupId))
+
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
 
         if ($DisableNotifications) {
             $LocalVarQueryParameters['disableNotifications'] = $DisableNotifications
@@ -108,6 +122,15 @@ function Set-OktaRoleToGroup {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -133,6 +156,11 @@ No description available.
 .PARAMETER DisableNotifications
 Setting this to `true` grants the user third-party admin status
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -153,6 +181,9 @@ function Set-OktaRoleToUser {
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Boolean]]
         ${DisableNotifications},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -182,6 +213,12 @@ function Set-OktaRoleToUser {
             throw "Error! The required parameter `UserId` missing when calling assignRoleToUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
+
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
 
         if ($DisableNotifications) {
             $LocalVarQueryParameters['disableNotifications'] = $DisableNotifications
@@ -217,6 +254,15 @@ function Set-OktaRoleToUser {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -239,6 +285,11 @@ No description available.
 .PARAMETER RoleId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -256,6 +307,9 @@ function Get-OktaGroupAssignedRole {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${RoleId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -287,6 +341,12 @@ function Get-OktaGroupAssignedRole {
         }
         $LocalVarUri = $LocalVarUri.replace('{roleId}', [System.Web.HTTPUtility]::UrlEncode($RoleId))
 
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
+
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
@@ -311,6 +371,15 @@ function Get-OktaGroupAssignedRole {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -333,6 +402,11 @@ No description available.
 .PARAMETER RoleId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -350,6 +424,9 @@ function Get-OktaUserAssignedRole {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${RoleId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -381,6 +458,12 @@ function Get-OktaUserAssignedRole {
         }
         $LocalVarUri = $LocalVarUri.replace('{roleId}', [System.Web.HTTPUtility]::UrlEncode($RoleId))
 
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
+
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
@@ -405,6 +488,15 @@ function Get-OktaUserAssignedRole {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -427,6 +519,11 @@ No description available.
 .PARAMETER Expand
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -444,6 +541,9 @@ function Invoke-OktaListAssignedRolesForUser {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${Expand},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -471,6 +571,12 @@ function Invoke-OktaListAssignedRolesForUser {
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
 
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
+
         if ($Expand) {
             $LocalVarQueryParameters['expand'] = $Expand
         }
@@ -499,6 +605,15 @@ function Invoke-OktaListAssignedRolesForUser {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -521,6 +636,11 @@ No description available.
 .PARAMETER Expand
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -538,6 +658,9 @@ function Invoke-OktaListGroupAssignedRoles {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${Expand},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -565,6 +688,12 @@ function Invoke-OktaListGroupAssignedRoles {
         }
         $LocalVarUri = $LocalVarUri.replace('{groupId}', [System.Web.HTTPUtility]::UrlEncode($GroupId))
 
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
+
         if ($Expand) {
             $LocalVarQueryParameters['expand'] = $Expand
         }
@@ -593,6 +722,15 @@ function Invoke-OktaListGroupAssignedRoles {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -615,6 +753,11 @@ No description available.
 .PARAMETER RoleId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -632,6 +775,9 @@ function Invoke-OktaUnassignRoleFromGroup {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${RoleId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -663,6 +809,12 @@ function Invoke-OktaUnassignRoleFromGroup {
         }
         $LocalVarUri = $LocalVarUri.replace('{roleId}', [System.Web.HTTPUtility]::UrlEncode($RoleId))
 
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
+
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
@@ -687,6 +839,15 @@ function Invoke-OktaUnassignRoleFromGroup {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]
@@ -709,6 +870,11 @@ No description available.
 .PARAMETER RoleId
 No description available.
 
+
+.PARAMETER Uri
+
+Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -726,6 +892,9 @@ function Invoke-OktaUnassignRoleFromUser {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${RoleId},
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -757,6 +926,12 @@ function Invoke-OktaUnassignRoleFromUser {
         }
         $LocalVarUri = $LocalVarUri.replace('{roleId}', [System.Web.HTTPUtility]::UrlEncode($RoleId))
 
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
+
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
             Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
@@ -781,6 +956,15 @@ function Invoke-OktaUnassignRoleFromUser {
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]

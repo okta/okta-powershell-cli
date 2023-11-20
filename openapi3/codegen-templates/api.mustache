@@ -21,6 +21,11 @@
 Select the return type (optional): {{#produces}}{{{mediaType}}}{{^-last}}, {{/-last}}{{/produces}}
 
 {{/vendorExtensions.x-powershell-select-accept}}
+
+.PARAMETER Uri
+
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -49,6 +54,9 @@ function {{{vendorExtensions.x-powershell-method-name}}} {
         [ValidateSet({{#produces}}"{{{mediaType}}}"{{^-last}}, {{/-last}}{{/produces}})]
         $ReturnType,
         {{/vendorExtensions.x-powershell-select-accept}}
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
         [Switch]
         $WithHttpInfo
     )
@@ -93,6 +101,12 @@ function {{{vendorExtensions.x-powershell-method-name}}} {
         $LocalVarUri = $LocalVarUri.replace('{<baseName>}', [System.Web.HTTPUtility]::UrlEncode($<paramName>))
         </pathParams>
         <={{ }}=>
+
+        if ($Uri) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
 
         {{#headerParams}}
         {{#required}}
@@ -241,6 +255,15 @@ function {{{vendorExtensions.x-powershell-method-name}}} {
 
         {{/vendorExtensions.x-ps-return-type-any-of}}
         if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
             return $LocalVarResult
         } else {
             return $LocalVarResult["Response"]

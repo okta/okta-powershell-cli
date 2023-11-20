@@ -734,6 +734,7 @@ src/Okta.PowerShell/Api/OktaUserApi.ps1
 src/Okta.PowerShell/Api/OktaUserFactorApi.ps1
 src/Okta.PowerShell/Api/OktaUserTypeApi.ps1
 src/Okta.PowerShell/Client/OktaConfiguration.ps1
+src/Okta.PowerShell/Client/UrlHelper.ps1
 src/Okta.PowerShell/Model/APNSConfiguration.ps1
 src/Okta.PowerShell/Model/APNSPushProvider.ps1
 src/Okta.PowerShell/Model/APNSPushProviderAllOf.ps1

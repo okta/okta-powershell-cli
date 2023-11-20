@@ -173,38 +173,25 @@ $CreateUserRequest = Initialize-OktaCreateUserRequest -VarProfile $UserProfile -
 $TestResult = New-OktaUser -Body $CreateUserRequest
 ```
 
-### List users
+### List users with pagination
 
 ```sh
 $Users  = Invoke-OktaListUsers -Limit 10 
 ```
 
-Use the `-withHttpInfo` flag to get additional response properties, such as, headers to get the next page of results:
+Utilize the `-withHttpInfo`` flag to retrieve additional response properties, including `NextPageUri` for accessing the subsequent page of results. Additionally, you can seamlessly access all response headers through the Headers property.
+
+To paginate results, use `Uri` param, which allows passing absolute URIs:
 
 ```sh
 $UsersResponse  = Invoke-OktaListUsers -Limit 10 -withHttpInfo
-$NextPageUri = ''
 
- if ($null -ne $UsersResponse.Headers.Link) {
-    foreach($Link in $LocalVarResult.Headers.Link)   {
-        # Link looks like '<https://testorg.com/api/v1/users?after=00g9erhe4rJGXhdYs5d7&limit=10>;rel="next"
-        if ($Link.Contains('rel="next"')) {
-            $LinkValue = $Link.split(";")[0].ToString()
-            $NextPageUri = $LinkValue -replace '[<>]',''
-        }
-    }
+While ($UsersResponse.NextPageUri)
+{
+	$UsersResponse = Invoke-OktaListUsers -Uri $UsersResponse.NextPageUri  -withHttpInfo #This time you can pass the absolute Uri with already contains query params such as "limit" or/and "after"
+    $UsersList =  $UsersResponse.Response
 }
-
-# HeaderParameters should contain the bearer token available in the $Configuration object
-# $HeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
-# $Method = 'GET'
-
-$NextPageResponse = Invoke-WebRequest -Uri $NextPageUri `
-                                -Method $Method `
-                                -Headers $HeaderParameters 
 ```
-
-> Note: We're planning to improve the pagination experience in future releases.
 
 ### Create an application
 

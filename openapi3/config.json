@@ -32,6 +32,11 @@
             "templateType": "SupportingFiles",
             "folder": "/src/Okta.PowerShell/Api"
         },
+        "url_helper.mustache":{
+            "destinationFilename": "UrlHelper.ps1",
+            "templateType": "SupportingFiles",
+            "folder": "/src/Okta.PowerShell/Client"
+        },
         "api_README.mustache":{
             "destinationFilename":"API_README.md",
             "templateType": "SupportingFiles",
