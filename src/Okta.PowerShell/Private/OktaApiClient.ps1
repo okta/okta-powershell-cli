@@ -134,7 +134,7 @@ function Invoke-OktaApiClient {
     $OktaUserAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome + " Okta.PowerShell/0.1.0"
 
 
-    # Setting up vars for retry
+ # Setting up vars for retry
     $RetryFlag = $true
     $RetryCount = 0
     $WaitInSeconds = 0
