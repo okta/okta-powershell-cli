@@ -1412,13 +1412,12 @@ FunctionsToExport = 'Invoke-OktaActivateAgentPoolsUpdate', 'New-OktaAgentPoolsUp
                'Initialize-OktaWsFederationApplicationSettingsApplication', 
                'ConvertFrom-OktaJsonToWsFederationApplicationSettingsApplication', 
                'Get-OktaConfiguration', 'Set-OktaConfiguration', 
-               'Set-ConfigurationMaxRetries', 'Set-ConfigurationTimeoutInSeconds', 
+               'Set-ConfigurationMaxRetries', 'Set-ConfigurationRequestTimeout', 
                'Set-OktaConfigurationApiKey', 'Set-OktaConfigurationApiKeyPrefix', 
                'Set-OktaConfigurationDefaultHeader', 'Get-OktaHostSetting', 
                'Get-OktaUrlFromHostSetting', 'Set-OktaConfigurationHttpSigning', 
-               'Get-OktaConfigurationHttpSigning', 'ShouldRetry', 
-               'CalculateDelayInSeconds', 'AddRetryHeaders', 
-               'Invoke-ParseAbsoluteUri'
+               'Get-OktaConfigurationHttpSigning', 'ShouldRetry', 'CalculateDelay', 
+               'AddRetryHeaders', 'Invoke-ParseAbsoluteUri'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()

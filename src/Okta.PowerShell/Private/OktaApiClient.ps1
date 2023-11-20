@@ -134,10 +134,10 @@ function Invoke-OktaApiClient {
     $OktaUserAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome + " Okta.PowerShell/0.1.0"
 
 
- # Setting up vars for retry
+    # Setting up vars for retry
     $RetryFlag = $true
     $RetryCount = 0
-    $WaitInSeconds = 0
+    $WaitInMilliseconds = 0
     $StartTime = Get-Date
     
     do {
@@ -191,16 +191,16 @@ function Invoke-OktaApiClient {
             $Response = DeserializeResponse -Response $RawResponse.Content -ReturnType $ReturnType -ContentTypes $RawResponse.Headers["Content-Type"]
             $StatusCode = $RawResponse.StatusCode
             $Headers = $RawResponse.Headers
-            $ElapsedTimeInSeconds = CalculateElapsedTimeInSeconds -StartTime $StartTime
+            $ElapsedTimeInMilliseconds  = CalculateElapsedTime -StartTime $StartTime
 
-            if (ShouldRetry -StatusCode $StatusCode -RetryCount $RetryCount -ElapsedTimeInSeconds $ElapsedTimeInSeconds) {
-                $WaitInSeconds = CalculateDelayInSeconds -Headers $Headers 
+            if (ShouldRetry -StatusCode $StatusCode -RetryCount $RetryCount -ElapsedTime $ElapsedTimeInMilliseconds) {
+                $WaitInMilliseconds = CalculateDelay -Headers $Headers 
 
-                if ($WaitInSeconds -gt 0) {
+                if ($WaitInMilliseconds -gt 0) {
                     $RetryCount = $RetryCount + 1
                     $RequestId = $Headers['X-Okta-Request-Id'][0]
                     AddRetryHeaders -Headers $HeaderParameters -RequestId $RequestId -RetryCount $RetryCount
-                    Start-Sleep -Seconds $WaitInSeconds
+                    Start-Sleep -Milliseconds $WaitInMilliseconds
                 }
                 else {
                     $RetryFlag = $false
@@ -219,15 +219,16 @@ function Invoke-OktaApiClient {
     }
 }
 
-function CalculateElapsedTimeInSeconds{
+# Calculate the elapsed time given a datetime in milliseconds
+function CalculateElapsedTime{
     Param(
         [Parameter(Mandatory)]
         [datetime]$StartTime 
     )
 
-    $ElapsedTimeInSeconds = (New-TimeSpan -Start $StartTime -End $(Get-Date)).TotalSeconds
+    $ElapsedTimeInMilliseconds = (New-TimeSpan -Start $StartTime -End $(Get-Date)).TotalMilliseconds
 
-    return $ElapsedTimeInSeconds
+    return $ElapsedTimeInMilliseconds
 }
 
 # Select JSON MIME if present, otherwise choose the first one if available

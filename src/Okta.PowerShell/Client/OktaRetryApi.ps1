@@ -24,9 +24,9 @@ StatusCode of the response
 
 Indicate how many times the request was already retried
 
-.PARAMETER ElapsedTimeInSeconds
+.PARAMETER ElapsedTime
 
-Indicate the elapsed time since the request was executed for the first time
+Indicate the elapsed time in milliseconds since the request was executed for the first time
 
 .OUTPUTS
 
@@ -40,7 +40,7 @@ function ShouldRetry {
      [Parameter(Mandatory)]
      [Int]$RetryCount,
      [Parameter(Mandatory)]
-     [Int]$ElapsedTimeInSeconds
+     [Int]$ElapsedTime
     )
     #Write-Verbose "Evaluating Status Code: "  $StatusCode
     $Configuration = Get-OktaConfiguration
@@ -50,7 +50,7 @@ function ShouldRetry {
     }
 
     if (($StatusCode -eq 429) -and ($RetryCount -lt $Configuration.MaxRetries) -and 
-        ($null -eq $Configuration.TimeoutInSeconds -or ($Configuration.TimeoutInSeconds -gt 0 -and $ElapsedTimeInSeconds -lt $Configuration.TimeoutInSeconds))){
+        ($null -eq $Configuration.RequestTimeout -or ($Configuration.RequestTimeout -gt 0 -and $ElapsedTime -lt $Configuration.RequestTimeout))){
         
          return $true
     }
@@ -65,7 +65,7 @@ Calculate the time to delay the next retry request execution
 
 .DESCRIPTION
 
-Calculate the time to delay the next retry request execution
+Calculate the time in milliseconds to delay the next retry request execution
 
 .PARAMETER Headers
 
@@ -76,7 +76,7 @@ The response's headers
 int
 #>
 
-function CalculateDelayInSeconds {
+function CalculateDelay {
     Param (
     [Parameter(Mandatory)]
     [hashtable]$Headers
@@ -87,7 +87,7 @@ function CalculateDelayInSeconds {
     $Configuration = Get-OktaConfiguration
 
     if ($null -eq $Headers['X-Rate-Limit-Reset']) {
-        throw "Error! The required header `X-Rate-Limit-Reset` missing when calling CalculateDelayInSeconds." 
+        throw "Error! The required header `X-Rate-Limit-Reset` missing when calling CalculateDelay." 
     }
     
     $RateLimitReset = Get-Date -Date $Headers["X-Rate-Limit-Reset"][0]
@@ -95,15 +95,15 @@ function CalculateDelayInSeconds {
     
 
     if ($null -eq $Headers["Date"]) {
-        throw "Error! The required header `Date` missing when calling CalculateDelayInSeconds."    
+        throw "Error! The required header `Date` missing when calling CalculateDelay."    
     }
 
     $Date = Get-Date -Date $Headers["Date"][0]
     $RequestUtcDate = $Date.ToUniversalTime()
     
-    $BackoffInSeconds = (New-TimeSpan -Start $RequestUtcDate -End $RetryAtUtcTime).Seconds + 1 #delta
+    $BackoffInMilliseconds = (New-TimeSpan -Start $RequestUtcDate -End $RetryAtUtcTime).TotalMilliseconds + 1000 #delta
     
-    return $BackoffInSeconds
+    return $BackoffInMilliseconds
 }
 
 <#

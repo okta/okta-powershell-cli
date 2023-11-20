@@ -5,11 +5,11 @@ Describe -tag 'Okta.PowerShell' -name 'OktaRetryApi' {
             
             $Config = Get-OktaConfiguration
             $Config.MaxRetries = 2
-            $Config.TimeoutInSeconds = $null
+            $Config.RequestTimeout = $null
             
             Mock -ModuleName Okta.PowerShell Get-OktaConfiguration { return $Config } -Verifiable
 
-            $Result = ShouldRetry -StatusCode 429 -RetryCount 1 -ElapsedTimeInSeconds 1
+            $Result = ShouldRetry -StatusCode 429 -RetryCount 1 -ElapsedTime 1000
 
             Assert-MockCalled -ModuleName Okta.PowerShell Get-OktaConfiguration -Times 1
 
@@ -20,12 +20,12 @@ Describe -tag 'Okta.PowerShell' -name 'OktaRetryApi' {
             
             $Config = @{
                 MaxRetries   = 2
-                TimeoutInSeconds = $null
+                RequestTimeout = $null
             }
     
             Mock -ModuleName Okta.PowerShell Get-OktaConfiguration { return $Config } -Verifiable
 
-            $Result = ShouldRetry -StatusCode 429 -RetryCount 2 -ElapsedTimeInSeconds 1
+            $Result = ShouldRetry -StatusCode 429 -RetryCount 2 -ElapsedTime 1000
 
             Assert-MockCalled -ModuleName Okta.PowerShell Get-OktaConfiguration -Times 1
 
@@ -36,12 +36,12 @@ Describe -tag 'Okta.PowerShell' -name 'OktaRetryApi' {
             
             $Config = @{
                 MaxRetries   = $null
-                TimeoutInSeconds = $null
+                RequestTimeout = $null
             }
     
             Mock -ModuleName Okta.PowerShell Get-OktaConfiguration { return $Config } -Verifiable
 
-            $Result = ShouldRetry -StatusCode 429 -RetryCount 0 -ElapsedTimeInSeconds 1
+            $Result = ShouldRetry -StatusCode 429 -RetryCount 0 -ElapsedTime 1000
 
             Assert-MockCalled -ModuleName Okta.PowerShell Get-OktaConfiguration -Times 1
 
@@ -52,67 +52,67 @@ Describe -tag 'Okta.PowerShell' -name 'OktaRetryApi' {
             
             $Config = @{
                 MaxRetries   = 2
-                TimeoutInSeconds = $null
+                RequestTimeout = $null
             }
     
             Mock -ModuleName Okta.PowerShell Get-OktaConfiguration { return $Config } -Verifiable
 
-            $Result = ShouldRetry -StatusCode 400 -RetryCount 2 -ElapsedTimeInSeconds 1
+            $Result = ShouldRetry -StatusCode 400 -RetryCount 2 -ElapsedTime 1000
             
             Assert-MockCalled -ModuleName Okta.PowerShell Get-OktaConfiguration -Times 1
             $Result | Should -Be $False
 
-            $Result = ShouldRetry -StatusCode 401 -RetryCount 2 -ElapsedTimeInSeconds 1
+            $Result = ShouldRetry -StatusCode 401 -RetryCount 2 -ElapsedTime 1000
 
             Assert-MockCalled -ModuleName Okta.PowerShell Get-OktaConfiguration -Times 1
             $Result | Should -Be $False
 
-            $Result = ShouldRetry -StatusCode 500 -RetryCount 2 -ElapsedTimeInSeconds 1
+            $Result = ShouldRetry -StatusCode 500 -RetryCount 2 -ElapsedTime 1000
 
             Assert-MockCalled -ModuleName Okta.PowerShell Get-OktaConfiguration -Times 1
             $Result | Should -Be $False
         }
 
-        It 'Should retry 429 responses when retryCount < MaxRetries and elapsedTime < TimeoutInSeconds' {
+        It 'Should retry 429 responses when retryCount < MaxRetries and elapsedTime < RequestTimeout' {
             
             $Config = @{
                 MaxRetries   = 2
-                TimeoutInSeconds = 2
+                RequestTimeout = 2000
             }
     
             Mock -ModuleName Okta.PowerShell Get-OktaConfiguration { return $Config } -Verifiable
 
-            $Result = ShouldRetry -StatusCode 429 -RetryCount 1 -ElapsedTimeInSeconds 1
+            $Result = ShouldRetry -StatusCode 429 -RetryCount 1 -ElapsedTime 1000
 
             Assert-MockCalled -ModuleName Okta.PowerShell Get-OktaConfiguration -Times 1
             $Result | Should -Be $True
         }
 
-        It 'Should retry 429 responses when retryCount < MaxRetries and TimeoutInSeconds == $null' {
+        It 'Should retry 429 responses when retryCount < MaxRetries and RequestTimeout == $null' {
             
             $Config = @{
                 MaxRetries   = 2
-                TimeoutInSeconds = $null
+                RequestTimeout = $null
             }
     
             Mock -ModuleName Okta.PowerShell Get-OktaConfiguration { return $Config } -Verifiable
 
-            $Result = ShouldRetry -StatusCode 429 -RetryCount 1 -ElapsedTimeInSeconds 10
+            $Result = ShouldRetry -StatusCode 429 -RetryCount 1 -ElapsedTime 10000
 
             Assert-MockCalled -ModuleName Okta.PowerShell Get-OktaConfiguration -Times 1
             $Result | Should -Be $True
         }
 
-        It 'Should NOT retry 429 responses when retryCount < MaxRetries and elapsedTime greater or equals than TimeoutInSeconds' {
+        It 'Should NOT retry 429 responses when retryCount < MaxRetries and elapsedTime greater or equals than RequestTimeout' {
             
             $Config = @{
                 MaxRetries   = 2
-                TimeoutInSeconds = 2
+                RequestTimeout = 2000
             }
     
             Mock -ModuleName Okta.PowerShell Get-OktaConfiguration { return $Config } -Verifiable
 
-            $Result = ShouldRetry -StatusCode 429 -RetryCount 1 -ElapsedTimeInSeconds 2
+            $Result = ShouldRetry -StatusCode 429 -RetryCount 1 -ElapsedTime 2000
 
             Assert-MockCalled -ModuleName Okta.PowerShell Get-OktaConfiguration -Times 1
             $Result | Should -Be $False
@@ -124,7 +124,7 @@ Describe -tag 'Okta.PowerShell' -name 'OktaRetryApi' {
             
             $Config = @{
                 MaxRetries   = 2
-                TimeoutInSeconds = 2
+                RequestTimeout = 2000
             }
 
             $Now = Get-Date # Used as a reference for the test. Indicates when the request was executed
@@ -134,19 +134,19 @@ Describe -tag 'Okta.PowerShell' -name 'OktaRetryApi' {
 
             $Headers = @{"X-Rate-Limit-Reset" = @($ResetDate); "Date" = @($Now)}
 
-            # $BackoffInSeconds = (New-TimeSpan -Start $RequestUtcDate -End $RetryAtUtcTime).Seconds + 1 #delta
-            $Result = CalculateDelayInSeconds -Headers $Headers
+            # $BackoffInMilliseconds = (New-TimeSpan -Start $RequestUtcDate -End $RetryAtUtcTime).Milliseconds + 1000 #delta
+            $Result = CalculateDelay -Headers $Headers
 
             Assert-MockCalled -ModuleName Okta.PowerShell Get-OktaConfiguration -Times 1
 
-            $Result | Should -Be 4
+            $Result | Should -Be 4000
         }
 
         It 'Should fail if mandatory headers are not provided' {
             
             $Config = @{
                 MaxRetries   = 2
-                TimeoutInSeconds = 2
+                RequestTimeout = 2000
             }
 
             $Now = Get-Date # Used as a reference for the test. Indicates when the request was executed
@@ -156,15 +156,15 @@ Describe -tag 'Okta.PowerShell' -name 'OktaRetryApi' {
 
             $Headers = @{"Date" = @($Now)} # "X-Rate-Limit-Reset" = $ResetDate; not included
 
-            # $BackoffInSeconds = (New-TimeSpan -Start $RequestUtcDate -End $RetryAtUtcTime).Seconds + 1 #delta
-            { CalculateDelayInSeconds -Headers $Headers } | Should -Throw -ExpectedMessage "Error! The required header `X-Rate-Limit-Reset` missing when calling CalculateDelayInSeconds."
+            # $BackoffInMilliseconds = (New-TimeSpan -Start $RequestUtcDate -End $RetryAtUtcTime).Milliseconds + 1000 #delta
+            { CalculateDelay -Headers $Headers } | Should -Throw -ExpectedMessage "Error! The required header `X-Rate-Limit-Reset` missing when calling CalculateDelay."
 
             Assert-MockCalled -ModuleName Okta.PowerShell Get-OktaConfiguration -Times 1
 
             $Headers = @{ "X-Rate-Limit-Reset" = @($ResetDate)} # "Date" = $Now; not included
 
-            # $BackoffInSeconds = (New-TimeSpan -Start $RequestUtcDate -End $RetryAtUtcTime).Seconds + 1 #delta
-            { CalculateDelayInSeconds -Headers $Headers } | Should -Throw -ExpectedMessage "Error! The required header `Date` missing when calling CalculateDelayInSeconds."
+            # $BackoffInMilliseconds = (New-TimeSpan -Start $RequestUtcDate -End $RetryAtUtcTime).Milliseconds + 1000 #delta
+            { CalculateDelay -Headers $Headers } | Should -Throw -ExpectedMessage "Error! The required header `Date` missing when calling CalculateDelay."
 
             Assert-MockCalled -ModuleName Okta.PowerShell Get-OktaConfiguration -Times 1
         }

@@ -64,8 +64,8 @@ function Get-OktaConfiguration {
         $Configuration["MaxRetries"] = $null
     }
 
-    if (!$Configuration.containsKey("TimeoutInSeconds")) {
-        $Configuration["TimeoutInSeconds"] = $null
+    if (!$Configuration.containsKey("RequestTimeout")) {
+        $Configuration["RequestTimeout"] = $null
     }
 
     Return $Configuration
@@ -117,8 +117,8 @@ $proxy.Credentials = [System.Net.CredentialCache]::DefaultCredentials
 .PARAMETER MaxRetries
 Specify the number of times a request should be retried
 
-.PARAMETER TimeoutInSeconds
-Specify the timeout for a request
+.PARAMETER RequestTimeout
+Specify the timeout in milliseconds for a request
 
 .PARAMETER PassThru
 Return an object of the Configuration
@@ -143,7 +143,7 @@ function Set-OktaConfiguration {
         [hashtable]$DefaultHeaders,
         [System.Object]$Proxy,
         [int]$MaxRetries,
-        [int]$TimeoutInSeconds,
+        [int]$RequestTimeout,
         [switch]$PassThru
     )
 
@@ -199,8 +199,8 @@ function Set-OktaConfiguration {
             $Script:Configuration['MaxRetries'] = $MaxRetries
         }
 
-        If ($TimeoutInSeconds) {
-            $Script:Configuration['TimeoutInSeconds'] = $TimeoutInSeconds
+        If ($RequestTimeout) {
+            $Script:Configuration['RequestTimeout'] = $RequestTimeout
         }
 
         If ($PassThru.IsPresent) {
@@ -247,13 +247,13 @@ Set the request timeout value.
 None
 #>
 
-function Set-ConfigurationTimeoutInSeconds {
+function Set-ConfigurationRequestTimeout {
     [CmdletBinding()]
     Param(
-        [int]$TimeoutInSeconds        
+        [int]$RequestTimeout        
     )
     Process {
-        $Script:Configuration["TimeoutInSeconds"] = $TimeoutInSeconds
+        $Script:Configuration["RequestTimeout"] = $RequestTimeout
     }
 }
 
