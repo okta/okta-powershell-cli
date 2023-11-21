@@ -84,7 +84,7 @@ function Invoke-OktaEstablishAccessToken {
         }
 
         if ($null -ne $TokenVarResult) {
-            $Configuration.AccessToken = $TokenVarResult.Response.access_token
+            Set-OktaConfigurationAccessToken $TokenVarResult.Response.access_token
         }
 
         Write-Host "Your token has been successfully retrieved and set to your configuration"        
@@ -175,9 +175,7 @@ function Invoke-OktaRemoveAccessToken {
         'Calling method: Invoke-OktaRemoveAccessToken' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        $Configuration = Get-OktaConfiguration
-
-        $Configuration.AccessToken = $null
+        Set-OktaConfigurationAccessToken  -AccessToken $null
 
         Write-Host "Your token has been successfully removed from configuration."        
     }

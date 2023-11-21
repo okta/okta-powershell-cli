@@ -101,25 +101,6 @@ function Invoke-OktaEstablishAccessToken {
 <#
 .SYNOPSIS
 
-Removes the access token from the Configuration object
-
-#>
-
-function Invoke-OktaRemoveAccessToken {
-    Process {
-        'Calling method: Invoke-OktaRemoveAccessToken' | Write-Debug
-        $PSBoundParameters | Out-DebugParameter | Write-Debug
-
-        Set-OktaConfigurationAccessToken  -AccessToken $null
-
-        Write-Host "Your token has been successfully removed from configuration."        
-    }
-}
-
-
-<#
-.SYNOPSIS
-
 Fetches an access token via the device code flow
 
 .PARAMETER DeviceCode
@@ -138,7 +119,7 @@ function Invoke-OktaFetchAccessToken {
     )
 
     Process {
-        'Calling method:  Invoke-OktaFetchAccessToken' | Write-Debug
+        'Calling method: Invoke-OktaFetchAccessToken' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         $LocalVarAccepts = @()
@@ -187,4 +168,22 @@ function Invoke-OktaFetchAccessToken {
         return $LocalVarResult
     }
    
+}
+
+<#
+.SYNOPSIS
+
+Removes the access token from the Configuration object
+
+#>
+
+function Invoke-OktaRemoveAccessToken {
+    Process {
+        'Calling method: Invoke-OktaRemoveAccessToken' | Write-Debug
+        $PSBoundParameters | Out-DebugParameter | Write-Debug
+
+        Set-OktaConfigurationAccessToken  -AccessToken $null
+
+        Write-Host "Your token has been successfully removed from configuration."        
+    }
 }

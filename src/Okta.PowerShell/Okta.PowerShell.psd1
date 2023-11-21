@@ -18,7 +18,7 @@ ModuleVersion = '0.1.0'
 # CompatiblePSEditions = @()
 
 # ID used to uniquely identify this module
-GUID = 'aec2d158-82ea-470e-bed6-d722fc106d1d'
+GUID = '476b8907-43a6-447c-a02b-1e997982c701'
 
 # Author of this module
 Author = 'OpenAPI Generator Team'
@@ -110,8 +110,8 @@ FunctionsToExport = 'Invoke-OktaActivateAgentPoolsUpdate', 'New-OktaAgentPoolsUp
                'Update-OktaApplication', 'Update-OktaApplicationUser', 
                'Update-OktaFeatureForApplication', 
                'Invoke-OktaUploadApplicationLogo', 
-               'Invoke-OktaEstablishAccessToken', 'Invoke-OktaRemoveAccessToken', 
-               'Invoke-OktaFetchAccessToken', 'Invoke-OktaActivateAuthenticator', 
+               'Invoke-OktaEstablishAccessToken', 'Invoke-OktaFetchAccessToken', 
+               'Invoke-OktaRemoveAccessToken', 'Invoke-OktaActivateAuthenticator', 
                'New-OktaAuthenticator', 'Invoke-OktaDeactivateAuthenticator', 
                'Get-OktaAuthenticator', 'Invoke-OktaListAuthenticators', 
                'Update-OktaAuthenticator', 

@@ -209,7 +209,6 @@ function Set-OktaConfiguration {
     }
 }
 
-
 <#
 .SYNOPSIS
 
@@ -234,7 +233,6 @@ function Set-OktaConfigurationAccessToken {
         $Script:Configuration["AccessToken"] = $AccessToken
     }
 }
-
 
 <#
 .SYNOPSIS
