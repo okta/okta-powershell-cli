@@ -25,7 +25,7 @@ Context 'Invoke-OktaEstablishAccessToken' {
 
         Invoke-OktaEstablishAccessToken
 
-        Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 2
+        Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
         Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaFetchAccessToken -Times 1
 
         $Configuration = Get-OktaConfiguration
