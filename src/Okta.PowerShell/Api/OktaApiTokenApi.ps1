@@ -21,7 +21,7 @@ id of the API Token
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -134,7 +134,7 @@ Finds a token that matches the name or clientName.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -255,7 +255,7 @@ id of the API Token
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 
@@ -359,7 +359,7 @@ No description available.
 
 .PARAMETER Uri
 
-Specifies the Uri to be used when making the request. Recommended for paginated results. Optional.
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
 
 .PARAMETER WithHttpInfo
 

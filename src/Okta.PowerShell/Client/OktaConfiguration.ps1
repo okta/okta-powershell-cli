@@ -60,6 +60,14 @@ function Get-OktaConfiguration {
         $Configuration["Proxy"] = $null
     }
 
+    if (!$Configuration.containsKey("MaxRetries")) {
+        $Configuration["MaxRetries"] = $null
+    }
+
+    if (!$Configuration.containsKey("RequestTimeout")) {
+        $Configuration["RequestTimeout"] = $null
+    }
+
     Return $Configuration
 
 }
@@ -106,6 +114,12 @@ Proxy setting in the HTTP request, e.g.
 $proxy = [System.Net.WebRequest]::GetSystemWebProxy()
 $proxy.Credentials = [System.Net.CredentialCache]::DefaultCredentials
 
+.PARAMETER MaxRetries
+Specify the number of times a request should be retried
+
+.PARAMETER RequestTimeout
+Specify the timeout in milliseconds for a request
+
 .PARAMETER PassThru
 Return an object of the Configuration
 
@@ -128,6 +142,8 @@ function Set-OktaConfiguration {
         [string]$AccessToken,
         [hashtable]$DefaultHeaders,
         [System.Object]$Proxy,
+        [int]$MaxRetries,
+        [int]$RequestTimeout,
         [switch]$PassThru
     )
 
@@ -179,9 +195,90 @@ function Set-OktaConfiguration {
             $Script:Configuration['Proxy'] = $null
         }
 
+         If ($MaxRetries) {
+            $Script:Configuration['MaxRetries'] = $MaxRetries
+        }
+
+        If ($RequestTimeout) {
+            $Script:Configuration['RequestTimeout'] = $RequestTimeout
+        }
+
         If ($PassThru.IsPresent) {
             $Script:Configuration
         }
+    }
+}
+
+<#
+.SYNOPSIS
+
+Set the access token value.
+
+.DESCRIPTION
+
+Set the access token value.
+
+.OUTPUTS
+
+None
+#>
+
+function Set-OktaConfigurationAccessToken {
+    [CmdletBinding()]
+    [AllowNull()]
+    Param(
+        [string]$AccessToken        
+    )
+    Process {
+        $Script:Configuration["AccessToken"] = $AccessToken
+    }
+}
+
+<#
+.SYNOPSIS
+
+Set the max retries value.
+
+.DESCRIPTION
+
+Set the max retries value.
+
+.OUTPUTS
+
+None
+#>
+
+function Set-OktaConfigurationMaxRetries {
+    [CmdletBinding()]
+    Param(
+        [int]$MaxRetries        
+    )
+    Process {
+        $Script:Configuration["MaxRetries"] = $MaxRetries
+    }
+}
+
+<#
+.SYNOPSIS
+
+Set the request timeout value.
+
+.DESCRIPTION
+
+Set the request timeout value.
+
+.OUTPUTS
+
+None
+#>
+
+function Set-OktaConfigurationRequestTimeout {
+    [CmdletBinding()]
+    Param(
+        [int]$RequestTimeout        
+    )
+    Process {
+        $Script:Configuration["RequestTimeout"] = $RequestTimeout
     }
 }
 

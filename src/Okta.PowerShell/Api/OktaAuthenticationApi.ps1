@@ -77,7 +77,7 @@ function Invoke-OktaEstablishAccessToken {
         #define timeout
         while ($keepPolling) {
             try {
-                $TokenVarResult = Fetch-OktaAccessToken -DeviceCode $DeviceCode
+                $TokenVarResult = Invoke-OktaFetchAccessToken -DeviceCode $DeviceCode
 
                 if ($TokenVarResult.StatusCode -eq 200) {
                     $keepPolling = $false
@@ -91,7 +91,7 @@ function Invoke-OktaEstablishAccessToken {
         }
 
         if ($null -ne $TokenVarResult) {
-            $Configuration.AccessToken = $TokenVarResult.Response.access_token
+            Set-OktaConfigurationAccessToken $TokenVarResult.Response.access_token
         }
 
         Write-Host "Your token has been successfully retrieved and set to your configuration"        
@@ -110,7 +110,7 @@ Code obtained via the device flow
 
 #>
 
-function Fetch-OktaAccessToken {
+function Invoke-OktaFetchAccessToken {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
@@ -119,7 +119,7 @@ function Fetch-OktaAccessToken {
     )
 
     Process {
-        'Calling method: Fetch-OktaAccessToken' | Write-Debug
+        'Calling method: Invoke-OktaFetchAccessToken' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         $LocalVarAccepts = @()
@@ -168,4 +168,22 @@ function Fetch-OktaAccessToken {
         return $LocalVarResult
     }
    
+}
+
+<#
+.SYNOPSIS
+
+Removes the access token from the Configuration object
+
+#>
+
+function Invoke-OktaRemoveAccessToken {
+    Process {
+        'Calling method: Invoke-OktaRemoveAccessToken' | Write-Debug
+        $PSBoundParameters | Out-DebugParameter | Write-Debug
+
+        Set-OktaConfigurationAccessToken  -AccessToken $null
+
+        Write-Host "Your token has been successfully removed from configuration."        
+    }
 }

@@ -153,6 +153,8 @@ _links                : @{logo=System.Object[]; users=; apps=}
 
 > Note: For more details about commands, check out the [documentation for API endpoints](/API_README.md)
 
+> Note: If you want to remove the access token from configuration you can execute `Invoke-OktaRemoveAccessToken`
+
 ### Get a user
 
 ```sh
@@ -216,7 +218,33 @@ $NewApp = Initialize-OktaOpenIdConnectApplication -Label "New App" -SignOnMode "
 
 > Note: For more API samples checkout our [tests](https://github.com/okta/okta-powershell-cli/tree/main/tests/)
 
-We're happy to accept contributions and PRs! Please see the [contribution guide](CONTRIBUTING.md) to understand how to structure a contribution.
+## Rate Limiting
+
+The Okta API will return 429 responses if too many requests are made within a given time. Please see [Rate Limiting at Okta] for a complete list of which endpoints are rate limited.  When a 429 error is received, the `X-Rate-Limit-Reset` header will tell you the time at which you can retry. This section discusses  methods for handling rate limiting with this SDK.
+
+### Built-In Retry
+
+The Okta.PowerShell module uses a built-in retry strategy to automatically retry on 429 errors.
+
+You can configure the following options when using the built-in retry strategy:
+
+| Configuration Option | Description |
+| ---------------------- | -------------- |
+| RequestTimeout         | The waiting time in milliseconds for a request to be resolved by the client. Less than or equal to 0 means "no timeout". The default value is `$null` (None). |
+| MaxRetries             | The number of times to retry. |
+
+### Usage
+
+```sh
+$Config = Get-OktaConfiguration
+$Config.MaxRetries = 2
+$Config.RequestTimeout = 6000 
+
+# Invoke your commands as usual
+$Result = Invoke-OktaListApplications 
+```
+
+> Note: We're happy to accept contributions and PRs! Please see the [contribution guide](CONTRIBUTING.md) to understand how to structure a contribution.
 
 [devforum]: https://devforum.okta.com/
 [lang-landing]: https://developer.okta.com/code/dotnet/
