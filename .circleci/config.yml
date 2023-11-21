@@ -20,7 +20,7 @@ jobs:
       - run:
           name: "build stage"
           command: |
-              pwsh ./build.ps1
+              pwsh -Command "./build.ps1;./Test.ps1"
       - run:
           name: "Import Module" 
           command: |
