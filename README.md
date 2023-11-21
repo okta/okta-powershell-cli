@@ -153,6 +153,8 @@ _links                : @{logo=System.Object[]; users=; apps=}
 
 > Note: For more details about commands, check out the [documentation for API endpoints](/API_README.md)
 
+> Note: If you want to remove the access token from configuration you can execute `Invoke-OktaRemoveAccessToken`
+
 ### Get a user
 
 ```sh
