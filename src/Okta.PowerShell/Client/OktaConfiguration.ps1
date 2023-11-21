@@ -209,6 +209,33 @@ function Set-OktaConfiguration {
     }
 }
 
+
+<#
+.SYNOPSIS
+
+Set the access token value.
+
+.DESCRIPTION
+
+Set the access token value.
+
+.OUTPUTS
+
+None
+#>
+
+function Set-OktaConfigurationAccessToken {
+    [CmdletBinding()]
+    [AllowNull()]
+    Param(
+        [string]$AccessToken        
+    )
+    Process {
+        $Script:Configuration["AccessToken"] = $AccessToken
+    }
+}
+
+
 <#
 .SYNOPSIS
 
@@ -223,7 +250,7 @@ Set the max retries value.
 None
 #>
 
-function Set-ConfigurationMaxRetries {
+function Set-OktaConfigurationMaxRetries {
     [CmdletBinding()]
     Param(
         [int]$MaxRetries        
@@ -247,7 +274,7 @@ Set the request timeout value.
 None
 #>
 
-function Set-ConfigurationRequestTimeout {
+function Set-OktaConfigurationRequestTimeout {
     [CmdletBinding()]
     Param(
         [int]$RequestTimeout        
