@@ -9,7 +9,7 @@ orbs:
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  build:
+  build-test:
     executor:  
       name: windows/default
     # Add steps to the job
@@ -18,7 +18,7 @@ jobs:
       - checkout
       - run: dotnet tool install --global PowerShell --version 7.0
       - run:
-          name: "build stage"
+          name: "build and test stage"
           command: |
               pwsh -Command "./build.ps1;./test.ps1"
 # Invoke jobs via workflows
