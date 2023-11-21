@@ -40,7 +40,7 @@ jobs:
       - run:
           name: "Run Test"
           command: |
-              pwsh -Command "Import-Module -Name './src/Okta.PowerShell' -Verbose;Install-Module Pester -Repository 'PSGallery' -Force -SkipPublisherCheck;$Result = Invoke-Pester -PassThru;if ($Result.FailedCount -gt 0) { $host.SetShouldExit($Result.FailedCount); exit $Result.FailedCount }"
+              pwsh -Command "./build.ps1;Import-Module -Name './src/Okta.PowerShell' -Verbose;Install-Module Pester -Repository 'PSGallery' -Force -SkipPublisherCheck;$Result = Invoke-Pester -PassThru;if ($Result.FailedCount -gt 0) { exit $Result.FailedCount }"
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
