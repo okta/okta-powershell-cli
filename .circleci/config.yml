@@ -26,10 +26,7 @@ jobs:
 workflows:
   build-test:
     jobs:
-      - build
-      - test:
-          requires:
-            - build
+      - build-test
   semgrep:
     jobs:
       - general-platform-helpers/job-semgrep-prepare:
