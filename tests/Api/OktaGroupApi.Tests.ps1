@@ -33,17 +33,88 @@ Describe -tag 'Okta.PowerShell' -name 'OktaOktaGroupApi' {
 
     Context 'New-OktaGroup' {
         It 'Test New-OktaGroup' {
-            #$TestResult = New-OktaGroup -Group "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+            $Content = '{"id":"00gbglv3gopEupBN61d7","created":"2023-11-22T15:38:31.000Z","lastUpdated":"2023-11-22T15:38:31.000Z","lastMembershipUpdated":"2023-11-22T15:38:31.000Z","objectClass":["okta:user_group"],"type":"OKTA_GROUP","profile":{"name":"New Group","description":null}}'
+                        | ConvertFrom-Json
+            
+            $Response = @{
+                Response  = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+
+            $NewGroup = [PSCustomObject]@{
+                Profile = [PSCustomObject]@{
+                    Name = "New Group"
+                }
+            }
+
+            $TestResult = New-OktaGroup -Group $NewGroup
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
+
+            $TestResult.Id | Should -Be "00gbglv3gopEupBN61d7"
+            $TestResult.Profile.Name | Should -Be "New Group"
+            [string]::IsNullOrEmpty($TestResult.Profile.Description) | Should -Be $True
+            $TestResult.Created.ToString('yyyy-MM-dd') | Should -Be "2023-11-22"
         }
     }
 
     Context 'New-OktaGroupRule' {
+        It 'Test Initialize-OktaGroupRule' {
+            
+            $AssignUserToGroups = [PSCustomObject]@{ GroupIds = @("groupId")}
+            $Actions = Initialize-OktaGroupRuleAction -AssignUserToGroups $AssignUserToGroups
+
+            $PeopleGroups = [PSCustomObject]@{ Exclude = @("groupId") }
+            $PeopleUsers = [PSCustomObject]@{ Exclude = @("userId") }
+            
+            $People = Initialize-OktaGroupRulePeopleCondition -Groups $PeopleGroups -Users $PeopleUsers
+            $Expression = Initialize-OktaGroupRuleExpression -Type "urn:okta:expression:1.0" -Value  "user.countryCode=='US'"
+            $Conditions = Initialize-OktaGroupRuleConditions -Expression $Expression -People $People
+
+            $GroupRule = Initialize-OktaGroupRule -Actions $Actions -Conditions $Conditions -Name "New Rule" -Type "group_rule"
+
+            $GroupRule.Name | Should -Be "New Rule"
+            $GroupRule.Type | Should -Be "group_rule"
+            $GroupRule.Conditions.People.Users.Exclude.Count | Should -Be 1
+            $GroupRule.Conditions.People.Users.Exclude[0] | Should -Be "userId"
+            $GroupRule.Conditions.People.Groups.Exclude.Count | Should -Be 1
+            $GroupRule.Conditions.People.Groups.Exclude[0] | Should -Be "groupId"
+            $GroupRule.Conditions.Expression.Value | Should -Be "user.countryCode=='US'"
+            $GroupRule.Conditions.Expression.Type | Should -Be "urn:okta:expression:1.0"
+            $GroupRule.Actions.AssignUserToGroups.GroupIds.Count | Should -Be 1
+            $GroupRule.Actions.AssignUserToGroups.GroupIds[0] | Should -Be "groupId"
+
+        }
+
         It 'Test New-OktaGroupRule' {
-            #$TestResult = New-OktaGroupRule -GroupRule "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+
+            $Content = '{"type":"group_rule","id":"0prbgm3u2mdL39RwF1d7","status":"INACTIVE","name":"New Rule","conditions":{"people":{"users":{"exclude":["userId"]},"groups":{"exclude":["groupId"]}},"expression":{"value":"user.countryCode==US","type":"urn:okta:expression:1.0"}},"actions":{"assignUserToGroups":{"groupIds":["groupId"]}},"allGroupsValid":true}'
+            | ConvertFrom-Json
+
+            $Response = @{
+                Response  = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+
+            $GroupRule = New-OktaGroupRule -GroupRule @{}
+            $GroupRule.Name | Should -Be "New Rule"
+            $GroupRule.Type | Should -Be "group_rule"
+            $GroupRule.Status | Should -Be "INACTIVE"
+            $GroupRule.Conditions.People.Users.Exclude.Count | Should -Be 1
+            $GroupRule.Conditions.People.Users.Exclude[0] | Should -Be "userId"
+            $GroupRule.Conditions.People.Groups.Exclude.Count | Should -Be 1
+            $GroupRule.Conditions.People.Groups.Exclude[0] | Should -Be "groupId"
+            $GroupRule.Conditions.Expression.Value | Should -Be "user.countryCode==US"
+            $GroupRule.Conditions.Expression.Type | Should -Be "urn:okta:expression:1.0"
+            $GroupRule.Actions.AssignUserToGroups.GroupIds.Count | Should -Be 1
+            $GroupRule.Actions.AssignUserToGroups.GroupIds[0] | Should -Be "groupId"
+
         }
     }
 
@@ -57,9 +128,17 @@ Describe -tag 'Okta.PowerShell' -name 'OktaOktaGroupApi' {
 
     Context 'Invoke-OktaDeleteGroup' {
         It 'Test Invoke-OktaDeleteGroup' {
-            #$TestResult = Invoke-OktaDeleteGroup -GroupId "TEST_VALUE"
-            #$TestResult | Should -BeOfType TODO
-            #$TestResult.property | Should -Be 0
+
+            $Response = @{
+                Response  = $null
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+
+            Invoke-OktaDeleteGroup -GroupId "foo"
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
         }
     }
 
@@ -158,5 +237,4 @@ Describe -tag 'Okta.PowerShell' -name 'OktaOktaGroupApi' {
             #$TestResult.property | Should -Be 0
         }
     }
-
 }
