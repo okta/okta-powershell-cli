@@ -124,7 +124,7 @@ function Invoke-{{{apiNamePrefix}}}ApiClient {
         }
     }
 
-    $OktaUserAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome + " {{packageName}}/{{packageVersion}}"
+    $OktaUserAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome + " okta-powershell-module/{{packageVersion}}-beta"
 
     {{#hasHttpSignatureMethods}}
     # http signature authentication
