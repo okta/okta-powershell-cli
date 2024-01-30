@@ -175,6 +175,8 @@ $CreateUserRequest = Initialize-OktaCreateUserRequest -VarProfile $UserProfile -
 $TestResult = New-OktaUser -Body $CreateUserRequest
 ```
 
+> Note: If you initialize objects using `PSCustomObject`, ensure the casing is correct.
+
 ### List users with pagination
 
 ```sh

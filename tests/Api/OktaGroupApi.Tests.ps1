@@ -43,12 +43,12 @@ Describe -tag 'Okta.PowerShell' -name 'OktaOktaGroupApi' {
     Context 'New-OktaGroup' {
         It 'Test Initialize-OktaGroup' {
 
-            $Profile = [PSCustomObject]@{
+            $GroupProfile = [PSCustomObject]@{
                 Name = "New Group"
                 Description = "Description"
             }
 
-            $Group = Initialize-OktaGroup -Id "00gbglv3gopEupBN61d7" -VarProfile $Profile
+            $Group = Initialize-OktaGroup -Id "00gbglv3gopEupBN61d7" -VarProfile $GroupProfile
             
             $Group.Id | Should -Be "00gbglv3gopEupBN61d7"
             $Group.Profile.Name | Should -Be "New Group"

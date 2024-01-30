@@ -131,7 +131,7 @@ function Invoke-OktaApiClient {
         }
     }
 
-    $OktaUserAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome + " okta-powershell-module/1.0.0-beta"
+    $OktaUserAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome + " okta-powershell-module/1.0.0"
 
 
     # Setting up vars for retry
@@ -188,12 +188,7 @@ function Invoke-OktaApiClient {
                                         -UserAgent $OktaUserAgent
             }
 
-            $Response = $null
-            
-            if ($RawResponse.StatusCode -ne '204') {
-                $Response = DeserializeResponse -Response $RawResponse.Content -ReturnType $ReturnType -ContentTypes $RawResponse.Headers["Content-Type"]        
-            }
-
+            $Response = DeserializeResponse -Response $RawResponse.Content -ReturnType $ReturnType -ContentTypes $RawResponse.Headers["Content-Type"]
             $StatusCode = $RawResponse.StatusCode
             $Headers = $RawResponse.Headers
             $ElapsedTimeInMilliseconds  = CalculateElapsedTime -StartTime $StartTime
