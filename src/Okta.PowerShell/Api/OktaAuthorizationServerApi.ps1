@@ -27,6 +27,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 None
@@ -41,7 +45,9 @@ function Invoke-OktaActivateAuthorizationServer {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -137,6 +143,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 None
@@ -154,7 +164,9 @@ function Invoke-OktaActivateAuthorizationServerPolicy {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -257,6 +269,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 None
@@ -277,7 +293,9 @@ function Invoke-OktaActivateAuthorizationServerPolicyRule {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -378,6 +396,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 AuthorizationServer
@@ -392,7 +414,9 @@ function New-OktaAuthorizationServer {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -427,7 +451,12 @@ function New-OktaAuthorizationServer {
             throw "Error! The required parameter `AuthorizationServer` missing when calling createAuthorizationServer."
         }
 
-        $LocalVarBodyParameter = $AuthorizationServer | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -493,6 +522,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 AuthorizationServerPolicy
@@ -510,7 +543,9 @@ function New-OktaAuthorizationServerPolicy {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -549,7 +584,12 @@ function New-OktaAuthorizationServerPolicy {
             throw "Error! The required parameter `Policy` missing when calling createAuthorizationServerPolicy."
         }
 
-        $LocalVarBodyParameter = $Policy | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -618,6 +658,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 AuthorizationServerPolicyRule
@@ -638,7 +682,9 @@ function New-OktaAuthorizationServerPolicyRule {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -681,7 +727,12 @@ function New-OktaAuthorizationServerPolicyRule {
             throw "Error! The required parameter `PolicyRule` missing when calling createAuthorizationServerPolicyRule."
         }
 
-        $LocalVarBodyParameter = $PolicyRule | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -747,6 +798,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 OAuth2Claim
@@ -764,7 +819,9 @@ function New-OktaOAuth2Claim {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -803,7 +860,12 @@ function New-OktaOAuth2Claim {
             throw "Error! The required parameter `OAuth2Claim` missing when calling createOAuth2Claim."
         }
 
-        $LocalVarBodyParameter = $OAuth2Claim | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -869,6 +931,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 OAuth2Scope
@@ -886,7 +952,9 @@ function New-OktaOAuth2Scope {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -925,7 +993,12 @@ function New-OktaOAuth2Scope {
             throw "Error! The required parameter `OAuth2Scope` missing when calling createOAuth2Scope."
         }
 
-        $LocalVarBodyParameter = $OAuth2Scope | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -988,6 +1061,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 None
@@ -1002,7 +1079,9 @@ function Invoke-OktaDeactivateAuthorizationServer {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1098,6 +1177,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 None
@@ -1115,7 +1198,9 @@ function Invoke-OktaDeactivateAuthorizationServerPolicy {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1218,6 +1303,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 None
@@ -1238,7 +1327,9 @@ function Invoke-OktaDeactivateAuthorizationServerPolicyRule {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1339,6 +1430,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 None
@@ -1353,7 +1448,9 @@ function Invoke-OktaDeleteAuthorizationServer {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1449,6 +1546,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 None
@@ -1466,7 +1567,9 @@ function Invoke-OktaDeleteAuthorizationServerPolicy {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1569,6 +1672,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 None
@@ -1589,7 +1696,9 @@ function Invoke-OktaDeleteAuthorizationServerPolicyRule {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1693,6 +1802,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 None
@@ -1710,7 +1823,9 @@ function Invoke-OktaDeleteOAuth2Claim {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1810,6 +1925,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 None
@@ -1827,7 +1946,9 @@ function Invoke-OktaDeleteOAuth2Scope {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1924,6 +2045,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 AuthorizationServer
@@ -1938,7 +2063,9 @@ function Get-OktaAuthorizationServer {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -2034,6 +2161,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 AuthorizationServerPolicy
@@ -2051,7 +2182,9 @@ function Get-OktaAuthorizationServerPolicy {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -2154,6 +2287,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 AuthorizationServerPolicyRule
@@ -2174,7 +2311,9 @@ function Get-OktaAuthorizationServerPolicyRule {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -2278,6 +2417,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 OAuth2Claim
@@ -2295,7 +2438,9 @@ function Get-OktaOAuth2Claim {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -2395,6 +2540,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 OAuth2Scope
@@ -2412,7 +2561,9 @@ function Get-OktaOAuth2Scope {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -2518,6 +2669,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 OAuth2RefreshToken
@@ -2541,7 +2696,9 @@ function Get-OktaRefreshTokenForAuthorizationServerAndClient {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -2646,6 +2803,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 JsonWebKey[]
@@ -2660,7 +2821,9 @@ function Invoke-OktaListAuthorizationServerKeys {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -2753,6 +2916,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 AuthorizationServerPolicy[]
@@ -2767,7 +2934,9 @@ function Invoke-OktaListAuthorizationServerPolicies {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -2863,6 +3032,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 AuthorizationServerPolicyRule[]
@@ -2880,7 +3053,9 @@ function Invoke-OktaListAuthorizationServerPolicyRules {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -2983,6 +3158,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 AuthorizationServer[]
@@ -3003,7 +3182,9 @@ function Invoke-OktaListAuthorizationServers {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -3104,6 +3285,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 OAuth2Claim[]
@@ -3118,7 +3303,9 @@ function Invoke-OktaListOAuth2Claims {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -3211,6 +3398,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 OAuth2Client[]
@@ -3225,7 +3416,9 @@ function Invoke-OktaListOAuth2ClientsForAuthorizationServer {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -3330,6 +3523,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 OAuth2Scope[]
@@ -3356,7 +3553,9 @@ function Invoke-OktaListOAuth2Scopes {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -3477,6 +3676,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 OAuth2RefreshToken[]
@@ -3503,7 +3706,9 @@ function Invoke-OktaListRefreshTokensForAuthorizationServerAndClient {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -3618,6 +3823,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 None
@@ -3638,7 +3847,9 @@ function Revoke-OktaRefreshTokenForAuthorizationServerAndClient {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -3742,6 +3953,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 None
@@ -3759,7 +3974,9 @@ function Revoke-OktaRefreshTokensForAuthorizationServerAndClient {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -3859,6 +4076,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 JsonWebKey[]
@@ -3876,7 +4097,9 @@ function Invoke-OktaRotateAuthorizationServerKeys {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -3915,7 +4138,12 @@ function Invoke-OktaRotateAuthorizationServerKeys {
             throw "Error! The required parameter `Use` missing when calling rotateAuthorizationServerKeys."
         }
 
-        $LocalVarBodyParameter = $Use | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -3981,6 +4209,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 AuthorizationServer
@@ -3998,7 +4230,9 @@ function Update-OktaAuthorizationServer {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -4037,7 +4271,12 @@ function Update-OktaAuthorizationServer {
             throw "Error! The required parameter `AuthorizationServer` missing when calling updateAuthorizationServer."
         }
 
-        $LocalVarBodyParameter = $AuthorizationServer | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -4106,6 +4345,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 AuthorizationServerPolicy
@@ -4126,7 +4369,9 @@ function Update-OktaAuthorizationServerPolicy {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -4169,7 +4414,12 @@ function Update-OktaAuthorizationServerPolicy {
             throw "Error! The required parameter `Policy` missing when calling updateAuthorizationServerPolicy."
         }
 
-        $LocalVarBodyParameter = $Policy | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -4241,6 +4491,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 AuthorizationServerPolicyRule
@@ -4264,7 +4518,9 @@ function Update-OktaAuthorizationServerPolicyRule {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -4311,7 +4567,12 @@ function Update-OktaAuthorizationServerPolicyRule {
             throw "Error! The required parameter `PolicyRule` missing when calling updateAuthorizationServerPolicyRule."
         }
 
-        $LocalVarBodyParameter = $PolicyRule | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -4380,6 +4641,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 OAuth2Claim
@@ -4400,7 +4665,9 @@ function Update-OktaOAuth2Claim {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -4443,7 +4710,12 @@ function Update-OktaOAuth2Claim {
             throw "Error! The required parameter `OAuth2Claim` missing when calling updateOAuth2Claim."
         }
 
-        $LocalVarBodyParameter = $OAuth2Claim | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -4512,6 +4784,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 OAuth2Scope
@@ -4532,7 +4808,9 @@ function Update-OktaOAuth2Scope {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -4575,7 +4853,12 @@ function Update-OktaOAuth2Scope {
             throw "Error! The required parameter `OAuth2Scope` missing when calling updateOAuth2Scope."
         }
 
-        $LocalVarBodyParameter = $OAuth2Scope | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]

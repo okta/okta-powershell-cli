@@ -27,6 +27,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 IdentityProvider
@@ -41,7 +45,9 @@ function Invoke-OktaActivateIdentityProvider {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -140,6 +146,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 JsonWebKey
@@ -160,7 +170,9 @@ function Copy-OktaIdentityProviderKey {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -262,6 +274,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 IdentityProvider
@@ -276,7 +292,9 @@ function New-OktaIdentityProvider {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -311,7 +329,12 @@ function New-OktaIdentityProvider {
             throw "Error! The required parameter `IdentityProvider` missing when calling createIdentityProvider."
         }
 
-        $LocalVarBodyParameter = $IdentityProvider | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -374,6 +397,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 JsonWebKey
@@ -388,7 +415,9 @@ function New-OktaIdentityProviderKey {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -423,7 +452,12 @@ function New-OktaIdentityProviderKey {
             throw "Error! The required parameter `JsonWebKey` missing when calling createIdentityProviderKey."
         }
 
-        $LocalVarBodyParameter = $JsonWebKey | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -486,6 +520,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 IdentityProvider
@@ -500,7 +538,9 @@ function Invoke-OktaDeactivateIdentityProvider {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -593,6 +633,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 None
@@ -607,7 +651,9 @@ function Invoke-OktaDeleteIdentityProvider {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -700,6 +746,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 None
@@ -714,7 +764,9 @@ function Invoke-OktaDeleteIdentityProviderKey {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -810,6 +862,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 Csr
@@ -827,7 +883,9 @@ function New-OktaCsrForIdentityProvider {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -866,7 +924,12 @@ function New-OktaCsrForIdentityProvider {
             throw "Error! The required parameter `Metadata` missing when calling generateCsrForIdentityProvider."
         }
 
-        $LocalVarBodyParameter = $Metadata | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -932,6 +995,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 JsonWebKey
@@ -949,7 +1016,9 @@ function New-OktaIdentityProviderSigningKey {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1050,6 +1119,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 Csr
@@ -1067,7 +1140,9 @@ function Get-OktaCsrForIdentityProvider {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1164,6 +1239,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 IdentityProvider
@@ -1178,7 +1257,9 @@ function Get-OktaIdentityProvider {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1274,6 +1355,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 IdentityProviderApplicationUser
@@ -1291,7 +1376,9 @@ function Get-OktaIdentityProviderApplicationUser {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1388,6 +1475,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 JsonWebKey
@@ -1402,7 +1493,9 @@ function Get-OktaIdentityProviderKey {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1498,6 +1591,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 JsonWebKey
@@ -1515,7 +1612,9 @@ function Get-OktaIdentityProviderSigningKey {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1618,6 +1717,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 IdentityProviderApplicationUser
@@ -1638,7 +1741,9 @@ function Invoke-OktaLinkUserToIdentityProvider {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1681,7 +1786,12 @@ function Invoke-OktaLinkUserToIdentityProvider {
             throw "Error! The required parameter `UserIdentityProviderLinkRequest` missing when calling linkUserToIdentityProvider."
         }
 
-        $LocalVarBodyParameter = $UserIdentityProviderLinkRequest | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -1744,6 +1854,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 Csr[]
@@ -1758,7 +1872,9 @@ function Invoke-OktaListCsrsForIdentityProvider {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1851,6 +1967,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 IdentityProviderApplicationUser[]
@@ -1865,7 +1985,9 @@ function Invoke-OktaListIdentityProviderApplicationUsers {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1961,6 +2083,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 JsonWebKey[]
@@ -1978,7 +2104,9 @@ function Invoke-OktaListIdentityProviderKeys {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -2075,6 +2203,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 JsonWebKey[]
@@ -2089,7 +2221,9 @@ function Invoke-OktaListIdentityProviderSigningKeys {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -2191,6 +2325,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 IdentityProvider[]
@@ -2214,7 +2352,9 @@ function Invoke-OktaListIdentityProviders {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -2322,6 +2462,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 SocialAuthToken[]
@@ -2339,7 +2483,9 @@ function Invoke-OktaListSocialAuthTokens {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -2442,6 +2588,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 JsonWebKey
@@ -2462,7 +2612,9 @@ function Publish-OktaCsrForIdentityProvider {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -2505,7 +2657,12 @@ function Publish-OktaCsrForIdentityProvider {
             throw "Error! The required parameter `Body` missing when calling publishCsrForIdentityProvider."
         }
 
-        $LocalVarBodyParameter = $Body | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -2571,6 +2728,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 None
@@ -2588,7 +2749,9 @@ function Revoke-OktaCsrForIdentityProvider {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -2688,6 +2851,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 None
@@ -2705,7 +2872,9 @@ function Invoke-OktaUnlinkUserFromIdentityProvider {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -2805,6 +2974,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 IdentityProvider
@@ -2822,7 +2995,9 @@ function Update-OktaIdentityProvider {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -2861,7 +3036,12 @@ function Update-OktaIdentityProvider {
             throw "Error! The required parameter `IdentityProvider` missing when calling updateIdentityProvider."
         }
 
-        $LocalVarBodyParameter = $IdentityProvider | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]

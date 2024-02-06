@@ -33,6 +33,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 UserFactor
@@ -53,7 +57,9 @@ function Invoke-OktaActivateFactor {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -92,7 +98,12 @@ function Invoke-OktaActivateFactor {
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        $LocalVarBodyParameter = $Body | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -161,6 +172,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 None
@@ -181,7 +196,9 @@ function Invoke-OktaDeleteFactor {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -297,6 +314,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 UserFactor
@@ -326,7 +347,9 @@ function Invoke-OktaEnrollFactor {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -381,7 +404,12 @@ function Invoke-OktaEnrollFactor {
             throw "Error! The required parameter `Body` missing when calling enrollFactor."
         }
 
-        $LocalVarBodyParameter = $Body | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -447,6 +475,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 UserFactor
@@ -464,7 +496,9 @@ function Get-OktaFactor {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -567,6 +601,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 VerifyUserFactorResponse
@@ -587,7 +625,9 @@ function Get-OktaFactorTransactionStatus {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -688,6 +728,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 UserFactor[]
@@ -702,7 +746,9 @@ function Invoke-OktaListFactors {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -795,6 +841,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 UserFactor[]
@@ -809,7 +859,9 @@ function Invoke-OktaListSupportedFactors {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -902,6 +954,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 SecurityQuestion[]
@@ -916,7 +972,9 @@ function Invoke-OktaListSupportedSecurityQuestions {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1017,6 +1075,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 UserFactor
@@ -1040,7 +1102,9 @@ function Invoke-OktaResendEnrollFactor {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1087,7 +1151,12 @@ function Invoke-OktaResendEnrollFactor {
             throw "Error! The required parameter `UserFactor` missing when calling resendEnrollFactor."
         }
 
-        $LocalVarBodyParameter = $UserFactor | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -1171,6 +1240,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 VerifyUserFactorResponse
@@ -1206,7 +1279,9 @@ function Test-OktaFactor {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1265,7 +1340,12 @@ function Test-OktaFactor {
             $LocalVarQueryParameters['tokenLifetimeSeconds'] = $TokenLifetimeSeconds
         }
 
-        $LocalVarBodyParameter = $Body | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]

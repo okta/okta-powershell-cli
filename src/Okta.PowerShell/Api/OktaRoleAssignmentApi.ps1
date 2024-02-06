@@ -33,6 +33,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 Role
@@ -53,7 +57,9 @@ function Set-OktaRoleToGroup {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -96,7 +102,12 @@ function Set-OktaRoleToGroup {
             throw "Error! The required parameter `AssignRoleRequest` missing when calling assignRoleToGroup."
         }
 
-        $LocalVarBodyParameter = $AssignRoleRequest | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -165,6 +176,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 Role
@@ -185,7 +200,9 @@ function Set-OktaRoleToUser {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -228,7 +245,12 @@ function Set-OktaRoleToUser {
             throw "Error! The required parameter `AssignRoleRequest` missing when calling assignRoleToUser."
         }
 
-        $LocalVarBodyParameter = $AssignRoleRequest | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -294,6 +316,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 Role
@@ -311,7 +337,9 @@ function Get-OktaGroupAssignedRole {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -411,6 +439,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 Role
@@ -428,7 +460,9 @@ function Get-OktaUserAssignedRole {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -528,6 +562,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 Role[]
@@ -545,7 +583,9 @@ function Invoke-OktaListAssignedRolesForUser {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -645,6 +685,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 Role[]
@@ -662,7 +706,9 @@ function Invoke-OktaListGroupAssignedRoles {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -762,6 +808,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 None
@@ -779,7 +829,9 @@ function Invoke-OktaUnassignRoleFromGroup {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -879,6 +931,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 None
@@ -896,7 +952,9 @@ function Invoke-OktaUnassignRoleFromUser {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {

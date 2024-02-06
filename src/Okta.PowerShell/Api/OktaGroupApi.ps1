@@ -27,6 +27,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 None
@@ -41,7 +45,9 @@ function Invoke-OktaActivateGroupRule {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -137,6 +143,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 GroupOwner
@@ -154,7 +164,9 @@ function Add-OktaGroupOwner {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -193,7 +205,12 @@ function Add-OktaGroupOwner {
             throw "Error! The required parameter `GroupOwner` missing when calling addGroupOwner."
         }
 
-        $LocalVarBodyParameter = $GroupOwner | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -259,6 +276,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 None
@@ -276,7 +297,9 @@ function Add-OktaUserToGroup {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -373,6 +396,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 Group
@@ -387,7 +414,9 @@ function New-OktaGroup {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -422,7 +451,12 @@ function New-OktaGroup {
             throw "Error! The required parameter `Group` missing when calling createGroup."
         }
 
-        $LocalVarBodyParameter = $Group | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -485,6 +519,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 GroupRule
@@ -499,7 +537,9 @@ function New-OktaGroupRule {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -534,7 +574,12 @@ function New-OktaGroupRule {
             throw "Error! The required parameter `GroupRule` missing when calling createGroupRule."
         }
 
-        $LocalVarBodyParameter = $GroupRule | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -597,6 +642,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 None
@@ -611,7 +660,9 @@ function Invoke-OktaDeactivateGroupRule {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -704,6 +755,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 None
@@ -718,7 +773,9 @@ function Invoke-OktaDeleteGroup {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -814,6 +871,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 None
@@ -831,7 +892,9 @@ function Invoke-OktaDeleteGroupOwner {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -931,6 +994,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 None
@@ -948,7 +1015,9 @@ function Invoke-OktaDeleteGroupRule {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1045,6 +1114,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 Group
@@ -1059,7 +1132,9 @@ function Get-OktaGroup {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1161,6 +1236,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 GroupOwner[]
@@ -1184,7 +1263,9 @@ function Get-OktaGroupOwners {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1292,6 +1373,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 GroupRule
@@ -1309,7 +1394,9 @@ function Get-OktaGroupRule {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1412,6 +1499,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 Application[]
@@ -1432,7 +1523,9 @@ function Invoke-OktaListAssignedApplicationsForGroup {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1542,6 +1635,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 GroupRule[]
@@ -1565,7 +1662,9 @@ function Invoke-OktaListGroupRules {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1676,6 +1775,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 User[]
@@ -1696,7 +1799,9 @@ function Invoke-OktaListGroupUsers {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1812,6 +1917,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 Group[]
@@ -1841,7 +1950,9 @@ function Invoke-OktaListGroups {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -1957,6 +2068,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 None
@@ -1974,7 +2089,9 @@ function Remove-OktaUserFromGroup {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -2074,6 +2191,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 Group
@@ -2091,7 +2212,9 @@ function Update-OktaGroup {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -2130,7 +2253,12 @@ function Update-OktaGroup {
             throw "Error! The required parameter `Group` missing when calling updateGroup."
         }
 
-        $LocalVarBodyParameter = $Group | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
@@ -2196,6 +2324,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 GroupRule
@@ -2213,7 +2345,9 @@ function Update-OktaGroupRule {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -2252,7 +2386,12 @@ function Update-OktaGroupRule {
             throw "Error! The required parameter `GroupRule` missing when calling updateGroupRule."
         }
 
-        $LocalVarBodyParameter = $GroupRule | ConvertTo-Json -Depth 100
+         if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+        }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
             $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]

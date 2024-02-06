@@ -201,15 +201,15 @@ While ($UsersResponse.NextPageUri)
 
 ```sh
 $OAuthClient = [PSCustomObject]@{
-                Client_Uri = "https://example.com/client"
-                Logo_Uri = "https://example.com/assets/images/logo-new.png"
-                Response_Types = @("token", "id_token", "code")
-                Redirect_Uris = @("https://example.com/oauth2/callback", "myapp://callback")
-                Post_Logout_Redirect_Uris = @("https://example.com/postlogout", "myapp://postlogoutcallback")
-                Grant_Types = @("implicit", "authorization_code")
-                Application_Type = "native"
-                Tos_Uri = "https://example.com/client/tos"
-                Policy_Uri = "https://example.com/client/policy"
+                client_uri = "https://example.com/client"
+                logo_uri = "https://example.com/assets/images/logo-new.png"
+                response_types = @("token", "id_token", "code")
+                redirect_uris = @("https://example.com/oauth2/callback", "myapp://callback")
+                post_logout_redirect_uris = @("https://example.com/postlogout", "myapp://postlogoutcallback")
+                grant_types = @("implicit", "authorization_code")
+                application_type = "native"
+                tos_uri = "https://example.com/client/tos"
+                policy_uri = "https://example.com/client/policy"
             }
 # a simple test to create an object
 $Settings = Initialize-OktaOpenIdConnectApplicationSettings -OauthClient $OAuthClient
@@ -217,6 +217,8 @@ $Settings = Initialize-OktaOpenIdConnectApplicationSettings -OauthClient $OAuthC
 $NewApp = Initialize-OktaOpenIdConnectApplication -Label "New App" -SignOnMode "OPENID_CONNECT" -Settings $Settings
 
 ```
+
+> Note: If you initialize objects using `PSCustomObject`, ensure the casing is correct.
 
 > Note: For more API samples checkout our [tests](https://github.com/okta/okta-powershell-cli/tree/main/tests/)
 

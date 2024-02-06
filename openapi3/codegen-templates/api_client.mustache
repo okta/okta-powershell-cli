@@ -319,3 +319,57 @@ function DeserializeResponse {
         }
     }
 }
+
+# Function to remove null properties recursively from an object
+
+function Remove-NullPropertiesFromObject {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory, Position = 0, ValueFromPipeline)]
+        [object]
+        $InputObject
+    )
+        
+    if ($InputObject -is [string] -or $InputObject.GetType().IsPrimitive) {
+        return $InputObject
+    }
+
+    $NewObject = @{ }
+    $PropertyList = $InputObject.PSObject.Properties | Where-Object { $null -ne $_.Value }
+
+    foreach ($Property in $PropertyList) {
+        if ($Property.Value -is [array]) {
+            $NewObject[$Property.Name] = @(Remove-NullPropertiesFromArray($Property.Value))
+        }
+        else {
+            $NewObject[$Property.Name] = Remove-NullPropertiesFromObject($Property.Value)
+        }
+    }
+
+    return [PSCustomObject]$NewObject    
+}
+
+# Remove null properties from an array
+
+function Remove-NullPropertiesFromArray {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory, Position = 0, ValueFromPipeline)]
+        [array]
+        $InputArray
+    )
+    [array]$NewArray = @()
+    
+    foreach ($Item in $InputArray) {
+        if ($Item -is [array]) {
+            $NewItem = @(Remove-NullPropertiesFromArray($Item))
+        } 
+        else {
+            $NewItem = Remove-NullPropertiesFromObject($Item)
+        }
+        
+        $NewArray += $NewItem
+    }
+
+    return $NewArray
+}
