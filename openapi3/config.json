@@ -46,6 +46,11 @@
             "destinationFilename":"API_README.md",
             "templateType": "SupportingFiles",
             "folder": "/"
+        },
+        "json_helper.mustache":{
+            "destinationFilename":"JsonHelper.ps1",
+            "templateType": "SupportingFiles",
+            "folder":  "/src/Okta.PowerShell/Client"
         }
     }
 }

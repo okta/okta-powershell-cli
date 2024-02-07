@@ -1,4 +1,4 @@
-Context 'Invoke-OktaApiClient' {
+Context 'Invoke-OktaApiClient - 429 Responses' {
     It 'Should retry 429 responses until MaxRetries is reached and RequestTimeout is null' {
         $Config = Get-OktaConfiguration
         $Config.MaxRetries = 1
@@ -117,3 +117,4 @@ Context 'Invoke-OktaApiClient' {
         Assert-MockCalled -ModuleName Okta.PowerShell CalculateElapsedTime -Times 1
     }
 }
+

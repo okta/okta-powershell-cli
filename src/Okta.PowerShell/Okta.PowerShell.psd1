@@ -18,7 +18,7 @@ ModuleVersion = '1.0.0'
 # CompatiblePSEditions = @()
 
 # ID used to uniquely identify this module
-GUID = '4d291352-d8a8-40a0-86ea-ffc0b419b635'
+GUID = 'effe6ccf-225e-4df5-93f0-536bde1cea1a'
 
 # Author of this module
 Author = 'OpenAPI Generator Team'
@@ -1412,8 +1412,9 @@ FunctionsToExport = 'Invoke-OktaActivateAgentPoolsUpdate', 'New-OktaAgentPoolsUp
                'ConvertFrom-OktaJsonToWsFederationApplicationSettingsAllOf', 
                'Initialize-OktaWsFederationApplicationSettingsApplication', 
                'ConvertFrom-OktaJsonToWsFederationApplicationSettingsApplication', 
-               'Get-OktaConfiguration', 'Set-OktaConfiguration', 
-               'Set-OktaConfigurationAccessToken', 
+               'Remove-NullProperties', 'Remove-NullPropertiesFromHashMap', 
+               'Remove-NullPropertiesFromArray', 'Get-OktaConfiguration', 
+               'Set-OktaConfiguration', 'Set-OktaConfigurationAccessToken', 
                'Set-OktaConfigurationMaxRetries', 
                'Set-OktaConfigurationRequestTimeout', 
                'Set-OktaConfigurationApiKey', 'Set-OktaConfigurationApiKeyPrefix', 

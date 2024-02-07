@@ -60,7 +60,7 @@ $Manifest = @{
     
 
     RootModule = 'Okta.PowerShell.psm1'
-    Guid = '{4D291352-D8A8-40A0-86EA-FFC0B419B635}' # Has to be static, otherwise each new build will be considered different module
+    Guid = '{EFFE6CCF-225E-4DF5-93F0-536BDE1CEA1A}' # Has to be static, otherwise each new build will be considered different module
 
     PowerShellVersion = '6.2'
 
