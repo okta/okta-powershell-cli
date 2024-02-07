@@ -205,11 +205,13 @@ function Add-OktaGroupOwner {
             throw "Error! The required parameter `GroupOwner` missing when calling addGroupOwner."
         }
 
-         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $GroupOwner | ConvertTo-Json -Depth 100
         }
         else{
-            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject $GroupOwner | ConvertTo-Json -Depth 100
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -451,11 +453,13 @@ function New-OktaGroup {
             throw "Error! The required parameter `Group` missing when calling createGroup."
         }
 
-         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Group | ConvertTo-Json -Depth 100
         }
         else{
-            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject $Group | ConvertTo-Json -Depth 100
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -574,11 +578,13 @@ function New-OktaGroupRule {
             throw "Error! The required parameter `GroupRule` missing when calling createGroupRule."
         }
 
-         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $GroupRule | ConvertTo-Json -Depth 100
         }
         else{
-            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject $GroupRule | ConvertTo-Json -Depth 100
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -2253,11 +2259,13 @@ function Update-OktaGroup {
             throw "Error! The required parameter `Group` missing when calling updateGroup."
         }
 
-         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Group | ConvertTo-Json -Depth 100
         }
         else{
-            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject $Group | ConvertTo-Json -Depth 100
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -2386,11 +2394,13 @@ function Update-OktaGroupRule {
             throw "Error! The required parameter `GroupRule` missing when calling updateGroupRule."
         }
 
-         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $GroupRule | ConvertTo-Json -Depth 100
         }
         else{
-            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject $GroupRule | ConvertTo-Json -Depth 100
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {

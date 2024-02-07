@@ -78,11 +78,13 @@ function New-OktaBrand {
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $CreateBrandRequest | ConvertTo-Json -Depth 100
         }
         else{
-            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject $CreateBrandRequest | ConvertTo-Json -Depth 100
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -217,11 +219,13 @@ function New-OktaEmailCustomization {
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Instance | ConvertTo-Json -Depth 100
         }
         else{
-            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject $Instance | ConvertTo-Json -Depth 100
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -2222,11 +2226,13 @@ function Invoke-OktaLinkBrandDomain {
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $CreateBrandDomainRequest | ConvertTo-Json -Depth 100
         }
         else{
-            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject $CreateBrandDomainRequest | ConvertTo-Json -Depth 100
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -2971,11 +2977,13 @@ function Invoke-OktaReplaceCustomizedErrorPage {
             throw "Error! The required parameter `CustomizablePage` missing when calling replaceCustomizedErrorPage."
         }
 
-         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $CustomizablePage | ConvertTo-Json -Depth 100
         }
         else{
-            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject $CustomizablePage | ConvertTo-Json -Depth 100
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -3104,11 +3112,13 @@ function Invoke-OktaReplaceCustomizedSignInPage {
             throw "Error! The required parameter `SignInPage` missing when calling replaceCustomizedSignInPage."
         }
 
-         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $SignInPage | ConvertTo-Json -Depth 100
         }
         else{
-            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject $SignInPage | ConvertTo-Json -Depth 100
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -3237,11 +3247,13 @@ function Invoke-OktaReplacePreviewErrorPage {
             throw "Error! The required parameter `CustomizablePage` missing when calling replacePreviewErrorPage."
         }
 
-         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $CustomizablePage | ConvertTo-Json -Depth 100
         }
         else{
-            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject $CustomizablePage | ConvertTo-Json -Depth 100
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -3370,11 +3382,13 @@ function Invoke-OktaReplacePreviewSignInPage {
             throw "Error! The required parameter `SignInPage` missing when calling replacePreviewSignInPage."
         }
 
-         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $SignInPage | ConvertTo-Json -Depth 100
         }
         else{
-            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject $SignInPage | ConvertTo-Json -Depth 100
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -3503,11 +3517,13 @@ function Invoke-OktaReplaceSignOutPageSettings {
             throw "Error! The required parameter `HostedPage` missing when calling replaceSignOutPageSettings."
         }
 
-         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $HostedPage | ConvertTo-Json -Depth 100
         }
         else{
-            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject $HostedPage | ConvertTo-Json -Depth 100
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -5383,11 +5399,13 @@ function Update-OktaBrand {
             throw "Error! The required parameter `Brand` missing when calling updateBrand."
         }
 
-         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Brand | ConvertTo-Json -Depth 100
         }
         else{
-            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject $Brand | ConvertTo-Json -Depth 100
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -5526,11 +5544,13 @@ function Update-OktaBrandTheme {
             throw "Error! The required parameter `Theme` missing when calling updateBrandTheme."
         }
 
-         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Theme | ConvertTo-Json -Depth 100
         }
         else{
-            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject $Theme | ConvertTo-Json -Depth 100
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -5675,11 +5695,13 @@ function Update-OktaEmailCustomization {
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Instance | ConvertTo-Json -Depth 100
         }
         else{
-            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject $Instance | ConvertTo-Json -Depth 100
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -5814,11 +5836,13 @@ function Update-OktaEmailSettings {
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $EmailSettings | ConvertTo-Json -Depth 100
         }
         else{
-            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject $EmailSettings | ConvertTo-Json -Depth 100
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {

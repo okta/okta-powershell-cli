@@ -195,11 +195,13 @@ function New-OktaOrigin {
             throw "Error! The required parameter `TrustedOrigin` missing when calling createOrigin."
         }
 
-         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $TrustedOrigin | ConvertTo-Json -Depth 100
         }
         else{
-            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject $TrustedOrigin | ConvertTo-Json -Depth 100
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -810,11 +812,13 @@ function Update-OktaOrigin {
             throw "Error! The required parameter `TrustedOrigin` missing when calling updateOrigin."
         }
 
-         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $TrustedOrigin | ConvertTo-Json -Depth 100
         }
         else{
-            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject $TrustedOrigin | ConvertTo-Json -Depth 100
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {

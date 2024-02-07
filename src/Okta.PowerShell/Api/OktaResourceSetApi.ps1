@@ -102,11 +102,13 @@ function Add-OktaMembersToBinding {
             throw "Error! The required parameter `Instance` missing when calling addMembersToBinding."
         }
 
-         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Instance | ConvertTo-Json -Depth 100
         }
         else{
-            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject $Instance | ConvertTo-Json -Depth 100
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -235,11 +237,13 @@ function Add-OktaResourceSetResource {
             throw "Error! The required parameter `Instance` missing when calling addResourceSetResource."
         }
 
-         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Instance | ConvertTo-Json -Depth 100
         }
         else{
-            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject $Instance | ConvertTo-Json -Depth 100
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -358,11 +362,13 @@ function New-OktaResourceSet {
             throw "Error! The required parameter `Instance` missing when calling createResourceSet."
         }
 
-         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Instance | ConvertTo-Json -Depth 100
         }
         else{
-            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject $Instance | ConvertTo-Json -Depth 100
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -491,11 +497,13 @@ function New-OktaResourceSetBinding {
             throw "Error! The required parameter `Instance` missing when calling createResourceSetBinding."
         }
 
-         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Instance | ConvertTo-Json -Depth 100
         }
         else{
-            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject $Instance | ConvertTo-Json -Depth 100
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -1834,11 +1842,13 @@ function Invoke-OktaReplaceResourceSet {
             throw "Error! The required parameter `Instance` missing when calling replaceResourceSet."
         }
 
-         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $Instance | ConvertTo-Json -Depth 100
         }
         else{
-            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject $Instance | ConvertTo-Json -Depth 100
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {

@@ -82,11 +82,13 @@ function New-OktaEmailDomain {
             throw "Error! The required parameter `EmailDomain` missing when calling createEmailDomain."
         }
 
-         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $EmailDomain | ConvertTo-Json -Depth 100
         }
         else{
-            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject $EmailDomain | ConvertTo-Json -Depth 100
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
@@ -657,11 +659,13 @@ function Update-OktaEmailDomain {
             throw "Error! The required parameter `UpdateEmailDomain` missing when calling updateEmailDomain."
         }
 
-         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = $UpdateEmailDomain | ConvertTo-Json -Depth 100
         }
         else{
-            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject $UpdateEmailDomain | ConvertTo-Json -Depth 100
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {

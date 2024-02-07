@@ -308,33 +308,53 @@ function DeserializeResponse {
     }
 }
 
-# Function to remove null properties recursively from an object
-
-function Remove-NullPropertiesFromObject {
+function Remove-NullProperties {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory, Position = 0, ValueFromPipeline)]
         [object]
         $InputObject
     )
-        
+
+    $NewObject = @{ }
+    
     if ($InputObject -is [string] -or $InputObject.GetType().IsPrimitive) {
         return $InputObject
     }
-
-    $NewObject = @{ }
-    $PropertyList = $InputObject.PSObject.Properties | Where-Object { $null -ne $_.Value }
-
-    foreach ($Property in $PropertyList) {
-        if ($Property.Value -is [array]) {
-            $NewObject[$Property.Name] = @(Remove-NullPropertiesFromArray($Property.Value))
-        }
-        else {
-            $NewObject[$Property.Name] = Remove-NullPropertiesFromObject($Property.Value)
+    elseif ($InputObject -is [System.Collections.IDictionary]) {
+        $NewObject = Remove-NullPropertiesFromHashMap($InputObject)
+    }
+    elseif ($InputObject -is [array]){
+        $NewObject = Remove-NullPropertiesFromArray($InputObject)
+    }
+    else{
+        $PropertyList = $InputObject.PSObject.Properties | Where-Object { $null -ne $_.Value }
+        
+        foreach ($Property in $PropertyList) { 
+            $NewObject[$Property.Name] = Remove-NullProperties $Property.Value
         }
     }
 
-    return [PSCustomObject]$NewObject    
+    return [PSCustomObject]$NewObject  
+}
+
+function Remove-NullPropertiesFromHashMap{
+    [CmdletBinding()]
+    param(
+        [AllowEmptyCollection()]
+        [Parameter(Mandatory, Position = 0, ValueFromPipeline)]
+        [System.Collections.IDictionary]
+        $InputObject
+    )
+    $OutputHashtable = @{}
+    foreach ($Key in $InputObject.Keys) {
+        $Value = $InputObject[$Key]
+        $CleanedValue = Remove-NullProperties $Value
+        if ($null -ne $CleanedValue) {
+            $OutputHashtable[$Key] = $CleanedValue
+        }
+    }
+    return $OutputHashtable
 }
 
 # Remove null properties from an array
@@ -342,6 +362,7 @@ function Remove-NullPropertiesFromObject {
 function Remove-NullPropertiesFromArray {
     [CmdletBinding()]
     param(
+        [AllowEmptyCollection()]
         [Parameter(Mandatory, Position = 0, ValueFromPipeline)]
         [array]
         $InputArray
@@ -349,13 +370,7 @@ function Remove-NullPropertiesFromArray {
     [array]$NewArray = @()
     
     foreach ($Item in $InputArray) {
-        if ($Item -is [array]) {
-            $NewItem = @(Remove-NullPropertiesFromArray($Item))
-        } 
-        else {
-            $NewItem = Remove-NullPropertiesFromObject($Item)
-        }
-        
+        $NewItem = Remove-NullProperties($Item)
         $NewArray += $NewItem
     }
 

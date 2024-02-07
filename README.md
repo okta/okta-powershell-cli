@@ -220,6 +220,8 @@ $NewApp = Initialize-OktaOpenIdConnectApplication -Label "New App" -SignOnMode "
 
 > Note: If you initialize objects using `PSCustomObject`, ensure the casing is correct.
 
+> Note: Null values are removed from the payload by default. If you want to include null values you have to include the `-IncludeNullValues` flag.
+
 > Note: For more API samples checkout our [tests](https://github.com/okta/okta-powershell-cli/tree/main/tests/)
 
 ## Rate Limiting

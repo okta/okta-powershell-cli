@@ -192,11 +192,13 @@ function {{{vendorExtensions.x-powershell-method-name}}} {
 
         {{/isNullable}}
         {{/required}}
-         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = $Application | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = ${{{paramName}}} | ConvertTo-Json -Depth 100
         }
         else{
-            $LocalVarBodyParameter = Remove-NullPropertiesFromObject -InputObject $Application | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject ${{{paramName}}} | ConvertTo-Json -Depth 100
         }
 
         {{/bodyParam}}
