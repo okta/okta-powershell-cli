@@ -30,6 +30,10 @@ Specifies the absolute Uri to be used when making the request. Recommended for p
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
 
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
 .OUTPUTS
 
 {{{returnType}}}{{^returnType}}None{{/returnType}}
@@ -58,7 +62,9 @@ function {{{vendorExtensions.x-powershell-method-name}}} {
         [String]
         ${Uri},
         [Switch]
-        $WithHttpInfo
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
     )
 
     Process {
@@ -186,7 +192,14 @@ function {{{vendorExtensions.x-powershell-method-name}}} {
 
         {{/isNullable}}
         {{/required}}
-        $LocalVarBodyParameter = ${{{paramName}}} | ConvertTo-Json -Depth 100
+        
+
+        if ($IncludeNullValues.IsPresent) {
+            $LocalVarBodyParameter = ${{{paramName}}} | ConvertTo-Json -Depth 100
+        }
+        else{
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject ${{{paramName}}} | ConvertTo-Json -Depth 100
+        }
 
         {{/bodyParam}}
         {{#authMethods}}

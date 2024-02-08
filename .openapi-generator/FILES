@@ -733,6 +733,7 @@ src/Okta.PowerShell/Api/OktaTrustedOriginApi.ps1
 src/Okta.PowerShell/Api/OktaUserApi.ps1
 src/Okta.PowerShell/Api/OktaUserFactorApi.ps1
 src/Okta.PowerShell/Api/OktaUserTypeApi.ps1
+src/Okta.PowerShell/Client/JsonHelper.ps1
 src/Okta.PowerShell/Client/OktaConfiguration.ps1
 src/Okta.PowerShell/Client/OktaRetryApi.ps1
 src/Okta.PowerShell/Client/UrlHelper.ps1

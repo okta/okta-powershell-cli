@@ -47,4 +47,3 @@ For troubleshooting, please run `$DebugPreference = 'Continue'` to turn on debug
 - Run `openapi-generator-cli generate -g powershell -c config.json --skip-validate-spec`
 
 > Note that `config.json` contains all the configuration required (templates, supporting files, global configuration, etc) to generate the Okta SDK. For more details about the generator's customization visit [this link](https://openapi-generator.tech/docs/customization).
-
