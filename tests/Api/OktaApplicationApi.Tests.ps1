@@ -351,8 +351,8 @@ Describe -tag 'Okta.PowerShell' -name 'OktaOktaApplicationApi' {
             }
 
             Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
-
-            $TestResult = Update-OktaApplication -Application @{} -AppId "foo" 
+            $App = Initialize-OktaOpenIdConnectApplication -Label "New App" -SignOnMode "OPENID_CONNECT"
+            $TestResult = Update-OktaApplication -Application $App -AppId "foo" 
 
             Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1
 
