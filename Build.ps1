@@ -51,19 +51,26 @@ $FunctionPath = 'Api', 'Model', 'Client' | ForEach-Object {Join-Path "$ScriptDir
 $Manifest = @{
     Path = "$ScriptDir\src\Okta.PowerShell\Okta.PowerShell.psd1"
 
-    Author = 'OpenAPI Generator Team'
-    CompanyName = 'openapitools.org'
+    Author = 'Okta, Inc.'
+    CompanyName = 'Okta'
     Description = 'Okta.PowerShell - the PowerShell module for Okta Management'
+    Tags = @('Okta' ,' Resources Management' ,' Access Management' ,' PSEdition_Core' )
+    ProjectUri = 'https://github.com/okta/okta-powershell-cli'
+    LicenseUri = 'https://github.com/okta/okta-powershell-cli/blob/main/LICENSE.md'
+    IconUri = 'https://cdn.brandfolder.io/R30ALRIS/at/mtg52xxxcr939z2ns8jrg3mz/Okta_Aura_CMYK_Black.png'
+    ReleaseNotes = 'https://github.com/okta/okta-powershell-cli/releases'
 
     
     ModuleVersion = '1.0.0'
     
 
     RootModule = 'Okta.PowerShell.psm1'
-    Guid = '{9CDA7B5C-84C7-4019-8BD1-5086F0458F39}' # Has to be static, otherwise each new build will be considered different module
+    Guid = '{68B02146-CF85-49CB-A499-E0D71414159A}' # Has to be static, otherwise each new build will be considered different module
 
     PowerShellVersion = '6.2'
-
+    
+    CompatiblePSEditions = 'Core'
+    
     FunctionsToExport = $FunctionPath | Get-ChildItem -Filter *.ps1 | Get-FunctionsToExport
 
     VariablesToExport = @()
