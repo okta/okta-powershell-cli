@@ -79,7 +79,9 @@ $Manifest = @{
     Guid = '{{packageGuid}}' # Has to be static, otherwise each new build will be considered different module
 
     PowerShellVersion = '{{{powershellVersion}}}'
-
+    
+    CompatiblePSEditions = 'Core'
+    
     FunctionsToExport = $FunctionPath | Get-ChildItem -Filter *.ps1 | Get-FunctionsToExport
 
     VariablesToExport = @()
