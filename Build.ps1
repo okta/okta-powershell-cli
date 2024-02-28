@@ -54,7 +54,7 @@ $Manifest = @{
     Author = 'Okta, Inc.'
     CompanyName = 'Okta'
     Description = 'Okta.PowerShell - the PowerShell module for Okta Management'
-    Tags = @('Okta' ,' Resources Management' ,' Access Management' ,' PSEdition_Core' )
+    Tags = @('Okta' ,'api' ,'authentication' ,'identity' ,'management' ,'PSEdition_Core' )
     ProjectUri = 'https://github.com/okta/okta-powershell-cli'
     LicenseUri = 'https://github.com/okta/okta-powershell-cli/blob/main/LICENSE.md'
     IconUri = 'https://cdn.brandfolder.io/R30ALRIS/at/mtg52xxxcr939z2ns8jrg3mz/Okta_Aura_CMYK_Black.png'
@@ -65,7 +65,7 @@ $Manifest = @{
     
 
     RootModule = 'Okta.PowerShell.psm1'
-    Guid = '{68B02146-CF85-49CB-A499-E0D71414159A}' # Has to be static, otherwise each new build will be considered different module
+    Guid = '{AD0CD253-16DF-4496-9BCF-EA49AFB7FB27}' # Has to be static, otherwise each new build will be considered different module
 
     PowerShellVersion = '6.2'
     

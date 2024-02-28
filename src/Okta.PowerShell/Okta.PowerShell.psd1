@@ -18,7 +18,7 @@ ModuleVersion = '1.0.0'
 CompatiblePSEditions = 'Core'
 
 # ID used to uniquely identify this module
-GUID = '68b02146-cf85-49cb-a499-e0d71414159a'
+GUID = 'ad0cd253-16df-4496-9bcf-ea49afb7fb27'
 
 # Author of this module
 Author = 'Okta, Inc.'
@@ -1447,8 +1447,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Okta', ' Resources Management', ' Access Management', 
-               ' PSEdition_Core'
+        Tags = 'Okta', 'api', 'authentication', 'identity', 'management', 'PSEdition_Core'
 
         # A URL to the license for this module.
         LicenseUri = 'https://github.com/okta/okta-powershell-cli/blob/main/LICENSE.md'
