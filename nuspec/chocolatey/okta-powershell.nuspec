@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>okta.powershell</id>
+    <version>1.0.0</version>
+    <owners>Okta, Inc.</owners>
+    <packageSourceUrl>https://github.com/okta/okta-powershell-cli/tree/main/nuspec/Chocolatey</packageSourceUrl>
+    <title>Okta.PowerShell (Install)</title>
+    <authors>Okta</authors>
+    <projectUrl>https://github.com/okta/okta-powershell-cli</projectUrl>
+    <iconUrl>https://cdn.brandfolder.io/R30ALRIS/at/mtg52xxxcr939z2ns8jrg3mz/Okta_Aura_CMYK_Black.png</iconUrl>
+    <licenseUrl>https://github.com/okta/okta-powershell-cli/blob/main/LICENSE.md</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <copyright>2024-Present Okta, Inc.</copyright>
+    <tags>okta-powershell okta powershell</tags>
+    <summary> The PowerShell module for the Okta Management API</summary>
+    <description> The PowerShell module for the Okta Management API </description>
+    <releaseNotes>https://github.com/okta/okta-powershell-cli/releases</releaseNotes>
+    <dependencies>
+      <dependency id="powershell-core" version="[6.2.0,)" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
