@@ -1,0 +1,9 @@
+﻿
+VERIFICATION
+Verification is intended to assist the Chocolatey moderators and community
+in verifying that this package's contents are trustworthy.
+
+To verify the files:
+
+1- Visit to the Okta.Powershell releases page at https://github.com/okta/okta-powershell-cli/releases and download the signed version zip file
+2- Run `Get-FileHash -Path <FILE_TO_VERIFY>` to get the hashes from both sources, this package and the downloaded in step 1, and compare if they both match

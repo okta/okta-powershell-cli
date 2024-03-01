@@ -5,7 +5,7 @@
     <id>okta.powershell</id>
     <version>1.0.0</version>
     <owners>Okta, Inc.</owners>
-    <packageSourceUrl>https://github.com/okta/okta-powershell-cli/tree/main/nuspec/Chocolatey</packageSourceUrl>
+    <packageSourceUrl>https://github.com/okta/okta-powershell-cli/blob/main/nuspec/chocolatey</packageSourceUrl>
     <title>Okta.PowerShell (Install)</title>
     <authors>Okta</authors>
     <projectUrl>https://github.com/okta/okta-powershell-cli</projectUrl>
