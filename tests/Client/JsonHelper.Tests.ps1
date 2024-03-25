@@ -44,4 +44,23 @@ Context 'Remove-NullProperties' {
         Get-Member -inputobject $CleanedJsonObject.details.children[0] -name "age" -MemberType Properties | Should -Be $null
         Get-Member -inputobject $CleanedJsonObject.details.children[0] -name "name" -MemberType Properties | Should -Be -Not $null
     }
+
+    It 'Should maintain the same object when there''s no null values'{
+        $NewGroupRule = [PSObject]@{
+            name = "Assign users to the Sales Team"
+            type = "group_rule"
+            actions = [PSObject]@{ 
+                assignUserToGroups = [PSObject]@{
+                    groupIds = [array]@('foo')
+                }
+            } 
+        }
+
+        $CleanedRule = Remove-NullProperties $NewGroupRule
+
+        $CleanedRule.name  | Should -Be "Assign users to the Sales Team"
+        $CleanedRule.type | Should -Be "group_rule"
+        $CleanedRule.actions.assignUserToGroups.groupIds.Count | Should -Be 1
+        $CleanedRule.actions.assignUserToGroups.groupIds[0] | Should -Be "foo"
+    }
 }
