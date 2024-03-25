@@ -26,7 +26,8 @@ function Remove-NullProperties {
         $NewObject = Remove-NullPropertiesFromHashMap($InputObject)
     }
     elseif ($InputObject -is [array]){
-        $NewObject = Remove-NullPropertiesFromArray($InputObject)
+        [array]$NewArray = Remove-NullPropertiesFromArray($InputObject)
+        return $NewArray
     }
     else{
         $PropertyList = $InputObject.PSObject.Properties | Where-Object { $null -ne $_.Value }
@@ -53,7 +54,13 @@ function Remove-NullPropertiesFromHashMap{
     $OutputHashtable = @{}
     foreach ($Key in $InputObject.Keys) {
         $Value = $InputObject[$Key]
-        $CleanedValue = Remove-NullProperties $Value
+        # explicit cast to avoid arrays to be converted to object (i.e @('foo'))
+        if($Value -is [array]){
+            [array]$CleanedValue = Remove-NullProperties $Value
+        }else{
+            $CleanedValue = Remove-NullProperties $Value
+        }
+
         if ($null -ne $CleanedValue) {
             $OutputHashtable[$Key] = $CleanedValue
         }
