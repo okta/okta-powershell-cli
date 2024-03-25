@@ -188,7 +188,12 @@ function Invoke-OktaApiClient {
                                         -UserAgent $OktaUserAgent
             }
 
-            $Response = DeserializeResponse -Response $RawResponse.Content -ReturnType $ReturnType -ContentTypes $RawResponse.Headers["Content-Type"]
+            $Response = $null
+
+            if ($RawResponse.StatusCode -ne '204') {
+                $Response = DeserializeResponse -Response $RawResponse.Content -ReturnType $ReturnType -ContentTypes $RawResponse.Headers["Content-Type"]        
+            }
+            
             $StatusCode = $RawResponse.StatusCode
             $Headers = $RawResponse.Headers
             $ElapsedTimeInMilliseconds  = CalculateElapsedTime -StartTime $StartTime
@@ -307,3 +312,4 @@ function DeserializeResponse {
         }
     }
 }
+
