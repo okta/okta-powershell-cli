@@ -122,7 +122,7 @@ Check out the following resources to learn more:
 
 1. Set your configuration
 
-```sh
+```powershell
 $Configuration = Get-OktaConfiguration
 $Configuration.BaseUrl = 'https://myorg.okta.com'
 $Configuration.ClientId = 'MY_CLIENT_ID'
@@ -131,14 +131,14 @@ $Configuration.Scope = "okta.groups.read" # or "okta.groups.read okta.apps.read"
 
 2. Authorize your device
 
-```sh
+```powershell
 Invoke-OktaEstablishAccessToken
 ```
 > Note: You have to open the browser and navigate to the provided URL to complete the flow. Once the device is authorized, go back to the PowerShell terminal.
 
 3. Invoke commands
 
-```sh
+```powershell
 Invoke-OktaListGroups
 
 id                    : 00g9erf7s3ydK79IX5d7
@@ -157,13 +157,13 @@ _links                : @{logo=System.Object[]; users=; apps=}
 
 ### Get a user
 
-```sh
+```powershell
 $User = Get-OktaUser -UserId "foo"
 ```         
 
 ### Create a user
 
-```sh
+```powershell
 $UserProfile = [PSCustomObject]@{
                 firstName = 'John'
                 lastName = 'Doe'
@@ -179,27 +179,27 @@ $TestResult = New-OktaUser -Body $CreateUserRequest
 
 ### List users with pagination
 
-```sh
+```powershell
 $Users  = Invoke-OktaListUsers -Limit 10 
 ```
 
-Utilize the `-withHttpInfo`` flag to retrieve additional response properties, including `NextPageUri` for accessing the subsequent page of results. Additionally, you can seamlessly access all response headers through the Headers property.
+Utilize the `-withHttpInfo` flag to retrieve additional response properties, including `NextPageUri` for accessing the subsequent page of results. Additionally, you can seamlessly access all response headers through the Headers property.
 
 To paginate results, use `Uri` param, which allows passing absolute URIs:
 
-```sh
+```powershell
 $UsersResponse  = Invoke-OktaListUsers -Limit 10 -withHttpInfo
 
 While ($UsersResponse.NextPageUri)
 {
-	$UsersResponse = Invoke-OktaListUsers -Uri $UsersResponse.NextPageUri  -withHttpInfo #This time you can pass the absolute Uri with already contains query params such as "limit" or/and "after"
+    $UsersResponse = Invoke-OktaListUsers -Uri $UsersResponse.NextPageUri  -withHttpInfo #This time you can pass the absolute Uri with already contains query params such as "limit" or/and "after"
     $UsersList =  $UsersResponse.Response
 }
 ```
 
 ### Create an application
 
-```sh
+```powershell
 $OAuthClient = [PSCustomObject]@{
                 client_uri = "https://example.com/client"
                 logo_uri = "https://example.com/assets/images/logo-new.png"
@@ -241,7 +241,7 @@ You can configure the following options when using the built-in retry strategy:
 
 ### Usage
 
-```sh
+```powershell
 $Config = Get-OktaConfiguration
 $Config.MaxRetries = 2
 $Config.RequestTimeout = 6000 
