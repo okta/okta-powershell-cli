@@ -68,7 +68,7 @@ The Okta PowerShell module is compatible with:
 
 To install from the source, run the following command to build and install the PowerShell module locally:
 ```powershell
-Build.ps1
+./Build.ps1
 Import-Module -Name '.\src\Okta.PowerShell' -Verbose
 ```
 
@@ -108,7 +108,7 @@ Add the appropriate users or groups and assign the necessary permissions to the 
 
 The PowerShell module uses the [device authorization flow](https://developer.okta.com/docs/guides/device-authorization-grant/main/) to obtain an access token, so it requires, at least, three configuration values. These are the
 values for the [Okta Org
-domain](https://developer.okta.com/docs/guides/find-your-domain/main/), the client ID of the [OIDC Native Application](https://developer.okta.com/blog/2021/11/12/native-sso) and the scope for the API grants you are gonna need. For example, if you are going to get groups then you will need the grant `okta.group.read` configured in your scope.
+domain](https://developer.okta.com/docs/guides/find-your-domain/main/), the client ID of the [OIDC Native Application](https://developer.okta.com/blog/2021/11/12/native-sso) and the scope for the API grants you are gonna need. For example, if you are going to get groups then you will need the grant `okta.groups.read` configured in your scope.
 
 ### non-admin users
 
