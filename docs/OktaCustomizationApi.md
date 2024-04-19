@@ -72,7 +72,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $CreateBrandRequest = Initialize-CreateBrandRequest -Name "MyName" # CreateBrandRequest |  (optional)
 
@@ -124,7 +124,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $TemplateName = "MyTemplateName" # String | The name of the email template.
@@ -184,7 +184,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $TemplateName = "MyTemplateName" # String | The name of the email template.
@@ -236,7 +236,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 
@@ -287,7 +287,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $ThemeId = "MyThemeId" # String | The ID of the theme.
@@ -340,7 +340,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $ThemeId = "MyThemeId" # String | The ID of the theme.
@@ -393,7 +393,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $ThemeId = "MyThemeId" # String | The ID of the theme.
@@ -447,7 +447,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $TemplateName = "MyTemplateName" # String | The name of the email template.
@@ -501,7 +501,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 
@@ -551,7 +551,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 
@@ -602,7 +602,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $ThemeId = "MyThemeId" # String | The ID of the theme.
@@ -656,7 +656,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $TemplateName = "MyTemplateName" # String | The name of the email template.
@@ -712,7 +712,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $TemplateName = "MyTemplateName" # String | The name of the email template.
@@ -768,7 +768,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $TemplateName = "MyTemplateName" # String | The name of the email template.
@@ -824,7 +824,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $TemplateName = "MyTemplateName" # String | The name of the email template.
@@ -879,7 +879,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $TemplateName = "MyTemplateName" # String | The name of the email template.
@@ -933,7 +933,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $TemplateName = "MyTemplateName" # String | The name of the email template.
@@ -988,7 +988,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $CreateBrandDomainRequest = Initialize-CreateBrandDomainRequest -DomainId "MyDomainId" # CreateBrandDomainRequest |  (optional)
@@ -1040,7 +1040,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 
@@ -1090,7 +1090,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 
@@ -1139,7 +1139,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 
 # List all Brands
@@ -1188,7 +1188,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $TemplateName = "MyTemplateName" # String | The name of the email template.
@@ -1247,7 +1247,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $After = "MyAfter" # String | The cursor to use for pagination. It is an opaque string that specifies your current location in the list and is obtained from the `Link` response header. See [Pagination](/#pagination) for more information. (optional)
@@ -1304,7 +1304,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $CustomizablePage = Initialize-CustomizablePage -PageContent "MyPageContent" # CustomizablePage | 
@@ -1357,7 +1357,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $SignInPageAllOfWidgetCustomizations = Initialize-SignInPageAllOfWidgetCustomizations -SignInLabel "MySignInLabel" -UsernameLabel "MyUsernameLabel" -UsernameInfoTip "MyUsernameInfoTip" -PasswordLabel "MyPasswordLabel" -PasswordInfoTip "MyPasswordInfoTip" -ShowPasswordVisibilityToggle $false -ShowUserIdentifier $false -ForgotPasswordLabel "MyForgotPasswordLabel" -ForgotPasswordUrl "MyForgotPasswordUrl" -UnlockAccountLabel "MyUnlockAccountLabel" -UnlockAccountUrl "MyUnlockAccountUrl" -HelpLabel "MyHelpLabel" -HelpUrl "MyHelpUrl" -CustomLink1Label "MyCustomLink1Label" -CustomLink1Url "MyCustomLink1Url" -CustomLink2Label "MyCustomLink2Label" -CustomLink2Url "MyCustomLink2Url" -AuthenticatorPageCustomLinkLabel "MyAuthenticatorPageCustomLinkLabel" -AuthenticatorPageCustomLinkUrl "MyAuthenticatorPageCustomLinkUrl" -ClassicRecoveryFlowEmailOrUsernameLabel "MyClassicRecoveryFlowEmailOrUsernameLabel"
@@ -1411,7 +1411,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $CustomizablePage = Initialize-CustomizablePage -PageContent "MyPageContent" # CustomizablePage | 
@@ -1464,7 +1464,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $SignInPageAllOfWidgetCustomizations = Initialize-SignInPageAllOfWidgetCustomizations -SignInLabel "MySignInLabel" -UsernameLabel "MyUsernameLabel" -UsernameInfoTip "MyUsernameInfoTip" -PasswordLabel "MyPasswordLabel" -PasswordInfoTip "MyPasswordInfoTip" -ShowPasswordVisibilityToggle $false -ShowUserIdentifier $false -ForgotPasswordLabel "MyForgotPasswordLabel" -ForgotPasswordUrl "MyForgotPasswordUrl" -UnlockAccountLabel "MyUnlockAccountLabel" -UnlockAccountUrl "MyUnlockAccountUrl" -HelpLabel "MyHelpLabel" -HelpUrl "MyHelpUrl" -CustomLink1Label "MyCustomLink1Label" -CustomLink1Url "MyCustomLink1Url" -CustomLink2Label "MyCustomLink2Label" -CustomLink2Url "MyCustomLink2Url" -AuthenticatorPageCustomLinkLabel "MyAuthenticatorPageCustomLinkLabel" -AuthenticatorPageCustomLinkUrl "MyAuthenticatorPageCustomLinkUrl" -ClassicRecoveryFlowEmailOrUsernameLabel "MyClassicRecoveryFlowEmailOrUsernameLabel"
@@ -1518,7 +1518,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $HostedPage = Initialize-HostedPage -Type "EXTERNALLY_HOSTED" -Url "MyUrl" # HostedPage | 
@@ -1570,7 +1570,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 
@@ -1620,7 +1620,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 
@@ -1670,7 +1670,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 
@@ -1720,7 +1720,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 
@@ -1770,7 +1770,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 
@@ -1820,7 +1820,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 
@@ -1870,7 +1870,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 
@@ -1920,7 +1920,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 
@@ -1971,7 +1971,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $Expand = "default" # String[] | Specifies additional metadata to be included in the response. (optional)
@@ -2023,7 +2023,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 
@@ -2073,7 +2073,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 
@@ -2124,7 +2124,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $Expand = "default" # String[] | Specifies additional metadata to be included in the response. (optional)
@@ -2176,7 +2176,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 
@@ -2228,7 +2228,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $TemplateName = "MyTemplateName" # String | The name of the email template.
@@ -2283,7 +2283,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $DomainId = "MyDomainId" # String | The ID of the domain.
@@ -2336,7 +2336,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $BrandRequest = Initialize-BrandRequest -AgreeToCustomPrivacyPolicy $false -CustomPrivacyPolicyUrl "MyCustomPrivacyPolicyUrl" -Name "MyName" -RemovePoweredByOkta $false # BrandRequest | 
@@ -2390,7 +2390,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $ThemeId = "MyThemeId" # String | The ID of the theme.
@@ -2447,7 +2447,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $TemplateName = "MyTemplateName" # String | The name of the email template.
@@ -2510,7 +2510,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $TemplateName = "MyTemplateName" # String | The name of the email template.
@@ -2566,7 +2566,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $ThemeId = "MyThemeId" # String | The ID of the theme.
@@ -2622,7 +2622,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $ThemeId = "MyThemeId" # String | The ID of the theme.
@@ -2678,7 +2678,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $ThemeId = "MyThemeId" # String | The ID of the theme.
