@@ -26,7 +26,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $LinkedObjectDetails = Initialize-LinkedObjectDetails -Description "MyDescription" -Name "MyName" -Title "MyTitle" -Type "USER"
 $LinkedObject = Initialize-LinkedObject -Associated $LinkedObjectDetails -Primary $LinkedObjectDetails -Links @{ key_example =  } # LinkedObject | 
@@ -77,7 +77,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $LinkedObjectName = "MyLinkedObjectName" # String | 
 
@@ -127,7 +127,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $LinkedObjectName = "MyLinkedObjectName" # String | 
 
@@ -176,7 +176,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 
 # List all Linked Object Definitions

@@ -28,7 +28,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $HrefObjectHints = Initialize-HrefObjectHints -Allow "DELETE"
 $HrefObject = Initialize-HrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
@@ -83,7 +83,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $CaptchaId = "abcd1234" # String | id of the CAPTCHA
 
@@ -133,7 +133,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $CaptchaId = "abcd1234" # String | id of the CAPTCHA
 
@@ -182,7 +182,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 
 # List all CAPTCHA instances
@@ -229,7 +229,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $CaptchaId = "abcd1234" # String | id of the CAPTCHA
 $HrefObjectHints = Initialize-HrefObjectHints -Allow "DELETE"
@@ -287,7 +287,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $CaptchaId = "abcd1234" # String | id of the CAPTCHA
 $HrefObjectHints = Initialize-HrefObjectHints -Allow "DELETE"

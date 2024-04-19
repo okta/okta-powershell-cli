@@ -35,7 +35,7 @@ This library uses semantic versioning and follows Okta's [library version policy
 
 | Version | Status                    |
 | ------- | ------------------------- |
-| 1.0.0 | :heavy_check_mark: Stable |
+| 1.x | :heavy_check_mark: Stable |
  
 The latest release can always be found on the [releases page][github-releases]. For more information about our SDKs' lifecycle, check out [our docs](https://developer.okta.com/code/library-versions/).
 
@@ -66,7 +66,28 @@ The Okta PowerShell module is compatible with:
 <a id="installation"></a>
 ## Installation
 
+### PSGallery
+
+To install the Okta.PowerShell module from [PS Gallery](https://www.powershellgallery.com/packages/Okta.PowerShell) run the following command:
+
+```powershell
+Install-Module -Name Okta.PowerShell -RequiredVersion <MODULE_VERSION>
+```
+
+### Chocolatey
+
+To install the Okta.PowerShell module from [Chocolatey](https://community.chocolatey.org/packages/okta.powershell) run the following command:
+
+```powershell
+choco install okta.powershell --version=<MODULE_VERSION>
+```
+
+### GitHub
+
+> Note: Signed binary releases are posted to the okta-powershell-cli releases section in Github. 
+
 To install from the source, run the following command to build and install the PowerShell module locally:
+
 ```powershell
 Build.ps1
 Import-Module -Name '.\src\Okta.PowerShell' -Verbose
@@ -80,7 +101,7 @@ Remove-Module -FullyQualifiedName @{ModuleName = "Okta.PowerShell"; ModuleVersio
 ```
 
 <a id="tests"></a>
-## Tests
+#### Tests
 
 To install and run `Pester`, please execute the following commands in the terminal:
 

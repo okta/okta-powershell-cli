@@ -25,7 +25,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $MappingId = "MyMappingId" # String | 
 
@@ -78,7 +78,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $After = "MyAfter" # String |  (optional)
 $Limit = 56 # Int32 |  (optional) (default to -1)
@@ -135,7 +135,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $MappingId = "MyMappingId" # String | 
 $ProfileMappingProperty = Initialize-ProfileMappingProperty -Expression "MyExpression" -PushStatus "DONT_PUSH"

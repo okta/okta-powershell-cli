@@ -3,9 +3,9 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>okta.powershell</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <owners>Okta, Inc.</owners>
-    <packageSourceUrl>https://github.com/okta/okta-powershell-cli/tree/main/nuspec/Chocolatey</packageSourceUrl>
+    <packageSourceUrl>https://github.com/okta/okta-powershell-cli/tree/main/nuspec/chocolatey</packageSourceUrl>
     <title>Okta.PowerShell (Install)</title>
     <authors>Okta</authors>
     <projectUrl>https://github.com/okta/okta-powershell-cli</projectUrl>

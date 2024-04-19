@@ -28,7 +28,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthenticatorId = "MyAuthenticatorId" # String | 
 
@@ -79,7 +79,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthenticatorProviderConfigurationUserNameTemplate = Initialize-AuthenticatorProviderConfigurationUserNameTemplate -Template "MyTemplate"
 $AuthenticatorProviderConfiguration = Initialize-AuthenticatorProviderConfiguration -AuthPort 0 -HostName "MyHostName" -InstanceId "MyInstanceId" -SharedSecret "MySharedSecret" -UserNameTemplate $AuthenticatorProviderConfigurationUserNameTemplate
@@ -140,7 +140,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthenticatorId = "MyAuthenticatorId" # String | 
 
@@ -190,7 +190,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthenticatorId = "MyAuthenticatorId" # String | 
 
@@ -239,7 +239,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 
 # List all Authenticators
@@ -286,7 +286,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthenticatorId = "MyAuthenticatorId" # String | 
 $AuthenticatorProviderConfigurationUserNameTemplate = Initialize-AuthenticatorProviderConfigurationUserNameTemplate -Template "MyTemplate"

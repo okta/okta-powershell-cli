@@ -30,7 +30,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $InlineHookId = "MyInlineHookId" # String | 
 
@@ -80,7 +80,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $InlineHookChannel = Initialize-InlineHookChannel -Type "HTTP" -Version "MyVersion"
 $InlineHook = Initialize-InlineHook -Channel $InlineHookChannel -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Status "ACTIVE" -Type "com.okta.import.transform" -Version "MyVersion" -Links @{ key_example =  } # InlineHook | 
@@ -131,7 +131,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $InlineHookId = "MyInlineHookId" # String | 
 
@@ -181,7 +181,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $InlineHookId = "MyInlineHookId" # String | 
 
@@ -232,7 +232,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $InlineHookId = "MyInlineHookId" # String | 
 $PayloadData = @{ key_example = ... } # SystemCollectionsHashtable | 
@@ -284,7 +284,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $InlineHookId = "MyInlineHookId" # String | 
 
@@ -334,7 +334,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $Type = "MyType" # String |  (optional)
 
@@ -385,7 +385,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $InlineHookId = "MyInlineHookId" # String | 
 $InlineHookChannel = Initialize-InlineHookChannel -Type "HTTP" -Version "MyVersion"

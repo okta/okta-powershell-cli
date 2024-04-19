@@ -41,7 +41,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BouncesRemoveListObj = Initialize-BouncesRemoveListObj -EmailAddresses "MyEmailAddresses" # BouncesRemoveListObj |  (optional)
 
@@ -90,7 +90,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 
 # Extend Okta Support Access
@@ -135,7 +135,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 
 # Retreive the Okta Communication Settings
@@ -180,7 +180,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 
 # Retrieve the Org Contact Types
@@ -226,7 +226,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $ContactType = "MyContactType" # String | 
 
@@ -275,7 +275,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 
 # Retrieve the Okta Support Settings
@@ -320,7 +320,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 
 # Retrieve the Org Preferences
@@ -365,7 +365,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 
 # Retrieve the Org Settings
@@ -410,7 +410,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 
 # Grant Okta Support Access to your Org
@@ -455,7 +455,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 
 # Update the Preference to Hide the Okta Dashboard Footer
@@ -500,7 +500,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 
 # Opt in all Users to Okta Communication emails
@@ -545,7 +545,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 
 # Opt out all Users from Okta Communication emails
@@ -591,7 +591,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $OrgSetting = Initialize-OrgSetting -Address1 "MyAddress1" -Address2 "MyAddress2" -City "MyCity" -CompanyName "MyCompanyName" -Country "MyCountry" -Created (Get-Date) -EndUserSupportHelpURL "MyEndUserSupportHelpURL" -ExpiresAt (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -PhoneNumber "MyPhoneNumber" -PostalCode "MyPostalCode" -State "MyState" -Status "MyStatus" -Subdomain "MySubdomain" -SupportPhoneNumber "MySupportPhoneNumber" -Website "MyWebsite" -Links @{ key_example =  } # OrgSetting |  (optional)
 
@@ -640,7 +640,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 
 # Revoke Okta Support Access
@@ -685,7 +685,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 
 # Update the Preference to Show the Okta Dashboard Footer
@@ -732,7 +732,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $ContactType = "MyContactType" # String | 
 $OrgContactUser = Initialize-OrgContactUser -UserId "MyUserId" -Links @{ key_example =  } # OrgContactUser | 
@@ -784,7 +784,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $File =  # System.IO.FileInfo | 
 
@@ -834,7 +834,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $OrgSetting = Initialize-OrgSetting -Address1 "MyAddress1" -Address2 "MyAddress2" -City "MyCity" -CompanyName "MyCompanyName" -Country "MyCountry" -Created (Get-Date) -EndUserSupportHelpURL "MyEndUserSupportHelpURL" -ExpiresAt (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -PhoneNumber "MyPhoneNumber" -PostalCode "MyPostalCode" -State "MyState" -Status "MyStatus" -Subdomain "MySubdomain" -SupportPhoneNumber "MySupportPhoneNumber" -Website "MyWebsite" -Links @{ key_example =  } # OrgSetting | 
 

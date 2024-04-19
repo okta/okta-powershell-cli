@@ -30,7 +30,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $DomainId = "MyDomainId" # String | 
 $DomainCertificate = Initialize-DomainCertificate -Certificate "MyCertificate" -CertificateChain "MyCertificateChain" -PrivateKey "MyPrivateKey" -Type "PEM" # DomainCertificate | 
@@ -82,7 +82,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $DNSRecord = Initialize-DNSRecord -Expiration "MyExpiration" -Fqdn "MyFqdn" -RecordType "CNAME" -Values "MyValues"
 $DomainCertificateMetadata = Initialize-DomainCertificateMetadata -Expiration "MyExpiration" -Fingerprint "MyFingerprint" -Subject "MySubject"
@@ -134,7 +134,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $DomainId = "MyDomainId" # String | 
 
@@ -184,7 +184,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $DomainId = "MyDomainId" # String | 
 
@@ -233,7 +233,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 
 # List all Domains
@@ -280,7 +280,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $DomainId = "MyDomainId" # String | 
 $UpdateDomain = Initialize-UpdateDomain -BrandId "MyBrandId" # UpdateDomain | 
@@ -332,7 +332,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $DomainId = "MyDomainId" # String | 
 

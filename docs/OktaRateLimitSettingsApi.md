@@ -25,7 +25,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 
 # Retrieve the Rate Limit Admin Notification Settings
@@ -70,7 +70,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 
 # Retrieve the Per-Client Rate Limit Settings
@@ -116,7 +116,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $RateLimitAdminNotifications = Initialize-RateLimitAdminNotifications -NotificationsEnabled $false # RateLimitAdminNotifications | 
 
@@ -166,7 +166,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $PerClientRateLimitSettingsUseCaseModeOverrides = Initialize-PerClientRateLimitSettingsUseCaseModeOverrides -LOGINPAGE "DISABLE" -OAUTH2AUTHORIZE "DISABLE" -OIEAPPINTENT "DISABLE"
 $PerClientRateLimitSettings = Initialize-PerClientRateLimitSettings -DefaultMode "DISABLE" -UseCaseModeOverrides $PerClientRateLimitSettingsUseCaseModeOverrides # PerClientRateLimitSettings | 

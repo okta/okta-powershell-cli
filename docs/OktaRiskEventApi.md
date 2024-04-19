@@ -23,7 +23,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $RiskEventSubject = Initialize-RiskEventSubject -Ip "MyIp" -Message "MyMessage" -RiskLevel "HIGH"
 $RiskEvent = Initialize-RiskEvent -ExpiresAt (Get-Date) -Subjects $RiskEventSubject -Timestamp (Get-Date) # RiskEvent[] | 

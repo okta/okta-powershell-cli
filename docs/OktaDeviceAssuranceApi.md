@@ -27,7 +27,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $DeviceAssuranceDiskEncryptionType = Initialize-DeviceAssuranceDiskEncryptionType -Include "ALL_INTERNAL_VOLUMES"
 $VersionObject = Initialize-VersionObject -Minimum "MyMinimum"
@@ -86,7 +86,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $DeviceAssuranceId = "MyDeviceAssuranceId" # String | Id of the Device Assurance Policy
 
@@ -136,7 +136,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $DeviceAssuranceId = "MyDeviceAssuranceId" # String | Id of the Device Assurance Policy
 
@@ -185,7 +185,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 
 # List all Device Assurance Policies
@@ -232,7 +232,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $DeviceAssuranceId = "MyDeviceAssuranceId" # String | Id of the Device Assurance Policy
 $DeviceAssuranceDiskEncryptionType = Initialize-DeviceAssuranceDiskEncryptionType -Include "ALL_INTERNAL_VOLUMES"

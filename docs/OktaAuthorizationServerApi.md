@@ -60,7 +60,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 
@@ -111,7 +111,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 $PolicyId = "MyPolicyId" # String | 
@@ -165,7 +165,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 $PolicyId = "MyPolicyId" # String | 
@@ -219,7 +219,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthorizationServerCredentialsSigningConfig = Initialize-AuthorizationServerCredentialsSigningConfig -Kid "MyKid" -LastRotated (Get-Date) -NextRotation (Get-Date) -RotationMode "AUTO" -Use "sig"
 $AuthorizationServerCredentials = Initialize-AuthorizationServerCredentials -Signing $AuthorizationServerCredentialsSigningConfig
@@ -273,7 +273,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 $AppAndInstanceConditionEvaluatorAppOrInstance = Initialize-AppAndInstanceConditionEvaluatorAppOrInstance -Id "MyId" -Name "MyName" -Type "APP"
@@ -378,7 +378,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $PolicyId = "MyPolicyId" # String | 
 $AuthServerId = "MyAuthServerId" # String | 
@@ -499,7 +499,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 $OAuth2ClaimConditions = Initialize-OAuth2ClaimConditions -Scopes "MyScopes"
@@ -553,7 +553,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 $OAuth2Scope = Initialize-OAuth2Scope -Consent "ADMIN" -Default $false -Description "MyDescription" -DisplayName "MyDisplayName" -Id "MyId" -MetadataPublish "ALL_CLIENTS" -Name "MyName" -System $false # OAuth2Scope | 
@@ -605,7 +605,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 
@@ -656,7 +656,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 $PolicyId = "MyPolicyId" # String | 
@@ -710,7 +710,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 $PolicyId = "MyPolicyId" # String | 
@@ -764,7 +764,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 
@@ -815,7 +815,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 $PolicyId = "MyPolicyId" # String | 
@@ -869,7 +869,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $PolicyId = "MyPolicyId" # String | 
 $AuthServerId = "MyAuthServerId" # String | 
@@ -924,7 +924,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 $ClaimId = "MyClaimId" # String | 
@@ -977,7 +977,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 $ScopeId = "MyScopeId" # String | 
@@ -1029,7 +1029,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 
@@ -1080,7 +1080,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 $PolicyId = "MyPolicyId" # String | 
@@ -1134,7 +1134,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $PolicyId = "MyPolicyId" # String | 
 $AuthServerId = "MyAuthServerId" # String | 
@@ -1189,7 +1189,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 $ClaimId = "MyClaimId" # String | 
@@ -1242,7 +1242,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 $ScopeId = "MyScopeId" # String | 
@@ -1297,7 +1297,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 $ClientId = "MyClientId" # String | 
@@ -1353,7 +1353,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 
@@ -1403,7 +1403,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 
@@ -1454,7 +1454,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $PolicyId = "MyPolicyId" # String | 
 $AuthServerId = "MyAuthServerId" # String | 
@@ -1508,7 +1508,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $Q = "MyQ" # String |  (optional)
 $Limit = 56 # Int32 |  (optional) (default to 200)
@@ -1562,7 +1562,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 
@@ -1612,7 +1612,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 
@@ -1666,7 +1666,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 $Q = "MyQ" # String |  (optional)
@@ -1728,7 +1728,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 $ClientId = "MyClientId" # String | 
@@ -1788,7 +1788,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 $ClientId = "MyClientId" # String | 
@@ -1843,7 +1843,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 $ClientId = "MyClientId" # String | 
@@ -1896,7 +1896,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 $JwkUse = Initialize-JwkUse -Use "sig" # JwkUse | 
@@ -1949,7 +1949,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 $AuthorizationServerCredentialsSigningConfig = Initialize-AuthorizationServerCredentialsSigningConfig -Kid "MyKid" -LastRotated (Get-Date) -NextRotation (Get-Date) -RotationMode "AUTO" -Use "sig"
@@ -2006,7 +2006,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 $PolicyId = "MyPolicyId" # String | 
@@ -2114,7 +2114,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $PolicyId = "MyPolicyId" # String | 
 $AuthServerId = "MyAuthServerId" # String | 
@@ -2238,7 +2238,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 $ClaimId = "MyClaimId" # String | 
@@ -2295,7 +2295,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthServerId = "MyAuthServerId" # String | 
 $ScopeId = "MyScopeId" # String | 

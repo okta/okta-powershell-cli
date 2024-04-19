@@ -29,7 +29,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $TrustedOriginId = "MyTrustedOriginId" # String | 
 
@@ -79,7 +79,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $TrustedOriginScope = Initialize-TrustedOriginScope -AllowedOktaApps "OKTA_ENDUSER" -Type "CORS"
 $TrustedOrigin = Initialize-TrustedOrigin -Created (Get-Date) -CreatedBy "MyCreatedBy" -Id "MyId" -LastUpdated (Get-Date) -LastUpdatedBy "MyLastUpdatedBy" -Name "MyName" -Origin "MyOrigin" -Scopes $TrustedOriginScope -Status "MyStatus" -Links @{ key_example =  } # TrustedOrigin | 
@@ -130,7 +130,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $TrustedOriginId = "MyTrustedOriginId" # String | 
 
@@ -180,7 +180,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $TrustedOriginId = "MyTrustedOriginId" # String | 
 
@@ -230,7 +230,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $TrustedOriginId = "MyTrustedOriginId" # String | 
 
@@ -283,7 +283,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $Q = "MyQ" # String |  (optional)
 $Filter = "MyFilter" # String |  (optional)
@@ -340,7 +340,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $TrustedOriginId = "MyTrustedOriginId" # String | 
 $TrustedOriginScope = Initialize-TrustedOriginScope -AllowedOktaApps "OKTA_ENDUSER" -Type "CORS"

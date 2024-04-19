@@ -37,7 +37,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $PoolId = "MyPoolId" # String | Id of the agent pool for which the settings will apply
 $UpdateId = "MyUpdateId" # String | Id of the update
@@ -90,7 +90,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $PoolId = "MyPoolId" # String | Id of the agent pool for which the settings will apply
 $HrefObjectHints = Initialize-HrefObjectHints -Allow "DELETE"
@@ -149,7 +149,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $PoolId = "MyPoolId" # String | Id of the agent pool for which the settings will apply
 $UpdateId = "MyUpdateId" # String | Id of the update
@@ -202,7 +202,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $PoolId = "MyPoolId" # String | Id of the agent pool for which the settings will apply
 $UpdateId = "MyUpdateId" # String | Id of the update
@@ -256,7 +256,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $LimitPerPoolType = 56 # Int32 | Maximum number of AgentPools being returned (optional) (default to 5)
 $PoolType = "AD" # AgentType | Agent type to search for (optional)
@@ -311,7 +311,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $PoolId = "MyPoolId" # String | Id of the agent pool for which the settings will apply
 $UpdateId = "MyUpdateId" # String | Id of the update
@@ -363,7 +363,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $PoolId = "MyPoolId" # String | Id of the agent pool for which the settings will apply
 
@@ -414,7 +414,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $PoolId = "MyPoolId" # String | Id of the agent pool for which the settings will apply
 $Scheduled = $true # Boolean | Scope the list only to scheduled or ad-hoc updates. If the parameter is not provided we will return the whole list of updates. (optional)
@@ -467,7 +467,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $PoolId = "MyPoolId" # String | Id of the agent pool for which the settings will apply
 $UpdateId = "MyUpdateId" # String | Id of the update
@@ -520,7 +520,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $PoolId = "MyPoolId" # String | Id of the agent pool for which the settings will apply
 $UpdateId = "MyUpdateId" # String | Id of the update
@@ -573,7 +573,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $PoolId = "MyPoolId" # String | Id of the agent pool for which the settings will apply
 $UpdateId = "MyUpdateId" # String | Id of the update
@@ -626,7 +626,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $PoolId = "MyPoolId" # String | Id of the agent pool for which the settings will apply
 $AgentPoolUpdateSetting = Initialize-AgentPoolUpdateSetting -AgentType "AD" -ContinueOnError $false -LatestVersion "MyLatestVersion" -MinimalSupportedVersion "MyMinimalSupportedVersion" -PoolId "MyPoolId" -PoolName "MyPoolName" -ReleaseChannel "BETA" # AgentPoolUpdateSetting | 
@@ -679,7 +679,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $PoolId = "MyPoolId" # String | Id of the agent pool for which the settings will apply
 $UpdateId = "MyUpdateId" # String | Id of the update
@@ -733,7 +733,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $PoolId = "MyPoolId" # String | Id of the agent pool for which the settings will apply
 $UpdateId = "MyUpdateId" # String | Id of the update

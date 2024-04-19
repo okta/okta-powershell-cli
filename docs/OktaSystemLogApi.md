@@ -29,7 +29,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $Since = (Get-Date) # System.DateTime |  (optional)
 $Until = (Get-Date) # System.DateTime |  (optional)

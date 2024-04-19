@@ -28,7 +28,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $SmsTemplate = Initialize-SmsTemplate -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Template "MyTemplate" -Translations  -Type "SMS_VERIFY_CODE" # SmsTemplate | 
 
@@ -78,7 +78,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $TemplateId = "MyTemplateId" # String | 
 
@@ -128,7 +128,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $TemplateId = "MyTemplateId" # String | 
 
@@ -178,7 +178,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $TemplateType = "SMS_VERIFY_CODE" # SmsTemplateType |  (optional)
 
@@ -229,7 +229,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $TemplateId = "MyTemplateId" # String | 
 $SmsTemplate = Initialize-SmsTemplate -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Template "MyTemplate" -Translations  -Type "SMS_VERIFY_CODE" # SmsTemplate | 
@@ -282,7 +282,7 @@ $Configuration = Get-OktaConfiguration
 
 # Configure your client ID and scope for authorization
 $Configuration.ClientId = "YOUR_CLIENT_ID"
-$Configuration.Scope = "OTKA_SCOPES" # for example okta.users.read
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $TemplateId = "MyTemplateId" # String | 
 $SmsTemplate = Initialize-SmsTemplate -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Template "MyTemplate" -Translations  -Type "SMS_VERIFY_CODE" # SmsTemplate | 
