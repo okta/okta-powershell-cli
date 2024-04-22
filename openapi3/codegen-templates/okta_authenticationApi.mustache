@@ -62,7 +62,8 @@ function Invoke-OktaEstablishAccessToken {
         $DeviceUrl = $LocalVarResult.Response.verification_uri_complete 
         $DeviceCode = $LocalVarResult.Response.device_code
 
-        Write-Host "Open your browser and navigate to the following URL to begin the Okta device authorization for the Powershell CLI: " $DeviceUrl
+        Write-Host "Open your browser and navigate to the following URL to begin the Okta device authorization for the PowerShell CLI:"
+        Write-Host $DeviceUrl
         
         $keepPolling = $true
         $CountPolling = 1
