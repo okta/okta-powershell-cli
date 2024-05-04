@@ -107,8 +107,8 @@ Add the appropriate users or groups and assign the necessary permissions to the 
 ### Prerequisites 
 
 The PowerShell module uses the [device authorization flow](https://developer.okta.com/docs/guides/device-authorization-grant/main/) to obtain an access token, so it requires, at least, three configuration values. These are the
-values for the [Okta Org
-domain](https://developer.okta.com/docs/guides/find-your-domain/main/), the client ID of the [OIDC Native Application](https://developer.okta.com/blog/2021/11/12/native-sso) and the scope for the API grants you are gonna need. For example, if you are going to get groups then you will need the grant `okta.groups.read` configured in your scope.
+values for the [Okta Org domain](https://developer.okta.com/docs/guides/find-your-domain/main/), the client ID of the [OIDC Native Application](https://developer.okta.com/blog/2021/11/12/native-sso) 
+and the scope for the API grants you are going to need. For example, if you are going to get groups then you will need the grant `okta.groups.read` configured in your scope. Assign yourself to the app.
 
 ### non-admin users
 
