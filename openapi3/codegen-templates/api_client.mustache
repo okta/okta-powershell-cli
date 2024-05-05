@@ -91,23 +91,23 @@ function Invoke-{{{apiNamePrefix}}}ApiClient {
     if ($FormParameters -and $FormParameters.Count -gt 0) {
         if (![string]::IsNullOrEmpty($MultiPartBoundary)) {
             $RequestBody = ""
-            $LF = "`r`n"
+            $CRLF = "`r`n"
             $FormParameters.Keys | ForEach-Object {
                 $value = $FormParameters[$_]
                 $isFile = $value.GetType().FullName -eq "System.IO.FileInfo"
 
-                $RequestBody += "--$MultiPartBoundary$LF"
+                $RequestBody += "--$MultiPartBoundary$CRLF"
                 $RequestBody += "Content-Disposition: form-data; name=`"$_`""
                 if ($isFile) {
                     $fileName = $value.Name
-                    $RequestBody += "; filename=`"$fileName`"$LF"
-                    $RequestBody += "Content-Type: application/octet-stream$LF$LF"
+                    $RequestBody += "; filename=`"$fileName`"$CRLF"
+                    $RequestBody += "Content-Type: application/octet-stream$CRLF$CRLF"
                     $RequestBody += Get-Content -Path $value.FullName
                 } else {
-                    $RequestBody += "$LF$LF"
+                    $RequestBody += "$CRLF$CRLF"
                     $RequestBody += ([string]$value)
                 }
-                $RequestBody += "$LF--$MultiPartBoundary"
+                $RequestBody += "$CRLF--$MultiPartBoundary"
             }
             $RequestBody += "--"
         } else {
@@ -202,7 +202,7 @@ function Invoke-{{{apiNamePrefix}}}ApiClient {
 
             $Response = $null
 
-            if ($RawResponse.StatusCode -ne '204') {
+            if ($RawResponse.StatusCode -ne 204) {
                 $Response = DeserializeResponse -Response $RawResponse.Content -ReturnType $ReturnType -ContentTypes $RawResponse.Headers["Content-Type"]        
             }
             
@@ -227,7 +227,7 @@ function Invoke-{{{apiNamePrefix}}}ApiClient {
                 $RetryFlag = $false
             }        
         }
-    } while($RetryFlag)
+    } while ($RetryFlag)
     
     return @{
         Response = $Response
