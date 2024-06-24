@@ -37,7 +37,8 @@ This library uses semantic versioning and follows Okta's [library version policy
 | ------- | ------------------------- |
 | 1.x | :heavy_check_mark: Stable |
  
-The latest release can always be found on the [releases page][github-releases]. For more information about our SDKs' lifecycle, check out [our docs](https://developer.okta.com/code/library-versions/).
+The latest release can always be found on the [releases page][github-releases]. For more information about our SDKs' lifecycle, check out [our docs](https://devel
+oper.okta.com/code/library-versions/).
 
 ## Need help?
  
@@ -74,12 +75,26 @@ To install the Okta.PowerShell module from [PS Gallery](https://www.powershellga
 Install-Module -Name Okta.PowerShell -RequiredVersion <MODULE_VERSION>
 ```
 
+To verify the module was successfully installed, run `Get-InstalledModule -Name 'okta.powershell'` and verify that the module information is shown.
+
+To uninstall the module, simply run:
+```powershell
+Uninstall-Module -Name Okta.PowerShell
+```
+
 ### Chocolatey
 
 To install the Okta.PowerShell module from [Chocolatey](https://community.chocolatey.org/packages/okta.powershell) run the following command:
 
 ```powershell
 choco install okta.powershell --version=<MODULE_VERSION>
+```
+
+To verify the module was successfully installed, run `choco list "okta.powershell"` and verify that the module information is shown.
+
+To uninstall the module, simply run:
+```powershell
+choco uninstall okta.powershell
 ```
 
 ### GitHub
