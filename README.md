@@ -37,8 +37,7 @@ This library uses semantic versioning and follows Okta's [library version policy
 | ------- | ------------------------- |
 | 1.x | :heavy_check_mark: Stable |
  
-The latest release can always be found on the [releases page][github-releases]. For more information about our SDKs' lifecycle, check out [our docs](https://devel
-oper.okta.com/code/library-versions/).
+The latest release can always be found on the [releases page][github-releases]. For more information about our SDKs' lifecycle, check out [our docs](https://developer.okta.com/code/library-versions/).
 
 ## Need help?
  
