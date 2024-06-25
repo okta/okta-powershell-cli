@@ -74,12 +74,26 @@ To install the Okta.PowerShell module from [PS Gallery](https://www.powershellga
 Install-Module -Name Okta.PowerShell -RequiredVersion <MODULE_VERSION>
 ```
 
+To verify the module was successfully installed, run `Get-InstalledModule -Name 'okta.powershell'` and verify that the module information is shown.
+
+To uninstall the module, simply run:
+```powershell
+Uninstall-Module -Name Okta.PowerShell
+```
+
 ### Chocolatey
 
 To install the Okta.PowerShell module from [Chocolatey](https://community.chocolatey.org/packages/okta.powershell) run the following command:
 
 ```powershell
 choco install okta.powershell --version=<MODULE_VERSION>
+```
+
+To verify the module was successfully installed, run `choco list "okta.powershell"` and verify that the module information is shown.
+
+To uninstall the module, simply run:
+```powershell
+choco uninstall okta.powershell
 ```
 
 ### GitHub
@@ -89,7 +103,7 @@ choco install okta.powershell --version=<MODULE_VERSION>
 To install from the source, run the following command to build and install the PowerShell module locally:
 
 ```powershell
-Build.ps1
+./Build.ps1
 Import-Module -Name '.\src\Okta.PowerShell' -Verbose
 ```
 
@@ -128,8 +142,8 @@ Add the appropriate users or groups and assign the necessary permissions to the 
 ### Prerequisites 
 
 The PowerShell module uses the [device authorization flow](https://developer.okta.com/docs/guides/device-authorization-grant/main/) to obtain an access token, so it requires, at least, three configuration values. These are the
-values for the [Okta Org
-domain](https://developer.okta.com/docs/guides/find-your-domain/main/), the client ID of the [OIDC Native Application](https://developer.okta.com/blog/2021/11/12/native-sso) and the scope for the API grants you are gonna need. For example, if you are going to get groups then you will need the grant `okta.group.read` configured in your scope.
+values for the [Okta Org domain](https://developer.okta.com/docs/guides/find-your-domain/main/), the client ID of the [OIDC Native Application](https://developer.okta.com/blog/2021/11/12/native-sso) 
+and the scope for the API grants you are going to need. For example, if you are going to get groups then you will need the grant `okta.groups.read` configured in your scope. Make sure to assign the application to anyone that needs access to it.
 
 ### non-admin users
 
@@ -143,7 +157,7 @@ Check out the following resources to learn more:
 
 1. Set your configuration
 
-```sh
+```powershell
 $Configuration = Get-OktaConfiguration
 $Configuration.BaseUrl = 'https://myorg.okta.com'
 $Configuration.ClientId = 'MY_CLIENT_ID'
@@ -152,14 +166,14 @@ $Configuration.Scope = "okta.groups.read" # or "okta.groups.read okta.apps.read"
 
 2. Authorize your device
 
-```sh
+```powershell
 Invoke-OktaEstablishAccessToken
 ```
 > Note: You have to open the browser and navigate to the provided URL to complete the flow. Once the device is authorized, go back to the PowerShell terminal.
 
 3. Invoke commands
 
-```sh
+```powershell
 Invoke-OktaListGroups
 
 id                    : 00g9erf7s3ydK79IX5d7
@@ -178,13 +192,13 @@ _links                : @{logo=System.Object[]; users=; apps=}
 
 ### Get a user
 
-```sh
+```powershell
 $User = Get-OktaUser -UserId "foo"
 ```         
 
 ### Create a user
 
-```sh
+```powershell
 $UserProfile = [PSCustomObject]@{
                 firstName = 'John'
                 lastName = 'Doe'
@@ -200,27 +214,27 @@ $TestResult = New-OktaUser -Body $CreateUserRequest
 
 ### List users with pagination
 
-```sh
+```powershell
 $Users  = Invoke-OktaListUsers -Limit 10 
 ```
 
-Utilize the `-withHttpInfo`` flag to retrieve additional response properties, including `NextPageUri` for accessing the subsequent page of results. Additionally, you can seamlessly access all response headers through the Headers property.
+Utilize the `-withHttpInfo` flag to retrieve additional response properties, including `NextPageUri` for accessing the subsequent page of results. Additionally, you can seamlessly access all response headers through the Headers property.
 
 To paginate results, use `Uri` param, which allows passing absolute URIs:
 
-```sh
+```powershell
 $UsersResponse  = Invoke-OktaListUsers -Limit 10 -withHttpInfo
 
 While ($UsersResponse.NextPageUri)
 {
-	$UsersResponse = Invoke-OktaListUsers -Uri $UsersResponse.NextPageUri  -withHttpInfo #This time you can pass the absolute Uri with already contains query params such as "limit" or/and "after"
+    $UsersResponse = Invoke-OktaListUsers -Uri $UsersResponse.NextPageUri  -withHttpInfo #This time you can pass the absolute Uri with already contains query params such as "limit" or/and "after"
     $UsersList =  $UsersResponse.Response
 }
 ```
 
 ### Create an application
 
-```sh
+```powershell
 $OAuthClient = [PSCustomObject]@{
                 client_uri = "https://example.com/client"
                 logo_uri = "https://example.com/assets/images/logo-new.png"
@@ -262,7 +276,7 @@ You can configure the following options when using the built-in retry strategy:
 
 ### Usage
 
-```sh
+```powershell
 $Config = Get-OktaConfiguration
 $Config.MaxRetries = 2
 $Config.RequestTimeout = 6000 
