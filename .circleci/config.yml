@@ -31,5 +31,6 @@ workflows:
     jobs:
       - general-platform-helpers/job-semgrep-scan:
           name: "Scan with Semgrep"
+          default-branch: "main"
           context:
             - static-analysis
