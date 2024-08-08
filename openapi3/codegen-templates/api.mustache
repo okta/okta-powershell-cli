@@ -195,10 +195,10 @@ function {{{vendorExtensions.x-powershell-method-name}}} {
         
 
         if ($IncludeNullValues.IsPresent) {
-            $LocalVarBodyParameter = ${{{paramName}}} | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = ${{{paramName}}} | ConvertTo-Json -Depth 100 -Compress
         }
         else{
-            $LocalVarBodyParameter = Remove-NullProperties -InputObject ${{{paramName}}} | ConvertTo-Json -Depth 100
+            $LocalVarBodyParameter = Remove-NullProperties -InputObject ${{{paramName}}} | ConvertTo-Json -Depth 100 -Compress
         }
 
         {{/bodyParam}}
@@ -259,12 +259,12 @@ function {{{vendorExtensions.x-powershell-method-name}}} {
 
         {{#vendorExtensions.x-ps-return-type-one-of}}
         # process oneOf response
-        $LocalVarResult["Response"] = ConvertFrom-{{apiNamePrefix}}JsonTo{{returnType}} (ConvertTo-Json $LocalVarResult["Response"] -Depth 100)
+        $LocalVarResult["Response"] = ConvertFrom-{{apiNamePrefix}}JsonTo{{returnType}} (ConvertTo-Json $LocalVarResult["Response"] -Depth 100 -Compress)
 
         {{/vendorExtensions.x-ps-return-type-one-of}}
         {{#vendorExtensions.x-ps-return-type-any-of}}
         # process anyOf response
-        $LocalVarResult["Response"] = ConvertFrom-{{apiNamePrefix}}JsonTo{{returnType}} (ConvertTo-Json $LocalVarResult["Response"] -Depth 100)
+        $LocalVarResult["Response"] = ConvertFrom-{{apiNamePrefix}}JsonTo{{returnType}} (ConvertTo-Json $LocalVarResult["Response"] -Depth 100 -Compress)
 
         {{/vendorExtensions.x-ps-return-type-any-of}}
         if ($WithHttpInfo.IsPresent) {
