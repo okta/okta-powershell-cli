@@ -80,7 +80,7 @@ function Invoke-OktaEstablishAccessToken {
                 $TokenVarResult = Invoke-OktaFetchAccessToken -DeviceCode $DeviceCode
 
                 if ($TokenVarResult.StatusCode -eq 200) {
-                    $keepPolling = $false
+                    break
                 }
             }
             catch {
@@ -88,6 +88,7 @@ function Invoke-OktaEstablishAccessToken {
                 $DebugMessage = "Polling count: " + $CountPolling
                 Write-Debug $DebugMessage
             }
+            Start-Sleep -Milliseconds 2000
         }
 
         if ($null -ne $TokenVarResult) {
