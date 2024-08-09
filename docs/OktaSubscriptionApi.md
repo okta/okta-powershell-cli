@@ -1,4 +1,4 @@
-# Okta.PowerShell.Okta.PowerShell\Api.OktaSubscriptionApi
+# Okta.PowerShell.Okta.PowerShell/Api.OktaSubscriptionApi
 
 All URIs are relative to *https://subdomain.okta.com*
 
