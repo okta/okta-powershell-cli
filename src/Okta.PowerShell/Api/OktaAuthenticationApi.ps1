@@ -76,6 +76,7 @@ function Invoke-OktaEstablishAccessToken {
         $TokenVarResult = $null
         #define timeout
         while ($keepPolling) {
+            Start-Sleep -Milliseconds 2000
             try {
                 $TokenVarResult = Invoke-OktaFetchAccessToken -DeviceCode $DeviceCode
 
