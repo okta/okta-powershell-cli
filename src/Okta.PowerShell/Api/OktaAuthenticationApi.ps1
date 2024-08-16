@@ -74,8 +74,10 @@ function Invoke-OktaEstablishAccessToken {
         $keepPolling = $true
         $CountPolling = 1
         $TokenVarResult = $null
-        #define timeout
-        while ($keepPolling) {
+        $Timeout = 3600 # in seconds (5 min)
+        $Timer = [Diagnostics.Stopwatch]::StartNew()
+        
+        while ($keepPolling -and $Timer.Elapsed.TotalSeconds -lt $Timeout) {
             Start-Sleep -Milliseconds 2000
             try {
                 $TokenVarResult = Invoke-OktaFetchAccessToken -DeviceCode $DeviceCode
@@ -86,16 +88,23 @@ function Invoke-OktaEstablishAccessToken {
             }
             catch {
                 $CountPolling++
-                $DebugMessage = "Polling count: " + $CountPolling
+                $DebugMessage = "Polling count: " + $CountPolling + "| Elapsed time (Timeout 3600 secs): " + $Timer.Elapsed.TotalSeconds
                 Write-Debug $DebugMessage
             }
         }
 
+        $Timer.Stop()
+
         if ($null -ne $TokenVarResult) {
             Set-OktaConfigurationAccessToken $TokenVarResult.Response.access_token
+            Write-Host "Your token has been successfully retrieved and set to your configuration"
         }
-
-        Write-Host "Your token has been successfully retrieved and set to your configuration"        
+        elseif ($Timer.Elapsed.TotalSeconds -gt $Timeout) {
+                Write-Host "INFO: Polling token has timed out"
+        }
+        else{
+            Write-Host "ERROR: No token has been established. Please try again."
+        }              
     }
 }
 

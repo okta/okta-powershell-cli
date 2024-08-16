@@ -1,4 +1,4 @@
-# Okta.PowerShell.Okta.PowerShell/Api.OktaThreatInsightApi
+# Okta.PowerShell.Okta.PowerShell\Api.OktaThreatInsightApi
 
 All URIs are relative to *https://subdomain.okta.com*
 

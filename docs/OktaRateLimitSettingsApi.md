@@ -1,4 +1,4 @@
-# Okta.PowerShell.Okta.PowerShell/Api.OktaRateLimitSettingsApi
+# Okta.PowerShell.Okta.PowerShell\Api.OktaRateLimitSettingsApi
 
 All URIs are relative to *https://subdomain.okta.com*
 
