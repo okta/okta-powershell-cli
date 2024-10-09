@@ -97,41 +97,41 @@ Describe -tag 'Okta.PowerShell' -name 'OktaOktaApplicationApi' {
         It 'Test Initialize-OktaOpenIdConnectApplication' {
            
             $OAuthClient = [PSCustomObject]@{
-                Client_Uri = "https://example.com/client"
-                Logo_Uri = "https://example.com/assets/images/logo-new.png"
-                Response_Types = @("token", "id_token", "code")
-                Redirect_Uris = @("https://example.com/oauth2/callback", "myapp://callback")
-                Post_Logout_Redirect_Uris = @("https://example.com/postlogout", "myapp://postlogoutcallback")
-                Grant_Types = @("implicit", "authorization_code")
-                Application_Type = "native"
-                Tos_Uri = "https://example.com/client/tos"
-                Policy_Uri = "https://example.com/client/policy"
+                client_uri = "https://example.com/client"
+                logo_uri = "https://example.com/assets/images/logo-new.png"
+                response_types = @("token", "id_token", "code")
+                redirect_uris = @("https://example.com/oauth2/callback", "myapp://callback")
+                post_logout_redirect_uris = @("https://example.com/postlogout", "myapp://postlogoutcallback")
+                grant_types = @("implicit", "authorization_code")
+                application_type = "native"
+                tos_uri = "https://example.com/client/tos"
+                policy_uri = "https://example.com/client/policy"
             }
             # a simple test to create an object
             $Settings = Initialize-OktaOpenIdConnectApplicationSettings -OauthClient $OAuthClient
 
-            $Settings.OauthClient.Client_Uri | Should -Be "https://example.com/client"
-            $Settings.OauthClient.Logo_Uri | Should -Be "https://example.com/assets/images/logo-new.png"
-            $Settings.OauthClient.Redirect_Uris.Count | Should -Be 2
-            $Settings.OauthClient.Post_Logout_Redirect_Uris.Count | Should -Be 2
-            $Settings.OauthClient.Grant_Types.Count | Should -Be 2
-            $Settings.OauthClient.Application_Type | Should -Be "native"
-            $Settings.OauthClient.Tos_Uri | Should -Be "https://example.com/client/tos"
-            $Settings.OauthClient.Policy_Uri | Should -Be "https://example.com/client/policy"
+            $Settings.OauthClient.client_uri | Should -Be "https://example.com/client"
+            $Settings.OauthClient.logo_uri | Should -Be "https://example.com/assets/images/logo-new.png"
+            $Settings.OauthClient.redirect_uris.Count | Should -Be 2
+            $Settings.OauthClient.post_logout_redirect_uris.Count | Should -Be 2
+            $Settings.OauthClient.grant_types.Count | Should -Be 2
+            $Settings.OauthClient.application_type | Should -Be "native"
+            $Settings.OauthClient.tos_uri | Should -Be "https://example.com/client/tos"
+            $Settings.OauthClient.policy_uri | Should -Be "https://example.com/client/policy"
 
             $NewObject = Initialize-OktaOpenIdConnectApplication -Label "New App" -SignOnMode "OPENID_CONNECT" -Settings $Settings
             $NewObject.Label | Should -Be "New App"
             $NewObject.Name | Should -Be "oidc_client"
             $NewObject.SignOnMode | Should -Be "OPENID_CONNECT"
             
-            $NewObject.Settings.OauthClient.Client_Uri | Should -Be "https://example.com/client"
-            $NewObject.Settings.OauthClient.Logo_Uri | Should -Be "https://example.com/assets/images/logo-new.png"
-            $NewObject.Settings.OauthClient.Redirect_Uris.Count | Should -Be 2
-            $NewObject.Settings.OauthClient.Post_Logout_Redirect_Uris.Count | Should -Be 2
-            $NewObject.Settings.OauthClient.Grant_Types.Count | Should -Be 2
-            $NewObject.Settings.OauthClient.Application_Type | Should -Be "native"
-            $NewObject.Settings.oauthClient.Tos_Uri | Should -Be "https://example.com/client/tos"
-            $NewObject.Settings.oauthClient.Policy_Uri | Should -Be "https://example.com/client/policy"
+            $NewObject.Settings.OauthClient.client_uri | Should -Be "https://example.com/client"
+            $NewObject.Settings.OauthClient.logo_uri | Should -Be "https://example.com/assets/images/logo-new.png"
+            $NewObject.Settings.OauthClient.redirect_uris.Count | Should -Be 2
+            $NewObject.Settings.OauthClient.post_logout_redirect_uris.Count | Should -Be 2
+            $NewObject.Settings.OauthClient.grant_types.Count | Should -Be 2
+            $NewObject.Settings.OauthClient.application_type | Should -Be "native"
+            $NewObject.Settings.oauthClient.tos_uri | Should -Be "https://example.com/client/tos"
+            $NewObject.Settings.oauthClient.policy_uri | Should -Be "https://example.com/client/policy"
         }
 
         It 'Test New-OktaApplication OpenIdConnectApplication' {
@@ -147,15 +147,15 @@ Describe -tag 'Okta.PowerShell' -name 'OktaOktaApplicationApi' {
             Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
 
             $OAuthClient = [PSCustomObject]@{
-                Client_Uri = "https://example.com/client"
-                Logo_Uri = "https://example.com/assets/images/logo-new.png"
-                Response_Types = @("token", "id_token", "code")
-                Redirect_Uris = @("https://example.com/oauth2/callback", "myapp://callback")
-                Post_Logout_Redirect_Uris = @("https://example.com/postlogout", "myapp://postlogoutcallback")
-                Grant_Types = @("implicit", "authorization_code")
-                Application_Type = "native"
-                Tos_Uri = "https://example.com/client/tos"
-                Policy_Uri = "https://example.com/client/policy"
+                client_uri = "https://example.com/client"
+                logo_uri = "https://example.com/assets/images/logo-new.png"
+                response_types = @("token", "id_token", "code")
+                redirect_uris = @("https://example.com/oauth2/callback", "myapp://callback")
+                post_logout_redirect_uris = @("https://example.com/postlogout", "myapp://postlogoutcallback")
+                grant_types = @("implicit", "authorization_code")
+                application_type = "native"
+                tos_uri = "https://example.com/client/tos"
+                policy_uri = "https://example.com/client/policy"
             }
             # a simple test to create an object
             $Settings = Initialize-OktaOpenIdConnectApplicationSettings -OauthClient $OAuthClient
@@ -173,15 +173,15 @@ Describe -tag 'Okta.PowerShell' -name 'OktaOktaApplicationApi' {
             $TestResult.Status | Should -Be "ACTIVE"
             
             # TODO make Case consistent (i.e ClientUri) 
-            $TestResult.Settings.OauthClient.Client_Uri | Should -Be "https://example.com/client"
-            $TestResult.Settings.OauthClient.Logo_Uri | Should -Be "https://example.com/assets/images/logo-new.png"
-            $TestResult.Settings.OauthClient.Redirect_Uris.Count | Should -Be 2
-            $TestResult.Settings.OauthClient.Post_Logout_Redirect_Uris.Count | Should -Be 2
-            $TestResult.Settings.OauthClient.Grant_Types.Count | Should -Be 2            
+            $TestResult.Settings.OauthClient.client_uri | Should -Be "https://example.com/client"
+            $TestResult.Settings.OauthClient.logo_uri | Should -Be "https://example.com/assets/images/logo-new.png"
+            $TestResult.Settings.OauthClient.redirect_uris.Count | Should -Be 2
+            $TestResult.Settings.OauthClient.post_logout_redirect_uris.Count | Should -Be 2
+            $TestResult.Settings.OauthClient.grant_types.Count | Should -Be 2            
             $TestResult.Settings.OauthClient.idp_initiated_login | Should -Not -Be $null   
-            $TestResult.Settings.OauthClient.Application_Type | Should -Be "native"     
-            $TestResult.Settings.OauthClient.Consent_Method | Should -Be "trusted"  
-            $TestResult.Settings.OauthClient.Tos_Uri | Should -Be "https://example.com/client/tos"            
+            $TestResult.Settings.OauthClient.application_type | Should -Be "native"     
+            $TestResult.Settings.OauthClient.consent_method | Should -Be "trusted"  
+            $TestResult.Settings.OauthClient.tos_uri | Should -Be "https://example.com/client/tos"            
         }
     }
 
@@ -207,15 +207,15 @@ Describe -tag 'Okta.PowerShell' -name 'OktaOktaApplicationApi' {
             $TestResult.SignOnMode | Should -Be "OPENID_CONNECT"
             $TestResult.Status | Should -Be "ACTIVE"
             
-            $TestResult.Settings.OauthClient.Client_Uri | Should -Be "https://example.com/client"
-            $TestResult.Settings.OauthClient.Logo_Uri | Should -Be "https://example.com/assets/images/logo-new.png"
-            $TestResult.Settings.OauthClient.Redirect_Uris.Count | Should -Be 2
-            $TestResult.Settings.OauthClient.Post_Logout_Redirect_Uris.Count | Should -Be 2
-            $TestResult.Settings.OauthClient.Grant_Types.Count | Should -Be 2            
+            $TestResult.Settings.OauthClient.client_uri | Should -Be "https://example.com/client"
+            $TestResult.Settings.OauthClient.logo_uri | Should -Be "https://example.com/assets/images/logo-new.png"
+            $TestResult.Settings.OauthClient.redirect_uris.Count | Should -Be 2
+            $TestResult.Settings.OauthClient.post_logout_redirect_uris.Count | Should -Be 2
+            $TestResult.Settings.OauthClient.grant_types.Count | Should -Be 2            
             $TestResult.Settings.OauthClient.idp_initiated_login | Should -Not -Be $null   
-            $TestResult.Settings.OauthClient.Application_Type | Should -Be "native"     
-            $TestResult.Settings.OauthClient.Consent_Method | Should -Be "trusted"  
-            $TestResult.Settings.OauthClient.Tos_Uri | Should -Be "https://example.com/client/tos"   
+            $TestResult.Settings.OauthClient.application_type | Should -Be "native"     
+            $TestResult.Settings.OauthClient.consent_method | Should -Be "trusted"  
+            $TestResult.Settings.OauthClient.tos_uri | Should -Be "https://example.com/client/tos"   
 
         }
     }
