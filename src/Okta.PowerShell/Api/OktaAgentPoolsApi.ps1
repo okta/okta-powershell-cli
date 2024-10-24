@@ -74,16 +74,16 @@ function Invoke-OktaActivateAgentPoolsUpdate {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/agentPools/{poolId}/updates/{updateId}/activate'
-        if (!$PoolId) {
+        if (!$PSBoundParameters.ContainsKey($PoolId)) {
             throw "Error! The required parameter `PoolId` missing when calling activateAgentPoolsUpdate."
         }
         $LocalVarUri = $LocalVarUri.replace('{poolId}', [System.Web.HTTPUtility]::UrlEncode($PoolId))
-        if (!$UpdateId) {
+        if (!$PSBoundParameters.ContainsKey($UpdateId)) {
             throw "Error! The required parameter `UpdateId` missing when calling activateAgentPoolsUpdate."
         }
         $LocalVarUri = $LocalVarUri.replace('{updateId}', [System.Web.HTTPUtility]::UrlEncode($UpdateId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -200,12 +200,12 @@ function New-OktaAgentPoolsUpdate {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/agentPools/{poolId}/updates'
-        if (!$PoolId) {
+        if (!$PSBoundParameters.ContainsKey($PoolId)) {
             throw "Error! The required parameter `PoolId` missing when calling createAgentPoolsUpdate."
         }
         $LocalVarUri = $LocalVarUri.replace('{poolId}', [System.Web.HTTPUtility]::UrlEncode($PoolId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -332,16 +332,16 @@ function Invoke-OktaDeactivateAgentPoolsUpdate {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/agentPools/{poolId}/updates/{updateId}/deactivate'
-        if (!$PoolId) {
+        if (!$PSBoundParameters.ContainsKey($PoolId)) {
             throw "Error! The required parameter `PoolId` missing when calling deactivateAgentPoolsUpdate."
         }
         $LocalVarUri = $LocalVarUri.replace('{poolId}', [System.Web.HTTPUtility]::UrlEncode($PoolId))
-        if (!$UpdateId) {
+        if (!$PSBoundParameters.ContainsKey($UpdateId)) {
             throw "Error! The required parameter `UpdateId` missing when calling deactivateAgentPoolsUpdate."
         }
         $LocalVarUri = $LocalVarUri.replace('{updateId}', [System.Web.HTTPUtility]::UrlEncode($UpdateId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -455,16 +455,16 @@ function Invoke-OktaDeleteAgentPoolsUpdate {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/agentPools/{poolId}/updates/{updateId}'
-        if (!$PoolId) {
+        if (!$PSBoundParameters.ContainsKey($PoolId)) {
             throw "Error! The required parameter `PoolId` missing when calling deleteAgentPoolsUpdate."
         }
         $LocalVarUri = $LocalVarUri.replace('{poolId}', [System.Web.HTTPUtility]::UrlEncode($PoolId))
-        if (!$UpdateId) {
+        if (!$PSBoundParameters.ContainsKey($UpdateId)) {
             throw "Error! The required parameter `UpdateId` missing when calling deleteAgentPoolsUpdate."
         }
         $LocalVarUri = $LocalVarUri.replace('{updateId}', [System.Web.HTTPUtility]::UrlEncode($UpdateId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -585,21 +585,21 @@ function Get-OktaAgentPools {
 
         $LocalVarUri = '/api/v1/agentPools'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($LimitPerPoolType) {
+        if ($PSBoundParameters.ContainsKey($LimitPerPoolType)) {
             $LocalVarQueryParameters['limitPerPoolType'] = $LimitPerPoolType
         }
 
-        if ($PoolType) {
+        if ($PSBoundParameters.ContainsKey($PoolType)) {
             $LocalVarQueryParameters['poolType'] = $PoolType
         }
 
-        if ($After) {
+        if ($PSBoundParameters.ContainsKey($After)) {
             $LocalVarQueryParameters['after'] = $After
         }
 
@@ -711,16 +711,16 @@ function Get-OktaAgentPoolsUpdateInstance {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/agentPools/{poolId}/updates/{updateId}'
-        if (!$PoolId) {
+        if (!$PSBoundParameters.ContainsKey($PoolId)) {
             throw "Error! The required parameter `PoolId` missing when calling getAgentPoolsUpdateInstance."
         }
         $LocalVarUri = $LocalVarUri.replace('{poolId}', [System.Web.HTTPUtility]::UrlEncode($PoolId))
-        if (!$UpdateId) {
+        if (!$PSBoundParameters.ContainsKey($UpdateId)) {
             throw "Error! The required parameter `UpdateId` missing when calling getAgentPoolsUpdateInstance."
         }
         $LocalVarUri = $LocalVarUri.replace('{updateId}', [System.Web.HTTPUtility]::UrlEncode($UpdateId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -828,12 +828,12 @@ function Get-OktaAgentPoolsUpdateSettings {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/agentPools/{poolId}/updates/settings'
-        if (!$PoolId) {
+        if (!$PSBoundParameters.ContainsKey($PoolId)) {
             throw "Error! The required parameter `PoolId` missing when calling getAgentPoolsUpdateSettings."
         }
         $LocalVarUri = $LocalVarUri.replace('{poolId}', [System.Web.HTTPUtility]::UrlEncode($PoolId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -947,18 +947,18 @@ function Get-OktaAgentPoolsUpdates {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/agentPools/{poolId}/updates'
-        if (!$PoolId) {
+        if (!$PSBoundParameters.ContainsKey($PoolId)) {
             throw "Error! The required parameter `PoolId` missing when calling getAgentPoolsUpdates."
         }
         $LocalVarUri = $LocalVarUri.replace('{poolId}', [System.Web.HTTPUtility]::UrlEncode($PoolId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Scheduled) {
+        if ($PSBoundParameters.ContainsKey($Scheduled)) {
             $LocalVarQueryParameters['scheduled'] = $Scheduled
         }
 
@@ -1070,16 +1070,16 @@ function Suspend-OktaAgentPoolsUpdate {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/agentPools/{poolId}/updates/{updateId}/pause'
-        if (!$PoolId) {
+        if (!$PSBoundParameters.ContainsKey($PoolId)) {
             throw "Error! The required parameter `PoolId` missing when calling pauseAgentPoolsUpdate."
         }
         $LocalVarUri = $LocalVarUri.replace('{poolId}', [System.Web.HTTPUtility]::UrlEncode($PoolId))
-        if (!$UpdateId) {
+        if (!$PSBoundParameters.ContainsKey($UpdateId)) {
             throw "Error! The required parameter `UpdateId` missing when calling pauseAgentPoolsUpdate."
         }
         $LocalVarUri = $LocalVarUri.replace('{updateId}', [System.Web.HTTPUtility]::UrlEncode($UpdateId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1193,16 +1193,16 @@ function Resume-OktaAgentPoolsUpdate {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/agentPools/{poolId}/updates/{updateId}/resume'
-        if (!$PoolId) {
+        if (!$PSBoundParameters.ContainsKey($PoolId)) {
             throw "Error! The required parameter `PoolId` missing when calling resumeAgentPoolsUpdate."
         }
         $LocalVarUri = $LocalVarUri.replace('{poolId}', [System.Web.HTTPUtility]::UrlEncode($PoolId))
-        if (!$UpdateId) {
+        if (!$PSBoundParameters.ContainsKey($UpdateId)) {
             throw "Error! The required parameter `UpdateId` missing when calling resumeAgentPoolsUpdate."
         }
         $LocalVarUri = $LocalVarUri.replace('{updateId}', [System.Web.HTTPUtility]::UrlEncode($UpdateId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1316,16 +1316,16 @@ function Invoke-OktaRetryAgentPoolsUpdate {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/agentPools/{poolId}/updates/{updateId}/retry'
-        if (!$PoolId) {
+        if (!$PSBoundParameters.ContainsKey($PoolId)) {
             throw "Error! The required parameter `PoolId` missing when calling retryAgentPoolsUpdate."
         }
         $LocalVarUri = $LocalVarUri.replace('{poolId}', [System.Web.HTTPUtility]::UrlEncode($PoolId))
-        if (!$UpdateId) {
+        if (!$PSBoundParameters.ContainsKey($UpdateId)) {
             throw "Error! The required parameter `UpdateId` missing when calling retryAgentPoolsUpdate."
         }
         $LocalVarUri = $LocalVarUri.replace('{updateId}', [System.Web.HTTPUtility]::UrlEncode($UpdateId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1442,12 +1442,12 @@ function Set-OktaAgentPoolsUpdateSettings {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/agentPools/{poolId}/updates/settings'
-        if (!$PoolId) {
+        if (!$PSBoundParameters.ContainsKey($PoolId)) {
             throw "Error! The required parameter `PoolId` missing when calling setAgentPoolsUpdateSettings."
         }
         $LocalVarUri = $LocalVarUri.replace('{poolId}', [System.Web.HTTPUtility]::UrlEncode($PoolId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1574,16 +1574,16 @@ function Stop-OktaAgentPoolsUpdate {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/agentPools/{poolId}/updates/{updateId}/stop'
-        if (!$PoolId) {
+        if (!$PSBoundParameters.ContainsKey($PoolId)) {
             throw "Error! The required parameter `PoolId` missing when calling stopAgentPoolsUpdate."
         }
         $LocalVarUri = $LocalVarUri.replace('{poolId}', [System.Web.HTTPUtility]::UrlEncode($PoolId))
-        if (!$UpdateId) {
+        if (!$PSBoundParameters.ContainsKey($UpdateId)) {
             throw "Error! The required parameter `UpdateId` missing when calling stopAgentPoolsUpdate."
         }
         $LocalVarUri = $LocalVarUri.replace('{updateId}', [System.Web.HTTPUtility]::UrlEncode($UpdateId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1706,16 +1706,16 @@ function Update-OktaAgentPoolsUpdate {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/agentPools/{poolId}/updates/{updateId}'
-        if (!$PoolId) {
+        if (!$PSBoundParameters.ContainsKey($PoolId)) {
             throw "Error! The required parameter `PoolId` missing when calling updateAgentPoolsUpdate."
         }
         $LocalVarUri = $LocalVarUri.replace('{poolId}', [System.Web.HTTPUtility]::UrlEncode($PoolId))
-        if (!$UpdateId) {
+        if (!$PSBoundParameters.ContainsKey($UpdateId)) {
             throw "Error! The required parameter `UpdateId` missing when calling updateAgentPoolsUpdate."
         }
         $LocalVarUri = $LocalVarUri.replace('{updateId}', [System.Web.HTTPUtility]::UrlEncode($UpdateId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]

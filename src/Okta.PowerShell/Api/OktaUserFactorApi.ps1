@@ -83,16 +83,16 @@ function Invoke-OktaActivateFactor {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/users/{userId}/factors/{factorId}/lifecycle/activate'
-        if (!$UserId) {
+        if (!$PSBoundParameters.ContainsKey($UserId)) {
             throw "Error! The required parameter `UserId` missing when calling activateFactor."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
-        if (!$FactorId) {
+        if (!$PSBoundParameters.ContainsKey($FactorId)) {
             throw "Error! The required parameter `FactorId` missing when calling activateFactor."
         }
         $LocalVarUri = $LocalVarUri.replace('{factorId}', [System.Web.HTTPUtility]::UrlEncode($FactorId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -221,22 +221,22 @@ function Invoke-OktaDeleteFactor {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/users/{userId}/factors/{factorId}'
-        if (!$UserId) {
+        if (!$PSBoundParameters.ContainsKey($UserId)) {
             throw "Error! The required parameter `UserId` missing when calling deleteFactor."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
-        if (!$FactorId) {
+        if (!$PSBoundParameters.ContainsKey($FactorId)) {
             throw "Error! The required parameter `FactorId` missing when calling deleteFactor."
         }
         $LocalVarUri = $LocalVarUri.replace('{factorId}', [System.Web.HTTPUtility]::UrlEncode($FactorId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($RemoveRecoveryEnrollment) {
+        if ($PSBoundParameters.ContainsKey($RemoveRecoveryEnrollment)) {
             $LocalVarQueryParameters['removeRecoveryEnrollment'] = $RemoveRecoveryEnrollment
         }
 
@@ -375,30 +375,30 @@ function Invoke-OktaEnrollFactor {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/users/{userId}/factors'
-        if (!$UserId) {
+        if (!$PSBoundParameters.ContainsKey($UserId)) {
             throw "Error! The required parameter `UserId` missing when calling enrollFactor."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($UpdatePhone) {
+        if ($PSBoundParameters.ContainsKey($UpdatePhone)) {
             $LocalVarQueryParameters['updatePhone'] = $UpdatePhone
         }
 
-        if ($TemplateId) {
+        if ($PSBoundParameters.ContainsKey($TemplateId)) {
             $LocalVarQueryParameters['templateId'] = $TemplateId
         }
 
-        if ($TokenLifetimeSeconds) {
+        if ($PSBoundParameters.ContainsKey($TokenLifetimeSeconds)) {
             $LocalVarQueryParameters['tokenLifetimeSeconds'] = $TokenLifetimeSeconds
         }
 
-        if ($Activate) {
+        if ($PSBoundParameters.ContainsKey($Activate)) {
             $LocalVarQueryParameters['activate'] = $Activate
         }
 
@@ -523,16 +523,16 @@ function Get-OktaFactor {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/users/{userId}/factors/{factorId}'
-        if (!$UserId) {
+        if (!$PSBoundParameters.ContainsKey($UserId)) {
             throw "Error! The required parameter `UserId` missing when calling getFactor."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
-        if (!$FactorId) {
+        if (!$PSBoundParameters.ContainsKey($FactorId)) {
             throw "Error! The required parameter `FactorId` missing when calling getFactor."
         }
         $LocalVarUri = $LocalVarUri.replace('{factorId}', [System.Web.HTTPUtility]::UrlEncode($FactorId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -652,20 +652,20 @@ function Get-OktaFactorTransactionStatus {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/users/{userId}/factors/{factorId}/transactions/{transactionId}'
-        if (!$UserId) {
+        if (!$PSBoundParameters.ContainsKey($UserId)) {
             throw "Error! The required parameter `UserId` missing when calling getFactorTransactionStatus."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
-        if (!$FactorId) {
+        if (!$PSBoundParameters.ContainsKey($FactorId)) {
             throw "Error! The required parameter `FactorId` missing when calling getFactorTransactionStatus."
         }
         $LocalVarUri = $LocalVarUri.replace('{factorId}', [System.Web.HTTPUtility]::UrlEncode($FactorId))
-        if (!$TransactionId) {
+        if (!$PSBoundParameters.ContainsKey($TransactionId)) {
             throw "Error! The required parameter `TransactionId` missing when calling getFactorTransactionStatus."
         }
         $LocalVarUri = $LocalVarUri.replace('{transactionId}', [System.Web.HTTPUtility]::UrlEncode($TransactionId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -773,12 +773,12 @@ function Invoke-OktaListFactors {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/users/{userId}/factors'
-        if (!$UserId) {
+        if (!$PSBoundParameters.ContainsKey($UserId)) {
             throw "Error! The required parameter `UserId` missing when calling listFactors."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -886,12 +886,12 @@ function Invoke-OktaListSupportedFactors {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/users/{userId}/factors/catalog'
-        if (!$UserId) {
+        if (!$PSBoundParameters.ContainsKey($UserId)) {
             throw "Error! The required parameter `UserId` missing when calling listSupportedFactors."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -999,12 +999,12 @@ function Invoke-OktaListSupportedSecurityQuestions {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/users/{userId}/factors/questions'
-        if (!$UserId) {
+        if (!$PSBoundParameters.ContainsKey($UserId)) {
             throw "Error! The required parameter `UserId` missing when calling listSupportedSecurityQuestions."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1132,22 +1132,22 @@ function Invoke-OktaResendEnrollFactor {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/users/{userId}/factors/{factorId}/resend'
-        if (!$UserId) {
+        if (!$PSBoundParameters.ContainsKey($UserId)) {
             throw "Error! The required parameter `UserId` missing when calling resendEnrollFactor."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
-        if (!$FactorId) {
+        if (!$PSBoundParameters.ContainsKey($FactorId)) {
             throw "Error! The required parameter `FactorId` missing when calling resendEnrollFactor."
         }
         $LocalVarUri = $LocalVarUri.replace('{factorId}', [System.Web.HTTPUtility]::UrlEncode($FactorId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($TemplateId) {
+        if ($PSBoundParameters.ContainsKey($TemplateId)) {
             $LocalVarQueryParameters['templateId'] = $TemplateId
         }
 
@@ -1311,38 +1311,38 @@ function Test-OktaFactor {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/users/{userId}/factors/{factorId}/verify'
-        if (!$UserId) {
+        if (!$PSBoundParameters.ContainsKey($UserId)) {
             throw "Error! The required parameter `UserId` missing when calling verifyFactor."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
-        if (!$FactorId) {
+        if (!$PSBoundParameters.ContainsKey($FactorId)) {
             throw "Error! The required parameter `FactorId` missing when calling verifyFactor."
         }
         $LocalVarUri = $LocalVarUri.replace('{factorId}', [System.Web.HTTPUtility]::UrlEncode($FactorId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($XForwardedFor) {
+        if ($PSBoundParameters.ContainsKey($XForwardedFor)) {
             $LocalVarHeaderParameters['X-Forwarded-For'] = $XForwardedFor
         }
 
-        if ($UserAgent) {
+        if ($PSBoundParameters.ContainsKey($UserAgent)) {
             $LocalVarHeaderParameters['User-Agent'] = $UserAgent
         }
 
-        if ($AcceptLanguage) {
+        if ($PSBoundParameters.ContainsKey($AcceptLanguage)) {
             $LocalVarHeaderParameters['Accept-Language'] = $AcceptLanguage
         }
 
-        if ($TemplateId) {
+        if ($PSBoundParameters.ContainsKey($TemplateId)) {
             $LocalVarQueryParameters['templateId'] = $TemplateId
         }
 
-        if ($TokenLifetimeSeconds) {
+        if ($PSBoundParameters.ContainsKey($TokenLifetimeSeconds)) {
             $LocalVarQueryParameters['tokenLifetimeSeconds'] = $TokenLifetimeSeconds
         }
 

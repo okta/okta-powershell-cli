@@ -68,12 +68,12 @@ function Get-OktaApiToken {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/api-tokens/{apiTokenId}'
-        if (!$ApiTokenId) {
+        if (!$PSBoundParameters.ContainsKey($ApiTokenId)) {
             throw "Error! The required parameter `ApiTokenId` missing when calling getApiToken."
         }
         $LocalVarUri = $LocalVarUri.replace('{apiTokenId}', [System.Web.HTTPUtility]::UrlEncode($ApiTokenId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -194,21 +194,21 @@ function Invoke-OktaListApiTokens {
 
         $LocalVarUri = '/api/v1/api-tokens'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($After) {
+        if ($PSBoundParameters.ContainsKey($After)) {
             $LocalVarQueryParameters['after'] = $After
         }
 
-        if ($Limit) {
+        if ($PSBoundParameters.ContainsKey($Limit)) {
             $LocalVarQueryParameters['limit'] = $Limit
         }
 
-        if ($Q) {
+        if ($PSBoundParameters.ContainsKey($Q)) {
             $LocalVarQueryParameters['q'] = $Q
         }
 
@@ -314,12 +314,12 @@ function Revoke-OktaApiToken {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/api-tokens/{apiTokenId}'
-        if (!$ApiTokenId) {
+        if (!$PSBoundParameters.ContainsKey($ApiTokenId)) {
             throw "Error! The required parameter `ApiTokenId` missing when calling revokeApiToken."
         }
         $LocalVarUri = $LocalVarUri.replace('{apiTokenId}', [System.Web.HTTPUtility]::UrlEncode($ApiTokenId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -422,7 +422,7 @@ function Revoke-OktaCurrentApiToken {
 
         $LocalVarUri = '/api/v1/api-tokens/current'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]

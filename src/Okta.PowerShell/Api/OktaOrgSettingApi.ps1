@@ -72,7 +72,7 @@ function Invoke-OktaBulkRemoveEmailAddressBounces {
 
         $LocalVarUri = '/api/v1/org/email/bounces/remove-list'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -184,7 +184,7 @@ function Invoke-OktaExtendOktaSupport {
 
         $LocalVarUri = '/api/v1/org/privacy/oktaSupport/extend'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -287,7 +287,7 @@ function Get-OktaOktaCommunicationSettings {
 
         $LocalVarUri = '/api/v1/org/privacy/oktaCommunication'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -390,7 +390,7 @@ function Get-OktaOrgContactTypes {
 
         $LocalVarUri = '/api/v1/org/contacts'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -498,12 +498,12 @@ function Get-OktaOrgContactUser {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/org/contacts/{contactType}'
-        if (!$ContactType) {
+        if (!$PSBoundParameters.ContainsKey($ContactType)) {
             throw "Error! The required parameter `ContactType` missing when calling getOrgContactUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{contactType}', [System.Web.HTTPUtility]::UrlEncode($ContactType))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -606,7 +606,7 @@ function Get-OktaOrgOktaSupportSettings {
 
         $LocalVarUri = '/api/v1/org/privacy/oktaSupport'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -709,7 +709,7 @@ function Get-OktaOrgPreferences {
 
         $LocalVarUri = '/api/v1/org/preferences'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -812,7 +812,7 @@ function Get-OktaOrgSettings {
 
         $LocalVarUri = '/api/v1/org'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -915,7 +915,7 @@ function Grant-OktaOktaSupport {
 
         $LocalVarUri = '/api/v1/org/privacy/oktaSupport/grant'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1018,7 +1018,7 @@ function Hide-OktaOktaUIFooter {
 
         $LocalVarUri = '/api/v1/org/preferences/hideEndUserFooter'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1121,7 +1121,7 @@ function Invoke-OktaOptInUsersToOktaCommunicationEmails {
 
         $LocalVarUri = '/api/v1/org/privacy/oktaCommunication/optIn'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1224,7 +1224,7 @@ function Invoke-OktaOptOutUsersFromOktaCommunicationEmails {
 
         $LocalVarUri = '/api/v1/org/privacy/oktaCommunication/optOut'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1336,7 +1336,7 @@ function Invoke-OktaPartialUpdateOrgSetting {
 
         $LocalVarUri = '/api/v1/org'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1448,7 +1448,7 @@ function Revoke-OktaOktaSupport {
 
         $LocalVarUri = '/api/v1/org/privacy/oktaSupport/revoke'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1551,7 +1551,7 @@ function Show-OktaOktaUIFooter {
 
         $LocalVarUri = '/api/v1/org/preferences/showEndUserFooter'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1668,12 +1668,12 @@ function Update-OktaOrgContactUser {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/org/contacts/{contactType}'
-        if (!$ContactType) {
+        if (!$PSBoundParameters.ContainsKey($ContactType)) {
             throw "Error! The required parameter `ContactType` missing when calling updateOrgContactUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{contactType}', [System.Web.HTTPUtility]::UrlEncode($ContactType))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1798,13 +1798,13 @@ function Update-OktaOrgLogo {
 
         $LocalVarUri = '/api/v1/org/logo'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$File) {
+        if (!$PSBoundParameters.ContainsKey($File)) {
             throw "Error! The required parameter `File` missing when calling updateOrgLogo."
         }
         $LocalVarFormParameters['file'] = $File
@@ -1915,7 +1915,7 @@ function Update-OktaOrgSetting {
 
         $LocalVarUri = '/api/v1/org'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -2031,7 +2031,7 @@ function Invoke-OktaWellknownOrgMetadata {
 
         $LocalVarUri = '/.well-known/okta-organization'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]

@@ -72,7 +72,7 @@ function New-OktaPrincipalRateLimitEntity {
 
         $LocalVarUri = '/api/v1/principal-rate-limits'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -193,12 +193,12 @@ function Get-OktaPrincipalRateLimitEntity {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/principal-rate-limits/{principalRateLimitId}'
-        if (!$PrincipalRateLimitId) {
+        if (!$PSBoundParameters.ContainsKey($PrincipalRateLimitId)) {
             throw "Error! The required parameter `PrincipalRateLimitId` missing when calling getPrincipalRateLimitEntity."
         }
         $LocalVarUri = $LocalVarUri.replace('{principalRateLimitId}', [System.Web.HTTPUtility]::UrlEncode($PrincipalRateLimitId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -319,21 +319,21 @@ function Invoke-OktaListPrincipalRateLimitEntities {
 
         $LocalVarUri = '/api/v1/principal-rate-limits'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Filter) {
+        if ($PSBoundParameters.ContainsKey($Filter)) {
             $LocalVarQueryParameters['filter'] = $Filter
         }
 
-        if ($After) {
+        if ($PSBoundParameters.ContainsKey($After)) {
             $LocalVarQueryParameters['after'] = $After
         }
 
-        if ($Limit) {
+        if ($PSBoundParameters.ContainsKey($Limit)) {
             $LocalVarQueryParameters['limit'] = $Limit
         }
 
@@ -448,12 +448,12 @@ function Update-OktaPrincipalRateLimitEntity {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/principal-rate-limits/{principalRateLimitId}'
-        if (!$PrincipalRateLimitId) {
+        if (!$PSBoundParameters.ContainsKey($PrincipalRateLimitId)) {
             throw "Error! The required parameter `PrincipalRateLimitId` missing when calling updatePrincipalRateLimitEntity."
         }
         $LocalVarUri = $LocalVarUri.replace('{principalRateLimitId}', [System.Web.HTTPUtility]::UrlEncode($PrincipalRateLimitId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey($Uri)) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
