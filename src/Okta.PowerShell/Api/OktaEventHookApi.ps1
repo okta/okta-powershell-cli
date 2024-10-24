@@ -68,12 +68,12 @@ function Invoke-OktaActivateEventHook {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/eventHooks/{eventHookId}/lifecycle/activate'
-        if (!$EventHookId) {
+        if (!$PSBoundParameters.ContainsKey("EventHookId")) {
             throw "Error! The required parameter `EventHookId` missing when calling activateEventHook."
         }
         $LocalVarUri = $LocalVarUri.replace('{eventHookId}', [System.Web.HTTPUtility]::UrlEncode($EventHookId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -189,7 +189,7 @@ function New-OktaEventHook {
 
         $LocalVarUri = '/api/v1/eventHooks'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -314,12 +314,12 @@ function Invoke-OktaDeactivateEventHook {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/eventHooks/{eventHookId}/lifecycle/deactivate'
-        if (!$EventHookId) {
+        if (!$PSBoundParameters.ContainsKey("EventHookId")) {
             throw "Error! The required parameter `EventHookId` missing when calling deactivateEventHook."
         }
         $LocalVarUri = $LocalVarUri.replace('{eventHookId}', [System.Web.HTTPUtility]::UrlEncode($EventHookId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -431,12 +431,12 @@ function Invoke-OktaDeleteEventHook {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/eventHooks/{eventHookId}'
-        if (!$EventHookId) {
+        if (!$PSBoundParameters.ContainsKey("EventHookId")) {
             throw "Error! The required parameter `EventHookId` missing when calling deleteEventHook."
         }
         $LocalVarUri = $LocalVarUri.replace('{eventHookId}', [System.Web.HTTPUtility]::UrlEncode($EventHookId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -548,12 +548,12 @@ function Get-OktaEventHook {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/eventHooks/{eventHookId}'
-        if (!$EventHookId) {
+        if (!$PSBoundParameters.ContainsKey("EventHookId")) {
             throw "Error! The required parameter `EventHookId` missing when calling getEventHook."
         }
         $LocalVarUri = $LocalVarUri.replace('{eventHookId}', [System.Web.HTTPUtility]::UrlEncode($EventHookId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -660,7 +660,7 @@ function Invoke-OktaListEventHooks {
 
         $LocalVarUri = '/api/v1/eventHooks'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -781,12 +781,12 @@ function Update-OktaEventHook {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/eventHooks/{eventHookId}'
-        if (!$EventHookId) {
+        if (!$PSBoundParameters.ContainsKey("EventHookId")) {
             throw "Error! The required parameter `EventHookId` missing when calling updateEventHook."
         }
         $LocalVarUri = $LocalVarUri.replace('{eventHookId}', [System.Web.HTTPUtility]::UrlEncode($EventHookId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -911,12 +911,12 @@ function Test-OktaEventHook {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/eventHooks/{eventHookId}/lifecycle/verify'
-        if (!$EventHookId) {
+        if (!$PSBoundParameters.ContainsKey("EventHookId")) {
             throw "Error! The required parameter `EventHookId` missing when calling verifyEventHook."
         }
         $LocalVarUri = $LocalVarUri.replace('{eventHookId}', [System.Web.HTTPUtility]::UrlEncode($EventHookId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]

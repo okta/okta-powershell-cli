@@ -68,12 +68,12 @@ function Invoke-OktaActivateAuthenticator {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authenticators/{authenticatorId}/lifecycle/activate'
-        if (!$AuthenticatorId) {
+        if (!$PSBoundParameters.ContainsKey("AuthenticatorId")) {
             throw "Error! The required parameter `AuthenticatorId` missing when calling activateAuthenticator."
         }
         $LocalVarUri = $LocalVarUri.replace('{authenticatorId}', [System.Web.HTTPUtility]::UrlEncode($AuthenticatorId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -195,13 +195,13 @@ function New-OktaAuthenticator {
 
         $LocalVarUri = '/api/v1/authenticators'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Activate) {
+        if ($PSBoundParameters.ContainsKey("Activate")) {
             $LocalVarQueryParameters['activate'] = $Activate
         }
 
@@ -324,12 +324,12 @@ function Invoke-OktaDeactivateAuthenticator {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authenticators/{authenticatorId}/lifecycle/deactivate'
-        if (!$AuthenticatorId) {
+        if (!$PSBoundParameters.ContainsKey("AuthenticatorId")) {
             throw "Error! The required parameter `AuthenticatorId` missing when calling deactivateAuthenticator."
         }
         $LocalVarUri = $LocalVarUri.replace('{authenticatorId}', [System.Web.HTTPUtility]::UrlEncode($AuthenticatorId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -441,12 +441,12 @@ function Get-OktaAuthenticator {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authenticators/{authenticatorId}'
-        if (!$AuthenticatorId) {
+        if (!$PSBoundParameters.ContainsKey("AuthenticatorId")) {
             throw "Error! The required parameter `AuthenticatorId` missing when calling getAuthenticator."
         }
         $LocalVarUri = $LocalVarUri.replace('{authenticatorId}', [System.Web.HTTPUtility]::UrlEncode($AuthenticatorId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -553,7 +553,7 @@ function Invoke-OktaListAuthenticators {
 
         $LocalVarUri = '/api/v1/authenticators'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -674,12 +674,12 @@ function Update-OktaAuthenticator {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/authenticators/{authenticatorId}'
-        if (!$AuthenticatorId) {
+        if (!$PSBoundParameters.ContainsKey("AuthenticatorId")) {
             throw "Error! The required parameter `AuthenticatorId` missing when calling updateAuthenticator."
         }
         $LocalVarUri = $LocalVarUri.replace('{authenticatorId}', [System.Web.HTTPUtility]::UrlEncode($AuthenticatorId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]

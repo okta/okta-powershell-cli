@@ -74,16 +74,16 @@ function Get-OktaRoleSubscriptionByNotificationType {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/roles/{roleTypeOrRoleId}/subscriptions/{notificationType}'
-        if (!$RoleTypeOrRoleId) {
+        if (!$PSBoundParameters.ContainsKey("RoleTypeOrRoleId")) {
             throw "Error! The required parameter `RoleTypeOrRoleId` missing when calling getRoleSubscriptionByNotificationType."
         }
         $LocalVarUri = $LocalVarUri.replace('{roleTypeOrRoleId}', [System.Web.HTTPUtility]::UrlEncode($RoleTypeOrRoleId))
-        if (!$NotificationType) {
+        if (!$PSBoundParameters.ContainsKey("NotificationType")) {
             throw "Error! The required parameter `NotificationType` missing when calling getRoleSubscriptionByNotificationType."
         }
         $LocalVarUri = $LocalVarUri.replace('{notificationType}', [System.Web.HTTPUtility]::UrlEncode($NotificationType))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -201,16 +201,16 @@ function Get-OktaUserSubscriptionByNotificationType {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/users/{userId}/subscriptions/{notificationType}'
-        if (!$UserId) {
+        if (!$PSBoundParameters.ContainsKey("UserId")) {
             throw "Error! The required parameter `UserId` missing when calling getUserSubscriptionByNotificationType."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
-        if (!$NotificationType) {
+        if (!$PSBoundParameters.ContainsKey("NotificationType")) {
             throw "Error! The required parameter `NotificationType` missing when calling getUserSubscriptionByNotificationType."
         }
         $LocalVarUri = $LocalVarUri.replace('{notificationType}', [System.Web.HTTPUtility]::UrlEncode($NotificationType))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -322,12 +322,12 @@ function Invoke-OktaListRoleSubscriptions {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/roles/{roleTypeOrRoleId}/subscriptions'
-        if (!$RoleTypeOrRoleId) {
+        if (!$PSBoundParameters.ContainsKey("RoleTypeOrRoleId")) {
             throw "Error! The required parameter `RoleTypeOrRoleId` missing when calling listRoleSubscriptions."
         }
         $LocalVarUri = $LocalVarUri.replace('{roleTypeOrRoleId}', [System.Web.HTTPUtility]::UrlEncode($RoleTypeOrRoleId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -439,12 +439,12 @@ function Invoke-OktaListUserSubscriptions {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/users/{userId}/subscriptions'
-        if (!$UserId) {
+        if (!$PSBoundParameters.ContainsKey("UserId")) {
             throw "Error! The required parameter `UserId` missing when calling listUserSubscriptions."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -562,16 +562,16 @@ function Invoke-OktaSubscribeRoleSubscriptionByNotificationType {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/roles/{roleTypeOrRoleId}/subscriptions/{notificationType}/subscribe'
-        if (!$RoleTypeOrRoleId) {
+        if (!$PSBoundParameters.ContainsKey("RoleTypeOrRoleId")) {
             throw "Error! The required parameter `RoleTypeOrRoleId` missing when calling subscribeRoleSubscriptionByNotificationType."
         }
         $LocalVarUri = $LocalVarUri.replace('{roleTypeOrRoleId}', [System.Web.HTTPUtility]::UrlEncode($RoleTypeOrRoleId))
-        if (!$NotificationType) {
+        if (!$PSBoundParameters.ContainsKey("NotificationType")) {
             throw "Error! The required parameter `NotificationType` missing when calling subscribeRoleSubscriptionByNotificationType."
         }
         $LocalVarUri = $LocalVarUri.replace('{notificationType}', [System.Web.HTTPUtility]::UrlEncode($NotificationType))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -689,16 +689,16 @@ function Invoke-OktaSubscribeUserSubscriptionByNotificationType {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/users/{userId}/subscriptions/{notificationType}/subscribe'
-        if (!$UserId) {
+        if (!$PSBoundParameters.ContainsKey("UserId")) {
             throw "Error! The required parameter `UserId` missing when calling subscribeUserSubscriptionByNotificationType."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
-        if (!$NotificationType) {
+        if (!$PSBoundParameters.ContainsKey("NotificationType")) {
             throw "Error! The required parameter `NotificationType` missing when calling subscribeUserSubscriptionByNotificationType."
         }
         $LocalVarUri = $LocalVarUri.replace('{notificationType}', [System.Web.HTTPUtility]::UrlEncode($NotificationType))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -816,16 +816,16 @@ function Invoke-OktaUnsubscribeRoleSubscriptionByNotificationType {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/roles/{roleTypeOrRoleId}/subscriptions/{notificationType}/unsubscribe'
-        if (!$RoleTypeOrRoleId) {
+        if (!$PSBoundParameters.ContainsKey("RoleTypeOrRoleId")) {
             throw "Error! The required parameter `RoleTypeOrRoleId` missing when calling unsubscribeRoleSubscriptionByNotificationType."
         }
         $LocalVarUri = $LocalVarUri.replace('{roleTypeOrRoleId}', [System.Web.HTTPUtility]::UrlEncode($RoleTypeOrRoleId))
-        if (!$NotificationType) {
+        if (!$PSBoundParameters.ContainsKey("NotificationType")) {
             throw "Error! The required parameter `NotificationType` missing when calling unsubscribeRoleSubscriptionByNotificationType."
         }
         $LocalVarUri = $LocalVarUri.replace('{notificationType}', [System.Web.HTTPUtility]::UrlEncode($NotificationType))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -943,16 +943,16 @@ function Invoke-OktaUnsubscribeUserSubscriptionByNotificationType {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/users/{userId}/subscriptions/{notificationType}/unsubscribe'
-        if (!$UserId) {
+        if (!$PSBoundParameters.ContainsKey("UserId")) {
             throw "Error! The required parameter `UserId` missing when calling unsubscribeUserSubscriptionByNotificationType."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
-        if (!$NotificationType) {
+        if (!$PSBoundParameters.ContainsKey("NotificationType")) {
             throw "Error! The required parameter `NotificationType` missing when calling unsubscribeUserSubscriptionByNotificationType."
         }
         $LocalVarUri = $LocalVarUri.replace('{notificationType}', [System.Web.HTTPUtility]::UrlEncode($NotificationType))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]

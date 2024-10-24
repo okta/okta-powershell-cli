@@ -63,7 +63,7 @@ function Get-OktaRateLimitSettingsAdminNotifications {
 
         $LocalVarUri = '/api/v1/rate-limit-settings/admin-notifications'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -170,7 +170,7 @@ function Get-OktaRateLimitSettingsPerClient {
 
         $LocalVarUri = '/api/v1/rate-limit-settings/per-client'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -286,7 +286,7 @@ function Invoke-OktaReplaceRateLimitSettingsAdminNotifications {
 
         $LocalVarUri = '/api/v1/rate-limit-settings/admin-notifications'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -415,7 +415,7 @@ function Invoke-OktaReplaceRateLimitSettingsPerClient {
 
         $LocalVarUri = '/api/v1/rate-limit-settings/per-client'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]

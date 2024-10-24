@@ -72,7 +72,7 @@ function New-OktaPushProvider {
 
         $LocalVarUri = '/api/v1/push-providers'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -197,12 +197,12 @@ function Invoke-OktaDeletePushProvider {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/push-providers/{pushProviderId}'
-        if (!$PushProviderId) {
+        if (!$PSBoundParameters.ContainsKey("PushProviderId")) {
             throw "Error! The required parameter `PushProviderId` missing when calling deletePushProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{pushProviderId}', [System.Web.HTTPUtility]::UrlEncode($PushProviderId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -314,12 +314,12 @@ function Get-OktaPushProvider {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/push-providers/{pushProviderId}'
-        if (!$PushProviderId) {
+        if (!$PSBoundParameters.ContainsKey("PushProviderId")) {
             throw "Error! The required parameter `PushProviderId` missing when calling getPushProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{pushProviderId}', [System.Web.HTTPUtility]::UrlEncode($PushProviderId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -432,13 +432,13 @@ function Invoke-OktaListPushProviders {
 
         $LocalVarUri = '/api/v1/push-providers'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Type) {
+        if ($PSBoundParameters.ContainsKey("Type")) {
             $LocalVarQueryParameters['type'] = $Type
         }
 
@@ -557,12 +557,12 @@ function Update-OktaPushProvider {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/push-providers/{pushProviderId}'
-        if (!$PushProviderId) {
+        if (!$PSBoundParameters.ContainsKey("PushProviderId")) {
             throw "Error! The required parameter `PushProviderId` missing when calling updatePushProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{pushProviderId}', [System.Web.HTTPUtility]::UrlEncode($PushProviderId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]

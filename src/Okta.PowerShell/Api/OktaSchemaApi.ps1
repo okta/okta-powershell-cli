@@ -68,12 +68,12 @@ function Get-OktaApplicationLayout {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/meta/layouts/apps/{appName}'
-        if (!$AppName) {
+        if (!$PSBoundParameters.ContainsKey("AppName")) {
             throw "Error! The required parameter `AppName` missing when calling getApplicationLayout."
         }
         $LocalVarUri = $LocalVarUri.replace('{appName}', [System.Web.HTTPUtility]::UrlEncode($AppName))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -185,12 +185,12 @@ function Get-OktaApplicationUserSchema {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/meta/schemas/apps/{appInstanceId}/default'
-        if (!$AppInstanceId) {
+        if (!$PSBoundParameters.ContainsKey("AppInstanceId")) {
             throw "Error! The required parameter `AppInstanceId` missing when calling getApplicationUserSchema."
         }
         $LocalVarUri = $LocalVarUri.replace('{appInstanceId}', [System.Web.HTTPUtility]::UrlEncode($AppInstanceId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -297,7 +297,7 @@ function Get-OktaGroupSchema {
 
         $LocalVarUri = '/api/v1/meta/schemas/group/default'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -409,12 +409,12 @@ function Get-OktaLogStreamSchema {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/meta/schemas/logStream/{logStreamType}'
-        if (!$LogStreamType) {
+        if (!$PSBoundParameters.ContainsKey("LogStreamType")) {
             throw "Error! The required parameter `LogStreamType` missing when calling getLogStreamSchema."
         }
         $LocalVarUri = $LocalVarUri.replace('{logStreamType}', [System.Web.HTTPUtility]::UrlEncode($LogStreamType))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -526,12 +526,12 @@ function Get-OktaUserSchema {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/meta/schemas/user/{schemaId}'
-        if (!$SchemaId) {
+        if (!$PSBoundParameters.ContainsKey("SchemaId")) {
             throw "Error! The required parameter `SchemaId` missing when calling getUserSchema."
         }
         $LocalVarUri = $LocalVarUri.replace('{schemaId}', [System.Web.HTTPUtility]::UrlEncode($SchemaId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -638,7 +638,7 @@ function Invoke-OktaListLogStreamSchemas {
 
         $LocalVarUri = '/api/v1/meta/schemas/logStream'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -759,12 +759,12 @@ function Update-OktaApplicationUserProfile {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/meta/schemas/apps/{appInstanceId}/default'
-        if (!$AppInstanceId) {
+        if (!$PSBoundParameters.ContainsKey("AppInstanceId")) {
             throw "Error! The required parameter `AppInstanceId` missing when calling updateApplicationUserProfile."
         }
         $LocalVarUri = $LocalVarUri.replace('{appInstanceId}', [System.Web.HTTPUtility]::UrlEncode($AppInstanceId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -889,7 +889,7 @@ function Update-OktaGroupSchema {
 
         $LocalVarUri = '/api/v1/meta/schemas/group/default'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1019,12 +1019,12 @@ function Update-OktaUserProfile {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/meta/schemas/user/{schemaId}'
-        if (!$SchemaId) {
+        if (!$PSBoundParameters.ContainsKey("SchemaId")) {
             throw "Error! The required parameter `SchemaId` missing when calling updateUserProfile."
         }
         $LocalVarUri = $LocalVarUri.replace('{schemaId}', [System.Web.HTTPUtility]::UrlEncode($SchemaId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]

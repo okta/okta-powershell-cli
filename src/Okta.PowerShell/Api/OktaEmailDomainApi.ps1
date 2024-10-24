@@ -72,7 +72,7 @@ function New-OktaEmailDomain {
 
         $LocalVarUri = '/api/v1/email-domains'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -197,12 +197,12 @@ function Invoke-OktaDeleteEmailDomain {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/email-domains/{emailDomainId}'
-        if (!$EmailDomainId) {
+        if (!$PSBoundParameters.ContainsKey("EmailDomainId")) {
             throw "Error! The required parameter `EmailDomainId` missing when calling deleteEmailDomain."
         }
         $LocalVarUri = $LocalVarUri.replace('{emailDomainId}', [System.Web.HTTPUtility]::UrlEncode($EmailDomainId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -314,12 +314,12 @@ function Get-OktaEmailDomain {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/email-domains/{emailDomainId}'
-        if (!$EmailDomainId) {
+        if (!$PSBoundParameters.ContainsKey("EmailDomainId")) {
             throw "Error! The required parameter `EmailDomainId` missing when calling getEmailDomain."
         }
         $LocalVarUri = $LocalVarUri.replace('{emailDomainId}', [System.Web.HTTPUtility]::UrlEncode($EmailDomainId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -431,12 +431,12 @@ function Invoke-OktaListEmailDomainBrands {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/email-domains/{emailDomainId}/brands'
-        if (!$EmailDomainId) {
+        if (!$PSBoundParameters.ContainsKey("EmailDomainId")) {
             throw "Error! The required parameter `EmailDomainId` missing when calling listEmailDomainBrands."
         }
         $LocalVarUri = $LocalVarUri.replace('{emailDomainId}', [System.Web.HTTPUtility]::UrlEncode($EmailDomainId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -543,7 +543,7 @@ function Invoke-OktaListEmailDomains {
 
         $LocalVarUri = '/api/v1/email-domains'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -664,12 +664,12 @@ function Update-OktaEmailDomain {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/email-domains/{emailDomainId}'
-        if (!$EmailDomainId) {
+        if (!$PSBoundParameters.ContainsKey("EmailDomainId")) {
             throw "Error! The required parameter `EmailDomainId` missing when calling updateEmailDomain."
         }
         $LocalVarUri = $LocalVarUri.replace('{emailDomainId}', [System.Web.HTTPUtility]::UrlEncode($EmailDomainId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -794,12 +794,12 @@ function Test-OktaEmailDomain {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/email-domains/{emailDomainId}/verify'
-        if (!$EmailDomainId) {
+        if (!$PSBoundParameters.ContainsKey("EmailDomainId")) {
             throw "Error! The required parameter `EmailDomainId` missing when calling verifyEmailDomain."
         }
         $LocalVarUri = $LocalVarUri.replace('{emailDomainId}', [System.Web.HTTPUtility]::UrlEncode($EmailDomainId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]

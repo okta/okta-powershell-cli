@@ -74,16 +74,16 @@ function Add-OktaRolePermission {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/iam/roles/{roleIdOrLabel}/permissions/{permissionType}'
-        if (!$RoleIdOrLabel) {
+        if (!$PSBoundParameters.ContainsKey("RoleIdOrLabel")) {
             throw "Error! The required parameter `RoleIdOrLabel` missing when calling addRolePermission."
         }
         $LocalVarUri = $LocalVarUri.replace('{roleIdOrLabel}', [System.Web.HTTPUtility]::UrlEncode($RoleIdOrLabel))
-        if (!$PermissionType) {
+        if (!$PSBoundParameters.ContainsKey("PermissionType")) {
             throw "Error! The required parameter `PermissionType` missing when calling addRolePermission."
         }
         $LocalVarUri = $LocalVarUri.replace('{permissionType}', [System.Web.HTTPUtility]::UrlEncode($PermissionType))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -199,7 +199,7 @@ function New-OktaRole {
 
         $LocalVarUri = '/api/v1/iam/roles'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -324,12 +324,12 @@ function Invoke-OktaDeleteRole {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/iam/roles/{roleIdOrLabel}'
-        if (!$RoleIdOrLabel) {
+        if (!$PSBoundParameters.ContainsKey("RoleIdOrLabel")) {
             throw "Error! The required parameter `RoleIdOrLabel` missing when calling deleteRole."
         }
         $LocalVarUri = $LocalVarUri.replace('{roleIdOrLabel}', [System.Web.HTTPUtility]::UrlEncode($RoleIdOrLabel))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -447,16 +447,16 @@ function Invoke-OktaDeleteRolePermission {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/iam/roles/{roleIdOrLabel}/permissions/{permissionType}'
-        if (!$RoleIdOrLabel) {
+        if (!$PSBoundParameters.ContainsKey("RoleIdOrLabel")) {
             throw "Error! The required parameter `RoleIdOrLabel` missing when calling deleteRolePermission."
         }
         $LocalVarUri = $LocalVarUri.replace('{roleIdOrLabel}', [System.Web.HTTPUtility]::UrlEncode($RoleIdOrLabel))
-        if (!$PermissionType) {
+        if (!$PSBoundParameters.ContainsKey("PermissionType")) {
             throw "Error! The required parameter `PermissionType` missing when calling deleteRolePermission."
         }
         $LocalVarUri = $LocalVarUri.replace('{permissionType}', [System.Web.HTTPUtility]::UrlEncode($PermissionType))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -568,12 +568,12 @@ function Get-OktaRole {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/iam/roles/{roleIdOrLabel}'
-        if (!$RoleIdOrLabel) {
+        if (!$PSBoundParameters.ContainsKey("RoleIdOrLabel")) {
             throw "Error! The required parameter `RoleIdOrLabel` missing when calling getRole."
         }
         $LocalVarUri = $LocalVarUri.replace('{roleIdOrLabel}', [System.Web.HTTPUtility]::UrlEncode($RoleIdOrLabel))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -691,16 +691,16 @@ function Get-OktaRolePermission {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/iam/roles/{roleIdOrLabel}/permissions/{permissionType}'
-        if (!$RoleIdOrLabel) {
+        if (!$PSBoundParameters.ContainsKey("RoleIdOrLabel")) {
             throw "Error! The required parameter `RoleIdOrLabel` missing when calling getRolePermission."
         }
         $LocalVarUri = $LocalVarUri.replace('{roleIdOrLabel}', [System.Web.HTTPUtility]::UrlEncode($RoleIdOrLabel))
-        if (!$PermissionType) {
+        if (!$PSBoundParameters.ContainsKey("PermissionType")) {
             throw "Error! The required parameter `PermissionType` missing when calling getRolePermission."
         }
         $LocalVarUri = $LocalVarUri.replace('{permissionType}', [System.Web.HTTPUtility]::UrlEncode($PermissionType))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -812,12 +812,12 @@ function Invoke-OktaListRolePermissions {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/iam/roles/{roleIdOrLabel}/permissions'
-        if (!$RoleIdOrLabel) {
+        if (!$PSBoundParameters.ContainsKey("RoleIdOrLabel")) {
             throw "Error! The required parameter `RoleIdOrLabel` missing when calling listRolePermissions."
         }
         $LocalVarUri = $LocalVarUri.replace('{roleIdOrLabel}', [System.Web.HTTPUtility]::UrlEncode($RoleIdOrLabel))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -930,13 +930,13 @@ function Invoke-OktaListRoles {
 
         $LocalVarUri = '/api/v1/iam/roles'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($After) {
+        if ($PSBoundParameters.ContainsKey("After")) {
             $LocalVarQueryParameters['after'] = $After
         }
 
@@ -1055,12 +1055,12 @@ function Invoke-OktaReplaceRole {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/iam/roles/{roleIdOrLabel}'
-        if (!$RoleIdOrLabel) {
+        if (!$PSBoundParameters.ContainsKey("RoleIdOrLabel")) {
             throw "Error! The required parameter `RoleIdOrLabel` missing when calling replaceRole."
         }
         $LocalVarUri = $LocalVarUri.replace('{roleIdOrLabel}', [System.Web.HTTPUtility]::UrlEncode($RoleIdOrLabel))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]

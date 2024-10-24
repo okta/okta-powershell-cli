@@ -72,7 +72,7 @@ function New-OktaRiskProvider {
 
         $LocalVarUri = '/api/v1/risk/providers'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -197,12 +197,12 @@ function Invoke-OktaDeleteRiskProvider {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/risk/providers/{riskProviderId}'
-        if (!$RiskProviderId) {
+        if (!$PSBoundParameters.ContainsKey("RiskProviderId")) {
             throw "Error! The required parameter `RiskProviderId` missing when calling deleteRiskProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{riskProviderId}', [System.Web.HTTPUtility]::UrlEncode($RiskProviderId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -314,12 +314,12 @@ function Get-OktaRiskProvider {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/risk/providers/{riskProviderId}'
-        if (!$RiskProviderId) {
+        if (!$PSBoundParameters.ContainsKey("RiskProviderId")) {
             throw "Error! The required parameter `RiskProviderId` missing when calling getRiskProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{riskProviderId}', [System.Web.HTTPUtility]::UrlEncode($RiskProviderId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -426,7 +426,7 @@ function Invoke-OktaListRiskProviders {
 
         $LocalVarUri = '/api/v1/risk/providers'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -547,12 +547,12 @@ function Update-OktaRiskProvider {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/risk/providers/{riskProviderId}'
-        if (!$RiskProviderId) {
+        if (!$PSBoundParameters.ContainsKey("RiskProviderId")) {
             throw "Error! The required parameter `RiskProviderId` missing when calling updateRiskProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{riskProviderId}', [System.Web.HTTPUtility]::UrlEncode($RiskProviderId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]

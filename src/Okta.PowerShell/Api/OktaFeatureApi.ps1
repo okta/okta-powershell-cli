@@ -68,12 +68,12 @@ function Get-OktaFeature {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/features/{featureId}'
-        if (!$FeatureId) {
+        if (!$PSBoundParameters.ContainsKey("FeatureId")) {
             throw "Error! The required parameter `FeatureId` missing when calling getFeature."
         }
         $LocalVarUri = $LocalVarUri.replace('{featureId}', [System.Web.HTTPUtility]::UrlEncode($FeatureId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -185,12 +185,12 @@ function Invoke-OktaListFeatureDependencies {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/features/{featureId}/dependencies'
-        if (!$FeatureId) {
+        if (!$PSBoundParameters.ContainsKey("FeatureId")) {
             throw "Error! The required parameter `FeatureId` missing when calling listFeatureDependencies."
         }
         $LocalVarUri = $LocalVarUri.replace('{featureId}', [System.Web.HTTPUtility]::UrlEncode($FeatureId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -302,12 +302,12 @@ function Invoke-OktaListFeatureDependents {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/features/{featureId}/dependents'
-        if (!$FeatureId) {
+        if (!$PSBoundParameters.ContainsKey("FeatureId")) {
             throw "Error! The required parameter `FeatureId` missing when calling listFeatureDependents."
         }
         $LocalVarUri = $LocalVarUri.replace('{featureId}', [System.Web.HTTPUtility]::UrlEncode($FeatureId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -414,7 +414,7 @@ function Invoke-OktaListFeatures {
 
         $LocalVarUri = '/api/v1/features'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -538,22 +538,22 @@ function Update-OktaFeatureLifecycle {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/features/{featureId}/{lifecycle}'
-        if (!$FeatureId) {
+        if (!$PSBoundParameters.ContainsKey("FeatureId")) {
             throw "Error! The required parameter `FeatureId` missing when calling updateFeatureLifecycle."
         }
         $LocalVarUri = $LocalVarUri.replace('{featureId}', [System.Web.HTTPUtility]::UrlEncode($FeatureId))
-        if (!$Lifecycle) {
+        if (!$PSBoundParameters.ContainsKey("Lifecycle")) {
             throw "Error! The required parameter `Lifecycle` missing when calling updateFeatureLifecycle."
         }
         $LocalVarUri = $LocalVarUri.replace('{lifecycle}', [System.Web.HTTPUtility]::UrlEncode($Lifecycle))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Mode) {
+        if ($PSBoundParameters.ContainsKey("Mode")) {
             $LocalVarQueryParameters['mode'] = $Mode
         }
 

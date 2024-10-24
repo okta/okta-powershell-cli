@@ -68,12 +68,12 @@ function Invoke-OktaActivateDevice {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/devices/{deviceId}/lifecycle/activate'
-        if (!$DeviceId) {
+        if (!$PSBoundParameters.ContainsKey("DeviceId")) {
             throw "Error! The required parameter `DeviceId` missing when calling activateDevice."
         }
         $LocalVarUri = $LocalVarUri.replace('{deviceId}', [System.Web.HTTPUtility]::UrlEncode($DeviceId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -185,12 +185,12 @@ function Invoke-OktaDeactivateDevice {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/devices/{deviceId}/lifecycle/deactivate'
-        if (!$DeviceId) {
+        if (!$PSBoundParameters.ContainsKey("DeviceId")) {
             throw "Error! The required parameter `DeviceId` missing when calling deactivateDevice."
         }
         $LocalVarUri = $LocalVarUri.replace('{deviceId}', [System.Web.HTTPUtility]::UrlEncode($DeviceId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -302,12 +302,12 @@ function Invoke-OktaDeleteDevice {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/devices/{deviceId}'
-        if (!$DeviceId) {
+        if (!$PSBoundParameters.ContainsKey("DeviceId")) {
             throw "Error! The required parameter `DeviceId` missing when calling deleteDevice."
         }
         $LocalVarUri = $LocalVarUri.replace('{deviceId}', [System.Web.HTTPUtility]::UrlEncode($DeviceId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -419,12 +419,12 @@ function Get-OktaDevice {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/devices/{deviceId}'
-        if (!$DeviceId) {
+        if (!$PSBoundParameters.ContainsKey("DeviceId")) {
             throw "Error! The required parameter `DeviceId` missing when calling getDevice."
         }
         $LocalVarUri = $LocalVarUri.replace('{deviceId}', [System.Web.HTTPUtility]::UrlEncode($DeviceId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -549,21 +549,21 @@ function Invoke-OktaListDevices {
 
         $LocalVarUri = '/api/v1/devices'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($After) {
+        if ($PSBoundParameters.ContainsKey("After")) {
             $LocalVarQueryParameters['after'] = $After
         }
 
-        if ($Limit) {
+        if ($PSBoundParameters.ContainsKey("Limit")) {
             $LocalVarQueryParameters['limit'] = $Limit
         }
 
-        if ($Search) {
+        if ($PSBoundParameters.ContainsKey("Search")) {
             $LocalVarQueryParameters['search'] = $Search
         }
 
@@ -673,12 +673,12 @@ function Suspend-OktaDevice {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/devices/{deviceId}/lifecycle/suspend'
-        if (!$DeviceId) {
+        if (!$PSBoundParameters.ContainsKey("DeviceId")) {
             throw "Error! The required parameter `DeviceId` missing when calling suspendDevice."
         }
         $LocalVarUri = $LocalVarUri.replace('{deviceId}', [System.Web.HTTPUtility]::UrlEncode($DeviceId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -790,12 +790,12 @@ function Invoke-OktaUnsuspendDevice {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/devices/{deviceId}/lifecycle/unsuspend'
-        if (!$DeviceId) {
+        if (!$PSBoundParameters.ContainsKey("DeviceId")) {
             throw "Error! The required parameter `DeviceId` missing when calling unsuspendDevice."
         }
         $LocalVarUri = $LocalVarUri.replace('{deviceId}', [System.Web.HTTPUtility]::UrlEncode($DeviceId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]

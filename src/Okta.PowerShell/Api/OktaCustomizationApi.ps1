@@ -72,7 +72,7 @@ function New-OktaBrand {
 
         $LocalVarUri = '/api/v1/brands'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -208,16 +208,16 @@ function New-OktaEmailCustomization {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/templates/email/{templateName}/customizations'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling createEmailCustomization."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
-        if (!$TemplateName) {
+        if (!$PSBoundParameters.ContainsKey("TemplateName")) {
             throw "Error! The required parameter `TemplateName` missing when calling createEmailCustomization."
         }
         $LocalVarUri = $LocalVarUri.replace('{templateName}', [System.Web.HTTPUtility]::UrlEncode($TemplateName))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -344,16 +344,16 @@ function Invoke-OktaDeleteAllCustomizations {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/templates/email/{templateName}/customizations'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling deleteAllCustomizations."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
-        if (!$TemplateName) {
+        if (!$PSBoundParameters.ContainsKey("TemplateName")) {
             throw "Error! The required parameter `TemplateName` missing when calling deleteAllCustomizations."
         }
         $LocalVarUri = $LocalVarUri.replace('{templateName}', [System.Web.HTTPUtility]::UrlEncode($TemplateName))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -465,12 +465,12 @@ function Invoke-OktaDeleteBrand {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling deleteBrand."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -588,16 +588,16 @@ function Invoke-OktaDeleteBrandThemeBackgroundImage {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/themes/{themeId}/background-image'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling deleteBrandThemeBackgroundImage."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
-        if (!$ThemeId) {
+        if (!$PSBoundParameters.ContainsKey("ThemeId")) {
             throw "Error! The required parameter `ThemeId` missing when calling deleteBrandThemeBackgroundImage."
         }
         $LocalVarUri = $LocalVarUri.replace('{themeId}', [System.Web.HTTPUtility]::UrlEncode($ThemeId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -715,16 +715,16 @@ function Invoke-OktaDeleteBrandThemeFavicon {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/themes/{themeId}/favicon'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling deleteBrandThemeFavicon."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
-        if (!$ThemeId) {
+        if (!$PSBoundParameters.ContainsKey("ThemeId")) {
             throw "Error! The required parameter `ThemeId` missing when calling deleteBrandThemeFavicon."
         }
         $LocalVarUri = $LocalVarUri.replace('{themeId}', [System.Web.HTTPUtility]::UrlEncode($ThemeId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -842,16 +842,16 @@ function Invoke-OktaDeleteBrandThemeLogo {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/themes/{themeId}/logo'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling deleteBrandThemeLogo."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
-        if (!$ThemeId) {
+        if (!$PSBoundParameters.ContainsKey("ThemeId")) {
             throw "Error! The required parameter `ThemeId` missing when calling deleteBrandThemeLogo."
         }
         $LocalVarUri = $LocalVarUri.replace('{themeId}', [System.Web.HTTPUtility]::UrlEncode($ThemeId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -975,20 +975,20 @@ function Invoke-OktaDeleteEmailCustomization {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/templates/email/{templateName}/customizations/{customizationId}'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling deleteEmailCustomization."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
-        if (!$TemplateName) {
+        if (!$PSBoundParameters.ContainsKey("TemplateName")) {
             throw "Error! The required parameter `TemplateName` missing when calling deleteEmailCustomization."
         }
         $LocalVarUri = $LocalVarUri.replace('{templateName}', [System.Web.HTTPUtility]::UrlEncode($TemplateName))
-        if (!$CustomizationId) {
+        if (!$PSBoundParameters.ContainsKey("CustomizationId")) {
             throw "Error! The required parameter `CustomizationId` missing when calling deleteEmailCustomization."
         }
         $LocalVarUri = $LocalVarUri.replace('{customizationId}', [System.Web.HTTPUtility]::UrlEncode($CustomizationId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1100,12 +1100,12 @@ function Get-OktaBrand {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling getBrand."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1217,12 +1217,12 @@ function Get-OktaBrandDomains {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/domains'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling getBrandDomains."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1340,16 +1340,16 @@ function Get-OktaBrandTheme {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/themes/{themeId}'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling getBrandTheme."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
-        if (!$ThemeId) {
+        if (!$PSBoundParameters.ContainsKey("ThemeId")) {
             throw "Error! The required parameter `ThemeId` missing when calling getBrandTheme."
         }
         $LocalVarUri = $LocalVarUri.replace('{themeId}', [System.Web.HTTPUtility]::UrlEncode($ThemeId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1473,20 +1473,20 @@ function Get-OktaCustomizationPreview {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/templates/email/{templateName}/customizations/{customizationId}/preview'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling getCustomizationPreview."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
-        if (!$TemplateName) {
+        if (!$PSBoundParameters.ContainsKey("TemplateName")) {
             throw "Error! The required parameter `TemplateName` missing when calling getCustomizationPreview."
         }
         $LocalVarUri = $LocalVarUri.replace('{templateName}', [System.Web.HTTPUtility]::UrlEncode($TemplateName))
-        if (!$CustomizationId) {
+        if (!$PSBoundParameters.ContainsKey("CustomizationId")) {
             throw "Error! The required parameter `CustomizationId` missing when calling getCustomizationPreview."
         }
         $LocalVarUri = $LocalVarUri.replace('{customizationId}', [System.Web.HTTPUtility]::UrlEncode($CustomizationId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1610,20 +1610,20 @@ function Get-OktaEmailCustomization {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/templates/email/{templateName}/customizations/{customizationId}'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling getEmailCustomization."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
-        if (!$TemplateName) {
+        if (!$PSBoundParameters.ContainsKey("TemplateName")) {
             throw "Error! The required parameter `TemplateName` missing when calling getEmailCustomization."
         }
         $LocalVarUri = $LocalVarUri.replace('{templateName}', [System.Web.HTTPUtility]::UrlEncode($TemplateName))
-        if (!$CustomizationId) {
+        if (!$PSBoundParameters.ContainsKey("CustomizationId")) {
             throw "Error! The required parameter `CustomizationId` missing when calling getEmailCustomization."
         }
         $LocalVarUri = $LocalVarUri.replace('{customizationId}', [System.Web.HTTPUtility]::UrlEncode($CustomizationId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1747,22 +1747,22 @@ function Get-OktaEmailDefaultContent {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/templates/email/{templateName}/default-content'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling getEmailDefaultContent."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
-        if (!$TemplateName) {
+        if (!$PSBoundParameters.ContainsKey("TemplateName")) {
             throw "Error! The required parameter `TemplateName` missing when calling getEmailDefaultContent."
         }
         $LocalVarUri = $LocalVarUri.replace('{templateName}', [System.Web.HTTPUtility]::UrlEncode($TemplateName))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Language) {
+        if ($PSBoundParameters.ContainsKey("Language")) {
             $LocalVarQueryParameters['language'] = $Language
         }
 
@@ -1884,22 +1884,22 @@ function Get-OktaEmailDefaultPreview {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/templates/email/{templateName}/default-content/preview'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling getEmailDefaultPreview."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
-        if (!$TemplateName) {
+        if (!$PSBoundParameters.ContainsKey("TemplateName")) {
             throw "Error! The required parameter `TemplateName` missing when calling getEmailDefaultPreview."
         }
         $LocalVarUri = $LocalVarUri.replace('{templateName}', [System.Web.HTTPUtility]::UrlEncode($TemplateName))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Language) {
+        if ($PSBoundParameters.ContainsKey("Language")) {
             $LocalVarQueryParameters['language'] = $Language
         }
 
@@ -2015,16 +2015,16 @@ function Get-OktaEmailSettings {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/templates/email/{templateName}/settings'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling getEmailSettings."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
-        if (!$TemplateName) {
+        if (!$PSBoundParameters.ContainsKey("TemplateName")) {
             throw "Error! The required parameter `TemplateName` missing when calling getEmailSettings."
         }
         $LocalVarUri = $LocalVarUri.replace('{templateName}', [System.Web.HTTPUtility]::UrlEncode($TemplateName))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -2149,22 +2149,22 @@ function Get-OktaEmailTemplate {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/templates/email/{templateName}'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling getEmailTemplate."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
-        if (!$TemplateName) {
+        if (!$PSBoundParameters.ContainsKey("TemplateName")) {
             throw "Error! The required parameter `TemplateName` missing when calling getEmailTemplate."
         }
         $LocalVarUri = $LocalVarUri.replace('{templateName}', [System.Web.HTTPUtility]::UrlEncode($TemplateName))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Expand) {
+        if ($PSBoundParameters.ContainsKey("Expand")) {
             $LocalVarQueryParameters['expand'] = $Expand
         }
 
@@ -2283,12 +2283,12 @@ function Invoke-OktaLinkBrandDomain {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/domains'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling linkBrandDomain."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -2409,12 +2409,12 @@ function Invoke-OktaListAllSignInWidgetVersions {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/pages/sign-in/widget-versions'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling listAllSignInWidgetVersions."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -2526,12 +2526,12 @@ function Invoke-OktaListBrandThemes {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/themes'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling listBrandThemes."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -2638,7 +2638,7 @@ function Invoke-OktaListBrands {
 
         $LocalVarUri = '/api/v1/brands'
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -2768,26 +2768,26 @@ function Invoke-OktaListEmailCustomizations {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/templates/email/{templateName}/customizations'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling listEmailCustomizations."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
-        if (!$TemplateName) {
+        if (!$PSBoundParameters.ContainsKey("TemplateName")) {
             throw "Error! The required parameter `TemplateName` missing when calling listEmailCustomizations."
         }
         $LocalVarUri = $LocalVarUri.replace('{templateName}', [System.Web.HTTPUtility]::UrlEncode($TemplateName))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($After) {
+        if ($PSBoundParameters.ContainsKey("After")) {
             $LocalVarQueryParameters['after'] = $After
         }
 
-        if ($Limit) {
+        if ($PSBoundParameters.ContainsKey("Limit")) {
             $LocalVarQueryParameters['limit'] = $Limit
         }
 
@@ -2916,26 +2916,26 @@ function Invoke-OktaListEmailTemplates {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/templates/email'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling listEmailTemplates."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($After) {
+        if ($PSBoundParameters.ContainsKey("After")) {
             $LocalVarQueryParameters['after'] = $After
         }
 
-        if ($Limit) {
+        if ($PSBoundParameters.ContainsKey("Limit")) {
             $LocalVarQueryParameters['limit'] = $Limit
         }
 
-        if ($Expand) {
+        if ($PSBoundParameters.ContainsKey("Expand")) {
             $LocalVarQueryParameters['expand'] = $Expand
         }
 
@@ -3054,12 +3054,12 @@ function Invoke-OktaReplaceCustomizedErrorPage {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/pages/error/customized'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling replaceCustomizedErrorPage."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -3193,12 +3193,12 @@ function Invoke-OktaReplaceCustomizedSignInPage {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/pages/sign-in/customized'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling replaceCustomizedSignInPage."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -3332,12 +3332,12 @@ function Invoke-OktaReplacePreviewErrorPage {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/pages/error/preview'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling replacePreviewErrorPage."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -3471,12 +3471,12 @@ function Invoke-OktaReplacePreviewSignInPage {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/pages/sign-in/preview'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling replacePreviewSignInPage."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -3610,12 +3610,12 @@ function Invoke-OktaReplaceSignOutPageSettings {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/pages/sign-out/customized'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling replaceSignOutPageSettings."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -3740,12 +3740,12 @@ function Reset-OktaCustomizedErrorPage {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/pages/error/customized'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling resetCustomizedErrorPage."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -3857,12 +3857,12 @@ function Reset-OktaCustomizedSignInPage {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/pages/sign-in/customized'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling resetCustomizedSignInPage."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -3974,12 +3974,12 @@ function Reset-OktaPreviewErrorPage {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/pages/error/preview'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling resetPreviewErrorPage."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -4091,12 +4091,12 @@ function Reset-OktaPreviewSignInPage {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/pages/sign-in/preview'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling resetPreviewSignInPage."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -4208,12 +4208,12 @@ function Invoke-OktaRetrieveCustomizedErrorPage {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/pages/error/customized'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling retrieveCustomizedErrorPage."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -4325,12 +4325,12 @@ function Invoke-OktaRetrieveCustomizedSignInPage {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/pages/sign-in/customized'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling retrieveCustomizedSignInPage."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -4442,12 +4442,12 @@ function Invoke-OktaRetrieveDefaultErrorPage {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/pages/error/default'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling retrieveDefaultErrorPage."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -4559,12 +4559,12 @@ function Invoke-OktaRetrieveDefaultSignInPage {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/pages/sign-in/default'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling retrieveDefaultSignInPage."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -4683,18 +4683,18 @@ function Invoke-OktaRetrieveErrorPage {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/pages/error'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling retrieveErrorPage."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Expand) {
+        if ($PSBoundParameters.ContainsKey("Expand")) {
             $LocalVarQueryParameters['expand'] = $Expand
         }
 
@@ -4804,12 +4804,12 @@ function Invoke-OktaRetrievePreviewErrorPage {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/pages/error/preview'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling retrievePreviewErrorPage."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -4921,12 +4921,12 @@ function Invoke-OktaRetrievePreviewSignInPage {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/pages/sign-in/preview'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling retrievePreviewSignInPage."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -5045,18 +5045,18 @@ function Invoke-OktaRetrieveSignInPage {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/pages/sign-in'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling retrieveSignInPage."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Expand) {
+        if ($PSBoundParameters.ContainsKey("Expand")) {
             $LocalVarQueryParameters['expand'] = $Expand
         }
 
@@ -5166,12 +5166,12 @@ function Invoke-OktaRetrieveSignOutPageSettings {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/pages/sign-out/customized'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling retrieveSignOutPageSettings."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -5295,22 +5295,22 @@ function Send-OktaTestEmail {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/templates/email/{templateName}/test'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling sendTestEmail."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
-        if (!$TemplateName) {
+        if (!$PSBoundParameters.ContainsKey("TemplateName")) {
             throw "Error! The required parameter `TemplateName` missing when calling sendTestEmail."
         }
         $LocalVarUri = $LocalVarUri.replace('{templateName}', [System.Web.HTTPUtility]::UrlEncode($TemplateName))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Language) {
+        if ($PSBoundParameters.ContainsKey("Language")) {
             $LocalVarQueryParameters['language'] = $Language
         }
 
@@ -5426,16 +5426,16 @@ function Invoke-OktaUnlinkBrandDomain {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/domains/{domainId}'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling unlinkBrandDomain."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
-        if (!$DomainId) {
+        if (!$PSBoundParameters.ContainsKey("DomainId")) {
             throw "Error! The required parameter `DomainId` missing when calling unlinkBrandDomain."
         }
         $LocalVarUri = $LocalVarUri.replace('{domainId}', [System.Web.HTTPUtility]::UrlEncode($DomainId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -5556,12 +5556,12 @@ function Update-OktaBrand {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling updateBrand."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -5701,16 +5701,16 @@ function Update-OktaBrandTheme {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/themes/{themeId}'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling updateBrandTheme."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
-        if (!$ThemeId) {
+        if (!$PSBoundParameters.ContainsKey("ThemeId")) {
             throw "Error! The required parameter `ThemeId` missing when calling updateBrandTheme."
         }
         $LocalVarUri = $LocalVarUri.replace('{themeId}', [System.Web.HTTPUtility]::UrlEncode($ThemeId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -5856,20 +5856,20 @@ function Update-OktaEmailCustomization {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/templates/email/{templateName}/customizations/{customizationId}'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling updateEmailCustomization."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
-        if (!$TemplateName) {
+        if (!$PSBoundParameters.ContainsKey("TemplateName")) {
             throw "Error! The required parameter `TemplateName` missing when calling updateEmailCustomization."
         }
         $LocalVarUri = $LocalVarUri.replace('{templateName}', [System.Web.HTTPUtility]::UrlEncode($TemplateName))
-        if (!$CustomizationId) {
+        if (!$PSBoundParameters.ContainsKey("CustomizationId")) {
             throw "Error! The required parameter `CustomizationId` missing when calling updateEmailCustomization."
         }
         $LocalVarUri = $LocalVarUri.replace('{customizationId}', [System.Web.HTTPUtility]::UrlEncode($CustomizationId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -6005,16 +6005,16 @@ function Update-OktaEmailSettings {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/templates/email/{templateName}/settings'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling updateEmailSettings."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
-        if (!$TemplateName) {
+        if (!$PSBoundParameters.ContainsKey("TemplateName")) {
             throw "Error! The required parameter `TemplateName` missing when calling updateEmailSettings."
         }
         $LocalVarUri = $LocalVarUri.replace('{templateName}', [System.Web.HTTPUtility]::UrlEncode($TemplateName))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -6150,22 +6150,22 @@ function Invoke-OktaUploadBrandThemeBackgroundImage {
         $LocalVarContentTypes = @('multipart/form-data')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/themes/{themeId}/background-image'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling uploadBrandThemeBackgroundImage."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
-        if (!$ThemeId) {
+        if (!$PSBoundParameters.ContainsKey("ThemeId")) {
             throw "Error! The required parameter `ThemeId` missing when calling uploadBrandThemeBackgroundImage."
         }
         $LocalVarUri = $LocalVarUri.replace('{themeId}', [System.Web.HTTPUtility]::UrlEncode($ThemeId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$File) {
+        if (!$PSBoundParameters.ContainsKey("File")) {
             throw "Error! The required parameter `File` missing when calling uploadBrandThemeBackgroundImage."
         }
         $LocalVarFormParameters['file'] = $File
@@ -6291,22 +6291,22 @@ function Invoke-OktaUploadBrandThemeFavicon {
         $LocalVarContentTypes = @('multipart/form-data')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/themes/{themeId}/favicon'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling uploadBrandThemeFavicon."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
-        if (!$ThemeId) {
+        if (!$PSBoundParameters.ContainsKey("ThemeId")) {
             throw "Error! The required parameter `ThemeId` missing when calling uploadBrandThemeFavicon."
         }
         $LocalVarUri = $LocalVarUri.replace('{themeId}', [System.Web.HTTPUtility]::UrlEncode($ThemeId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$File) {
+        if (!$PSBoundParameters.ContainsKey("File")) {
             throw "Error! The required parameter `File` missing when calling uploadBrandThemeFavicon."
         }
         $LocalVarFormParameters['file'] = $File
@@ -6432,22 +6432,22 @@ function Invoke-OktaUploadBrandThemeLogo {
         $LocalVarContentTypes = @('multipart/form-data')
 
         $LocalVarUri = '/api/v1/brands/{brandId}/themes/{themeId}/logo'
-        if (!$BrandId) {
+        if (!$PSBoundParameters.ContainsKey("BrandId")) {
             throw "Error! The required parameter `BrandId` missing when calling uploadBrandThemeLogo."
         }
         $LocalVarUri = $LocalVarUri.replace('{brandId}', [System.Web.HTTPUtility]::UrlEncode($BrandId))
-        if (!$ThemeId) {
+        if (!$PSBoundParameters.ContainsKey("ThemeId")) {
             throw "Error! The required parameter `ThemeId` missing when calling uploadBrandThemeLogo."
         }
         $LocalVarUri = $LocalVarUri.replace('{themeId}', [System.Web.HTTPUtility]::UrlEncode($ThemeId))
 
-        if ($Uri) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$File) {
+        if (!$PSBoundParameters.ContainsKey("File")) {
             throw "Error! The required parameter `File` missing when calling uploadBrandThemeLogo."
         }
         $LocalVarFormParameters['file'] = $File
