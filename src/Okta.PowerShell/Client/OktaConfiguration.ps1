@@ -48,12 +48,12 @@ function Get-OktaConfiguration {
         $Configuration["DefaultHeaders"] = @{}
     }
 
-    if (!$Configuration["ApiKey"]) {
-        $Configuration["ApiKey"] = @{}
+    if ([string]::IsNullOrEmpty($Configuration["ApiKey"])) {
+        $Configuration["ApiKey"] = ""
     }
 
-    if (!$Configuration["ApiKeyPrefix"]) {
-        $Configuration["ApiKeyPrefix"] = @{}
+    if ([string]::IsNullOrEmpty($Configuration["ApiKeyPrefix"])) {
+        $Configuration["ApiKeyPrefix"] = "SSWS"
     }
 
     if (!$Configuration.containsKey("Proxy")) {
@@ -134,8 +134,8 @@ function Set-OktaConfiguration {
         [string]$BaseUrl,
         [string]$ClientId,
         [string]$Scope,
-        [hashtable]$ApiKey,
-        [hashtable]$ApiKeyPrefix,
+        [string]$ApiKey,
+        [string]$ApiKeyPrefix,
         [AllowEmptyString()]
         [string]$Cookie,
         [AllowEmptyString()]
@@ -310,9 +310,9 @@ function Set-OktaConfigurationApiKey {
     )
     Process {
         if (!$Script:Configuration["ApiKey"]) {
-            $Script:Configuration["ApiKey"] = @{}
+            $Script:Configuration["ApiKey"] = ""
         }
-        $Script:Configuration["ApiKey"][$Id] = $ApiKey
+        $Script:Configuration["ApiKey"] = $ApiKey
     }
 }
 
@@ -344,9 +344,9 @@ function Set-OktaConfigurationApiKeyPrefix {
     )
     Process {
         if (!$Script:Configuration["ApiKeyPrefix"]) {
-            $Script:Configuration["ApiKeyPrefix"] = @{}
+            $Script:Configuration["ApiKeyPrefix"] = "SSWS"
         }
-        $Script:Configuration["ApiKeyPrefix"][$Id] = $ApiKeyPrefix
+        $Script:Configuration["ApiKeyPrefix"] = $ApiKeyPrefix
     }
 }
 

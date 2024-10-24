@@ -79,9 +79,13 @@ function Invoke-OktaActivateNetworkZone {
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
-            $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
-            Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
+        if ($Configuration["ApiKey"]) {
+            $AuthorizationHeaderValue = $Configuration["ApiKey"]
+            if(-not ([string]::IsNullOrEmpty($Configuration["ApiKeyPrefix"]))){
+                $AuthorizationHeaderValue = $Configuration["ApiKeyPrefix"] + " " + $AuthorizationHeaderValue
+            }
+            $LocalVarHeaderParameters['Authorization'] = $AuthorizationHeaderValue
+            Write-Verbose ("Using API key Authorization in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
 
@@ -204,9 +208,13 @@ function New-OktaNetworkZone {
             $LocalVarBodyParameter = Remove-NullProperties -InputObject $Zone | ConvertTo-Json -Depth 100
         }
 
-        if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
-            $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
-            Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
+        if ($Configuration["ApiKey"]) {
+            $AuthorizationHeaderValue = $Configuration["ApiKey"]
+            if(-not ([string]::IsNullOrEmpty($Configuration["ApiKeyPrefix"]))){
+                $AuthorizationHeaderValue = $Configuration["ApiKeyPrefix"] + " " + $AuthorizationHeaderValue
+            }
+            $LocalVarHeaderParameters['Authorization'] = $AuthorizationHeaderValue
+            Write-Verbose ("Using API key Authorization in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
 
@@ -317,9 +325,13 @@ function Invoke-OktaDeactivateNetworkZone {
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
-            $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
-            Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
+        if ($Configuration["ApiKey"]) {
+            $AuthorizationHeaderValue = $Configuration["ApiKey"]
+            if(-not ([string]::IsNullOrEmpty($Configuration["ApiKeyPrefix"]))){
+                $AuthorizationHeaderValue = $Configuration["ApiKeyPrefix"] + " " + $AuthorizationHeaderValue
+            }
+            $LocalVarHeaderParameters['Authorization'] = $AuthorizationHeaderValue
+            Write-Verbose ("Using API key Authorization in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
 
@@ -430,9 +442,13 @@ function Invoke-OktaDeleteNetworkZone {
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
-            $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
-            Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
+        if ($Configuration["ApiKey"]) {
+            $AuthorizationHeaderValue = $Configuration["ApiKey"]
+            if(-not ([string]::IsNullOrEmpty($Configuration["ApiKeyPrefix"]))){
+                $AuthorizationHeaderValue = $Configuration["ApiKeyPrefix"] + " " + $AuthorizationHeaderValue
+            }
+            $LocalVarHeaderParameters['Authorization'] = $AuthorizationHeaderValue
+            Write-Verbose ("Using API key Authorization in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
 
@@ -543,9 +559,13 @@ function Get-OktaNetworkZone {
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
-            $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
-            Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
+        if ($Configuration["ApiKey"]) {
+            $AuthorizationHeaderValue = $Configuration["ApiKey"]
+            if(-not ([string]::IsNullOrEmpty($Configuration["ApiKeyPrefix"]))){
+                $AuthorizationHeaderValue = $Configuration["ApiKeyPrefix"] + " " + $AuthorizationHeaderValue
+            }
+            $LocalVarHeaderParameters['Authorization'] = $AuthorizationHeaderValue
+            Write-Verbose ("Using API key Authorization in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
 
@@ -676,9 +696,13 @@ function Invoke-OktaListNetworkZones {
             $LocalVarQueryParameters['filter'] = $Filter
         }
 
-        if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
-            $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
-            Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
+        if ($Configuration["ApiKey"]) {
+            $AuthorizationHeaderValue = $Configuration["ApiKey"]
+            if(-not ([string]::IsNullOrEmpty($Configuration["ApiKeyPrefix"]))){
+                $AuthorizationHeaderValue = $Configuration["ApiKeyPrefix"] + " " + $AuthorizationHeaderValue
+            }
+            $LocalVarHeaderParameters['Authorization'] = $AuthorizationHeaderValue
+            Write-Verbose ("Using API key Authorization in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
 
@@ -811,9 +835,13 @@ function Update-OktaNetworkZone {
             $LocalVarBodyParameter = Remove-NullProperties -InputObject $Zone | ConvertTo-Json -Depth 100
         }
 
-        if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
-            $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
-            Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
+        if ($Configuration["ApiKey"]) {
+            $AuthorizationHeaderValue = $Configuration["ApiKey"]
+            if(-not ([string]::IsNullOrEmpty($Configuration["ApiKeyPrefix"]))){
+                $AuthorizationHeaderValue = $Configuration["ApiKeyPrefix"] + " " + $AuthorizationHeaderValue
+            }
+            $LocalVarHeaderParameters['Authorization'] = $AuthorizationHeaderValue
+            Write-Verbose ("Using API key Authorization in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
 
