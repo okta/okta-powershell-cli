@@ -105,37 +105,37 @@ function Get-OktaLogs {
 
         $LocalVarUri = '/api/v1/logs'
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($PSBoundParameters.ContainsKey($Since)) {
+        if ($PSBoundParameters.ContainsKey("Since")) {
             $LocalVarQueryParameters['since'] = $Since
         }
 
-        if ($PSBoundParameters.ContainsKey($Until)) {
+        if ($PSBoundParameters.ContainsKey("Until")) {
             $LocalVarQueryParameters['until'] = $Until
         }
 
-        if ($PSBoundParameters.ContainsKey($Filter)) {
+        if ($PSBoundParameters.ContainsKey("Filter")) {
             $LocalVarQueryParameters['filter'] = $Filter
         }
 
-        if ($PSBoundParameters.ContainsKey($Q)) {
+        if ($PSBoundParameters.ContainsKey("Q")) {
             $LocalVarQueryParameters['q'] = $Q
         }
 
-        if ($PSBoundParameters.ContainsKey($Limit)) {
+        if ($PSBoundParameters.ContainsKey("Limit")) {
             $LocalVarQueryParameters['limit'] = $Limit
         }
 
-        if ($PSBoundParameters.ContainsKey($SortOrder)) {
+        if ($PSBoundParameters.ContainsKey("SortOrder")) {
             $LocalVarQueryParameters['sortOrder'] = $SortOrder
         }
 
-        if ($PSBoundParameters.ContainsKey($After)) {
+        if ($PSBoundParameters.ContainsKey("After")) {
             $LocalVarQueryParameters['after'] = $After
         }
 

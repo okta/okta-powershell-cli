@@ -72,7 +72,7 @@ function New-OktaSession {
 
         $LocalVarUri = '/api/v1/sessions'
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -192,12 +192,12 @@ function Stop-OktaSession {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/sessions/{sessionId}'
-        if (!$PSBoundParameters.ContainsKey($SessionId)) {
+        if (!$PSBoundParameters.ContainsKey("SessionId")) {
             throw "Error! The required parameter `SessionId` missing when calling endSession."
         }
         $LocalVarUri = $LocalVarUri.replace('{sessionId}', [System.Web.HTTPUtility]::UrlEncode($SessionId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -305,12 +305,12 @@ function Get-OktaSession {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/sessions/{sessionId}'
-        if (!$PSBoundParameters.ContainsKey($SessionId)) {
+        if (!$PSBoundParameters.ContainsKey("SessionId")) {
             throw "Error! The required parameter `SessionId` missing when calling getSession."
         }
         $LocalVarUri = $LocalVarUri.replace('{sessionId}', [System.Web.HTTPUtility]::UrlEncode($SessionId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -418,12 +418,12 @@ function Invoke-OktaRefreshSession {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/sessions/{sessionId}/lifecycle/refresh'
-        if (!$PSBoundParameters.ContainsKey($SessionId)) {
+        if (!$PSBoundParameters.ContainsKey("SessionId")) {
             throw "Error! The required parameter `SessionId` missing when calling refreshSession."
         }
         $LocalVarUri = $LocalVarUri.replace('{sessionId}', [System.Web.HTTPUtility]::UrlEncode($SessionId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]

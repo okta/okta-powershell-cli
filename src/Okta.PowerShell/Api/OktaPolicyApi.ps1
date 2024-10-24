@@ -68,12 +68,12 @@ function Invoke-OktaActivatePolicy {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/policies/{policyId}/lifecycle/activate'
-        if (!$PSBoundParameters.ContainsKey($PolicyId)) {
+        if (!$PSBoundParameters.ContainsKey("PolicyId")) {
             throw "Error! The required parameter `PolicyId` missing when calling activatePolicy."
         }
         $LocalVarUri = $LocalVarUri.replace('{policyId}', [System.Web.HTTPUtility]::UrlEncode($PolicyId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -187,16 +187,16 @@ function Invoke-OktaActivatePolicyRule {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/policies/{policyId}/rules/{ruleId}/lifecycle/activate'
-        if (!$PSBoundParameters.ContainsKey($PolicyId)) {
+        if (!$PSBoundParameters.ContainsKey("PolicyId")) {
             throw "Error! The required parameter `PolicyId` missing when calling activatePolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{policyId}', [System.Web.HTTPUtility]::UrlEncode($PolicyId))
-        if (!$PSBoundParameters.ContainsKey($RuleId)) {
+        if (!$PSBoundParameters.ContainsKey("RuleId")) {
             throw "Error! The required parameter `RuleId` missing when calling activatePolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{ruleId}', [System.Web.HTTPUtility]::UrlEncode($RuleId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -304,12 +304,12 @@ function Copy-OktaPolicy {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/policies/{policyId}/clone'
-        if (!$PSBoundParameters.ContainsKey($PolicyId)) {
+        if (!$PSBoundParameters.ContainsKey("PolicyId")) {
             throw "Error! The required parameter `PolicyId` missing when calling clonePolicy."
         }
         $LocalVarUri = $LocalVarUri.replace('{policyId}', [System.Web.HTTPUtility]::UrlEncode($PolicyId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -427,13 +427,13 @@ function New-OktaPolicy {
 
         $LocalVarUri = '/api/v1/policies'
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($PSBoundParameters.ContainsKey($Activate)) {
+        if ($PSBoundParameters.ContainsKey("Activate")) {
             $LocalVarQueryParameters['activate'] = $Activate
         }
 
@@ -561,12 +561,12 @@ function New-OktaPolicyRule {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/policies/{policyId}/rules'
-        if (!$PSBoundParameters.ContainsKey($PolicyId)) {
+        if (!$PSBoundParameters.ContainsKey("PolicyId")) {
             throw "Error! The required parameter `PolicyId` missing when calling createPolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{policyId}', [System.Web.HTTPUtility]::UrlEncode($PolicyId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -687,12 +687,12 @@ function Invoke-OktaDeactivatePolicy {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/policies/{policyId}/lifecycle/deactivate'
-        if (!$PSBoundParameters.ContainsKey($PolicyId)) {
+        if (!$PSBoundParameters.ContainsKey("PolicyId")) {
             throw "Error! The required parameter `PolicyId` missing when calling deactivatePolicy."
         }
         $LocalVarUri = $LocalVarUri.replace('{policyId}', [System.Web.HTTPUtility]::UrlEncode($PolicyId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -806,16 +806,16 @@ function Invoke-OktaDeactivatePolicyRule {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/policies/{policyId}/rules/{ruleId}/lifecycle/deactivate'
-        if (!$PSBoundParameters.ContainsKey($PolicyId)) {
+        if (!$PSBoundParameters.ContainsKey("PolicyId")) {
             throw "Error! The required parameter `PolicyId` missing when calling deactivatePolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{policyId}', [System.Web.HTTPUtility]::UrlEncode($PolicyId))
-        if (!$PSBoundParameters.ContainsKey($RuleId)) {
+        if (!$PSBoundParameters.ContainsKey("RuleId")) {
             throw "Error! The required parameter `RuleId` missing when calling deactivatePolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{ruleId}', [System.Web.HTTPUtility]::UrlEncode($RuleId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -923,12 +923,12 @@ function Invoke-OktaDeletePolicy {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/policies/{policyId}'
-        if (!$PSBoundParameters.ContainsKey($PolicyId)) {
+        if (!$PSBoundParameters.ContainsKey("PolicyId")) {
             throw "Error! The required parameter `PolicyId` missing when calling deletePolicy."
         }
         $LocalVarUri = $LocalVarUri.replace('{policyId}', [System.Web.HTTPUtility]::UrlEncode($PolicyId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1042,16 +1042,16 @@ function Invoke-OktaDeletePolicyRule {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/policies/{policyId}/rules/{ruleId}'
-        if (!$PSBoundParameters.ContainsKey($PolicyId)) {
+        if (!$PSBoundParameters.ContainsKey("PolicyId")) {
             throw "Error! The required parameter `PolicyId` missing when calling deletePolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{policyId}', [System.Web.HTTPUtility]::UrlEncode($PolicyId))
-        if (!$PSBoundParameters.ContainsKey($RuleId)) {
+        if (!$PSBoundParameters.ContainsKey("RuleId")) {
             throw "Error! The required parameter `RuleId` missing when calling deletePolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{ruleId}', [System.Web.HTTPUtility]::UrlEncode($RuleId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1165,18 +1165,18 @@ function Get-OktaPolicy {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/policies/{policyId}'
-        if (!$PSBoundParameters.ContainsKey($PolicyId)) {
+        if (!$PSBoundParameters.ContainsKey("PolicyId")) {
             throw "Error! The required parameter `PolicyId` missing when calling getPolicy."
         }
         $LocalVarUri = $LocalVarUri.replace('{policyId}', [System.Web.HTTPUtility]::UrlEncode($PolicyId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($PSBoundParameters.ContainsKey($Expand)) {
+        if ($PSBoundParameters.ContainsKey("Expand")) {
             $LocalVarQueryParameters['expand'] = $Expand
         }
 
@@ -1288,16 +1288,16 @@ function Get-OktaPolicyRule {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/policies/{policyId}/rules/{ruleId}'
-        if (!$PSBoundParameters.ContainsKey($PolicyId)) {
+        if (!$PSBoundParameters.ContainsKey("PolicyId")) {
             throw "Error! The required parameter `PolicyId` missing when calling getPolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{policyId}', [System.Web.HTTPUtility]::UrlEncode($PolicyId))
-        if (!$PSBoundParameters.ContainsKey($RuleId)) {
+        if (!$PSBoundParameters.ContainsKey("RuleId")) {
             throw "Error! The required parameter `RuleId` missing when calling getPolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{ruleId}', [System.Web.HTTPUtility]::UrlEncode($RuleId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1418,22 +1418,22 @@ function Invoke-OktaListPolicies {
 
         $LocalVarUri = '/api/v1/policies'
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$PSBoundParameters.ContainsKey($Type)) {
+        if (!$PSBoundParameters.ContainsKey("Type")) {
             throw "Error! The required parameter `Type` missing when calling listPolicies."
         }
         $LocalVarQueryParameters['type'] = $Type
 
-        if ($PSBoundParameters.ContainsKey($Status)) {
+        if ($PSBoundParameters.ContainsKey("Status")) {
             $LocalVarQueryParameters['status'] = $Status
         }
 
-        if ($PSBoundParameters.ContainsKey($Expand)) {
+        if ($PSBoundParameters.ContainsKey("Expand")) {
             $LocalVarQueryParameters['expand'] = $Expand
         }
 
@@ -1539,12 +1539,12 @@ function Invoke-OktaListPolicyRules {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/policies/{policyId}/rules'
-        if (!$PSBoundParameters.ContainsKey($PolicyId)) {
+        if (!$PSBoundParameters.ContainsKey("PolicyId")) {
             throw "Error! The required parameter `PolicyId` missing when calling listPolicyRules."
         }
         $LocalVarUri = $LocalVarUri.replace('{policyId}', [System.Web.HTTPUtility]::UrlEncode($PolicyId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1661,12 +1661,12 @@ function Update-OktaPolicy {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/policies/{policyId}'
-        if (!$PSBoundParameters.ContainsKey($PolicyId)) {
+        if (!$PSBoundParameters.ContainsKey("PolicyId")) {
             throw "Error! The required parameter `PolicyId` missing when calling updatePolicy."
         }
         $LocalVarUri = $LocalVarUri.replace('{policyId}', [System.Web.HTTPUtility]::UrlEncode($PolicyId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1802,16 +1802,16 @@ function Update-OktaPolicyRule {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/policies/{policyId}/rules/{ruleId}'
-        if (!$PSBoundParameters.ContainsKey($PolicyId)) {
+        if (!$PSBoundParameters.ContainsKey("PolicyId")) {
             throw "Error! The required parameter `PolicyId` missing when calling updatePolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{policyId}', [System.Web.HTTPUtility]::UrlEncode($PolicyId))
-        if (!$PSBoundParameters.ContainsKey($RuleId)) {
+        if (!$PSBoundParameters.ContainsKey("RuleId")) {
             throw "Error! The required parameter `RuleId` missing when calling updatePolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{ruleId}', [System.Web.HTTPUtility]::UrlEncode($RuleId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]

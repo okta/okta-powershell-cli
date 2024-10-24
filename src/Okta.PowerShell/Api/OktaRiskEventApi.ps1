@@ -72,7 +72,7 @@ function Send-OktaRiskEvents {
 
         $LocalVarUri = '/api/v1/risk/events/ip'
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]

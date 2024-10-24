@@ -68,12 +68,12 @@ function Invoke-OktaActivateAuthorizationServer {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/lifecycle/activate'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling activateAuthorizationServer."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -187,16 +187,16 @@ function Invoke-OktaActivateAuthorizationServerPolicy {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/policies/{policyId}/lifecycle/activate'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling activateAuthorizationServerPolicy."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
-        if (!$PSBoundParameters.ContainsKey($PolicyId)) {
+        if (!$PSBoundParameters.ContainsKey("PolicyId")) {
             throw "Error! The required parameter `PolicyId` missing when calling activateAuthorizationServerPolicy."
         }
         $LocalVarUri = $LocalVarUri.replace('{policyId}', [System.Web.HTTPUtility]::UrlEncode($PolicyId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -316,20 +316,20 @@ function Invoke-OktaActivateAuthorizationServerPolicyRule {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/policies/{policyId}/rules/{ruleId}/lifecycle/activate'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling activateAuthorizationServerPolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
-        if (!$PSBoundParameters.ContainsKey($PolicyId)) {
+        if (!$PSBoundParameters.ContainsKey("PolicyId")) {
             throw "Error! The required parameter `PolicyId` missing when calling activateAuthorizationServerPolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{policyId}', [System.Web.HTTPUtility]::UrlEncode($PolicyId))
-        if (!$PSBoundParameters.ContainsKey($RuleId)) {
+        if (!$PSBoundParameters.ContainsKey("RuleId")) {
             throw "Error! The required parameter `RuleId` missing when calling activateAuthorizationServerPolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{ruleId}', [System.Web.HTTPUtility]::UrlEncode($RuleId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -441,7 +441,7 @@ function New-OktaAuthorizationServer {
 
         $LocalVarUri = '/api/v1/authorizationServers'
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -571,12 +571,12 @@ function New-OktaAuthorizationServerPolicy {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/policies'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling createAuthorizationServerPolicy."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -712,16 +712,16 @@ function New-OktaAuthorizationServerPolicyRule {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/policies/{policyId}/rules'
-        if (!$PSBoundParameters.ContainsKey($PolicyId)) {
+        if (!$PSBoundParameters.ContainsKey("PolicyId")) {
             throw "Error! The required parameter `PolicyId` missing when calling createAuthorizationServerPolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{policyId}', [System.Web.HTTPUtility]::UrlEncode($PolicyId))
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling createAuthorizationServerPolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -851,12 +851,12 @@ function New-OktaOAuth2Claim {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/claims'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling createOAuth2Claim."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -986,12 +986,12 @@ function New-OktaOAuth2Scope {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/scopes'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling createOAuth2Scope."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1112,12 +1112,12 @@ function Invoke-OktaDeactivateAuthorizationServer {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/lifecycle/deactivate'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling deactivateAuthorizationServer."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1231,16 +1231,16 @@ function Invoke-OktaDeactivateAuthorizationServerPolicy {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/policies/{policyId}/lifecycle/deactivate'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling deactivateAuthorizationServerPolicy."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
-        if (!$PSBoundParameters.ContainsKey($PolicyId)) {
+        if (!$PSBoundParameters.ContainsKey("PolicyId")) {
             throw "Error! The required parameter `PolicyId` missing when calling deactivateAuthorizationServerPolicy."
         }
         $LocalVarUri = $LocalVarUri.replace('{policyId}', [System.Web.HTTPUtility]::UrlEncode($PolicyId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1360,20 +1360,20 @@ function Invoke-OktaDeactivateAuthorizationServerPolicyRule {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/policies/{policyId}/rules/{ruleId}/lifecycle/deactivate'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling deactivateAuthorizationServerPolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
-        if (!$PSBoundParameters.ContainsKey($PolicyId)) {
+        if (!$PSBoundParameters.ContainsKey("PolicyId")) {
             throw "Error! The required parameter `PolicyId` missing when calling deactivateAuthorizationServerPolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{policyId}', [System.Web.HTTPUtility]::UrlEncode($PolicyId))
-        if (!$PSBoundParameters.ContainsKey($RuleId)) {
+        if (!$PSBoundParameters.ContainsKey("RuleId")) {
             throw "Error! The required parameter `RuleId` missing when calling deactivateAuthorizationServerPolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{ruleId}', [System.Web.HTTPUtility]::UrlEncode($RuleId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1481,12 +1481,12 @@ function Invoke-OktaDeleteAuthorizationServer {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling deleteAuthorizationServer."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1600,16 +1600,16 @@ function Invoke-OktaDeleteAuthorizationServerPolicy {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/policies/{policyId}'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling deleteAuthorizationServerPolicy."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
-        if (!$PSBoundParameters.ContainsKey($PolicyId)) {
+        if (!$PSBoundParameters.ContainsKey("PolicyId")) {
             throw "Error! The required parameter `PolicyId` missing when calling deleteAuthorizationServerPolicy."
         }
         $LocalVarUri = $LocalVarUri.replace('{policyId}', [System.Web.HTTPUtility]::UrlEncode($PolicyId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1729,20 +1729,20 @@ function Invoke-OktaDeleteAuthorizationServerPolicyRule {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/policies/{policyId}/rules/{ruleId}'
-        if (!$PSBoundParameters.ContainsKey($PolicyId)) {
+        if (!$PSBoundParameters.ContainsKey("PolicyId")) {
             throw "Error! The required parameter `PolicyId` missing when calling deleteAuthorizationServerPolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{policyId}', [System.Web.HTTPUtility]::UrlEncode($PolicyId))
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling deleteAuthorizationServerPolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
-        if (!$PSBoundParameters.ContainsKey($RuleId)) {
+        if (!$PSBoundParameters.ContainsKey("RuleId")) {
             throw "Error! The required parameter `RuleId` missing when calling deleteAuthorizationServerPolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{ruleId}', [System.Web.HTTPUtility]::UrlEncode($RuleId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1856,16 +1856,16 @@ function Invoke-OktaDeleteOAuth2Claim {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/claims/{claimId}'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling deleteOAuth2Claim."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
-        if (!$PSBoundParameters.ContainsKey($ClaimId)) {
+        if (!$PSBoundParameters.ContainsKey("ClaimId")) {
             throw "Error! The required parameter `ClaimId` missing when calling deleteOAuth2Claim."
         }
         $LocalVarUri = $LocalVarUri.replace('{claimId}', [System.Web.HTTPUtility]::UrlEncode($ClaimId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1979,16 +1979,16 @@ function Invoke-OktaDeleteOAuth2Scope {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/scopes/{scopeId}'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling deleteOAuth2Scope."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
-        if (!$PSBoundParameters.ContainsKey($ScopeId)) {
+        if (!$PSBoundParameters.ContainsKey("ScopeId")) {
             throw "Error! The required parameter `ScopeId` missing when calling deleteOAuth2Scope."
         }
         $LocalVarUri = $LocalVarUri.replace('{scopeId}', [System.Web.HTTPUtility]::UrlEncode($ScopeId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -2096,12 +2096,12 @@ function Get-OktaAuthorizationServer {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling getAuthorizationServer."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -2215,16 +2215,16 @@ function Get-OktaAuthorizationServerPolicy {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/policies/{policyId}'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling getAuthorizationServerPolicy."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
-        if (!$PSBoundParameters.ContainsKey($PolicyId)) {
+        if (!$PSBoundParameters.ContainsKey("PolicyId")) {
             throw "Error! The required parameter `PolicyId` missing when calling getAuthorizationServerPolicy."
         }
         $LocalVarUri = $LocalVarUri.replace('{policyId}', [System.Web.HTTPUtility]::UrlEncode($PolicyId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -2344,20 +2344,20 @@ function Get-OktaAuthorizationServerPolicyRule {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/policies/{policyId}/rules/{ruleId}'
-        if (!$PSBoundParameters.ContainsKey($PolicyId)) {
+        if (!$PSBoundParameters.ContainsKey("PolicyId")) {
             throw "Error! The required parameter `PolicyId` missing when calling getAuthorizationServerPolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{policyId}', [System.Web.HTTPUtility]::UrlEncode($PolicyId))
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling getAuthorizationServerPolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
-        if (!$PSBoundParameters.ContainsKey($RuleId)) {
+        if (!$PSBoundParameters.ContainsKey("RuleId")) {
             throw "Error! The required parameter `RuleId` missing when calling getAuthorizationServerPolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{ruleId}', [System.Web.HTTPUtility]::UrlEncode($RuleId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -2471,16 +2471,16 @@ function Get-OktaOAuth2Claim {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/claims/{claimId}'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling getOAuth2Claim."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
-        if (!$PSBoundParameters.ContainsKey($ClaimId)) {
+        if (!$PSBoundParameters.ContainsKey("ClaimId")) {
             throw "Error! The required parameter `ClaimId` missing when calling getOAuth2Claim."
         }
         $LocalVarUri = $LocalVarUri.replace('{claimId}', [System.Web.HTTPUtility]::UrlEncode($ClaimId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -2594,16 +2594,16 @@ function Get-OktaOAuth2Scope {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/scopes/{scopeId}'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling getOAuth2Scope."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
-        if (!$PSBoundParameters.ContainsKey($ScopeId)) {
+        if (!$PSBoundParameters.ContainsKey("ScopeId")) {
             throw "Error! The required parameter `ScopeId` missing when calling getOAuth2Scope."
         }
         $LocalVarUri = $LocalVarUri.replace('{scopeId}', [System.Web.HTTPUtility]::UrlEncode($ScopeId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -2729,26 +2729,26 @@ function Get-OktaRefreshTokenForAuthorizationServerAndClient {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/clients/{clientId}/tokens/{tokenId}'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling getRefreshTokenForAuthorizationServerAndClient."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
-        if (!$PSBoundParameters.ContainsKey($ClientId)) {
+        if (!$PSBoundParameters.ContainsKey("ClientId")) {
             throw "Error! The required parameter `ClientId` missing when calling getRefreshTokenForAuthorizationServerAndClient."
         }
         $LocalVarUri = $LocalVarUri.replace('{clientId}', [System.Web.HTTPUtility]::UrlEncode($ClientId))
-        if (!$PSBoundParameters.ContainsKey($TokenId)) {
+        if (!$PSBoundParameters.ContainsKey("TokenId")) {
             throw "Error! The required parameter `TokenId` missing when calling getRefreshTokenForAuthorizationServerAndClient."
         }
         $LocalVarUri = $LocalVarUri.replace('{tokenId}', [System.Web.HTTPUtility]::UrlEncode($TokenId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($PSBoundParameters.ContainsKey($Expand)) {
+        if ($PSBoundParameters.ContainsKey("Expand")) {
             $LocalVarQueryParameters['expand'] = $Expand
         }
 
@@ -2854,12 +2854,12 @@ function Invoke-OktaListAuthorizationServerKeys {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/credentials/keys'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling listAuthorizationServerKeys."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -2967,12 +2967,12 @@ function Invoke-OktaListAuthorizationServerPolicies {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/policies'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling listAuthorizationServerPolicies."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -3086,16 +3086,16 @@ function Invoke-OktaListAuthorizationServerPolicyRules {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/policies/{policyId}/rules'
-        if (!$PSBoundParameters.ContainsKey($PolicyId)) {
+        if (!$PSBoundParameters.ContainsKey("PolicyId")) {
             throw "Error! The required parameter `PolicyId` missing when calling listAuthorizationServerPolicyRules."
         }
         $LocalVarUri = $LocalVarUri.replace('{policyId}', [System.Web.HTTPUtility]::UrlEncode($PolicyId))
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling listAuthorizationServerPolicyRules."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -3216,21 +3216,21 @@ function Invoke-OktaListAuthorizationServers {
 
         $LocalVarUri = '/api/v1/authorizationServers'
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($PSBoundParameters.ContainsKey($Q)) {
+        if ($PSBoundParameters.ContainsKey("Q")) {
             $LocalVarQueryParameters['q'] = $Q
         }
 
-        if ($PSBoundParameters.ContainsKey($Limit)) {
+        if ($PSBoundParameters.ContainsKey("Limit")) {
             $LocalVarQueryParameters['limit'] = $Limit
         }
 
-        if ($PSBoundParameters.ContainsKey($After)) {
+        if ($PSBoundParameters.ContainsKey("After")) {
             $LocalVarQueryParameters['after'] = $After
         }
 
@@ -3336,12 +3336,12 @@ function Invoke-OktaListOAuth2Claims {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/claims'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling listOAuth2Claims."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -3449,12 +3449,12 @@ function Invoke-OktaListOAuth2ClientsForAuthorizationServer {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/clients'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling listOAuth2ClientsForAuthorizationServer."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -3586,30 +3586,30 @@ function Invoke-OktaListOAuth2Scopes {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/scopes'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling listOAuth2Scopes."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($PSBoundParameters.ContainsKey($Q)) {
+        if ($PSBoundParameters.ContainsKey("Q")) {
             $LocalVarQueryParameters['q'] = $Q
         }
 
-        if ($PSBoundParameters.ContainsKey($Filter)) {
+        if ($PSBoundParameters.ContainsKey("Filter")) {
             $LocalVarQueryParameters['filter'] = $Filter
         }
 
-        if ($PSBoundParameters.ContainsKey($Cursor)) {
+        if ($PSBoundParameters.ContainsKey("Cursor")) {
             $LocalVarQueryParameters['cursor'] = $Cursor
         }
 
-        if ($PSBoundParameters.ContainsKey($Limit)) {
+        if ($PSBoundParameters.ContainsKey("Limit")) {
             $LocalVarQueryParameters['limit'] = $Limit
         }
 
@@ -3739,30 +3739,30 @@ function Invoke-OktaListRefreshTokensForAuthorizationServerAndClient {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/clients/{clientId}/tokens'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling listRefreshTokensForAuthorizationServerAndClient."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
-        if (!$PSBoundParameters.ContainsKey($ClientId)) {
+        if (!$PSBoundParameters.ContainsKey("ClientId")) {
             throw "Error! The required parameter `ClientId` missing when calling listRefreshTokensForAuthorizationServerAndClient."
         }
         $LocalVarUri = $LocalVarUri.replace('{clientId}', [System.Web.HTTPUtility]::UrlEncode($ClientId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($PSBoundParameters.ContainsKey($Expand)) {
+        if ($PSBoundParameters.ContainsKey("Expand")) {
             $LocalVarQueryParameters['expand'] = $Expand
         }
 
-        if ($PSBoundParameters.ContainsKey($After)) {
+        if ($PSBoundParameters.ContainsKey("After")) {
             $LocalVarQueryParameters['after'] = $After
         }
 
-        if ($PSBoundParameters.ContainsKey($Limit)) {
+        if ($PSBoundParameters.ContainsKey("Limit")) {
             $LocalVarQueryParameters['limit'] = $Limit
         }
 
@@ -3880,20 +3880,20 @@ function Revoke-OktaRefreshTokenForAuthorizationServerAndClient {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/clients/{clientId}/tokens/{tokenId}'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling revokeRefreshTokenForAuthorizationServerAndClient."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
-        if (!$PSBoundParameters.ContainsKey($ClientId)) {
+        if (!$PSBoundParameters.ContainsKey("ClientId")) {
             throw "Error! The required parameter `ClientId` missing when calling revokeRefreshTokenForAuthorizationServerAndClient."
         }
         $LocalVarUri = $LocalVarUri.replace('{clientId}', [System.Web.HTTPUtility]::UrlEncode($ClientId))
-        if (!$PSBoundParameters.ContainsKey($TokenId)) {
+        if (!$PSBoundParameters.ContainsKey("TokenId")) {
             throw "Error! The required parameter `TokenId` missing when calling revokeRefreshTokenForAuthorizationServerAndClient."
         }
         $LocalVarUri = $LocalVarUri.replace('{tokenId}', [System.Web.HTTPUtility]::UrlEncode($TokenId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -4007,16 +4007,16 @@ function Revoke-OktaRefreshTokensForAuthorizationServerAndClient {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/clients/{clientId}/tokens'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling revokeRefreshTokensForAuthorizationServerAndClient."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
-        if (!$PSBoundParameters.ContainsKey($ClientId)) {
+        if (!$PSBoundParameters.ContainsKey("ClientId")) {
             throw "Error! The required parameter `ClientId` missing when calling revokeRefreshTokensForAuthorizationServerAndClient."
         }
         $LocalVarUri = $LocalVarUri.replace('{clientId}', [System.Web.HTTPUtility]::UrlEncode($ClientId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -4133,12 +4133,12 @@ function Invoke-OktaRotateAuthorizationServerKeys {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/credentials/lifecycle/keyRotate'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling rotateAuthorizationServerKeys."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -4268,12 +4268,12 @@ function Update-OktaAuthorizationServer {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling updateAuthorizationServer."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -4409,16 +4409,16 @@ function Update-OktaAuthorizationServerPolicy {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/policies/{policyId}'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling updateAuthorizationServerPolicy."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
-        if (!$PSBoundParameters.ContainsKey($PolicyId)) {
+        if (!$PSBoundParameters.ContainsKey("PolicyId")) {
             throw "Error! The required parameter `PolicyId` missing when calling updateAuthorizationServerPolicy."
         }
         $LocalVarUri = $LocalVarUri.replace('{policyId}', [System.Web.HTTPUtility]::UrlEncode($PolicyId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -4560,20 +4560,20 @@ function Update-OktaAuthorizationServerPolicyRule {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/policies/{policyId}/rules/{ruleId}'
-        if (!$PSBoundParameters.ContainsKey($PolicyId)) {
+        if (!$PSBoundParameters.ContainsKey("PolicyId")) {
             throw "Error! The required parameter `PolicyId` missing when calling updateAuthorizationServerPolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{policyId}', [System.Web.HTTPUtility]::UrlEncode($PolicyId))
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling updateAuthorizationServerPolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
-        if (!$PSBoundParameters.ContainsKey($RuleId)) {
+        if (!$PSBoundParameters.ContainsKey("RuleId")) {
             throw "Error! The required parameter `RuleId` missing when calling updateAuthorizationServerPolicyRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{ruleId}', [System.Web.HTTPUtility]::UrlEncode($RuleId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -4709,16 +4709,16 @@ function Update-OktaOAuth2Claim {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/claims/{claimId}'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling updateOAuth2Claim."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
-        if (!$PSBoundParameters.ContainsKey($ClaimId)) {
+        if (!$PSBoundParameters.ContainsKey("ClaimId")) {
             throw "Error! The required parameter `ClaimId` missing when calling updateOAuth2Claim."
         }
         $LocalVarUri = $LocalVarUri.replace('{claimId}', [System.Web.HTTPUtility]::UrlEncode($ClaimId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -4854,16 +4854,16 @@ function Update-OktaOAuth2Scope {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/authorizationServers/{authServerId}/scopes/{scopeId}'
-        if (!$PSBoundParameters.ContainsKey($AuthServerId)) {
+        if (!$PSBoundParameters.ContainsKey("AuthServerId")) {
             throw "Error! The required parameter `AuthServerId` missing when calling updateOAuth2Scope."
         }
         $LocalVarUri = $LocalVarUri.replace('{authServerId}', [System.Web.HTTPUtility]::UrlEncode($AuthServerId))
-        if (!$PSBoundParameters.ContainsKey($ScopeId)) {
+        if (!$PSBoundParameters.ContainsKey("ScopeId")) {
             throw "Error! The required parameter `ScopeId` missing when calling updateOAuth2Scope."
         }
         $LocalVarUri = $LocalVarUri.replace('{scopeId}', [System.Web.HTTPUtility]::UrlEncode($ScopeId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]

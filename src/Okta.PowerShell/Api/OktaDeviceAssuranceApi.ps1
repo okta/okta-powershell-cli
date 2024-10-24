@@ -72,7 +72,7 @@ function New-OktaDeviceAssurancePolicy {
 
         $LocalVarUri = '/api/v1/device-assurances'
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -193,12 +193,12 @@ function Invoke-OktaDeleteDeviceAssurancePolicy {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/device-assurances/{deviceAssuranceId}'
-        if (!$PSBoundParameters.ContainsKey($DeviceAssuranceId)) {
+        if (!$PSBoundParameters.ContainsKey("DeviceAssuranceId")) {
             throw "Error! The required parameter `DeviceAssuranceId` missing when calling deleteDeviceAssurancePolicy."
         }
         $LocalVarUri = $LocalVarUri.replace('{deviceAssuranceId}', [System.Web.HTTPUtility]::UrlEncode($DeviceAssuranceId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -306,12 +306,12 @@ function Get-OktaDeviceAssurancePolicy {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/device-assurances/{deviceAssuranceId}'
-        if (!$PSBoundParameters.ContainsKey($DeviceAssuranceId)) {
+        if (!$PSBoundParameters.ContainsKey("DeviceAssuranceId")) {
             throw "Error! The required parameter `DeviceAssuranceId` missing when calling getDeviceAssurancePolicy."
         }
         $LocalVarUri = $LocalVarUri.replace('{deviceAssuranceId}', [System.Web.HTTPUtility]::UrlEncode($DeviceAssuranceId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -414,7 +414,7 @@ function Invoke-OktaListDeviceAssurancePolicies {
 
         $LocalVarUri = '/api/v1/device-assurances'
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -531,12 +531,12 @@ function Update-OktaDeviceAssurancePolicy {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/device-assurances/{deviceAssuranceId}'
-        if (!$PSBoundParameters.ContainsKey($DeviceAssuranceId)) {
+        if (!$PSBoundParameters.ContainsKey("DeviceAssuranceId")) {
             throw "Error! The required parameter `DeviceAssuranceId` missing when calling updateDeviceAssurancePolicy."
         }
         $LocalVarUri = $LocalVarUri.replace('{deviceAssuranceId}', [System.Web.HTTPUtility]::UrlEncode($DeviceAssuranceId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]

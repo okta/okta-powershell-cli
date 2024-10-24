@@ -72,7 +72,7 @@ function Add-OktaHookKey {
 
         $LocalVarUri = '/api/v1/hook-keys'
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -193,12 +193,12 @@ function Invoke-OktaDeleteHookKey {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/hook-keys/{hookKeyId}'
-        if (!$PSBoundParameters.ContainsKey($HookKeyId)) {
+        if (!$PSBoundParameters.ContainsKey("HookKeyId")) {
             throw "Error! The required parameter `HookKeyId` missing when calling deleteHookKey."
         }
         $LocalVarUri = $LocalVarUri.replace('{hookKeyId}', [System.Web.HTTPUtility]::UrlEncode($HookKeyId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -306,12 +306,12 @@ function Get-OktaHookKey {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/hook-keys/{hookKeyId}'
-        if (!$PSBoundParameters.ContainsKey($HookKeyId)) {
+        if (!$PSBoundParameters.ContainsKey("HookKeyId")) {
             throw "Error! The required parameter `HookKeyId` missing when calling getHookKey."
         }
         $LocalVarUri = $LocalVarUri.replace('{hookKeyId}', [System.Web.HTTPUtility]::UrlEncode($HookKeyId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -419,12 +419,12 @@ function Get-OktaPublicKey {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/hook-keys/public/{keyId}'
-        if (!$PSBoundParameters.ContainsKey($KeyId)) {
+        if (!$PSBoundParameters.ContainsKey("KeyId")) {
             throw "Error! The required parameter `KeyId` missing when calling getPublicKey."
         }
         $LocalVarUri = $LocalVarUri.replace('{keyId}', [System.Web.HTTPUtility]::UrlEncode($KeyId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -527,7 +527,7 @@ function Invoke-OktaListHookKeys {
 
         $LocalVarUri = '/api/v1/hook-keys'
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -644,12 +644,12 @@ function Invoke-OktaReplaceHookKey {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/hook-keys/{hookKeyId}'
-        if (!$PSBoundParameters.ContainsKey($HookKeyId)) {
+        if (!$PSBoundParameters.ContainsKey("HookKeyId")) {
             throw "Error! The required parameter `HookKeyId` missing when calling replaceHookKey."
         }
         $LocalVarUri = $LocalVarUri.replace('{hookKeyId}', [System.Web.HTTPUtility]::UrlEncode($HookKeyId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]

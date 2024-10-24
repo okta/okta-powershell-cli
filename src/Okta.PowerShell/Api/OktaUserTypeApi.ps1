@@ -72,7 +72,7 @@ function New-OktaUserType {
 
         $LocalVarUri = '/api/v1/meta/types/user'
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -193,12 +193,12 @@ function Invoke-OktaDeleteUserType {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/meta/types/user/{typeId}'
-        if (!$PSBoundParameters.ContainsKey($TypeId)) {
+        if (!$PSBoundParameters.ContainsKey("TypeId")) {
             throw "Error! The required parameter `TypeId` missing when calling deleteUserType."
         }
         $LocalVarUri = $LocalVarUri.replace('{typeId}', [System.Web.HTTPUtility]::UrlEncode($TypeId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -306,12 +306,12 @@ function Get-OktaUserType {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/meta/types/user/{typeId}'
-        if (!$PSBoundParameters.ContainsKey($TypeId)) {
+        if (!$PSBoundParameters.ContainsKey("TypeId")) {
             throw "Error! The required parameter `TypeId` missing when calling getUserType."
         }
         $LocalVarUri = $LocalVarUri.replace('{typeId}', [System.Web.HTTPUtility]::UrlEncode($TypeId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -414,7 +414,7 @@ function Invoke-OktaListUserTypes {
 
         $LocalVarUri = '/api/v1/meta/types/user'
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -531,12 +531,12 @@ function Invoke-OktaReplaceUserType {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/meta/types/user/{typeId}'
-        if (!$PSBoundParameters.ContainsKey($TypeId)) {
+        if (!$PSBoundParameters.ContainsKey("TypeId")) {
             throw "Error! The required parameter `TypeId` missing when calling replaceUserType."
         }
         $LocalVarUri = $LocalVarUri.replace('{typeId}', [System.Web.HTTPUtility]::UrlEncode($TypeId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -666,12 +666,12 @@ function Update-OktaUserType {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/meta/types/user/{typeId}'
-        if (!$PSBoundParameters.ContainsKey($TypeId)) {
+        if (!$PSBoundParameters.ContainsKey("TypeId")) {
             throw "Error! The required parameter `TypeId` missing when calling updateUserType."
         }
         $LocalVarUri = $LocalVarUri.replace('{typeId}', [System.Web.HTTPUtility]::UrlEncode($TypeId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]

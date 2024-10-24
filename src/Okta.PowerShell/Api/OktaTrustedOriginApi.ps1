@@ -68,12 +68,12 @@ function Invoke-OktaActivateOrigin {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/trustedOrigins/{trustedOriginId}/lifecycle/activate'
-        if (!$PSBoundParameters.ContainsKey($TrustedOriginId)) {
+        if (!$PSBoundParameters.ContainsKey("TrustedOriginId")) {
             throw "Error! The required parameter `TrustedOriginId` missing when calling activateOrigin."
         }
         $LocalVarUri = $LocalVarUri.replace('{trustedOriginId}', [System.Web.HTTPUtility]::UrlEncode($TrustedOriginId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -185,7 +185,7 @@ function New-OktaOrigin {
 
         $LocalVarUri = '/api/v1/trustedOrigins'
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -306,12 +306,12 @@ function Invoke-OktaDeactivateOrigin {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/trustedOrigins/{trustedOriginId}/lifecycle/deactivate'
-        if (!$PSBoundParameters.ContainsKey($TrustedOriginId)) {
+        if (!$PSBoundParameters.ContainsKey("TrustedOriginId")) {
             throw "Error! The required parameter `TrustedOriginId` missing when calling deactivateOrigin."
         }
         $LocalVarUri = $LocalVarUri.replace('{trustedOriginId}', [System.Web.HTTPUtility]::UrlEncode($TrustedOriginId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -419,12 +419,12 @@ function Invoke-OktaDeleteOrigin {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/trustedOrigins/{trustedOriginId}'
-        if (!$PSBoundParameters.ContainsKey($TrustedOriginId)) {
+        if (!$PSBoundParameters.ContainsKey("TrustedOriginId")) {
             throw "Error! The required parameter `TrustedOriginId` missing when calling deleteOrigin."
         }
         $LocalVarUri = $LocalVarUri.replace('{trustedOriginId}', [System.Web.HTTPUtility]::UrlEncode($TrustedOriginId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -532,12 +532,12 @@ function Get-OktaOrigin {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/trustedOrigins/{trustedOriginId}'
-        if (!$PSBoundParameters.ContainsKey($TrustedOriginId)) {
+        if (!$PSBoundParameters.ContainsKey("TrustedOriginId")) {
             throw "Error! The required parameter `TrustedOriginId` missing when calling getOrigin."
         }
         $LocalVarUri = $LocalVarUri.replace('{trustedOriginId}', [System.Web.HTTPUtility]::UrlEncode($TrustedOriginId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -664,25 +664,25 @@ function Invoke-OktaListOrigins {
 
         $LocalVarUri = '/api/v1/trustedOrigins'
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($PSBoundParameters.ContainsKey($Q)) {
+        if ($PSBoundParameters.ContainsKey("Q")) {
             $LocalVarQueryParameters['q'] = $Q
         }
 
-        if ($PSBoundParameters.ContainsKey($Filter)) {
+        if ($PSBoundParameters.ContainsKey("Filter")) {
             $LocalVarQueryParameters['filter'] = $Filter
         }
 
-        if ($PSBoundParameters.ContainsKey($After)) {
+        if ($PSBoundParameters.ContainsKey("After")) {
             $LocalVarQueryParameters['after'] = $After
         }
 
-        if ($PSBoundParameters.ContainsKey($Limit)) {
+        if ($PSBoundParameters.ContainsKey("Limit")) {
             $LocalVarQueryParameters['limit'] = $Limit
         }
 
@@ -797,12 +797,12 @@ function Update-OktaOrigin {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/trustedOrigins/{trustedOriginId}'
-        if (!$PSBoundParameters.ContainsKey($TrustedOriginId)) {
+        if (!$PSBoundParameters.ContainsKey("TrustedOriginId")) {
             throw "Error! The required parameter `TrustedOriginId` missing when calling updateOrigin."
         }
         $LocalVarUri = $LocalVarUri.replace('{trustedOriginId}', [System.Web.HTTPUtility]::UrlEncode($TrustedOriginId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]

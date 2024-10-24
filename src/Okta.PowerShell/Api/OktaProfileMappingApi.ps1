@@ -68,12 +68,12 @@ function Get-OktaProfileMapping {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/mappings/{mappingId}'
-        if (!$PSBoundParameters.ContainsKey($MappingId)) {
+        if (!$PSBoundParameters.ContainsKey("MappingId")) {
             throw "Error! The required parameter `MappingId` missing when calling getProfileMapping."
         }
         $LocalVarUri = $LocalVarUri.replace('{mappingId}', [System.Web.HTTPUtility]::UrlEncode($MappingId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -200,25 +200,25 @@ function Invoke-OktaListProfileMappings {
 
         $LocalVarUri = '/api/v1/mappings'
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($PSBoundParameters.ContainsKey($After)) {
+        if ($PSBoundParameters.ContainsKey("After")) {
             $LocalVarQueryParameters['after'] = $After
         }
 
-        if ($PSBoundParameters.ContainsKey($Limit)) {
+        if ($PSBoundParameters.ContainsKey("Limit")) {
             $LocalVarQueryParameters['limit'] = $Limit
         }
 
-        if ($PSBoundParameters.ContainsKey($SourceId)) {
+        if ($PSBoundParameters.ContainsKey("SourceId")) {
             $LocalVarQueryParameters['sourceId'] = $SourceId
         }
 
-        if ($PSBoundParameters.ContainsKey($TargetId)) {
+        if ($PSBoundParameters.ContainsKey("TargetId")) {
             $LocalVarQueryParameters['targetId'] = $TargetId
         }
 
@@ -333,12 +333,12 @@ function Update-OktaProfileMapping {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/mappings/{mappingId}'
-        if (!$PSBoundParameters.ContainsKey($MappingId)) {
+        if (!$PSBoundParameters.ContainsKey("MappingId")) {
             throw "Error! The required parameter `MappingId` missing when calling updateProfileMapping."
         }
         $LocalVarUri = $LocalVarUri.replace('{mappingId}', [System.Web.HTTPUtility]::UrlEncode($MappingId))
 
-        if ($PSBoundParameters.ContainsKey($Uri)) {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
