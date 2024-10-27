@@ -1,4 +1,4 @@
-name: Test PowerShell on Ubuntu
+name: Pester Tests on Ubuntu
 on: push
 
 jobs:
