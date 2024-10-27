@@ -1,0 +1,14 @@
+name: Pester Tests on Ubuntu
+on: push
+
+jobs:
+  pester-test:
+    name: Pester test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Perform a Pester test from the Tests.ps1 file
+        shell: pwsh
+        run: |
+          Invoke-Pester Test.ps1 -Passthru
