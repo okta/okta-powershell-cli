@@ -1,11 +1,18 @@
 
 > [!NOTE]
 > This is a fork of https://github.com/okta/okta-powershell-cli
-> [okta/okta-powershell-cli](https://github.com/okta/okta-powershell-cli)
 >
-> The up-to-date branch in this repo - with all fixes - is develop
+>  The [develop](https://github.com/TriggerAu/okta-powershell-cli/tree/develop) branch in this repo is the one that contains integration of tested fixes
 > 
-> [![Pester Tests on Ubuntu](https://github.com/TriggerAu/okta-powershell-cli/actions/workflows/runtests.yml/badge.svg)](https://github.com/TriggerAu/okta-powershell-cli/actions/workflows/runtests.yml)
+> Test Status: [![Pester Tests on Ubuntu](https://github.com/TriggerAu/okta-powershell-cli/actions/workflows/runtests.yml/badge.svg)](https://github.com/TriggerAu/okta-powershell-cli/actions/workflows/runtests.yml)
+
+> [!Tip]
+> ### Integrated Fixes
+>The below are the open PRs at the source integrated here, but not yet at the source
+> * [Add check of IsValueType to prevent Stack Overflow (#43)](https://github.com/okta/okta-powershell-cli/pull/49)
+> * [Add forced casting for Arrays in Remove-NullProperties (#50)](https://github.com/okta/okta-powershell-cli/pull/51)
+> * [Fix for ApiKey configuration fields not working for the API functions (#52)](https://github.com/okta/okta-powershell-cli/pull/53)
+> * [Fixes the logic for Parameter existence to use PSBoundParameters.ContainsKey() (#56)](https://github.com/okta/okta-powershell-cli/pull/57)
 
 ---
 # Okta.PowerShell - The PowerShell module for the Okta Management API
