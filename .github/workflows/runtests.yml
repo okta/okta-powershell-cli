@@ -1,5 +1,9 @@
 name: Pester Tests on Ubuntu
-on: push
+on:
+  push:
+    branches-ignore:
+      - 'main'
+      - 'master'
 
 jobs:
   pester-test:
