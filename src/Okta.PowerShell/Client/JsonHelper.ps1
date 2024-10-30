@@ -33,7 +33,12 @@ function Remove-NullProperties {
         $PropertyList = $InputObject.PSObject.Properties | Where-Object { $null -ne $_.Value }
         
         foreach ($Property in $PropertyList) { 
-            $NewObject[$Property.Name] = Remove-NullProperties $Property.Value
+            if($Property.Value -is [array]){
+                # explicit cast to avoid arrays to be converted to object (i.e @('foo'))
+                $NewObject[$Property.Name] = Remove-NullPropertiesFromArray $Property.Value
+            }else{
+                $NewObject[$Property.Name] = Remove-NullProperties $Property.Value
+            }
         }
     }
 
@@ -69,7 +74,6 @@ function Remove-NullPropertiesFromHashMap{
 }
 
 # Remove null properties from an array recursively
-
 function Remove-NullPropertiesFromArray {
     [CmdletBinding()]
     param(
@@ -85,5 +89,7 @@ function Remove-NullPropertiesFromArray {
         $NewArray += $NewItem
     }
 
-    return $NewArray
+    #https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_operators?view=powershell-7.4#comma-operator-
+    # Ensure the return is always an array, even if there's only one item
+    return ,$NewArray
 }

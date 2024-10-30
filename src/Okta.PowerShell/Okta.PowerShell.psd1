@@ -12,13 +12,13 @@
 RootModule = 'Okta.PowerShell.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.0.2'
+ModuleVersion = '1.0.3'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
 
 # ID used to uniquely identify this module
-GUID = '74f58d24-72c5-4a88-af6d-204b1de897a5'
+GUID = '5e82b81c-92d5-47bc-a10f-e26b40081903'
 
 # Author of this module
 Author = 'Okta, Inc.'
