@@ -10,9 +10,9 @@
 > ### Integrated Fixes
 >The below are the open PRs at the source integrated here, but not yet at the source
 > * [Add check of IsValueType to prevent Stack Overflow (#43)](https://github.com/okta/okta-powershell-cli/pull/49)
-> * [Add forced casting for Arrays in Remove-NullProperties (#50)](https://github.com/okta/okta-powershell-cli/pull/51)
 > * [Fix for ApiKey configuration fields not working for the API functions (#52)](https://github.com/okta/okta-powershell-cli/pull/53)
 > * [Fixes the logic for Parameter existence to use PSBoundParameters.ContainsKey() (#56)](https://github.com/okta/okta-powershell-cli/pull/57)
+> * [RateLimiting functionality does not work (#61)](https://github.com/okta/okta-powershell-cli/pull/62)
 
 ---
 # Okta.PowerShell - The PowerShell module for the Okta Management API
