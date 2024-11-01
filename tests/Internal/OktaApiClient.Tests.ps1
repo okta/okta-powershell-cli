@@ -5,7 +5,8 @@ Context 'Invoke-OktaApiClient - 429 Responses' {
         $Config.RequestTimeout = $null
         $Now = Get-Date # Used as a reference for the test. Indicates when the request was executed
         $ResetDate = $Now.AddSeconds(3) # Indicates when one should retry
-        
+        $ResetDateEpoch = $ResetDate.ToUniversalTime().Subtract((New-Object DateTime(1970, 1, 1, 0, 0, 0, 0))).TotalSeconds
+
         Mock -ModuleName Okta.PowerShell Get-OktaConfiguration { return $Config } -Verifiable
         
         $Response = [PSCustomObject]@{
@@ -13,7 +14,7 @@ Context 'Invoke-OktaApiClient - 429 Responses' {
             Headers =  @{
                 "Date" = @($Now)
                 "Content-Type" = @('application/json; charset=utf-8')
-                "X-Rate-Limit-Reset" = @($ResetDate)
+                "x-rate-limit-reset" = @($ResetDateEpoch)
                 "X-Okta-Request-Id" = @("foo")
             }
             StatusCode = 429
@@ -33,6 +34,7 @@ Context 'Invoke-OktaApiClient - 429 Responses' {
         $Config.RequestTimeout = 100000
         $Now = Get-Date # Used as a reference for the test. Indicates when the request was executed
         $ResetDate = $Now.AddSeconds(3) # Indicates when one should retry
+        $ResetDateEpoch = $ResetDate.ToUniversalTime().Subtract((New-Object DateTime(1970, 1, 1, 0, 0, 0, 0))).TotalSeconds
         
         Mock -ModuleName Okta.PowerShell Get-OktaConfiguration { return $Config } -Verifiable
         
@@ -41,7 +43,7 @@ Context 'Invoke-OktaApiClient - 429 Responses' {
             Headers =  @{
                 "Date" = @($Now)
                 "Content-Type" = @('application/json; charset=utf-8')
-                "X-Rate-Limit-Reset" = @($ResetDate)
+                "x-rate-limit-reset" = @($ResetDateEpoch)
                 "X-Okta-Request-Id" = @("foo")
             }
             StatusCode = 429
@@ -61,6 +63,7 @@ Context 'Invoke-OktaApiClient - 429 Responses' {
         $Config.RequestTimeout = 1000
         $Now = Get-Date # Used as a reference for the test. Indicates when the request was executed
         $ResetDate = $Now.AddSeconds(3) # Indicates when one should retry
+        $ResetDateEpoch = $ResetDate.ToUniversalTime().Subtract((New-Object DateTime(1970, 1, 1, 0, 0, 0, 0))).TotalSeconds
         
         Mock -ModuleName Okta.PowerShell Get-OktaConfiguration { return $Config } -Verifiable
 
@@ -71,7 +74,7 @@ Context 'Invoke-OktaApiClient - 429 Responses' {
             Headers =  @{
                 "Date" = @($Now)
                 "Content-Type" = @('application/json; charset=utf-8')
-                "X-Rate-Limit-Reset" = @($ResetDate)
+                "x-rate-limit-reset" = @($ResetDateEpoch)
                 "X-Okta-Request-Id" = @("foo")
             }
             StatusCode = 429
@@ -92,6 +95,7 @@ Context 'Invoke-OktaApiClient - 429 Responses' {
         $Config.RequestTimeout = 1000
         $Now = Get-Date # Used as a reference for the test. Indicates when the request was executed
         $ResetDate = $Now.AddSeconds(3) # Indicates when one should retry
+        $ResetDateEpoch = $ResetDate.ToUniversalTime().Subtract((New-Object DateTime(1970, 1, 1, 0, 0, 0, 0))).TotalSeconds
         
         Mock -ModuleName Okta.PowerShell Get-OktaConfiguration { return $Config } -Verifiable
 
@@ -102,7 +106,7 @@ Context 'Invoke-OktaApiClient - 429 Responses' {
             Headers =  @{
                 "Date" = @($Now)
                 "Content-Type" = @('application/json; charset=utf-8')
-                "X-Rate-Limit-Reset" = @($ResetDate)
+                "x-rate-limit-reset" = @($ResetDateEpoch)
                 "X-Okta-Request-Id" = @("foo")
             }
             StatusCode = 400
