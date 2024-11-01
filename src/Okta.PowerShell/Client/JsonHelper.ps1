@@ -33,12 +33,7 @@ function Remove-NullProperties {
         $PropertyList = $InputObject.PSObject.Properties | Where-Object { $null -ne $_.Value }
         
         foreach ($Property in $PropertyList) { 
-            if($Property.Value -is [array]){
-                # explicit cast to avoid arrays to be converted to object (i.e @('foo'))
-                $NewObject[$Property.Name] = [array]@(Remove-NullProperties $Property.Value)
-            }else{
-                $NewObject[$Property.Name] = Remove-NullProperties $Property.Value
-            }
+            $NewObject[$Property.Name] = Remove-NullProperties $Property.Value
         }
     }
 
