@@ -10,6 +10,377 @@
 <#
 .SYNOPSIS
 
+Establishes the access token via the authorization code flow w/PKCE
+
+#>
+
+function Invoke-OktaEstablishAccessTokenAuthorizationCode {
+    Process {
+        'Calling method: Invoke-OktaEstablishAccessTokenAuthorizationCode' | Write-Debug
+        $PSBoundParameters | Out-DebugParameter | Write-Debug
+
+        $LocalVarAccepts = @()
+        $LocalVarContentTypes = @()
+        $LocalVarQueryParameters = @{}
+        $LocalVarHeaderParameters = @{}
+        $LocalVarFormParameters = @{}
+        $LocalVarPathParameters = @{}
+        $LocalVarCookieParameters = @{}
+        $LocalVarBodyParameter = $null
+
+        $Configuration = Get-OktaConfiguration
+
+        $RedirectUri = 'http://localhost:8080/login/callback/'
+
+        # HTTP header 'Accept' (if needed)
+        $LocalVarAccepts = @('application/json')
+
+        # HTTP header 'Content-Type'
+        $LocalVarContentTypes = @('application/x-www-form-urlencoded')
+
+        $LocalVarUri = '/oauth2/v1/authorize'
+
+        $RequestUri = $Configuration["BaseUrl"] + $LocalVarUri
+
+        $state = (New-Guid).ToString()
+
+        # Hash the code verifier UTF8 bytes with SHA256, convert the digest to base64url, and collect the first 44 characters as the code_challenge
+        $code_verifier = -join (((48..57) * 4) + ((65..90) * 4) + ((97..122) * 4) | Get-Random -Count 43 | ForEach-Object { [char]$_ })
+        $hashAlgo = [System.Security.Cryptography.HashAlgorithm]::Create('sha256')
+        $hash = $hashAlgo.ComputeHash([System.Text.Encoding]::UTF8.GetBytes($code_verifier))
+        $b64Hash = [System.Convert]::ToBase64String($hash)
+        $code_challenge = $b64Hash.Substring(0, 43).Replace("/","_").Replace("+","-").Replace("=","")
+      
+        $queryParameters = @{ 
+            client_id = $Configuration.ClientId
+            response_type = 'code'
+            scope = $config.Scope.TrimStart('openapi').Trim()
+            redirect_uri = $RedirectUri
+            state  = $state
+            code_challenge_method = 'S256'
+            code_challenge = $code_challenge
+        }
+
+        # construct URL query string
+        $HttpValues = [System.Web.HttpUtility]::ParseQueryString([String]::Empty)
+        foreach ($Parameter in $queryParameters.GetEnumerator()) {
+            if ($Parameter.Value.Count -gt 1) { // array
+                foreach ($Value in $Parameter.Value) {
+                    $HttpValues.Add($Parameter.Key + '[]', $Value)
+                }
+            } else {
+                $HttpValues.Add($Parameter.Key,$Parameter.Value)
+            }
+        }
+
+        # Build the request and load it with the query string.
+        $UriBuilder = [System.UriBuilder]($RequestUri)
+        $UriBuilder.Query = $HttpValues.ToString()
+
+        Start-Process $UriBuilder.Uri
+
+        $job = Start-Job -ScriptBlock {
+            $listener = New-Object System.Net.HttpListener
+            $callbackUriBuilder = [System.UriBuilder]($using:RedirectUri)
+            $listener.Prefixes.Add($callbackUriBuilder.Uri)
+            $listener.Start()
+            $context = $listener.getContext()
+            if ($context.Request.Url.Authority -ne $callbackUriBuilder.Uri.Authority -or $context.Request.Url.AbsolutePath -ne $callbackUriBuilder.Uri.AbsolutePath)
+            {
+                throw [System.InvalidOperationException] "Loopback response uri does not match callback uri."
+            }
+            # Verify state matches the state we sent
+            $valid = $context.Request.QueryString["state"] -eq $using:state
+            # Save code
+            $code = $context.Request.QueryString["code"]
+            $strError = $context.Request.QueryString["error"]
+            $strError_description = $context.Request.QueryString["error_description"]
+            $webPageResponse = "<html><head><title>Authentication Complete</title></head><body>Authentication complete. You can return to the application. Feel free to close this browser tab.</body></html>"
+            $response = $context.response
+            $response.StatusCode = 200
+        
+            if ($false -eq [String]::IsNullOrEmpty($strError))
+            {
+                $webPageResponse = "<html><head><title>Authentication Failed</title></head><body>Authentication failed. You can return to the application. Feel free to close this browser tab.</br></br>Error details:</br></br>error: ${strError}</br>error_description: ${strError_description}</body></html>" 
+            }
+            
+            $webPageResponseEncoded =  [System.Text.Encoding]::UTF8.GetBytes($webPageResponse)
+            $webPageResponseLength = $webPageResponseEncoded.Length
+            $response.ContentLength64 = $webPageResponseLength
+            $response.ContentType = "text/html; charset=UTF-8"
+            $response.OutputStream.Write($webPageResponseEncoded, 0, $webPageResponseLength)
+            $response.OutputStream.Close()
+            $response.Close()
+            $listener.Stop()
+            # Check state validity
+            if ($valid)
+            {
+                return $code
+            }
+            else 
+            { 
+                throw [System.InvalidOperationException] "Invalid state."
+            } 
+        }
+
+        Write-Host "Complete the login operation in the browser, then come back here."
+        
+        $keepPolling = $true
+        $CountPolling = 1
+        $CodeVarResult = $null
+        $Timeout = 3600 # in seconds (5 min)
+        $Timer = [Diagnostics.Stopwatch]::StartNew()
+        
+        while ($keepPolling -and $Timer.Elapsed.TotalSeconds -lt $Timeout) {
+            Start-Sleep -Milliseconds 2000
+            try {
+                $CodeVarResult = Receive-Job -Job $job -Keep
+                if ($null -ne $CodeVarResult -or $job.State -eq 'Completed') {
+                    $keepPolling = $false
+                }
+            }
+            catch {
+                $CountPolling++
+                $DebugMessage = "Polling count: " + $CountPolling + "| Elapsed time (Timeout 3600 secs): " + $Timer.Elapsed.TotalSeconds
+                Write-Debug $DebugMessage
+            }
+        }
+
+        $Timer.Stop()
+        Remove-Job -Job $job -Force
+
+        if ($null -ne $CodeVarResult) {
+            $TokenVarResult = Invoke-OktaFetchAccessToken -Code $CodeVarResult -CodeVerifier $code_verifier -RedirectUri $RedirectUri
+            Set-OktaConfigurationAccessToken $TokenVarResult.Response.access_token
+            Write-Host "Your token has been successfully retrieved and set to your configuration"
+        }
+        elseif ($Timer.Elapsed.TotalSeconds -gt $Timeout) {
+            Write-Host "INFO: Polling token has timed out"
+        }
+        else{
+            Write-Host "ERROR: No token has been established. Please try again."
+        }              
+    }
+}
+
+function ConvertFrom-Base64UrlEncodedString()
+{
+    param (
+        [Parameter(Mandatory = $true)]
+        [string] $b64urlstring
+    )
+    $b64string = $b64urlstring.Replace('_', '/').Replace('-', '+')
+    $pchars = 4 - ($b64string.Length % 4)
+    if ($pchars -lt 4) { $b64string += '=' * $pchars }
+    return [Convert]::FromBase64String($b64string)
+}
+
+function ConvertTo-Base64UrlEncodedString()
+{
+    param (
+        [Parameter(Mandatory = $true)]
+        [byte[]] $bytes
+    )
+    return [Convert]::ToBase64String($bytes).Replace('+', '-').Replace('/', '_').TrimEnd('=')
+}
+
+function Get-SignedData()
+{
+    param (
+        [Parameter(Mandatory = $true)]
+        [PSCustomObject] $jwk,
+        
+        [Parameter(Mandatory = $true)]
+        [byte[]] $data,
+
+        [Parameter(Mandatory = $true)]
+        [string] $Algorithm
+    )
+
+    $SigningAlg = switch -wildcard ($Algorithm) {
+        "*256"  {[Security.Cryptography.HashAlgorithmName]::SHA256}
+        "*384" {[Security.Cryptography.HashAlgorithmName]::SHA384}
+        "*512" {[Security.Cryptography.HashAlgorithmName]::SHA512}
+    }
+
+    switch -wildcard ($Algorithm)
+    {
+        "ES*" {
+            $Curve = switch -wildcard ($Algorithm) {
+                "*256" {"nistp256"}
+                "*384" {"nistp384"}
+                "*512" {"nistp521"}
+            }
+            $ecCurve = [System.Security.Cryptography.ECPoint]::new()
+            $ecCurve.CreateFromFriendlyName($CurveName)
+
+            $ecPoint = [System.Security.Cryptography.ECPoint]::new()
+            $ecPoint.X = ConvertFrom-Base64UrlEncodedString($jwk.x)
+            $ecPoint.Y = ConvertFrom-Base64UrlEncodedString($jwk.y)
+
+            $ecParams = [System.Security.Cryptography.ECParameters]::new()
+            
+            $ecParams.Curve = $Curve
+            $ecParams.D = ConvertFrom-Base64UrlEncodedString($jwk.d)
+            $ecParams.Q = $ecPoint
+
+            $ecdsa = [System.Security.Cryptography.ECDsa]::new()
+            $ecdsa.ImportParameters($ecParams)
+
+            return ConvertTo-Base64UrlEncodedString($ecdsa.SignData($data, $SigningAlg))
+        }
+        "RS*" {
+            $rsaParams = [System.Security.Cryptography.RSAParameters]::new()
+
+            $rsaParams.D = ConvertFrom-Base64UrlEncodedString($jwk.d)
+            $rsaParams.DP = ConvertFrom-Base64UrlEncodedString($jwk.dp)
+            $rsaParams.DQ = ConvertFrom-Base64UrlEncodedString($jwk.dq)
+            $rsaParams.Modulus = ConvertFrom-Base64UrlEncodedString($jwk.n)
+            $rsaParams.Exponent = ConvertFrom-Base64UrlEncodedString($jwk.e)
+            $rsaParams.InverseQ = ConvertFrom-Base64UrlEncodedString($jwk.qi)
+            $rsaParams.P = ConvertFrom-Base64UrlEncodedString($jwk.p)
+            $rsaParams.Q = ConvertFrom-Base64UrlEncodedString($jwk.q)
+        
+            $rsa = [System.Security.Cryptography.RSACryptoServiceProvider]::new()
+            $rsa.ImportParameters($rsaParams)
+            return ConvertTo-Base64UrlEncodedString($rsa.SignData($data, $SigningAlg, [System.Security.Cryptography.RSAEncryptionPadding]::Pkcs1))
+        }
+    }
+}
+
+<#
+.SYNOPSIS
+
+Establishes the access token via the client credentials flow
+
+#>
+
+function Invoke-OktaEstablishAccessTokenClientCredentials {
+    param (
+    [Parameter(Mandatory = $true)]
+    [string] $jwk,
+    
+    [Parameter(Mandatory = $true)]
+    [string] $Algorithm
+    )
+    Process {
+        'Calling method: Invoke-OktaEstablishAccessToken' | Write-Debug
+        $PSBoundParameters | Out-DebugParameter | Write-Debug
+
+        $LocalVarAccepts = @()
+        $LocalVarContentTypes = @()
+        $LocalVarQueryParameters = @{}
+        $LocalVarHeaderParameters = @{}
+        $LocalVarFormParameters = @{}
+        $LocalVarPathParameters = @{}
+        $LocalVarCookieParameters = @{}
+        $LocalVarBodyParameter = $null
+
+        $Configuration = Get-OktaConfiguration
+        # HTTP header 'Accept' (if needed)
+        $LocalVarAccepts = @('application/json')
+
+        # HTTP header 'Content-Type'
+        $LocalVarContentTypes = @('application/x-www-form-urlencoded')
+
+        $LocalVarUri = '/oauth2/v1/token'
+
+        $header = @{
+            alg = $Alg
+            typ = 'JWT'
+        }
+        $payload = @{ 
+            aud = $Configuration["BaseUrl"] + $LocalVarUri
+            exp = [Math]::Floor(([DateTimeOffset]::UtcNow.AddMinutes(30)).ToUnixTimeSeconds())
+            jti = (New-Guid).ToString()
+            iat = [Math]::Floor([DateTimeOffset]::UtcNow.ToUnixTimeSeconds())
+            iss = $Configuration.ClientId
+            sub = $Configuration.ClientId
+        }
+
+        $b64Header = ConvertTo-Base64UrlEncodedString([System.Text.Encoding]::UTF8.GetBytes(($header | ConvertTo-Json -Compress)))
+        $b64Payload = ConvertTo-Base64UrlEncodedString([System.Text.Encoding]::UTF8.GetBytes(($payload | ConvertTo-Json -Compress)))
+
+        $unsigned = $b64Header + '.' + $b64Payload
+        $unsignedbytes = [System.Text.Encoding]::UTF8.GetBytes($unsigned)
+
+        $signature = Get-SignedData -jwk ($jwk | ConvertFrom-Json) -Algorithm $Algorithm -data $unsignedbytes
+
+        $b64signature = [Convert]::ToBase64String(([System.Text.Encoding]::UTF8.GetBytes(($signature | ConvertTo-Json -Compress)))).Replace('+', '-').Replace('/', '_').TrimEnd('=')
+
+        $jwt = $unsigned + '.' + $b64signature
+
+        do { $jwt += '=' } while ((($jwt.Length * 6) % 8) -ne 0)
+
+        $LocalVarFormParameters = $body
+
+        $LocalVarResult = Invoke-OktaApiClient -Method 'POST' `
+                                -Uri $LocalVarUri `
+                                -Accepts $LocalVarAccepts `
+                                -ContentTypes $LocalVarContentTypes `
+                                -Body $LocalVarBodyParameter `
+                                -HeaderParameters $LocalVarHeaderParameters `
+                                -QueryParameters $LocalVarQueryParameters `
+                                -FormParameters $LocalVarFormParameters `
+                                -CookieParameters $LocalVarCookieParameters `
+                                -ReturnType "PSCustomObject" `
+                                -IsBodyNullable $false
+
+        if ($LocalVarResult.StatusCode -ne 200) {
+            Write-Error "Authorization failed"
+            
+            if ($WithHttpInfo.IsPresent) {
+                return $LocalVarResult
+            } else {
+                return $LocalVarResult["Response"]
+            }
+        }
+        
+        $DeviceUrl = $LocalVarResult.Response.verification_uri_complete 
+        $DeviceCode = $LocalVarResult.Response.device_code
+
+        Write-Host "Open your browser and navigate to the following URL to begin the Okta device authorization for the Powershell CLI: " $DeviceUrl
+        
+        $keepPolling = $true
+        $CountPolling = 1
+        $TokenVarResult = $null
+        $Timeout = 3600 # in seconds (5 min)
+        $Timer = [Diagnostics.Stopwatch]::StartNew()
+        
+        while ($keepPolling -and $Timer.Elapsed.TotalSeconds -lt $Timeout) {
+            Start-Sleep -Milliseconds 2000
+            try {
+                $TokenVarResult = Invoke-OktaFetchAccessToken -DeviceCode $DeviceCode
+
+                if ($TokenVarResult.StatusCode -eq 200) {
+                    $keepPolling = $false
+                }
+            }
+            catch {
+                $CountPolling++
+                $DebugMessage = "Polling count: " + $CountPolling + "| Elapsed time (Timeout 3600 secs): " + $Timer.Elapsed.TotalSeconds
+                Write-Debug $DebugMessage
+            }
+        }
+
+        $Timer.Stop()
+
+        if ($null -ne $TokenVarResult) {
+            Set-OktaConfigurationAccessToken $TokenVarResult.Response.access_token
+            Write-Host "Your token has been successfully retrieved and set to your configuration"
+        }
+        elseif ($Timer.Elapsed.TotalSeconds -gt $Timeout) {
+                Write-Host "INFO: Polling token has timed out"
+        }
+        else{
+            Write-Host "ERROR: No token has been established. Please try again."
+        }              
+    }
+}
+
+<#
+.SYNOPSIS
+
 Establishes the access token via the device code flow
 
 #>
@@ -111,21 +482,44 @@ function Invoke-OktaEstablishAccessToken {
 <#
 .SYNOPSIS
 
-Fetches an access token via the device code flow
+Fetches an access token via the device code or authorization code flow
 
 .PARAMETER DeviceCode
 
 Code obtained via the device flow
 
+.PARAMETER Code
+
+Code obtained via the authorization code flow
+
+.PARAMETER CodeVerifier
+
+Code verifier used in PKCE
+
+.PARAMETER RedirectUri
+
+Redirect uri used in authorization code flow
 
 #>
 
 function Invoke-OktaFetchAccessToken {
     [CmdletBinding()]
     Param (
-        [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
+        [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true, ParameterSetName = 'DeviceCode')]
         [String]
-        ${DeviceCode}
+        ${DeviceCode},
+        [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true, ParameterSetName = 'ClientAssertion')]
+        [String]
+        ${ClientAssertion},
+        [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true, ParameterSetName = 'AuthorizationCode')]
+        [String]
+        ${Code},
+        [Parameter(Position = 1, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true, ParameterSetName = 'AuthorizationCode')]
+        [String]
+        ${CodeVerifier},
+        [Parameter(Position = 2, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true, ParameterSetName = 'AuthorizationCode')]
+        [String]
+        ${RedirectUri}
     )
 
     Process {
@@ -149,13 +543,34 @@ function Invoke-OktaFetchAccessToken {
         $LocalVarContentTypes = @('application/x-www-form-urlencoded')
 
         $LocalVarUri = '/oauth2/v1/token'
-      
-        $body = @{ 
+
+        switch ($PSCmdlet.ParameterSetName) {
+            'DeviceCode' {
+                $body = @{ 
                     client_id = $Configuration.ClientId
                     device_code = $DeviceCode
                     grant_type = 'urn:ietf:params:oauth:grant-type:device_code'
                 }
-
+            }
+            'AuthorizationCode' {
+                $body = @{ 
+                    client_id = $Configuration.ClientId
+                    redirect_uri = $RedirectUri
+                    grant_type = 'authorization_code'
+                    code = $Code
+                    code_verifier = $CodeVerifier
+                }                
+            }
+            'ClientCredentials' {
+                $body = @{ 
+                    client_id = $Configuration.ClientId
+                    scope = $Configuration.Scope
+                    grant_type = 'client_credentials'
+                    client_assertion_type = 'urn:ietf:params:oauth:client-assertion-type:jwt-bearer'
+                    client_assertion = $ClientAssertion
+                }                 
+            }
+        }
         $LocalVarFormParameters = $body
 
         $LocalVarResult = Invoke-OktaApiClient -Method 'POST' `
@@ -192,7 +607,7 @@ function Invoke-OktaRemoveAccessToken {
         'Calling method: Invoke-OktaRemoveAccessToken' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        Set-OktaConfigurationAccessToken  -AccessToken $null
+        Set-OktaConfigurationAccessToken -AccessToken $null
 
         Write-Host "Your token has been successfully removed from configuration."        
     }
