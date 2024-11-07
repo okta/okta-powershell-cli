@@ -170,8 +170,7 @@ function ConvertFrom-Base64UrlEncodedString()
         [string] $b64urlstring
     )
     $b64string = $b64urlstring.Replace('_', '/').Replace('-', '+')
-    $pchars = 4 - ($b64string.Length % 4)
-    if ($pchars -lt 4) { $b64string += '=' * $pchars }
+    while (0 -ne $b64string.Length % 4) {$b64string += '='}
     return [Convert]::FromBase64String($b64string)
 }
 
@@ -188,31 +187,32 @@ function Get-SignedData()
 {
     param (
         [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
         [PSCustomObject] $jwk,
         
         [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
         [byte[]] $data,
 
         [Parameter(Mandatory = $true)]
+        [ValidateSet("RS256", "RS384", "RS512","ES256", "ES384", "ES512")]
         [string] $Algorithm
     )
 
     $SigningAlg = switch -wildcard ($Algorithm) {
-        "*256"  {[Security.Cryptography.HashAlgorithmName]::SHA256}
-        "*384" {[Security.Cryptography.HashAlgorithmName]::SHA384}
-        "*512" {[Security.Cryptography.HashAlgorithmName]::SHA512}
+        "*256" {[System.Security.Cryptography.HashAlgorithmName]::SHA256}
+        "*384" {[System.Security.Cryptography.HashAlgorithmName]::SHA384}
+        "*512" {[System.Security.Cryptography.HashAlgorithmName]::SHA512}
     }
 
     switch -wildcard ($Algorithm)
     {
         "ES*" {
-            $Curve = switch -wildcard ($Algorithm) {
-                "*256" {"nistp256"}
-                "*384" {"nistp384"}
-                "*512" {"nistp521"}
+            $ecCurve = switch -wildcard ($Algorithm) {
+                "*256" {[System.Security.Cryptography.ECCurve+NamedCurves]::"nistp256"}
+                "*384" {[System.Security.Cryptography.ECCurve+NamedCurves]::"nistp384"}
+                "*512" {[System.Security.Cryptography.ECCurve+NamedCurves]::"nistp521"}
             }
-            $ecCurve = [System.Security.Cryptography.ECPoint]::new()
-            $ecCurve.CreateFromFriendlyName($CurveName)
 
             $ecPoint = [System.Security.Cryptography.ECPoint]::new()
             $ecPoint.X = ConvertFrom-Base64UrlEncodedString($jwk.x)
@@ -220,12 +220,11 @@ function Get-SignedData()
 
             $ecParams = [System.Security.Cryptography.ECParameters]::new()
             
-            $ecParams.Curve = $Curve
+            $ecParams.Curve = $ecCurve
             $ecParams.D = ConvertFrom-Base64UrlEncodedString($jwk.d)
             $ecParams.Q = $ecPoint
 
-            $ecdsa = [System.Security.Cryptography.ECDsa]::new()
-            $ecdsa.ImportParameters($ecParams)
+            $ecdsa = [System.Security.Cryptography.ECDsa]::Create($ecParams)
 
             return ConvertTo-Base64UrlEncodedString($ecdsa.SignData($data, $SigningAlg))
         }
@@ -241,9 +240,8 @@ function Get-SignedData()
             $rsaParams.P = ConvertFrom-Base64UrlEncodedString($jwk.p)
             $rsaParams.Q = ConvertFrom-Base64UrlEncodedString($jwk.q)
         
-            $rsa = [System.Security.Cryptography.RSACryptoServiceProvider]::new()
-            $rsa.ImportParameters($rsaParams)
-            return ConvertTo-Base64UrlEncodedString($rsa.SignData($data, $SigningAlg, [System.Security.Cryptography.RSAEncryptionPadding]::Pkcs1))
+            $rsa = [System.Security.Cryptography.RSA]::Create($rsaParams)
+            return ConvertTo-Base64UrlEncodedString($rsa.SignData($data, $SigningAlg,[System.Security.Cryptography.RSASignaturePadding]::Pkcs1))
         }
     }
 }
@@ -258,13 +256,15 @@ Establishes the access token via the client credentials flow
 function Invoke-OktaEstablishAccessTokenClientCredentials {
     param (
     [Parameter(Mandatory = $true)]
+    [ValidateNotNullOrEmpty()]
     [string] $jwk,
     
     [Parameter(Mandatory = $true)]
+    [ValidateSet("RS256", "RS384", "RS512","ES256", "ES384", "ES512")]
     [string] $Algorithm
     )
     Process {
-        'Calling method: Invoke-OktaEstablishAccessToken' | Write-Debug
+        'Calling method: Invoke-OktaEstablishAccessTokenClientCredentials' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         $LocalVarAccepts = @()
@@ -285,9 +285,11 @@ function Invoke-OktaEstablishAccessTokenClientCredentials {
 
         $LocalVarUri = '/oauth2/v1/token'
 
+        [PSCustomObject]$psjwk = $jwk | ConvertFrom-Json
         $header = @{
-            alg = $Alg
+            alg = $Algorithm
             typ = 'JWT'
+            kid = $psjwk.kid
         }
         $payload = @{ 
             aud = $Configuration["BaseUrl"] + $LocalVarUri
@@ -303,65 +305,16 @@ function Invoke-OktaEstablishAccessTokenClientCredentials {
 
         $unsigned = $b64Header + '.' + $b64Payload
         $unsignedbytes = [System.Text.Encoding]::UTF8.GetBytes($unsigned)
-
-        $signature = Get-SignedData -jwk ($jwk | ConvertFrom-Json) -Algorithm $Algorithm -data $unsignedbytes
-
-        $b64signature = [Convert]::ToBase64String(([System.Text.Encoding]::UTF8.GetBytes(($signature | ConvertTo-Json -Compress)))).Replace('+', '-').Replace('/', '_').TrimEnd('=')
+        
+        $b64signature = Get-SignedData -jwk $psjwk -Algorithm $Algorithm -data $unsignedbytes
 
         $jwt = $unsigned + '.' + $b64signature
-
-        do { $jwt += '=' } while ((($jwt.Length * 6) % 8) -ne 0)
-
-        $LocalVarFormParameters = $body
-
-        $LocalVarResult = Invoke-OktaApiClient -Method 'POST' `
-                                -Uri $LocalVarUri `
-                                -Accepts $LocalVarAccepts `
-                                -ContentTypes $LocalVarContentTypes `
-                                -Body $LocalVarBodyParameter `
-                                -HeaderParameters $LocalVarHeaderParameters `
-                                -QueryParameters $LocalVarQueryParameters `
-                                -FormParameters $LocalVarFormParameters `
-                                -CookieParameters $LocalVarCookieParameters `
-                                -ReturnType "PSCustomObject" `
-                                -IsBodyNullable $false
-
-        if ($LocalVarResult.StatusCode -ne 200) {
-            Write-Error "Authorization failed"
-            
-            if ($WithHttpInfo.IsPresent) {
-                return $LocalVarResult
-            } else {
-                return $LocalVarResult["Response"]
-            }
-        }
-        
-        $DeviceUrl = $LocalVarResult.Response.verification_uri_complete 
-        $DeviceCode = $LocalVarResult.Response.device_code
-
-        Write-Host "Open your browser and navigate to the following URL to begin the Okta device authorization for the Powershell CLI: " $DeviceUrl
-        
-        $keepPolling = $true
-        $CountPolling = 1
+     
         $TokenVarResult = $null
-        $Timeout = 3600 # in seconds (5 min)
+        
         $Timer = [Diagnostics.Stopwatch]::StartNew()
         
-        while ($keepPolling -and $Timer.Elapsed.TotalSeconds -lt $Timeout) {
-            Start-Sleep -Milliseconds 2000
-            try {
-                $TokenVarResult = Invoke-OktaFetchAccessToken -DeviceCode $DeviceCode
-
-                if ($TokenVarResult.StatusCode -eq 200) {
-                    $keepPolling = $false
-                }
-            }
-            catch {
-                $CountPolling++
-                $DebugMessage = "Polling count: " + $CountPolling + "| Elapsed time (Timeout 3600 secs): " + $Timer.Elapsed.TotalSeconds
-                Write-Debug $DebugMessage
-            }
-        }
+        $TokenVarResult = Invoke-OktaFetchAccessToken -ClientAssertion $jwt
 
         $Timer.Stop()
 
@@ -488,13 +441,17 @@ Fetches an access token via the device code or authorization code flow
 
 Code obtained via the device flow
 
+.PARAMETER ClientAssertion
+
+Assertion used in the client credentials flow
+
 .PARAMETER Code
 
 Code obtained via the authorization code flow
 
 .PARAMETER CodeVerifier
 
-Code verifier used in PKCE
+Code verifier used for PKCE verification
 
 .PARAMETER RedirectUri
 
@@ -506,18 +463,23 @@ function Invoke-OktaFetchAccessToken {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true, ParameterSetName = 'DeviceCode')]
+        [ValidateNotNullOrEmpty()]
         [String]
         ${DeviceCode},
-        [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true, ParameterSetName = 'ClientAssertion')]
+        [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true, ParameterSetName = 'ClientCredentials')]
+        [ValidateNotNullOrEmpty()]
         [String]
         ${ClientAssertion},
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true, ParameterSetName = 'AuthorizationCode')]
+        [ValidateNotNullOrEmpty()]
         [String]
         ${Code},
         [Parameter(Position = 1, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true, ParameterSetName = 'AuthorizationCode')]
+        [ValidateNotNullOrEmpty()]
         [String]
         ${CodeVerifier},
         [Parameter(Position = 2, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true, ParameterSetName = 'AuthorizationCode')]
+        [ValidateNotNullOrEmpty()]
         [String]
         ${RedirectUri}
     )
@@ -546,14 +508,14 @@ function Invoke-OktaFetchAccessToken {
 
         switch ($PSCmdlet.ParameterSetName) {
             'DeviceCode' {
-                $body = @{ 
+                $LocalVarFormParameters = @{ 
                     client_id = $Configuration.ClientId
                     device_code = $DeviceCode
                     grant_type = 'urn:ietf:params:oauth:grant-type:device_code'
                 }
             }
             'AuthorizationCode' {
-                $body = @{ 
+                $LocalVarFormParameters = @{ 
                     client_id = $Configuration.ClientId
                     redirect_uri = $RedirectUri
                     grant_type = 'authorization_code'
@@ -562,16 +524,15 @@ function Invoke-OktaFetchAccessToken {
                 }                
             }
             'ClientCredentials' {
-                $body = @{ 
+                $LocalVarFormParameters = @{ 
                     client_id = $Configuration.ClientId
-                    scope = $Configuration.Scope
+                    scope = $Configuration.Scope.TrimStart('openapi').Trim()
                     grant_type = 'client_credentials'
                     client_assertion_type = 'urn:ietf:params:oauth:client-assertion-type:jwt-bearer'
                     client_assertion = $ClientAssertion
                 }                 
             }
         }
-        $LocalVarFormParameters = $body
 
         $LocalVarResult = Invoke-OktaApiClient -Method 'POST' `
                                 -Uri $LocalVarUri `
