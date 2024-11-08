@@ -150,7 +150,11 @@ function Invoke-OktaEstablishAccessTokenAuthorizationCode {
         Remove-Job -Job $job -Force
 
         if ($null -ne $CodeVarResult) {
-            $TokenVarResult = Invoke-OktaFetchAccessToken -Code $CodeVarResult -CodeVerifier $code_verifier -RedirectUri $RedirectUri
+            $TokenVarResult = Invoke-OktaFetchAccessToken `
+             -Code $CodeVarResult `
+             -CodeVerifier $code_verifier `
+             -RedirectUri $RedirectUri
+
             Set-OktaConfigurationAccessToken $TokenVarResult.Response.access_token
             Write-Host "Your token has been successfully retrieved and set to your configuration"
         }
@@ -430,7 +434,7 @@ function Invoke-OktaEstablishAccessToken {
 <#
 .SYNOPSIS
 
-Fetches an access token via the device code or authorization code flow
+Fetches an access token via the device code, authorization code or client credentials flow, depending on input
 
 .PARAMETER DeviceCode
 
