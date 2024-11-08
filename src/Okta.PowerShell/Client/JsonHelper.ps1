@@ -93,3 +93,23 @@ function Remove-NullPropertiesFromArray {
     # Ensure the return is always an array, even if there's only one item
     return ,$NewArray
 }
+
+function ConvertFrom-Base64UrlEncodedString()
+{
+    param (
+        [Parameter(Mandatory = $true)]
+        [string] $b64urlstring
+    )
+    $b64string = $b64urlstring.Replace('_', '/').Replace('-', '+')
+    while (0 -ne $b64string.Length % 4) {$b64string += '='}
+    return [Convert]::FromBase64String($b64string)
+}
+
+function ConvertTo-Base64UrlEncodedString()
+{
+    param (
+        [Parameter(Mandatory = $true)]
+        [byte[]] $bytes
+    )
+    return [Convert]::ToBase64String($bytes).Replace('+', '-').Replace('/', '_').TrimEnd('=')
+}
