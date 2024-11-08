@@ -49,7 +49,7 @@ function Invoke-OktaEstablishAccessTokenAuthorizationCode {
         $hashAlgo = [System.Security.Cryptography.HashAlgorithm]::Create('sha256')
         $hash = $hashAlgo.ComputeHash([System.Text.Encoding]::UTF8.GetBytes($code_verifier))
         $b64Hash = [System.Convert]::ToBase64String($hash)
-        $code_challenge = $b64Hash.Substring(0, 43).Replace("/","_").Replace("+","-").Replace("=","")
+        $code_challenge = ConvertTo-Base64UrlEncodedString($b64Hash.Substring(0, 43))
       
         $queryParameters = @{ 
             client_id = $Configuration.ClientId
@@ -163,27 +163,7 @@ function Invoke-OktaEstablishAccessTokenAuthorizationCode {
     }
 }
 
-function ConvertFrom-Base64UrlEncodedString()
-{
-    param (
-        [Parameter(Mandatory = $true)]
-        [string] $b64urlstring
-    )
-    $b64string = $b64urlstring.Replace('_', '/').Replace('-', '+')
-    while (0 -ne $b64string.Length % 4) {$b64string += '='}
-    return [Convert]::FromBase64String($b64string)
-}
-
-function ConvertTo-Base64UrlEncodedString()
-{
-    param (
-        [Parameter(Mandatory = $true)]
-        [byte[]] $bytes
-    )
-    return [Convert]::ToBase64String($bytes).Replace('+', '-').Replace('/', '_').TrimEnd('=')
-}
-
-function Get-SignedData()
+function Get-Signature()
 {
     param (
         [Parameter(Mandatory = $true)]
@@ -226,7 +206,9 @@ function Get-SignedData()
 
             $ecdsa = [System.Security.Cryptography.ECDsa]::Create($ecParams)
 
-            return ConvertTo-Base64UrlEncodedString($ecdsa.SignData($data, $SigningAlg))
+            $signedData = $ecdsa.SignData($data, $SigningAlg)
+
+            return ConvertTo-Base64UrlEncodedString($signedData)
         }
         "RS*" {
             $rsaParams = [System.Security.Cryptography.RSAParameters]::new()
@@ -241,7 +223,12 @@ function Get-SignedData()
             $rsaParams.Q = ConvertFrom-Base64UrlEncodedString($jwk.q)
         
             $rsa = [System.Security.Cryptography.RSA]::Create($rsaParams)
-            return ConvertTo-Base64UrlEncodedString($rsa.SignData($data, $SigningAlg,[System.Security.Cryptography.RSASignaturePadding]::Pkcs1))
+            $signedData = $rsa.SignData(
+                $data, 
+                $SigningAlg,
+                [System.Security.Cryptography.RSASignaturePadding]::Pkcs1
+            )
+            return ConvertTo-Base64UrlEncodedString($signedData)
         }
     }
 }
@@ -300,13 +287,21 @@ function Invoke-OktaEstablishAccessTokenClientCredentials {
             sub = $Configuration.ClientId
         }
 
-        $b64Header = ConvertTo-Base64UrlEncodedString([System.Text.Encoding]::UTF8.GetBytes(($header | ConvertTo-Json -Compress)))
-        $b64Payload = ConvertTo-Base64UrlEncodedString([System.Text.Encoding]::UTF8.GetBytes(($payload | ConvertTo-Json -Compress)))
+        $b64Header = ConvertTo-Base64UrlEncodedString(
+            [System.Text.Encoding]::UTF8.GetBytes(
+                ($header | ConvertTo-Json -Compress)
+            )
+        )
+        $b64Payload = ConvertTo-Base64UrlEncodedString(
+            [System.Text.Encoding]::UTF8.GetBytes(
+                ($payload | ConvertTo-Json -Compress)
+            )
+        )
 
         $unsigned = $b64Header + '.' + $b64Payload
         $unsignedbytes = [System.Text.Encoding]::UTF8.GetBytes($unsigned)
         
-        $b64signature = Get-SignedData -jwk $psjwk -Algorithm $Algorithm -data $unsignedbytes
+        $b64signature = Get-Signature -jwk $psjwk -Algorithm $Algorithm -data $unsignedbytes
 
         $jwt = $unsigned + '.' + $b64signature
      
