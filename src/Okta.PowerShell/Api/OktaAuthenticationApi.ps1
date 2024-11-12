@@ -183,17 +183,69 @@ function Invoke-OktaFetchAccessToken {
 <#
 .SYNOPSIS
 
-Removes the access token from the Configuration object
+Revokes the access token from the Configuration object
 
 #>
 
-function Invoke-OktaRemoveAccessToken {
+function Invoke-OktaRevokeAccessToken {
+    [Alias('Invoke-OktaRemoveAccessToken')]
+    param()
     Process {
-        'Calling method: Invoke-OktaRemoveAccessToken' | Write-Debug
+        'Calling method: Invoke-OktaRevokeAccessToken' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        Set-OktaConfigurationAccessToken  -AccessToken $null
+        # Can't revoke a token if there is no token
+        if ([string]::IsNullOrWhiteSpace($Configuration.AccessToken)) {
+            Write-Host "No token found in configuration."
+            return
+        }
 
-        Write-Host "Your token has been successfully removed from configuration."        
+        $LocalVarAccepts = @()
+        $LocalVarContentTypes = @()
+        $LocalVarQueryParameters = @{}
+        $LocalVarHeaderParameters = @{}
+        $LocalVarFormParameters = @{}
+        $LocalVarPathParameters = @{}
+        $LocalVarCookieParameters = @{}
+        $LocalVarBodyParameter = $null
+
+        $Configuration = Get-OktaConfiguration
+        # HTTP header 'Accept' (if needed)
+        $LocalVarAccepts = @('application/json')
+
+        # HTTP header 'Content-Type'
+        $LocalVarContentTypes = @('application/x-www-form-urlencoded')
+
+        $LocalVarUri = '/oauth2/v1/revoke'
+      
+        $body = @{ 
+                    client_id = $Configuration.ClientId
+                    token = $Configuration.AccessToken
+                    token_type_hint = 'access_token'
+                }
+
+        $LocalVarFormParameters = $body
+
+        $LocalVarResult = Invoke-OktaApiClient -Method 'POST' `
+                                -Uri $LocalVarUri `
+                                -Accepts $LocalVarAccepts `
+                                -ContentTypes $LocalVarContentTypes `
+                                -Body $LocalVarBodyParameter `
+                                -HeaderParameters $LocalVarHeaderParameters `
+                                -QueryParameters $LocalVarQueryParameters `
+                                -FormParameters $LocalVarFormParameters `
+                                -CookieParameters $LocalVarCookieParameters `
+                                -ReturnType $null `
+                                -IsBodyNullable $false
+
+        if ($LocalVarResult.StatusCode -ne 200) {
+            $DebugMessage = "Status Code " + $LocalVarResult.StatusCode + "." 
+            Write-Debug $DebugMessage
+        }
+        
+        else {
+            Set-OktaConfigurationAccessToken -AccessToken $null
+            Write-Host "Your token has been successfully revoked and removed from configuration." 
+        }
     }
 }
