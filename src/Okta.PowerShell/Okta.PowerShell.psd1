@@ -111,7 +111,7 @@ FunctionsToExport = 'Invoke-OktaActivateAgentPoolsUpdate', 'New-OktaAgentPoolsUp
                'Update-OktaFeatureForApplication', 
                'Invoke-OktaUploadApplicationLogo', 
                'Invoke-OktaEstablishAccessToken', 'Invoke-OktaFetchAccessToken', 
-               'Invoke-OktaRemoveAccessToken', 'Invoke-OktaActivateAuthenticator', 
+               'Invoke-OktaRevokeAccessToken', 'Invoke-OktaActivateAuthenticator', 
                'New-OktaAuthenticator', 'Invoke-OktaDeactivateAuthenticator', 
                'Get-OktaAuthenticator', 'Invoke-OktaListAuthenticators', 
                'Update-OktaAuthenticator', 
