@@ -15,7 +15,9 @@ jobs:
       - name: Perform a Pester test from the Tests.ps1 file
         shell: pwsh
         run: |
-          if(-not (test-path TestResults)) {new-item -ItemType Directory TestResults}
+          pwd
+          Test-Path ".\TestResults"
+          if(-not (test-path ".\TestResults")) {"Making new directory"; new-item -ItemType Directory "TestResults"}
           Invoke-Pester Test.ps1 -Passthru -OutputFile ".\TestResults\TestResults.xml" -OutputFormat NUnitXml -CodeCoverage ".\TestResults\CodeCoverage.xml"
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
