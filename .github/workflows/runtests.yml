@@ -22,7 +22,7 @@ jobs:
           if(-not (test-path ".\TestResults")) {"Making new directory"; new-item -ItemType Directory "TestResults"}
           $pesterConfig = New-PesterConfiguration
           $pesterConfig.TestResult.OutputPath = "./TestResults/TestResults.xml"
-          $pesterConfig.TestResult.OutputFormat = "NUnitXml"
+          $pesterConfig.TestResult.OutputFormat = "JUnitXml"
           $pesterConfig.TestResult.Enabled = $true
           Invoke-Pester -Configuration $pesterConfig
       - name: Upload Test Results
@@ -46,4 +46,4 @@ jobs:
           artifact: pester-results            # artifact name
           name: Unit Test Results                  # Name of the check run which will be created
           path: '*.xml'                     # Path to test results (inside artifact .zip)
-          #reporter: dotnet-nunit              # Format of test results
+          reporter: jest-junit              # Format of test results
