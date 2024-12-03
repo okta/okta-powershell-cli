@@ -46,4 +46,4 @@ jobs:
           artifact: pester-results            # artifact name
           name: Unit Test Results                  # Name of the check run which will be created
           path: '*.xml'                     # Path to test results (inside artifact .zip)
-          reporter: dotnet-nunit              # Format of test results
+          #reporter: dotnet-nunit              # Format of test results
