@@ -18,7 +18,7 @@ jobs:
           pwd
           Test-Path ".\TestResults"
           if(-not (test-path ".\TestResults")) {"Making new directory"; new-item -ItemType Directory "TestResults"}
-          Invoke-Pester Test.ps1 -Passthru -OutputFile ".\TestResults\TestResults.xml" -OutputFormat NUnitXml -CodeCoverage ".\TestResults\CodeCoverage.xml"
+          Invoke-Pester Test.ps1 -Passthru -OutputFile ".\TestResults\TestResults.xml" -OutputFormat NUnitXml
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
