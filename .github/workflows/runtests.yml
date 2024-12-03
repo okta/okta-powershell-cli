@@ -45,5 +45,5 @@ jobs:
         with:
           artifact: pester-results            # artifact name
           name: Unit Test Results                  # Name of the check run which will be created
-          path: '*.xml'                     # Path to test results (inside artifact .zip)
+          path: 'TestResults/*.xml'                     # Path to test results (inside artifact .zip)
           reporter: jest-junit              # Format of test results
