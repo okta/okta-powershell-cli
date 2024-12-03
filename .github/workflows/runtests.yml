@@ -34,10 +34,16 @@ jobs:
         # Use always() to always run this step to publish test results when there are test failures
         if: ${{ always() }}
       - name: Publish Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v2
-        if: always()
+        #uses: EnricoMi/publish-unit-test-result-action@v2
+        #if: always()
+        #with:
+        #  files: |
+        #    TestResults/*.xml
+        #    TestResults/*.trx
+        #    TestResults/*.json
+        uses: dorny/test-reporter@v1
         with:
-          files: |
-            TestResults/*.xml
-            TestResults/*.trx
-            TestResults/*.json
+          artifact: pester-results            # artifact name
+          name: Unit Test Results                  # Name of the check run which will be created
+          path: '*.xml'                     # Path to test results (inside artifact .zip)
+          reporter: dotnet-nunit              # Format of test results
