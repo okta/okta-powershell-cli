@@ -12,12 +12,13 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      - name: Import the Module from src
-        shell: pwsh
-        run: Import-Module -Name './src/Okta.PowerShell' -Verbose
+      #- name: Import the Module from src
+      #  shell: pwsh
+      #  run: Import-Module -Name './src/Okta.PowerShell' -Verbose
       - name: Perform a Pester test from the Tests.ps1 file
         shell: pwsh
         run: |
+          Import-Module -Name './src/Okta.PowerShell' -Verbose
           if(-not (test-path ".\TestResults")) {"Making new directory"; new-item -ItemType Directory "TestResults"}
           $pesterConfig = New-PesterConfiguration
           $pesterConfig.TestResult.OutputPath = "./TestResults/TestResults.xml"
