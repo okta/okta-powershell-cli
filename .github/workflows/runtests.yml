@@ -12,13 +12,18 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
+      - name: Import the Module from src
+        shell: pwsh
+        run: Import-Module -Name './src/Okta.PowerShell' -Verbose
       - name: Perform a Pester test from the Tests.ps1 file
         shell: pwsh
         run: |
-          pwd
-          Test-Path ".\TestResults"
           if(-not (test-path ".\TestResults")) {"Making new directory"; new-item -ItemType Directory "TestResults"}
-          Invoke-Pester Test.ps1 -Passthru -OutputFile ".\TestResults\TestResults.xml" -OutputFormat NUnitXml
+          $pesterConfig = New-PesterConfiguration
+          $pesterConfig.TestResult.OutputPath = "./TestResults/TestResults.xml"
+          $pesterConfig.TestResult.OutputFormat = "NUnitXml"
+          $pesterConfig.TestResult.Enabled = $true
+          Invoke-Pester -Passthru -Configuration $pesterConfiguration
       - name: Upload Test Results
         uses: actions/upload-artifact@v4
         with:
