@@ -19,6 +19,14 @@ jobs:
           Test-Path ".\TestResults"
           if(-not (test-path ".\TestResults")) {"Making new directory"; new-item -ItemType Directory "TestResults"}
           Invoke-Pester Test.ps1 -Passthru -OutputFile ".\TestResults\TestResults.xml" -OutputFormat NUnitXml
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: pester-results
+          # This does not use the working-directory from defaults so must use **
+          path: '**/TestResults'
+        # Use always() to always run this step to publish test results when there are test failures
+        if: ${{ always() }}
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
