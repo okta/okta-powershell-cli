@@ -61,11 +61,11 @@ $Manifest = @{
     ReleaseNotes = 'https://github.com/okta/okta-powershell-cli/releases'
 
     
-    ModuleVersion = '1.0.3'
+    ModuleVersion = '1.0.4'
     
 
     RootModule = 'Okta.PowerShell.psm1'
-    Guid = '{5E82B81C-92D5-47BC-A10F-E26B40081903}' # Has to be static, otherwise each new build will be considered different module
+    Guid = '{257FCF83-C4E5-475C-B2C7-E624D7A7B6F3}' # Has to be static, otherwise each new build will be considered different module
 
     PowerShellVersion = '6.2'
     
