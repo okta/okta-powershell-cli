@@ -14,7 +14,7 @@
     "templateDir": "./codegen-templates",
     "outputDir" : "../",
     "inputSpec" : "./management.yaml", 
-    "packageVersion" : "1.0.3",
+    "packageVersion" : "1.0.4",
     "packageDescription" : "Official PowerShell CLI for the Okta API",
     "packageTitle" : "Official PowerShell for the Okta API",
     "packageCompany" : "Okta, Inc.",
