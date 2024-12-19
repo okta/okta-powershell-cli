@@ -190,6 +190,60 @@ _links                : @{logo=System.Object[]; users=; apps=}
 
 > Note: If you want to remove the access token from configuration you can execute `Invoke-OktaRemoveAccessToken`
 
+
+### Create objects
+
+The Okta PowerShell Module supports two approaches for object creation: 
+
+1. The "Initialize-Object" command 
+2. Using PowerShell's native `PSCustomObject` for creating objects
+
+#### Create the object manually using PowerShell's native `PSCustomObject` and the [API reference](https://developer.okta.com/docs/api/openapi/okta-management/guides/overview/)
+
+You can check out the API reference to explore what the payload structure should look like for the operation you want to perform. For example, if you want to create a group, check out the [Add Group API reference](https://developer.okta.com/docs/api/openapi/okta-management/management/tag/Group/#tag/Group/operation/addGroup) and look for the request sample. For this particular operation, you will see that the payload should look like the following:
+
+```json
+{
+    "profile": {
+        "description": "All users West of The Rockies",
+        "name": "West Coast users"
+    }
+}
+```
+
+Then you can recreate the same payload using `PSCustomObject`:
+
+```powershell
+$Group = [PSCustomObject]@{ 
+            profile = [PSCustomObject]@{
+                description = "All users West of the Rockies"
+                name = "West Coast users"}
+    }
+
+$NewGroup = New-OktaGroup -Group $Group
+```
+
+:warning: If you follow this approach, you have to ensure the casing is correct. Notice that for this particular operation, all the properties of the group payload are in lowercase.
+
+#### Create the object using "Initialize-Object" command 
+
+The Okta PowerShell Module provides an "Initialize-Object" command that simplifies the creation and initialization of most of the objects. Each object represents a distinct entity supported by the Okta PowerShell Module, and this command provides a standardized approach to create and configure these objects. 
+
+Following the same "Create group" example as in the previous step, you can create a group object by executing the corresponding "Initialize-Object" commands:
+
+```powershell
+$GroupProfile = Initialize-OktaGroupProfile -Name "West Coast users" -Description "All users West of the Rockies"
+$Group = Initialize-OktaGroup -VarProfile $GroupProfile
+$NewGroup = New-OktaGroup -Group $Group
+```
+
+Notice that for objects that have nested properties, each nested property may itself be an object that needs to be initialized separately. In such cases make sure to:
+
+1. Initialize each nested property individually.
+2. Pass the nested object(s) as part of the -Property parameter when initializing the parent object.
+
+Always verify the required structure and types for nested properties by consulting the [API reference](https://developer.okta.com/docs/api/openapi/okta-management/guides/overview/).
+
 ### Get a user
 
 ```powershell
@@ -212,6 +266,34 @@ $TestResult = New-OktaUser -Body $CreateUserRequest
 
 > Note: If you initialize objects using `PSCustomObject`, ensure the casing is correct.
 
+### Create a user with password
+
+```powershell
+$UserProfile = [PSCustomObject]@{
+                firstName = 'John'
+                lastName = 'Doe'
+                login = 'john.doe@mail.com'
+                email = 'john.doe@mail.com'
+            }
+
+$UserCredentials = [PSCustomObject]@{ 
+                    password = [PSCustomObject]@{ value = 'Hell0W0rld'} 
+                }
+
+$CreateUserRequest = Initialize-OktaCreateUserRequest -VarProfile $UserProfile -Credentials $UserCredentials
+$TestResult = New-OktaUser -Body $CreateUserRequest
+```
+> Note: If you initialize objects using `PSCustomObject`, ensure the casing is correct.
+
+Alternatively, you can use the Initialize commands to create the user payload:
+
+```powershell
+$UserProfile = = Initialize-OktaUserProfile -Email "joe.doe@mail.com" -Login "joe.doe@mail.com" -FirstName "Joe" -LastName "Doe"
+$UserCredentials = Initialize-OktaUserCredentials -Password "Hell0W0rld!"
+
+$CreateUserRequest = Initialize-OktaCreateUserRequest -VarProfile $UserProfile -Credentials $UserCredentials
+$TestResult = New-OktaUser -Body $CreateUserRequest
+```
 ### List users with pagination
 
 ```powershell

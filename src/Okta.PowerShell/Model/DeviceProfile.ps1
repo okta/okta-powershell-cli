@@ -107,27 +107,27 @@ function Initialize-OktaDeviceProfile {
             throw "invalid value for 'DisplayName', the character length must be great than or equal to 1."
         }
 
-        if (!$Imei -and $Imei.length -gt 17) {
+        if ($Imei -and $Imei.length -gt 17) {
             throw "invalid value for 'Imei', the character length must be smaller than or equal to 17."
         }
 
-        if (!$Imei -and $Imei.length -lt 14) {
+        if ($Imei -and $Imei.length -lt 14) {
             throw "invalid value for 'Imei', the character length must be great than or equal to 14."
         }
 
-        if (!$Manufacturer -and $Manufacturer.length -gt 127) {
+        if ($Manufacturer -and $Manufacturer.length -gt 127) {
             throw "invalid value for 'Manufacturer', the character length must be smaller than or equal to 127."
         }
 
-        if (!$Meid -and $Meid.length -gt 14) {
+        if ($Meid -and $Meid.length -gt 14) {
             throw "invalid value for 'Meid', the character length must be smaller than or equal to 14."
         }
 
-        if (!$Model -and $Model.length -gt 127) {
+        if ($Model -and $Model.length -gt 127) {
             throw "invalid value for 'Model', the character length must be smaller than or equal to 127."
         }
 
-        if (!$OsVersion -and $OsVersion.length -gt 127) {
+        if ($OsVersion -and $OsVersion.length -gt 127) {
             throw "invalid value for 'OsVersion', the character length must be smaller than or equal to 127."
         }
 
@@ -139,15 +139,15 @@ function Initialize-OktaDeviceProfile {
             throw "invalid value for 'Registered', 'Registered' cannot be null."
         }
 
-        if (!$SerialNumber -and $SerialNumber.length -gt 127) {
+        if ($SerialNumber -and $SerialNumber.length -gt 127) {
             throw "invalid value for 'SerialNumber', the character length must be smaller than or equal to 127."
         }
 
-        if (!$Sid -and $Sid.length -gt 256) {
+        if ($Sid -and $Sid.length -gt 256) {
             throw "invalid value for 'Sid', the character length must be smaller than or equal to 256."
         }
 
-        if (!$Udid -and $Udid.length -gt 47) {
+        if ($Udid -and $Udid.length -gt 47) {
             throw "invalid value for 'Udid', the character length must be smaller than or equal to 47."
         }
 

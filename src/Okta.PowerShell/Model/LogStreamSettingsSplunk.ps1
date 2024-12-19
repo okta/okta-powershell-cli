@@ -40,11 +40,11 @@ function Initialize-OktaLogStreamSettingsSplunk {
         'Creating PSCustomObject: Okta.PowerShell => OktaLogStreamSettingsSplunk' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        if (!$VarHost -and $VarHost.length -gt 116) {
+        if ($VarHost -and $VarHost.length -gt 116) {
             throw "invalid value for 'VarHost', the character length must be smaller than or equal to 116."
         }
 
-        if (!$VarHost -and $VarHost.length -lt 17) {
+        if ($VarHost -and $VarHost.length -lt 17) {
             throw "invalid value for 'VarHost', the character length must be great than or equal to 17."
         }
 

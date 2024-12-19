@@ -81,13 +81,13 @@ function Initialize-{{{apiNamePrefix}}}{{{classname}}} {
         {{/isNullable}}
         {{#hasValidation}}
         {{#maxLength}}
-        if ({{^required}}!${{{name}}} -and {{/required}}${{{name}}}.length -gt {{{maxLength}}}) {
+        if ({{^required}}${{{name}}} -and {{/required}}${{{name}}}.length -gt {{{maxLength}}}) {
             throw "invalid value for '{{{name}}}', the character length must be smaller than or equal to {{{maxLength}}}."
         }
 
         {{/maxLength}}
         {{#minLength}}
-        if ({{^required}}!${{{name}}} -and {{/required}}${{{name}}}.length -lt {{{minLength}}}) {
+        if ({{^required}}${{{name}}} -and {{/required}}${{{name}}}.length -lt {{{minLength}}}) {
             throw "invalid value for '{{{name}}}', the character length must be great than or equal to {{{minLength}}}."
         }
 
@@ -105,13 +105,13 @@ function Initialize-{{{apiNamePrefix}}}{{{classname}}} {
 
         {{/minimum}}
         {{#maxItems}}
-        if ({{^required}}!${{{name}}} -and {{/required}}${{{name}}}.length -gt {{{maxItems}}}) {
+        if ({{^required}}${{{name}}} -and {{/required}}${{{name}}}.length -gt {{{maxItems}}}) {
             throw "invalid value for '{{{name}}}', number of items must be less than or equal to {{{maxItems}}}."
         }
 
         {{/maxItems}}
         {{#minItems}}
-        if ({{^required}}!${{{name}}} -and {{/required}}${{{name}}}.length -lt {{{minItems}}}) {
+        if ({{^required}}${{{name}}} -and {{/required}}${{{name}}}.length -lt {{{minItems}}}) {
             throw "invalid value for '{{{name}}}', number of items must be greater than or equal to {{{minItems}}}."
         }
 
@@ -141,13 +141,13 @@ function Initialize-{{{apiNamePrefix}}}{{{classname}}} {
         {{/isNullable}}
         {{#hasValidation}}
         {{#maxLength}}
-        if ({{^required}}!${{{name}}} -and {{/required}}${{{name}}}.length -gt {{{maxLength}}}) {
+        if ({{^required}}${{{name}}} -and {{/required}}${{{name}}}.length -gt {{{maxLength}}}) {
             throw "invalid value for '{{{name}}}', the character length must be smaller than or equal to {{{maxLength}}}."
         }
 
         {{/maxLength}}
         {{#minLength}}
-        if ({{^required}}!${{{name}}} -and {{/required}}${{{name}}}.length -lt {{{minLength}}}) {
+        if ({{^required}}${{{name}}} -and {{/required}}${{{name}}}.length -lt {{{minLength}}}) {
             throw "invalid value for '{{{name}}}', the character length must be great than or equal to {{{minLength}}}."
         }
 
@@ -165,13 +165,13 @@ function Initialize-{{{apiNamePrefix}}}{{{classname}}} {
 
         {{/minimum}}
         {{#maxItems}}
-        if ({{^required}}!${{{name}}} -and {{/required}}${{{name}}}.length -gt {{{maxItems}}}) {
+        if ({{^required}}${{{name}}} -and {{/required}}${{{name}}}.length -gt {{{maxItems}}}) {
             throw "invalid value for '{{{name}}}', number of items must be less than or equal to {{{maxItems}}}."
         }
 
         {{/maxItems}}
         {{#minItems}}
-        if ({{^required}}!${{{name}}} -and {{/required}}${{{name}}}.length -lt {{{minItems}}}) {
+        if ({{^required}}${{{name}}} -and {{/required}}${{{name}}}.length -lt {{{minItems}}}) {
             throw "invalid value for '{{{name}}}', number of items must be greater than or equal to {{{minItems}}}."
         }
 

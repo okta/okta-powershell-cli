@@ -50,7 +50,7 @@ function Initialize-OktaRiskEventSubject {
             throw "invalid value for 'Ip', 'Ip' cannot be null."
         }
 
-        if (!$Message -and $Message.length -gt 512) {
+        if ($Message -and $Message.length -gt 512) {
             throw "invalid value for 'Message', the character length must be smaller than or equal to 512."
         }
 
