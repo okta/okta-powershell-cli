@@ -10572,37 +10572,53 @@ paths:
       operationId: getLogs
       parameters:
         - name: since
+          description: Filters the lower time bound of the log events `published` property for bounded queries or persistence time for polling queries
           in: query
           schema:
             type: string
-            format: date-time
+            format: ISO 8601 compliant timestamp
+            default: 7 days prior to until
         - name: until
+          description: Filters the upper time bound of the log events `published` property for bounded queries or persistence time for polling queries.
           in: query
           schema:
             type: string
-            format: date-time
+            format: ISO 8601 compliant timestamp
+            default: current time
+        - name: after
+          description: Retrieves the next page of results. Okta returns a link in the HTTP Header (`rel=next`) that includes the after query parameter
+          in: query
+          schema:
+            type: string
+            format: Opaque token
         - name: filter
+          description: Filter expression that filters the results. All operators except [ ] are supported. See [Filter](https://developer.okta.com/docs/api/#filter).
           in: query
           schema:
             type: string
+            format: SCIM Filter expression
         - name: q
+          description: Filters log events results by one or more case insensitive keywords.
           in: query
           schema:
             type: string
+            format: URL encoded string. Max length is 40 characters per keyword, with a maximum of 10 keyword filters per query (before encoding)
         - name: limit
+          description: Sets the number of results that are returned in the response
           in: query
           schema:
             type: integer
+            format: Integer between 0 and 1000
             default: 100
         - name: sortOrder
+          description: The order of the returned events that are sorted by the `published` property
           in: query
           schema:
             type: string
+            enum:
+              - ASCENDING
+              - DESCENDING
             default: ASCENDING
-        - name: after
-          in: query
-          schema:
-            type: string
       responses:
         '200':
           description: Success

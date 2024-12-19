@@ -190,6 +190,14 @@ _links                : @{logo=System.Object[]; users=; apps=}
 
 > Note: If you want to remove the access token from configuration you can execute `Invoke-OktaRemoveAccessToken`
 
+### Configure a proxy
+
+```powershell
+$proxyUrl = "http://127.0.0.1:8888"
+$webProxy = New-Object System.Net.WebProxy($proxyUrl)
+$Configuration.Proxy = $webProxy
+```
+
 
 ### Create objects
 
@@ -340,6 +348,17 @@ $NewApp = Initialize-OktaOpenIdConnectApplication -Label "New App" -SignOnMode "
 > Note: Null values are removed from the payload by default. If you want to include null values you have to include the `-IncludeNullValues` flag.
 
 > Note: For more API samples checkout our [tests](https://github.com/okta/okta-powershell-cli/tree/main/tests/)
+
+### Get logs
+
+Since the System Log API requires `since` and `until` query params to be ISO 8601 compliant timestamp, make sure to format dates accordingly:
+
+```powershell
+$since = (Get-Date).AddMonths(-6).ToString("yyyy-MM-ddTHH:mm:ssZ")
+$until = (Get-Date).ToString("yyyy-MM-ddTHH:mm:ssZ")
+Get-OktaLogs -since $since -until $until
+
+```
 
 ## Rate Limiting
 
