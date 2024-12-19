@@ -16,25 +16,25 @@ List all System Log Events
 No description available.
 
 .PARAMETER Since
-No description available.
+Filters the lower time bound of the log events `published` property for bounded queries or persistence time for polling queries
 
 .PARAMETER Until
-No description available.
-
-.PARAMETER Filter
-No description available.
-
-.PARAMETER Q
-No description available.
-
-.PARAMETER Limit
-No description available.
-
-.PARAMETER SortOrder
-No description available.
+Filters the upper time bound of the log events `published` property for bounded queries or persistence time for polling queries.
 
 .PARAMETER After
-No description available.
+Retrieves the next page of results. Okta returns a link in the HTTP Header (`rel=next`) that includes the after query parameter
+
+.PARAMETER Filter
+Filter expression that filters the results. All operators except [ ] are supported. See [Filter](https://developer.okta.com/docs/api/#filter).
+
+.PARAMETER Q
+Filters log events results by one or more case insensitive keywords.
+
+.PARAMETER Limit
+Sets the number of results that are returned in the response
+
+.PARAMETER SortOrder
+The order of the returned events that are sorted by the `published` property
 
 
 .PARAMETER Uri
@@ -57,26 +57,27 @@ function Get-OktaLogs {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [System.Nullable[System.DateTime]]
+        [String]
         ${Since},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [System.Nullable[System.DateTime]]
+        [String]
         ${Until},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
-        ${Filter},
+        ${After},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
-        ${Q},
+        ${Filter},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Q},
+        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Int32]]
         ${Limit},
-        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [ValidateSet("ASCENDING", "DESCENDING")]
         [String]
         ${SortOrder},
-        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [String]
-        ${After},
         [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${Uri},
@@ -119,6 +120,10 @@ function Get-OktaLogs {
             $LocalVarQueryParameters['until'] = $Until
         }
 
+        if ($After) {
+            $LocalVarQueryParameters['after'] = $After
+        }
+
         if ($Filter) {
             $LocalVarQueryParameters['filter'] = $Filter
         }
@@ -133,10 +138,6 @@ function Get-OktaLogs {
 
         if ($SortOrder) {
             $LocalVarQueryParameters['sortOrder'] = $SortOrder
-        }
-
-        if ($After) {
-            $LocalVarQueryParameters['after'] = $After
         }
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
