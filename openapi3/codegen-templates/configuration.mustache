@@ -188,11 +188,11 @@ function Set-{{{apiNamePrefix}}}Configuration {
             $Script:Configuration['Proxy'] = $null
         }
 
-         If ($MaxRetries) {
+         If ($PSBoundParameters.ContainsKey("MaxRetries")) {
             $Script:Configuration['MaxRetries'] = $MaxRetries
         }
 
-        If ($RequestTimeout) {
+        If ($PSBoundParameters.ContainsKey("$RequestTimeout")) {
             $Script:Configuration['RequestTimeout'] = $RequestTimeout
         }
 
