@@ -46,19 +46,19 @@ function Initialize-OktaLogStreamSettingsAws {
         'Creating PSCustomObject: Okta.PowerShell => OktaLogStreamSettingsAws' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        if (!$AccountId -and $AccountId.length -gt 12) {
+        if ($AccountId -and $AccountId.length -gt 12) {
             throw "invalid value for 'AccountId', the character length must be smaller than or equal to 12."
         }
 
-        if (!$AccountId -and $AccountId.length -lt 12) {
+        if ($AccountId -and $AccountId.length -lt 12) {
             throw "invalid value for 'AccountId', the character length must be great than or equal to 12."
         }
 
-        if (!$EventSourceName -and $EventSourceName.length -gt 75) {
+        if ($EventSourceName -and $EventSourceName.length -gt 75) {
             throw "invalid value for 'EventSourceName', the character length must be smaller than or equal to 75."
         }
 
-        if (!$EventSourceName -and $EventSourceName.length -lt 1) {
+        if ($EventSourceName -and $EventSourceName.length -lt 1) {
             throw "invalid value for 'EventSourceName', the character length must be great than or equal to 1."
         }
 

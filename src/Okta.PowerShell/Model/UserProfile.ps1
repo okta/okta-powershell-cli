@@ -184,71 +184,71 @@ function Initialize-OktaUserProfile {
         'Creating PSCustomObject: Okta.PowerShell => OktaUserProfile' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        if (!$City -and $City.length -gt 128) {
+        if ($City -and $City.length -gt 128) {
             throw "invalid value for 'City', the character length must be smaller than or equal to 128."
         }
 
-        if (!$CountryCode -and $CountryCode.length -gt 2) {
+        if ($CountryCode -and $CountryCode.length -gt 2) {
             throw "invalid value for 'CountryCode', the character length must be smaller than or equal to 2."
         }
 
-        if (!$Email -and $Email.length -gt 100) {
+        if ($Email -and $Email.length -gt 100) {
             throw "invalid value for 'Email', the character length must be smaller than or equal to 100."
         }
 
-        if (!$Email -and $Email.length -lt 5) {
+        if ($Email -and $Email.length -lt 5) {
             throw "invalid value for 'Email', the character length must be great than or equal to 5."
         }
 
-        if (!$FirstName -and $FirstName.length -gt 50) {
+        if ($FirstName -and $FirstName.length -gt 50) {
             throw "invalid value for 'FirstName', the character length must be smaller than or equal to 50."
         }
 
-        if (!$FirstName -and $FirstName.length -lt 1) {
+        if ($FirstName -and $FirstName.length -lt 1) {
             throw "invalid value for 'FirstName', the character length must be great than or equal to 1."
         }
 
-        if (!$LastName -and $LastName.length -gt 50) {
+        if ($LastName -and $LastName.length -gt 50) {
             throw "invalid value for 'LastName', the character length must be smaller than or equal to 50."
         }
 
-        if (!$LastName -and $LastName.length -lt 1) {
+        if ($LastName -and $LastName.length -lt 1) {
             throw "invalid value for 'LastName', the character length must be great than or equal to 1."
         }
 
-        if (!$Login -and $Login.length -gt 100) {
+        if ($Login -and $Login.length -gt 100) {
             throw "invalid value for 'Login', the character length must be smaller than or equal to 100."
         }
 
-        if (!$MobilePhone -and $MobilePhone.length -gt 100) {
+        if ($MobilePhone -and $MobilePhone.length -gt 100) {
             throw "invalid value for 'MobilePhone', the character length must be smaller than or equal to 100."
         }
 
-        if (!$PostalAddress -and $PostalAddress.length -gt 4096) {
+        if ($PostalAddress -and $PostalAddress.length -gt 4096) {
             throw "invalid value for 'PostalAddress', the character length must be smaller than or equal to 4096."
         }
 
-        if (!$PrimaryPhone -and $PrimaryPhone.length -gt 100) {
+        if ($PrimaryPhone -and $PrimaryPhone.length -gt 100) {
             throw "invalid value for 'PrimaryPhone', the character length must be smaller than or equal to 100."
         }
 
-        if (!$SecondEmail -and $SecondEmail.length -gt 100) {
+        if ($SecondEmail -and $SecondEmail.length -gt 100) {
             throw "invalid value for 'SecondEmail', the character length must be smaller than or equal to 100."
         }
 
-        if (!$SecondEmail -and $SecondEmail.length -lt 5) {
+        if ($SecondEmail -and $SecondEmail.length -lt 5) {
             throw "invalid value for 'SecondEmail', the character length must be great than or equal to 5."
         }
 
-        if (!$State -and $State.length -gt 128) {
+        if ($State -and $State.length -gt 128) {
             throw "invalid value for 'State', the character length must be smaller than or equal to 128."
         }
 
-        if (!$StreetAddress -and $StreetAddress.length -gt 1024) {
+        if ($StreetAddress -and $StreetAddress.length -gt 1024) {
             throw "invalid value for 'StreetAddress', the character length must be smaller than or equal to 1024."
         }
 
-        if (!$ZipCode -and $ZipCode.length -gt 50) {
+        if ($ZipCode -and $ZipCode.length -gt 50) {
             throw "invalid value for 'ZipCode', the character length must be smaller than or equal to 50."
         }
 
