@@ -192,7 +192,7 @@ function Set-{{{apiNamePrefix}}}Configuration {
             $Script:Configuration['MaxRetries'] = $MaxRetries
         }
 
-        If ($PSBoundParameters.ContainsKey("$RequestTimeout")) {
+        If ($PSBoundParameters.ContainsKey("RequestTimeout")) {
             $Script:Configuration['RequestTimeout'] = $RequestTimeout
         }
 

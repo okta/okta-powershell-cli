@@ -199,7 +199,7 @@ function Set-OktaConfiguration {
             $Script:Configuration['MaxRetries'] = $MaxRetries
         }
 
-        If ($PSBoundParameters.ContainsKey("$RequestTimeout")) {
+        If ($PSBoundParameters.ContainsKey("RequestTimeout")) {
             $Script:Configuration['RequestTimeout'] = $RequestTimeout
         }
 
