@@ -17,7 +17,7 @@ Function Stop-HTTPListener {
         [Int] $Port = 8080
     )
 
-    Invoke-WebRequest -Uri "http://localhost:$port/okta-powerShell?test=exit"
+    Invoke-WebRequest -Uri "http://127.0.0.1:$port/okta-powerShell?test=exit"
 }
 
 Function Start-HTTPListener {
@@ -76,7 +76,7 @@ Function Start-HTTPListener {
 
             $listener = [System.Net.HttpListener]::New()
             $urlPrefix = "/okta-powerShell"
-            $url = "http://localhost:$Port$urlPrefix"
+            $url = "http://127.0.0.1:$Port$urlPrefix"
             $listener.Prefixes.Add($url + "/")  # trailing slash required for registration
             $listener.AuthenticationSchemes = [System.Net.AuthenticationSchemes]::Anonymous
 
@@ -85,6 +85,7 @@ Function Start-HTTPListener {
                 Write-Warning "Use Stop-HttpListener or Invoke-WebRequest -Uri '${Url}?test=exit' to stop the listener."
                 Write-Verbose "Listening on $Url..."
                 $listener.Start()
+                Write-Verbose "Listener started"
                 $exit = $false
                 while ($exit -eq $false) {
                     $context = $listener.GetContext()
@@ -224,7 +225,7 @@ Function Start-HTTPListener {
             {
                 try
                 {
-                    $out = Invoke-WebRequest "http://localhost:${Port}/okta-powershell?test=response"
+                    $out = Invoke-WebRequest "http://127.0.0.1:${Port}/okta-powershell?test=response"
                     if ($out.StatusCode -eq 200)
                     {
                         $succeeded = $true
