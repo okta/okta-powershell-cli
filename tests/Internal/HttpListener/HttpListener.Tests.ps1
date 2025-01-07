@@ -1,8 +1,10 @@
 Describe 'HttpListener Tests' {
     
     BeforeAll {
-        $PSScriptRoot
         Import-Module -Name "$PSScriptRoot\HttpListener.psm1" -Verbose 
+        Start-HttpListener -Port 9000 -Foreground
+        Start-Sleep -Seconds 10
+        Stop-HttpListener -Port 9000
     }
 
     AfterAll {
@@ -18,7 +20,7 @@ Describe 'HttpListener Tests' {
 
         try {
 
-            { Start-HTTPListener -Port $port -Verbose} | Should -Not -Throw
+            { Start-HTTPListener -Port $port } | Should -Not -Throw
             
             # Send a test request to verify the server is running
             Start-Sleep -Seconds 2 # Allow server to start
@@ -35,7 +37,7 @@ Describe 'HttpListener Tests' {
         $port = 8000
         $url = "http://localhost:$port/okta-powerShell/?test=response"
 
-        { Start-HTTPListener -Port $port -Verbose } | Should -Not -Throw
+        { Start-HTTPListener -Port $port } | Should -Not -Throw
             
         # Send a test request to verify the server is running
         Start-Sleep -Seconds 2 # Allow server to start
