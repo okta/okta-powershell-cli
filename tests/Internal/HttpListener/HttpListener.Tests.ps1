@@ -2,9 +2,6 @@ Describe 'HttpListener Tests' {
     
     BeforeAll {
         Import-Module -Name "$PSScriptRoot\HttpListener.psm1" -Verbose 
-        Start-HttpListener -Port 9000 -Foreground
-        Start-Sleep -Seconds 10
-        Stop-HttpListener -Port 9000
     }
 
     AfterAll {
@@ -15,8 +12,8 @@ Describe 'HttpListener Tests' {
         # Verify the function is imported
         Get-Command Start-HttpListener | Should -Not -BeNullOrEmpty
         
-        $port = 8000
-        $url = "http://localhost:$port/okta-powerShell/?test=response"
+        $port = 9000
+        $url = "http://127.0.0.1:$port/okta-powerShell/?test=response"
 
         try {
 
@@ -34,8 +31,8 @@ Describe 'HttpListener Tests' {
    }
 
    It 'Should stop the listener' {    
-        $port = 8000
-        $url = "http://localhost:$port/okta-powerShell/?test=response"
+        $port = 9000
+        $url = "http://127.0.0.1:$port/okta-powerShell/?test=response"
 
         { Start-HTTPListener -Port $port } | Should -Not -Throw
             
@@ -51,7 +48,7 @@ Describe 'HttpListener Tests' {
     }
 
    It 'Should return tailored responses' {
-        $port = 8000
+        $port = 9000
         $headers = @{'X-Okta-Request-Id'='foo';'X-Rate-Limit-Reset'='bar'} | ConvertTo-Json -Compress 
         $url = "http://localhost:$port/okta-powershell/?test=response&headers=$headers&statuscode=429"
 
