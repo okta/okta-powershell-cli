@@ -80,11 +80,23 @@ Function Start-HTTPListener {
             $listener.Prefixes.Add($url + "/")  # trailing slash required for registration
             $listener.AuthenticationSchemes = [System.Net.AuthenticationSchemes]::Anonymous
 
+            $portFound = $false
+
+            try {
+                $listener.Start()
+                Write-Output "Listening on port $Port"
+                $portFound = $true
+                break
+            } catch {
+                Write-Error "Port is already in use"
+                throw "Port is already in use"
+            }
+
             try {
                 Write-Warning "Note that thread is blocked waiting for a request.  After using Ctrl-C to stop listening, you need to send a valid HTTP request to stop the listener cleanly."
                 Write-Warning "Use Stop-HttpListener or Invoke-WebRequest -Uri '${Url}?test=exit' to stop the listener."
                 Write-Verbose "Listening on $Url..."
-                $listener.Start()
+                #$listener.Start()
                 $exit = $false
                 while ($exit -eq $false) {
                     $context = $listener.GetContext()
