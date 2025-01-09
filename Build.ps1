@@ -45,6 +45,10 @@ function Get-FunctionsToExport {
     }
 }
 
+# ******************************************************************************************************** #
+# Public module
+# ******************************************************************************************************** #
+
 $ScriptDir = Split-Path $script:MyInvocation.MyCommand.Path
 $FunctionPath = 'Api', 'Model', 'Client' | ForEach-Object {Join-Path "$ScriptDir\src\Okta.PowerShell\" $_}
 
@@ -65,7 +69,47 @@ $Manifest = @{
     
 
     RootModule = 'Okta.PowerShell.psm1'
-    Guid = '{257FCF83-C4E5-475C-B2C7-E624D7A7B6F3}' # Has to be static, otherwise each new build will be considered different module
+    Guid = '{E5381546-F500-4F4B-A869-ADAB29B939DB}' # Has to be static, otherwise each new build will be considered different module
+
+    PowerShellVersion = '6.2'
+    
+    CompatiblePSEditions = 'Core'
+    
+    FunctionsToExport = $FunctionPath | Get-ChildItem -Filter *.ps1 | Get-FunctionsToExport
+
+    VariablesToExport = @()
+    AliasesToExport = @()
+    CmdletsToExport = @()
+
+}
+
+New-ModuleManifest @Manifest -Verbose
+
+# ******************************************************************************************************** #
+# Private module for testing purposes
+# ******************************************************************************************************** #
+
+$ScriptDir = Split-Path $script:MyInvocation.MyCommand.Path
+$FunctionPath = 'Private' | ForEach-Object {Join-Path "$ScriptDir\src\Okta.PowerShell\" $_}
+
+$Manifest = @{
+    Path = "$ScriptDir\src\Okta.PowerShell\Okta.PowerShell.PrivateFunctions.psd1"
+    Author = 'Okta, Inc.'
+    CompanyName = 'Okta'
+    Description = 'Okta.PowerShell.PrivateFunctions - the PowerShell module which contains private functions. For testing purposes.'
+    Tags = @('Okta' ,'api' ,'authentication' ,'identity' ,'management' ,'PSEdition_Core' )
+    ProjectUri = 'https://github.com/okta/okta-powershell-cli'
+    LicenseUri = 'https://github.com/okta/okta-powershell-cli/blob/main/LICENSE.md'
+    IconUri = 'https://cdn.brandfolder.io/R30ALRIS/at/mtg52xxxcr939z2ns8jrg3mz/Okta_Aura_CMYK_Black.png'
+    ReleaseNotes = 'https://github.com/okta/okta-powershell-cli/releases'
+
+    
+    ModuleVersion = '1.0.4'
+    
+    
+    
+    RootModule = 'Okta.PowerShell.PrivateFunctions.psm1'
+    Guid = '433b5055-530a-4bce-baf9-eda61ceba588'
 
     PowerShellVersion = '6.2'
     
