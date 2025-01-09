@@ -134,8 +134,8 @@ Context 'Invoke-OktaApiClient should use HttpListener when calling IWR' {
         }
     }
 
-    # This test i mostly to verify that we can test the internal IWR call used by OktaApiClient using the HttpListener instead of Pester.
-    # Using Pester doesn't allow us to test some specifics of IWR such us using the -SkipHttpErrorCheck flag 
+    # This test is mainly to verify that we can test the internal IWR call used by OktaApiClient using the HttpListener instead of Pester.
+    # Using Pester doesn't allow us to test some specifics of IWR, such as using the -SkipHttpErrorCheck flag 
     It '4xx should throw when -SkipHttpCheckError is not included (1.x series)' {
         $Now = Get-Date # Used as a reference for the test. Indicates when the request was executed
         $ResetDate = $Now.AddSeconds(3) # Indicates when one should retry
