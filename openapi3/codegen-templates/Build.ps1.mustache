@@ -38,6 +38,10 @@ function Get-FunctionsToExport {
     }
 }
 
+# ******************************************************************************************************** #
+# Public module
+# ******************************************************************************************************** #
+
 $ScriptDir = Split-Path $script:MyInvocation.MyCommand.Path
 $FunctionPath = 'Api', 'Model', 'Client' | ForEach-Object {Join-Path "$ScriptDir\src\{{{packageName}}}\" $_}
 
@@ -77,6 +81,64 @@ $Manifest = @{
 
     RootModule = '{{{packageName}}}.psm1'
     Guid = '{{packageGuid}}' # Has to be static, otherwise each new build will be considered different module
+
+    PowerShellVersion = '{{{powershellVersion}}}'
+    
+    CompatiblePSEditions = 'Core'
+    
+    FunctionsToExport = $FunctionPath | Get-ChildItem -Filter *.ps1 | Get-FunctionsToExport
+
+    VariablesToExport = @()
+    AliasesToExport = @()
+    CmdletsToExport = @()
+
+}
+
+New-ModuleManifest @Manifest -Verbose
+
+# ******************************************************************************************************** #
+# Private module for testing purposes
+# ******************************************************************************************************** #
+
+$ScriptDir = Split-Path $script:MyInvocation.MyCommand.Path
+$FunctionPath = 'Private' | ForEach-Object {Join-Path "$ScriptDir\src\{{{packageName}}}\" $_}
+
+$Manifest = @{
+    Path = "$ScriptDir\src\{{{packageName}}}\{{{packageName}}}.PrivateFunctions.psd1"
+    Author = '{{{author}}}'
+    CompanyName = '{{{companyName}}}'
+    Description = '{{{packageName}}}.PrivateFunctions - the PowerShell module which contains private functions. For testing purposes.'
+    {{#tags}}
+    Tags = {{{.}}}
+    {{/tags}}
+    {{#projectUri}}
+    ProjectUri = '{{{.}}}'
+    {{/projectUri}}
+    {{#licenseUri}}
+    LicenseUri = '{{{.}}}'
+    {{/licenseUri}}
+    {{#iconUri}}
+    IconUri = '{{{.}}}'
+    {{/iconUri}}
+    {{#releaseNotes}}
+    ReleaseNotes = '{{{.}}}'
+    {{/releaseNotes}}
+
+    
+    ModuleVersion = '{{{packageVersion}}}'
+    
+    {{#psData}}
+    PrivateData = @{
+        PSData = @{
+            {{{.}}}
+        }
+    }
+
+    {{/psData}}
+    
+    
+    RootModule = '{{{packageName}}}.PrivateFunctions.psm1'
+    Guid = '433b5055-530a-4bce-baf9-eda61ceba588'
 
     PowerShellVersion = '{{{powershellVersion}}}'
     
