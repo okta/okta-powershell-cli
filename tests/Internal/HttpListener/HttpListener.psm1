@@ -133,7 +133,7 @@ Function Start-HTTPListener {
                             # /okta-powershell?test=response&headers={"Pragma":"no-cache","X-Fake-Header":["testvalue01","testvalue02"]}
                             # In PowerShell:
                             # $headers = @{Pragma='no-cache';'X-Fake-Header'='testvalue01','testvalue02'} | ConvertTo-Json -Compress
-                            # $uri = "http://localhost:8080/okta-powershell?test=response&headers=$headers"
+                            # $uri = "http://127.0.0.1:8080/okta-powershell?test=response&headers=$headers"
                             if ($queryItems['headers'])
                             {
                                 $headerCollection = $queryItems['headers'] | ConvertFrom-Json
