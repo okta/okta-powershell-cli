@@ -223,7 +223,7 @@ function Invoke-{{{apiNamePrefix}}}ApiClient {
                     # This has to be piped to null as the AddRetryHeaders function has a return that adds to the pipeline 
                     # and messes up the callers that assume they are getting a response object and not an array of headers
                     # and a response if there is a retry
-                    AddRetryHeaders -Headers $HeaderParameters -RequestId $RequestId -RetryCount $RetryCount | out-null
+                    AddRetryHeaders -Headers $HeaderParameters -RequestId $RequestId -RetryCount $RetryCount
                     Write-Verbose "Hit Rate limit: Retrying request after $WaitInMilliseconds milliseconds"
                     Start-Sleep -Milliseconds $WaitInMilliseconds
                 }
