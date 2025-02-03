@@ -149,6 +149,4 @@ function AddRetryHeaders {
     $Headers["X-Okta-Retry-For"] = $RequestId
     $Headers["X-Okta-Retry-Count"] = $RetryCount
     #Write-Verbose "Adding retry headers > RequestId: " $RequestId " RetryCount: " $RetryCount
-
-    return $Headers
 }
