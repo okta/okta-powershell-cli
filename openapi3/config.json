@@ -24,7 +24,7 @@
     "gitHost": "github.com",
     "gitUserId" : "okta",
     "gitRepoId" : "okta-powershell-cli", 
-    "PowerShellVersion" : "7.0",
+    "powershellVersion" : "7.0",
     "globalProperties": {
         "apiTests": false,
         "modelTests": false
