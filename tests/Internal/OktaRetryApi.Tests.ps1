@@ -184,7 +184,7 @@ Describe -tag 'Okta.PowerShell' -name 'OktaRetryApi' {
 
             Mock -ModuleName Okta.PowerShell Get-OktaConfiguration { return $Config } -Verifiable
 
-            $Headers1 = @{"X-rAte-Limit-RESET" = @($ResetDateEpoch); "DATE" = @($Now)}
+            $Headers = @{"X-rAte-Limit-RESET" = @($ResetDateEpoch); "DATE" = @($Now)}
 
             # $BackoffInMilliseconds = (New-TimeSpan -Start $RequestUtcDate -End $RetryAtUtcTime).Milliseconds + 1000 #delta
             $Result = CalculateDelay -Headers $Headers
@@ -210,7 +210,7 @@ Describe -tag 'Okta.PowerShell' -name 'OktaRetryApi' {
         }
     }
 
-    Context 'Retry tests using HtppListener'{
+    Context 'Retry tests using HttpListener'{
         BeforeAll {
             Import-Module -Name "$PSScriptRoot\HttpListener\HttpListener.psm1" -Verbose 
         }
@@ -221,7 +221,7 @@ Describe -tag 'Okta.PowerShell' -name 'OktaRetryApi' {
 
         # This test is mainly to verify that we can test the internal IWR call used by OktaApiClient using the HttpListener instead of Pester.
         # Using Pester doesn't allow us to test some specifics of IWR, such as using the -SkipHttpErrorCheck flag 
-        It '429 responses should not throw when -SkipHttpCheckError is included (2.x series)' {
+        It 'ApiClient should not throw 429 responses when -SkipHttpCheckError is included (2.x series) and continue the command execution with a response object' {
             $Now = Get-Date # Used as a reference for the test. Indicates when the request was executed
             $ResetDate = $Now.AddSeconds(3) # Indicates when one should retry
             $port = 9000
