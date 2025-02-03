@@ -86,12 +86,15 @@ function CalculateDelay {
 
     $Configuration = Get-OktaConfiguration
 
-    if ($null -eq $Headers['X-Rate-Limit-Reset']) {
-        throw "Error! The required header `X-Rate-Limit-Reset` missing when calling CalculateDelay." 
+    if ($null -eq $Headers['x-rate-limit-reset']) {
+        throw "Error! The required header `x-rate-limit-reset` missing when calling CalculateDelay." 
     }
     
-    $RateLimitReset = Get-Date -Date $Headers["X-Rate-Limit-Reset"][0]
-    $RetryAtUtcTime = $RateLimitReset.ToUniversalTime()
+    $RateLimitResetEpoch = $Headers["x-rate-limit-reset"][0]
+    # this is a unich seconds since epoch time, so we convert to date
+    $RateLimitResetUTC = New-Object DateTime(1970, 1, 1, 0, 0, 0, 0)
+    $RateLimitResetUTC = $RateLimitResetUTC.addSeconds($RateLimitResetEpoch)
+    $RetryAtUtcTime = $RateLimitResetUTC
     
 
     if ($null -eq $Headers["Date"]) {
