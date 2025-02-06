@@ -50,6 +50,11 @@
             "templateType": "SupportingFiles",
             "folder": "/src/Okta.PowerShell/Client"
         },
+        "okta_apiException.mustache":{
+            "destinationFilename": "OktaApiException.ps1",
+            "templateType": "SupportingFiles",
+            "folder": "/src/Okta.PowerShell/Client"
+        },
         "api_README.mustache":{
             "destinationFilename":"API_README.md",
             "templateType": "SupportingFiles",

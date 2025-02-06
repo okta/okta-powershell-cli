@@ -222,6 +222,14 @@ function Invoke-OktaApiClient {
         }
     } while($RetryFlag)
     
+    if ($RawResponse.StatusCode -ge 400){
+        throw [OktaApiException]::new("Error calling the Okta API (Status Code $($RawResponse.StatusCode)) : $($RawResponse.Content)",
+            $RawResponse.StatusCode,
+            $RawResponse.Headers,
+            $RawResponse.Content
+        )
+    }
+
     return @{
         Response = $Response
         StatusCode = $StatusCode
