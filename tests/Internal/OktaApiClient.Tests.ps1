@@ -117,4 +117,3 @@ Context 'Invoke-OktaApiClient - 429 Responses' {
         Assert-MockCalled -ModuleName Okta.PowerShell CalculateElapsedTime -Times 1
     }
 }
-

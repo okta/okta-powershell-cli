@@ -202,7 +202,7 @@ function Invoke-{{{apiNamePrefix}}}ApiClient {
 
             $Response = $null
 
-            if ($RawResponse.StatusCode -ne '204') {
+            if ($RawResponse.StatusCode -ne '204' -and $RawResponse.Content.Length -gt 0) {
                 $Response = DeserializeResponse -Response $RawResponse.Content -ReturnType $ReturnType -ContentTypes $RawResponse.Headers["Content-Type"]        
             }
             

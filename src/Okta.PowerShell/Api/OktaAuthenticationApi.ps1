@@ -188,8 +188,6 @@ Revokes the access token from the Configuration object
 #>
 
 function Invoke-OktaRevokeAccessToken {
-    [Alias('Invoke-OktaRemoveAccessToken')]
-    param()
     Process {
         'Calling method: Invoke-OktaRevokeAccessToken' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
@@ -249,3 +247,4 @@ function Invoke-OktaRevokeAccessToken {
         }
     }
 }
+
