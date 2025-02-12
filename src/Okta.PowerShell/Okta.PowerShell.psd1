@@ -18,7 +18,7 @@ ModuleVersion = '1.0.4'
 CompatiblePSEditions = 'Core'
 
 # ID used to uniquely identify this module
-GUID = 'fd7fdfeb-d974-432d-bdf3-47f18eca9022'
+GUID = 'a2196ad3-a5d4-4cd2-967a-4d5ea1ee008e'
 
 # Author of this module
 Author = 'Okta, Inc.'

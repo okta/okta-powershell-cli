@@ -216,13 +216,11 @@ function Invoke-OktaRevokeAccessToken {
 
         $LocalVarUri = '/oauth2/v1/revoke'
       
-        $body = @{ 
+        $LocalVarFormParameters = @{ 
                     client_id = $Configuration.ClientId
                     token = $Configuration.AccessToken
                     token_type_hint = 'access_token'
                 }
-
-        $LocalVarFormParameters = $body
 
         $LocalVarResult = Invoke-OktaApiClient -Method 'POST' `
                                 -Uri $LocalVarUri `
