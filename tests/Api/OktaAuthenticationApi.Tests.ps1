@@ -57,18 +57,29 @@ Context 'Invoke-FetchOktaAccessToken' {
     }
 }
 
-Context 'Invoke-OktaRemoveAccessToken' {
-    It 'Should remove access token from configuration' {
+Context 'Invoke-OktaRevokeAccessToken' {
+    It 'Should call Invoke-OktaApiClient with Uri "/oauth2/v1/revoke"' {
         $Config = Get-OktaConfiguration
-        Set-OktaConfigurationAccessToken "foo"
+        $Config.BaseUrl = "https://example.okta.com"
+        $Config.ClientId = "foo"
+        $Config.AccessToken = "bar"
+        Mock -ModuleName Okta.PowerShell Get-OktaConfiguration { return $Config } -Verifiable
 
-        $Config = Get-OktaConfiguration
-        $Config.AccessToken | Should -Be "foo"
-        
-        Invoke-OktaRemoveAccessToken
+        $Response = @{
+            StatusCode = 200
+            Headers = @{ "Content-Length" = "0" }
+        }
 
-        $Config = Get-OktaConfiguration
+        Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
 
-        [string]::IsNullOrEmpty($Config.AccessToken) | Should -Be $true
+        # Call the function that uses Invoke-OktaApiClient
+        Invoke-OktaRevokeAccessToken
+
+        Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Exactly -Times 1 -Scope It -ParameterFilter {
+            $Uri -eq "/oauth2/v1/revoke" -and
+            $FormParameters.token_type_hint -eq "access_token" -and
+            $FormParameters.token -eq "bar" -and
+            $FormParameters.client_id -eq "foo"
+        }
     }
 }

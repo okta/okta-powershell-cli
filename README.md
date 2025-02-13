@@ -197,7 +197,14 @@ $proxyUrl = "http://127.0.0.1:8888"
 $webProxy = New-Object System.Net.WebProxy($proxyUrl)
 $Configuration.Proxy = $webProxy
 ```
+4. Revoke your access token
 
+Starting in Okta.PowerShell v2.x series, you can execute the following command to [revoke your token](https://developer.okta.com/docs/guides/revoke-tokens):
+
+```powershell
+Invoke-OktaRevokeAccessToken
+```
+Notice this will also remove the access token from your Okta configuration
 
 ### Create objects
 
