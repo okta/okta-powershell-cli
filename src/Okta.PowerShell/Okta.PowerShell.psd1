@@ -12,7 +12,7 @@
 RootModule = 'Okta.PowerShell.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.0.4'
+ModuleVersion = '2.0.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -33,7 +33,7 @@ Copyright = '(c) Okta, Inc.. All rights reserved.'
 Description = 'Okta.PowerShell - the PowerShell module for Okta Management'
 
 # Minimum version of the PowerShell engine required by this module
-PowerShellVersion = '6.2'
+PowerShellVersion = '7.0'
 
 # Name of the PowerShell host required by this module
 # PowerShellHostName = ''
