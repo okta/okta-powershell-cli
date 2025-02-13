@@ -65,13 +65,13 @@ $Manifest = @{
     ReleaseNotes = 'https://github.com/okta/okta-powershell-cli/releases'
 
     
-    ModuleVersion = '1.0.4'
+    ModuleVersion = '2.0.0'
     
 
     RootModule = 'Okta.PowerShell.psm1'
-    Guid = '{E5381546-F500-4F4B-A869-ADAB29B939DB}' # Has to be static, otherwise each new build will be considered different module
+    Guid = '{6EFCF652-1B73-4178-8447-D4FDFE0A9F0D}' # Has to be static, otherwise each new build will be considered different module
 
-    PowerShellVersion = '6.2'
+    PowerShellVersion = '7.0'
     
     CompatiblePSEditions = 'Core'
     
@@ -104,14 +104,14 @@ $Manifest = @{
     ReleaseNotes = 'https://github.com/okta/okta-powershell-cli/releases'
 
     
-    ModuleVersion = '1.0.4'
+    ModuleVersion = '2.0.0'
     
     
     
     RootModule = 'Okta.PowerShell.PrivateFunctions.psm1'
     Guid = '433b5055-530a-4bce-baf9-eda61ceba588'
 
-    PowerShellVersion = '6.2'
+    PowerShellVersion = '7.0'
     
     CompatiblePSEditions = 'Core'
     

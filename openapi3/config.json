@@ -14,7 +14,7 @@
     "templateDir": "./codegen-templates",
     "outputDir" : "../",
     "inputSpec" : "./management.yaml", 
-    "packageVersion" : "1.0.4",
+    "packageVersion" : "2.0.0",
     "packageDescription" : "Official PowerShell CLI for the Okta API",
     "packageTitle" : "Official PowerShell for the Okta API",
     "packageCompany" : "Okta, Inc.",
@@ -24,6 +24,7 @@
     "gitHost": "github.com",
     "gitUserId" : "okta",
     "gitRepoId" : "okta-powershell-cli", 
+    "powershellVersion" : "7.0",
     "globalProperties": {
         "apiTests": false,
         "modelTests": false
@@ -46,6 +47,11 @@
         },
         "okta_retryApi.mustache":{
             "destinationFilename": "OktaRetryApi.ps1",
+            "templateType": "SupportingFiles",
+            "folder": "/src/Okta.PowerShell/Client"
+        },
+        "okta_apiException.mustache":{
+            "destinationFilename": "OktaApiException.ps1",
             "templateType": "SupportingFiles",
             "folder": "/src/Okta.PowerShell/Client"
         },

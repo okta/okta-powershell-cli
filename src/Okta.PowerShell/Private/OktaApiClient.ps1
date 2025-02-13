@@ -131,7 +131,7 @@ function Invoke-OktaApiClient {
         }
     }
 
-    $OktaUserAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome + " okta-powershell-module/1.0.4"
+    $OktaUserAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome + " okta-powershell-module/2.0.0"
 
 
     # Setting up vars for retry
@@ -151,7 +151,8 @@ function Invoke-OktaApiClient {
                                         -ErrorAction Stop `
                                         -UseBasicParsing `
                                         -SkipCertificateCheck `
-                                        -UserAgent $OktaUserAgent
+                                        -UserAgent $OktaUserAgent `
+                                        -SkipHttpErrorCheck
             } else {
                 # skip certification check, use proxy
                 $RawResponse = Invoke-WebRequest -Uri $UriBuilder.Uri `
@@ -163,7 +164,8 @@ function Invoke-OktaApiClient {
                                         -SkipCertificateCheck `
                                         -Proxy $Configuration["Proxy"].GetProxy($UriBuilder.Uri) `
                                         -ProxyUseDefaultCredentials `
-                                        -UserAgent $OktaUserAgent
+                                        -UserAgent $OktaUserAgent `
+                                        -SkipHttpErrorCheck
             }
         } else {
             if ($null -eq $Configuration["Proxy"]) {
@@ -174,7 +176,8 @@ function Invoke-OktaApiClient {
                                         -Body $RequestBody `
                                         -ErrorAction Stop `
                                         -UseBasicParsing `
-                                        -UserAgent $OktaUserAgent
+                                        -UserAgent $OktaUserAgent `
+                                        -SkipHttpErrorCheck
             } else {
                 # perform certification check, use proxy
                 $RawResponse = Invoke-WebRequest -Uri $UriBuilder.Uri `
@@ -185,7 +188,8 @@ function Invoke-OktaApiClient {
                                         -UseBasicParsing `
                                         -Proxy $Configuration["Proxy"].GetProxy($UriBuilder.Uri) `
                                         -ProxyUseDefaultCredentials `
-                                        -UserAgent $OktaUserAgent
+                                        -UserAgent $OktaUserAgent `
+                                        -SkipHttpErrorCheck
             }
 
             $Response = $null
@@ -205,6 +209,7 @@ function Invoke-OktaApiClient {
                     $RetryCount = $RetryCount + 1
                     $RequestId = $Headers['X-Okta-Request-Id'][0]
                     AddRetryHeaders -Headers $HeaderParameters -RequestId $RequestId -RetryCount $RetryCount
+                    Write-Verbose "Hit Rate limit: Retrying request after $WaitInMilliseconds milliseconds"
                     Start-Sleep -Milliseconds $WaitInMilliseconds
                 }
                 else {
@@ -217,6 +222,14 @@ function Invoke-OktaApiClient {
         }
     } while($RetryFlag)
     
+    if ($RawResponse.StatusCode -ge 400){
+        throw [OktaApiException]::new("Error calling the Okta API (Status Code $($RawResponse.StatusCode)) : $($RawResponse.Content)",
+            $RawResponse.StatusCode,
+            $RawResponse.Headers,
+            $RawResponse.Content
+        )
+    }
+
     return @{
         Response = $Response
         StatusCode = $StatusCode

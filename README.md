@@ -360,6 +360,26 @@ Get-OktaLogs -since $since -until $until
 
 ```
 
+## Error Handling 
+
+Starting in Okta.PowerShell 2.x series we introduced a new exception called `OktaApiException` which is thrown when requests to the Okta API result in 4xx/5xx errors. You can catch an `OktaApiException` and access the Okta API error details. For example, if the API returns a 429 response with the following content: `{"errorCode":"E0000047","errorSummary":"API call exceeded rate limit due to too many requests.","errorLink":"E0000047","errorId":"oae6dB62BdhRFCF_9ltxiklFQ","errorCauses":[]}`, you can access these details from the exception:
+
+```powershell
+    try{
+        $Result = Invoke-OktaListApplications
+    }
+    catch{
+        $_.Exception.StatusCode.Value__ | Should -Be 429;
+        $_.Exception.ErrorCode | Should -Be "E0000047"
+        $_.Exception.ErrorSummary | Should -Be "API call exceeded rate limit due to too many requests."
+        $_.Exception.ErrorLink | Should -Be "E0000047"
+        $_.Exception.ErrorId | Should -Be "oae6dB62BdhRFCF_9ltxiklFQ"
+        $_.Exception.ErrorCauses | Should -BeNullOrEmpty
+        $_.Exception.Headers | Should -Not -Be $null
+    }
+
+```
+
 ## Rate Limiting
 
 The Okta API will return 429 responses if too many requests are made within a given time. Please see [Rate Limiting at Okta] for a complete list of which endpoints are rate limited.  When a 429 error is received, the `X-Rate-Limit-Reset` header will tell you the time at which you can retry. This section discusses  methods for handling rate limiting with this SDK.
@@ -374,6 +394,8 @@ You can configure the following options when using the built-in retry strategy:
 | ---------------------- | -------------- |
 | RequestTimeout         | The waiting time in milliseconds for a request to be resolved by the client. Less than or equal to 0 means "no timeout". The default value is `$null` (None). |
 | MaxRetries             | The number of times to retry. |
+
+If the request still fails with a 429 status code after retrying it the specified number of times or if the Okta API returns an Http error other than 429 after retying a request, an `OktaApiException` will be ultimately thrown.
 
 ### Usage
 
