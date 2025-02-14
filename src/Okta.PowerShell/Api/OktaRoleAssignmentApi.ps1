@@ -83,22 +83,22 @@ function Set-OktaRoleToGroup {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/groups/{groupId}/roles'
-        if (!$GroupId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("GroupId") -or $null -eq $GroupId) {
             throw "Error! The required parameter `GroupId` missing when calling assignRoleToGroup."
         }
         $LocalVarUri = $LocalVarUri.replace('{groupId}', [System.Web.HTTPUtility]::UrlEncode($GroupId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($DisableNotifications) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("DisableNotifications")) {
             $LocalVarQueryParameters['disableNotifications'] = $DisableNotifications
         }
 
-        if (!$AssignRoleRequest) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AssignRoleRequest") -or $null -eq $AssignRoleRequest) {
             throw "Error! The required parameter `AssignRoleRequest` missing when calling assignRoleToGroup."
         }
 
@@ -228,22 +228,22 @@ function Set-OktaRoleToUser {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/users/{userId}/roles'
-        if (!$UserId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("UserId") -or $null -eq $UserId) {
             throw "Error! The required parameter `UserId` missing when calling assignRoleToUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($DisableNotifications) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("DisableNotifications")) {
             $LocalVarQueryParameters['disableNotifications'] = $DisableNotifications
         }
 
-        if (!$AssignRoleRequest) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AssignRoleRequest") -or $null -eq $AssignRoleRequest) {
             throw "Error! The required parameter `AssignRoleRequest` missing when calling assignRoleToUser."
         }
 
@@ -364,16 +364,16 @@ function Get-OktaGroupAssignedRole {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/groups/{groupId}/roles/{roleId}'
-        if (!$GroupId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("GroupId") -or $null -eq $GroupId) {
             throw "Error! The required parameter `GroupId` missing when calling getGroupAssignedRole."
         }
         $LocalVarUri = $LocalVarUri.replace('{groupId}', [System.Web.HTTPUtility]::UrlEncode($GroupId))
-        if (!$RoleId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("RoleId") -or $null -eq $RoleId) {
             throw "Error! The required parameter `RoleId` missing when calling getGroupAssignedRole."
         }
         $LocalVarUri = $LocalVarUri.replace('{roleId}', [System.Web.HTTPUtility]::UrlEncode($RoleId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -487,16 +487,16 @@ function Get-OktaUserAssignedRole {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/users/{userId}/roles/{roleId}'
-        if (!$UserId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("UserId") -or $null -eq $UserId) {
             throw "Error! The required parameter `UserId` missing when calling getUserAssignedRole."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
-        if (!$RoleId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("RoleId") -or $null -eq $RoleId) {
             throw "Error! The required parameter `RoleId` missing when calling getUserAssignedRole."
         }
         $LocalVarUri = $LocalVarUri.replace('{roleId}', [System.Web.HTTPUtility]::UrlEncode($RoleId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -610,18 +610,18 @@ function Invoke-OktaListAssignedRolesForUser {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/users/{userId}/roles'
-        if (!$UserId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("UserId") -or $null -eq $UserId) {
             throw "Error! The required parameter `UserId` missing when calling listAssignedRolesForUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Expand) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Expand")) {
             $LocalVarQueryParameters['expand'] = $Expand
         }
 
@@ -733,18 +733,18 @@ function Invoke-OktaListGroupAssignedRoles {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/groups/{groupId}/roles'
-        if (!$GroupId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("GroupId") -or $null -eq $GroupId) {
             throw "Error! The required parameter `GroupId` missing when calling listGroupAssignedRoles."
         }
         $LocalVarUri = $LocalVarUri.replace('{groupId}', [System.Web.HTTPUtility]::UrlEncode($GroupId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Expand) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Expand")) {
             $LocalVarQueryParameters['expand'] = $Expand
         }
 
@@ -856,16 +856,16 @@ function Invoke-OktaUnassignRoleFromGroup {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/groups/{groupId}/roles/{roleId}'
-        if (!$GroupId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("GroupId") -or $null -eq $GroupId) {
             throw "Error! The required parameter `GroupId` missing when calling unassignRoleFromGroup."
         }
         $LocalVarUri = $LocalVarUri.replace('{groupId}', [System.Web.HTTPUtility]::UrlEncode($GroupId))
-        if (!$RoleId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("RoleId") -or $null -eq $RoleId) {
             throw "Error! The required parameter `RoleId` missing when calling unassignRoleFromGroup."
         }
         $LocalVarUri = $LocalVarUri.replace('{roleId}', [System.Web.HTTPUtility]::UrlEncode($RoleId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -979,16 +979,16 @@ function Invoke-OktaUnassignRoleFromUser {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/users/{userId}/roles/{roleId}'
-        if (!$UserId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("UserId") -or $null -eq $UserId) {
             throw "Error! The required parameter `UserId` missing when calling unassignRoleFromUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
-        if (!$RoleId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("RoleId") -or $null -eq $RoleId) {
             throw "Error! The required parameter `RoleId` missing when calling unassignRoleFromUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{roleId}', [System.Web.HTTPUtility]::UrlEncode($RoleId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]

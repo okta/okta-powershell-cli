@@ -57,6 +57,44 @@ Describe -tag 'Okta.PowerShell' -name 'OktaUserApi' {
             $TestResult._Links | Should -Not -BeNullOrEmpty
         }
 
+        It 'Test New-OktaUser with query params' -ForEach @(
+            @{ ActivateParam = $true; ProviderParam = $true; NextLoginParam = "changePassword"}
+            @{ ActivateParam = $false; ProviderParam = $false; NextLoginParam = "changePassword"}
+            @{ ActivateParam = $true; ProviderParam = $false; NextLoginParam = "changePassword"}
+            @{ ActivateParam = $false; ProviderParam = $true; NextLoginParam = "changePassword"}
+            @{ ActivateParam = $null; ProviderParam = $null; NextLoginParam = "changePassword"}
+            @{ ActivateParam = $null; ProviderParam = $false; NextLoginParam = "changePassword"}
+            @{ ActivateParam = $null; ProviderParam = $true; NextLoginParam = "changePassword"}
+            @{ ActivateParam = $true; ProviderParam = $null; NextLoginParam = "changePassword"}
+            @{ ActivateParam = $false; ProviderParam = $null; NextLoginParam = "changePassword"}
+        )   {     
+            $Content = '{"id":"00u8zkhk9tWf3aWsq1d7","status":"ACTIVE","created":"2023-07-19T16:22:01.000Z","activated":"2023-07-19T16:22:02.000Z","statusChanged":"2023-07-19T16:22:02.000Z","lastLogin":null,"lastUpdated":"2023-07-19T16:22:02.000Z","passwordChanged":"2023-07-19T16:22:02.000Z","type":{"id":"oty1fddpcr6cnPEPG1d7"},"profile":{"firstName":"John","lastName":"Doe","mobilePhone":null,"nickName":"johny-CreateUserWithPasswordImportInlineHookOptions-elqhxp","secondEmail":null,"login":"john.doe@mail.com","email":"john.doe@mail.com"},"credentials":{"password":{},"provider":{"type":"IMPORT","name":"IMPORT"}},"_links":{"suspend":{"href":"https://testorg.com/api/v1/users/00u8zkhk9tWf3aWsq1d7/lifecycle/suspend","method":"POST"},"schema":{"href":"https://testorg.com/api/v1/meta/schemas/user/osc1fddpcr6cnPEPG1d7"},"resetPassword":{"href":"https://testorg.com/api/v1/users/00u8zkhk9tWf3aWsq1d7/lifecycle/reset_password","method":"POST"},"forgotPassword":{"href":"https://testorg.com/api/v1/users/00u8zkhk9tWf3aWsq1d7/credentials/forgot_password","method":"POST"},"expirePassword":{"href":"https://testorg.com/api/v1/users/00u8zkhk9tWf3aWsq1d7/lifecycle/expire_password","method":"POST"},"changeRecoveryQuestion":{"href":"https://testorg.com/api/v1/users/00u8zkhk9tWf3aWsq1d7/credentials/change_recovery_question","method":"POST"},"self":{"href":"https://testorg.com/api/v1/users/00u8zkhk9tWf3aWsq1d7"},"resetFactors":{"href":"https://testorg.com/api/v1/users/00u8zkhk9tWf3aWsq1d7/lifecycle/reset_factors","method":"POST"},"type":{"href":"https://testorg.com/api/v1/meta/types/user/oty1fddpcr6cnPEPG1d7"},"changePassword":{"href":"https://testorg.com/api/v1/users/00u8zkhk9tWf3aWsq1d7/credentials/change_password","method":"POST"},"deactivate":{"href":"https://testorg.com/api/v1/users/00u8zkhk9tWf3aWsq1d7/lifecycle/deactivate","method":"POST"}}}' | ConvertFrom-Json
+            $Response = @{
+                Response   = $Content
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/json")}
+            }
+
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+
+            $UserProfile = [PSCustomObject]@{
+                firstName = 'John'
+                lastName = 'Doe'
+                login = 'john.doe@mail.com'
+                email = 'john.doe@mail.com'
+            }
+
+            $CreateUserRequest = Initialize-OktaCreateUserRequest -VarProfile $UserProfile -GroupIds 'foo'
+            New-OktaUser -Body $CreateUserRequest -Activate $ActivateParam -Provider $ProviderParam -NextLogin $NextLoginParam
+
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1 -Scope It -ParameterFilter {
+                $null -ne $QueryParameters -and
+                $QueryParameters['activate']  -eq $ActivateParam -and
+                $QueryParameters['provider']  -eq $ProviderParam -and
+                $QueryParameters['nextLogin'] -eq $NextLoginParam
+            }
+        }
+
         It 'Test New-OktaUser -withHttpInfo' {     
             $Content = '{"id":"00u8zkhk9tWf3aWsq1d7","status":"ACTIVE","created":"2023-07-19T16:22:01.000Z","activated":"2023-07-19T16:22:02.000Z","statusChanged":"2023-07-19T16:22:02.000Z","lastLogin":null,"lastUpdated":"2023-07-19T16:22:02.000Z","passwordChanged":"2023-07-19T16:22:02.000Z","type":{"id":"oty1fddpcr6cnPEPG1d7"},"profile":{"firstName":"John","lastName":"Doe","mobilePhone":null,"nickName":"johny-CreateUserWithPasswordImportInlineHookOptions-elqhxp","secondEmail":null,"login":"john.doe@mail.com","email":"john.doe@mail.com"},"credentials":{"password":{},"provider":{"type":"IMPORT","name":"IMPORT"}},"_links":{"suspend":{"href":"https://testorg.com/api/v1/users/00u8zkhk9tWf3aWsq1d7/lifecycle/suspend","method":"POST"},"schema":{"href":"https://testorg.com/api/v1/meta/schemas/user/osc1fddpcr6cnPEPG1d7"},"resetPassword":{"href":"https://testorg.com/api/v1/users/00u8zkhk9tWf3aWsq1d7/lifecycle/reset_password","method":"POST"},"forgotPassword":{"href":"https://testorg.com/api/v1/users/00u8zkhk9tWf3aWsq1d7/credentials/forgot_password","method":"POST"},"expirePassword":{"href":"https://testorg.com/api/v1/users/00u8zkhk9tWf3aWsq1d7/lifecycle/expire_password","method":"POST"},"changeRecoveryQuestion":{"href":"https://testorg.com/api/v1/users/00u8zkhk9tWf3aWsq1d7/credentials/change_recovery_question","method":"POST"},"self":{"href":"https://testorg.com/api/v1/users/00u8zkhk9tWf3aWsq1d7"},"resetFactors":{"href":"https://testorg.com/api/v1/users/00u8zkhk9tWf3aWsq1d7/lifecycle/reset_factors","method":"POST"},"type":{"href":"https://testorg.com/api/v1/meta/types/user/oty1fddpcr6cnPEPG1d7"},"changePassword":{"href":"https://testorg.com/api/v1/users/00u8zkhk9tWf3aWsq1d7/credentials/change_password","method":"POST"},"deactivate":{"href":"https://testorg.com/api/v1/users/00u8zkhk9tWf3aWsq1d7/lifecycle/deactivate","method":"POST"}}}' | ConvertFrom-Json
             $Response = @{

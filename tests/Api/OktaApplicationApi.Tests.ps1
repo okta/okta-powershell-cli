@@ -289,11 +289,15 @@ Describe -tag 'Okta.PowerShell' -name 'OktaOktaApplicationApi' {
                             }
             }
 
-            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable @PesterBoundParameters
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
 
             $TestResult = Invoke-OktaListApplications -Uri "https://myorg.oktapreview.com/api/v1/apps?after=foo&limit=2" -WithHttpInfo
 
-            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1 -Scope It -ParameterFilter { $Uri -eq  "/api/v1/apps" -and $QueryParameters["limit"] -eq 2 -and $QueryParameters["after"] -eq "foo" }
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Times 1 -Scope It -ParameterFilter { 
+                $Uri -eq  "/api/v1/apps" -and 
+                $QueryParameters["limit"] -eq 2 -and 
+                $QueryParameters["after"] -eq "foo" 
+            }
 
             $TestResult.NextPageUri | Should -Be "https://myorg.oktapreview.com/api/v1/apps?after=bar&limit=2"
 

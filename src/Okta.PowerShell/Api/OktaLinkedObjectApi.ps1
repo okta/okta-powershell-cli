@@ -72,13 +72,13 @@ function Add-OktaLinkedObjectDefinition {
 
         $LocalVarUri = '/api/v1/meta/schemas/user/linkedObjects'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$LinkedObject) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("LinkedObject") -or $null -eq $LinkedObject) {
             throw "Error! The required parameter `LinkedObject` missing when calling addLinkedObjectDefinition."
         }
 
@@ -193,12 +193,12 @@ function Invoke-OktaDeleteLinkedObjectDefinition {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/meta/schemas/user/linkedObjects/{linkedObjectName}'
-        if (!$LinkedObjectName) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("LinkedObjectName") -or $null -eq $LinkedObjectName) {
             throw "Error! The required parameter `LinkedObjectName` missing when calling deleteLinkedObjectDefinition."
         }
         $LocalVarUri = $LocalVarUri.replace('{linkedObjectName}', [System.Web.HTTPUtility]::UrlEncode($LinkedObjectName))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -306,12 +306,12 @@ function Get-OktaLinkedObjectDefinition {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/meta/schemas/user/linkedObjects/{linkedObjectName}'
-        if (!$LinkedObjectName) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("LinkedObjectName") -or $null -eq $LinkedObjectName) {
             throw "Error! The required parameter `LinkedObjectName` missing when calling getLinkedObjectDefinition."
         }
         $LocalVarUri = $LocalVarUri.replace('{linkedObjectName}', [System.Web.HTTPUtility]::UrlEncode($LinkedObjectName))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -414,7 +414,7 @@ function Invoke-OktaListLinkedObjectDefinitions {
 
         $LocalVarUri = '/api/v1/meta/schemas/user/linkedObjects'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]

@@ -63,7 +63,7 @@ function Get-OktaRateLimitSettingsAdminNotifications {
 
         $LocalVarUri = '/api/v1/rate-limit-settings/admin-notifications'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -166,7 +166,7 @@ function Get-OktaRateLimitSettingsPerClient {
 
         $LocalVarUri = '/api/v1/rate-limit-settings/per-client'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -278,13 +278,13 @@ function Invoke-OktaReplaceRateLimitSettingsAdminNotifications {
 
         $LocalVarUri = '/api/v1/rate-limit-settings/admin-notifications'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$RateLimitAdminNotifications) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("RateLimitAdminNotifications") -or $null -eq $RateLimitAdminNotifications) {
             throw "Error! The required parameter `RateLimitAdminNotifications` missing when calling replaceRateLimitSettingsAdminNotifications."
         }
 
@@ -403,13 +403,13 @@ function Invoke-OktaReplaceRateLimitSettingsPerClient {
 
         $LocalVarUri = '/api/v1/rate-limit-settings/per-client'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$PerClientRateLimitSettings) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("PerClientRateLimitSettings") -or $null -eq $PerClientRateLimitSettings) {
             throw "Error! The required parameter `PerClientRateLimitSettings` missing when calling replaceRateLimitSettingsPerClient."
         }
 

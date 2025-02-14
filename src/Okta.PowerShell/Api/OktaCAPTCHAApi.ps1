@@ -72,13 +72,13 @@ function New-OktaCaptchaInstance {
 
         $LocalVarUri = '/api/v1/captchas'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$Instance) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Instance") -or $null -eq $Instance) {
             throw "Error! The required parameter `Instance` missing when calling createCaptchaInstance."
         }
 
@@ -193,12 +193,12 @@ function Invoke-OktaDeleteCaptchaInstance {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/captchas/{captchaId}'
-        if (!$CaptchaId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("CaptchaId") -or $null -eq $CaptchaId) {
             throw "Error! The required parameter `CaptchaId` missing when calling deleteCaptchaInstance."
         }
         $LocalVarUri = $LocalVarUri.replace('{captchaId}', [System.Web.HTTPUtility]::UrlEncode($CaptchaId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -306,12 +306,12 @@ function Get-OktaCaptchaInstance {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/captchas/{captchaId}'
-        if (!$CaptchaId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("CaptchaId") -or $null -eq $CaptchaId) {
             throw "Error! The required parameter `CaptchaId` missing when calling getCaptchaInstance."
         }
         $LocalVarUri = $LocalVarUri.replace('{captchaId}', [System.Web.HTTPUtility]::UrlEncode($CaptchaId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -414,7 +414,7 @@ function Invoke-OktaListCaptchaInstances {
 
         $LocalVarUri = '/api/v1/captchas'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -531,18 +531,18 @@ function Invoke-OktaPartialUpdateCaptchaInstance {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/captchas/{captchaId}'
-        if (!$CaptchaId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("CaptchaId") -or $null -eq $CaptchaId) {
             throw "Error! The required parameter `CaptchaId` missing when calling partialUpdateCaptchaInstance."
         }
         $LocalVarUri = $LocalVarUri.replace('{captchaId}', [System.Web.HTTPUtility]::UrlEncode($CaptchaId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$Instance) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Instance") -or $null -eq $Instance) {
             throw "Error! The required parameter `Instance` missing when calling partialUpdateCaptchaInstance."
         }
 
@@ -666,18 +666,18 @@ function Update-OktaCaptchaInstance {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/captchas/{captchaId}'
-        if (!$CaptchaId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("CaptchaId") -or $null -eq $CaptchaId) {
             throw "Error! The required parameter `CaptchaId` missing when calling updateCaptchaInstance."
         }
         $LocalVarUri = $LocalVarUri.replace('{captchaId}', [System.Web.HTTPUtility]::UrlEncode($CaptchaId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$Instance) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Instance") -or $null -eq $Instance) {
             throw "Error! The required parameter `Instance` missing when calling updateCaptchaInstance."
         }
 

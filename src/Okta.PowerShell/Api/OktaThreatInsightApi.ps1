@@ -63,7 +63,7 @@ function Get-OktaCurrentConfiguration {
 
         $LocalVarUri = '/api/v1/threats/configuration'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -175,13 +175,13 @@ function Update-OktaConfiguration {
 
         $LocalVarUri = '/api/v1/threats/configuration'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$ThreatInsightConfiguration) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("ThreatInsightConfiguration") -or $null -eq $ThreatInsightConfiguration) {
             throw "Error! The required parameter `ThreatInsightConfiguration` missing when calling updateConfiguration."
         }
 

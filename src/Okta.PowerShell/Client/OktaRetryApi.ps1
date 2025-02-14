@@ -91,7 +91,8 @@ function CalculateDelay {
     }
     
     $RateLimitResetEpoch = $Headers["x-rate-limit-reset"][0]
-    # this is a unich seconds since epoch time, so we convert to date
+    # this is a unix time stamp (seconds since epoch), so we convert to date
+
     $RateLimitResetUTC = New-Object DateTime(1970, 1, 1, 0, 0, 0, 0)
     $RateLimitResetUTC = $RateLimitResetUTC.addSeconds($RateLimitResetEpoch)
     $RetryAtUtcTime = $RateLimitResetUTC

@@ -68,12 +68,12 @@ function Invoke-OktaActivateLogStream {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/logStreams/{logStreamId}/lifecycle/activate'
-        if (!$LogStreamId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("LogStreamId") -or $null -eq $LogStreamId) {
             throw "Error! The required parameter `LogStreamId` missing when calling activateLogStream."
         }
         $LocalVarUri = $LocalVarUri.replace('{logStreamId}', [System.Web.HTTPUtility]::UrlEncode($LogStreamId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -185,13 +185,13 @@ function New-OktaLogStream {
 
         $LocalVarUri = '/api/v1/logStreams'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$Instance) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Instance") -or $null -eq $Instance) {
             throw "Error! The required parameter `Instance` missing when calling createLogStream."
         }
 
@@ -306,12 +306,12 @@ function Invoke-OktaDeactivateLogStream {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/logStreams/{logStreamId}/lifecycle/deactivate'
-        if (!$LogStreamId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("LogStreamId") -or $null -eq $LogStreamId) {
             throw "Error! The required parameter `LogStreamId` missing when calling deactivateLogStream."
         }
         $LocalVarUri = $LocalVarUri.replace('{logStreamId}', [System.Web.HTTPUtility]::UrlEncode($LogStreamId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -419,12 +419,12 @@ function Invoke-OktaDeleteLogStream {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/logStreams/{logStreamId}'
-        if (!$LogStreamId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("LogStreamId") -or $null -eq $LogStreamId) {
             throw "Error! The required parameter `LogStreamId` missing when calling deleteLogStream."
         }
         $LocalVarUri = $LocalVarUri.replace('{logStreamId}', [System.Web.HTTPUtility]::UrlEncode($LogStreamId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -532,12 +532,12 @@ function Get-OktaLogStream {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/logStreams/{logStreamId}'
-        if (!$LogStreamId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("LogStreamId") -or $null -eq $LogStreamId) {
             throw "Error! The required parameter `LogStreamId` missing when calling getLogStream."
         }
         $LocalVarUri = $LocalVarUri.replace('{logStreamId}', [System.Web.HTTPUtility]::UrlEncode($LogStreamId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -658,21 +658,21 @@ function Invoke-OktaListLogStreams {
 
         $LocalVarUri = '/api/v1/logStreams'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($After) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("After")) {
             $LocalVarQueryParameters['after'] = $After
         }
 
-        if ($Limit) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Limit")) {
             $LocalVarQueryParameters['limit'] = $Limit
         }
 
-        if ($Filter) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Filter")) {
             $LocalVarQueryParameters['filter'] = $Filter
         }
 
@@ -787,18 +787,18 @@ function Invoke-OktaReplaceLogStream {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/logStreams/{logStreamId}'
-        if (!$LogStreamId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("LogStreamId") -or $null -eq $LogStreamId) {
             throw "Error! The required parameter `LogStreamId` missing when calling replaceLogStream."
         }
         $LocalVarUri = $LocalVarUri.replace('{logStreamId}', [System.Web.HTTPUtility]::UrlEncode($LogStreamId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$Instance) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Instance") -or $null -eq $Instance) {
             throw "Error! The required parameter `Instance` missing when calling replaceLogStream."
         }
 

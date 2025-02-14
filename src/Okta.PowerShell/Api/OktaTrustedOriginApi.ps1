@@ -68,12 +68,12 @@ function Invoke-OktaActivateOrigin {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/trustedOrigins/{trustedOriginId}/lifecycle/activate'
-        if (!$TrustedOriginId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("TrustedOriginId") -or $null -eq $TrustedOriginId) {
             throw "Error! The required parameter `TrustedOriginId` missing when calling activateOrigin."
         }
         $LocalVarUri = $LocalVarUri.replace('{trustedOriginId}', [System.Web.HTTPUtility]::UrlEncode($TrustedOriginId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -185,13 +185,13 @@ function New-OktaOrigin {
 
         $LocalVarUri = '/api/v1/trustedOrigins'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$TrustedOrigin) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("TrustedOrigin") -or $null -eq $TrustedOrigin) {
             throw "Error! The required parameter `TrustedOrigin` missing when calling createOrigin."
         }
 
@@ -306,12 +306,12 @@ function Invoke-OktaDeactivateOrigin {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/trustedOrigins/{trustedOriginId}/lifecycle/deactivate'
-        if (!$TrustedOriginId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("TrustedOriginId") -or $null -eq $TrustedOriginId) {
             throw "Error! The required parameter `TrustedOriginId` missing when calling deactivateOrigin."
         }
         $LocalVarUri = $LocalVarUri.replace('{trustedOriginId}', [System.Web.HTTPUtility]::UrlEncode($TrustedOriginId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -419,12 +419,12 @@ function Invoke-OktaDeleteOrigin {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/trustedOrigins/{trustedOriginId}'
-        if (!$TrustedOriginId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("TrustedOriginId") -or $null -eq $TrustedOriginId) {
             throw "Error! The required parameter `TrustedOriginId` missing when calling deleteOrigin."
         }
         $LocalVarUri = $LocalVarUri.replace('{trustedOriginId}', [System.Web.HTTPUtility]::UrlEncode($TrustedOriginId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -532,12 +532,12 @@ function Get-OktaOrigin {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/trustedOrigins/{trustedOriginId}'
-        if (!$TrustedOriginId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("TrustedOriginId") -or $null -eq $TrustedOriginId) {
             throw "Error! The required parameter `TrustedOriginId` missing when calling getOrigin."
         }
         $LocalVarUri = $LocalVarUri.replace('{trustedOriginId}', [System.Web.HTTPUtility]::UrlEncode($TrustedOriginId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -664,25 +664,25 @@ function Invoke-OktaListOrigins {
 
         $LocalVarUri = '/api/v1/trustedOrigins'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Q) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Q")) {
             $LocalVarQueryParameters['q'] = $Q
         }
 
-        if ($Filter) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Filter")) {
             $LocalVarQueryParameters['filter'] = $Filter
         }
 
-        if ($After) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("After")) {
             $LocalVarQueryParameters['after'] = $After
         }
 
-        if ($Limit) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Limit")) {
             $LocalVarQueryParameters['limit'] = $Limit
         }
 
@@ -797,18 +797,18 @@ function Update-OktaOrigin {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/trustedOrigins/{trustedOriginId}'
-        if (!$TrustedOriginId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("TrustedOriginId") -or $null -eq $TrustedOriginId) {
             throw "Error! The required parameter `TrustedOriginId` missing when calling updateOrigin."
         }
         $LocalVarUri = $LocalVarUri.replace('{trustedOriginId}', [System.Web.HTTPUtility]::UrlEncode($TrustedOriginId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$TrustedOrigin) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("TrustedOrigin") -or $null -eq $TrustedOrigin) {
             throw "Error! The required parameter `TrustedOrigin` missing when calling updateOrigin."
         }
 

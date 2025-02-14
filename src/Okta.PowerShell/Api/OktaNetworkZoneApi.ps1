@@ -68,12 +68,12 @@ function Invoke-OktaActivateNetworkZone {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/zones/{zoneId}/lifecycle/activate'
-        if (!$ZoneId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("ZoneId") -or $null -eq $ZoneId) {
             throw "Error! The required parameter `ZoneId` missing when calling activateNetworkZone."
         }
         $LocalVarUri = $LocalVarUri.replace('{zoneId}', [System.Web.HTTPUtility]::UrlEncode($ZoneId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -185,13 +185,13 @@ function New-OktaNetworkZone {
 
         $LocalVarUri = '/api/v1/zones'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$Zone) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Zone") -or $null -eq $Zone) {
             throw "Error! The required parameter `Zone` missing when calling createNetworkZone."
         }
 
@@ -306,12 +306,12 @@ function Invoke-OktaDeactivateNetworkZone {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/zones/{zoneId}/lifecycle/deactivate'
-        if (!$ZoneId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("ZoneId") -or $null -eq $ZoneId) {
             throw "Error! The required parameter `ZoneId` missing when calling deactivateNetworkZone."
         }
         $LocalVarUri = $LocalVarUri.replace('{zoneId}', [System.Web.HTTPUtility]::UrlEncode($ZoneId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -419,12 +419,12 @@ function Invoke-OktaDeleteNetworkZone {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/zones/{zoneId}'
-        if (!$ZoneId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("ZoneId") -or $null -eq $ZoneId) {
             throw "Error! The required parameter `ZoneId` missing when calling deleteNetworkZone."
         }
         $LocalVarUri = $LocalVarUri.replace('{zoneId}', [System.Web.HTTPUtility]::UrlEncode($ZoneId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -532,12 +532,12 @@ function Get-OktaNetworkZone {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/zones/{zoneId}'
-        if (!$ZoneId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("ZoneId") -or $null -eq $ZoneId) {
             throw "Error! The required parameter `ZoneId` missing when calling getNetworkZone."
         }
         $LocalVarUri = $LocalVarUri.replace('{zoneId}', [System.Web.HTTPUtility]::UrlEncode($ZoneId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -658,21 +658,21 @@ function Invoke-OktaListNetworkZones {
 
         $LocalVarUri = '/api/v1/zones'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($After) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("After")) {
             $LocalVarQueryParameters['after'] = $After
         }
 
-        if ($Limit) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Limit")) {
             $LocalVarQueryParameters['limit'] = $Limit
         }
 
-        if ($Filter) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Filter")) {
             $LocalVarQueryParameters['filter'] = $Filter
         }
 
@@ -787,18 +787,18 @@ function Update-OktaNetworkZone {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/zones/{zoneId}'
-        if (!$ZoneId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("ZoneId") -or $null -eq $ZoneId) {
             throw "Error! The required parameter `ZoneId` missing when calling updateNetworkZone."
         }
         $LocalVarUri = $LocalVarUri.replace('{zoneId}', [System.Web.HTTPUtility]::UrlEncode($ZoneId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$Zone) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Zone") -or $null -eq $Zone) {
             throw "Error! The required parameter `Zone` missing when calling updateNetworkZone."
         }
 

@@ -68,12 +68,12 @@ function Invoke-OktaActivateAuthenticator {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authenticators/{authenticatorId}/lifecycle/activate'
-        if (!$AuthenticatorId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AuthenticatorId") -or $null -eq $AuthenticatorId) {
             throw "Error! The required parameter `AuthenticatorId` missing when calling activateAuthenticator."
         }
         $LocalVarUri = $LocalVarUri.replace('{authenticatorId}', [System.Web.HTTPUtility]::UrlEncode($AuthenticatorId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -191,17 +191,17 @@ function New-OktaAuthenticator {
 
         $LocalVarUri = '/api/v1/authenticators'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Activate) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Activate")) {
             $LocalVarQueryParameters['activate'] = $Activate
         }
 
-        if (!$Authenticator) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Authenticator") -or $null -eq $Authenticator) {
             throw "Error! The required parameter `Authenticator` missing when calling createAuthenticator."
         }
 
@@ -316,12 +316,12 @@ function Invoke-OktaDeactivateAuthenticator {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authenticators/{authenticatorId}/lifecycle/deactivate'
-        if (!$AuthenticatorId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AuthenticatorId") -or $null -eq $AuthenticatorId) {
             throw "Error! The required parameter `AuthenticatorId` missing when calling deactivateAuthenticator."
         }
         $LocalVarUri = $LocalVarUri.replace('{authenticatorId}', [System.Web.HTTPUtility]::UrlEncode($AuthenticatorId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -429,12 +429,12 @@ function Get-OktaAuthenticator {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/authenticators/{authenticatorId}'
-        if (!$AuthenticatorId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AuthenticatorId") -or $null -eq $AuthenticatorId) {
             throw "Error! The required parameter `AuthenticatorId` missing when calling getAuthenticator."
         }
         $LocalVarUri = $LocalVarUri.replace('{authenticatorId}', [System.Web.HTTPUtility]::UrlEncode($AuthenticatorId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -537,7 +537,7 @@ function Invoke-OktaListAuthenticators {
 
         $LocalVarUri = '/api/v1/authenticators'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -654,18 +654,18 @@ function Update-OktaAuthenticator {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/authenticators/{authenticatorId}'
-        if (!$AuthenticatorId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AuthenticatorId") -or $null -eq $AuthenticatorId) {
             throw "Error! The required parameter `AuthenticatorId` missing when calling updateAuthenticator."
         }
         $LocalVarUri = $LocalVarUri.replace('{authenticatorId}', [System.Web.HTTPUtility]::UrlEncode($AuthenticatorId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$Authenticator) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Authenticator") -or $null -eq $Authenticator) {
             throw "Error! The required parameter `Authenticator` missing when calling updateAuthenticator."
         }
 

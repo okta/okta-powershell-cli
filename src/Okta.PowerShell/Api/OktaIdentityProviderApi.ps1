@@ -68,12 +68,12 @@ function Invoke-OktaActivateIdentityProvider {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/idps/{idpId}/lifecycle/activate'
-        if (!$IdpId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("IdpId") -or $null -eq $IdpId) {
             throw "Error! The required parameter `IdpId` missing when calling activateIdentityProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -193,22 +193,22 @@ function Copy-OktaIdentityProviderKey {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/idps/{idpId}/credentials/keys/{keyId}/clone'
-        if (!$IdpId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("IdpId") -or $null -eq $IdpId) {
             throw "Error! The required parameter `IdpId` missing when calling cloneIdentityProviderKey."
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
-        if (!$KeyId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("KeyId") -or $null -eq $KeyId) {
             throw "Error! The required parameter `KeyId` missing when calling cloneIdentityProviderKey."
         }
         $LocalVarUri = $LocalVarUri.replace('{keyId}', [System.Web.HTTPUtility]::UrlEncode($KeyId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$TargetIdpId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("TargetIdpId") -or $null -eq $TargetIdpId) {
             throw "Error! The required parameter `TargetIdpId` missing when calling cloneIdentityProviderKey."
         }
         $LocalVarQueryParameters['targetIdpId'] = $TargetIdpId
@@ -319,13 +319,13 @@ function New-OktaIdentityProvider {
 
         $LocalVarUri = '/api/v1/idps'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$IdentityProvider) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("IdentityProvider") -or $null -eq $IdentityProvider) {
             throw "Error! The required parameter `IdentityProvider` missing when calling createIdentityProvider."
         }
 
@@ -444,13 +444,13 @@ function New-OktaIdentityProviderKey {
 
         $LocalVarUri = '/api/v1/idps/credentials/keys'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$JsonWebKey) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("JsonWebKey") -or $null -eq $JsonWebKey) {
             throw "Error! The required parameter `JsonWebKey` missing when calling createIdentityProviderKey."
         }
 
@@ -565,12 +565,12 @@ function Invoke-OktaDeactivateIdentityProvider {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/idps/{idpId}/lifecycle/deactivate'
-        if (!$IdpId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("IdpId") -or $null -eq $IdpId) {
             throw "Error! The required parameter `IdpId` missing when calling deactivateIdentityProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -678,12 +678,12 @@ function Invoke-OktaDeleteIdentityProvider {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/idps/{idpId}'
-        if (!$IdpId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("IdpId") -or $null -eq $IdpId) {
             throw "Error! The required parameter `IdpId` missing when calling deleteIdentityProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -791,12 +791,12 @@ function Invoke-OktaDeleteIdentityProviderKey {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/idps/credentials/keys/{keyId}'
-        if (!$KeyId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("KeyId") -or $null -eq $KeyId) {
             throw "Error! The required parameter `KeyId` missing when calling deleteIdentityProviderKey."
         }
         $LocalVarUri = $LocalVarUri.replace('{keyId}', [System.Web.HTTPUtility]::UrlEncode($KeyId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -913,18 +913,18 @@ function New-OktaCsrForIdentityProvider {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/idps/{idpId}/credentials/csrs'
-        if (!$IdpId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("IdpId") -or $null -eq $IdpId) {
             throw "Error! The required parameter `IdpId` missing when calling generateCsrForIdentityProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$Metadata) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Metadata") -or $null -eq $Metadata) {
             throw "Error! The required parameter `Metadata` missing when calling generateCsrForIdentityProvider."
         }
 
@@ -1045,18 +1045,18 @@ function New-OktaIdentityProviderSigningKey {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/idps/{idpId}/credentials/keys/generate'
-        if (!$IdpId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("IdpId") -or $null -eq $IdpId) {
             throw "Error! The required parameter `IdpId` missing when calling generateIdentityProviderSigningKey."
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$ValidityYears) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("ValidityYears") -or $null -eq $ValidityYears) {
             throw "Error! The required parameter `ValidityYears` missing when calling generateIdentityProviderSigningKey."
         }
         $LocalVarQueryParameters['validityYears'] = $ValidityYears
@@ -1169,16 +1169,16 @@ function Get-OktaCsrForIdentityProvider {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/idps/{idpId}/credentials/csrs/{csrId}'
-        if (!$IdpId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("IdpId") -or $null -eq $IdpId) {
             throw "Error! The required parameter `IdpId` missing when calling getCsrForIdentityProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
-        if (!$CsrId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("CsrId") -or $null -eq $CsrId) {
             throw "Error! The required parameter `CsrId` missing when calling getCsrForIdentityProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{csrId}', [System.Web.HTTPUtility]::UrlEncode($CsrId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1286,12 +1286,12 @@ function Get-OktaIdentityProvider {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/idps/{idpId}'
-        if (!$IdpId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("IdpId") -or $null -eq $IdpId) {
             throw "Error! The required parameter `IdpId` missing when calling getIdentityProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1405,16 +1405,16 @@ function Get-OktaIdentityProviderApplicationUser {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/idps/{idpId}/users/{userId}'
-        if (!$IdpId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("IdpId") -or $null -eq $IdpId) {
             throw "Error! The required parameter `IdpId` missing when calling getIdentityProviderApplicationUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
-        if (!$UserId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("UserId") -or $null -eq $UserId) {
             throw "Error! The required parameter `UserId` missing when calling getIdentityProviderApplicationUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1522,12 +1522,12 @@ function Get-OktaIdentityProviderKey {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/idps/credentials/keys/{keyId}'
-        if (!$KeyId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("KeyId") -or $null -eq $KeyId) {
             throw "Error! The required parameter `KeyId` missing when calling getIdentityProviderKey."
         }
         $LocalVarUri = $LocalVarUri.replace('{keyId}', [System.Web.HTTPUtility]::UrlEncode($KeyId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1641,16 +1641,16 @@ function Get-OktaIdentityProviderSigningKey {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/idps/{idpId}/credentials/keys/{keyId}'
-        if (!$IdpId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("IdpId") -or $null -eq $IdpId) {
             throw "Error! The required parameter `IdpId` missing when calling getIdentityProviderSigningKey."
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
-        if (!$KeyId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("KeyId") -or $null -eq $KeyId) {
             throw "Error! The required parameter `KeyId` missing when calling getIdentityProviderSigningKey."
         }
         $LocalVarUri = $LocalVarUri.replace('{keyId}', [System.Web.HTTPUtility]::UrlEncode($KeyId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1773,22 +1773,22 @@ function Invoke-OktaLinkUserToIdentityProvider {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/idps/{idpId}/users/{userId}'
-        if (!$IdpId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("IdpId") -or $null -eq $IdpId) {
             throw "Error! The required parameter `IdpId` missing when calling linkUserToIdentityProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
-        if (!$UserId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("UserId") -or $null -eq $UserId) {
             throw "Error! The required parameter `UserId` missing when calling linkUserToIdentityProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$UserIdentityProviderLinkRequest) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("UserIdentityProviderLinkRequest") -or $null -eq $UserIdentityProviderLinkRequest) {
             throw "Error! The required parameter `UserIdentityProviderLinkRequest` missing when calling linkUserToIdentityProvider."
         }
 
@@ -1903,12 +1903,12 @@ function Invoke-OktaListCsrsForIdentityProvider {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/idps/{idpId}/credentials/csrs'
-        if (!$IdpId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("IdpId") -or $null -eq $IdpId) {
             throw "Error! The required parameter `IdpId` missing when calling listCsrsForIdentityProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -2016,12 +2016,12 @@ function Invoke-OktaListIdentityProviderApplicationUsers {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/idps/{idpId}/users'
-        if (!$IdpId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("IdpId") -or $null -eq $IdpId) {
             throw "Error! The required parameter `IdpId` missing when calling listIdentityProviderApplicationUsers."
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -2136,17 +2136,17 @@ function Invoke-OktaListIdentityProviderKeys {
 
         $LocalVarUri = '/api/v1/idps/credentials/keys'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($After) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("After")) {
             $LocalVarQueryParameters['after'] = $After
         }
 
-        if ($Limit) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Limit")) {
             $LocalVarQueryParameters['limit'] = $Limit
         }
 
@@ -2252,12 +2252,12 @@ function Invoke-OktaListIdentityProviderSigningKeys {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/idps/{idpId}/credentials/keys'
-        if (!$IdpId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("IdpId") -or $null -eq $IdpId) {
             throw "Error! The required parameter `IdpId` missing when calling listIdentityProviderSigningKeys."
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -2384,25 +2384,25 @@ function Invoke-OktaListIdentityProviders {
 
         $LocalVarUri = '/api/v1/idps'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Q) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Q")) {
             $LocalVarQueryParameters['q'] = $Q
         }
 
-        if ($After) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("After")) {
             $LocalVarQueryParameters['after'] = $After
         }
 
-        if ($Limit) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Limit")) {
             $LocalVarQueryParameters['limit'] = $Limit
         }
 
-        if ($Type) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Type")) {
             $LocalVarQueryParameters['type'] = $Type
         }
 
@@ -2514,16 +2514,16 @@ function Invoke-OktaListSocialAuthTokens {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/idps/{idpId}/users/{userId}/credentials/tokens'
-        if (!$IdpId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("IdpId") -or $null -eq $IdpId) {
             throw "Error! The required parameter `IdpId` missing when calling listSocialAuthTokens."
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
-        if (!$UserId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("UserId") -or $null -eq $UserId) {
             throw "Error! The required parameter `UserId` missing when calling listSocialAuthTokens."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -2646,22 +2646,22 @@ function Publish-OktaCsrForIdentityProvider {
         $LocalVarContentTypes = @('application/x-x509-ca-cert', 'application/pkix-cert', 'application/x-pem-file')
 
         $LocalVarUri = '/api/v1/idps/{idpId}/credentials/csrs/{csrId}/lifecycle/publish'
-        if (!$IdpId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("IdpId") -or $null -eq $IdpId) {
             throw "Error! The required parameter `IdpId` missing when calling publishCsrForIdentityProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
-        if (!$CsrId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("CsrId") -or $null -eq $CsrId) {
             throw "Error! The required parameter `CsrId` missing when calling publishCsrForIdentityProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{csrId}', [System.Web.HTTPUtility]::UrlEncode($CsrId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$Body) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Body") -or $null -eq $Body) {
             throw "Error! The required parameter `Body` missing when calling publishCsrForIdentityProvider."
         }
 
@@ -2782,16 +2782,16 @@ function Revoke-OktaCsrForIdentityProvider {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/idps/{idpId}/credentials/csrs/{csrId}'
-        if (!$IdpId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("IdpId") -or $null -eq $IdpId) {
             throw "Error! The required parameter `IdpId` missing when calling revokeCsrForIdentityProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
-        if (!$CsrId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("CsrId") -or $null -eq $CsrId) {
             throw "Error! The required parameter `CsrId` missing when calling revokeCsrForIdentityProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{csrId}', [System.Web.HTTPUtility]::UrlEncode($CsrId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -2905,16 +2905,16 @@ function Invoke-OktaUnlinkUserFromIdentityProvider {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/idps/{idpId}/users/{userId}'
-        if (!$IdpId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("IdpId") -or $null -eq $IdpId) {
             throw "Error! The required parameter `IdpId` missing when calling unlinkUserFromIdentityProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
-        if (!$UserId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("UserId") -or $null -eq $UserId) {
             throw "Error! The required parameter `UserId` missing when calling unlinkUserFromIdentityProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -3031,18 +3031,18 @@ function Update-OktaIdentityProvider {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/idps/{idpId}'
-        if (!$IdpId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("IdpId") -or $null -eq $IdpId) {
             throw "Error! The required parameter `IdpId` missing when calling updateIdentityProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{idpId}', [System.Web.HTTPUtility]::UrlEncode($IdpId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$IdentityProvider) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("IdentityProvider") -or $null -eq $IdentityProvider) {
             throw "Error! The required parameter `IdentityProvider` missing when calling updateIdentityProvider."
         }
 

@@ -72,13 +72,13 @@ function New-OktaSmsTemplate {
 
         $LocalVarUri = '/api/v1/templates/sms'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$SmsTemplate) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("SmsTemplate") -or $null -eq $SmsTemplate) {
             throw "Error! The required parameter `SmsTemplate` missing when calling createSmsTemplate."
         }
 
@@ -193,12 +193,12 @@ function Invoke-OktaDeleteSmsTemplate {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/templates/sms/{templateId}'
-        if (!$TemplateId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("TemplateId") -or $null -eq $TemplateId) {
             throw "Error! The required parameter `TemplateId` missing when calling deleteSmsTemplate."
         }
         $LocalVarUri = $LocalVarUri.replace('{templateId}', [System.Web.HTTPUtility]::UrlEncode($TemplateId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -306,12 +306,12 @@ function Get-OktaSmsTemplate {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/templates/sms/{templateId}'
-        if (!$TemplateId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("TemplateId") -or $null -eq $TemplateId) {
             throw "Error! The required parameter `TemplateId` missing when calling getSmsTemplate."
         }
         $LocalVarUri = $LocalVarUri.replace('{templateId}', [System.Web.HTTPUtility]::UrlEncode($TemplateId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -420,13 +420,13 @@ function Invoke-OktaListSmsTemplates {
 
         $LocalVarUri = '/api/v1/templates/sms'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($TemplateType) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("TemplateType")) {
             $LocalVarQueryParameters['templateType'] = $TemplateType
         }
 
@@ -541,18 +541,18 @@ function Invoke-OktaPartialUpdateSmsTemplate {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/templates/sms/{templateId}'
-        if (!$TemplateId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("TemplateId") -or $null -eq $TemplateId) {
             throw "Error! The required parameter `TemplateId` missing when calling partialUpdateSmsTemplate."
         }
         $LocalVarUri = $LocalVarUri.replace('{templateId}', [System.Web.HTTPUtility]::UrlEncode($TemplateId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$SmsTemplate) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("SmsTemplate") -or $null -eq $SmsTemplate) {
             throw "Error! The required parameter `SmsTemplate` missing when calling partialUpdateSmsTemplate."
         }
 
@@ -676,18 +676,18 @@ function Update-OktaSmsTemplate {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/templates/sms/{templateId}'
-        if (!$TemplateId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("TemplateId") -or $null -eq $TemplateId) {
             throw "Error! The required parameter `TemplateId` missing when calling updateSmsTemplate."
         }
         $LocalVarUri = $LocalVarUri.replace('{templateId}', [System.Web.HTTPUtility]::UrlEncode($TemplateId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$SmsTemplate) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("SmsTemplate") -or $null -eq $SmsTemplate) {
             throw "Error! The required parameter `SmsTemplate` missing when calling updateSmsTemplate."
         }
 
