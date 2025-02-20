@@ -72,13 +72,13 @@ function Send-OktaRiskEvents {
 
         $LocalVarUri = '/api/v1/risk/events/ip'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$Instance) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Instance") -or $null -eq $Instance) {
             throw "Error! The required parameter `Instance` missing when calling sendRiskEvents."
         }
 

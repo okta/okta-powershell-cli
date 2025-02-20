@@ -77,18 +77,18 @@ function New-OktaCertificate {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/domains/{domainId}/certificate'
-        if (!$DomainId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("DomainId") -or $null -eq $DomainId) {
             throw "Error! The required parameter `DomainId` missing when calling createCertificate."
         }
         $LocalVarUri = $LocalVarUri.replace('{domainId}', [System.Web.HTTPUtility]::UrlEncode($DomainId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$Certificate) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Certificate") -or $null -eq $Certificate) {
             throw "Error! The required parameter `Certificate` missing when calling createCertificate."
         }
 
@@ -207,13 +207,13 @@ function New-OktaDomain {
 
         $LocalVarUri = '/api/v1/domains'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$Domain) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Domain") -or $null -eq $Domain) {
             throw "Error! The required parameter `Domain` missing when calling createDomain."
         }
 
@@ -328,12 +328,12 @@ function Invoke-OktaDeleteDomain {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/domains/{domainId}'
-        if (!$DomainId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("DomainId") -or $null -eq $DomainId) {
             throw "Error! The required parameter `DomainId` missing when calling deleteDomain."
         }
         $LocalVarUri = $LocalVarUri.replace('{domainId}', [System.Web.HTTPUtility]::UrlEncode($DomainId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -441,12 +441,12 @@ function Get-OktaDomain {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/domains/{domainId}'
-        if (!$DomainId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("DomainId") -or $null -eq $DomainId) {
             throw "Error! The required parameter `DomainId` missing when calling getDomain."
         }
         $LocalVarUri = $LocalVarUri.replace('{domainId}', [System.Web.HTTPUtility]::UrlEncode($DomainId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -549,7 +549,7 @@ function Invoke-OktaListDomains {
 
         $LocalVarUri = '/api/v1/domains'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -666,18 +666,18 @@ function Update-OktaDomain {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/domains/{domainId}'
-        if (!$DomainId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("DomainId") -or $null -eq $DomainId) {
             throw "Error! The required parameter `DomainId` missing when calling updateDomain."
         }
         $LocalVarUri = $LocalVarUri.replace('{domainId}', [System.Web.HTTPUtility]::UrlEncode($DomainId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$UpdateDomain) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("UpdateDomain") -or $null -eq $UpdateDomain) {
             throw "Error! The required parameter `UpdateDomain` missing when calling updateDomain."
         }
 
@@ -792,12 +792,12 @@ function Test-OktaDomain {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/domains/{domainId}/verify'
-        if (!$DomainId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("DomainId") -or $null -eq $DomainId) {
             throw "Error! The required parameter `DomainId` missing when calling verifyDomain."
         }
         $LocalVarUri = $LocalVarUri.replace('{domainId}', [System.Web.HTTPUtility]::UrlEncode($DomainId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]

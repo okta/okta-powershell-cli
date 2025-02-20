@@ -72,13 +72,13 @@ function New-OktaUserType {
 
         $LocalVarUri = '/api/v1/meta/types/user'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$UserType) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("UserType") -or $null -eq $UserType) {
             throw "Error! The required parameter `UserType` missing when calling createUserType."
         }
 
@@ -193,12 +193,12 @@ function Invoke-OktaDeleteUserType {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/meta/types/user/{typeId}'
-        if (!$TypeId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("TypeId") -or $null -eq $TypeId) {
             throw "Error! The required parameter `TypeId` missing when calling deleteUserType."
         }
         $LocalVarUri = $LocalVarUri.replace('{typeId}', [System.Web.HTTPUtility]::UrlEncode($TypeId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -306,12 +306,12 @@ function Get-OktaUserType {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/meta/types/user/{typeId}'
-        if (!$TypeId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("TypeId") -or $null -eq $TypeId) {
             throw "Error! The required parameter `TypeId` missing when calling getUserType."
         }
         $LocalVarUri = $LocalVarUri.replace('{typeId}', [System.Web.HTTPUtility]::UrlEncode($TypeId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -414,7 +414,7 @@ function Invoke-OktaListUserTypes {
 
         $LocalVarUri = '/api/v1/meta/types/user'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -531,18 +531,18 @@ function Invoke-OktaReplaceUserType {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/meta/types/user/{typeId}'
-        if (!$TypeId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("TypeId") -or $null -eq $TypeId) {
             throw "Error! The required parameter `TypeId` missing when calling replaceUserType."
         }
         $LocalVarUri = $LocalVarUri.replace('{typeId}', [System.Web.HTTPUtility]::UrlEncode($TypeId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$UserType) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("UserType") -or $null -eq $UserType) {
             throw "Error! The required parameter `UserType` missing when calling replaceUserType."
         }
 
@@ -666,18 +666,18 @@ function Update-OktaUserType {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/meta/types/user/{typeId}'
-        if (!$TypeId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("TypeId") -or $null -eq $TypeId) {
             throw "Error! The required parameter `TypeId` missing when calling updateUserType."
         }
         $LocalVarUri = $LocalVarUri.replace('{typeId}', [System.Web.HTTPUtility]::UrlEncode($TypeId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$UserType) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("UserType") -or $null -eq $UserType) {
             throw "Error! The required parameter `UserType` missing when calling updateUserType."
         }
 

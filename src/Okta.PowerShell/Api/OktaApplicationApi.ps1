@@ -68,12 +68,12 @@ function Invoke-OktaActivateApplication {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/lifecycle/activate'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling activateApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -181,12 +181,12 @@ function Invoke-OktaActivateDefaultProvisioningConnectionForApplication {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/connections/default/lifecycle/activate'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling activateDefaultProvisioningConnectionForApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -297,16 +297,16 @@ function Set-OktaApplicationPolicy {
 
         $Configuration = Get-OktaConfiguration
         $LocalVarUri = '/api/v1/apps/{appId}/policies/{policyId}'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling assignApplicationPolicy."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
-        if (!$PolicyId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("PolicyId") -or $null -eq $PolicyId) {
             throw "Error! The required parameter `PolicyId` missing when calling assignApplicationPolicy."
         }
         $LocalVarUri = $LocalVarUri.replace('{policyId}', [System.Web.HTTPUtility]::UrlEncode($PolicyId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -423,18 +423,18 @@ function Set-OktaUserToApplication {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/users'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling assignUserToApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$AppUser) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppUser") -or $null -eq $AppUser) {
             throw "Error! The required parameter `AppUser` missing when calling assignUserToApplication."
         }
 
@@ -561,22 +561,22 @@ function Copy-OktaApplicationKey {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/credentials/keys/{keyId}/clone'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling cloneApplicationKey."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
-        if (!$KeyId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("KeyId") -or $null -eq $KeyId) {
             throw "Error! The required parameter `KeyId` missing when calling cloneApplicationKey."
         }
         $LocalVarUri = $LocalVarUri.replace('{keyId}', [System.Web.HTTPUtility]::UrlEncode($KeyId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$TargetAid) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("TargetAid") -or $null -eq $TargetAid) {
             throw "Error! The required parameter `TargetAid` missing when calling cloneApplicationKey."
         }
         $LocalVarQueryParameters['targetAid'] = $TargetAid
@@ -699,21 +699,21 @@ function New-OktaApplication {
 
         $LocalVarUri = '/api/v1/apps'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($OktaAccessGatewayAgent) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("OktaAccessGatewayAgent")) {
             $LocalVarHeaderParameters['OktaAccessGateway-Agent'] = $OktaAccessGatewayAgent
         }
 
-        if ($Activate) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Activate")) {
             $LocalVarQueryParameters['activate'] = $Activate
         }
 
-        if (!$Application) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Application") -or $null -eq $Application) {
             throw "Error! The required parameter `Application` missing when calling createApplication."
         }
 
@@ -843,16 +843,16 @@ function New-OktaApplicationGroupAssignment {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/groups/{groupId}'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling createApplicationGroupAssignment."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
-        if (!$GroupId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("GroupId") -or $null -eq $GroupId) {
             throw "Error! The required parameter `GroupId` missing when calling createApplicationGroupAssignment."
         }
         $LocalVarUri = $LocalVarUri.replace('{groupId}', [System.Web.HTTPUtility]::UrlEncode($GroupId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -969,12 +969,12 @@ function Invoke-OktaDeactivateApplication {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/lifecycle/deactivate'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling deactivateApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1082,12 +1082,12 @@ function Invoke-OktaDeactivateDefaultProvisioningConnectionForApplication {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/connections/default/lifecycle/deactivate'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling deactivateDefaultProvisioningConnectionForApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1195,12 +1195,12 @@ function Invoke-OktaDeleteApplication {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling deleteApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1314,16 +1314,16 @@ function Invoke-OktaDeleteApplicationGroupAssignment {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/groups/{groupId}'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling deleteApplicationGroupAssignment."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
-        if (!$GroupId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("GroupId") -or $null -eq $GroupId) {
             throw "Error! The required parameter `GroupId` missing when calling deleteApplicationGroupAssignment."
         }
         $LocalVarUri = $LocalVarUri.replace('{groupId}', [System.Web.HTTPUtility]::UrlEncode($GroupId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1443,22 +1443,22 @@ function Invoke-OktaDeleteApplicationUser {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/users/{userId}'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling deleteApplicationUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
-        if (!$UserId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("UserId") -or $null -eq $UserId) {
             throw "Error! The required parameter `UserId` missing when calling deleteApplicationUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($SendEmail) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("SendEmail")) {
             $LocalVarQueryParameters['sendEmail'] = $SendEmail
         }
 
@@ -1570,18 +1570,18 @@ function New-OktaApplicationKey {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/credentials/keys/generate'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling generateApplicationKey."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($ValidityYears) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("ValidityYears")) {
             $LocalVarQueryParameters['validityYears'] = $ValidityYears
         }
 
@@ -1696,18 +1696,18 @@ function New-OktaCsrForApplication {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/credentials/csrs'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling generateCsrForApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$Metadata) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Metadata") -or $null -eq $Metadata) {
             throw "Error! The required parameter `Metadata` missing when calling generateCsrForApplication."
         }
 
@@ -1828,18 +1828,18 @@ function Get-OktaApplication {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling getApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Expand) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Expand")) {
             $LocalVarQueryParameters['expand'] = $Expand
         }
 
@@ -1957,22 +1957,22 @@ function Get-OktaApplicationGroupAssignment {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/groups/{groupId}'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling getApplicationGroupAssignment."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
-        if (!$GroupId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("GroupId") -or $null -eq $GroupId) {
             throw "Error! The required parameter `GroupId` missing when calling getApplicationGroupAssignment."
         }
         $LocalVarUri = $LocalVarUri.replace('{groupId}', [System.Web.HTTPUtility]::UrlEncode($GroupId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Expand) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Expand")) {
             $LocalVarQueryParameters['expand'] = $Expand
         }
 
@@ -2084,16 +2084,16 @@ function Get-OktaApplicationKey {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/credentials/keys/{keyId}'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling getApplicationKey."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
-        if (!$KeyId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("KeyId") -or $null -eq $KeyId) {
             throw "Error! The required parameter `KeyId` missing when calling getApplicationKey."
         }
         $LocalVarUri = $LocalVarUri.replace('{keyId}', [System.Web.HTTPUtility]::UrlEncode($KeyId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -2213,22 +2213,22 @@ function Get-OktaApplicationUser {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/users/{userId}'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling getApplicationUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
-        if (!$UserId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("UserId") -or $null -eq $UserId) {
             throw "Error! The required parameter `UserId` missing when calling getApplicationUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Expand) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Expand")) {
             $LocalVarQueryParameters['expand'] = $Expand
         }
 
@@ -2340,16 +2340,16 @@ function Get-OktaCsrForApplication {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/credentials/csrs/{csrId}'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling getCsrForApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
-        if (!$CsrId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("CsrId") -or $null -eq $CsrId) {
             throw "Error! The required parameter `CsrId` missing when calling getCsrForApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{csrId}', [System.Web.HTTPUtility]::UrlEncode($CsrId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -2457,12 +2457,12 @@ function Get-OktaDefaultProvisioningConnectionForApplication {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/connections/default'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling getDefaultProvisioningConnectionForApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -2576,16 +2576,16 @@ function Get-OktaFeatureForApplication {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/features/{name}'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling getFeatureForApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
-        if (!$Name) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Name") -or $null -eq $Name) {
             throw "Error! The required parameter `Name` missing when calling getFeatureForApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{name}', [System.Web.HTTPUtility]::UrlEncode($Name))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -2705,22 +2705,22 @@ function Get-OktaOAuth2TokenForApplication {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/tokens/{tokenId}'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling getOAuth2TokenForApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
-        if (!$TokenId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("TokenId") -or $null -eq $TokenId) {
             throw "Error! The required parameter `TokenId` missing when calling getOAuth2TokenForApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{tokenId}', [System.Web.HTTPUtility]::UrlEncode($TokenId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Expand) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Expand")) {
             $LocalVarQueryParameters['expand'] = $Expand
         }
 
@@ -2838,22 +2838,22 @@ function Get-OktaScopeConsentGrant {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/grants/{grantId}'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling getScopeConsentGrant."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
-        if (!$GrantId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("GrantId") -or $null -eq $GrantId) {
             throw "Error! The required parameter `GrantId` missing when calling getScopeConsentGrant."
         }
         $LocalVarUri = $LocalVarUri.replace('{grantId}', [System.Web.HTTPUtility]::UrlEncode($GrantId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Expand) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Expand")) {
             $LocalVarQueryParameters['expand'] = $Expand
         }
 
@@ -2967,18 +2967,18 @@ function Grant-OktaConsentToScope {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/grants'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling grantConsentToScope."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$OAuth2ScopeConsentGrant) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("OAuth2ScopeConsentGrant") -or $null -eq $OAuth2ScopeConsentGrant) {
             throw "Error! The required parameter `OAuth2ScopeConsentGrant` missing when calling grantConsentToScope."
         }
 
@@ -3116,30 +3116,30 @@ function Invoke-OktaListApplicationGroupAssignments {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/groups'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling listApplicationGroupAssignments."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Q) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Q")) {
             $LocalVarQueryParameters['q'] = $Q
         }
 
-        if ($After) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("After")) {
             $LocalVarQueryParameters['after'] = $After
         }
 
-        if ($Limit) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Limit")) {
             $LocalVarQueryParameters['limit'] = $Limit
         }
 
-        if ($Expand) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Expand")) {
             $LocalVarQueryParameters['expand'] = $Expand
         }
 
@@ -3245,12 +3245,12 @@ function Invoke-OktaListApplicationKeys {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/credentials/keys'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling listApplicationKeys."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -3394,38 +3394,38 @@ function Invoke-OktaListApplicationUsers {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/users'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling listApplicationUsers."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Q) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Q")) {
             $LocalVarQueryParameters['q'] = $Q
         }
 
-        if ($QueryScope) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("QueryScope")) {
             $LocalVarQueryParameters['query_scope'] = $QueryScope
         }
 
-        if ($After) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("After")) {
             $LocalVarQueryParameters['after'] = $After
         }
 
-        if ($Limit) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Limit")) {
             $LocalVarQueryParameters['limit'] = $Limit
         }
 
-        if ($Filter) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Filter")) {
             $LocalVarQueryParameters['filter'] = $Filter
         }
 
-        if ($Expand) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Expand")) {
             $LocalVarQueryParameters['expand'] = $Expand
         }
 
@@ -3562,33 +3562,33 @@ function Invoke-OktaListApplications {
 
         $LocalVarUri = '/api/v1/apps'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Q) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Q")) {
             $LocalVarQueryParameters['q'] = $Q
         }
 
-        if ($After) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("After")) {
             $LocalVarQueryParameters['after'] = $After
         }
 
-        if ($Limit) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Limit")) {
             $LocalVarQueryParameters['limit'] = $Limit
         }
 
-        if ($Filter) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Filter")) {
             $LocalVarQueryParameters['filter'] = $Filter
         }
 
-        if ($Expand) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Expand")) {
             $LocalVarQueryParameters['expand'] = $Expand
         }
 
-        if ($IncludeNonDeleted) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("IncludeNonDeleted")) {
             $LocalVarQueryParameters['includeNonDeleted'] = $IncludeNonDeleted
         }
 
@@ -3694,12 +3694,12 @@ function Invoke-OktaListCsrsForApplication {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/credentials/csrs'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling listCsrsForApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -3807,12 +3807,12 @@ function Invoke-OktaListFeaturesForApplication {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/features'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling listFeaturesForApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -3938,26 +3938,26 @@ function Invoke-OktaListOAuth2TokensForApplication {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/tokens'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling listOAuth2TokensForApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Expand) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Expand")) {
             $LocalVarQueryParameters['expand'] = $Expand
         }
 
-        if ($After) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("After")) {
             $LocalVarQueryParameters['after'] = $After
         }
 
-        if ($Limit) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Limit")) {
             $LocalVarQueryParameters['limit'] = $Limit
         }
 
@@ -4069,18 +4069,18 @@ function Invoke-OktaListScopeConsentGrants {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/grants'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling listScopeConsentGrants."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Expand) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Expand")) {
             $LocalVarQueryParameters['expand'] = $Expand
         }
 
@@ -4200,22 +4200,22 @@ function Publish-OktaCsrFromApplication {
         $LocalVarContentTypes = @('application/x-x509-ca-cert', 'application/pkix-cert', 'application/x-pem-file')
 
         $LocalVarUri = '/api/v1/apps/{appId}/credentials/csrs/{csrId}/lifecycle/publish'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling publishCsrFromApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
-        if (!$CsrId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("CsrId") -or $null -eq $CsrId) {
             throw "Error! The required parameter `CsrId` missing when calling publishCsrFromApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{csrId}', [System.Web.HTTPUtility]::UrlEncode($CsrId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$Body) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Body") -or $null -eq $Body) {
             throw "Error! The required parameter `Body` missing when calling publishCsrFromApplication."
         }
 
@@ -4336,16 +4336,16 @@ function Revoke-OktaCsrFromApplication {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/credentials/csrs/{csrId}'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling revokeCsrFromApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
-        if (!$CsrId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("CsrId") -or $null -eq $CsrId) {
             throw "Error! The required parameter `CsrId` missing when calling revokeCsrFromApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{csrId}', [System.Web.HTTPUtility]::UrlEncode($CsrId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -4459,16 +4459,16 @@ function Revoke-OktaOAuth2TokenForApplication {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/tokens/{tokenId}'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling revokeOAuth2TokenForApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
-        if (!$TokenId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("TokenId") -or $null -eq $TokenId) {
             throw "Error! The required parameter `TokenId` missing when calling revokeOAuth2TokenForApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{tokenId}', [System.Web.HTTPUtility]::UrlEncode($TokenId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -4576,12 +4576,12 @@ function Revoke-OktaOAuth2TokensForApplication {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/tokens'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling revokeOAuth2TokensForApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -4695,16 +4695,16 @@ function Revoke-OktaScopeConsentGrant {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/grants/{grantId}'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling revokeScopeConsentGrant."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
-        if (!$GrantId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("GrantId") -or $null -eq $GrantId) {
             throw "Error! The required parameter `GrantId` missing when calling revokeScopeConsentGrant."
         }
         $LocalVarUri = $LocalVarUri.replace('{grantId}', [System.Web.HTTPUtility]::UrlEncode($GrantId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -4826,22 +4826,22 @@ function Set-OktaDefaultProvisioningConnectionForApplication {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/connections/default'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling setDefaultProvisioningConnectionForApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Activate) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Activate")) {
             $LocalVarQueryParameters['activate'] = $Activate
         }
 
-        if (!$ProvisioningConnectionRequest) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("ProvisioningConnectionRequest") -or $null -eq $ProvisioningConnectionRequest) {
             throw "Error! The required parameter `ProvisioningConnectionRequest` missing when calling setDefaultProvisioningConnectionForApplication."
         }
 
@@ -4965,18 +4965,18 @@ function Update-OktaApplication {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling updateApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$Application) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Application") -or $null -eq $Application) {
             throw "Error! The required parameter `Application` missing when calling updateApplication."
         }
 
@@ -5106,22 +5106,22 @@ function Update-OktaApplicationUser {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/users/{userId}'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling updateApplicationUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
-        if (!$UserId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("UserId") -or $null -eq $UserId) {
             throw "Error! The required parameter `UserId` missing when calling updateApplicationUser."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$AppUser) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppUser") -or $null -eq $AppUser) {
             throw "Error! The required parameter `AppUser` missing when calling updateApplicationUser."
         }
 
@@ -5251,22 +5251,22 @@ function Update-OktaFeatureForApplication {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/apps/{appId}/features/{name}'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling updateFeatureForApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
-        if (!$Name) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Name") -or $null -eq $Name) {
             throw "Error! The required parameter `Name` missing when calling updateFeatureForApplication."
         }
         $LocalVarUri = $LocalVarUri.replace('{name}', [System.Web.HTTPUtility]::UrlEncode($Name))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$CapabilitiesObject) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("CapabilitiesObject") -or $null -eq $CapabilitiesObject) {
             throw "Error! The required parameter `CapabilitiesObject` missing when calling updateFeatureForApplication."
         }
 
@@ -5390,18 +5390,18 @@ function Invoke-OktaUploadApplicationLogo {
         $LocalVarContentTypes = @('multipart/form-data')
 
         $LocalVarUri = '/api/v1/apps/{appId}/logo'
-        if (!$AppId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
             throw "Error! The required parameter `AppId` missing when calling uploadApplicationLogo."
         }
         $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$File) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("File") -or $null -eq $File) {
             throw "Error! The required parameter `File` missing when calling uploadApplicationLogo."
         }
         $LocalVarFormParameters['file'] = $File

@@ -68,12 +68,12 @@ function Invoke-OktaActivateEventHook {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/eventHooks/{eventHookId}/lifecycle/activate'
-        if (!$EventHookId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("EventHookId") -or $null -eq $EventHookId) {
             throw "Error! The required parameter `EventHookId` missing when calling activateEventHook."
         }
         $LocalVarUri = $LocalVarUri.replace('{eventHookId}', [System.Web.HTTPUtility]::UrlEncode($EventHookId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -185,13 +185,13 @@ function New-OktaEventHook {
 
         $LocalVarUri = '/api/v1/eventHooks'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$EventHook) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("EventHook") -or $null -eq $EventHook) {
             throw "Error! The required parameter `EventHook` missing when calling createEventHook."
         }
 
@@ -306,12 +306,12 @@ function Invoke-OktaDeactivateEventHook {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/eventHooks/{eventHookId}/lifecycle/deactivate'
-        if (!$EventHookId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("EventHookId") -or $null -eq $EventHookId) {
             throw "Error! The required parameter `EventHookId` missing when calling deactivateEventHook."
         }
         $LocalVarUri = $LocalVarUri.replace('{eventHookId}', [System.Web.HTTPUtility]::UrlEncode($EventHookId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -419,12 +419,12 @@ function Invoke-OktaDeleteEventHook {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/eventHooks/{eventHookId}'
-        if (!$EventHookId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("EventHookId") -or $null -eq $EventHookId) {
             throw "Error! The required parameter `EventHookId` missing when calling deleteEventHook."
         }
         $LocalVarUri = $LocalVarUri.replace('{eventHookId}', [System.Web.HTTPUtility]::UrlEncode($EventHookId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -532,12 +532,12 @@ function Get-OktaEventHook {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/eventHooks/{eventHookId}'
-        if (!$EventHookId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("EventHookId") -or $null -eq $EventHookId) {
             throw "Error! The required parameter `EventHookId` missing when calling getEventHook."
         }
         $LocalVarUri = $LocalVarUri.replace('{eventHookId}', [System.Web.HTTPUtility]::UrlEncode($EventHookId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -640,7 +640,7 @@ function Invoke-OktaListEventHooks {
 
         $LocalVarUri = '/api/v1/eventHooks'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -757,18 +757,18 @@ function Update-OktaEventHook {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/eventHooks/{eventHookId}'
-        if (!$EventHookId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("EventHookId") -or $null -eq $EventHookId) {
             throw "Error! The required parameter `EventHookId` missing when calling updateEventHook."
         }
         $LocalVarUri = $LocalVarUri.replace('{eventHookId}', [System.Web.HTTPUtility]::UrlEncode($EventHookId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$EventHook) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("EventHook") -or $null -eq $EventHook) {
             throw "Error! The required parameter `EventHook` missing when calling updateEventHook."
         }
 
@@ -883,12 +883,12 @@ function Test-OktaEventHook {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/eventHooks/{eventHookId}/lifecycle/verify'
-        if (!$EventHookId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("EventHookId") -or $null -eq $EventHookId) {
             throw "Error! The required parameter `EventHookId` missing when calling verifyEventHook."
         }
         $LocalVarUri = $LocalVarUri.replace('{eventHookId}', [System.Web.HTTPUtility]::UrlEncode($EventHookId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]

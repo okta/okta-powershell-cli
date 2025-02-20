@@ -68,12 +68,12 @@ function Invoke-OktaActivateGroupRule {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/groups/rules/{ruleId}/lifecycle/activate'
-        if (!$RuleId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("RuleId") -or $null -eq $RuleId) {
             throw "Error! The required parameter `RuleId` missing when calling activateGroupRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{ruleId}', [System.Web.HTTPUtility]::UrlEncode($RuleId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -190,18 +190,18 @@ function Add-OktaGroupOwner {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/groups/{groupId}/owners'
-        if (!$GroupId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("GroupId") -or $null -eq $GroupId) {
             throw "Error! The required parameter `GroupId` missing when calling addGroupOwner."
         }
         $LocalVarUri = $LocalVarUri.replace('{groupId}', [System.Web.HTTPUtility]::UrlEncode($GroupId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$GroupOwner) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("GroupOwner") -or $null -eq $GroupOwner) {
             throw "Error! The required parameter `GroupOwner` missing when calling addGroupOwner."
         }
 
@@ -322,16 +322,16 @@ function Add-OktaUserToGroup {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/groups/{groupId}/users/{userId}'
-        if (!$GroupId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("GroupId") -or $null -eq $GroupId) {
             throw "Error! The required parameter `GroupId` missing when calling addUserToGroup."
         }
         $LocalVarUri = $LocalVarUri.replace('{groupId}', [System.Web.HTTPUtility]::UrlEncode($GroupId))
-        if (!$UserId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("UserId") -or $null -eq $UserId) {
             throw "Error! The required parameter `UserId` missing when calling addUserToGroup."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -443,13 +443,13 @@ function New-OktaGroup {
 
         $LocalVarUri = '/api/v1/groups'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$Group) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Group") -or $null -eq $Group) {
             throw "Error! The required parameter `Group` missing when calling createGroup."
         }
 
@@ -568,13 +568,13 @@ function New-OktaGroupRule {
 
         $LocalVarUri = '/api/v1/groups/rules'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$GroupRule) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("GroupRule") -or $null -eq $GroupRule) {
             throw "Error! The required parameter `GroupRule` missing when calling createGroupRule."
         }
 
@@ -689,12 +689,12 @@ function Invoke-OktaDeactivateGroupRule {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/groups/rules/{ruleId}/lifecycle/deactivate'
-        if (!$RuleId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("RuleId") -or $null -eq $RuleId) {
             throw "Error! The required parameter `RuleId` missing when calling deactivateGroupRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{ruleId}', [System.Web.HTTPUtility]::UrlEncode($RuleId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -802,12 +802,12 @@ function Invoke-OktaDeleteGroup {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/groups/{groupId}'
-        if (!$GroupId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("GroupId") -or $null -eq $GroupId) {
             throw "Error! The required parameter `GroupId` missing when calling deleteGroup."
         }
         $LocalVarUri = $LocalVarUri.replace('{groupId}', [System.Web.HTTPUtility]::UrlEncode($GroupId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -921,16 +921,16 @@ function Invoke-OktaDeleteGroupOwner {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/groups/{groupId}/owners/{ownerId}'
-        if (!$GroupId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("GroupId") -or $null -eq $GroupId) {
             throw "Error! The required parameter `GroupId` missing when calling deleteGroupOwner."
         }
         $LocalVarUri = $LocalVarUri.replace('{groupId}', [System.Web.HTTPUtility]::UrlEncode($GroupId))
-        if (!$OwnerId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("OwnerId") -or $null -eq $OwnerId) {
             throw "Error! The required parameter `OwnerId` missing when calling deleteGroupOwner."
         }
         $LocalVarUri = $LocalVarUri.replace('{ownerId}', [System.Web.HTTPUtility]::UrlEncode($OwnerId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1044,18 +1044,18 @@ function Invoke-OktaDeleteGroupRule {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/groups/rules/{ruleId}'
-        if (!$RuleId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("RuleId") -or $null -eq $RuleId) {
             throw "Error! The required parameter `RuleId` missing when calling deleteGroupRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{ruleId}', [System.Web.HTTPUtility]::UrlEncode($RuleId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($RemoveUsers) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("RemoveUsers")) {
             $LocalVarQueryParameters['removeUsers'] = $RemoveUsers
         }
 
@@ -1161,12 +1161,12 @@ function Get-OktaGroup {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/groups/{groupId}'
-        if (!$GroupId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("GroupId") -or $null -eq $GroupId) {
             throw "Error! The required parameter `GroupId` missing when calling getGroup."
         }
         $LocalVarUri = $LocalVarUri.replace('{groupId}', [System.Web.HTTPUtility]::UrlEncode($GroupId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1292,26 +1292,26 @@ function Get-OktaGroupOwners {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/groups/{groupId}/owners'
-        if (!$GroupId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("GroupId") -or $null -eq $GroupId) {
             throw "Error! The required parameter `GroupId` missing when calling getGroupOwners."
         }
         $LocalVarUri = $LocalVarUri.replace('{groupId}', [System.Web.HTTPUtility]::UrlEncode($GroupId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Filter) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Filter")) {
             $LocalVarQueryParameters['filter'] = $Filter
         }
 
-        if ($After) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("After")) {
             $LocalVarQueryParameters['after'] = $After
         }
 
-        if ($Limit) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Limit")) {
             $LocalVarQueryParameters['limit'] = $Limit
         }
 
@@ -1423,18 +1423,18 @@ function Get-OktaGroupRule {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/groups/rules/{ruleId}'
-        if (!$RuleId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("RuleId") -or $null -eq $RuleId) {
             throw "Error! The required parameter `RuleId` missing when calling getGroupRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{ruleId}', [System.Web.HTTPUtility]::UrlEncode($RuleId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Expand) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Expand")) {
             $LocalVarQueryParameters['expand'] = $Expand
         }
 
@@ -1552,22 +1552,22 @@ function Invoke-OktaListAssignedApplicationsForGroup {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/groups/{groupId}/apps'
-        if (!$GroupId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("GroupId") -or $null -eq $GroupId) {
             throw "Error! The required parameter `GroupId` missing when calling listAssignedApplicationsForGroup."
         }
         $LocalVarUri = $LocalVarUri.replace('{groupId}', [System.Web.HTTPUtility]::UrlEncode($GroupId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($After) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("After")) {
             $LocalVarQueryParameters['after'] = $After
         }
 
-        if ($Limit) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Limit")) {
             $LocalVarQueryParameters['limit'] = $Limit
         }
 
@@ -1692,25 +1692,25 @@ function Invoke-OktaListGroupRules {
 
         $LocalVarUri = '/api/v1/groups/rules'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Limit) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Limit")) {
             $LocalVarQueryParameters['limit'] = $Limit
         }
 
-        if ($After) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("After")) {
             $LocalVarQueryParameters['after'] = $After
         }
 
-        if ($Search) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Search")) {
             $LocalVarQueryParameters['search'] = $Search
         }
 
-        if ($Expand) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Expand")) {
             $LocalVarQueryParameters['expand'] = $Expand
         }
 
@@ -1828,22 +1828,22 @@ function Invoke-OktaListGroupUsers {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/groups/{groupId}/users'
-        if (!$GroupId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("GroupId") -or $null -eq $GroupId) {
             throw "Error! The required parameter `GroupId` missing when calling listGroupUsers."
         }
         $LocalVarUri = $LocalVarUri.replace('{groupId}', [System.Web.HTTPUtility]::UrlEncode($GroupId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($After) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("After")) {
             $LocalVarQueryParameters['after'] = $After
         }
 
-        if ($Limit) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Limit")) {
             $LocalVarQueryParameters['limit'] = $Limit
         }
 
@@ -1980,33 +1980,33 @@ function Invoke-OktaListGroups {
 
         $LocalVarUri = '/api/v1/groups'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Q) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Q")) {
             $LocalVarQueryParameters['q'] = $Q
         }
 
-        if ($Filter) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Filter")) {
             $LocalVarQueryParameters['filter'] = $Filter
         }
 
-        if ($After) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("After")) {
             $LocalVarQueryParameters['after'] = $After
         }
 
-        if ($Limit) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Limit")) {
             $LocalVarQueryParameters['limit'] = $Limit
         }
 
-        if ($Expand) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Expand")) {
             $LocalVarQueryParameters['expand'] = $Expand
         }
 
-        if ($Search) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Search")) {
             $LocalVarQueryParameters['search'] = $Search
         }
 
@@ -2118,16 +2118,16 @@ function Remove-OktaUserFromGroup {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/groups/{groupId}/users/{userId}'
-        if (!$GroupId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("GroupId") -or $null -eq $GroupId) {
             throw "Error! The required parameter `GroupId` missing when calling removeUserFromGroup."
         }
         $LocalVarUri = $LocalVarUri.replace('{groupId}', [System.Web.HTTPUtility]::UrlEncode($GroupId))
-        if (!$UserId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("UserId") -or $null -eq $UserId) {
             throw "Error! The required parameter `UserId` missing when calling removeUserFromGroup."
         }
         $LocalVarUri = $LocalVarUri.replace('{userId}', [System.Web.HTTPUtility]::UrlEncode($UserId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -2244,18 +2244,18 @@ function Update-OktaGroup {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/groups/{groupId}'
-        if (!$GroupId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("GroupId") -or $null -eq $GroupId) {
             throw "Error! The required parameter `GroupId` missing when calling updateGroup."
         }
         $LocalVarUri = $LocalVarUri.replace('{groupId}', [System.Web.HTTPUtility]::UrlEncode($GroupId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$Group) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Group") -or $null -eq $Group) {
             throw "Error! The required parameter `Group` missing when calling updateGroup."
         }
 
@@ -2379,18 +2379,18 @@ function Update-OktaGroupRule {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/groups/rules/{ruleId}'
-        if (!$RuleId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("RuleId") -or $null -eq $RuleId) {
             throw "Error! The required parameter `RuleId` missing when calling updateGroupRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{ruleId}', [System.Web.HTTPUtility]::UrlEncode($RuleId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$GroupRule) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("GroupRule") -or $null -eq $GroupRule) {
             throw "Error! The required parameter `GroupRule` missing when calling updateGroupRule."
         }
 

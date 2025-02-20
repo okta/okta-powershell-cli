@@ -101,14 +101,14 @@ function {{{vendorExtensions.x-powershell-method-name}}} {
         $LocalVarUri = '{{{path}}}'
         {{=< >=}}
         <#pathParams>
-        if (!$<paramName>) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("<paramName>") -or $null -eq $<paramName>) {
             throw "Error! The required parameter `<paramName>` missing when calling <operationId>."
         }
         $LocalVarUri = $LocalVarUri.replace('{<baseName>}', [System.Web.HTTPUtility]::UrlEncode($<paramName>))
         </pathParams>
         <={{ }}=>
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -117,7 +117,7 @@ function {{{vendorExtensions.x-powershell-method-name}}} {
         {{#headerParams}}
         {{#required}}
         {{^isNullable}}
-        if (!${{{paramName}}}) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("{{{paramName}}}") -or $null -eq ${{{paramName}}}) {
             throw "Error! The required parameter `{{paramName}}` missing when calling {{operationId}}."
         }
         $LocalVarHeaderParameters['{{baseName}}'] = ${{{paramName}}}
@@ -126,7 +126,7 @@ function {{{vendorExtensions.x-powershell-method-name}}} {
         {{/required}}
         {{^required}}
         {{^isNullable}}
-        if (${{{paramName}}}) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("{{{paramName}}}")) {
             $LocalVarHeaderParameters['{{baseName}}'] = ${{{paramName}}}
         }
 
@@ -140,7 +140,7 @@ function {{{vendorExtensions.x-powershell-method-name}}} {
         {{#queryParams}}
         {{#required}}
         {{^isNullable}}
-        if (!${{{paramName}}}) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("{{{paramName}}}") -or $null -eq ${{{paramName}}}) {
             throw "Error! The required parameter `{{paramName}}` missing when calling {{operationId}}."
         }
         $LocalVarQueryParameters['{{baseName}}'] = ${{{paramName}}}
@@ -149,7 +149,7 @@ function {{{vendorExtensions.x-powershell-method-name}}} {
         {{/required}}
         {{^required}}
         {{^isNullable}}
-        if (${{{paramName}}}) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("{{{paramName}}}")) {
             $LocalVarQueryParameters['{{baseName}}'] = ${{{paramName}}}
         }
 
@@ -163,7 +163,7 @@ function {{{vendorExtensions.x-powershell-method-name}}} {
         {{#formParams}}
         {{#required}}
         {{^isNullable}}
-        if (!${{{paramName}}}) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("{{{paramName}}}") -or $null -eq ${{{paramName}}}) {
             throw "Error! The required parameter `{{paramName}}` missing when calling {{operationId}}."
         }
         $LocalVarFormParameters['{{baseName}}'] = ${{{paramName}}}
@@ -172,7 +172,7 @@ function {{{vendorExtensions.x-powershell-method-name}}} {
         {{/required}}
         {{^required}}
         {{^isNullable}}
-        if (${{{paramName}}}) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("{{{paramName}}}")) {
             $LocalVarFormParameters['{{baseName}}'] = ${{{paramName}}}
         }
 
@@ -186,7 +186,7 @@ function {{{vendorExtensions.x-powershell-method-name}}} {
         {{#bodyParam}}
         {{#required}}
         {{^isNullable}}
-        if (!${{{paramName}}}) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("{{{paramName}}}") -or $null -eq ${{{paramName}}}) {
             throw "Error! The required parameter `{{paramName}}` missing when calling {{operationId}}."
         }
 

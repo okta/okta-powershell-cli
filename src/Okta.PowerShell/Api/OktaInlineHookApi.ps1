@@ -68,12 +68,12 @@ function Invoke-OktaActivateInlineHook {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/inlineHooks/{inlineHookId}/lifecycle/activate'
-        if (!$InlineHookId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("InlineHookId") -or $null -eq $InlineHookId) {
             throw "Error! The required parameter `InlineHookId` missing when calling activateInlineHook."
         }
         $LocalVarUri = $LocalVarUri.replace('{inlineHookId}', [System.Web.HTTPUtility]::UrlEncode($InlineHookId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -185,13 +185,13 @@ function New-OktaInlineHook {
 
         $LocalVarUri = '/api/v1/inlineHooks'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$InlineHook) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("InlineHook") -or $null -eq $InlineHook) {
             throw "Error! The required parameter `InlineHook` missing when calling createInlineHook."
         }
 
@@ -306,12 +306,12 @@ function Invoke-OktaDeactivateInlineHook {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/inlineHooks/{inlineHookId}/lifecycle/deactivate'
-        if (!$InlineHookId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("InlineHookId") -or $null -eq $InlineHookId) {
             throw "Error! The required parameter `InlineHookId` missing when calling deactivateInlineHook."
         }
         $LocalVarUri = $LocalVarUri.replace('{inlineHookId}', [System.Web.HTTPUtility]::UrlEncode($InlineHookId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -419,12 +419,12 @@ function Invoke-OktaDeleteInlineHook {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/inlineHooks/{inlineHookId}'
-        if (!$InlineHookId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("InlineHookId") -or $null -eq $InlineHookId) {
             throw "Error! The required parameter `InlineHookId` missing when calling deleteInlineHook."
         }
         $LocalVarUri = $LocalVarUri.replace('{inlineHookId}', [System.Web.HTTPUtility]::UrlEncode($InlineHookId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -541,18 +541,18 @@ function Invoke-OktaExecuteInlineHook {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/inlineHooks/{inlineHookId}/execute'
-        if (!$InlineHookId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("InlineHookId") -or $null -eq $InlineHookId) {
             throw "Error! The required parameter `InlineHookId` missing when calling executeInlineHook."
         }
         $LocalVarUri = $LocalVarUri.replace('{inlineHookId}', [System.Web.HTTPUtility]::UrlEncode($InlineHookId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$PayloadData) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("PayloadData") -or $null -eq $PayloadData) {
             throw "Error! The required parameter `PayloadData` missing when calling executeInlineHook."
         }
 
@@ -667,12 +667,12 @@ function Get-OktaInlineHook {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/inlineHooks/{inlineHookId}'
-        if (!$InlineHookId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("InlineHookId") -or $null -eq $InlineHookId) {
             throw "Error! The required parameter `InlineHookId` missing when calling getInlineHook."
         }
         $LocalVarUri = $LocalVarUri.replace('{inlineHookId}', [System.Web.HTTPUtility]::UrlEncode($InlineHookId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -781,13 +781,13 @@ function Invoke-OktaListInlineHooks {
 
         $LocalVarUri = '/api/v1/inlineHooks'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Type) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Type")) {
             $LocalVarQueryParameters['type'] = $Type
         }
 
@@ -902,18 +902,18 @@ function Update-OktaInlineHook {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/inlineHooks/{inlineHookId}'
-        if (!$InlineHookId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("InlineHookId") -or $null -eq $InlineHookId) {
             throw "Error! The required parameter `InlineHookId` missing when calling updateInlineHook."
         }
         $LocalVarUri = $LocalVarUri.replace('{inlineHookId}', [System.Web.HTTPUtility]::UrlEncode($InlineHookId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$InlineHook) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("InlineHook") -or $null -eq $InlineHook) {
             throw "Error! The required parameter `InlineHook` missing when calling updateInlineHook."
         }
 

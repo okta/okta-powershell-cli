@@ -68,12 +68,12 @@ function Invoke-OktaActivateBehaviorDetectionRule {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/behaviors/{behaviorId}/lifecycle/activate'
-        if (!$BehaviorId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("BehaviorId") -or $null -eq $BehaviorId) {
             throw "Error! The required parameter `BehaviorId` missing when calling activateBehaviorDetectionRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{behaviorId}', [System.Web.HTTPUtility]::UrlEncode($BehaviorId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -185,13 +185,13 @@ function New-OktaBehaviorDetectionRule {
 
         $LocalVarUri = '/api/v1/behaviors'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$Rule) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Rule") -or $null -eq $Rule) {
             throw "Error! The required parameter `Rule` missing when calling createBehaviorDetectionRule."
         }
 
@@ -306,12 +306,12 @@ function Invoke-OktaDeactivateBehaviorDetectionRule {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/behaviors/{behaviorId}/lifecycle/deactivate'
-        if (!$BehaviorId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("BehaviorId") -or $null -eq $BehaviorId) {
             throw "Error! The required parameter `BehaviorId` missing when calling deactivateBehaviorDetectionRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{behaviorId}', [System.Web.HTTPUtility]::UrlEncode($BehaviorId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -419,12 +419,12 @@ function Invoke-OktaDeleteBehaviorDetectionRule {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/behaviors/{behaviorId}'
-        if (!$BehaviorId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("BehaviorId") -or $null -eq $BehaviorId) {
             throw "Error! The required parameter `BehaviorId` missing when calling deleteBehaviorDetectionRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{behaviorId}', [System.Web.HTTPUtility]::UrlEncode($BehaviorId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -532,12 +532,12 @@ function Get-OktaBehaviorDetectionRule {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/behaviors/{behaviorId}'
-        if (!$BehaviorId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("BehaviorId") -or $null -eq $BehaviorId) {
             throw "Error! The required parameter `BehaviorId` missing when calling getBehaviorDetectionRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{behaviorId}', [System.Web.HTTPUtility]::UrlEncode($BehaviorId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -640,7 +640,7 @@ function Invoke-OktaListBehaviorDetectionRules {
 
         $LocalVarUri = '/api/v1/behaviors'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -757,18 +757,18 @@ function Update-OktaBehaviorDetectionRule {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/behaviors/{behaviorId}'
-        if (!$BehaviorId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("BehaviorId") -or $null -eq $BehaviorId) {
             throw "Error! The required parameter `BehaviorId` missing when calling updateBehaviorDetectionRule."
         }
         $LocalVarUri = $LocalVarUri.replace('{behaviorId}', [System.Web.HTTPUtility]::UrlEncode($BehaviorId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$Rule) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Rule") -or $null -eq $Rule) {
             throw "Error! The required parameter `Rule` missing when calling updateBehaviorDetectionRule."
         }
 

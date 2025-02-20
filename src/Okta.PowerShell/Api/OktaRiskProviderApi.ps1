@@ -72,13 +72,13 @@ function New-OktaRiskProvider {
 
         $LocalVarUri = '/api/v1/risk/providers'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$Instance) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Instance") -or $null -eq $Instance) {
             throw "Error! The required parameter `Instance` missing when calling createRiskProvider."
         }
 
@@ -193,12 +193,12 @@ function Invoke-OktaDeleteRiskProvider {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/risk/providers/{riskProviderId}'
-        if (!$RiskProviderId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("RiskProviderId") -or $null -eq $RiskProviderId) {
             throw "Error! The required parameter `RiskProviderId` missing when calling deleteRiskProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{riskProviderId}', [System.Web.HTTPUtility]::UrlEncode($RiskProviderId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -306,12 +306,12 @@ function Get-OktaRiskProvider {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/risk/providers/{riskProviderId}'
-        if (!$RiskProviderId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("RiskProviderId") -or $null -eq $RiskProviderId) {
             throw "Error! The required parameter `RiskProviderId` missing when calling getRiskProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{riskProviderId}', [System.Web.HTTPUtility]::UrlEncode($RiskProviderId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -414,7 +414,7 @@ function Invoke-OktaListRiskProviders {
 
         $LocalVarUri = '/api/v1/risk/providers'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -531,18 +531,18 @@ function Update-OktaRiskProvider {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/risk/providers/{riskProviderId}'
-        if (!$RiskProviderId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("RiskProviderId") -or $null -eq $RiskProviderId) {
             throw "Error! The required parameter `RiskProviderId` missing when calling updateRiskProvider."
         }
         $LocalVarUri = $LocalVarUri.replace('{riskProviderId}', [System.Web.HTTPUtility]::UrlEncode($RiskProviderId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$Instance) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Instance") -or $null -eq $Instance) {
             throw "Error! The required parameter `Instance` missing when calling updateRiskProvider."
         }
 

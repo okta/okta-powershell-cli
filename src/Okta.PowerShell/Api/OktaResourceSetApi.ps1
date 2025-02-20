@@ -83,22 +83,22 @@ function Add-OktaMembersToBinding {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/iam/resource-sets/{resourceSetId}/bindings/{roleIdOrLabel}/members'
-        if (!$ResourceSetId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("ResourceSetId") -or $null -eq $ResourceSetId) {
             throw "Error! The required parameter `ResourceSetId` missing when calling addMembersToBinding."
         }
         $LocalVarUri = $LocalVarUri.replace('{resourceSetId}', [System.Web.HTTPUtility]::UrlEncode($ResourceSetId))
-        if (!$RoleIdOrLabel) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("RoleIdOrLabel") -or $null -eq $RoleIdOrLabel) {
             throw "Error! The required parameter `RoleIdOrLabel` missing when calling addMembersToBinding."
         }
         $LocalVarUri = $LocalVarUri.replace('{roleIdOrLabel}', [System.Web.HTTPUtility]::UrlEncode($RoleIdOrLabel))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$Instance) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Instance") -or $null -eq $Instance) {
             throw "Error! The required parameter `Instance` missing when calling addMembersToBinding."
         }
 
@@ -222,18 +222,18 @@ function Add-OktaResourceSetResource {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/iam/resource-sets/{resourceSetId}/resources'
-        if (!$ResourceSetId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("ResourceSetId") -or $null -eq $ResourceSetId) {
             throw "Error! The required parameter `ResourceSetId` missing when calling addResourceSetResource."
         }
         $LocalVarUri = $LocalVarUri.replace('{resourceSetId}', [System.Web.HTTPUtility]::UrlEncode($ResourceSetId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$Instance) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Instance") -or $null -eq $Instance) {
             throw "Error! The required parameter `Instance` missing when calling addResourceSetResource."
         }
 
@@ -352,13 +352,13 @@ function New-OktaResourceSet {
 
         $LocalVarUri = '/api/v1/iam/resource-sets'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$Instance) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Instance") -or $null -eq $Instance) {
             throw "Error! The required parameter `Instance` missing when calling createResourceSet."
         }
 
@@ -482,18 +482,18 @@ function New-OktaResourceSetBinding {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/iam/resource-sets/{resourceSetId}/bindings'
-        if (!$ResourceSetId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("ResourceSetId") -or $null -eq $ResourceSetId) {
             throw "Error! The required parameter `ResourceSetId` missing when calling createResourceSetBinding."
         }
         $LocalVarUri = $LocalVarUri.replace('{resourceSetId}', [System.Web.HTTPUtility]::UrlEncode($ResourceSetId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$Instance) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Instance") -or $null -eq $Instance) {
             throw "Error! The required parameter `Instance` missing when calling createResourceSetBinding."
         }
 
@@ -614,16 +614,16 @@ function Invoke-OktaDeleteBinding {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/iam/resource-sets/{resourceSetId}/bindings/{roleIdOrLabel}'
-        if (!$ResourceSetId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("ResourceSetId") -or $null -eq $ResourceSetId) {
             throw "Error! The required parameter `ResourceSetId` missing when calling deleteBinding."
         }
         $LocalVarUri = $LocalVarUri.replace('{resourceSetId}', [System.Web.HTTPUtility]::UrlEncode($ResourceSetId))
-        if (!$RoleIdOrLabel) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("RoleIdOrLabel") -or $null -eq $RoleIdOrLabel) {
             throw "Error! The required parameter `RoleIdOrLabel` missing when calling deleteBinding."
         }
         $LocalVarUri = $LocalVarUri.replace('{roleIdOrLabel}', [System.Web.HTTPUtility]::UrlEncode($RoleIdOrLabel))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -731,12 +731,12 @@ function Invoke-OktaDeleteResourceSet {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/iam/resource-sets/{resourceSetId}'
-        if (!$ResourceSetId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("ResourceSetId") -or $null -eq $ResourceSetId) {
             throw "Error! The required parameter `ResourceSetId` missing when calling deleteResourceSet."
         }
         $LocalVarUri = $LocalVarUri.replace('{resourceSetId}', [System.Web.HTTPUtility]::UrlEncode($ResourceSetId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -850,16 +850,16 @@ function Invoke-OktaDeleteResourceSetResource {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/iam/resource-sets/{resourceSetId}/resources/{resourceId}'
-        if (!$ResourceSetId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("ResourceSetId") -or $null -eq $ResourceSetId) {
             throw "Error! The required parameter `ResourceSetId` missing when calling deleteResourceSetResource."
         }
         $LocalVarUri = $LocalVarUri.replace('{resourceSetId}', [System.Web.HTTPUtility]::UrlEncode($ResourceSetId))
-        if (!$ResourceId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("ResourceId") -or $null -eq $ResourceId) {
             throw "Error! The required parameter `ResourceId` missing when calling deleteResourceSetResource."
         }
         $LocalVarUri = $LocalVarUri.replace('{resourceId}', [System.Web.HTTPUtility]::UrlEncode($ResourceId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -973,16 +973,16 @@ function Get-OktaBinding {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/iam/resource-sets/{resourceSetId}/bindings/{roleIdOrLabel}'
-        if (!$ResourceSetId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("ResourceSetId") -or $null -eq $ResourceSetId) {
             throw "Error! The required parameter `ResourceSetId` missing when calling getBinding."
         }
         $LocalVarUri = $LocalVarUri.replace('{resourceSetId}', [System.Web.HTTPUtility]::UrlEncode($ResourceSetId))
-        if (!$RoleIdOrLabel) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("RoleIdOrLabel") -or $null -eq $RoleIdOrLabel) {
             throw "Error! The required parameter `RoleIdOrLabel` missing when calling getBinding."
         }
         $LocalVarUri = $LocalVarUri.replace('{roleIdOrLabel}', [System.Web.HTTPUtility]::UrlEncode($RoleIdOrLabel))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1102,20 +1102,20 @@ function Get-OktaMemberOfBinding {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/iam/resource-sets/{resourceSetId}/bindings/{roleIdOrLabel}/members/{memberId}'
-        if (!$ResourceSetId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("ResourceSetId") -or $null -eq $ResourceSetId) {
             throw "Error! The required parameter `ResourceSetId` missing when calling getMemberOfBinding."
         }
         $LocalVarUri = $LocalVarUri.replace('{resourceSetId}', [System.Web.HTTPUtility]::UrlEncode($ResourceSetId))
-        if (!$RoleIdOrLabel) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("RoleIdOrLabel") -or $null -eq $RoleIdOrLabel) {
             throw "Error! The required parameter `RoleIdOrLabel` missing when calling getMemberOfBinding."
         }
         $LocalVarUri = $LocalVarUri.replace('{roleIdOrLabel}', [System.Web.HTTPUtility]::UrlEncode($RoleIdOrLabel))
-        if (!$MemberId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("MemberId") -or $null -eq $MemberId) {
             throw "Error! The required parameter `MemberId` missing when calling getMemberOfBinding."
         }
         $LocalVarUri = $LocalVarUri.replace('{memberId}', [System.Web.HTTPUtility]::UrlEncode($MemberId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1223,12 +1223,12 @@ function Get-OktaResourceSet {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/iam/resource-sets/{resourceSetId}'
-        if (!$ResourceSetId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("ResourceSetId") -or $null -eq $ResourceSetId) {
             throw "Error! The required parameter `ResourceSetId` missing when calling getResourceSet."
         }
         $LocalVarUri = $LocalVarUri.replace('{resourceSetId}', [System.Web.HTTPUtility]::UrlEncode($ResourceSetId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1342,18 +1342,18 @@ function Invoke-OktaListBindings {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/iam/resource-sets/{resourceSetId}/bindings'
-        if (!$ResourceSetId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("ResourceSetId") -or $null -eq $ResourceSetId) {
             throw "Error! The required parameter `ResourceSetId` missing when calling listBindings."
         }
         $LocalVarUri = $LocalVarUri.replace('{resourceSetId}', [System.Web.HTTPUtility]::UrlEncode($ResourceSetId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($After) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("After")) {
             $LocalVarQueryParameters['after'] = $After
         }
 
@@ -1471,22 +1471,22 @@ function Invoke-OktaListMembersOfBinding {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/iam/resource-sets/{resourceSetId}/bindings/{roleIdOrLabel}/members'
-        if (!$ResourceSetId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("ResourceSetId") -or $null -eq $ResourceSetId) {
             throw "Error! The required parameter `ResourceSetId` missing when calling listMembersOfBinding."
         }
         $LocalVarUri = $LocalVarUri.replace('{resourceSetId}', [System.Web.HTTPUtility]::UrlEncode($ResourceSetId))
-        if (!$RoleIdOrLabel) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("RoleIdOrLabel") -or $null -eq $RoleIdOrLabel) {
             throw "Error! The required parameter `RoleIdOrLabel` missing when calling listMembersOfBinding."
         }
         $LocalVarUri = $LocalVarUri.replace('{roleIdOrLabel}', [System.Web.HTTPUtility]::UrlEncode($RoleIdOrLabel))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($After) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("After")) {
             $LocalVarQueryParameters['after'] = $After
         }
 
@@ -1592,12 +1592,12 @@ function Invoke-OktaListResourceSetResources {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/iam/resource-sets/{resourceSetId}/resources'
-        if (!$ResourceSetId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("ResourceSetId") -or $null -eq $ResourceSetId) {
             throw "Error! The required parameter `ResourceSetId` missing when calling listResourceSetResources."
         }
         $LocalVarUri = $LocalVarUri.replace('{resourceSetId}', [System.Web.HTTPUtility]::UrlEncode($ResourceSetId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
@@ -1706,13 +1706,13 @@ function Invoke-OktaListResourceSets {
 
         $LocalVarUri = '/api/v1/iam/resource-sets'
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($After) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("After")) {
             $LocalVarQueryParameters['after'] = $After
         }
 
@@ -1827,18 +1827,18 @@ function Invoke-OktaReplaceResourceSet {
         $LocalVarContentTypes = @('application/json')
 
         $LocalVarUri = '/api/v1/iam/resource-sets/{resourceSetId}'
-        if (!$ResourceSetId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("ResourceSetId") -or $null -eq $ResourceSetId) {
             throw "Error! The required parameter `ResourceSetId` missing when calling replaceResourceSet."
         }
         $LocalVarUri = $LocalVarUri.replace('{resourceSetId}', [System.Web.HTTPUtility]::UrlEncode($ResourceSetId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if (!$Instance) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Instance") -or $null -eq $Instance) {
             throw "Error! The required parameter `Instance` missing when calling replaceResourceSet."
         }
 
@@ -1965,20 +1965,20 @@ function Invoke-OktaUnassignMemberFromBinding {
         $LocalVarAccepts = @('application/json')
 
         $LocalVarUri = '/api/v1/iam/resource-sets/{resourceSetId}/bindings/{roleIdOrLabel}/members/{memberId}'
-        if (!$ResourceSetId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("ResourceSetId") -or $null -eq $ResourceSetId) {
             throw "Error! The required parameter `ResourceSetId` missing when calling unassignMemberFromBinding."
         }
         $LocalVarUri = $LocalVarUri.replace('{resourceSetId}', [System.Web.HTTPUtility]::UrlEncode($ResourceSetId))
-        if (!$RoleIdOrLabel) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("RoleIdOrLabel") -or $null -eq $RoleIdOrLabel) {
             throw "Error! The required parameter `RoleIdOrLabel` missing when calling unassignMemberFromBinding."
         }
         $LocalVarUri = $LocalVarUri.replace('{roleIdOrLabel}', [System.Web.HTTPUtility]::UrlEncode($RoleIdOrLabel))
-        if (!$MemberId) {
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("MemberId") -or $null -eq $MemberId) {
             throw "Error! The required parameter `MemberId` missing when calling unassignMemberFromBinding."
         }
         $LocalVarUri = $LocalVarUri.replace('{memberId}', [System.Web.HTTPUtility]::UrlEncode($MemberId))
 
-        if ($Uri) {
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
             $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
             $LocalVarUri = $ParsedUri["RelativeUri"]
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
