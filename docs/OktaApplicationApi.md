@@ -221,10 +221,10 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AppId = "MyAppId" # String | 
-$AppUserPasswordCredential = Initialize-AppUserPasswordCredential -Value "MyValue"
-$AppUserCredentials = Initialize-AppUserCredentials -Password $AppUserPasswordCredential -UserName "MyUserName"
+$AppUserPasswordCredential = Initialize-OktaAppUserPasswordCredential -Value "MyValue"
+$AppUserCredentials = Initialize-OktaAppUserCredentials -Password $AppUserPasswordCredential -UserName "MyUserName"
 
-$AppUser = Initialize-AppUser -Created (Get-Date) -Credentials $AppUserCredentials -ExternalId "MyExternalId" -Id "MyId" -LastSync (Get-Date) -LastUpdated (Get-Date) -PasswordChanged (Get-Date) -VarProfile @{ key_example =  } -Scope "MyScope" -Status "MyStatus" -StatusChanged (Get-Date) -SyncState "MySyncState" -Embedded @{ key_example =  } -Links @{ key_example =  } # AppUser | 
+$AppUser = Initialize-OktaAppUser -Created (Get-Date) -Credentials $AppUserCredentials -ExternalId "MyExternalId" -Id "MyId" -LastSync (Get-Date) -LastUpdated (Get-Date) -PasswordChanged (Get-Date) -VarProfile @{ key_example =  } -Scope "MyScope" -Status "MyStatus" -StatusChanged (Get-Date) -SyncState "MySyncState" -Embedded @{ key_example =  } -Links @{ key_example =  } # AppUser | 
 
 # Assign a User
 try {
@@ -2182,10 +2182,10 @@ $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AppId = "MyAppId" # String | 
 $UserId = "MyUserId" # String | 
-$AppUserPasswordCredential = Initialize-AppUserPasswordCredential -Value "MyValue"
-$AppUserCredentials = Initialize-AppUserCredentials -Password $AppUserPasswordCredential -UserName "MyUserName"
+$AppUserPasswordCredential = Initialize-OktaAppUserPasswordCredential -Value "MyValue"
+$AppUserCredentials = Initialize-OktaAppUserCredentials -Password $AppUserPasswordCredential -UserName "MyUserName"
 
-$AppUser = Initialize-AppUser -Created (Get-Date) -Credentials $AppUserCredentials -ExternalId "MyExternalId" -Id "MyId" -LastSync (Get-Date) -LastUpdated (Get-Date) -PasswordChanged (Get-Date) -VarProfile @{ key_example =  } -Scope "MyScope" -Status "MyStatus" -StatusChanged (Get-Date) -SyncState "MySyncState" -Embedded @{ key_example =  } -Links @{ key_example =  } # AppUser | 
+$AppUser = Initialize-OktaAppUser -Created (Get-Date) -Credentials $AppUserCredentials -ExternalId "MyExternalId" -Id "MyId" -LastSync (Get-Date) -LastUpdated (Get-Date) -PasswordChanged (Get-Date) -VarProfile @{ key_example =  } -Scope "MyScope" -Status "MyStatus" -StatusChanged (Get-Date) -SyncState "MySyncState" -Embedded @{ key_example =  } -Links @{ key_example =  } # AppUser | 
 
 # Update an Application Profile for Assigned User
 try {
