@@ -118,11 +118,11 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $UserId = "MyUserId" # String | 
-$PasswordCredentialHash = Initialize-PasswordCredentialHash -Algorithm "BCRYPT" -Salt "MySalt" -SaltOrder "MySaltOrder" -Value "MyValue" -WorkFactor 0
-$PasswordCredentialHook = Initialize-PasswordCredentialHook -Type "MyType"
-$PasswordCredential = Initialize-PasswordCredential -Hash $PasswordCredentialHash -Hook $PasswordCredentialHook -Value "MyValue"
+$PasswordCredentialHash = Initialize-OktaPasswordCredentialHash -Algorithm "BCRYPT" -Salt "MySalt" -SaltOrder "MySaltOrder" -Value "MyValue" -WorkFactor 0
+$PasswordCredentialHook = Initialize-OktaPasswordCredentialHook -Type "MyType"
+$PasswordCredential = Initialize-OktaPasswordCredential -Hash $PasswordCredentialHash -Hook $PasswordCredentialHook -Value "MyValue"
 
-$ChangePasswordRequest = Initialize-ChangePasswordRequest -NewPassword $PasswordCredential -OldPassword $PasswordCredential -RevokeSessions $false # ChangePasswordRequest | 
+$ChangePasswordRequest = Initialize-OktaChangePasswordRequest -NewPassword $PasswordCredential -OldPassword $PasswordCredential -RevokeSessions $false # ChangePasswordRequest | 
 $Strict = $true # Boolean |  (optional)
 
 # Change Password
@@ -177,13 +177,13 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $UserId = "MyUserId" # String | 
-$PasswordCredentialHash = Initialize-PasswordCredentialHash -Algorithm "BCRYPT" -Salt "MySalt" -SaltOrder "MySaltOrder" -Value "MyValue" -WorkFactor 0
-$PasswordCredentialHook = Initialize-PasswordCredentialHook -Type "MyType"
-$PasswordCredential = Initialize-PasswordCredential -Hash $PasswordCredentialHash -Hook $PasswordCredentialHook -Value "MyValue"
+$PasswordCredentialHash = Initialize-OktaPasswordCredentialHash -Algorithm "BCRYPT" -Salt "MySalt" -SaltOrder "MySaltOrder" -Value "MyValue" -WorkFactor 0
+$PasswordCredentialHook = Initialize-OktaPasswordCredentialHook -Type "MyType"
+$PasswordCredential = Initialize-OktaPasswordCredential -Hash $PasswordCredentialHash -Hook $PasswordCredentialHook -Value "MyValue"
 
-$AuthenticationProvider = Initialize-AuthenticationProvider -Name "MyName" -Type "ACTIVE_DIRECTORY"
-$RecoveryQuestionCredential = Initialize-RecoveryQuestionCredential -Answer "MyAnswer" -Question "MyQuestion"
-$UserCredentials = Initialize-UserCredentials -Password $PasswordCredential -Provider $AuthenticationProvider -RecoveryQuestion $RecoveryQuestionCredential # UserCredentials | 
+$AuthenticationProvider = Initialize-OktaAuthenticationProvider -Name "MyName" -Type "ACTIVE_DIRECTORY"
+$RecoveryQuestionCredential = Initialize-OktaRecoveryQuestionCredential -Answer "MyAnswer" -Question "MyQuestion"
+$UserCredentials = Initialize-OktaUserCredentials -Password $PasswordCredential -Provider $AuthenticationProvider -RecoveryQuestion $RecoveryQuestionCredential # UserCredentials | 
 
 # Change Recovery Question
 try {
@@ -290,16 +290,25 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$PasswordCredentialHash = Initialize-PasswordCredentialHash -Algorithm "BCRYPT" -Salt "MySalt" -SaltOrder "MySaltOrder" -Value "MyValue" -WorkFactor 0
-$PasswordCredentialHook = Initialize-PasswordCredentialHook -Type "MyType"
-$PasswordCredential = Initialize-PasswordCredential -Hash $PasswordCredentialHash -Hook $PasswordCredentialHook -Value "MyValue"
+$PasswordCredentialHash = Initialize-OktaPasswordCredentialHash -Algorithm "BCRYPT" -Salt "MySalt" -SaltOrder "MySaltOrder" -Value "MyValue" -WorkFactor 0
+$PasswordCredentialHook = Initialize-OktaPasswordCredentialHook -Type "MyType"
+$PasswordCredential = Initialize-OktaPasswordCredential -Hash $PasswordCredentialHash -Hook $PasswordCredentialHook -Value "MyValue"
 
-$AuthenticationProvider = Initialize-AuthenticationProvider -Name "MyName" -Type "ACTIVE_DIRECTORY"
-$RecoveryQuestionCredential = Initialize-RecoveryQuestionCredential -Answer "MyAnswer" -Question "MyQuestion"
-$UserCredentials = Initialize-UserCredentials -Password $PasswordCredential -Provider $AuthenticationProvider -RecoveryQuestion $RecoveryQuestionCredential
+$AuthenticationProvider = Initialize-OktaAuthenticationProvider -Name "MyName" -Type "ACTIVE_DIRECTORY"
+$RecoveryQuestionCredential = Initialize-OktaRecoveryQuestionCredential -Answer "MyAnswer" -Question "MyQuestion"
+$UserCredentials = Initialize-OktaUserCredentials -Password $PasswordCredential -Provider $AuthenticationProvider -RecoveryQuestion $RecoveryQuestionCredential
 
-$UserType = Initialize-UserType -Created (Get-Date) -CreatedBy "MyCreatedBy" -Default $false -Description "MyDescription" -DisplayName "MyDisplayName" -Id "MyId" -LastUpdated (Get-Date) -LastUpdatedBy "MyLastUpdatedBy" -Name "MyName" -Links @{ key_example =  }
-$CreateUserRequest = Initialize-CreateUserRequest -Credentials $UserCredentials -GroupIds "MyGroupIds" -VarProfile  -Type $UserType # CreateUserRequest | 
+$UserType = Initialize-OktaUserType -Created (Get-Date) -CreatedBy "MyCreatedBy" -Default $false -Description "MyDescription" -DisplayName "MyDisplayName" -Id "MyId" -LastUpdated (Get-Date) -LastUpdatedBy "MyLastUpdatedBy" -Name "MyName" -Links @{ key_example = "example_value"}
+
+# Create the VarProfile object with necessary user profile information
+$VarProfile = [PSCustomObject]@{
+    firstName = 'John'
+    lastName = 'Doe'
+    login = 'john.doe@mail.com'
+    email = 'john.doe@mail.com'
+}
+
+$CreateUserRequest = Initialize-OktaCreateUserRequest -Credentials $UserCredentials -GroupIds "MyGroupIds" -VarProfile $VarProfile -Type $UserType # CreateUserRequest | 
 $Activate = $true # Boolean | Executes activation lifecycle operation when creating the user (optional) (default to $true)
 $Provider = $true # Boolean | Indicates whether to create a user with a specified authentication provider (optional) (default to $false)
 $NextLogin = "changePassword" # UserNextLogin | With activate=true, set nextLogin to ""changePassword"" to have the password be EXPIRED, so user must change it the next time they log in. (optional)
@@ -617,13 +626,13 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $UserId = "MyUserId" # String | 
-$PasswordCredentialHash = Initialize-PasswordCredentialHash -Algorithm "BCRYPT" -Salt "MySalt" -SaltOrder "MySaltOrder" -Value "MyValue" -WorkFactor 0
-$PasswordCredentialHook = Initialize-PasswordCredentialHook -Type "MyType"
-$PasswordCredential = Initialize-PasswordCredential -Hash $PasswordCredentialHash -Hook $PasswordCredentialHook -Value "MyValue"
+$PasswordCredentialHash = Initialize-OktaPasswordCredentialHash -Algorithm "BCRYPT" -Salt "MySalt" -SaltOrder "MySaltOrder" -Value "MyValue" -WorkFactor 0
+$PasswordCredentialHook = Initialize-OktaPasswordCredentialHook -Type "MyType"
+$PasswordCredential = Initialize-OktaPasswordCredential -Hash $PasswordCredentialHash -Hook $PasswordCredentialHook -Value "MyValue"
 
-$AuthenticationProvider = Initialize-AuthenticationProvider -Name "MyName" -Type "ACTIVE_DIRECTORY"
-$RecoveryQuestionCredential = Initialize-RecoveryQuestionCredential -Answer "MyAnswer" -Question "MyQuestion"
-$UserCredentials = Initialize-UserCredentials -Password $PasswordCredential -Provider $AuthenticationProvider -RecoveryQuestion $RecoveryQuestionCredential # UserCredentials | 
+$AuthenticationProvider = Initialize-OktaAuthenticationProvider -Name "MyName" -Type "ACTIVE_DIRECTORY"
+$RecoveryQuestionCredential = Initialize-OktaRecoveryQuestionCredential -Answer "MyAnswer" -Question "MyQuestion"
+$UserCredentials = Initialize-OktaUserCredentials -Password $PasswordCredential -Provider $AuthenticationProvider -RecoveryQuestion $RecoveryQuestionCredential # UserCredentials | 
 $SendEmail = $true # Boolean |  (optional) (default to $true)
 
 # Reset Password with Recovery Question
@@ -1363,15 +1372,15 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $UserId = "MyUserId" # String | 
-$PasswordCredentialHash = Initialize-PasswordCredentialHash -Algorithm "BCRYPT" -Salt "MySalt" -SaltOrder "MySaltOrder" -Value "MyValue" -WorkFactor 0
-$PasswordCredentialHook = Initialize-PasswordCredentialHook -Type "MyType"
-$PasswordCredential = Initialize-PasswordCredential -Hash $PasswordCredentialHash -Hook $PasswordCredentialHook -Value "MyValue"
+$PasswordCredentialHash = Initialize-OktaPasswordCredentialHash -Algorithm "BCRYPT" -Salt "MySalt" -SaltOrder "MySaltOrder" -Value "MyValue" -WorkFactor 0
+$PasswordCredentialHook = Initialize-OktaPasswordCredentialHook -Type "MyType"
+$PasswordCredential = Initialize-OktaPasswordCredential -Hash $PasswordCredentialHash -Hook $PasswordCredentialHook -Value "MyValue"
 
-$AuthenticationProvider = Initialize-AuthenticationProvider -Name "MyName" -Type "ACTIVE_DIRECTORY"
-$RecoveryQuestionCredential = Initialize-RecoveryQuestionCredential -Answer "MyAnswer" -Question "MyQuestion"
-$UserCredentials = Initialize-UserCredentials -Password $PasswordCredential -Provider $AuthenticationProvider -RecoveryQuestion $RecoveryQuestionCredential
+$AuthenticationProvider = Initialize-OktaAuthenticationProvider -Name "MyName" -Type "ACTIVE_DIRECTORY"
+$RecoveryQuestionCredential = Initialize-OktaRecoveryQuestionCredential -Answer "MyAnswer" -Question "MyQuestion"
+$UserCredentials = Initialize-OktaUserCredentials -Password $PasswordCredential -Provider $AuthenticationProvider -RecoveryQuestion $RecoveryQuestionCredential
 
-$UpdateUserRequest = Initialize-UpdateUserRequest -Credentials $UserCredentials -VarProfile # UpdateUserRequest | 
+$UpdateUserRequest = Initialize-OktaUpdateUserRequest -Credentials $UserCredentials -VarProfile # UpdateUserRequest | 
 $Strict = $true # Boolean |  (optional)
 
 # Update a User
@@ -2106,16 +2115,16 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $UserId = "MyUserId" # String | 
-$PasswordCredentialHash = Initialize-PasswordCredentialHash -Algorithm "BCRYPT" -Salt "MySalt" -SaltOrder "MySaltOrder" -Value "MyValue" -WorkFactor 0
-$PasswordCredentialHook = Initialize-PasswordCredentialHook -Type "MyType"
-$PasswordCredential = Initialize-PasswordCredential -Hash $PasswordCredentialHash -Hook $PasswordCredentialHook -Value "MyValue"
+$PasswordCredentialHash = Initialize-OktaPasswordCredentialHash -Algorithm "BCRYPT" -Salt "MySalt" -SaltOrder "MySaltOrder" -Value "MyValue" -WorkFactor 0
+$PasswordCredentialHook = Initialize-OktaPasswordCredentialHook -Type "MyType"
+$PasswordCredential = Initialize-OktaPasswordCredential -Hash $PasswordCredentialHash -Hook $PasswordCredentialHook -Value "MyValue"
 
-$AuthenticationProvider = Initialize-AuthenticationProvider -Name "MyName" -Type "ACTIVE_DIRECTORY"
-$RecoveryQuestionCredential = Initialize-RecoveryQuestionCredential -Answer "MyAnswer" -Question "MyQuestion"
-$UserCredentials = Initialize-UserCredentials -Password $PasswordCredential -Provider $AuthenticationProvider -RecoveryQuestion $RecoveryQuestionCredential
+$AuthenticationProvider = Initialize-OktaAuthenticationProvider -Name "MyName" -Type "ACTIVE_DIRECTORY"
+$RecoveryQuestionCredential = Initialize-OktaRecoveryQuestionCredential -Answer "MyAnswer" -Question "MyQuestion"
+$UserCredentials = Initialize-OktaUserCredentials -Password $PasswordCredential -Provider $AuthenticationProvider -RecoveryQuestion $RecoveryQuestionCredential
 
-$UserType = Initialize-UserType -Created (Get-Date) -CreatedBy "MyCreatedBy" -Default $false -Description "MyDescription" -DisplayName "MyDisplayName" -Id "MyId" -LastUpdated (Get-Date) -LastUpdatedBy "MyLastUpdatedBy" -Name "MyName" -Links @{ key_example =  }
-$User = Initialize-User -Activated (Get-Date) -Created (Get-Date) -Credentials $UserCredentials -Id "MyId" -LastLogin (Get-Date) -LastUpdated (Get-Date) -PasswordChanged (Get-Date) -VarProfile  -Status "ACTIVE" -StatusChanged (Get-Date) -TransitioningToStatus "ACTIVE" -Type $UserType -Embedded @{ key_example =  } -Links @{ key_example =  } # User | 
+$UserType = Initialize-OktaUserType -Created (Get-Date) -CreatedBy "MyCreatedBy" -Default $false -Description "MyDescription" -DisplayName "MyDisplayName" -Id "MyId" -LastUpdated (Get-Date) -LastUpdatedBy "MyLastUpdatedBy" -Name "MyName" -Links @{ key_example =  }
+$User = Initialize-OktaUser -Activated (Get-Date) -Created (Get-Date) -Credentials $UserCredentials -Id "MyId" -LastLogin (Get-Date) -LastUpdated (Get-Date) -PasswordChanged (Get-Date) -VarProfile  -Status "ACTIVE" -StatusChanged (Get-Date) -TransitioningToStatus "ACTIVE" -Type $UserType -Embedded @{ key_example =  } -Links @{ key_example =  } # User | 
 $Strict = $true # Boolean |  (optional)
 
 # Replace a User
