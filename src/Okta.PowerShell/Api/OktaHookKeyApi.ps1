@@ -91,10 +91,7 @@ function Add-OktaHookKey {
             $LocalVarBodyParameter = Remove-NullProperties -InputObject $KeyRequest | ConvertTo-Json -Depth 100
         }
 
-        if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
-            $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
-            Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
-        }
+        
 
 
         if ($Configuration["AccessToken"]) {
@@ -204,10 +201,7 @@ function Invoke-OktaDeleteHookKey {
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
-            $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
-            Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
-        }
+        
 
 
         if ($Configuration["AccessToken"]) {
@@ -317,10 +311,7 @@ function Get-OktaHookKey {
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
-            $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
-            Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
-        }
+        
 
 
         if ($Configuration["AccessToken"]) {
@@ -430,10 +421,7 @@ function Get-OktaPublicKey {
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
-            $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
-            Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
-        }
+        
 
 
         if ($Configuration["AccessToken"]) {
@@ -533,16 +521,7 @@ function Invoke-OktaListHookKeys {
             $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
         }
 
-        if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
-            $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
-            Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
-        }
-
-
-        if ($Configuration["AccessToken"]) {
-            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
-            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
-        }
+        
 
         $LocalVarResult = Invoke-OktaApiClient -Method 'GET' `
                                 -Uri $LocalVarUri `
@@ -668,10 +647,7 @@ function Invoke-OktaReplaceHookKey {
             $LocalVarBodyParameter = Remove-NullProperties -InputObject $KeyRequest | ConvertTo-Json -Depth 100
         }
 
-        if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
-            $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
-            Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
-        }
+        
 
 
         if ($Configuration["AccessToken"]) {
@@ -707,4 +683,5 @@ function Invoke-OktaReplaceHookKey {
         }
     }
 }
+
 

@@ -79,6 +79,13 @@ function Invoke-OktaApiClient {
         $HeaderParameters[$header.Name] = $header.Value
     }
 
+    # API Key Authentication (Add Authorization header with SSWS prefix)
+    if ($Configuration.ApiKey -and $Configuration.ApiKey["apitoken"]) {
+        $ApiKeyPrefix = if ($Configuration.ApiKeyPrefix) { $Configuration.ApiKeyPrefix } else { "SSWS" }
+        $HeaderParameters["Authorization"] = "$ApiKeyPrefix $($Configuration.ApiKey["apitoken"])"
+        Write-Verbose "Using API key authentication with Authorization header"
+    }
+
     # construct URL query string
     $HttpValues = [System.Web.HttpUtility]::ParseQueryString([String]::Empty)
     foreach ($Parameter in $QueryParameters.GetEnumerator()) {

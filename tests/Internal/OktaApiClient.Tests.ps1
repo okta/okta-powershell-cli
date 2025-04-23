@@ -178,3 +178,36 @@ Context 'Invoke-OktaApiClient - 429 Responses' {
         $Result | Should -Be $null
     }
 }
+
+Context 'Authentication Headers' {
+    It 'Should include correct Authorization header with SSWS prefix when using API key' {
+        # Configure API key
+        $Config = Get-OktaConfiguration
+        $Config.ApiKey = @{ apitoken = "TEST_API_TOKEN" }
+        $Config.ApiKeyPrefix = "SSWS"
+        Mock -ModuleName Okta.PowerShell Get-OktaConfiguration { return $Config } -Verifiable
+    
+        # Mock successful response
+        $Response = [PSCustomObject]@{
+            Content = '[]'
+            Headers = @{ "Content-Type" = "application/json" }
+            StatusCode = 200
+        }
+    
+        # Capture headers sent to Invoke-WebRequest
+        $CapturedHeaders = $null
+        Mock -ModuleName Okta.PowerShell Invoke-WebRequest -ParameterFilter {
+            $CapturedHeaders = $Headers
+            return $true
+        } {
+            return $Response
+        } -Verifiable
+    
+        # Make API call
+        $Result = Invoke-OktaListApplications
+    
+        # Verify Authorization header
+        $CapturedHeaders.ContainsKey('Authorization') | Should -Be $true
+        $CapturedHeaders['Authorization'] | Should -BeExactly "SSWS TEST_API_TOKEN"
+    }
+}
