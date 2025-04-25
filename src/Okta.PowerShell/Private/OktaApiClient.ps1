@@ -79,6 +79,12 @@ function Invoke-OktaApiClient {
         $HeaderParameters[$header.Name] = $header.Value
     }
 
+    if ($Configuration.ApiKey -and $Configuration.ApiKeyPrefix) {
+        $headers = @{
+            Authorization = "$($Configuration.ApiKeyPrefix) $($Configuration.ApiKey.apitoken)"
+        }
+    }
+    
     # construct URL query string
     $HttpValues = [System.Web.HttpUtility]::ParseQueryString([String]::Empty)
     foreach ($Parameter in $QueryParameters.GetEnumerator()) {
