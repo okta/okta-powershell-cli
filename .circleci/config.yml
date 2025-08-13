@@ -90,5 +90,6 @@ workflows:
       - general-platform-helpers/job-semgrep-scan:
           name: "Scan with Semgrep"
           default-branch: "main"
+          executor: cimg/python:3.10
           context:
             - static-analysis
