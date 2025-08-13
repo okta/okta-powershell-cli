@@ -4,6 +4,7 @@ version: 2.1
 
 orbs:
   windows: circleci/windows@5.0
+  platform-helpers: okta/platform-helpers@1
   general-platform-helpers: okta/general-platform-helpers@1.9
 
 # Define a job to be invoked later in a workflow.
@@ -64,7 +65,7 @@ jobs:
               },
               "keywords": ["okta", "powershell", "api", "management"],
               "author": "Okta, Inc.",
-              "license": "MIT",
+              "license": "Apache-2.0",
               "dependencies": {},
               "devDependencies": {}
             }' > package.json
@@ -87,9 +88,8 @@ workflows:
             - static-analysis
           requires:
             - build-test
-      - general-platform-helpers/job-semgrep-scan:
+      - platform-helpers/job-semgrep-scan:
           name: "Scan with Semgrep"
           default-branch: "main"
-          executor: cimg/python:3.10
           context:
             - static-analysis
