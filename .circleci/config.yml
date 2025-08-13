@@ -5,6 +5,7 @@ version: 2.1
 orbs:
   windows: circleci/windows@5.0
   platform-helpers: okta/platform-helpers@1
+  general-platform-helpers: okta/general-platform-helpers@1.9
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
@@ -21,14 +22,72 @@ jobs:
           name: "build and test stage"
           command: |
               pwsh -Command "./build.ps1;./test.ps1"
+      - persist_to_workspace: # Allows for sharing of build-workspace (containing downloaded dependencies)
+          root: ~/project
+          paths:
+            - src
+            - nuspec
+            - .git
+            - "*.ps1"
+            - "*.psd1"
+            - "*.psm1"
+
+  snyk-scan:
+    docker:
+      - image: cimg/python:3.10
+    working_directory: ~/project
+    steps:
+      - attach_workspace: # Allows for sharing of build-workspace (containing downloaded dependencies)
+          at: ~/project
+      - general-platform-helpers/step-load-dependencies
+      - run:
+          name: "List project contents for debugging"
+          command: |
+            pwd
+            ls -la
+            ls -la src/ || true
+            ls -la nuspec/ || true
+      - run:
+          name: "Create package.json for Snyk scanning"
+          command: |
+            # Create a minimal package.json to enable Snyk scanning for this PowerShell project
+            echo '{
+              "name": "okta-powershell-cli",
+              "version": "2.0.1",
+              "description": "PowerShell module for Okta Management API",
+              "main": "src/Okta.PowerShell/Okta.PowerShell.psm1",
+              "scripts": {
+                "test": "pwsh -Command '\''./Test.ps1'\''"
+              },
+              "repository": {
+                "type": "git",
+                "url": "https://github.com/okta/okta-powershell-cli.git"
+              },
+              "keywords": ["okta", "powershell", "api", "management"],
+              "author": "Okta, Inc.",
+              "license": "Apache-2.0",
+              "dependencies": {},
+              "devDependencies": {}
+            }' > package.json
+            echo "Created package.json:"
+            cat package.json
+      - general-platform-helpers/step-run-snyk-monitor:
+          scan-all-projects: false
+          skip-unresolved: true
+          run-on-non-main: true
+          detection-depth: 1
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  build-test:
+  build-test-and-snyk:
     jobs:
       - build-test
-  semgrep:
-    jobs:
+      - snyk-scan:
+          name: execute-snyk
+          context:
+            - static-analysis
+          requires:
+            - build-test
       - platform-helpers/job-semgrep-scan:
           name: "Scan with Semgrep"
           default-branch: "main"
