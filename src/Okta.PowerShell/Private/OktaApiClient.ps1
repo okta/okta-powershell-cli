@@ -79,10 +79,9 @@ function Invoke-OktaApiClient {
         $HeaderParameters[$header.Name] = $header.Value
     }
 
+    # Add the Authorization Header if APIKey and ApiKeyPrefix were presented
     if ($Configuration.ApiKey -and $Configuration.ApiKeyPrefix) {
-        $headers = @{
-            Authorization = "$($Configuration.ApiKeyPrefix) $($Configuration.ApiKey.apitoken)"
-        }
+        $HeaderParameters["Authorization"] = "$($Configuration.ApiKeyPrefix) $($Configuration.ApiKey.apitoken)"
     }
     
     # construct URL query string

@@ -72,6 +72,11 @@ function Invoke-{{{apiNamePrefix}}}ApiClient {
         $HeaderParameters[$header.Name] = $header.Value
     }
 
+    # Add the Authorization Header if APIKey and ApiKeyPrefix were presented
+    if ($Configuration.ApiKey -and $Configuration.ApiKeyPrefix) {
+        $HeaderParameters["Authorization"] = "$($Configuration.ApiKeyPrefix) $($Configuration.ApiKey.apitoken)"
+    }
+
     # construct URL query string
     $HttpValues = [System.Web.HttpUtility]::ParseQueryString([String]::Empty)
     foreach ($Parameter in $QueryParameters.GetEnumerator()) {
