@@ -464,43 +464,39 @@ $Config.RequestTimeout = 6000
 $Result = Invoke-OktaListApplications 
 ```
 
-### Clarify the Role of ApiKey and ApiKeyPrefix
+### API Token Authentication
 
-The ApiKey property contains the API token, and ApiKeyPrefix should be used to prefix the token when setting the Authorization header.
-The OktaConfiguration object includes two important properties for API authentication:
-ApiKey: This should contain the actual API token in the form of a hashtable, e.g., @{ apitoken = '<yourApiToken>' }.
-ApiKeyPrefix: This is an optional prefix (default: "SSWS") to be used before the API token when setting the Authorization header.
-Example Usage:
+The module supports API token authentication using the `ApiKey` parameter. The token is automatically prefixed with "SSWS" (the Okta API token prefix) when making requests.
+
+**Recommended Usage with Set-OktaConfiguration:**
+```powershell
+Set-OktaConfiguration -BaseUrl 'https://your-org.okta.com' -ApiKey @{ apitoken = '<yourApiToken>' }
+```
+
+**Alternative: Direct Configuration Object:**
 ```powershell
 $Configuration = Get-OktaConfiguration
 $Configuration.BaseUrl = 'https://your-org.okta.com'
 $Configuration.ApiKey = @{ apitoken = '<yourApiToken>' }
-$Configuration.ApiKeyPrefix = "SSWS"  # Optional, defaults to "SSWS"
 ```
+
 The resulting HTTP header will be:
 ```powershell
 Authorization: SSWS <yourApiToken>
 ```
-### Manually Set the Authorization Header
-To ensure that the API call uses the correct Authorization header, you can set the Authorization header manually:
 
-Example Usage:
+**Custom Prefix (Optional):**
+If you need to use a different prefix, you can set `ApiKeyPrefix`:
 ```powershell
-$Configuration = Get-OktaConfiguration
-$Configuration.BaseUrl = 'https://your-org.okta.com'
-$Configuration.DefaultHeaders = @{
-    authorization = "$($Configuration.ApiKeyPrefix) $($Configuration.ApiKey.apitoken)"
-}
+Set-OktaConfiguration -BaseUrl 'https://your-org.okta.com' -ApiKey @{ apitoken = '<yourApiToken>' } -ApiKeyPrefix "Bearer"
 ```
-This will automatically set the Authorization header as expected.
 
-If you find the ApiKey and ApiKeyPrefix not functioning as expected, you can manually set the Authorization header using the following approach:
-
+**Alternative: Manual Authorization Header**
+You can also manually set the Authorization header if needed:
 ```powershell
 $Configuration = Get-OktaConfiguration
 $Configuration.BaseUrl = 'https://your-org.okta.com'
 $Configuration.DefaultHeaders = @{ authorization = 'SSWS <yourApiToken>' }
-This will ensure the header is set properly while we review the configuration behavior.
 ```
 
 > Note: We're happy to accept contributions and PRs! Please see the [contribution guide](CONTRIBUTING.md) to understand how to structure a contribution.
