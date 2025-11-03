@@ -79,10 +79,15 @@ function Invoke-OktaApiClient {
         $HeaderParameters[$header.Name] = $header.Value
     }
 
-    if ($Configuration.ApiKey -and $Configuration.ApiKeyPrefix) {
-        $headers = @{
-            Authorization = "$($Configuration.ApiKeyPrefix) $($Configuration.ApiKey.apitoken)"
+    # add API key authentication header if configured
+    if ($Configuration.ApiKey -and $Configuration.ApiKey.ContainsKey("apitoken")) {
+        # Default prefix is "SSWS" for Okta API tokens
+        $ApiKeyPrefix = "SSWS"
+        # Check if a custom prefix was configured (ApiKeyPrefix can be a hashtable or string)
+        if ($Configuration.ApiKeyPrefix -is [string] -and ![string]::IsNullOrEmpty($Configuration.ApiKeyPrefix)) {
+            $ApiKeyPrefix = $Configuration.ApiKeyPrefix
         }
+        $HeaderParameters["Authorization"] = "$ApiKeyPrefix $($Configuration.ApiKey.apitoken)"
     }
     
     # construct URL query string
