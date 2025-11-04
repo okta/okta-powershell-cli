@@ -2,6 +2,21 @@
 
 Running changelog of releases since `1.0.0`
 
+## 2.0.2
+
+### Bug Fixes
+
+- Fixed ApiKey authentication returning 403 "Invalid session" errors (#91, #86, #52)
+  - Authorization header was not being added to API requests when using `-ApiKey` parameter
+  - Updated mustache template to ensure fix persists across SDK regeneration
+  - Added integration tests to prevent regression
+
+### Documentation
+
+- Updated API Token Authentication documentation in README
+- Removed outdated warnings about ApiKey not functioning
+- Promoted ApiKey as the recommended authentication method
+
 ## 2.0.0
 
 Starting with the 2.x series, the Okta.PowerShell module supports PowerShell 7+.

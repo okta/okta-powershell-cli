@@ -65,7 +65,7 @@ $Manifest = @{
     ReleaseNotes = 'https://github.com/okta/okta-powershell-cli/releases'
 
     
-    ModuleVersion = '2.0.1'
+    ModuleVersion = '2.0.2'
     
 
     RootModule = 'Okta.PowerShell.psm1'
@@ -104,7 +104,7 @@ $Manifest = @{
     ReleaseNotes = 'https://github.com/okta/okta-powershell-cli/releases'
 
     
-    ModuleVersion = '2.0.1'
+    ModuleVersion = '2.0.2'
     
     
     
