@@ -22,4 +22,3 @@ enum UserSchemaAttributeUnion {
     # enum value: "ENABLE"
     ENABLE
 }
-

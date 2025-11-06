@@ -20,4 +20,3 @@ enum SmsTemplateType {
     # enum value: "SMS_VERIFY_CODE"
     SMS_VERIFY_CODE
 }
-

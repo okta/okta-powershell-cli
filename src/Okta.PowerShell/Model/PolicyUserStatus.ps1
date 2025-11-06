@@ -34,4 +34,3 @@ enum PolicyUserStatus {
     # enum value: "SUSPENDED"
     SUSPENDED
 }
-

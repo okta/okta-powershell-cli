@@ -22,4 +22,3 @@ enum ChangeEnum {
     # enum value: "KEEP_EXISTING"
     KEEP_EXISTING
 }
-

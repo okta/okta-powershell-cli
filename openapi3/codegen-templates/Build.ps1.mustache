@@ -80,7 +80,7 @@ $Manifest = @{
     {{/psData}}
 
     RootModule = '{{{packageName}}}.psm1'
-    Guid = '{{packageGuid}}' # Has to be static, otherwise each new build will be considered different module
+    Guid = '{{=<% %>=}}{<%packageGuid%>}<%={{ }}=%>' # Has to be static, otherwise each new build will be considered different module
 
     PowerShellVersion = '{{{powershellVersion}}}'
     

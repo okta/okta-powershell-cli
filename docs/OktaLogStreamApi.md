@@ -81,12 +81,12 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$HrefObjectHints = Initialize-HrefObjectHints -Allow "DELETE"
-$HrefObject = Initialize-HrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
+$HrefObjectHints = Initialize-OktaHrefObjectHints -Allow "DELETE"
+$HrefObject = Initialize-OktaHrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
 
-$LogStreamLinks = Initialize-LogStreamLinks -Self $HrefObject -Activate $HrefObject -Deactivate $HrefObject
+$LogStreamLinks = Initialize-OktaLogStreamLinks -Self $HrefObject -Activate $HrefObject -Deactivate $HrefObject
 
-$LogStream = Initialize-LogStream -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Status "ACTIVE" -Type "aws_eventbridge" -Links $LogStreamLinks # LogStream | 
+$LogStream = Initialize-OktaLogStream -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Status "ACTIVE" -Type "aws_eventbridge" -Links $LogStreamLinks # LogStream | 
 
 # Create a Log Stream
 try {
@@ -344,12 +344,12 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $LogStreamId = "abcd1234" # String | id of the log stream
-$HrefObjectHints = Initialize-HrefObjectHints -Allow "DELETE"
-$HrefObject = Initialize-HrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
+$HrefObjectHints = Initialize-OktaHrefObjectHints -Allow "DELETE"
+$HrefObject = Initialize-OktaHrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
 
-$LogStreamLinks = Initialize-LogStreamLinks -Self $HrefObject -Activate $HrefObject -Deactivate $HrefObject
+$LogStreamLinks = Initialize-OktaLogStreamLinks -Self $HrefObject -Activate $HrefObject -Deactivate $HrefObject
 
-$LogStream = Initialize-LogStream -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Status "ACTIVE" -Type "aws_eventbridge" -Links $LogStreamLinks # LogStream | 
+$LogStream = Initialize-OktaLogStream -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Status "ACTIVE" -Type "aws_eventbridge" -Links $LogStreamLinks # LogStream | 
 
 # Replace a Log Stream
 try {

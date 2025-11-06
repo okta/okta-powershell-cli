@@ -20,4 +20,3 @@ enum ApplicationCredentialsSigningUse {
     # enum value: "sig"
     sig
 }
-

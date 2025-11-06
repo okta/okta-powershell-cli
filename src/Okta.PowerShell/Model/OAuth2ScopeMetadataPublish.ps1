@@ -22,4 +22,3 @@ enum OAuth2ScopeMetadataPublish {
     # enum value: "NO_CLIENTS"
     NO_CLIENTS
 }
-

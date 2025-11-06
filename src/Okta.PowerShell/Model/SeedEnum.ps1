@@ -22,4 +22,3 @@ enum SeedEnum {
     # enum value: "RANDOM"
     RANDOM
 }
-

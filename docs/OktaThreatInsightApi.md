@@ -71,7 +71,7 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$ThreatInsightConfiguration = Initialize-ThreatInsightConfiguration -Action "MyAction" -Created (Get-Date) -ExcludeZones "MyExcludeZones" -LastUpdated (Get-Date) -Links @{ key_example =  } # ThreatInsightConfiguration | 
+$ThreatInsightConfiguration = Initialize-OktaThreatInsightConfiguration -Action "MyAction" -Created (Get-Date) -ExcludeZones "MyExcludeZones" -LastUpdated (Get-Date) -Links @{ key_example =  } # ThreatInsightConfiguration | 
 
 # Update the ThreatInsight Configuration
 try {

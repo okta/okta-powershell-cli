@@ -32,4 +32,3 @@ enum AgentType {
     # enum value: "Radius"
     Radius
 }
-

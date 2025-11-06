@@ -118,7 +118,7 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$RateLimitAdminNotifications = Initialize-RateLimitAdminNotifications -NotificationsEnabled $false # RateLimitAdminNotifications | 
+$RateLimitAdminNotifications = Initialize-OktaRateLimitAdminNotifications -NotificationsEnabled $false # RateLimitAdminNotifications | 
 
 # Replace the Rate Limit Admin Notification Settings
 try {
@@ -168,8 +168,8 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$PerClientRateLimitSettingsUseCaseModeOverrides = Initialize-PerClientRateLimitSettingsUseCaseModeOverrides -LOGINPAGE "DISABLE" -OAUTH2AUTHORIZE "DISABLE" -OIEAPPINTENT "DISABLE"
-$PerClientRateLimitSettings = Initialize-PerClientRateLimitSettings -DefaultMode "DISABLE" -UseCaseModeOverrides $PerClientRateLimitSettingsUseCaseModeOverrides # PerClientRateLimitSettings | 
+$PerClientRateLimitSettingsUseCaseModeOverrides = Initialize-OktaPerClientRateLimitSettingsUseCaseModeOverrides -LOGINPAGE "DISABLE" -OAUTH2AUTHORIZE "DISABLE" -OIEAPPINTENT "DISABLE"
+$PerClientRateLimitSettings = Initialize-OktaPerClientRateLimitSettings -DefaultMode "DISABLE" -UseCaseModeOverrides $PerClientRateLimitSettingsUseCaseModeOverrides # PerClientRateLimitSettings | 
 
 # Replace the Per-Client Rate Limit Settings
 try {

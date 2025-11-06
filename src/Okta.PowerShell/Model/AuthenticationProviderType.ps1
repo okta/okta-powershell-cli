@@ -30,4 +30,3 @@ enum AuthenticationProviderType {
     # enum value: "SOCIAL"
     SOCIAL
 }
-

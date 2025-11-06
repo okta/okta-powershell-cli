@@ -30,4 +30,3 @@ enum AgentUpdateJobStatus {
     # enum value: "Success"
     Success
 }
-

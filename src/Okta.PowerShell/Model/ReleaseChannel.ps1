@@ -26,4 +26,3 @@ enum ReleaseChannel {
     # enum value: "TEST"
     TEST
 }
-

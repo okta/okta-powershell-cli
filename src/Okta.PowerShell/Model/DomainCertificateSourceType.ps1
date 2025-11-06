@@ -22,4 +22,3 @@ enum DomainCertificateSourceType {
     # enum value: "OKTA_MANAGED"
     OKTA_MANAGED
 }
-

@@ -20,4 +20,3 @@ enum MultifactorEnrollmentPolicySettingsType {
     # enum value: "AUTHENTICATORS"
     AUTHENTICATORS
 }
-

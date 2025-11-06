@@ -38,7 +38,7 @@ $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $UserId = "MyUserId" # String | 
 $FactorId = "MyFactorId" # String | 
-$ActivateFactorRequest = Initialize-ActivateFactorRequest -Attestation "MyAttestation" -ClientData "MyClientData" -PassCode "MyPassCode" -RegistrationData "MyRegistrationData" -StateToken "MyStateToken" # ActivateFactorRequest |  (optional)
+$ActivateFactorRequest = Initialize-OktaActivateFactorRequest -Attestation "MyAttestation" -ClientData "MyClientData" -PassCode "MyPassCode" -RegistrationData "MyRegistrationData" -StateToken "MyStateToken" # ActivateFactorRequest |  (optional)
 
 # Activate a Factor
 try {
@@ -152,8 +152,8 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $UserId = "MyUserId" # String | 
-$VerifyFactorRequest = Initialize-VerifyFactorRequest -ActivationToken "MyActivationToken" -Answer "MyAnswer" -Attestation "MyAttestation" -ClientData "MyClientData" -NextPassCode "MyNextPassCode" -PassCode "MyPassCode" -RegistrationData "MyRegistrationData" -StateToken "MyStateToken"
-$UserFactor = Initialize-UserFactor -Created (Get-Date) -FactorType "call" -Id "MyId" -LastUpdated (Get-Date) -Provider "CUSTOM" -Status "ACTIVE" -Verify $VerifyFactorRequest -Embedded @{ key_example =  } -Links @{ key_example =  } # UserFactor | Factor
+$VerifyFactorRequest = Initialize-OktaVerifyFactorRequest -ActivationToken "MyActivationToken" -Answer "MyAnswer" -Attestation "MyAttestation" -ClientData "MyClientData" -NextPassCode "MyNextPassCode" -PassCode "MyPassCode" -RegistrationData "MyRegistrationData" -StateToken "MyStateToken"
+$UserFactor = Initialize-OktaUserFactor -Created (Get-Date) -FactorType "call" -Id "MyId" -LastUpdated (Get-Date) -Provider "CUSTOM" -Status "ACTIVE" -Verify $VerifyFactorRequest -Embedded @{ key_example =  } -Links @{ key_example =  } # UserFactor | Factor
 $UpdatePhone = $true # Boolean |  (optional) (default to $false)
 $TemplateId = "MyTemplateId" # String | id of SMS template (only for SMS factor) (optional)
 $TokenLifetimeSeconds = 56 # Int32 |  (optional) (default to 300)
@@ -472,8 +472,8 @@ $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $UserId = "MyUserId" # String | 
 $FactorId = "MyFactorId" # String | 
-$VerifyFactorRequest = Initialize-VerifyFactorRequest -ActivationToken "MyActivationToken" -Answer "MyAnswer" -Attestation "MyAttestation" -ClientData "MyClientData" -NextPassCode "MyNextPassCode" -PassCode "MyPassCode" -RegistrationData "MyRegistrationData" -StateToken "MyStateToken"
-$UserFactor = Initialize-UserFactor -Created (Get-Date) -FactorType "call" -Id "MyId" -LastUpdated (Get-Date) -Provider "CUSTOM" -Status "ACTIVE" -Verify $VerifyFactorRequest -Embedded @{ key_example =  } -Links @{ key_example =  } # UserFactor | Factor
+$VerifyFactorRequest = Initialize-OktaVerifyFactorRequest -ActivationToken "MyActivationToken" -Answer "MyAnswer" -Attestation "MyAttestation" -ClientData "MyClientData" -NextPassCode "MyNextPassCode" -PassCode "MyPassCode" -RegistrationData "MyRegistrationData" -StateToken "MyStateToken"
+$UserFactor = Initialize-OktaUserFactor -Created (Get-Date) -FactorType "call" -Id "MyId" -LastUpdated (Get-Date) -Provider "CUSTOM" -Status "ACTIVE" -Verify $VerifyFactorRequest -Embedded @{ key_example =  } -Links @{ key_example =  } # UserFactor | Factor
 $TemplateId = "MyTemplateId" # String | id of SMS template (only for SMS factor) (optional)
 
 # Resend factor enrollment
@@ -541,7 +541,7 @@ $TokenLifetimeSeconds = 56 # Int32 |  (optional) (default to 300)
 $XForwardedFor = "MyXForwardedFor" # String |  (optional)
 $UserAgent = "MyUserAgent" # String |  (optional)
 $AcceptLanguage = "MyAcceptLanguage" # String |  (optional)
-$VerifyFactorRequest = Initialize-VerifyFactorRequest -ActivationToken "MyActivationToken" -Answer "MyAnswer" -Attestation "MyAttestation" -ClientData "MyClientData" -NextPassCode "MyNextPassCode" -PassCode "MyPassCode" -RegistrationData "MyRegistrationData" -StateToken "MyStateToken" # VerifyFactorRequest |  (optional)
+$VerifyFactorRequest = Initialize-OktaVerifyFactorRequest -ActivationToken "MyActivationToken" -Answer "MyAnswer" -Attestation "MyAttestation" -ClientData "MyClientData" -NextPassCode "MyNextPassCode" -PassCode "MyPassCode" -RegistrationData "MyRegistrationData" -StateToken "MyStateToken" # VerifyFactorRequest |  (optional)
 
 # Verify an MFA Factor
 try {

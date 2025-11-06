@@ -22,4 +22,3 @@ enum OAuth2ScopeConsentGrantSource {
     # enum value: "END_USER"
     END_USER
 }
-

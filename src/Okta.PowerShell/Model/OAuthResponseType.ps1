@@ -24,4 +24,3 @@ enum OAuthResponseType {
     # enum value: "token"
     token
 }
-

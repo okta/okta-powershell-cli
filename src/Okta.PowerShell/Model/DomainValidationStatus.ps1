@@ -26,4 +26,3 @@ enum DomainValidationStatus {
     # enum value: "VERIFIED"
     VERIFIED
 }
-

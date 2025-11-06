@@ -193,7 +193,7 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$Policy = Initialize-Policy -Created (Get-Date) -Description "MyDescription" -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Priority 0 -Status "ACTIVE" -System $false -Type "ACCESS_POLICY" -Embedded @{ key_example =  } -Links @{ key_example =  } # Policy | 
+$Policy = Initialize-OktaPolicy -Created (Get-Date) -Description "MyDescription" -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Priority 0 -Status "ACTIVE" -System $false -Type "ACCESS_POLICY" -Embedded @{ key_example =  } -Links @{ key_example =  } # Policy | 
 $Activate = $true # Boolean |  (optional) (default to $true)
 
 # Create a Policy
@@ -247,7 +247,7 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $PolicyId = "MyPolicyId" # String | 
-$PolicyRule = Initialize-PolicyRule -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Priority 0 -Status "ACTIVE" -System $false -Type "ACCESS_POLICY" # PolicyRule | 
+$PolicyRule = Initialize-OktaPolicyRule -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Priority 0 -Status "ACTIVE" -System $false -Type "ACCESS_POLICY" # PolicyRule | 
 
 # Create a Policy Rule
 try {
@@ -718,7 +718,7 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $PolicyId = "MyPolicyId" # String | 
-$Policy = Initialize-Policy -Created (Get-Date) -Description "MyDescription" -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Priority 0 -Status "ACTIVE" -System $false -Type "ACCESS_POLICY" -Embedded @{ key_example =  } -Links @{ key_example =  } # Policy | 
+$Policy = Initialize-OktaPolicy -Created (Get-Date) -Description "MyDescription" -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Priority 0 -Status "ACTIVE" -System $false -Type "ACCESS_POLICY" -Embedded @{ key_example =  } -Links @{ key_example =  } # Policy | 
 
 # Replace a Policy
 try {
@@ -773,7 +773,7 @@ $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $PolicyId = "MyPolicyId" # String | 
 $RuleId = "MyRuleId" # String | 
-$PolicyRule = Initialize-PolicyRule -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Priority 0 -Status "ACTIVE" -System $false -Type "ACCESS_POLICY" # PolicyRule | 
+$PolicyRule = Initialize-OktaPolicyRule -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Priority 0 -Status "ACTIVE" -System $false -Type "ACCESS_POLICY" # PolicyRule | 
 
 # Replace a Policy Rule
 try {

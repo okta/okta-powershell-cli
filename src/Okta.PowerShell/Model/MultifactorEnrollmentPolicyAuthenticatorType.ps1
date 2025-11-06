@@ -48,4 +48,3 @@ enum MultifactorEnrollmentPolicyAuthenticatorType {
     # enum value: "yubikey_token"
     yubikey_token
 }
-

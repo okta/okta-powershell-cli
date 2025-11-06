@@ -24,4 +24,3 @@ enum UserSchemaAttributeMasterType {
     # enum value: "PROFILE_MASTER"
     PROFILE_MASTER
 }
-

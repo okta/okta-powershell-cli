@@ -20,4 +20,3 @@ enum DomainCertificateType {
     # enum value: "PEM"
     PEM
 }
-

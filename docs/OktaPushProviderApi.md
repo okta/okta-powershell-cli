@@ -29,12 +29,12 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$HrefObjectHints = Initialize-HrefObjectHints -Allow "DELETE"
-$HrefObject = Initialize-HrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
+$HrefObjectHints = Initialize-OktaHrefObjectHints -Allow "DELETE"
+$HrefObject = Initialize-OktaHrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
 
-$ApiTokenLink = Initialize-ApiTokenLink -Self $HrefObject
+$ApiTokenLink = Initialize-OktaApiTokenLink -Self $HrefObject
 
-$PushProvider = Initialize-PushProvider -Id "MyId" -LastUpdatedDate "MyLastUpdatedDate" -Name "MyName" -ProviderType "APNS" -Links $ApiTokenLink # PushProvider | 
+$PushProvider = Initialize-OktaPushProvider -Id "MyId" -LastUpdatedDate "MyLastUpdatedDate" -Name "MyName" -ProviderType "APNS" -Links $ApiTokenLink # PushProvider | 
 
 # Create a Push Provider
 try {
@@ -236,12 +236,12 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $PushProviderId = "MyPushProviderId" # String | Id of the push provider
-$HrefObjectHints = Initialize-HrefObjectHints -Allow "DELETE"
-$HrefObject = Initialize-HrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
+$HrefObjectHints = Initialize-OktaHrefObjectHints -Allow "DELETE"
+$HrefObject = Initialize-OktaHrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
 
-$ApiTokenLink = Initialize-ApiTokenLink -Self $HrefObject
+$ApiTokenLink = Initialize-OktaApiTokenLink -Self $HrefObject
 
-$PushProvider = Initialize-PushProvider -Id "MyId" -LastUpdatedDate "MyLastUpdatedDate" -Name "MyName" -ProviderType "APNS" -Links $ApiTokenLink # PushProvider | 
+$PushProvider = Initialize-OktaPushProvider -Id "MyId" -LastUpdatedDate "MyLastUpdatedDate" -Name "MyName" -ProviderType "APNS" -Links $ApiTokenLink # PushProvider | 
 
 # Replace a Push Provider
 try {

@@ -29,16 +29,16 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$DeviceAssuranceDiskEncryptionType = Initialize-DeviceAssuranceDiskEncryptionType -Include "ALL_INTERNAL_VOLUMES"
-$VersionObject = Initialize-VersionObject -Minimum "MyMinimum"
-$DeviceAssuranceScreenLockType = Initialize-DeviceAssuranceScreenLockType -Include "BIOMETRIC"
+$DeviceAssuranceDiskEncryptionType = Initialize-OktaDeviceAssuranceDiskEncryptionType -Include "ALL_INTERNAL_VOLUMES"
+$VersionObject = Initialize-OktaVersionObject -Minimum "MyMinimum"
+$DeviceAssuranceScreenLockType = Initialize-OktaDeviceAssuranceScreenLockType -Include "BIOMETRIC"
 
-$HrefObjectHints = Initialize-HrefObjectHints -Allow "DELETE"
-$HrefObject = Initialize-HrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
+$HrefObjectHints = Initialize-OktaHrefObjectHints -Allow "DELETE"
+$HrefObject = Initialize-OktaHrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
 
-$ApiTokenLink = Initialize-ApiTokenLink -Self $HrefObject
+$ApiTokenLink = Initialize-OktaApiTokenLink -Self $HrefObject
 
-$DeviceAssurance = Initialize-DeviceAssurance -CreatedBy "MyCreatedBy" -CreatedDate "MyCreatedDate" -DiskEncryptionType $DeviceAssuranceDiskEncryptionType -Id "MyId" -Jailbreak $false -LastUpdatedBy "MyLastUpdatedBy" -LastUpdatedDate "MyLastUpdatedDate" -Name "MyName" -OsVersion $VersionObject -Platform "ANDROID" -ScreenLockType $DeviceAssuranceScreenLockType -SecureHardwarePresent $false -Links $ApiTokenLink # DeviceAssurance | 
+$DeviceAssurance = Initialize-OktaDeviceAssurance -CreatedBy "MyCreatedBy" -CreatedDate "MyCreatedDate" -DiskEncryptionType $DeviceAssuranceDiskEncryptionType -Id "MyId" -Jailbreak $false -LastUpdatedBy "MyLastUpdatedBy" -LastUpdatedDate "MyLastUpdatedDate" -Name "MyName" -OsVersion $VersionObject -Platform "ANDROID" -ScreenLockType $DeviceAssuranceScreenLockType -SecureHardwarePresent $false -Links $ApiTokenLink # DeviceAssurance | 
 
 # Create a Device Assurance Policy
 try {
@@ -235,16 +235,16 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $DeviceAssuranceId = "MyDeviceAssuranceId" # String | Id of the Device Assurance Policy
-$DeviceAssuranceDiskEncryptionType = Initialize-DeviceAssuranceDiskEncryptionType -Include "ALL_INTERNAL_VOLUMES"
-$VersionObject = Initialize-VersionObject -Minimum "MyMinimum"
-$DeviceAssuranceScreenLockType = Initialize-DeviceAssuranceScreenLockType -Include "BIOMETRIC"
+$DeviceAssuranceDiskEncryptionType = Initialize-OktaDeviceAssuranceDiskEncryptionType -Include "ALL_INTERNAL_VOLUMES"
+$VersionObject = Initialize-OktaVersionObject -Minimum "MyMinimum"
+$DeviceAssuranceScreenLockType = Initialize-OktaDeviceAssuranceScreenLockType -Include "BIOMETRIC"
 
-$HrefObjectHints = Initialize-HrefObjectHints -Allow "DELETE"
-$HrefObject = Initialize-HrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
+$HrefObjectHints = Initialize-OktaHrefObjectHints -Allow "DELETE"
+$HrefObject = Initialize-OktaHrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
 
-$ApiTokenLink = Initialize-ApiTokenLink -Self $HrefObject
+$ApiTokenLink = Initialize-OktaApiTokenLink -Self $HrefObject
 
-$DeviceAssurance = Initialize-DeviceAssurance -CreatedBy "MyCreatedBy" -CreatedDate "MyCreatedDate" -DiskEncryptionType $DeviceAssuranceDiskEncryptionType -Id "MyId" -Jailbreak $false -LastUpdatedBy "MyLastUpdatedBy" -LastUpdatedDate "MyLastUpdatedDate" -Name "MyName" -OsVersion $VersionObject -Platform "ANDROID" -ScreenLockType $DeviceAssuranceScreenLockType -SecureHardwarePresent $false -Links $ApiTokenLink # DeviceAssurance | 
+$DeviceAssurance = Initialize-OktaDeviceAssurance -CreatedBy "MyCreatedBy" -CreatedDate "MyCreatedDate" -DiskEncryptionType $DeviceAssuranceDiskEncryptionType -Id "MyId" -Jailbreak $false -LastUpdatedBy "MyLastUpdatedBy" -LastUpdatedDate "MyLastUpdatedDate" -Name "MyName" -OsVersion $VersionObject -Platform "ANDROID" -ScreenLockType $DeviceAssuranceScreenLockType -SecureHardwarePresent $false -Links $ApiTokenLink # DeviceAssurance | 
 
 # Replace a Device Assurance Policy
 try {

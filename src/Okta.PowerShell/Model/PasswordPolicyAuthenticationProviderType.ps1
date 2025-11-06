@@ -26,4 +26,3 @@ enum PasswordPolicyAuthenticationProviderType {
     # enum value: "OKTA"
     OKTA
 }
-

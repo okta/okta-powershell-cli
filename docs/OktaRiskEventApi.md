@@ -25,8 +25,8 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$RiskEventSubject = Initialize-RiskEventSubject -Ip "MyIp" -Message "MyMessage" -RiskLevel "HIGH"
-$RiskEvent = Initialize-RiskEvent -ExpiresAt (Get-Date) -Subjects $RiskEventSubject -Timestamp (Get-Date) # RiskEvent[] | 
+$RiskEventSubject = Initialize-OktaRiskEventSubject -Ip "MyIp" -Message "MyMessage" -RiskLevel "HIGH"
+$RiskEvent = Initialize-OktaRiskEvent -ExpiresAt (Get-Date) -Subjects $RiskEventSubject -Timestamp (Get-Date) # RiskEvent[] | 
 
 # Send multiple Risk Events
 try {

@@ -18,8 +18,7 @@ No description available.
 
 enum ProtocolEndpointBinding {
     # enum value: "HTTP-POST"
-    POST
+    HTTP_POST
     # enum value: "HTTP-REDIRECT"
-    REDIRECT
+    HTTP_REDIRECT
 }
-

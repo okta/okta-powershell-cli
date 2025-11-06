@@ -22,4 +22,3 @@ enum OpenIdConnectRefreshTokenRotationType {
     # enum value: "STATIC"
     STATIC
 }
-

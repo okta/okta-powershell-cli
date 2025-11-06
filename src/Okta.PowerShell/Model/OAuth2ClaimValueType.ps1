@@ -24,4 +24,3 @@ enum OAuth2ClaimValueType {
     # enum value: "SYSTEM"
     SYSTEM
 }
-

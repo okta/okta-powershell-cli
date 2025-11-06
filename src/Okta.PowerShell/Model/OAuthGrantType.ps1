@@ -30,4 +30,3 @@ enum OAuthGrantType {
     # enum value: "refresh_token"
     refresh_token
 }
-

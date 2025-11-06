@@ -81,9 +81,9 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$NetworkZoneAddress = Initialize-NetworkZoneAddress -Type "CIDR" -Value "MyValue"
-$NetworkZoneLocation = Initialize-NetworkZoneLocation -Country "MyCountry" -Region "MyRegion"
-$NetworkZone = Initialize-NetworkZone -Asns "MyAsns" -Created (Get-Date) -Gateways $NetworkZoneAddress -Id "MyId" -LastUpdated (Get-Date) -Locations $NetworkZoneLocation -Name "MyName" -Proxies $NetworkZoneAddress -ProxyType "MyProxyType" -Status "ACTIVE" -System $false -Type "DYNAMIC" -Usage "BLOCKLIST" -Links @{ key_example =  } # NetworkZone | 
+$NetworkZoneAddress = Initialize-OktaNetworkZoneAddress -Type "CIDR" -Value "MyValue"
+$NetworkZoneLocation = Initialize-OktaNetworkZoneLocation -Country "MyCountry" -Region "MyRegion"
+$NetworkZone = Initialize-OktaNetworkZone -Asns "MyAsns" -Created (Get-Date) -Gateways $NetworkZoneAddress -Id "MyId" -LastUpdated (Get-Date) -Locations $NetworkZoneLocation -Name "MyName" -Proxies $NetworkZoneAddress -ProxyType "MyProxyType" -Status "ACTIVE" -System $false -Type "DYNAMIC" -Usage "BLOCKLIST" -Links @{ key_example =  } # NetworkZone | 
 
 # Create a Network Zone
 try {
@@ -341,9 +341,9 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $ZoneId = "MyZoneId" # String | 
-$NetworkZoneAddress = Initialize-NetworkZoneAddress -Type "CIDR" -Value "MyValue"
-$NetworkZoneLocation = Initialize-NetworkZoneLocation -Country "MyCountry" -Region "MyRegion"
-$NetworkZone = Initialize-NetworkZone -Asns "MyAsns" -Created (Get-Date) -Gateways $NetworkZoneAddress -Id "MyId" -LastUpdated (Get-Date) -Locations $NetworkZoneLocation -Name "MyName" -Proxies $NetworkZoneAddress -ProxyType "MyProxyType" -Status "ACTIVE" -System $false -Type "DYNAMIC" -Usage "BLOCKLIST" -Links @{ key_example =  } # NetworkZone | 
+$NetworkZoneAddress = Initialize-OktaNetworkZoneAddress -Type "CIDR" -Value "MyValue"
+$NetworkZoneLocation = Initialize-OktaNetworkZoneLocation -Country "MyCountry" -Region "MyRegion"
+$NetworkZone = Initialize-OktaNetworkZone -Asns "MyAsns" -Created (Get-Date) -Gateways $NetworkZoneAddress -Id "MyId" -LastUpdated (Get-Date) -Locations $NetworkZoneLocation -Name "MyName" -Proxies $NetworkZoneAddress -ProxyType "MyProxyType" -Status "ACTIVE" -System $false -Type "DYNAMIC" -Usage "BLOCKLIST" -Links @{ key_example =  } # NetworkZone | 
 
 # Replace a Network Zone
 try {

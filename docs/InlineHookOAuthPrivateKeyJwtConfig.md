@@ -4,6 +4,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **HookKeyId** | **String** |  | [optional] 
+**AuthType** | **String** |  | [optional] 
+**ClientId** | **String** |  | [optional] 
+**Scope** | **String** |  | [optional] 
+**TokenUrl** | **String** |  | [optional] 
 **AuthScheme** | [**InlineHookChannelConfigAuthScheme**](InlineHookChannelConfigAuthScheme.md) |  | [optional] 
 **Headers** | [**InlineHookChannelConfigHeaders[]**](InlineHookChannelConfigHeaders.md) |  | [optional] 
 **Method** | **String** |  | [optional] 
@@ -14,6 +18,10 @@ Name | Type | Description | Notes
 - Prepare the resource
 ```powershell
 $InlineHookOAuthPrivateKeyJwtConfig = Initialize-Okta.PowerShellInlineHookOAuthPrivateKeyJwtConfig  -HookKeyId null `
+ -AuthType null `
+ -ClientId null `
+ -Scope null `
+ -TokenUrl null `
  -AuthScheme null `
  -Headers null `
  -Method null `

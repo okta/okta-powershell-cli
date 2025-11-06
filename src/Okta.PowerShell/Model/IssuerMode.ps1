@@ -24,4 +24,3 @@ enum IssuerMode {
     # enum value: "ORG_URL"
     ORG_URL
 }
-

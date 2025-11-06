@@ -15,6 +15,7 @@
     "outputDir" : "../",
     "inputSpec" : "./management.yaml", 
     "packageVersion" : "2.0.2",
+    "packageGuid" : "E2BB23D9-1EB2-4082-B5E3-198D6F3FE65E",
     "packageDescription" : "Official PowerShell CLI for the Okta API",
     "packageTitle" : "Official PowerShell for the Okta API",
     "packageCompany" : "Okta, Inc.",

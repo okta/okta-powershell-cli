@@ -30,4 +30,3 @@ enum AgentUpdateInstanceStatus {
     # enum value: "Success"
     Success
 }
-

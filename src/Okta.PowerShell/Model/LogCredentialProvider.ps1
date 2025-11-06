@@ -32,4 +32,3 @@ enum LogCredentialProvider {
     # enum value: "YUBIKEY"
     YUBIKEY
 }
-

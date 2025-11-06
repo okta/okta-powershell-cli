@@ -24,4 +24,3 @@ enum GroupType {
     # enum value: "OKTA_GROUP"
     OKTA_GROUP
 }
-

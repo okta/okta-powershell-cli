@@ -26,4 +26,3 @@ enum Platform {
     # enum value: "WINDOWS"
     WINDOWS
 }
-

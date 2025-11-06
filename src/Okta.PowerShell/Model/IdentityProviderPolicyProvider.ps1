@@ -24,4 +24,3 @@ enum IdentityProviderPolicyProvider {
     # enum value: "SPECIFIC_IDP"
     SPECIFIC_IDP
 }
-

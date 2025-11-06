@@ -28,4 +28,3 @@ enum UserSchemaAttributeType {
     # enum value: "string"
     string
 }
-

@@ -22,4 +22,3 @@ enum CAPTCHAType {
     # enum value: "RECAPTCHA_V2"
     RECAPTCHA_V2
 }
-

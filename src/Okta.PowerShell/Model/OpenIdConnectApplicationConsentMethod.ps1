@@ -22,4 +22,3 @@ enum OpenIdConnectApplicationConsentMethod {
     # enum value: "TRUSTED"
     TRUSTED
 }
-

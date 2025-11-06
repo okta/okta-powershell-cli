@@ -22,4 +22,3 @@ enum ProfileMappingPropertyPushStatus {
     # enum value: "PUSH"
     PUSH
 }
-

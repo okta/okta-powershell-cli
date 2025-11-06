@@ -26,4 +26,3 @@ enum ProtocolType {
     # enum value: "SAML2"
     SAML2
 }
-

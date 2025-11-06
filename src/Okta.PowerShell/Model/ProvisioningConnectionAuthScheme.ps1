@@ -22,4 +22,3 @@ enum ProvisioningConnectionAuthScheme {
     # enum value: "UNKNOWN"
     UNKNOWN
 }
-

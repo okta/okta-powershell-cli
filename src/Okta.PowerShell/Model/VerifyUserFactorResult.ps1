@@ -38,4 +38,3 @@ enum VerifyUserFactorResult {
     # enum value: "WAITING"
     WAITING
 }
-

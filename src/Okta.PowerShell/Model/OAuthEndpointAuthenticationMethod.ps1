@@ -28,4 +28,3 @@ enum OAuthEndpointAuthenticationMethod {
     # enum value: "private_key_jwt"
     private_key_jwt
 }
-

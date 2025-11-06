@@ -22,4 +22,3 @@ enum PolicyRuleAuthContextType {
     # enum value: "RADIUS"
     RADIUS
 }
-

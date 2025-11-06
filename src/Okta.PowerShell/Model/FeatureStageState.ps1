@@ -22,4 +22,3 @@ enum FeatureStageState {
     # enum value: "OPEN"
     OPEN
 }
-

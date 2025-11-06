@@ -325,29 +325,29 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AppInstanceId = "MyAppInstanceId" # String | 
-$UserSchemaAttributeEnum = Initialize-UserSchemaAttributeEnum -Const "MyConst" -Title "MyTitle"
-$UserSchemaAttributeItems = Initialize-UserSchemaAttributeItems -Enum "MyEnum" -OneOf $UserSchemaAttributeEnum -Type "MyType"
+$UserSchemaAttributeEnum = Initialize-OktaUserSchemaAttributeEnum -Const "MyConst" -Title "MyTitle"
+$UserSchemaAttributeItems = Initialize-OktaUserSchemaAttributeItems -Enum "MyEnum" -OneOf $UserSchemaAttributeEnum -Type "MyType"
 
-$UserSchemaAttributeMasterPriority = Initialize-UserSchemaAttributeMasterPriority -Type "MyType" -Value "MyValue"
-$UserSchemaAttributeMaster = Initialize-UserSchemaAttributeMaster -Priority $UserSchemaAttributeMasterPriority -Type "OKTA"
+$UserSchemaAttributeMasterPriority = Initialize-OktaUserSchemaAttributeMasterPriority -Type "MyType" -Value "MyValue"
+$UserSchemaAttributeMaster = Initialize-OktaUserSchemaAttributeMaster -Priority $UserSchemaAttributeMasterPriority -Type "OKTA"
 
-$UserSchemaAttributePermission = Initialize-UserSchemaAttributePermission -Action "MyAction" -Principal "MyPrincipal"
-$UserSchemaAttribute = Initialize-UserSchemaAttribute -Description "MyDescription" -Enum "MyEnum" -ExternalName "MyExternalName" -ExternalNamespace "MyExternalNamespace" -Items $UserSchemaAttributeItems -Master $UserSchemaAttributeMaster -MaxLength 0 -MinLength 0 -Mutability "MyMutability" -OneOf $UserSchemaAttributeEnum -Pattern "MyPattern" -Permissions $UserSchemaAttributePermission -Required $false -Scope "NONE" -Title "MyTitle" -Type "array" -Union "DISABLE" -Unique "MyUnique"
+$UserSchemaAttributePermission = Initialize-OktaUserSchemaAttributePermission -Action "MyAction" -Principal "MyPrincipal"
+$UserSchemaAttribute = Initialize-OktaUserSchemaAttribute -Description "MyDescription" -Enum "MyEnum" -ExternalName "MyExternalName" -ExternalNamespace "MyExternalNamespace" -Items $UserSchemaAttributeItems -Master $UserSchemaAttributeMaster -MaxLength 0 -MinLength 0 -Mutability "MyMutability" -OneOf $UserSchemaAttributeEnum -Pattern "MyPattern" -Permissions $UserSchemaAttributePermission -Required $false -Scope "NONE" -Title "MyTitle" -Type "array" -Union "DISABLE" -Unique "MyUnique"
 
-$UserSchemaBaseProperties = Initialize-UserSchemaBaseProperties -City $UserSchemaAttribute -CostCenter $UserSchemaAttribute -CountryCode $UserSchemaAttribute -Department $UserSchemaAttribute -DisplayName $UserSchemaAttribute -Division $UserSchemaAttribute -Email $UserSchemaAttribute -EmployeeNumber $UserSchemaAttribute -FirstName $UserSchemaAttribute -HonorificPrefix $UserSchemaAttribute -HonorificSuffix $UserSchemaAttribute -LastName $UserSchemaAttribute -Locale $UserSchemaAttribute -Login $UserSchemaAttribute -Manager $UserSchemaAttribute -ManagerId $UserSchemaAttribute -MiddleName $UserSchemaAttribute -MobilePhone $UserSchemaAttribute -NickName $UserSchemaAttribute -Organization $UserSchemaAttribute -PostalAddress $UserSchemaAttribute -PreferredLanguage $UserSchemaAttribute -PrimaryPhone $UserSchemaAttribute -ProfileUrl $UserSchemaAttribute -SecondEmail $UserSchemaAttribute -State $UserSchemaAttribute -StreetAddress $UserSchemaAttribute -Timezone $UserSchemaAttribute -Title $UserSchemaAttribute -UserType $UserSchemaAttribute -ZipCode $UserSchemaAttribute
+$UserSchemaBaseProperties = Initialize-OktaUserSchemaBaseProperties -City $UserSchemaAttribute -CostCenter $UserSchemaAttribute -CountryCode $UserSchemaAttribute -Department $UserSchemaAttribute -DisplayName $UserSchemaAttribute -Division $UserSchemaAttribute -Email $UserSchemaAttribute -EmployeeNumber $UserSchemaAttribute -FirstName $UserSchemaAttribute -HonorificPrefix $UserSchemaAttribute -HonorificSuffix $UserSchemaAttribute -LastName $UserSchemaAttribute -Locale $UserSchemaAttribute -Login $UserSchemaAttribute -Manager $UserSchemaAttribute -ManagerId $UserSchemaAttribute -MiddleName $UserSchemaAttribute -MobilePhone $UserSchemaAttribute -NickName $UserSchemaAttribute -Organization $UserSchemaAttribute -PostalAddress $UserSchemaAttribute -PreferredLanguage $UserSchemaAttribute -PrimaryPhone $UserSchemaAttribute -ProfileUrl $UserSchemaAttribute -SecondEmail $UserSchemaAttribute -State $UserSchemaAttribute -StreetAddress $UserSchemaAttribute -Timezone $UserSchemaAttribute -Title $UserSchemaAttribute -UserType $UserSchemaAttribute -ZipCode $UserSchemaAttribute
 
-$UserSchemaBase = Initialize-UserSchemaBase -Id "MyId" -Properties $UserSchemaBaseProperties -Required "MyRequired" -Type "MyType"
+$UserSchemaBase = Initialize-OktaUserSchemaBase -Id "MyId" -Properties $UserSchemaBaseProperties -Required "MyRequired" -Type "MyType"
 
-$UserSchemaPublic = Initialize-UserSchemaPublic -Id "MyId" -Properties @{ key_example = $UserSchemaAttribute } -Required "MyRequired" -Type "MyType"
+$UserSchemaPublic = Initialize-OktaUserSchemaPublic -Id "MyId" -Properties @{ key_example = $UserSchemaAttribute } -Required "MyRequired" -Type "MyType"
 
-$UserSchemaDefinitions = Initialize-UserSchemaDefinitions -Base $UserSchemaBase -Custom $UserSchemaPublic
+$UserSchemaDefinitions = Initialize-OktaUserSchemaDefinitions -Base $UserSchemaBase -Custom $UserSchemaPublic
 
-$UserSchemaPropertiesProfileItem = Initialize-UserSchemaPropertiesProfileItem -Ref "MyRef"
-$UserSchemaPropertiesProfile = Initialize-UserSchemaPropertiesProfile -AllOf $UserSchemaPropertiesProfileItem
+$UserSchemaPropertiesProfileItem = Initialize-OktaUserSchemaPropertiesProfileItem -Ref "MyRef"
+$UserSchemaPropertiesProfile = Initialize-OktaUserSchemaPropertiesProfile -AllOf $UserSchemaPropertiesProfileItem
 
-$UserSchemaProperties = Initialize-UserSchemaProperties -VarProfile $UserSchemaPropertiesProfile
+$UserSchemaProperties = Initialize-OktaUserSchemaProperties -VarProfile $UserSchemaPropertiesProfile
 
-$UserSchema = Initialize-UserSchema -Schema "MySchema" -Created "MyCreated" -Definitions $UserSchemaDefinitions -Id "MyId" -LastUpdated "MyLastUpdated" -Name "MyName" -Properties $UserSchemaProperties -Title "MyTitle" -Type "MyType" -Links @{ key_example =  } # UserSchema |  (optional)
+$UserSchema = Initialize-OktaUserSchema -Schema "MySchema" -Created "MyCreated" -Definitions $UserSchemaDefinitions -Id "MyId" -LastUpdated "MyLastUpdated" -Name "MyName" -Properties $UserSchemaProperties -Title "MyTitle" -Type "MyType" -Links @{ key_example =  } # UserSchema |  (optional)
 
 # Update the default Application User Schema for an Application
 try {
@@ -398,29 +398,29 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$UserSchemaAttributeEnum = Initialize-UserSchemaAttributeEnum -Const "MyConst" -Title "MyTitle"
-$UserSchemaAttributeItems = Initialize-UserSchemaAttributeItems -Enum "MyEnum" -OneOf $UserSchemaAttributeEnum -Type "MyType"
+$UserSchemaAttributeEnum = Initialize-OktaUserSchemaAttributeEnum -Const "MyConst" -Title "MyTitle"
+$UserSchemaAttributeItems = Initialize-OktaUserSchemaAttributeItems -Enum "MyEnum" -OneOf $UserSchemaAttributeEnum -Type "MyType"
 
-$UserSchemaAttributeMasterPriority = Initialize-UserSchemaAttributeMasterPriority -Type "MyType" -Value "MyValue"
-$UserSchemaAttributeMaster = Initialize-UserSchemaAttributeMaster -Priority $UserSchemaAttributeMasterPriority -Type "OKTA"
+$UserSchemaAttributeMasterPriority = Initialize-OktaUserSchemaAttributeMasterPriority -Type "MyType" -Value "MyValue"
+$UserSchemaAttributeMaster = Initialize-OktaUserSchemaAttributeMaster -Priority $UserSchemaAttributeMasterPriority -Type "OKTA"
 
-$UserSchemaAttributePermission = Initialize-UserSchemaAttributePermission -Action "MyAction" -Principal "MyPrincipal"
-$GroupSchemaAttribute = Initialize-GroupSchemaAttribute -Description "MyDescription" -Enum "MyEnum" -ExternalName "MyExternalName" -ExternalNamespace "MyExternalNamespace" -Items $UserSchemaAttributeItems -Master $UserSchemaAttributeMaster -MaxLength 0 -MinLength 0 -Mutability "MyMutability" -OneOf $UserSchemaAttributeEnum -Permissions $UserSchemaAttributePermission -Required $false -Scope "NONE" -Title "MyTitle" -Type "array" -Union "DISABLE" -Unique "MyUnique"
+$UserSchemaAttributePermission = Initialize-OktaUserSchemaAttributePermission -Action "MyAction" -Principal "MyPrincipal"
+$GroupSchemaAttribute = Initialize-OktaGroupSchemaAttribute -Description "MyDescription" -Enum "MyEnum" -ExternalName "MyExternalName" -ExternalNamespace "MyExternalNamespace" -Items $UserSchemaAttributeItems -Master $UserSchemaAttributeMaster -MaxLength 0 -MinLength 0 -Mutability "MyMutability" -OneOf $UserSchemaAttributeEnum -Permissions $UserSchemaAttributePermission -Required $false -Scope "NONE" -Title "MyTitle" -Type "array" -Union "DISABLE" -Unique "MyUnique"
 
-$GroupSchemaBaseProperties = Initialize-GroupSchemaBaseProperties -Description $GroupSchemaAttribute -Name $GroupSchemaAttribute
+$GroupSchemaBaseProperties = Initialize-OktaGroupSchemaBaseProperties -Description $GroupSchemaAttribute -Name $GroupSchemaAttribute
 
-$GroupSchemaBase = Initialize-GroupSchemaBase -Id "MyId" -Properties $GroupSchemaBaseProperties -Required "MyRequired" -Type "MyType"
+$GroupSchemaBase = Initialize-OktaGroupSchemaBase -Id "MyId" -Properties $GroupSchemaBaseProperties -Required "MyRequired" -Type "MyType"
 
-$GroupSchemaCustom = Initialize-GroupSchemaCustom -Id "MyId" -Properties @{ key_example = $GroupSchemaAttribute } -Required "MyRequired" -Type "MyType"
+$GroupSchemaCustom = Initialize-OktaGroupSchemaCustom -Id "MyId" -Properties @{ key_example = $GroupSchemaAttribute } -Required "MyRequired" -Type "MyType"
 
-$GroupSchemaDefinitions = Initialize-GroupSchemaDefinitions -Base $GroupSchemaBase -Custom $GroupSchemaCustom
+$GroupSchemaDefinitions = Initialize-OktaGroupSchemaDefinitions -Base $GroupSchemaBase -Custom $GroupSchemaCustom
 
-$UserSchemaPropertiesProfileItem = Initialize-UserSchemaPropertiesProfileItem -Ref "MyRef"
-$UserSchemaPropertiesProfile = Initialize-UserSchemaPropertiesProfile -AllOf $UserSchemaPropertiesProfileItem
+$UserSchemaPropertiesProfileItem = Initialize-OktaUserSchemaPropertiesProfileItem -Ref "MyRef"
+$UserSchemaPropertiesProfile = Initialize-OktaUserSchemaPropertiesProfile -AllOf $UserSchemaPropertiesProfileItem
 
-$UserSchemaProperties = Initialize-UserSchemaProperties -VarProfile $UserSchemaPropertiesProfile
+$UserSchemaProperties = Initialize-OktaUserSchemaProperties -VarProfile $UserSchemaPropertiesProfile
 
-$GroupSchema = Initialize-GroupSchema -Schema "MySchema" -Created "MyCreated" -Definitions $GroupSchemaDefinitions -Description "MyDescription" -Id "MyId" -LastUpdated "MyLastUpdated" -Name "MyName" -Properties $UserSchemaProperties -Title "MyTitle" -Type "MyType" -Links @{ key_example =  } # GroupSchema |  (optional)
+$GroupSchema = Initialize-OktaGroupSchema -Schema "MySchema" -Created "MyCreated" -Definitions $GroupSchemaDefinitions -Description "MyDescription" -Id "MyId" -LastUpdated "MyLastUpdated" -Name "MyName" -Properties $UserSchemaProperties -Title "MyTitle" -Type "MyType" -Links @{ key_example =  } # GroupSchema |  (optional)
 
 # Update the default Group Schema
 try {
@@ -472,29 +472,29 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $SchemaId = "MySchemaId" # String | 
-$UserSchemaAttributeEnum = Initialize-UserSchemaAttributeEnum -Const "MyConst" -Title "MyTitle"
-$UserSchemaAttributeItems = Initialize-UserSchemaAttributeItems -Enum "MyEnum" -OneOf $UserSchemaAttributeEnum -Type "MyType"
+$UserSchemaAttributeEnum = Initialize-OktaUserSchemaAttributeEnum -Const "MyConst" -Title "MyTitle"
+$UserSchemaAttributeItems = Initialize-OktaUserSchemaAttributeItems -Enum "MyEnum" -OneOf $UserSchemaAttributeEnum -Type "MyType"
 
-$UserSchemaAttributeMasterPriority = Initialize-UserSchemaAttributeMasterPriority -Type "MyType" -Value "MyValue"
-$UserSchemaAttributeMaster = Initialize-UserSchemaAttributeMaster -Priority $UserSchemaAttributeMasterPriority -Type "OKTA"
+$UserSchemaAttributeMasterPriority = Initialize-OktaUserSchemaAttributeMasterPriority -Type "MyType" -Value "MyValue"
+$UserSchemaAttributeMaster = Initialize-OktaUserSchemaAttributeMaster -Priority $UserSchemaAttributeMasterPriority -Type "OKTA"
 
-$UserSchemaAttributePermission = Initialize-UserSchemaAttributePermission -Action "MyAction" -Principal "MyPrincipal"
-$UserSchemaAttribute = Initialize-UserSchemaAttribute -Description "MyDescription" -Enum "MyEnum" -ExternalName "MyExternalName" -ExternalNamespace "MyExternalNamespace" -Items $UserSchemaAttributeItems -Master $UserSchemaAttributeMaster -MaxLength 0 -MinLength 0 -Mutability "MyMutability" -OneOf $UserSchemaAttributeEnum -Pattern "MyPattern" -Permissions $UserSchemaAttributePermission -Required $false -Scope "NONE" -Title "MyTitle" -Type "array" -Union "DISABLE" -Unique "MyUnique"
+$UserSchemaAttributePermission = Initialize-OktaUserSchemaAttributePermission -Action "MyAction" -Principal "MyPrincipal"
+$UserSchemaAttribute = Initialize-OktaUserSchemaAttribute -Description "MyDescription" -Enum "MyEnum" -ExternalName "MyExternalName" -ExternalNamespace "MyExternalNamespace" -Items $UserSchemaAttributeItems -Master $UserSchemaAttributeMaster -MaxLength 0 -MinLength 0 -Mutability "MyMutability" -OneOf $UserSchemaAttributeEnum -Pattern "MyPattern" -Permissions $UserSchemaAttributePermission -Required $false -Scope "NONE" -Title "MyTitle" -Type "array" -Union "DISABLE" -Unique "MyUnique"
 
-$UserSchemaBaseProperties = Initialize-UserSchemaBaseProperties -City $UserSchemaAttribute -CostCenter $UserSchemaAttribute -CountryCode $UserSchemaAttribute -Department $UserSchemaAttribute -DisplayName $UserSchemaAttribute -Division $UserSchemaAttribute -Email $UserSchemaAttribute -EmployeeNumber $UserSchemaAttribute -FirstName $UserSchemaAttribute -HonorificPrefix $UserSchemaAttribute -HonorificSuffix $UserSchemaAttribute -LastName $UserSchemaAttribute -Locale $UserSchemaAttribute -Login $UserSchemaAttribute -Manager $UserSchemaAttribute -ManagerId $UserSchemaAttribute -MiddleName $UserSchemaAttribute -MobilePhone $UserSchemaAttribute -NickName $UserSchemaAttribute -Organization $UserSchemaAttribute -PostalAddress $UserSchemaAttribute -PreferredLanguage $UserSchemaAttribute -PrimaryPhone $UserSchemaAttribute -ProfileUrl $UserSchemaAttribute -SecondEmail $UserSchemaAttribute -State $UserSchemaAttribute -StreetAddress $UserSchemaAttribute -Timezone $UserSchemaAttribute -Title $UserSchemaAttribute -UserType $UserSchemaAttribute -ZipCode $UserSchemaAttribute
+$UserSchemaBaseProperties = Initialize-OktaUserSchemaBaseProperties -City $UserSchemaAttribute -CostCenter $UserSchemaAttribute -CountryCode $UserSchemaAttribute -Department $UserSchemaAttribute -DisplayName $UserSchemaAttribute -Division $UserSchemaAttribute -Email $UserSchemaAttribute -EmployeeNumber $UserSchemaAttribute -FirstName $UserSchemaAttribute -HonorificPrefix $UserSchemaAttribute -HonorificSuffix $UserSchemaAttribute -LastName $UserSchemaAttribute -Locale $UserSchemaAttribute -Login $UserSchemaAttribute -Manager $UserSchemaAttribute -ManagerId $UserSchemaAttribute -MiddleName $UserSchemaAttribute -MobilePhone $UserSchemaAttribute -NickName $UserSchemaAttribute -Organization $UserSchemaAttribute -PostalAddress $UserSchemaAttribute -PreferredLanguage $UserSchemaAttribute -PrimaryPhone $UserSchemaAttribute -ProfileUrl $UserSchemaAttribute -SecondEmail $UserSchemaAttribute -State $UserSchemaAttribute -StreetAddress $UserSchemaAttribute -Timezone $UserSchemaAttribute -Title $UserSchemaAttribute -UserType $UserSchemaAttribute -ZipCode $UserSchemaAttribute
 
-$UserSchemaBase = Initialize-UserSchemaBase -Id "MyId" -Properties $UserSchemaBaseProperties -Required "MyRequired" -Type "MyType"
+$UserSchemaBase = Initialize-OktaUserSchemaBase -Id "MyId" -Properties $UserSchemaBaseProperties -Required "MyRequired" -Type "MyType"
 
-$UserSchemaPublic = Initialize-UserSchemaPublic -Id "MyId" -Properties @{ key_example = $UserSchemaAttribute } -Required "MyRequired" -Type "MyType"
+$UserSchemaPublic = Initialize-OktaUserSchemaPublic -Id "MyId" -Properties @{ key_example = $UserSchemaAttribute } -Required "MyRequired" -Type "MyType"
 
-$UserSchemaDefinitions = Initialize-UserSchemaDefinitions -Base $UserSchemaBase -Custom $UserSchemaPublic
+$UserSchemaDefinitions = Initialize-OktaUserSchemaDefinitions -Base $UserSchemaBase -Custom $UserSchemaPublic
 
-$UserSchemaPropertiesProfileItem = Initialize-UserSchemaPropertiesProfileItem -Ref "MyRef"
-$UserSchemaPropertiesProfile = Initialize-UserSchemaPropertiesProfile -AllOf $UserSchemaPropertiesProfileItem
+$UserSchemaPropertiesProfileItem = Initialize-OktaUserSchemaPropertiesProfileItem -Ref "MyRef"
+$UserSchemaPropertiesProfile = Initialize-OktaUserSchemaPropertiesProfile -AllOf $UserSchemaPropertiesProfileItem
 
-$UserSchemaProperties = Initialize-UserSchemaProperties -VarProfile $UserSchemaPropertiesProfile
+$UserSchemaProperties = Initialize-OktaUserSchemaProperties -VarProfile $UserSchemaPropertiesProfile
 
-$UserSchema = Initialize-UserSchema -Schema "MySchema" -Created "MyCreated" -Definitions $UserSchemaDefinitions -Id "MyId" -LastUpdated "MyLastUpdated" -Name "MyName" -Properties $UserSchemaProperties -Title "MyTitle" -Type "MyType" -Links @{ key_example =  } # UserSchema | 
+$UserSchema = Initialize-OktaUserSchema -Schema "MySchema" -Created "MyCreated" -Definitions $UserSchemaDefinitions -Id "MyId" -LastUpdated "MyLastUpdated" -Name "MyName" -Properties $UserSchemaProperties -Title "MyTitle" -Type "MyType" -Links @{ key_example =  } # UserSchema | 
 
 # Update a User Schema
 try {

@@ -33,7 +33,7 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $DomainId = "MyDomainId" # String | 
-$DomainCertificate = Initialize-DomainCertificate -Certificate "MyCertificate" -CertificateChain "MyCertificateChain" -PrivateKey "MyPrivateKey" -Type "PEM" # DomainCertificate | 
+$DomainCertificate = Initialize-OktaDomainCertificate -Certificate "MyCertificate" -CertificateChain "MyCertificateChain" -PrivateKey "MyPrivateKey" -Type "PEM" # DomainCertificate | 
 
 # Replace the Certificate
 try {
@@ -84,9 +84,9 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$DNSRecord = Initialize-DNSRecord -Expiration "MyExpiration" -Fqdn "MyFqdn" -RecordType "CNAME" -Values "MyValues"
-$DomainCertificateMetadata = Initialize-DomainCertificateMetadata -Expiration "MyExpiration" -Fingerprint "MyFingerprint" -Subject "MySubject"
-$Domain = Initialize-Domain -BrandId "MyBrandId" -CertificateSourceType "MANUAL" -DnsRecords $DNSRecord -Domain "MyDomain" -Id "MyId" -PublicCertificate $DomainCertificateMetadata -ValidationStatus "COMPLETED" # Domain | 
+$DNSRecord = Initialize-OktaDNSRecord -Expiration "MyExpiration" -Fqdn "MyFqdn" -RecordType "CNAME" -Values "MyValues"
+$DomainCertificateMetadata = Initialize-OktaDomainCertificateMetadata -Expiration "MyExpiration" -Fingerprint "MyFingerprint" -Subject "MySubject"
+$Domain = Initialize-OktaDomain -BrandId "MyBrandId" -CertificateSourceType "MANUAL" -DnsRecords $DNSRecord -Domain "MyDomain" -Id "MyId" -PublicCertificate $DomainCertificateMetadata -ValidationStatus "COMPLETED" # Domain | 
 
 # Create a Domain
 try {
@@ -283,7 +283,7 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $DomainId = "MyDomainId" # String | 
-$UpdateDomain = Initialize-UpdateDomain -BrandId "MyBrandId" # UpdateDomain | 
+$UpdateDomain = Initialize-OktaUpdateDomain -BrandId "MyBrandId" # UpdateDomain | 
 
 # Replace a Domain's brandId
 try {

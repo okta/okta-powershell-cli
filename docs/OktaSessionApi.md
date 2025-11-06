@@ -24,7 +24,7 @@ Creates a new session for a user with a valid session token. Use this API if, fo
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-OktaConfiguration
 
-$CreateSessionRequest = Initialize-CreateSessionRequest -SessionToken "MySessionToken" # CreateSessionRequest | 
+$CreateSessionRequest = Initialize-OktaCreateSessionRequest -SessionToken "MySessionToken" # CreateSessionRequest | 
 
 # Create a Session with Session Token
 try {

@@ -22,4 +22,3 @@ enum EnabledStatus {
     # enum value: "ENABLED"
     ENABLED
 }
-

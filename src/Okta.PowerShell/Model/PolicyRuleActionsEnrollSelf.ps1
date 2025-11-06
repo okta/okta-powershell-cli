@@ -24,4 +24,3 @@ enum PolicyRuleActionsEnrollSelf {
     # enum value: "NEVER"
     NEVER
 }
-

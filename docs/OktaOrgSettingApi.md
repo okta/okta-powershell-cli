@@ -43,7 +43,7 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$BouncesRemoveListObj = Initialize-BouncesRemoveListObj -EmailAddresses "MyEmailAddresses" # BouncesRemoveListObj |  (optional)
+$BouncesRemoveListObj = Initialize-OktaBouncesRemoveListObj -EmailAddresses "MyEmailAddresses" # BouncesRemoveListObj |  (optional)
 
 # Remove Emails from Email Provider Bounce List
 try {
@@ -593,7 +593,7 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$OrgSetting = Initialize-OrgSetting -Address1 "MyAddress1" -Address2 "MyAddress2" -City "MyCity" -CompanyName "MyCompanyName" -Country "MyCountry" -Created (Get-Date) -EndUserSupportHelpURL "MyEndUserSupportHelpURL" -ExpiresAt (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -PhoneNumber "MyPhoneNumber" -PostalCode "MyPostalCode" -State "MyState" -Status "MyStatus" -Subdomain "MySubdomain" -SupportPhoneNumber "MySupportPhoneNumber" -Website "MyWebsite" -Links @{ key_example =  } # OrgSetting |  (optional)
+$OrgSetting = Initialize-OktaOrgSetting -Address1 "MyAddress1" -Address2 "MyAddress2" -City "MyCity" -CompanyName "MyCompanyName" -Country "MyCountry" -Created (Get-Date) -EndUserSupportHelpURL "MyEndUserSupportHelpURL" -ExpiresAt (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -PhoneNumber "MyPhoneNumber" -PostalCode "MyPostalCode" -State "MyState" -Status "MyStatus" -Subdomain "MySubdomain" -SupportPhoneNumber "MySupportPhoneNumber" -Website "MyWebsite" -Links @{ key_example =  } # OrgSetting |  (optional)
 
 # Update the Org Settings
 try {
@@ -735,7 +735,7 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $ContactType = "MyContactType" # String | 
-$OrgContactUser = Initialize-OrgContactUser -UserId "MyUserId" -Links @{ key_example =  } # OrgContactUser | 
+$OrgContactUser = Initialize-OktaOrgContactUser -UserId "MyUserId" -Links @{ key_example =  } # OrgContactUser | 
 
 # Replace the User of the Contact Type
 try {
@@ -836,7 +836,7 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$OrgSetting = Initialize-OrgSetting -Address1 "MyAddress1" -Address2 "MyAddress2" -City "MyCity" -CompanyName "MyCompanyName" -Country "MyCountry" -Created (Get-Date) -EndUserSupportHelpURL "MyEndUserSupportHelpURL" -ExpiresAt (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -PhoneNumber "MyPhoneNumber" -PostalCode "MyPostalCode" -State "MyState" -Status "MyStatus" -Subdomain "MySubdomain" -SupportPhoneNumber "MySupportPhoneNumber" -Website "MyWebsite" -Links @{ key_example =  } # OrgSetting | 
+$OrgSetting = Initialize-OktaOrgSetting -Address1 "MyAddress1" -Address2 "MyAddress2" -City "MyCity" -CompanyName "MyCompanyName" -Country "MyCountry" -Created (Get-Date) -EndUserSupportHelpURL "MyEndUserSupportHelpURL" -ExpiresAt (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -PhoneNumber "MyPhoneNumber" -PostalCode "MyPostalCode" -State "MyState" -Status "MyStatus" -Subdomain "MySubdomain" -SupportPhoneNumber "MySupportPhoneNumber" -Website "MyWebsite" -Links @{ key_example =  } # OrgSetting | 
 
 # Replace the Org Settings
 try {

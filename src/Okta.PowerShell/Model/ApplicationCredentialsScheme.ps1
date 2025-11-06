@@ -28,4 +28,3 @@ enum ApplicationCredentialsScheme {
     # enum value: "SHARED_USERNAME_AND_PASSWORD"
     SHARED_USERNAME_AND_PASSWORD
 }
-

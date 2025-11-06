@@ -26,4 +26,3 @@ enum OAuth2ClaimGroupFilterType {
     # enum value: "STARTS_WITH"
     STARTS_WITH
 }
-

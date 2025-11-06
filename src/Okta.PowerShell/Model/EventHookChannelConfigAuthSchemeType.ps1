@@ -20,4 +20,3 @@ enum EventHookChannelConfigAuthSchemeType {
     # enum value: "HEADER"
     HEADER
 }
-

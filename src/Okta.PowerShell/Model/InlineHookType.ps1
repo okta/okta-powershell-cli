@@ -18,14 +18,13 @@ No description available.
 
 enum InlineHookType {
     # enum value: "com.okta.import.transform"
-    import_transform
+    com_okta_import_transform
     # enum value: "com.okta.oauth2.tokens.transform"
-    oauth2_tokens_transform
+    com_okta_oauth2_tokens_transform
     # enum value: "com.okta.saml.tokens.transform"
-    saml_tokens_transform
+    com_okta_saml_tokens_transform
     # enum value: "com.okta.user.credential.password.import"
-    user_credential_password_import
+    com_okta_user_credential_password_import
     # enum value: "com.okta.user.pre-registration"
-    user_pre_registration
+    com_okta_user_pre_registration
 }
-

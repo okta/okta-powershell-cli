@@ -22,4 +22,3 @@ enum LifecycleStatus {
     # enum value: "INACTIVE"
     INACTIVE
 }
-

@@ -22,4 +22,3 @@ enum ProtocolEndpointType {
     # enum value: "ORG"
     ORG
 }
-

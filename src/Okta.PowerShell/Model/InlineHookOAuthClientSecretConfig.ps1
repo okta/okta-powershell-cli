@@ -17,6 +17,14 @@ No description available.
 
 .PARAMETER ClientSecret
 No description available.
+.PARAMETER AuthType
+No description available.
+.PARAMETER ClientId
+No description available.
+.PARAMETER Scope
+No description available.
+.PARAMETER TokenUrl
+No description available.
 .PARAMETER AuthScheme
 No description available.
 .PARAMETER Headers
@@ -37,15 +45,27 @@ function Initialize-OktaInlineHookOAuthClientSecretConfig {
         [String]
         ${ClientSecret},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
-        ${AuthScheme},
+        [String]
+        ${AuthType},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject[]]
-        ${Headers},
+        [String]
+        ${ClientId},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Method},
+        ${Scope},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${TokenUrl},
+        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject]
+        ${AuthScheme},
+        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject[]]
+        ${Headers},
+        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Method},
+        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Uri}
     )
@@ -57,6 +77,10 @@ function Initialize-OktaInlineHookOAuthClientSecretConfig {
 
         $PSO = [PSCustomObject]@{
             "clientSecret" = ${ClientSecret}
+            "authType" = ${AuthType}
+            "clientId" = ${ClientId}
+            "scope" = ${Scope}
+            "tokenUrl" = ${TokenUrl}
             "authScheme" = ${AuthScheme}
             "headers" = ${Headers}
             "method" = ${Method}
@@ -98,7 +122,7 @@ function ConvertFrom-OktaJsonToInlineHookOAuthClientSecretConfig {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in OktaInlineHookOAuthClientSecretConfig
-        $AllProperties = ("clientSecret", "authScheme", "headers", "method", "uri")
+        $AllProperties = ("clientSecret", "authType", "clientId", "scope", "tokenUrl", "authScheme", "headers", "method", "uri")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -109,6 +133,30 @@ function ConvertFrom-OktaJsonToInlineHookOAuthClientSecretConfig {
             $ClientSecret = $null
         } else {
             $ClientSecret = $JsonParameters.PSobject.Properties["clientSecret"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "authType"))) { #optional property not found
+            $AuthType = $null
+        } else {
+            $AuthType = $JsonParameters.PSobject.Properties["authType"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "clientId"))) { #optional property not found
+            $ClientId = $null
+        } else {
+            $ClientId = $JsonParameters.PSobject.Properties["clientId"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "scope"))) { #optional property not found
+            $Scope = $null
+        } else {
+            $Scope = $JsonParameters.PSobject.Properties["scope"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "tokenUrl"))) { #optional property not found
+            $TokenUrl = $null
+        } else {
+            $TokenUrl = $JsonParameters.PSobject.Properties["tokenUrl"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "authScheme"))) { #optional property not found
@@ -137,6 +185,10 @@ function ConvertFrom-OktaJsonToInlineHookOAuthClientSecretConfig {
 
         $PSO = [PSCustomObject]@{
             "clientSecret" = ${ClientSecret}
+            "authType" = ${AuthType}
+            "clientId" = ${ClientId}
+            "scope" = ${Scope}
+            "tokenUrl" = ${TokenUrl}
             "authScheme" = ${AuthScheme}
             "headers" = ${Headers}
             "method" = ${Method}

@@ -22,4 +22,3 @@ enum FeatureStageValue {
     # enum value: "EA"
     EA
 }
-

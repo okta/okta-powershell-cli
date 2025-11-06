@@ -26,4 +26,3 @@ enum PolicySubjectMatchType {
     # enum value: "USERNAME_OR_EMAIL"
     USERNAME_OR_EMAIL
 }
-

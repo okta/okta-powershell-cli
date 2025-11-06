@@ -26,4 +26,3 @@ enum LocationGranularity {
     # enum value: "SUBDIVISION"
     SUBDIVISION
 }
-

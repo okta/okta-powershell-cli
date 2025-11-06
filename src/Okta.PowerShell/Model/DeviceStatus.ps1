@@ -26,4 +26,3 @@ enum DeviceStatus {
     # enum value: "SUSPENDED"
     SUSPENDED
 }
-

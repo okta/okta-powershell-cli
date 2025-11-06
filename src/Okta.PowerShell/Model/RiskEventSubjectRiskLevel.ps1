@@ -24,4 +24,3 @@ enum RiskEventSubjectRiskLevel {
     # enum value: "MEDIUM"
     MEDIUM
 }
-

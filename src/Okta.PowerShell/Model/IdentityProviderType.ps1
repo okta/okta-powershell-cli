@@ -38,4 +38,3 @@ enum IdentityProviderType {
     # enum value: "X509"
     X509
 }
-

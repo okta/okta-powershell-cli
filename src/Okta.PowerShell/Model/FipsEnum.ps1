@@ -22,4 +22,3 @@ enum FipsEnum {
     # enum value: "REQUIRED"
     REQUIRED
 }
-

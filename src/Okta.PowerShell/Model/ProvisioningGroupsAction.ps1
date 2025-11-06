@@ -26,4 +26,3 @@ enum ProvisioningGroupsAction {
     # enum value: "SYNC"
     SYNC
 }
-

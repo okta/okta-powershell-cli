@@ -24,4 +24,3 @@ enum RiskProviderAction {
     # enum value: "none"
     none
 }
-

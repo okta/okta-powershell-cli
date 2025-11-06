@@ -20,4 +20,3 @@ enum FeatureType {
     # enum value: "self-service"
     self_service
 }
-

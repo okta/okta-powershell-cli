@@ -22,4 +22,3 @@ enum OrgContactType {
     # enum value: "TECHNICAL"
     TECHNICAL
 }
-

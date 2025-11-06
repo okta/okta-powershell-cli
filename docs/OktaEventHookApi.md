@@ -82,14 +82,14 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$EventHookChannelConfigAuthScheme = Initialize-EventHookChannelConfigAuthScheme -Key "MyKey" -Type "HEADER" -Value "MyValue"
-$EventHookChannelConfigHeader = Initialize-EventHookChannelConfigHeader -Key "MyKey" -Value "MyValue"
-$EventHookChannelConfig = Initialize-EventHookChannelConfig -AuthScheme $EventHookChannelConfigAuthScheme -Headers $EventHookChannelConfigHeader -Uri "MyUri"
+$EventHookChannelConfigAuthScheme = Initialize-OktaEventHookChannelConfigAuthScheme -Key "MyKey" -Type "HEADER" -Value "MyValue"
+$EventHookChannelConfigHeader = Initialize-OktaEventHookChannelConfigHeader -Key "MyKey" -Value "MyValue"
+$EventHookChannelConfig = Initialize-OktaEventHookChannelConfig -AuthScheme $EventHookChannelConfigAuthScheme -Headers $EventHookChannelConfigHeader -Uri "MyUri"
 
-$EventHookChannel = Initialize-EventHookChannel -Config $EventHookChannelConfig -Type "HTTP" -Version "MyVersion"
+$EventHookChannel = Initialize-OktaEventHookChannel -Config $EventHookChannelConfig -Type "HTTP" -Version "MyVersion"
 
-$EventSubscriptions = Initialize-EventSubscriptions -Items "MyItems" -Type "EVENT_TYPE"
-$EventHook = Initialize-EventHook -Channel $EventHookChannel -Created (Get-Date) -CreatedBy "MyCreatedBy" -Events $EventSubscriptions -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Status "ACTIVE" -VerificationStatus "UNVERIFIED" -Links @{ key_example =  } # EventHook | 
+$EventSubscriptions = Initialize-OktaEventSubscriptions -Items "MyItems" -Type "EVENT_TYPE"
+$EventHook = Initialize-OktaEventHook -Channel $EventHookChannel -Created (Get-Date) -CreatedBy "MyCreatedBy" -Events $EventSubscriptions -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Status "ACTIVE" -VerificationStatus "UNVERIFIED" -Links @{ key_example =  } # EventHook | 
 
 # Create an Event Hook
 try {
@@ -336,14 +336,14 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $EventHookId = "MyEventHookId" # String | 
-$EventHookChannelConfigAuthScheme = Initialize-EventHookChannelConfigAuthScheme -Key "MyKey" -Type "HEADER" -Value "MyValue"
-$EventHookChannelConfigHeader = Initialize-EventHookChannelConfigHeader -Key "MyKey" -Value "MyValue"
-$EventHookChannelConfig = Initialize-EventHookChannelConfig -AuthScheme $EventHookChannelConfigAuthScheme -Headers $EventHookChannelConfigHeader -Uri "MyUri"
+$EventHookChannelConfigAuthScheme = Initialize-OktaEventHookChannelConfigAuthScheme -Key "MyKey" -Type "HEADER" -Value "MyValue"
+$EventHookChannelConfigHeader = Initialize-OktaEventHookChannelConfigHeader -Key "MyKey" -Value "MyValue"
+$EventHookChannelConfig = Initialize-OktaEventHookChannelConfig -AuthScheme $EventHookChannelConfigAuthScheme -Headers $EventHookChannelConfigHeader -Uri "MyUri"
 
-$EventHookChannel = Initialize-EventHookChannel -Config $EventHookChannelConfig -Type "HTTP" -Version "MyVersion"
+$EventHookChannel = Initialize-OktaEventHookChannel -Config $EventHookChannelConfig -Type "HTTP" -Version "MyVersion"
 
-$EventSubscriptions = Initialize-EventSubscriptions -Items "MyItems" -Type "EVENT_TYPE"
-$EventHook = Initialize-EventHook -Channel $EventHookChannel -Created (Get-Date) -CreatedBy "MyCreatedBy" -Events $EventSubscriptions -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Status "ACTIVE" -VerificationStatus "UNVERIFIED" -Links @{ key_example =  } # EventHook | 
+$EventSubscriptions = Initialize-OktaEventSubscriptions -Items "MyItems" -Type "EVENT_TYPE"
+$EventHook = Initialize-OktaEventHook -Channel $EventHookChannel -Created (Get-Date) -CreatedBy "MyCreatedBy" -Events $EventSubscriptions -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Status "ACTIVE" -VerificationStatus "UNVERIFIED" -Links @{ key_example =  } # EventHook | 
 
 # Replace an Event Hook
 try {

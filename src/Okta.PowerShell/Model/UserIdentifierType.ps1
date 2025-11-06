@@ -22,4 +22,3 @@ enum UserIdentifierType {
     # enum value: "IDENTIFIER"
     IDENTIFIER
 }
-

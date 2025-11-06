@@ -22,4 +22,3 @@ enum PolicyAccess {
     # enum value: "DENY"
     DENY
 }
-

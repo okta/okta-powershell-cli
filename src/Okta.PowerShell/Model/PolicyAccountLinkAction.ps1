@@ -22,4 +22,3 @@ enum PolicyAccountLinkAction {
     # enum value: "DISABLED"
     DISABLED
 }
-

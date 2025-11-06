@@ -24,4 +24,3 @@ enum MultifactorEnrollmentPolicyAuthenticatorStatus {
     # enum value: "REQUIRED"
     REQUIRED
 }
-

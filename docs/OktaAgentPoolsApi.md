@@ -93,13 +93,13 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $PoolId = "MyPoolId" # String | Id of the agent pool for which the settings will apply
-$HrefObjectHints = Initialize-HrefObjectHints -Allow "DELETE"
-$HrefObject = Initialize-HrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
+$HrefObjectHints = Initialize-OktaHrefObjectHints -Allow "DELETE"
+$HrefObject = Initialize-OktaHrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
 
-$Agent = Initialize-Agent -Id "MyId" -IsHidden $false -IsLatestGAedVersion $false -LastConnection (Get-Date) -Name "MyName" -OperationalStatus "DEGRADED" -PoolId "MyPoolId" -Type "AD" -UpdateMessage "MyUpdateMessage" -UpdateStatus "Cancelled" -Version "MyVersion" -Links $HrefObject
+$Agent = Initialize-OktaAgent -Id "MyId" -IsHidden $false -IsLatestGAedVersion $false -LastConnection (Get-Date) -Name "MyName" -OperationalStatus "DEGRADED" -PoolId "MyPoolId" -Type "AD" -UpdateMessage "MyUpdateMessage" -UpdateStatus "Cancelled" -Version "MyVersion" -Links $HrefObject
 
-$AutoUpdateSchedule = Initialize-AutoUpdateSchedule -Cron "MyCron" -Delay 0 -Duration 0 -LastUpdated (Get-Date) -Timezone "MyTimezone"
-$AgentPoolUpdate = Initialize-AgentPoolUpdate -Agents $Agent -AgentType "AD" -Enabled $false -Id "MyId" -Name "MyName" -NotifyAdmin $false -Reason "MyReason" -Schedule $AutoUpdateSchedule -SortOrder 0 -Status "Cancelled" -TargetVersion "MyTargetVersion" -Links $HrefObject # AgentPoolUpdate | 
+$AutoUpdateSchedule = Initialize-OktaAutoUpdateSchedule -Cron "MyCron" -Delay 0 -Duration 0 -LastUpdated (Get-Date) -Timezone "MyTimezone"
+$AgentPoolUpdate = Initialize-OktaAgentPoolUpdate -Agents $Agent -AgentType "AD" -Enabled $false -Id "MyId" -Name "MyName" -NotifyAdmin $false -Reason "MyReason" -Schedule $AutoUpdateSchedule -SortOrder 0 -Status "Cancelled" -TargetVersion "MyTargetVersion" -Links $HrefObject # AgentPoolUpdate | 
 
 # Create an Agent Pool update
 try {
@@ -629,7 +629,7 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $PoolId = "MyPoolId" # String | Id of the agent pool for which the settings will apply
-$AgentPoolUpdateSetting = Initialize-AgentPoolUpdateSetting -AgentType "AD" -ContinueOnError $false -LatestVersion "MyLatestVersion" -MinimalSupportedVersion "MyMinimalSupportedVersion" -PoolId "MyPoolId" -PoolName "MyPoolName" -ReleaseChannel "BETA" # AgentPoolUpdateSetting | 
+$AgentPoolUpdateSetting = Initialize-OktaAgentPoolUpdateSetting -AgentType "AD" -ContinueOnError $false -LatestVersion "MyLatestVersion" -MinimalSupportedVersion "MyMinimalSupportedVersion" -PoolId "MyPoolId" -PoolName "MyPoolName" -ReleaseChannel "BETA" # AgentPoolUpdateSetting | 
 
 # Update an Agent Pool update settings
 try {
@@ -737,13 +737,13 @@ $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $PoolId = "MyPoolId" # String | Id of the agent pool for which the settings will apply
 $UpdateId = "MyUpdateId" # String | Id of the update
-$HrefObjectHints = Initialize-HrefObjectHints -Allow "DELETE"
-$HrefObject = Initialize-HrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
+$HrefObjectHints = Initialize-OktaHrefObjectHints -Allow "DELETE"
+$HrefObject = Initialize-OktaHrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
 
-$Agent = Initialize-Agent -Id "MyId" -IsHidden $false -IsLatestGAedVersion $false -LastConnection (Get-Date) -Name "MyName" -OperationalStatus "DEGRADED" -PoolId "MyPoolId" -Type "AD" -UpdateMessage "MyUpdateMessage" -UpdateStatus "Cancelled" -Version "MyVersion" -Links $HrefObject
+$Agent = Initialize-OktaAgent -Id "MyId" -IsHidden $false -IsLatestGAedVersion $false -LastConnection (Get-Date) -Name "MyName" -OperationalStatus "DEGRADED" -PoolId "MyPoolId" -Type "AD" -UpdateMessage "MyUpdateMessage" -UpdateStatus "Cancelled" -Version "MyVersion" -Links $HrefObject
 
-$AutoUpdateSchedule = Initialize-AutoUpdateSchedule -Cron "MyCron" -Delay 0 -Duration 0 -LastUpdated (Get-Date) -Timezone "MyTimezone"
-$AgentPoolUpdate = Initialize-AgentPoolUpdate -Agents $Agent -AgentType "AD" -Enabled $false -Id "MyId" -Name "MyName" -NotifyAdmin $false -Reason "MyReason" -Schedule $AutoUpdateSchedule -SortOrder 0 -Status "Cancelled" -TargetVersion "MyTargetVersion" -Links $HrefObject # AgentPoolUpdate | 
+$AutoUpdateSchedule = Initialize-OktaAutoUpdateSchedule -Cron "MyCron" -Delay 0 -Duration 0 -LastUpdated (Get-Date) -Timezone "MyTimezone"
+$AgentPoolUpdate = Initialize-OktaAgentPoolUpdate -Agents $Agent -AgentType "AD" -Enabled $false -Id "MyId" -Name "MyName" -NotifyAdmin $false -Reason "MyReason" -Schedule $AutoUpdateSchedule -SortOrder 0 -Status "Cancelled" -TargetVersion "MyTargetVersion" -Links $HrefObject # AgentPoolUpdate | 
 
 # Update an Agent Pool update by id
 try {

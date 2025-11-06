@@ -34,4 +34,3 @@ enum LogCredentialType {
     # enum value: "SMS"
     SMS
 }
-

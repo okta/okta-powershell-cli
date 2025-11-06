@@ -42,4 +42,3 @@ enum SessionAuthenticationMethod {
     # enum value: "tel"
     tel
 }
-

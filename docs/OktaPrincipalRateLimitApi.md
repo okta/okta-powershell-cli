@@ -28,7 +28,7 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$PrincipalRateLimitEntity = Initialize-PrincipalRateLimitEntity -CreatedBy "MyCreatedBy" -CreatedDate (Get-Date) -DefaultConcurrencyPercentage 0 -DefaultPercentage 0 -Id "MyId" -LastUpdate (Get-Date) -LastUpdatedBy "MyLastUpdatedBy" -OrgId "MyOrgId" -PrincipalId "MyPrincipalId" -PrincipalType "SSWS_TOKEN" # PrincipalRateLimitEntity | 
+$PrincipalRateLimitEntity = Initialize-OktaPrincipalRateLimitEntity -CreatedBy "MyCreatedBy" -CreatedDate (Get-Date) -DefaultConcurrencyPercentage 0 -DefaultPercentage 0 -Id "MyId" -LastUpdate (Get-Date) -LastUpdatedBy "MyLastUpdatedBy" -OrgId "MyOrgId" -PrincipalId "MyPrincipalId" -PrincipalType "SSWS_TOKEN" # PrincipalRateLimitEntity | 
 
 # Create a Principal Rate Limit
 try {
@@ -186,7 +186,7 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $PrincipalRateLimitId = "abcd1234" # String | id of the Principal Rate Limit
-$PrincipalRateLimitEntity = Initialize-PrincipalRateLimitEntity -CreatedBy "MyCreatedBy" -CreatedDate (Get-Date) -DefaultConcurrencyPercentage 0 -DefaultPercentage 0 -Id "MyId" -LastUpdate (Get-Date) -LastUpdatedBy "MyLastUpdatedBy" -OrgId "MyOrgId" -PrincipalId "MyPrincipalId" -PrincipalType "SSWS_TOKEN" # PrincipalRateLimitEntity | 
+$PrincipalRateLimitEntity = Initialize-OktaPrincipalRateLimitEntity -CreatedBy "MyCreatedBy" -CreatedDate (Get-Date) -DefaultConcurrencyPercentage 0 -DefaultPercentage 0 -Id "MyId" -LastUpdate (Get-Date) -LastUpdatedBy "MyLastUpdatedBy" -OrgId "MyOrgId" -PrincipalId "MyPrincipalId" -PrincipalType "SSWS_TOKEN" # PrincipalRateLimitEntity | 
 
 # Replace a Principal Rate Limit
 try {

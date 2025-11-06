@@ -22,4 +22,3 @@ enum InlineHookStatus {
     # enum value: "INACTIVE"
     INACTIVE
 }
-

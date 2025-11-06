@@ -32,11 +32,11 @@ enum FactorType {
     # enum value: "token"
     token
     # enum value: "token:hardware"
-    tokenhardware
+    token_hardware
     # enum value: "token:hotp"
-    tokenhotp
+    token_hotp
     # enum value: "token:software:totp"
-    tokensoftwaretotp
+    token_software_totp
     # enum value: "u2f"
     u2f
     # enum value: "web"
@@ -44,4 +44,3 @@ enum FactorType {
     # enum value: "webauthn"
     webauthn
 }
-

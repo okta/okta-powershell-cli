@@ -28,4 +28,3 @@ enum PasswordCredentialHashAlgorithm {
     # enum value: "SHA-512"
     SHA_512
 }
-

@@ -32,4 +32,3 @@ enum PolicyRuleType {
     # enum value: "SIGN_ON"
     SIGN_ON
 }
-

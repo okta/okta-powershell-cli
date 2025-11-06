@@ -74,7 +74,7 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$CreateBrandRequest = Initialize-CreateBrandRequest -Name "MyName" # CreateBrandRequest |  (optional)
+$CreateBrandRequest = Initialize-OktaCreateBrandRequest -Name "MyName" # CreateBrandRequest |  (optional)
 
 # Create a Brand
 try {
@@ -128,12 +128,12 @@ $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $TemplateName = "MyTemplateName" # String | The name of the email template.
-$HrefObjectHints = Initialize-HrefObjectHints -Allow "DELETE"
-$HrefObject = Initialize-HrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
+$HrefObjectHints = Initialize-OktaHrefObjectHints -Allow "DELETE"
+$HrefObject = Initialize-OktaHrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
 
-$EmailCustomizationAllOfLinks = Initialize-EmailCustomizationAllOfLinks -Self $HrefObject -Template $HrefObject -Preview $HrefObject -Test $HrefObject
+$EmailCustomizationAllOfLinks = Initialize-OktaEmailCustomizationAllOfLinks -Self $HrefObject -Template $HrefObject -Preview $HrefObject -Test $HrefObject
 
-$EmailCustomization = Initialize-EmailCustomization -Body "MyBody" -Subject "MySubject" -Created (Get-Date) -Id "MyId" -IsDefault $false -Language "MyLanguage" -LastUpdated (Get-Date) -Links $EmailCustomizationAllOfLinks # EmailCustomization |  (optional)
+$EmailCustomization = Initialize-OktaEmailCustomization -Body "MyBody" -Subject "MySubject" -Created (Get-Date) -Id "MyId" -IsDefault $false -Language "MyLanguage" -LastUpdated (Get-Date) -Links $EmailCustomizationAllOfLinks # EmailCustomization |  (optional)
 
 # Create an Email Customization
 try {
@@ -991,7 +991,7 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
-$CreateBrandDomainRequest = Initialize-CreateBrandDomainRequest -DomainId "MyDomainId" # CreateBrandDomainRequest |  (optional)
+$CreateBrandDomainRequest = Initialize-OktaCreateBrandDomainRequest -DomainId "MyDomainId" # CreateBrandDomainRequest |  (optional)
 
 # Link a Brand to a Domain
 try {
@@ -1307,7 +1307,7 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
-$CustomizablePage = Initialize-CustomizablePage -PageContent "MyPageContent" # CustomizablePage | 
+$CustomizablePage = Initialize-OktaCustomizablePage -PageContent "MyPageContent" # CustomizablePage | 
 
 # Replace the Customized Error Page
 try {
@@ -1360,8 +1360,8 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
-$SignInPageAllOfWidgetCustomizations = Initialize-SignInPageAllOfWidgetCustomizations -SignInLabel "MySignInLabel" -UsernameLabel "MyUsernameLabel" -UsernameInfoTip "MyUsernameInfoTip" -PasswordLabel "MyPasswordLabel" -PasswordInfoTip "MyPasswordInfoTip" -ShowPasswordVisibilityToggle $false -ShowUserIdentifier $false -ForgotPasswordLabel "MyForgotPasswordLabel" -ForgotPasswordUrl "MyForgotPasswordUrl" -UnlockAccountLabel "MyUnlockAccountLabel" -UnlockAccountUrl "MyUnlockAccountUrl" -HelpLabel "MyHelpLabel" -HelpUrl "MyHelpUrl" -CustomLink1Label "MyCustomLink1Label" -CustomLink1Url "MyCustomLink1Url" -CustomLink2Label "MyCustomLink2Label" -CustomLink2Url "MyCustomLink2Url" -AuthenticatorPageCustomLinkLabel "MyAuthenticatorPageCustomLinkLabel" -AuthenticatorPageCustomLinkUrl "MyAuthenticatorPageCustomLinkUrl" -ClassicRecoveryFlowEmailOrUsernameLabel "MyClassicRecoveryFlowEmailOrUsernameLabel"
-$SignInPage = Initialize-SignInPage -PageContent "MyPageContent" -WidgetCustomizations $SignInPageAllOfWidgetCustomizations -WidgetVersion "MyWidgetVersion" # SignInPage | 
+$SignInPageAllOfWidgetCustomizations = Initialize-OktaSignInPageAllOfWidgetCustomizations -SignInLabel "MySignInLabel" -UsernameLabel "MyUsernameLabel" -UsernameInfoTip "MyUsernameInfoTip" -PasswordLabel "MyPasswordLabel" -PasswordInfoTip "MyPasswordInfoTip" -ShowPasswordVisibilityToggle $false -ShowUserIdentifier $false -ForgotPasswordLabel "MyForgotPasswordLabel" -ForgotPasswordUrl "MyForgotPasswordUrl" -UnlockAccountLabel "MyUnlockAccountLabel" -UnlockAccountUrl "MyUnlockAccountUrl" -HelpLabel "MyHelpLabel" -HelpUrl "MyHelpUrl" -CustomLink1Label "MyCustomLink1Label" -CustomLink1Url "MyCustomLink1Url" -CustomLink2Label "MyCustomLink2Label" -CustomLink2Url "MyCustomLink2Url" -AuthenticatorPageCustomLinkLabel "MyAuthenticatorPageCustomLinkLabel" -AuthenticatorPageCustomLinkUrl "MyAuthenticatorPageCustomLinkUrl" -ClassicRecoveryFlowEmailOrUsernameLabel "MyClassicRecoveryFlowEmailOrUsernameLabel"
+$SignInPage = Initialize-OktaSignInPage -PageContent "MyPageContent" -WidgetCustomizations $SignInPageAllOfWidgetCustomizations -WidgetVersion "MyWidgetVersion" # SignInPage | 
 
 # Replace the Customized Sign-in Page
 try {
@@ -1414,7 +1414,7 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
-$CustomizablePage = Initialize-CustomizablePage -PageContent "MyPageContent" # CustomizablePage | 
+$CustomizablePage = Initialize-OktaCustomizablePage -PageContent "MyPageContent" # CustomizablePage | 
 
 # Replace the Preview Error Page
 try {
@@ -1467,8 +1467,8 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
-$SignInPageAllOfWidgetCustomizations = Initialize-SignInPageAllOfWidgetCustomizations -SignInLabel "MySignInLabel" -UsernameLabel "MyUsernameLabel" -UsernameInfoTip "MyUsernameInfoTip" -PasswordLabel "MyPasswordLabel" -PasswordInfoTip "MyPasswordInfoTip" -ShowPasswordVisibilityToggle $false -ShowUserIdentifier $false -ForgotPasswordLabel "MyForgotPasswordLabel" -ForgotPasswordUrl "MyForgotPasswordUrl" -UnlockAccountLabel "MyUnlockAccountLabel" -UnlockAccountUrl "MyUnlockAccountUrl" -HelpLabel "MyHelpLabel" -HelpUrl "MyHelpUrl" -CustomLink1Label "MyCustomLink1Label" -CustomLink1Url "MyCustomLink1Url" -CustomLink2Label "MyCustomLink2Label" -CustomLink2Url "MyCustomLink2Url" -AuthenticatorPageCustomLinkLabel "MyAuthenticatorPageCustomLinkLabel" -AuthenticatorPageCustomLinkUrl "MyAuthenticatorPageCustomLinkUrl" -ClassicRecoveryFlowEmailOrUsernameLabel "MyClassicRecoveryFlowEmailOrUsernameLabel"
-$SignInPage = Initialize-SignInPage -PageContent "MyPageContent" -WidgetCustomizations $SignInPageAllOfWidgetCustomizations -WidgetVersion "MyWidgetVersion" # SignInPage | 
+$SignInPageAllOfWidgetCustomizations = Initialize-OktaSignInPageAllOfWidgetCustomizations -SignInLabel "MySignInLabel" -UsernameLabel "MyUsernameLabel" -UsernameInfoTip "MyUsernameInfoTip" -PasswordLabel "MyPasswordLabel" -PasswordInfoTip "MyPasswordInfoTip" -ShowPasswordVisibilityToggle $false -ShowUserIdentifier $false -ForgotPasswordLabel "MyForgotPasswordLabel" -ForgotPasswordUrl "MyForgotPasswordUrl" -UnlockAccountLabel "MyUnlockAccountLabel" -UnlockAccountUrl "MyUnlockAccountUrl" -HelpLabel "MyHelpLabel" -HelpUrl "MyHelpUrl" -CustomLink1Label "MyCustomLink1Label" -CustomLink1Url "MyCustomLink1Url" -CustomLink2Label "MyCustomLink2Label" -CustomLink2Url "MyCustomLink2Url" -AuthenticatorPageCustomLinkLabel "MyAuthenticatorPageCustomLinkLabel" -AuthenticatorPageCustomLinkUrl "MyAuthenticatorPageCustomLinkUrl" -ClassicRecoveryFlowEmailOrUsernameLabel "MyClassicRecoveryFlowEmailOrUsernameLabel"
+$SignInPage = Initialize-OktaSignInPage -PageContent "MyPageContent" -WidgetCustomizations $SignInPageAllOfWidgetCustomizations -WidgetVersion "MyWidgetVersion" # SignInPage | 
 
 # Replace the Preview Sign-in Page
 try {
@@ -1521,7 +1521,7 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
-$HostedPage = Initialize-HostedPage -Type "EXTERNALLY_HOSTED" -Url "MyUrl" # HostedPage | 
+$HostedPage = Initialize-OktaHostedPage -Type "EXTERNALLY_HOSTED" -Url "MyUrl" # HostedPage | 
 
 # Replace the Sign-out Page Settings
 try {
@@ -2339,7 +2339,7 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
-$BrandRequest = Initialize-BrandRequest -AgreeToCustomPrivacyPolicy $false -CustomPrivacyPolicyUrl "MyCustomPrivacyPolicyUrl" -Name "MyName" -RemovePoweredByOkta $false # BrandRequest | 
+$BrandRequest = Initialize-OktaBrandRequest -AgreeToCustomPrivacyPolicy $false -CustomPrivacyPolicyUrl "MyCustomPrivacyPolicyUrl" -Name "MyName" -RemovePoweredByOkta $false # BrandRequest | 
 
 # Replace a Brand
 try {
@@ -2394,7 +2394,7 @@ $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $ThemeId = "MyThemeId" # String | The ID of the theme.
-$Theme = Initialize-Theme -BackgroundImage "MyBackgroundImage" -EmailTemplateTouchPointVariant "FULL_THEME" -EndUserDashboardTouchPointVariant "FULL_THEME" -ErrorPageTouchPointVariant "BACKGROUND_IMAGE" -LoadingPageTouchPointVariant "NONE" -PrimaryColorContrastHex "MyPrimaryColorContrastHex" -PrimaryColorHex "MyPrimaryColorHex" -SecondaryColorContrastHex "MySecondaryColorContrastHex" -SecondaryColorHex "MySecondaryColorHex" -SignInPageTouchPointVariant "BACKGROUND_IMAGE" -Links @{ key_example =  } # Theme | 
+$Theme = Initialize-OktaTheme -BackgroundImage "MyBackgroundImage" -EmailTemplateTouchPointVariant "FULL_THEME" -EndUserDashboardTouchPointVariant "FULL_THEME" -ErrorPageTouchPointVariant "BACKGROUND_IMAGE" -LoadingPageTouchPointVariant "NONE" -PrimaryColorContrastHex "MyPrimaryColorContrastHex" -PrimaryColorHex "MyPrimaryColorHex" -SecondaryColorContrastHex "MySecondaryColorContrastHex" -SecondaryColorHex "MySecondaryColorHex" -SignInPageTouchPointVariant "BACKGROUND_IMAGE" -Links @{ key_example =  } # Theme | 
 
 # Replace a Theme
 try {
@@ -2452,12 +2452,12 @@ $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $TemplateName = "MyTemplateName" # String | The name of the email template.
 $CustomizationId = "MyCustomizationId" # String | The ID of the email customization.
-$HrefObjectHints = Initialize-HrefObjectHints -Allow "DELETE"
-$HrefObject = Initialize-HrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
+$HrefObjectHints = Initialize-OktaHrefObjectHints -Allow "DELETE"
+$HrefObject = Initialize-OktaHrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
 
-$EmailCustomizationAllOfLinks = Initialize-EmailCustomizationAllOfLinks -Self $HrefObject -Template $HrefObject -Preview $HrefObject -Test $HrefObject
+$EmailCustomizationAllOfLinks = Initialize-OktaEmailCustomizationAllOfLinks -Self $HrefObject -Template $HrefObject -Preview $HrefObject -Test $HrefObject
 
-$EmailCustomization = Initialize-EmailCustomization -Body "MyBody" -Subject "MySubject" -Created (Get-Date) -Id "MyId" -IsDefault $false -Language "MyLanguage" -LastUpdated (Get-Date) -Links $EmailCustomizationAllOfLinks # EmailCustomization | Request (optional)
+$EmailCustomization = Initialize-OktaEmailCustomization -Body "MyBody" -Subject "MySubject" -Created (Get-Date) -Id "MyId" -IsDefault $false -Language "MyLanguage" -LastUpdated (Get-Date) -Links $EmailCustomizationAllOfLinks # EmailCustomization | Request (optional)
 
 # Replace an Email Customization
 try {
@@ -2514,7 +2514,7 @@ $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BrandId = "MyBrandId" # String | The ID of the brand.
 $TemplateName = "MyTemplateName" # String | The name of the email template.
-$EmailSettings = Initialize-EmailSettings -Recipients "ALL_USERS" # EmailSettings |  (optional)
+$EmailSettings = Initialize-OktaEmailSettings -Recipients "ALL_USERS" # EmailSettings |  (optional)
 
 # Replace the Email Template Settings
 try {

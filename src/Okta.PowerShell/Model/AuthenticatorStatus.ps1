@@ -22,4 +22,3 @@ enum AuthenticatorStatus {
     # enum value: "INACTIVE"
     INACTIVE
 }
-
