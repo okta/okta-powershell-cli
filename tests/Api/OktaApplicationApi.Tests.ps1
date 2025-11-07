@@ -369,4 +369,53 @@ Describe -tag 'Okta.PowerShell' -name 'OktaOktaApplicationApi' {
             $TestResult.Status | Should -Be "ACTIVE"
         }
     }
+
+    Context 'Invoke-OktaPreviewSAMLMetadataForApplication' {
+        It 'Should call the correct endpoint for SAML metadata preview' {
+            # Arrange
+            $AppId = "0oa1gjh63g214q0Hq0g4"
+            $ExpectedXml = '<?xml version="1.0" encoding="UTF-8"?><md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" entityID="http://www.okta.com/exk1234567890"><md:IDPSSODescriptor WantAuthnRequestsSigned="false" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol"></md:IDPSSODescriptor></md:EntityDescriptor>'
+            
+            $Response = @{
+                Response   = $ExpectedXml
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/xml")}
+            }
+            
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+            
+            # Act
+            $Result = Invoke-OktaPreviewSAMLMetadataForApplication -AppId $AppId
+            
+            # Assert
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Exactly -Times 1 -Scope It -ParameterFilter {
+                $Uri -like "*/api/v1/apps/$AppId/sso/saml/metadata" -and
+                $Method -eq 'GET'
+            }
+            $Result | Should -Be $ExpectedXml
+        }
+        
+        It 'Should include keyId query parameter when provided' {
+            # Arrange
+            $AppId = "0oa1gjh63g214q0Hq0g4"
+            $KeyId = "SIMcCQNY3uwXoW3y0g3"
+            
+            $Response = @{
+                Response   = '<?xml version="1.0"?><metadata></metadata>'
+                StatusCode = 200
+                Headers = @{ "Content-Type" = @("application/xml")}
+            }
+            
+            Mock -ModuleName Okta.PowerShell Invoke-OktaApiClient { return $Response } -Verifiable
+            
+            # Act
+            $Result = Invoke-OktaPreviewSAMLMetadataForApplication -AppId $AppId -KeyId $KeyId
+            
+            # Assert
+            Assert-MockCalled -ModuleName Okta.PowerShell Invoke-OktaApiClient -Exactly -Times 1 -Scope It -ParameterFilter {
+                $QueryParameters.ContainsKey('keyId') -and 
+                $QueryParameters['keyId'] -eq $KeyId
+            }
+        }
+    }
 }

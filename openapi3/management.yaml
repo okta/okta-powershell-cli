@@ -2373,6 +2373,43 @@ paths:
             - okta.apps.manage
       tags:
         - Application
+  /api/v1/apps/{appId}/sso/saml/metadata:
+    get:
+      summary: Preview SAML Metadata
+      description: Previews SAML metadata based on a specific key credential for an application
+      operationId: previewSAMLMetadataForApplication
+      parameters:
+        - name: appId
+          in: path
+          description: Application ID
+          required: true
+          schema:
+            type: string
+        - name: keyId
+          in: query
+          description: Application key credential ID
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/xml:
+              schema:
+                type: string
+        '403':
+          $ref: '#/components/responses/ErrorAccessDenied403'
+        '404':
+          $ref: '#/components/responses/ErrorResourceNotFound404'
+        '429':
+          $ref: '#/components/responses/ErrorTooManyRequests429'
+      security:
+        - apiToken: []
+        - oauth2:
+            - okta.apps.read
+      tags:
+        - Application
   /api/v1/authenticators:
     get:
       summary: List all Authenticators
