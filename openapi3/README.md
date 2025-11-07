@@ -43,31 +43,7 @@ For troubleshooting, please run `$DebugPreference = 'Continue'` to turn on debug
 
 ## Getting Started 
 
-### Regenerating the SDK
-
-To regenerate the SDK from the OpenAPI specification:
-
-1. Install the [OpenAPI generator CLI](https://www.npmjs.com/package/@openapitools/openapi-generator-cli)
-2. Navigate to the `openapi3` directory
-3. Run the automated generation script:
-   ```powershell
-   .\generate.ps1
-   ```
-
-This script will:
-- Generate code using `openapi-generator-cli` with the configuration in `config.json`
-- Automatically fix documentation to include the `Okta` prefix in `Initialize-` functions
+- Install the [OpenAPI generator CLI](https://www.npmjs.com/package/@openapitools/openapi-generator-cli)
+- Run `openapi-generator-cli generate -g powershell -c config.json --skip-validate-spec`
 
 > Note that `config.json` contains all the configuration required (templates, supporting files, global configuration, etc) to generate the Okta SDK. For more details about the generator's customization visit [this link](https://openapi-generator.tech/docs/customization).
-
-### Manual Generation (Advanced)
-
-If you need to run the steps manually:
-
-```powershell
-# Step 1: Generate code
-openapi-generator-cli generate -g powershell -c config.json --skip-validate-spec
-
-# Step 2: Fix documentation
-.\fix-docs.ps1
-```
