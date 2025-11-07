@@ -30,7 +30,7 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$UserType = Initialize-UserType -Created (Get-Date) -CreatedBy "MyCreatedBy" -Default $false -Description "MyDescription" -DisplayName "MyDisplayName" -Id "MyId" -LastUpdated (Get-Date) -LastUpdatedBy "MyLastUpdatedBy" -Name "MyName" -Links @{ key_example =  } # UserType | 
+$UserType = Initialize-OktaUserType -Created (Get-Date) -CreatedBy "MyCreatedBy" -Default $false -Description "MyDescription" -DisplayName "MyDisplayName" -Id "MyId" -LastUpdated (Get-Date) -LastUpdatedBy "MyLastUpdatedBy" -Name "MyName" -Links @{ key_example =  } # UserType | 
 
 # Create a User Type
 try {
@@ -227,7 +227,7 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $TypeId = "MyTypeId" # String | 
-$UserType = Initialize-UserType -Created (Get-Date) -CreatedBy "MyCreatedBy" -Default $false -Description "MyDescription" -DisplayName "MyDisplayName" -Id "MyId" -LastUpdated (Get-Date) -LastUpdatedBy "MyLastUpdatedBy" -Name "MyName" -Links @{ key_example =  } # UserType | 
+$UserType = Initialize-OktaUserType -Created (Get-Date) -CreatedBy "MyCreatedBy" -Default $false -Description "MyDescription" -DisplayName "MyDisplayName" -Id "MyId" -LastUpdated (Get-Date) -LastUpdatedBy "MyLastUpdatedBy" -Name "MyName" -Links @{ key_example =  } # UserType | 
 
 # Replace a User Type
 try {
@@ -280,7 +280,7 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $TypeId = "MyTypeId" # String | 
-$UserType = Initialize-UserType -Created (Get-Date) -CreatedBy "MyCreatedBy" -Default $false -Description "MyDescription" -DisplayName "MyDisplayName" -Id "MyId" -LastUpdated (Get-Date) -LastUpdatedBy "MyLastUpdatedBy" -Name "MyName" -Links @{ key_example =  } # UserType | 
+$UserType = Initialize-OktaUserType -Created (Get-Date) -CreatedBy "MyCreatedBy" -Default $false -Description "MyDescription" -DisplayName "MyDisplayName" -Id "MyId" -LastUpdated (Get-Date) -LastUpdatedBy "MyLastUpdatedBy" -Name "MyName" -Links @{ key_example =  } # UserType | 
 
 # Update a User Type
 try {

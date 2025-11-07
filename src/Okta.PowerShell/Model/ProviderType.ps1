@@ -22,4 +22,3 @@ enum ProviderType {
     # enum value: "FCM"
     FCM
 }
-

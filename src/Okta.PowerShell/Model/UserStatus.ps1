@@ -34,4 +34,3 @@ enum UserStatus {
     # enum value: "SUSPENDED"
     SUSPENDED
 }
-

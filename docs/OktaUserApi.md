@@ -298,17 +298,8 @@ $AuthenticationProvider = Initialize-OktaAuthenticationProvider -Name "MyName" -
 $RecoveryQuestionCredential = Initialize-OktaRecoveryQuestionCredential -Answer "MyAnswer" -Question "MyQuestion"
 $UserCredentials = Initialize-OktaUserCredentials -Password $PasswordCredential -Provider $AuthenticationProvider -RecoveryQuestion $RecoveryQuestionCredential
 
-$UserType = Initialize-OktaUserType -Created (Get-Date) -CreatedBy "MyCreatedBy" -Default $false -Description "MyDescription" -DisplayName "MyDisplayName" -Id "MyId" -LastUpdated (Get-Date) -LastUpdatedBy "MyLastUpdatedBy" -Name "MyName" -Links @{ key_example = "example_value"}
-
-# Create the VarProfile object with necessary user profile information
-$VarProfile = [PSCustomObject]@{
-    firstName = 'John'
-    lastName = 'Doe'
-    login = 'john.doe@mail.com'
-    email = 'john.doe@mail.com'
-}
-
-$CreateUserRequest = Initialize-OktaCreateUserRequest -Credentials $UserCredentials -GroupIds "MyGroupIds" -VarProfile $VarProfile -Type $UserType # CreateUserRequest | 
+$UserType = Initialize-OktaUserType -Created (Get-Date) -CreatedBy "MyCreatedBy" -Default $false -Description "MyDescription" -DisplayName "MyDisplayName" -Id "MyId" -LastUpdated (Get-Date) -LastUpdatedBy "MyLastUpdatedBy" -Name "MyName" -Links @{ key_example =  }
+$CreateUserRequest = Initialize-OktaCreateUserRequest -Credentials $UserCredentials -GroupIds "MyGroupIds" -VarProfile  -Type $UserType # CreateUserRequest | 
 $Activate = $true # Boolean | Executes activation lifecycle operation when creating the user (optional) (default to $true)
 $Provider = $true # Boolean | Indicates whether to create a user with a specified authentication provider (optional) (default to $false)
 $NextLogin = "changePassword" # UserNextLogin | With activate=true, set nextLogin to ""changePassword"" to have the password be EXPIRED, so user must change it the next time they log in. (optional)

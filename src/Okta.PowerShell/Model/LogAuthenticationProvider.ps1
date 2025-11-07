@@ -30,4 +30,3 @@ enum LogAuthenticationProvider {
     # enum value: "SOCIAL"
     SOCIAL
 }
-

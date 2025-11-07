@@ -22,4 +22,3 @@ enum ScreenLockType {
     # enum value: "PASSCODE"
     PASSCODE
 }
-

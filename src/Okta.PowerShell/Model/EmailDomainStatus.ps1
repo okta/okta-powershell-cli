@@ -28,4 +28,3 @@ enum EmailDomainStatus {
     # enum value: "VERIFIED"
     VERIFIED
 }
-

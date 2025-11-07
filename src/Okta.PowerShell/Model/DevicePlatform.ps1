@@ -26,4 +26,3 @@ enum DevicePlatform {
     # enum value: "WINDOWS"
     WINDOWS
 }
-

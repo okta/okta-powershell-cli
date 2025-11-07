@@ -22,4 +22,3 @@ enum UserSchemaAttributeScope {
     # enum value: "SELF"
     SELF
 }
-

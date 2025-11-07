@@ -22,4 +22,3 @@ enum OAuth2ClaimType {
     # enum value: "RESOURCE"
     RESOURCE
 }
-

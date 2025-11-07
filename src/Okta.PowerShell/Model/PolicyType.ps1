@@ -32,4 +32,3 @@ enum PolicyType {
     # enum value: "PROFILE_ENROLLMENT"
     PROFILE_ENROLLMENT
 }
-

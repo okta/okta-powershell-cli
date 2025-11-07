@@ -142,7 +142,7 @@ function Invoke-OktaApiClient {
         }
     }
 
-    $OktaUserAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome + " okta-powershell-module/2.0.1"
+    $OktaUserAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome + " okta-powershell-module/2.0.2"
 
 
     # Setting up vars for retry

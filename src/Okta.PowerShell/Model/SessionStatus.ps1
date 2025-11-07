@@ -24,4 +24,3 @@ enum SessionStatus {
     # enum value: "MFA_REQUIRED"
     MFA_REQUIRED
 }
-

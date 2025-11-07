@@ -20,4 +20,3 @@ enum PrincipalType {
     # enum value: "SSWS_TOKEN"
     SSWS_TOKEN
 }
-

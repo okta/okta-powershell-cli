@@ -20,4 +20,3 @@ enum JwkUseType {
     # enum value: "sig"
     sig
 }
-

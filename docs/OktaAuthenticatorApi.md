@@ -81,16 +81,16 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$AuthenticatorProviderConfigurationUserNameTemplate = Initialize-AuthenticatorProviderConfigurationUserNameTemplate -Template "MyTemplate"
-$AuthenticatorProviderConfiguration = Initialize-AuthenticatorProviderConfiguration -AuthPort 0 -HostName "MyHostName" -InstanceId "MyInstanceId" -SharedSecret "MySharedSecret" -UserNameTemplate $AuthenticatorProviderConfigurationUserNameTemplate
+$AuthenticatorProviderConfigurationUserNameTemplate = Initialize-OktaAuthenticatorProviderConfigurationUserNameTemplate -Template "MyTemplate"
+$AuthenticatorProviderConfiguration = Initialize-OktaAuthenticatorProviderConfiguration -AuthPort 0 -HostName "MyHostName" -InstanceId "MyInstanceId" -SharedSecret "MySharedSecret" -UserNameTemplate $AuthenticatorProviderConfigurationUserNameTemplate
 
-$AuthenticatorProvider = Initialize-AuthenticatorProvider -Configuration $AuthenticatorProviderConfiguration -Type "MyType"
+$AuthenticatorProvider = Initialize-OktaAuthenticatorProvider -Configuration $AuthenticatorProviderConfiguration -Type "MyType"
 
-$ChannelBinding = Initialize-ChannelBinding -Required "ALWAYS" -Style "MyStyle"
-$Compliance = Initialize-Compliance -Fips "OPTIONAL"
-$AuthenticatorSettings = Initialize-AuthenticatorSettings -AllowedFor "any" -AppInstanceId "MyAppInstanceId" -ChannelBinding $ChannelBinding -Compliance $Compliance -TokenLifetimeInMinutes 0 -UserVerification "PREFERRED"
+$ChannelBinding = Initialize-OktaChannelBinding -Required "ALWAYS" -Style "MyStyle"
+$Compliance = Initialize-OktaCompliance -Fips "OPTIONAL"
+$AuthenticatorSettings = Initialize-OktaAuthenticatorSettings -AllowedFor "any" -AppInstanceId "MyAppInstanceId" -ChannelBinding $ChannelBinding -Compliance $Compliance -TokenLifetimeInMinutes 0 -UserVerification "PREFERRED"
 
-$Authenticator = Initialize-Authenticator -Created (Get-Date) -Id "MyId" -Key "MyKey" -LastUpdated (Get-Date) -Name "MyName" -Provider $AuthenticatorProvider -Settings $AuthenticatorSettings -Status "ACTIVE" -Type "app" -Links @{ key_example =  } # Authenticator | 
+$Authenticator = Initialize-OktaAuthenticator -Created (Get-Date) -Id "MyId" -Key "MyKey" -LastUpdated (Get-Date) -Name "MyName" -Provider $AuthenticatorProvider -Settings $AuthenticatorSettings -Status "ACTIVE" -Type "app" -Links @{ key_example =  } # Authenticator | 
 $Activate = $true # Boolean | Whether to execute the activation lifecycle operation when Okta creates the authenticator (optional) (default to $false)
 
 # Create an Authenticator
@@ -289,16 +289,16 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AuthenticatorId = "MyAuthenticatorId" # String | 
-$AuthenticatorProviderConfigurationUserNameTemplate = Initialize-AuthenticatorProviderConfigurationUserNameTemplate -Template "MyTemplate"
-$AuthenticatorProviderConfiguration = Initialize-AuthenticatorProviderConfiguration -AuthPort 0 -HostName "MyHostName" -InstanceId "MyInstanceId" -SharedSecret "MySharedSecret" -UserNameTemplate $AuthenticatorProviderConfigurationUserNameTemplate
+$AuthenticatorProviderConfigurationUserNameTemplate = Initialize-OktaAuthenticatorProviderConfigurationUserNameTemplate -Template "MyTemplate"
+$AuthenticatorProviderConfiguration = Initialize-OktaAuthenticatorProviderConfiguration -AuthPort 0 -HostName "MyHostName" -InstanceId "MyInstanceId" -SharedSecret "MySharedSecret" -UserNameTemplate $AuthenticatorProviderConfigurationUserNameTemplate
 
-$AuthenticatorProvider = Initialize-AuthenticatorProvider -Configuration $AuthenticatorProviderConfiguration -Type "MyType"
+$AuthenticatorProvider = Initialize-OktaAuthenticatorProvider -Configuration $AuthenticatorProviderConfiguration -Type "MyType"
 
-$ChannelBinding = Initialize-ChannelBinding -Required "ALWAYS" -Style "MyStyle"
-$Compliance = Initialize-Compliance -Fips "OPTIONAL"
-$AuthenticatorSettings = Initialize-AuthenticatorSettings -AllowedFor "any" -AppInstanceId "MyAppInstanceId" -ChannelBinding $ChannelBinding -Compliance $Compliance -TokenLifetimeInMinutes 0 -UserVerification "PREFERRED"
+$ChannelBinding = Initialize-OktaChannelBinding -Required "ALWAYS" -Style "MyStyle"
+$Compliance = Initialize-OktaCompliance -Fips "OPTIONAL"
+$AuthenticatorSettings = Initialize-OktaAuthenticatorSettings -AllowedFor "any" -AppInstanceId "MyAppInstanceId" -ChannelBinding $ChannelBinding -Compliance $Compliance -TokenLifetimeInMinutes 0 -UserVerification "PREFERRED"
 
-$Authenticator = Initialize-Authenticator -Created (Get-Date) -Id "MyId" -Key "MyKey" -LastUpdated (Get-Date) -Name "MyName" -Provider $AuthenticatorProvider -Settings $AuthenticatorSettings -Status "ACTIVE" -Type "app" -Links @{ key_example =  } # Authenticator | 
+$Authenticator = Initialize-OktaAuthenticator -Created (Get-Date) -Id "MyId" -Key "MyKey" -LastUpdated (Get-Date) -Name "MyName" -Provider $AuthenticatorProvider -Settings $AuthenticatorSettings -Status "ACTIVE" -Type "app" -Links @{ key_example =  } # Authenticator | 
 
 # Replace an Authenticator
 try {

@@ -35,7 +35,7 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $GroupId = "MyGroupId" # String | 
-$AssignRoleRequest = Initialize-AssignRoleRequest -Type "API_ACCESS_MANAGEMENT_ADMIN" # AssignRoleRequest | 
+$AssignRoleRequest = Initialize-OktaAssignRoleRequest -Type "API_ACCESS_MANAGEMENT_ADMIN" # AssignRoleRequest | 
 $DisableNotifications = $true # Boolean | Setting this to `true` grants the group third-party admin status (optional)
 
 # Assign a Role to a Group
@@ -91,7 +91,7 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $UserId = "MyUserId" # String | 
-$AssignRoleRequest = Initialize-AssignRoleRequest -Type "API_ACCESS_MANAGEMENT_ADMIN" # AssignRoleRequest | 
+$AssignRoleRequest = Initialize-OktaAssignRoleRequest -Type "API_ACCESS_MANAGEMENT_ADMIN" # AssignRoleRequest | 
 $DisableNotifications = $true # Boolean | Setting this to `true` grants the user third-party admin status (optional)
 
 # Assign a Role to a User

@@ -26,4 +26,3 @@ enum OpenIdConnectApplicationType {
     # enum value: "web"
     web
 }
-

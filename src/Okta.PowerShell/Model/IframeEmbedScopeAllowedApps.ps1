@@ -20,4 +20,3 @@ enum IframeEmbedScopeAllowedApps {
     # enum value: "OKTA_ENDUSER"
     OKTA_ENDUSER
 }
-

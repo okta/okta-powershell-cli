@@ -28,4 +28,3 @@ enum UserIdentifierMatchType {
     # enum value: "SUFFIX"
     SUFFIX
 }
-

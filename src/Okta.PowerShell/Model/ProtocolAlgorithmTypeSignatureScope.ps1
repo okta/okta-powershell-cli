@@ -28,4 +28,3 @@ enum ProtocolAlgorithmTypeSignatureScope {
     # enum value: "TOKEN"
     TOKEN
 }
-

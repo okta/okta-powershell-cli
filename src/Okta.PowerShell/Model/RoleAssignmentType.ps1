@@ -22,4 +22,3 @@ enum RoleAssignmentType {
     # enum value: "USER"
     USER
 }
-

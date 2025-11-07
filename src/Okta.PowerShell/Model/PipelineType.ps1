@@ -22,4 +22,3 @@ enum PipelineType {
     # enum value: "v1"
     v1
 }
-

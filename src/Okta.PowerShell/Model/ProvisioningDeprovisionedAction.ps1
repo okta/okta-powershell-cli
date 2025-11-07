@@ -22,4 +22,3 @@ enum ProvisioningDeprovisionedAction {
     # enum value: "REACTIVATE"
     REACTIVATE
 }
-

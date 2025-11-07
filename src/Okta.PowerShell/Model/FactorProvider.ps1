@@ -34,4 +34,3 @@ enum FactorProvider {
     # enum value: "YUBICO"
     YUBICO
 }
-

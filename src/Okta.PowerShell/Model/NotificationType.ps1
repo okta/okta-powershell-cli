@@ -42,4 +42,3 @@ enum NotificationType {
     # enum value: "USER_LOCKED_OUT"
     USER_LOCKED_OUT
 }
-

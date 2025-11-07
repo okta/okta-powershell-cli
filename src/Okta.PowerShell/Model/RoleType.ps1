@@ -38,4 +38,3 @@ enum RoleType {
     # enum value: "USER_ADMIN"
     USER_ADMIN
 }
-

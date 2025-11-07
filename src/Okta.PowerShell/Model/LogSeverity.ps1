@@ -26,4 +26,3 @@ enum LogSeverity {
     # enum value: "WARN"
     WARN
 }
-

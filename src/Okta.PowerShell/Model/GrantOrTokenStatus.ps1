@@ -22,4 +22,3 @@ enum GrantOrTokenStatus {
     # enum value: "REVOKED"
     REVOKED
 }
-

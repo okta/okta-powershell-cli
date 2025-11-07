@@ -22,4 +22,3 @@ enum SubscriptionStatus {
     # enum value: "unsubscribed"
     unsubscribed
 }
-

@@ -22,4 +22,3 @@ enum GroupOwnerOriginType {
     # enum value: "OKTA_DIRECTORY"
     OKTA_DIRECTORY
 }
-

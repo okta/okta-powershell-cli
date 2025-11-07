@@ -155,92 +155,92 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$PolicyAccountLinkFilterGroups = Initialize-PolicyAccountLinkFilterGroups -Include "MyInclude"
-$PolicyAccountLinkFilter = Initialize-PolicyAccountLinkFilter -Groups $PolicyAccountLinkFilterGroups
+$PolicyAccountLinkFilterGroups = Initialize-OktaPolicyAccountLinkFilterGroups -Include "MyInclude"
+$PolicyAccountLinkFilter = Initialize-OktaPolicyAccountLinkFilter -Groups $PolicyAccountLinkFilterGroups
 
-$PolicyAccountLink = Initialize-PolicyAccountLink -Action "AUTO" -VarFilter $PolicyAccountLinkFilter
+$PolicyAccountLink = Initialize-OktaPolicyAccountLink -Action "AUTO" -VarFilter $PolicyAccountLinkFilter
 
-$AppAndInstanceConditionEvaluatorAppOrInstance = Initialize-AppAndInstanceConditionEvaluatorAppOrInstance -Id "MyId" -Name "MyName" -Type "APP"
-$AppAndInstancePolicyRuleCondition = Initialize-AppAndInstancePolicyRuleCondition -Exclude $AppAndInstanceConditionEvaluatorAppOrInstance -Include $AppAndInstanceConditionEvaluatorAppOrInstance
+$AppAndInstanceConditionEvaluatorAppOrInstance = Initialize-OktaAppAndInstanceConditionEvaluatorAppOrInstance -Id "MyId" -Name "MyName" -Type "APP"
+$AppAndInstancePolicyRuleCondition = Initialize-OktaAppAndInstancePolicyRuleCondition -Exclude $AppAndInstanceConditionEvaluatorAppOrInstance -Include $AppAndInstanceConditionEvaluatorAppOrInstance
 
-$AppInstancePolicyRuleCondition = Initialize-AppInstancePolicyRuleCondition -Exclude "MyExclude" -Include "MyInclude"
-$PolicyRuleAuthContextCondition = Initialize-PolicyRuleAuthContextCondition -AuthType "ANY"
-$PasswordPolicyAuthenticationProviderCondition = Initialize-PasswordPolicyAuthenticationProviderCondition -Include "MyInclude" -Provider "ACTIVE_DIRECTORY"
+$AppInstancePolicyRuleCondition = Initialize-OktaAppInstancePolicyRuleCondition -Exclude "MyExclude" -Include "MyInclude"
+$PolicyRuleAuthContextCondition = Initialize-OktaPolicyRuleAuthContextCondition -AuthType "ANY"
+$PasswordPolicyAuthenticationProviderCondition = Initialize-OktaPasswordPolicyAuthenticationProviderCondition -Include "MyInclude" -Provider "ACTIVE_DIRECTORY"
 
-$Duration = Initialize-Duration -Number 0 -Unit "MyUnit"
-$ScheduledUserLifecycleAction = Initialize-ScheduledUserLifecycleAction -Status "ACTIVATING"
-$BeforeScheduledActionPolicyRuleCondition = Initialize-BeforeScheduledActionPolicyRuleCondition -Duration $Duration -LifecycleAction $ScheduledUserLifecycleAction
+$Duration = Initialize-OktaDuration -Number 0 -Unit "MyUnit"
+$ScheduledUserLifecycleAction = Initialize-OktaScheduledUserLifecycleAction -Status "ACTIVATING"
+$BeforeScheduledActionPolicyRuleCondition = Initialize-OktaBeforeScheduledActionPolicyRuleCondition -Duration $Duration -LifecycleAction $ScheduledUserLifecycleAction
 
-$ClientPolicyCondition = Initialize-ClientPolicyCondition -Include "MyInclude"
+$ClientPolicyCondition = Initialize-OktaClientPolicyCondition -Include "MyInclude"
 
-$DevicePolicyRuleConditionPlatform = Initialize-DevicePolicyRuleConditionPlatform -SupportedMDMFrameworks "AFW" -Types "ANDROID"
-$ContextPolicyRuleCondition = Initialize-ContextPolicyRuleCondition -Migrated $false -Platform $DevicePolicyRuleConditionPlatform -Rooted $false -TrustLevel "ANY" -Expression "MyExpression"
+$DevicePolicyRuleConditionPlatform = Initialize-OktaDevicePolicyRuleConditionPlatform -SupportedMDMFrameworks "AFW" -Types "ANDROID"
+$ContextPolicyRuleCondition = Initialize-OktaContextPolicyRuleCondition -Migrated $false -Platform $DevicePolicyRuleConditionPlatform -Rooted $false -TrustLevel "ANY" -Expression "MyExpression"
 
-$DevicePolicyRuleCondition = Initialize-DevicePolicyRuleCondition -Migrated $false -Platform $DevicePolicyRuleConditionPlatform -Rooted $false -TrustLevel "ANY"
+$DevicePolicyRuleCondition = Initialize-OktaDevicePolicyRuleCondition -Migrated $false -Platform $DevicePolicyRuleConditionPlatform -Rooted $false -TrustLevel "ANY"
 
-$GrantTypePolicyRuleCondition = Initialize-GrantTypePolicyRuleCondition -Include "MyInclude"
-$GroupPolicyRuleCondition = Initialize-GroupPolicyRuleCondition -Exclude "MyExclude" -Include "MyInclude"
-$IdentityProviderPolicyRuleCondition = Initialize-IdentityProviderPolicyRuleCondition -IdpIds "MyIdpIds" -Provider "ANY"
-$MDMEnrollmentPolicyRuleCondition = Initialize-MDMEnrollmentPolicyRuleCondition -BlockNonSafeAndroid $false -Enrollment "ANY_OR_NONE"
-$PolicyNetworkCondition = Initialize-PolicyNetworkCondition -Connection "ANYWHERE" -Exclude "MyExclude" -Include "MyInclude"
+$GrantTypePolicyRuleCondition = Initialize-OktaGrantTypePolicyRuleCondition -Include "MyInclude"
+$GroupPolicyRuleCondition = Initialize-OktaGroupPolicyRuleCondition -Exclude "MyExclude" -Include "MyInclude"
+$IdentityProviderPolicyRuleCondition = Initialize-OktaIdentityProviderPolicyRuleCondition -IdpIds "MyIdpIds" -Provider "ANY"
+$MDMEnrollmentPolicyRuleCondition = Initialize-OktaMDMEnrollmentPolicyRuleCondition -BlockNonSafeAndroid $false -Enrollment "ANY_OR_NONE"
+$PolicyNetworkCondition = Initialize-OktaPolicyNetworkCondition -Connection "ANYWHERE" -Exclude "MyExclude" -Include "MyInclude"
 
-$GroupCondition = Initialize-GroupCondition -Exclude "MyExclude" -Include "MyInclude"
-$UserCondition = Initialize-UserCondition -Exclude "MyExclude" -Include "MyInclude"
-$PolicyPeopleCondition = Initialize-PolicyPeopleCondition -Groups $GroupCondition -Users $UserCondition
+$GroupCondition = Initialize-OktaGroupCondition -Exclude "MyExclude" -Include "MyInclude"
+$UserCondition = Initialize-OktaUserCondition -Exclude "MyExclude" -Include "MyInclude"
+$PolicyPeopleCondition = Initialize-OktaPolicyPeopleCondition -Groups $GroupCondition -Users $UserCondition
 
-$PlatformConditionEvaluatorPlatformOperatingSystemVersion = Initialize-PlatformConditionEvaluatorPlatformOperatingSystemVersion -MatchType "EXPRESSION" -Value "MyValue"
-$PlatformConditionEvaluatorPlatformOperatingSystem = Initialize-PlatformConditionEvaluatorPlatformOperatingSystem -Expression "MyExpression" -Type "ANDROID" -Version $PlatformConditionEvaluatorPlatformOperatingSystemVersion
+$PlatformConditionEvaluatorPlatformOperatingSystemVersion = Initialize-OktaPlatformConditionEvaluatorPlatformOperatingSystemVersion -MatchType "EXPRESSION" -Value "MyValue"
+$PlatformConditionEvaluatorPlatformOperatingSystem = Initialize-OktaPlatformConditionEvaluatorPlatformOperatingSystem -Expression "MyExpression" -Type "ANDROID" -Version $PlatformConditionEvaluatorPlatformOperatingSystemVersion
 
-$PlatformConditionEvaluatorPlatform = Initialize-PlatformConditionEvaluatorPlatform -Os $PlatformConditionEvaluatorPlatformOperatingSystem -Type "ANY"
+$PlatformConditionEvaluatorPlatform = Initialize-OktaPlatformConditionEvaluatorPlatform -Os $PlatformConditionEvaluatorPlatformOperatingSystem -Type "ANY"
 
-$PlatformPolicyRuleCondition = Initialize-PlatformPolicyRuleCondition -Exclude $PlatformConditionEvaluatorPlatform -Include $PlatformConditionEvaluatorPlatform
+$PlatformPolicyRuleCondition = Initialize-OktaPlatformPolicyRuleCondition -Exclude $PlatformConditionEvaluatorPlatform -Include $PlatformConditionEvaluatorPlatform
 
-$RiskPolicyRuleCondition = Initialize-RiskPolicyRuleCondition -Behaviors "MyBehaviors"
-$RiskScorePolicyRuleCondition = Initialize-RiskScorePolicyRuleCondition -Level "MyLevel"
-$OAuth2ScopesMediationPolicyRuleCondition = Initialize-OAuth2ScopesMediationPolicyRuleCondition -Include "MyInclude"
+$RiskPolicyRuleCondition = Initialize-OktaRiskPolicyRuleCondition -Behaviors "MyBehaviors"
+$RiskScorePolicyRuleCondition = Initialize-OktaRiskScorePolicyRuleCondition -Level "MyLevel"
+$OAuth2ScopesMediationPolicyRuleCondition = Initialize-OktaOAuth2ScopesMediationPolicyRuleCondition -Include "MyInclude"
 
-$UserIdentifierConditionEvaluatorPattern = Initialize-UserIdentifierConditionEvaluatorPattern -MatchType "CONTAINS" -Value "MyValue"
-$UserIdentifierPolicyRuleCondition = Initialize-UserIdentifierPolicyRuleCondition -Attribute "MyAttribute" -Patterns $UserIdentifierConditionEvaluatorPattern -Type "ATTRIBUTE"
+$UserIdentifierConditionEvaluatorPattern = Initialize-OktaUserIdentifierConditionEvaluatorPattern -MatchType "CONTAINS" -Value "MyValue"
+$UserIdentifierPolicyRuleCondition = Initialize-OktaUserIdentifierPolicyRuleCondition -Attribute "MyAttribute" -Patterns $UserIdentifierConditionEvaluatorPattern -Type "ATTRIBUTE"
 
-$InactivityPolicyRuleCondition = Initialize-InactivityPolicyRuleCondition -Number 0 -Unit "MyUnit"
-$LifecycleExpirationPolicyRuleCondition = Initialize-LifecycleExpirationPolicyRuleCondition -LifecycleStatus "MyLifecycleStatus" -Number 0 -Unit "MyUnit"
-$PasswordExpirationPolicyRuleCondition = Initialize-PasswordExpirationPolicyRuleCondition -Number 0 -Unit "MyUnit"
-$UserLifecycleAttributePolicyRuleCondition = Initialize-UserLifecycleAttributePolicyRuleCondition -AttributeName "MyAttributeName" -MatchingValue "MyMatchingValue"
-$UserPolicyRuleCondition = Initialize-UserPolicyRuleCondition -Exclude "MyExclude" -Inactivity $InactivityPolicyRuleCondition -Include "MyInclude" -LifecycleExpiration $LifecycleExpirationPolicyRuleCondition -PasswordExpiration $PasswordExpirationPolicyRuleCondition -UserLifecycleAttribute $UserLifecycleAttributePolicyRuleCondition
+$InactivityPolicyRuleCondition = Initialize-OktaInactivityPolicyRuleCondition -Number 0 -Unit "MyUnit"
+$LifecycleExpirationPolicyRuleCondition = Initialize-OktaLifecycleExpirationPolicyRuleCondition -LifecycleStatus "MyLifecycleStatus" -Number 0 -Unit "MyUnit"
+$PasswordExpirationPolicyRuleCondition = Initialize-OktaPasswordExpirationPolicyRuleCondition -Number 0 -Unit "MyUnit"
+$UserLifecycleAttributePolicyRuleCondition = Initialize-OktaUserLifecycleAttributePolicyRuleCondition -AttributeName "MyAttributeName" -MatchingValue "MyMatchingValue"
+$UserPolicyRuleCondition = Initialize-OktaUserPolicyRuleCondition -Exclude "MyExclude" -Inactivity $InactivityPolicyRuleCondition -Include "MyInclude" -LifecycleExpiration $LifecycleExpirationPolicyRuleCondition -PasswordExpiration $PasswordExpirationPolicyRuleCondition -UserLifecycleAttribute $UserLifecycleAttributePolicyRuleCondition
 
-$UserStatusPolicyRuleCondition = Initialize-UserStatusPolicyRuleCondition -Value "ACTIVATING"
-$PolicyRuleConditions = Initialize-PolicyRuleConditions -App $AppAndInstancePolicyRuleCondition -Apps $AppInstancePolicyRuleCondition -AuthContext $PolicyRuleAuthContextCondition -AuthProvider $PasswordPolicyAuthenticationProviderCondition -BeforeScheduledAction $BeforeScheduledActionPolicyRuleCondition -Clients $ClientPolicyCondition -Context $ContextPolicyRuleCondition -Device $DevicePolicyRuleCondition -GrantTypes $GrantTypePolicyRuleCondition -Groups $GroupPolicyRuleCondition -IdentityProvider $IdentityProviderPolicyRuleCondition -MdmEnrollment $MDMEnrollmentPolicyRuleCondition -Network $PolicyNetworkCondition -People $PolicyPeopleCondition -Platform $PlatformPolicyRuleCondition -Risk $RiskPolicyRuleCondition -RiskScore $RiskScorePolicyRuleCondition -Scopes $OAuth2ScopesMediationPolicyRuleCondition -UserIdentifier $UserIdentifierPolicyRuleCondition -Users $UserPolicyRuleCondition -UserStatus $UserStatusPolicyRuleCondition
+$UserStatusPolicyRuleCondition = Initialize-OktaUserStatusPolicyRuleCondition -Value "ACTIVATING"
+$PolicyRuleConditions = Initialize-OktaPolicyRuleConditions -App $AppAndInstancePolicyRuleCondition -Apps $AppInstancePolicyRuleCondition -AuthContext $PolicyRuleAuthContextCondition -AuthProvider $PasswordPolicyAuthenticationProviderCondition -BeforeScheduledAction $BeforeScheduledActionPolicyRuleCondition -Clients $ClientPolicyCondition -Context $ContextPolicyRuleCondition -Device $DevicePolicyRuleCondition -GrantTypes $GrantTypePolicyRuleCondition -Groups $GroupPolicyRuleCondition -IdentityProvider $IdentityProviderPolicyRuleCondition -MdmEnrollment $MDMEnrollmentPolicyRuleCondition -Network $PolicyNetworkCondition -People $PolicyPeopleCondition -Platform $PlatformPolicyRuleCondition -Risk $RiskPolicyRuleCondition -RiskScore $RiskScorePolicyRuleCondition -Scopes $OAuth2ScopesMediationPolicyRuleCondition -UserIdentifier $UserIdentifierPolicyRuleCondition -Users $UserPolicyRuleCondition -UserStatus $UserStatusPolicyRuleCondition
 
-$ProvisioningDeprovisionedCondition = Initialize-ProvisioningDeprovisionedCondition -Action "NONE"
-$ProvisioningSuspendedCondition = Initialize-ProvisioningSuspendedCondition -Action "NONE"
-$ProvisioningConditions = Initialize-ProvisioningConditions -Deprovisioned $ProvisioningDeprovisionedCondition -Suspended $ProvisioningSuspendedCondition
+$ProvisioningDeprovisionedCondition = Initialize-OktaProvisioningDeprovisionedCondition -Action "NONE"
+$ProvisioningSuspendedCondition = Initialize-OktaProvisioningSuspendedCondition -Action "NONE"
+$ProvisioningConditions = Initialize-OktaProvisioningConditions -Deprovisioned $ProvisioningDeprovisionedCondition -Suspended $ProvisioningSuspendedCondition
 
-$ProvisioningGroups = Initialize-ProvisioningGroups -Action "APPEND" -Assignments "MyAssignments" -VarFilter "MyVarFilter" -SourceAttributeName "MySourceAttributeName"
-$Provisioning = Initialize-Provisioning -Action "AUTO" -Conditions $ProvisioningConditions -Groups $ProvisioningGroups -ProfileMaster $false
+$ProvisioningGroups = Initialize-OktaProvisioningGroups -Action "APPEND" -Assignments "MyAssignments" -VarFilter "MyVarFilter" -SourceAttributeName "MySourceAttributeName"
+$Provisioning = Initialize-OktaProvisioning -Action "AUTO" -Conditions $ProvisioningConditions -Groups $ProvisioningGroups -ProfileMaster $false
 
-$PolicyUserNameTemplate = Initialize-PolicyUserNameTemplate -Template "MyTemplate"
-$PolicySubject = Initialize-PolicySubject -VarFilter "MyVarFilter" -Format "MyFormat" -MatchAttribute "MyMatchAttribute" -MatchType "CUSTOM_ATTRIBUTE" -UserNameTemplate $PolicyUserNameTemplate
+$PolicyUserNameTemplate = Initialize-OktaPolicyUserNameTemplate -Template "MyTemplate"
+$PolicySubject = Initialize-OktaPolicySubject -VarFilter "MyVarFilter" -Format "MyFormat" -MatchAttribute "MyMatchAttribute" -MatchType "CUSTOM_ATTRIBUTE" -UserNameTemplate $PolicyUserNameTemplate
 
-$IdentityProviderPolicy = Initialize-IdentityProviderPolicy -Created (Get-Date) -Description "MyDescription" -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Priority 0 -Status "ACTIVE" -System $false -Type "ACCESS_POLICY" -Embedded @{ key_example =  } -Links @{ key_example =  } -AccountLink $PolicyAccountLink -Conditions $PolicyRuleConditions -MaxClockSkew 0 -Provisioning $Provisioning -Subject $PolicySubject
+$IdentityProviderPolicy = Initialize-OktaIdentityProviderPolicy -Created (Get-Date) -Description "MyDescription" -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Priority 0 -Status "ACTIVE" -System $false -Type "ACCESS_POLICY" -Embedded @{ key_example =  } -Links @{ key_example =  } -AccountLink $PolicyAccountLink -Conditions $PolicyRuleConditions -MaxClockSkew 0 -Provisioning $Provisioning -Subject $PolicySubject
 
-$ProtocolAlgorithmTypeSignature = Initialize-ProtocolAlgorithmTypeSignature -Algorithm "MyAlgorithm" -Scope "ANY"
-$ProtocolAlgorithmType = Initialize-ProtocolAlgorithmType -Signature $ProtocolAlgorithmTypeSignature
+$ProtocolAlgorithmTypeSignature = Initialize-OktaProtocolAlgorithmTypeSignature -Algorithm "MyAlgorithm" -Scope "ANY"
+$ProtocolAlgorithmType = Initialize-OktaProtocolAlgorithmType -Signature $ProtocolAlgorithmTypeSignature
 
-$ProtocolAlgorithms = Initialize-ProtocolAlgorithms -Request $ProtocolAlgorithmType -Response $ProtocolAlgorithmType
+$ProtocolAlgorithms = Initialize-OktaProtocolAlgorithms -Request $ProtocolAlgorithmType -Response $ProtocolAlgorithmType
 
-$IdentityProviderCredentialsClient = Initialize-IdentityProviderCredentialsClient -ClientId "MyClientId" -ClientSecret "MyClientSecret"
-$IdentityProviderCredentialsSigning = Initialize-IdentityProviderCredentialsSigning -Kid "MyKid"
-$IdentityProviderCredentialsTrust = Initialize-IdentityProviderCredentialsTrust -Audience "MyAudience" -Issuer "MyIssuer" -Kid "MyKid" -Revocation "CRL" -RevocationCacheLifetime 0
-$IdentityProviderCredentials = Initialize-IdentityProviderCredentials -Client $IdentityProviderCredentialsClient -Signing $IdentityProviderCredentialsSigning -Trust $IdentityProviderCredentialsTrust
+$IdentityProviderCredentialsClient = Initialize-OktaIdentityProviderCredentialsClient -ClientId "MyClientId" -ClientSecret "MyClientSecret"
+$IdentityProviderCredentialsSigning = Initialize-OktaIdentityProviderCredentialsSigning -Kid "MyKid"
+$IdentityProviderCredentialsTrust = Initialize-OktaIdentityProviderCredentialsTrust -Audience "MyAudience" -Issuer "MyIssuer" -Kid "MyKid" -Revocation "CRL" -RevocationCacheLifetime 0
+$IdentityProviderCredentials = Initialize-OktaIdentityProviderCredentials -Client $IdentityProviderCredentialsClient -Signing $IdentityProviderCredentialsSigning -Trust $IdentityProviderCredentialsTrust
 
-$ProtocolEndpoint = Initialize-ProtocolEndpoint -Binding "HTTP-POST" -Destination "MyDestination" -Type "INSTANCE" -Url "MyUrl"
-$ProtocolEndpoints = Initialize-ProtocolEndpoints -Acs $ProtocolEndpoint -Authorization $ProtocolEndpoint -Jwks $ProtocolEndpoint -Metadata $ProtocolEndpoint -Slo $ProtocolEndpoint -Sso $ProtocolEndpoint -Token $ProtocolEndpoint -UserInfo $ProtocolEndpoint
+$ProtocolEndpoint = Initialize-OktaProtocolEndpoint -Binding "HTTP-POST" -Destination "MyDestination" -Type "INSTANCE" -Url "MyUrl"
+$ProtocolEndpoints = Initialize-OktaProtocolEndpoints -Acs $ProtocolEndpoint -Authorization $ProtocolEndpoint -Jwks $ProtocolEndpoint -Metadata $ProtocolEndpoint -Slo $ProtocolEndpoint -Sso $ProtocolEndpoint -Token $ProtocolEndpoint -UserInfo $ProtocolEndpoint
 
-$ProtocolRelayState = Initialize-ProtocolRelayState -Format "FROM_URL"
-$ProtocolSettings = Initialize-ProtocolSettings -NameFormat "MyNameFormat"
-$Protocol = Initialize-Protocol -Algorithms $ProtocolAlgorithms -Credentials $IdentityProviderCredentials -Endpoints $ProtocolEndpoints -Issuer $ProtocolEndpoint -RelayState $ProtocolRelayState -Scopes "MyScopes" -Settings $ProtocolSettings -Type "MTLS"
+$ProtocolRelayState = Initialize-OktaProtocolRelayState -Format "FROM_URL"
+$ProtocolSettings = Initialize-OktaProtocolSettings -NameFormat "MyNameFormat"
+$Protocol = Initialize-OktaProtocol -Algorithms $ProtocolAlgorithms -Credentials $IdentityProviderCredentials -Endpoints $ProtocolEndpoints -Issuer $ProtocolEndpoint -RelayState $ProtocolRelayState -Scopes "MyScopes" -Settings $ProtocolSettings -Type "MTLS"
 
-$IdentityProvider = Initialize-IdentityProvider -Created (Get-Date) -Id "MyId" -IssuerMode "CUSTOM_URL" -LastUpdated (Get-Date) -Name "MyName" -Policy $IdentityProviderPolicy -Protocol $Protocol -Status "ACTIVE" -Type "AgentlessDSSO" -Links @{ key_example =  } # IdentityProvider | 
+$IdentityProvider = Initialize-OktaIdentityProvider -Created (Get-Date) -Id "MyId" -IssuerMode "CUSTOM_URL" -LastUpdated (Get-Date) -Name "MyName" -Policy $IdentityProviderPolicy -Protocol $Protocol -Status "ACTIVE" -Type "AgentlessDSSO" -Links @{ key_example =  } # IdentityProvider | 
 
 # Create an Identity Provider
 try {
@@ -290,7 +290,7 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$JsonWebKey = Initialize-JsonWebKey -Alg "MyAlg" -Created (Get-Date) -E "MyE" -ExpiresAt (Get-Date) -KeyOps "MyKeyOps" -Kid "MyKid" -Kty "MyKty" -LastUpdated (Get-Date) -N "MyN" -Status "MyStatus" -Use "MyUse" -X5c "MyX5c" -X5t "MyX5t" -X5tS256 "MyX5tS256" -X5u "MyX5u" -Links @{ key_example =  } # JsonWebKey | 
+$JsonWebKey = Initialize-OktaJsonWebKey -Alg "MyAlg" -Created (Get-Date) -E "MyE" -ExpiresAt (Get-Date) -KeyOps "MyKeyOps" -Kid "MyKid" -Kty "MyKty" -LastUpdated (Get-Date) -N "MyN" -Status "MyStatus" -Use "MyUse" -X5c "MyX5c" -X5t "MyX5t" -X5tS256 "MyX5tS256" -X5u "MyX5u" -Links @{ key_example =  } # JsonWebKey | 
 
 # Create an X.509 Certificate Public Key
 try {
@@ -492,9 +492,9 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $IdpId = "MyIdpId" # String | 
-$CsrMetadataSubject = Initialize-CsrMetadataSubject -CommonName "MyCommonName" -CountryName "MyCountryName" -LocalityName "MyLocalityName" -OrganizationalUnitName "MyOrganizationalUnitName" -OrganizationName "MyOrganizationName" -StateOrProvinceName "MyStateOrProvinceName"
-$CsrMetadataSubjectAltNames = Initialize-CsrMetadataSubjectAltNames -DnsNames "MyDnsNames"
-$CsrMetadata = Initialize-CsrMetadata -Subject $CsrMetadataSubject -SubjectAltNames $CsrMetadataSubjectAltNames # CsrMetadata | 
+$CsrMetadataSubject = Initialize-OktaCsrMetadataSubject -CommonName "MyCommonName" -CountryName "MyCountryName" -LocalityName "MyLocalityName" -OrganizationalUnitName "MyOrganizationalUnitName" -OrganizationName "MyOrganizationName" -StateOrProvinceName "MyStateOrProvinceName"
+$CsrMetadataSubjectAltNames = Initialize-OktaCsrMetadataSubjectAltNames -DnsNames "MyDnsNames"
+$CsrMetadata = Initialize-OktaCsrMetadata -Subject $CsrMetadataSubject -SubjectAltNames $CsrMetadataSubjectAltNames # CsrMetadata | 
 
 # Generate a Certificate Signing Request
 try {
@@ -861,7 +861,7 @@ $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $IdpId = "MyIdpId" # String | 
 $UserId = "MyUserId" # String | 
-$UserIdentityProviderLinkRequest = Initialize-UserIdentityProviderLinkRequest -ExternalId "MyExternalId" # UserIdentityProviderLinkRequest | 
+$UserIdentityProviderLinkRequest = Initialize-OktaUserIdentityProviderLinkRequest -ExternalId "MyExternalId" # UserIdentityProviderLinkRequest | 
 
 # Link a User to a Social IdP
 try {
@@ -1392,92 +1392,92 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $IdpId = "MyIdpId" # String | 
-$PolicyAccountLinkFilterGroups = Initialize-PolicyAccountLinkFilterGroups -Include "MyInclude"
-$PolicyAccountLinkFilter = Initialize-PolicyAccountLinkFilter -Groups $PolicyAccountLinkFilterGroups
+$PolicyAccountLinkFilterGroups = Initialize-OktaPolicyAccountLinkFilterGroups -Include "MyInclude"
+$PolicyAccountLinkFilter = Initialize-OktaPolicyAccountLinkFilter -Groups $PolicyAccountLinkFilterGroups
 
-$PolicyAccountLink = Initialize-PolicyAccountLink -Action "AUTO" -VarFilter $PolicyAccountLinkFilter
+$PolicyAccountLink = Initialize-OktaPolicyAccountLink -Action "AUTO" -VarFilter $PolicyAccountLinkFilter
 
-$AppAndInstanceConditionEvaluatorAppOrInstance = Initialize-AppAndInstanceConditionEvaluatorAppOrInstance -Id "MyId" -Name "MyName" -Type "APP"
-$AppAndInstancePolicyRuleCondition = Initialize-AppAndInstancePolicyRuleCondition -Exclude $AppAndInstanceConditionEvaluatorAppOrInstance -Include $AppAndInstanceConditionEvaluatorAppOrInstance
+$AppAndInstanceConditionEvaluatorAppOrInstance = Initialize-OktaAppAndInstanceConditionEvaluatorAppOrInstance -Id "MyId" -Name "MyName" -Type "APP"
+$AppAndInstancePolicyRuleCondition = Initialize-OktaAppAndInstancePolicyRuleCondition -Exclude $AppAndInstanceConditionEvaluatorAppOrInstance -Include $AppAndInstanceConditionEvaluatorAppOrInstance
 
-$AppInstancePolicyRuleCondition = Initialize-AppInstancePolicyRuleCondition -Exclude "MyExclude" -Include "MyInclude"
-$PolicyRuleAuthContextCondition = Initialize-PolicyRuleAuthContextCondition -AuthType "ANY"
-$PasswordPolicyAuthenticationProviderCondition = Initialize-PasswordPolicyAuthenticationProviderCondition -Include "MyInclude" -Provider "ACTIVE_DIRECTORY"
+$AppInstancePolicyRuleCondition = Initialize-OktaAppInstancePolicyRuleCondition -Exclude "MyExclude" -Include "MyInclude"
+$PolicyRuleAuthContextCondition = Initialize-OktaPolicyRuleAuthContextCondition -AuthType "ANY"
+$PasswordPolicyAuthenticationProviderCondition = Initialize-OktaPasswordPolicyAuthenticationProviderCondition -Include "MyInclude" -Provider "ACTIVE_DIRECTORY"
 
-$Duration = Initialize-Duration -Number 0 -Unit "MyUnit"
-$ScheduledUserLifecycleAction = Initialize-ScheduledUserLifecycleAction -Status "ACTIVATING"
-$BeforeScheduledActionPolicyRuleCondition = Initialize-BeforeScheduledActionPolicyRuleCondition -Duration $Duration -LifecycleAction $ScheduledUserLifecycleAction
+$Duration = Initialize-OktaDuration -Number 0 -Unit "MyUnit"
+$ScheduledUserLifecycleAction = Initialize-OktaScheduledUserLifecycleAction -Status "ACTIVATING"
+$BeforeScheduledActionPolicyRuleCondition = Initialize-OktaBeforeScheduledActionPolicyRuleCondition -Duration $Duration -LifecycleAction $ScheduledUserLifecycleAction
 
-$ClientPolicyCondition = Initialize-ClientPolicyCondition -Include "MyInclude"
+$ClientPolicyCondition = Initialize-OktaClientPolicyCondition -Include "MyInclude"
 
-$DevicePolicyRuleConditionPlatform = Initialize-DevicePolicyRuleConditionPlatform -SupportedMDMFrameworks "AFW" -Types "ANDROID"
-$ContextPolicyRuleCondition = Initialize-ContextPolicyRuleCondition -Migrated $false -Platform $DevicePolicyRuleConditionPlatform -Rooted $false -TrustLevel "ANY" -Expression "MyExpression"
+$DevicePolicyRuleConditionPlatform = Initialize-OktaDevicePolicyRuleConditionPlatform -SupportedMDMFrameworks "AFW" -Types "ANDROID"
+$ContextPolicyRuleCondition = Initialize-OktaContextPolicyRuleCondition -Migrated $false -Platform $DevicePolicyRuleConditionPlatform -Rooted $false -TrustLevel "ANY" -Expression "MyExpression"
 
-$DevicePolicyRuleCondition = Initialize-DevicePolicyRuleCondition -Migrated $false -Platform $DevicePolicyRuleConditionPlatform -Rooted $false -TrustLevel "ANY"
+$DevicePolicyRuleCondition = Initialize-OktaDevicePolicyRuleCondition -Migrated $false -Platform $DevicePolicyRuleConditionPlatform -Rooted $false -TrustLevel "ANY"
 
-$GrantTypePolicyRuleCondition = Initialize-GrantTypePolicyRuleCondition -Include "MyInclude"
-$GroupPolicyRuleCondition = Initialize-GroupPolicyRuleCondition -Exclude "MyExclude" -Include "MyInclude"
-$IdentityProviderPolicyRuleCondition = Initialize-IdentityProviderPolicyRuleCondition -IdpIds "MyIdpIds" -Provider "ANY"
-$MDMEnrollmentPolicyRuleCondition = Initialize-MDMEnrollmentPolicyRuleCondition -BlockNonSafeAndroid $false -Enrollment "ANY_OR_NONE"
-$PolicyNetworkCondition = Initialize-PolicyNetworkCondition -Connection "ANYWHERE" -Exclude "MyExclude" -Include "MyInclude"
+$GrantTypePolicyRuleCondition = Initialize-OktaGrantTypePolicyRuleCondition -Include "MyInclude"
+$GroupPolicyRuleCondition = Initialize-OktaGroupPolicyRuleCondition -Exclude "MyExclude" -Include "MyInclude"
+$IdentityProviderPolicyRuleCondition = Initialize-OktaIdentityProviderPolicyRuleCondition -IdpIds "MyIdpIds" -Provider "ANY"
+$MDMEnrollmentPolicyRuleCondition = Initialize-OktaMDMEnrollmentPolicyRuleCondition -BlockNonSafeAndroid $false -Enrollment "ANY_OR_NONE"
+$PolicyNetworkCondition = Initialize-OktaPolicyNetworkCondition -Connection "ANYWHERE" -Exclude "MyExclude" -Include "MyInclude"
 
-$GroupCondition = Initialize-GroupCondition -Exclude "MyExclude" -Include "MyInclude"
-$UserCondition = Initialize-UserCondition -Exclude "MyExclude" -Include "MyInclude"
-$PolicyPeopleCondition = Initialize-PolicyPeopleCondition -Groups $GroupCondition -Users $UserCondition
+$GroupCondition = Initialize-OktaGroupCondition -Exclude "MyExclude" -Include "MyInclude"
+$UserCondition = Initialize-OktaUserCondition -Exclude "MyExclude" -Include "MyInclude"
+$PolicyPeopleCondition = Initialize-OktaPolicyPeopleCondition -Groups $GroupCondition -Users $UserCondition
 
-$PlatformConditionEvaluatorPlatformOperatingSystemVersion = Initialize-PlatformConditionEvaluatorPlatformOperatingSystemVersion -MatchType "EXPRESSION" -Value "MyValue"
-$PlatformConditionEvaluatorPlatformOperatingSystem = Initialize-PlatformConditionEvaluatorPlatformOperatingSystem -Expression "MyExpression" -Type "ANDROID" -Version $PlatformConditionEvaluatorPlatformOperatingSystemVersion
+$PlatformConditionEvaluatorPlatformOperatingSystemVersion = Initialize-OktaPlatformConditionEvaluatorPlatformOperatingSystemVersion -MatchType "EXPRESSION" -Value "MyValue"
+$PlatformConditionEvaluatorPlatformOperatingSystem = Initialize-OktaPlatformConditionEvaluatorPlatformOperatingSystem -Expression "MyExpression" -Type "ANDROID" -Version $PlatformConditionEvaluatorPlatformOperatingSystemVersion
 
-$PlatformConditionEvaluatorPlatform = Initialize-PlatformConditionEvaluatorPlatform -Os $PlatformConditionEvaluatorPlatformOperatingSystem -Type "ANY"
+$PlatformConditionEvaluatorPlatform = Initialize-OktaPlatformConditionEvaluatorPlatform -Os $PlatformConditionEvaluatorPlatformOperatingSystem -Type "ANY"
 
-$PlatformPolicyRuleCondition = Initialize-PlatformPolicyRuleCondition -Exclude $PlatformConditionEvaluatorPlatform -Include $PlatformConditionEvaluatorPlatform
+$PlatformPolicyRuleCondition = Initialize-OktaPlatformPolicyRuleCondition -Exclude $PlatformConditionEvaluatorPlatform -Include $PlatformConditionEvaluatorPlatform
 
-$RiskPolicyRuleCondition = Initialize-RiskPolicyRuleCondition -Behaviors "MyBehaviors"
-$RiskScorePolicyRuleCondition = Initialize-RiskScorePolicyRuleCondition -Level "MyLevel"
-$OAuth2ScopesMediationPolicyRuleCondition = Initialize-OAuth2ScopesMediationPolicyRuleCondition -Include "MyInclude"
+$RiskPolicyRuleCondition = Initialize-OktaRiskPolicyRuleCondition -Behaviors "MyBehaviors"
+$RiskScorePolicyRuleCondition = Initialize-OktaRiskScorePolicyRuleCondition -Level "MyLevel"
+$OAuth2ScopesMediationPolicyRuleCondition = Initialize-OktaOAuth2ScopesMediationPolicyRuleCondition -Include "MyInclude"
 
-$UserIdentifierConditionEvaluatorPattern = Initialize-UserIdentifierConditionEvaluatorPattern -MatchType "CONTAINS" -Value "MyValue"
-$UserIdentifierPolicyRuleCondition = Initialize-UserIdentifierPolicyRuleCondition -Attribute "MyAttribute" -Patterns $UserIdentifierConditionEvaluatorPattern -Type "ATTRIBUTE"
+$UserIdentifierConditionEvaluatorPattern = Initialize-OktaUserIdentifierConditionEvaluatorPattern -MatchType "CONTAINS" -Value "MyValue"
+$UserIdentifierPolicyRuleCondition = Initialize-OktaUserIdentifierPolicyRuleCondition -Attribute "MyAttribute" -Patterns $UserIdentifierConditionEvaluatorPattern -Type "ATTRIBUTE"
 
-$InactivityPolicyRuleCondition = Initialize-InactivityPolicyRuleCondition -Number 0 -Unit "MyUnit"
-$LifecycleExpirationPolicyRuleCondition = Initialize-LifecycleExpirationPolicyRuleCondition -LifecycleStatus "MyLifecycleStatus" -Number 0 -Unit "MyUnit"
-$PasswordExpirationPolicyRuleCondition = Initialize-PasswordExpirationPolicyRuleCondition -Number 0 -Unit "MyUnit"
-$UserLifecycleAttributePolicyRuleCondition = Initialize-UserLifecycleAttributePolicyRuleCondition -AttributeName "MyAttributeName" -MatchingValue "MyMatchingValue"
-$UserPolicyRuleCondition = Initialize-UserPolicyRuleCondition -Exclude "MyExclude" -Inactivity $InactivityPolicyRuleCondition -Include "MyInclude" -LifecycleExpiration $LifecycleExpirationPolicyRuleCondition -PasswordExpiration $PasswordExpirationPolicyRuleCondition -UserLifecycleAttribute $UserLifecycleAttributePolicyRuleCondition
+$InactivityPolicyRuleCondition = Initialize-OktaInactivityPolicyRuleCondition -Number 0 -Unit "MyUnit"
+$LifecycleExpirationPolicyRuleCondition = Initialize-OktaLifecycleExpirationPolicyRuleCondition -LifecycleStatus "MyLifecycleStatus" -Number 0 -Unit "MyUnit"
+$PasswordExpirationPolicyRuleCondition = Initialize-OktaPasswordExpirationPolicyRuleCondition -Number 0 -Unit "MyUnit"
+$UserLifecycleAttributePolicyRuleCondition = Initialize-OktaUserLifecycleAttributePolicyRuleCondition -AttributeName "MyAttributeName" -MatchingValue "MyMatchingValue"
+$UserPolicyRuleCondition = Initialize-OktaUserPolicyRuleCondition -Exclude "MyExclude" -Inactivity $InactivityPolicyRuleCondition -Include "MyInclude" -LifecycleExpiration $LifecycleExpirationPolicyRuleCondition -PasswordExpiration $PasswordExpirationPolicyRuleCondition -UserLifecycleAttribute $UserLifecycleAttributePolicyRuleCondition
 
-$UserStatusPolicyRuleCondition = Initialize-UserStatusPolicyRuleCondition -Value "ACTIVATING"
-$PolicyRuleConditions = Initialize-PolicyRuleConditions -App $AppAndInstancePolicyRuleCondition -Apps $AppInstancePolicyRuleCondition -AuthContext $PolicyRuleAuthContextCondition -AuthProvider $PasswordPolicyAuthenticationProviderCondition -BeforeScheduledAction $BeforeScheduledActionPolicyRuleCondition -Clients $ClientPolicyCondition -Context $ContextPolicyRuleCondition -Device $DevicePolicyRuleCondition -GrantTypes $GrantTypePolicyRuleCondition -Groups $GroupPolicyRuleCondition -IdentityProvider $IdentityProviderPolicyRuleCondition -MdmEnrollment $MDMEnrollmentPolicyRuleCondition -Network $PolicyNetworkCondition -People $PolicyPeopleCondition -Platform $PlatformPolicyRuleCondition -Risk $RiskPolicyRuleCondition -RiskScore $RiskScorePolicyRuleCondition -Scopes $OAuth2ScopesMediationPolicyRuleCondition -UserIdentifier $UserIdentifierPolicyRuleCondition -Users $UserPolicyRuleCondition -UserStatus $UserStatusPolicyRuleCondition
+$UserStatusPolicyRuleCondition = Initialize-OktaUserStatusPolicyRuleCondition -Value "ACTIVATING"
+$PolicyRuleConditions = Initialize-OktaPolicyRuleConditions -App $AppAndInstancePolicyRuleCondition -Apps $AppInstancePolicyRuleCondition -AuthContext $PolicyRuleAuthContextCondition -AuthProvider $PasswordPolicyAuthenticationProviderCondition -BeforeScheduledAction $BeforeScheduledActionPolicyRuleCondition -Clients $ClientPolicyCondition -Context $ContextPolicyRuleCondition -Device $DevicePolicyRuleCondition -GrantTypes $GrantTypePolicyRuleCondition -Groups $GroupPolicyRuleCondition -IdentityProvider $IdentityProviderPolicyRuleCondition -MdmEnrollment $MDMEnrollmentPolicyRuleCondition -Network $PolicyNetworkCondition -People $PolicyPeopleCondition -Platform $PlatformPolicyRuleCondition -Risk $RiskPolicyRuleCondition -RiskScore $RiskScorePolicyRuleCondition -Scopes $OAuth2ScopesMediationPolicyRuleCondition -UserIdentifier $UserIdentifierPolicyRuleCondition -Users $UserPolicyRuleCondition -UserStatus $UserStatusPolicyRuleCondition
 
-$ProvisioningDeprovisionedCondition = Initialize-ProvisioningDeprovisionedCondition -Action "NONE"
-$ProvisioningSuspendedCondition = Initialize-ProvisioningSuspendedCondition -Action "NONE"
-$ProvisioningConditions = Initialize-ProvisioningConditions -Deprovisioned $ProvisioningDeprovisionedCondition -Suspended $ProvisioningSuspendedCondition
+$ProvisioningDeprovisionedCondition = Initialize-OktaProvisioningDeprovisionedCondition -Action "NONE"
+$ProvisioningSuspendedCondition = Initialize-OktaProvisioningSuspendedCondition -Action "NONE"
+$ProvisioningConditions = Initialize-OktaProvisioningConditions -Deprovisioned $ProvisioningDeprovisionedCondition -Suspended $ProvisioningSuspendedCondition
 
-$ProvisioningGroups = Initialize-ProvisioningGroups -Action "APPEND" -Assignments "MyAssignments" -VarFilter "MyVarFilter" -SourceAttributeName "MySourceAttributeName"
-$Provisioning = Initialize-Provisioning -Action "AUTO" -Conditions $ProvisioningConditions -Groups $ProvisioningGroups -ProfileMaster $false
+$ProvisioningGroups = Initialize-OktaProvisioningGroups -Action "APPEND" -Assignments "MyAssignments" -VarFilter "MyVarFilter" -SourceAttributeName "MySourceAttributeName"
+$Provisioning = Initialize-OktaProvisioning -Action "AUTO" -Conditions $ProvisioningConditions -Groups $ProvisioningGroups -ProfileMaster $false
 
-$PolicyUserNameTemplate = Initialize-PolicyUserNameTemplate -Template "MyTemplate"
-$PolicySubject = Initialize-PolicySubject -VarFilter "MyVarFilter" -Format "MyFormat" -MatchAttribute "MyMatchAttribute" -MatchType "CUSTOM_ATTRIBUTE" -UserNameTemplate $PolicyUserNameTemplate
+$PolicyUserNameTemplate = Initialize-OktaPolicyUserNameTemplate -Template "MyTemplate"
+$PolicySubject = Initialize-OktaPolicySubject -VarFilter "MyVarFilter" -Format "MyFormat" -MatchAttribute "MyMatchAttribute" -MatchType "CUSTOM_ATTRIBUTE" -UserNameTemplate $PolicyUserNameTemplate
 
-$IdentityProviderPolicy = Initialize-IdentityProviderPolicy -Created (Get-Date) -Description "MyDescription" -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Priority 0 -Status "ACTIVE" -System $false -Type "ACCESS_POLICY" -Embedded @{ key_example =  } -Links @{ key_example =  } -AccountLink $PolicyAccountLink -Conditions $PolicyRuleConditions -MaxClockSkew 0 -Provisioning $Provisioning -Subject $PolicySubject
+$IdentityProviderPolicy = Initialize-OktaIdentityProviderPolicy -Created (Get-Date) -Description "MyDescription" -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Priority 0 -Status "ACTIVE" -System $false -Type "ACCESS_POLICY" -Embedded @{ key_example =  } -Links @{ key_example =  } -AccountLink $PolicyAccountLink -Conditions $PolicyRuleConditions -MaxClockSkew 0 -Provisioning $Provisioning -Subject $PolicySubject
 
-$ProtocolAlgorithmTypeSignature = Initialize-ProtocolAlgorithmTypeSignature -Algorithm "MyAlgorithm" -Scope "ANY"
-$ProtocolAlgorithmType = Initialize-ProtocolAlgorithmType -Signature $ProtocolAlgorithmTypeSignature
+$ProtocolAlgorithmTypeSignature = Initialize-OktaProtocolAlgorithmTypeSignature -Algorithm "MyAlgorithm" -Scope "ANY"
+$ProtocolAlgorithmType = Initialize-OktaProtocolAlgorithmType -Signature $ProtocolAlgorithmTypeSignature
 
-$ProtocolAlgorithms = Initialize-ProtocolAlgorithms -Request $ProtocolAlgorithmType -Response $ProtocolAlgorithmType
+$ProtocolAlgorithms = Initialize-OktaProtocolAlgorithms -Request $ProtocolAlgorithmType -Response $ProtocolAlgorithmType
 
-$IdentityProviderCredentialsClient = Initialize-IdentityProviderCredentialsClient -ClientId "MyClientId" -ClientSecret "MyClientSecret"
-$IdentityProviderCredentialsSigning = Initialize-IdentityProviderCredentialsSigning -Kid "MyKid"
-$IdentityProviderCredentialsTrust = Initialize-IdentityProviderCredentialsTrust -Audience "MyAudience" -Issuer "MyIssuer" -Kid "MyKid" -Revocation "CRL" -RevocationCacheLifetime 0
-$IdentityProviderCredentials = Initialize-IdentityProviderCredentials -Client $IdentityProviderCredentialsClient -Signing $IdentityProviderCredentialsSigning -Trust $IdentityProviderCredentialsTrust
+$IdentityProviderCredentialsClient = Initialize-OktaIdentityProviderCredentialsClient -ClientId "MyClientId" -ClientSecret "MyClientSecret"
+$IdentityProviderCredentialsSigning = Initialize-OktaIdentityProviderCredentialsSigning -Kid "MyKid"
+$IdentityProviderCredentialsTrust = Initialize-OktaIdentityProviderCredentialsTrust -Audience "MyAudience" -Issuer "MyIssuer" -Kid "MyKid" -Revocation "CRL" -RevocationCacheLifetime 0
+$IdentityProviderCredentials = Initialize-OktaIdentityProviderCredentials -Client $IdentityProviderCredentialsClient -Signing $IdentityProviderCredentialsSigning -Trust $IdentityProviderCredentialsTrust
 
-$ProtocolEndpoint = Initialize-ProtocolEndpoint -Binding "HTTP-POST" -Destination "MyDestination" -Type "INSTANCE" -Url "MyUrl"
-$ProtocolEndpoints = Initialize-ProtocolEndpoints -Acs $ProtocolEndpoint -Authorization $ProtocolEndpoint -Jwks $ProtocolEndpoint -Metadata $ProtocolEndpoint -Slo $ProtocolEndpoint -Sso $ProtocolEndpoint -Token $ProtocolEndpoint -UserInfo $ProtocolEndpoint
+$ProtocolEndpoint = Initialize-OktaProtocolEndpoint -Binding "HTTP-POST" -Destination "MyDestination" -Type "INSTANCE" -Url "MyUrl"
+$ProtocolEndpoints = Initialize-OktaProtocolEndpoints -Acs $ProtocolEndpoint -Authorization $ProtocolEndpoint -Jwks $ProtocolEndpoint -Metadata $ProtocolEndpoint -Slo $ProtocolEndpoint -Sso $ProtocolEndpoint -Token $ProtocolEndpoint -UserInfo $ProtocolEndpoint
 
-$ProtocolRelayState = Initialize-ProtocolRelayState -Format "FROM_URL"
-$ProtocolSettings = Initialize-ProtocolSettings -NameFormat "MyNameFormat"
-$Protocol = Initialize-Protocol -Algorithms $ProtocolAlgorithms -Credentials $IdentityProviderCredentials -Endpoints $ProtocolEndpoints -Issuer $ProtocolEndpoint -RelayState $ProtocolRelayState -Scopes "MyScopes" -Settings $ProtocolSettings -Type "MTLS"
+$ProtocolRelayState = Initialize-OktaProtocolRelayState -Format "FROM_URL"
+$ProtocolSettings = Initialize-OktaProtocolSettings -NameFormat "MyNameFormat"
+$Protocol = Initialize-OktaProtocol -Algorithms $ProtocolAlgorithms -Credentials $IdentityProviderCredentials -Endpoints $ProtocolEndpoints -Issuer $ProtocolEndpoint -RelayState $ProtocolRelayState -Scopes "MyScopes" -Settings $ProtocolSettings -Type "MTLS"
 
-$IdentityProvider = Initialize-IdentityProvider -Created (Get-Date) -Id "MyId" -IssuerMode "CUSTOM_URL" -LastUpdated (Get-Date) -Name "MyName" -Policy $IdentityProviderPolicy -Protocol $Protocol -Status "ACTIVE" -Type "AgentlessDSSO" -Links @{ key_example =  } # IdentityProvider | 
+$IdentityProvider = Initialize-OktaIdentityProvider -Created (Get-Date) -Id "MyId" -IssuerMode "CUSTOM_URL" -LastUpdated (Get-Date) -Name "MyName" -Policy $IdentityProviderPolicy -Protocol $Protocol -Status "ACTIVE" -Type "AgentlessDSSO" -Links @{ key_example =  } # IdentityProvider | 
 
 # Replace an Identity Provider
 try {

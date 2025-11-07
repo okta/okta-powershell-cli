@@ -22,4 +22,3 @@ enum PlatformConditionOperatingSystemVersionMatchType {
     # enum value: "SEMVER"
     SEMVER
 }
-

@@ -26,4 +26,3 @@ enum EndUserDashboardTouchPointVariant {
     # enum value: "WHITE_LOGO_BACKGROUND"
     WHITE_LOGO_BACKGROUND
 }
-

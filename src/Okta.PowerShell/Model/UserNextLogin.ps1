@@ -20,4 +20,3 @@ enum UserNextLogin {
     # enum value: "changePassword"
     changePassword
 }
-

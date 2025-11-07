@@ -22,4 +22,3 @@ enum AuthorizationServerCredentialsRotationMode {
     # enum value: "MANUAL"
     MANUAL
 }
-

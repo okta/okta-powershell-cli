@@ -18,72 +18,71 @@ No description available.
 
 enum RolePermissionType {
     # enum value: "okta.apps.assignment.manage"
-    apps_assignment_manage
+    okta_apps_assignment_manage
     # enum value: "okta.apps.manage"
-    apps_manage
+    okta_apps_manage
     # enum value: "okta.apps.manageFirstPartyApps"
-    apps_manageFirstPartyApps
+    okta_apps_manageFirstPartyApps
     # enum value: "okta.apps.read"
-    apps_read
+    okta_apps_read
     # enum value: "okta.authzServers.manage"
-    authzServers_manage
+    okta_authzServers_manage
     # enum value: "okta.authzServers.read"
-    authzServers_read
+    okta_authzServers_read
     # enum value: "okta.customizations.manage"
-    customizations_manage
+    okta_customizations_manage
     # enum value: "okta.customizations.read"
-    customizations_read
+    okta_customizations_read
     # enum value: "okta.governance.accessCertifications.manage"
-    governance_accessCertifications_manage
+    okta_governance_accessCertifications_manage
     # enum value: "okta.governance.accessRequests.manage"
-    governance_accessRequests_manage
+    okta_governance_accessRequests_manage
     # enum value: "okta.groups.appAssignment.manage"
-    groups_appAssignment_manage
+    okta_groups_appAssignment_manage
     # enum value: "okta.groups.create"
-    groups_create
+    okta_groups_create
     # enum value: "okta.groups.manage"
-    groups_manage
+    okta_groups_manage
     # enum value: "okta.groups.members.manage"
-    groups_members_manage
+    okta_groups_members_manage
     # enum value: "okta.groups.read"
-    groups_read
+    okta_groups_read
     # enum value: "okta.profilesources.import.run"
-    profilesources_import_run
+    okta_profilesources_import_run
     # enum value: "okta.users.appAssignment.manage"
-    users_appAssignment_manage
+    okta_users_appAssignment_manage
     # enum value: "okta.users.create"
-    users_create
+    okta_users_create
     # enum value: "okta.users.credentials.expirePassword"
-    users_credentials_expirePassword
+    okta_users_credentials_expirePassword
     # enum value: "okta.users.credentials.manage"
-    users_credentials_manage
+    okta_users_credentials_manage
     # enum value: "okta.users.credentials.resetFactors"
-    users_credentials_resetFactors
+    okta_users_credentials_resetFactors
     # enum value: "okta.users.credentials.resetPassword"
-    users_credentials_resetPassword
+    okta_users_credentials_resetPassword
     # enum value: "okta.users.groupMembership.manage"
-    users_groupMembership_manage
+    okta_users_groupMembership_manage
     # enum value: "okta.users.lifecycle.activate"
-    users_lifecycle_activate
+    okta_users_lifecycle_activate
     # enum value: "okta.users.lifecycle.clearSessions"
-    users_lifecycle_clearSessions
+    okta_users_lifecycle_clearSessions
     # enum value: "okta.users.lifecycle.deactivate"
-    users_lifecycle_deactivate
+    okta_users_lifecycle_deactivate
     # enum value: "okta.users.lifecycle.delete"
-    users_lifecycle_delete
+    okta_users_lifecycle_delete
     # enum value: "okta.users.lifecycle.manage"
-    users_lifecycle_manage
+    okta_users_lifecycle_manage
     # enum value: "okta.users.lifecycle.suspend"
-    users_lifecycle_suspend
+    okta_users_lifecycle_suspend
     # enum value: "okta.users.lifecycle.unlock"
-    users_lifecycle_unlock
+    okta_users_lifecycle_unlock
     # enum value: "okta.users.lifecycle.unsuspend"
-    users_lifecycle_unsuspend
+    okta_users_lifecycle_unsuspend
     # enum value: "okta.users.manage"
-    users_manage
+    okta_users_manage
     # enum value: "okta.users.read"
-    users_read
+    okta_users_read
     # enum value: "okta.users.userprofile.manage"
-    users_userprofile_manage
+    okta_users_userprofile_manage
 }
-

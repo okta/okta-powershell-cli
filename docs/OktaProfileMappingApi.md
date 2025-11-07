@@ -138,9 +138,9 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $MappingId = "MyMappingId" # String | 
-$ProfileMappingProperty = Initialize-ProfileMappingProperty -Expression "MyExpression" -PushStatus "DONT_PUSH"
-$ProfileMappingSource = Initialize-ProfileMappingSource -Id "MyId" -Name "MyName" -Type "MyType" -Links @{ key_example =  }
-$ProfileMapping = Initialize-ProfileMapping -Id "MyId" -Properties @{ key_example = $ProfileMappingProperty } -Source $ProfileMappingSource -Target $ProfileMappingSource -Links @{ key_example =  } # ProfileMapping | 
+$ProfileMappingProperty = Initialize-OktaProfileMappingProperty -Expression "MyExpression" -PushStatus "DONT_PUSH"
+$ProfileMappingSource = Initialize-OktaProfileMappingSource -Id "MyId" -Name "MyName" -Type "MyType" -Links @{ key_example =  }
+$ProfileMapping = Initialize-OktaProfileMapping -Id "MyId" -Properties @{ key_example = $ProfileMappingProperty } -Source $ProfileMappingSource -Target $ProfileMappingSource -Links @{ key_example =  } # ProfileMapping | 
 
 # Update a Profile Mapping
 try {

@@ -26,4 +26,3 @@ enum DevicePolicyPlatformType {
     # enum value: "WINDOWS"
     WINDOWS
 }
-

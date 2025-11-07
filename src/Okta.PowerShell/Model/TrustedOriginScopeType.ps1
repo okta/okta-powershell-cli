@@ -24,4 +24,3 @@ enum TrustedOriginScopeType {
     # enum value: "REDIRECT"
     REDIRECT
 }
-

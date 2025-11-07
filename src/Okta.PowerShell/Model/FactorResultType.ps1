@@ -38,4 +38,3 @@ enum FactorResultType {
     # enum value: "WAITING"
     WAITING
 }
-

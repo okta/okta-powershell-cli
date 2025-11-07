@@ -26,4 +26,3 @@ enum BehaviorRuleType {
     # enum value: "VELOCITY"
     VELOCITY
 }
-

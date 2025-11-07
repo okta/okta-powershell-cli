@@ -24,4 +24,3 @@ enum GroupRuleStatus {
     # enum value: "INVALID"
     INVALID
 }
-

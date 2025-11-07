@@ -26,4 +26,3 @@ enum HttpMethod {
     # enum value: "PUT"
     PUT
 }
-

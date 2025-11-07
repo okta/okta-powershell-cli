@@ -24,4 +24,3 @@ enum SignInPageTouchPointVariant {
     # enum value: "OKTA_DEFAULT"
     OKTA_DEFAULT
 }
-

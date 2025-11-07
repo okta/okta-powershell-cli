@@ -24,4 +24,3 @@ enum ProvisioningConnectionStatus {
     # enum value: "UNKNOWN"
     UNKNOWN
 }
-

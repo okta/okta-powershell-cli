@@ -28,4 +28,3 @@ enum SessionIdentityProviderType {
     # enum value: "SOCIAL"
     SOCIAL
 }
-

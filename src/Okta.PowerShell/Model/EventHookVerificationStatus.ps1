@@ -22,4 +22,3 @@ enum EventHookVerificationStatus {
     # enum value: "VERIFIED"
     VERIFIED
 }
-

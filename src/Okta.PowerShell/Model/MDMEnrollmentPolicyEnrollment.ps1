@@ -22,4 +22,3 @@ enum MDMEnrollmentPolicyEnrollment {
     # enum value: "OMM"
     OMM
 }
-

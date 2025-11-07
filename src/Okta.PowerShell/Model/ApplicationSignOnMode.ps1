@@ -36,4 +36,3 @@ enum ApplicationSignOnMode {
     # enum value: "WS_FEDERATION"
     WS_FEDERATION
 }
-

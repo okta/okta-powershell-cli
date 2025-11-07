@@ -32,4 +32,3 @@ enum AuthenticatorType {
     # enum value: "security_question"
     security_question
 }
-

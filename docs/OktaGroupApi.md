@@ -95,7 +95,7 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $GroupId = "MyGroupId" # String | 
-$GroupOwner = Initialize-GroupOwner -DisplayName "MyDisplayName" -Id "MyId" -LastUpdated (Get-Date) -OriginId "MyOriginId" -OriginType "APPLICATION" -Resolved $false -Type "GROUP" # GroupOwner | 
+$GroupOwner = Initialize-OktaGroupOwner -DisplayName "MyDisplayName" -Id "MyId" -LastUpdated (Get-Date) -OriginId "MyOriginId" -OriginType "APPLICATION" -Resolved $false -Type "GROUP" # GroupOwner | 
 
 # Assign a Group Owner
 try {
@@ -199,12 +199,12 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$HrefObjectHints = Initialize-HrefObjectHints -Allow "DELETE"
-$HrefObject = Initialize-HrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
+$HrefObjectHints = Initialize-OktaHrefObjectHints -Allow "DELETE"
+$HrefObject = Initialize-OktaHrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
 
-$GroupLinks = Initialize-GroupLinks -Apps $HrefObject -Logo $HrefObject -Self $HrefObject -Source $HrefObject -Users $HrefObject
+$GroupLinks = Initialize-OktaGroupLinks -Apps $HrefObject -Logo $HrefObject -Self $HrefObject -Source $HrefObject -Users $HrefObject
 
-$Group = Initialize-Group -Created (Get-Date) -Id "MyId" -LastMembershipUpdated (Get-Date) -LastUpdated (Get-Date) -ObjectClass "MyObjectClass" -VarProfile  -Type "APP_GROUP" -Embedded @{ key_example =  } -Links $GroupLinks # Group | 
+$Group = Initialize-OktaGroup -Created (Get-Date) -Id "MyId" -LastMembershipUpdated (Get-Date) -LastUpdated (Get-Date) -ObjectClass "MyObjectClass" -VarProfile  -Type "APP_GROUP" -Embedded @{ key_example =  } -Links $GroupLinks # Group | 
 
 # Create a Group
 try {
@@ -254,18 +254,18 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$GroupRuleGroupAssignment = Initialize-GroupRuleGroupAssignment -GroupIds "MyGroupIds"
-$GroupRuleAction = Initialize-GroupRuleAction -AssignUserToGroups $GroupRuleGroupAssignment
+$GroupRuleGroupAssignment = Initialize-OktaGroupRuleGroupAssignment -GroupIds "MyGroupIds"
+$GroupRuleAction = Initialize-OktaGroupRuleAction -AssignUserToGroups $GroupRuleGroupAssignment
 
-$GroupRuleExpression = Initialize-GroupRuleExpression -Type "MyType" -Value "MyValue"
+$GroupRuleExpression = Initialize-OktaGroupRuleExpression -Type "MyType" -Value "MyValue"
 
-$GroupRuleGroupCondition = Initialize-GroupRuleGroupCondition -Exclude "MyExclude" -Include "MyInclude"
-$GroupRuleUserCondition = Initialize-GroupRuleUserCondition -Exclude "MyExclude" -Include "MyInclude"
-$GroupRulePeopleCondition = Initialize-GroupRulePeopleCondition -Groups $GroupRuleGroupCondition -Users $GroupRuleUserCondition
+$GroupRuleGroupCondition = Initialize-OktaGroupRuleGroupCondition -Exclude "MyExclude" -Include "MyInclude"
+$GroupRuleUserCondition = Initialize-OktaGroupRuleUserCondition -Exclude "MyExclude" -Include "MyInclude"
+$GroupRulePeopleCondition = Initialize-OktaGroupRulePeopleCondition -Groups $GroupRuleGroupCondition -Users $GroupRuleUserCondition
 
-$GroupRuleConditions = Initialize-GroupRuleConditions -Expression $GroupRuleExpression -People $GroupRulePeopleCondition
+$GroupRuleConditions = Initialize-OktaGroupRuleConditions -Expression $GroupRuleExpression -People $GroupRulePeopleCondition
 
-$GroupRule = Initialize-GroupRule -Actions $GroupRuleAction -Conditions $GroupRuleConditions -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Status "ACTIVE" -Type "MyType" # GroupRule | 
+$GroupRule = Initialize-OktaGroupRule -Actions $GroupRuleAction -Conditions $GroupRuleConditions -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Status "ACTIVE" -Type "MyType" # GroupRule | 
 
 # Create a Group Rule
 try {
@@ -974,12 +974,12 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $GroupId = "MyGroupId" # String | 
-$HrefObjectHints = Initialize-HrefObjectHints -Allow "DELETE"
-$HrefObject = Initialize-HrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
+$HrefObjectHints = Initialize-OktaHrefObjectHints -Allow "DELETE"
+$HrefObject = Initialize-OktaHrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
 
-$GroupLinks = Initialize-GroupLinks -Apps $HrefObject -Logo $HrefObject -Self $HrefObject -Source $HrefObject -Users $HrefObject
+$GroupLinks = Initialize-OktaGroupLinks -Apps $HrefObject -Logo $HrefObject -Self $HrefObject -Source $HrefObject -Users $HrefObject
 
-$Group = Initialize-Group -Created (Get-Date) -Id "MyId" -LastMembershipUpdated (Get-Date) -LastUpdated (Get-Date) -ObjectClass "MyObjectClass" -VarProfile  -Type "APP_GROUP" -Embedded @{ key_example =  } -Links $GroupLinks # Group | 
+$Group = Initialize-OktaGroup -Created (Get-Date) -Id "MyId" -LastMembershipUpdated (Get-Date) -LastUpdated (Get-Date) -ObjectClass "MyObjectClass" -VarProfile  -Type "APP_GROUP" -Embedded @{ key_example =  } -Links $GroupLinks # Group | 
 
 # Replace a Group
 try {
@@ -1032,18 +1032,18 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $RuleId = "MyRuleId" # String | 
-$GroupRuleGroupAssignment = Initialize-GroupRuleGroupAssignment -GroupIds "MyGroupIds"
-$GroupRuleAction = Initialize-GroupRuleAction -AssignUserToGroups $GroupRuleGroupAssignment
+$GroupRuleGroupAssignment = Initialize-OktaGroupRuleGroupAssignment -GroupIds "MyGroupIds"
+$GroupRuleAction = Initialize-OktaGroupRuleAction -AssignUserToGroups $GroupRuleGroupAssignment
 
-$GroupRuleExpression = Initialize-GroupRuleExpression -Type "MyType" -Value "MyValue"
+$GroupRuleExpression = Initialize-OktaGroupRuleExpression -Type "MyType" -Value "MyValue"
 
-$GroupRuleGroupCondition = Initialize-GroupRuleGroupCondition -Exclude "MyExclude" -Include "MyInclude"
-$GroupRuleUserCondition = Initialize-GroupRuleUserCondition -Exclude "MyExclude" -Include "MyInclude"
-$GroupRulePeopleCondition = Initialize-GroupRulePeopleCondition -Groups $GroupRuleGroupCondition -Users $GroupRuleUserCondition
+$GroupRuleGroupCondition = Initialize-OktaGroupRuleGroupCondition -Exclude "MyExclude" -Include "MyInclude"
+$GroupRuleUserCondition = Initialize-OktaGroupRuleUserCondition -Exclude "MyExclude" -Include "MyInclude"
+$GroupRulePeopleCondition = Initialize-OktaGroupRulePeopleCondition -Groups $GroupRuleGroupCondition -Users $GroupRuleUserCondition
 
-$GroupRuleConditions = Initialize-GroupRuleConditions -Expression $GroupRuleExpression -People $GroupRulePeopleCondition
+$GroupRuleConditions = Initialize-OktaGroupRuleConditions -Expression $GroupRuleExpression -People $GroupRulePeopleCondition
 
-$GroupRule = Initialize-GroupRule -Actions $GroupRuleAction -Conditions $GroupRuleConditions -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Status "ACTIVE" -Type "MyType" # GroupRule | 
+$GroupRule = Initialize-OktaGroupRule -Actions $GroupRuleAction -Conditions $GroupRuleConditions -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Status "ACTIVE" -Type "MyType" # GroupRule | 
 
 # Replace a Group Rule
 try {

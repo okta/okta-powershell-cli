@@ -22,4 +22,3 @@ enum InlineHookChannelType {
     # enum value: "OAUTH"
     OAUTH
 }
-

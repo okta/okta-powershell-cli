@@ -20,4 +20,3 @@ enum AuthorizationServerCredentialsUse {
     # enum value: "sig"
     sig
 }
-

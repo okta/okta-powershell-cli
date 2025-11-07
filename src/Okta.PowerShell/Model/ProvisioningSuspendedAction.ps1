@@ -22,4 +22,3 @@ enum ProvisioningSuspendedAction {
     # enum value: "UNSUSPEND"
     UNSUSPEND
 }
-

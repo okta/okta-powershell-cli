@@ -20,4 +20,3 @@ enum LinkedObjectDetailsType {
     # enum value: "USER"
     USER
 }
-

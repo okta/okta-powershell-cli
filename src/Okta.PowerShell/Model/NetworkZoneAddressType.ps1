@@ -22,4 +22,3 @@ enum NetworkZoneAddressType {
     # enum value: "RANGE"
     RANGE
 }
-

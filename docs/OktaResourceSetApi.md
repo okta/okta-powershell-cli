@@ -44,7 +44,7 @@ $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $ResourceSetId = "iamoJDFKaJxGIr0oamd9g" # String | `id` of a resource set
 $RoleIdOrLabel = "cr0Yq6IJxGIr0ouum0g3" # String | `id` or `label` of the role
-$ResourceSetBindingAddMembersRequest = Initialize-ResourceSetBindingAddMembersRequest -Additions "MyAdditions" # ResourceSetBindingAddMembersRequest | 
+$ResourceSetBindingAddMembersRequest = Initialize-OktaResourceSetBindingAddMembersRequest -Additions "MyAdditions" # ResourceSetBindingAddMembersRequest | 
 
 # Add more Members to a binding
 try {
@@ -98,7 +98,7 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $ResourceSetId = "iamoJDFKaJxGIr0oamd9g" # String | `id` of a resource set
-$ResourceSetResourcePatchRequest = Initialize-ResourceSetResourcePatchRequest -Additions "MyAdditions" # ResourceSetResourcePatchRequest | 
+$ResourceSetResourcePatchRequest = Initialize-OktaResourceSetResourcePatchRequest -Additions "MyAdditions" # ResourceSetResourcePatchRequest | 
 
 # Add a Resource to a resource set
 try {
@@ -149,7 +149,7 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$CreateResourceSetRequest = Initialize-CreateResourceSetRequest -Description "MyDescription" -Label "MyLabel" -Resources "MyResources" # CreateResourceSetRequest | 
+$CreateResourceSetRequest = Initialize-OktaCreateResourceSetRequest -Description "MyDescription" -Label "MyLabel" -Resources "MyResources" # CreateResourceSetRequest | 
 
 # Create a Resource Set
 try {
@@ -201,7 +201,7 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $ResourceSetId = "iamoJDFKaJxGIr0oamd9g" # String | `id` of a resource set
-$ResourceSetBindingCreateRequest = Initialize-ResourceSetBindingCreateRequest -Members "MyMembers" -Role "MyRole" # ResourceSetBindingCreateRequest | 
+$ResourceSetBindingCreateRequest = Initialize-OktaResourceSetBindingCreateRequest -Members "MyMembers" -Role "MyRole" # ResourceSetBindingCreateRequest | 
 
 # Create a Resource Set Binding
 try {
@@ -778,12 +778,12 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $ResourceSetId = "iamoJDFKaJxGIr0oamd9g" # String | `id` of a resource set
-$HrefObjectHints = Initialize-HrefObjectHints -Allow "DELETE"
-$HrefObject = Initialize-HrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
+$HrefObjectHints = Initialize-OktaHrefObjectHints -Allow "DELETE"
+$HrefObject = Initialize-OktaHrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
 
-$ResourceSetLinks = Initialize-ResourceSetLinks -Self $HrefObject -Resources $HrefObject -Bindings $HrefObject
+$ResourceSetLinks = Initialize-OktaResourceSetLinks -Self $HrefObject -Resources $HrefObject -Bindings $HrefObject
 
-$ResourceSet = Initialize-ResourceSet -Created (Get-Date) -Description "MyDescription" -Id "MyId" -Label "MyLabel" -LastUpdated (Get-Date) -Links $ResourceSetLinks # ResourceSet | 
+$ResourceSet = Initialize-OktaResourceSet -Created (Get-Date) -Description "MyDescription" -Id "MyId" -Label "MyLabel" -LastUpdated (Get-Date) -Links $ResourceSetLinks # ResourceSet | 
 
 # Replace a Resource Set
 try {

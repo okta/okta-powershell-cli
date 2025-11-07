@@ -40,4 +40,3 @@ enum AwsRegion {
     # enum value: "us-west-2"
     us_west_2
 }
-

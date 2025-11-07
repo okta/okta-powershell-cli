@@ -26,4 +26,3 @@ enum PolicyPlatformType {
     # enum value: "OTHER"
     OTHER
 }
-

@@ -222,9 +222,9 @@ $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AppId = "MyAppId" # String | 
 $AppUserPasswordCredential = Initialize-OktaAppUserPasswordCredential -Value "MyValue"
-$AppUserCredentials = Initialize-AppUserCredentials -Password $OktaAppUserPasswordCredential -UserName "MyUserName"
+$AppUserCredentials = Initialize-OktaAppUserCredentials -Password $AppUserPasswordCredential -UserName "MyUserName"
 
-$AppUser = Initialize-AppUser -Created (Get-Date) -Credentials $AppUserCredentials -ExternalId "MyExternalId" -Id "MyId" -LastSync (Get-Date) -LastUpdated (Get-Date) -PasswordChanged (Get-Date) -VarProfile @{ key_example =  } -Scope "MyScope" -Status "MyStatus" -StatusChanged (Get-Date) -SyncState "MySyncState" -Embedded @{ key_example =  } -Links @{ key_example =  } # AppUser | 
+$AppUser = Initialize-OktaAppUser -Created (Get-Date) -Credentials $AppUserCredentials -ExternalId "MyExternalId" -Id "MyId" -LastSync (Get-Date) -LastUpdated (Get-Date) -PasswordChanged (Get-Date) -VarProfile @{ key_example =  } -Scope "MyScope" -Status "MyStatus" -StatusChanged (Get-Date) -SyncState "MySyncState" -Embedded @{ key_example =  } -Links @{ key_example =  } # AppUser | 
 
 # Assign a User
 try {
@@ -333,13 +333,13 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$ApplicationAccessibility = Initialize-ApplicationAccessibility -ErrorRedirectUrl "MyErrorRedirectUrl" -LoginRedirectUrl "MyLoginRedirectUrl" -SelfService $false
-$ApplicationLicensing = Initialize-ApplicationLicensing -SeatCount 0
+$ApplicationAccessibility = Initialize-OktaApplicationAccessibility -ErrorRedirectUrl "MyErrorRedirectUrl" -LoginRedirectUrl "MyLoginRedirectUrl" -SelfService $false
+$ApplicationLicensing = Initialize-OktaApplicationLicensing -SeatCount 0
 
-$ApplicationVisibilityHide = Initialize-ApplicationVisibilityHide -IOS $false -Web $false
-$ApplicationVisibility = Initialize-ApplicationVisibility -AppLinks @{ key_example = $false } -AutoLaunch $false -AutoSubmitToolbar $false -Hide $ApplicationVisibilityHide
+$ApplicationVisibilityHide = Initialize-OktaApplicationVisibilityHide -IOS $false -Web $false
+$ApplicationVisibility = Initialize-OktaApplicationVisibility -AppLinks @{ key_example = $false } -AutoLaunch $false -AutoSubmitToolbar $false -Hide $ApplicationVisibilityHide
 
-$Application = Initialize-Application -Accessibility $ApplicationAccessibility -Created (Get-Date) -Features "MyFeatures" -Id "MyId" -Label "MyLabel" -LastUpdated (Get-Date) -Licensing $ApplicationLicensing -VarProfile @{ key_example =  } -SignOnMode "AUTO_LOGIN" -Status "ACTIVE" -Visibility $ApplicationVisibility -Embedded @{ key_example =  } -Links # Application | 
+$Application = Initialize-OktaApplication -Accessibility $ApplicationAccessibility -Created (Get-Date) -Features "MyFeatures" -Id "MyId" -Label "MyLabel" -LastUpdated (Get-Date) -Licensing $ApplicationLicensing -VarProfile @{ key_example =  } -SignOnMode "AUTO_LOGIN" -Status "ACTIVE" -Visibility $ApplicationVisibility -Embedded @{ key_example =  } -Links # Application | 
 $Activate = $true # Boolean | Executes activation lifecycle operation when creating the app (optional) (default to $true)
 $OktaAccessGatewayAgent = "MyOktaAccessGatewayAgent" # String |  (optional)
 
@@ -397,7 +397,7 @@ $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AppId = "MyAppId" # String | 
 $GroupId = "MyGroupId" # String | 
-$ApplicationGroupAssignment = Initialize-ApplicationGroupAssignment -Id "MyId" -LastUpdated (Get-Date) -Priority 0 -VarProfile @{ key_example =  } -Embedded @{ key_example =  } -Links @{ key_example =  } # ApplicationGroupAssignment |  (optional)
+$ApplicationGroupAssignment = Initialize-OktaApplicationGroupAssignment -Id "MyId" -LastUpdated (Get-Date) -Priority 0 -VarProfile @{ key_example =  } -Embedded @{ key_example =  } -Links @{ key_example =  } # ApplicationGroupAssignment |  (optional)
 
 # Assign a Group
 try {
@@ -763,9 +763,9 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AppId = "MyAppId" # String | 
-$CsrMetadataSubject = Initialize-CsrMetadataSubject -CommonName "MyCommonName" -CountryName "MyCountryName" -LocalityName "MyLocalityName" -OrganizationalUnitName "MyOrganizationalUnitName" -OrganizationName "MyOrganizationName" -StateOrProvinceName "MyStateOrProvinceName"
-$CsrMetadataSubjectAltNames = Initialize-CsrMetadataSubjectAltNames -DnsNames "MyDnsNames"
-$CsrMetadata = Initialize-CsrMetadata -Subject $CsrMetadataSubject -SubjectAltNames $CsrMetadataSubjectAltNames # CsrMetadata | 
+$CsrMetadataSubject = Initialize-OktaCsrMetadataSubject -CommonName "MyCommonName" -CountryName "MyCountryName" -LocalityName "MyLocalityName" -OrganizationalUnitName "MyOrganizationalUnitName" -OrganizationName "MyOrganizationName" -StateOrProvinceName "MyStateOrProvinceName"
+$CsrMetadataSubjectAltNames = Initialize-OktaCsrMetadataSubjectAltNames -DnsNames "MyDnsNames"
+$CsrMetadata = Initialize-OktaCsrMetadata -Subject $CsrMetadataSubject -SubjectAltNames $CsrMetadataSubjectAltNames # CsrMetadata | 
 
 # Generate a Certificate Signing Request
 try {
@@ -1296,8 +1296,8 @@ Grants consent for the application to request an OAuth 2.0 Okta scope
 $Configuration = Get-OktaConfiguration
 
 $AppId = "MyAppId" # String | 
-$OAuth2Actor = Initialize-OAuth2Actor -Id "MyId" -Type "MyType"
-$OAuth2ScopeConsentGrant = Initialize-OAuth2ScopeConsentGrant -ClientId "MyClientId" -Created (Get-Date) -CreatedBy $OAuth2Actor -Id "MyId" -Issuer "MyIssuer" -LastUpdated (Get-Date) -ScopeId "MyScopeId" -Source "ADMIN" -Status "ACTIVE" -UserId "MyUserId" -Embedded @{ key_example =  } -Links @{ key_example =  } # OAuth2ScopeConsentGrant | 
+$OAuth2Actor = Initialize-OktaOAuth2Actor -Id "MyId" -Type "MyType"
+$OAuth2ScopeConsentGrant = Initialize-OktaOAuth2ScopeConsentGrant -ClientId "MyClientId" -Created (Get-Date) -CreatedBy $OAuth2Actor -Id "MyId" -Issuer "MyIssuer" -LastUpdated (Get-Date) -ScopeId "MyScopeId" -Source "ADMIN" -Status "ACTIVE" -UserId "MyUserId" -Embedded @{ key_example =  } -Links @{ key_example =  } # OAuth2ScopeConsentGrant | 
 
 # Grant Consent to Scope
 try {
@@ -2065,8 +2065,8 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AppId = "MyAppId" # String | 
-$ProvisioningConnectionProfile = Initialize-ProvisioningConnectionProfile -AuthScheme "TOKEN" -Token "MyToken"
-$ProvisioningConnectionRequest = Initialize-ProvisioningConnectionRequest -VarProfile $ProvisioningConnectionProfile # ProvisioningConnectionRequest | 
+$ProvisioningConnectionProfile = Initialize-OktaProvisioningConnectionProfile -AuthScheme "TOKEN" -Token "MyToken"
+$ProvisioningConnectionRequest = Initialize-OktaProvisioningConnectionRequest -VarProfile $ProvisioningConnectionProfile # ProvisioningConnectionRequest | 
 $Activate = $true # Boolean |  (optional)
 
 # Update the default Provisioning Connection
@@ -2121,13 +2121,13 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AppId = "MyAppId" # String | 
-$ApplicationAccessibility = Initialize-ApplicationAccessibility -ErrorRedirectUrl "MyErrorRedirectUrl" -LoginRedirectUrl "MyLoginRedirectUrl" -SelfService $false
-$ApplicationLicensing = Initialize-ApplicationLicensing -SeatCount 0
+$ApplicationAccessibility = Initialize-OktaApplicationAccessibility -ErrorRedirectUrl "MyErrorRedirectUrl" -LoginRedirectUrl "MyLoginRedirectUrl" -SelfService $false
+$ApplicationLicensing = Initialize-OktaApplicationLicensing -SeatCount 0
 
-$ApplicationVisibilityHide = Initialize-ApplicationVisibilityHide -IOS $false -Web $false
-$ApplicationVisibility = Initialize-ApplicationVisibility -AppLinks @{ key_example = $false } -AutoLaunch $false -AutoSubmitToolbar $false -Hide $ApplicationVisibilityHide
+$ApplicationVisibilityHide = Initialize-OktaApplicationVisibilityHide -IOS $false -Web $false
+$ApplicationVisibility = Initialize-OktaApplicationVisibility -AppLinks @{ key_example = $false } -AutoLaunch $false -AutoSubmitToolbar $false -Hide $ApplicationVisibilityHide
 
-$Application = Initialize-Application -Accessibility $ApplicationAccessibility -Created (Get-Date) -Features "MyFeatures" -Id "MyId" -Label "MyLabel" -LastUpdated (Get-Date) -Licensing $ApplicationLicensing -VarProfile @{ key_example =  } -SignOnMode "AUTO_LOGIN" -Status "ACTIVE" -Visibility $ApplicationVisibility -Embedded @{ key_example =  } -Links # Application | 
+$Application = Initialize-OktaApplication -Accessibility $ApplicationAccessibility -Created (Get-Date) -Features "MyFeatures" -Id "MyId" -Label "MyLabel" -LastUpdated (Get-Date) -Licensing $ApplicationLicensing -VarProfile @{ key_example =  } -SignOnMode "AUTO_LOGIN" -Status "ACTIVE" -Visibility $ApplicationVisibility -Embedded @{ key_example =  } -Links # Application | 
 
 # Replace an Application
 try {
@@ -2183,9 +2183,9 @@ $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 $AppId = "MyAppId" # String | 
 $UserId = "MyUserId" # String | 
 $AppUserPasswordCredential = Initialize-OktaAppUserPasswordCredential -Value "MyValue"
-$AppUserCredentials = Initialize-AppUserCredentials -Password $OktaAppUserPasswordCredential -UserName "MyUserName"
+$AppUserCredentials = Initialize-OktaAppUserCredentials -Password $AppUserPasswordCredential -UserName "MyUserName"
 
-$AppUser = Initialize-AppUser -Created (Get-Date) -Credentials $AppUserCredentials -ExternalId "MyExternalId" -Id "MyId" -LastSync (Get-Date) -LastUpdated (Get-Date) -PasswordChanged (Get-Date) -VarProfile @{ key_example =  } -Scope "MyScope" -Status "MyStatus" -StatusChanged (Get-Date) -SyncState "MySyncState" -Embedded @{ key_example =  } -Links @{ key_example =  } # AppUser | 
+$AppUser = Initialize-OktaAppUser -Created (Get-Date) -Credentials $AppUserCredentials -ExternalId "MyExternalId" -Id "MyId" -LastSync (Get-Date) -LastUpdated (Get-Date) -PasswordChanged (Get-Date) -VarProfile @{ key_example =  } -Scope "MyScope" -Status "MyStatus" -StatusChanged (Get-Date) -SyncState "MySyncState" -Embedded @{ key_example =  } -Links @{ key_example =  } # AppUser | 
 
 # Update an Application Profile for Assigned User
 try {
@@ -2241,15 +2241,15 @@ $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $AppId = "MyAppId" # String | 
 $Name = "MyName" # String | 
-$LifecycleCreateSettingObject = Initialize-LifecycleCreateSettingObject -Status "DISABLED"
-$CapabilitiesCreateObject = Initialize-CapabilitiesCreateObject -LifecycleCreate $LifecycleCreateSettingObject
+$LifecycleCreateSettingObject = Initialize-OktaLifecycleCreateSettingObject -Status "DISABLED"
+$CapabilitiesCreateObject = Initialize-OktaCapabilitiesCreateObject -LifecycleCreate $LifecycleCreateSettingObject
 
-$LifecycleDeactivateSettingObject = Initialize-LifecycleDeactivateSettingObject -Status "DISABLED"
-$PasswordSettingObject = Initialize-PasswordSettingObject -Change "CHANGE" -Seed "OKTA" -Status "DISABLED"
-$ProfileSettingObject = Initialize-ProfileSettingObject -Status "DISABLED"
-$CapabilitiesUpdateObject = Initialize-CapabilitiesUpdateObject -LifecycleDeactivate $LifecycleDeactivateSettingObject -Password $PasswordSettingObject -VarProfile $ProfileSettingObject
+$LifecycleDeactivateSettingObject = Initialize-OktaLifecycleDeactivateSettingObject -Status "DISABLED"
+$PasswordSettingObject = Initialize-OktaPasswordSettingObject -Change "CHANGE" -Seed "OKTA" -Status "DISABLED"
+$ProfileSettingObject = Initialize-OktaProfileSettingObject -Status "DISABLED"
+$CapabilitiesUpdateObject = Initialize-OktaCapabilitiesUpdateObject -LifecycleDeactivate $LifecycleDeactivateSettingObject -Password $PasswordSettingObject -VarProfile $ProfileSettingObject
 
-$CapabilitiesObject = Initialize-CapabilitiesObject -Create $CapabilitiesCreateObject -Update $CapabilitiesUpdateObject # CapabilitiesObject | 
+$CapabilitiesObject = Initialize-OktaCapabilitiesObject -Create $CapabilitiesCreateObject -Update $CapabilitiesUpdateObject # CapabilitiesObject | 
 
 # Update a Feature
 try {

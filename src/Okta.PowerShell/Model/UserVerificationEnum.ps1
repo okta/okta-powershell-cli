@@ -22,4 +22,3 @@ enum UserVerificationEnum {
     # enum value: "REQUIRED"
     REQUIRED
 }
-

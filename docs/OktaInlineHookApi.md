@@ -82,8 +82,8 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$InlineHookChannel = Initialize-InlineHookChannel -Type "HTTP" -Version "MyVersion"
-$InlineHook = Initialize-InlineHook -Channel $InlineHookChannel -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Status "ACTIVE" -Type "com.okta.import.transform" -Version "MyVersion" -Links @{ key_example =  } # InlineHook | 
+$InlineHookChannel = Initialize-OktaInlineHookChannel -Type "HTTP" -Version "MyVersion"
+$InlineHook = Initialize-OktaInlineHook -Channel $InlineHookChannel -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Status "ACTIVE" -Type "com.okta.import.transform" -Version "MyVersion" -Links @{ key_example =  } # InlineHook | 
 
 # Create an Inline Hook
 try {
@@ -388,8 +388,8 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $InlineHookId = "MyInlineHookId" # String | 
-$InlineHookChannel = Initialize-InlineHookChannel -Type "HTTP" -Version "MyVersion"
-$InlineHook = Initialize-InlineHook -Channel $InlineHookChannel -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Status "ACTIVE" -Type "com.okta.import.transform" -Version "MyVersion" -Links @{ key_example =  } # InlineHook | 
+$InlineHookChannel = Initialize-OktaInlineHookChannel -Type "HTTP" -Version "MyVersion"
+$InlineHook = Initialize-OktaInlineHook -Channel $InlineHookChannel -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Status "ACTIVE" -Type "com.okta.import.transform" -Version "MyVersion" -Links @{ key_example =  } # InlineHook | 
 
 # Replace an Inline Hook
 try {

@@ -22,4 +22,3 @@ enum EmailTemplateTouchPointVariant {
     # enum value: "OKTA_DEFAULT"
     OKTA_DEFAULT
 }
-

@@ -22,4 +22,3 @@ enum LogStreamType {
     # enum value: "splunk_cloud_logstreaming"
     splunk_cloud_logstreaming
 }
-

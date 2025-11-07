@@ -22,4 +22,3 @@ enum NetworkZoneUsage {
     # enum value: "POLICY"
     POLICY
 }
-

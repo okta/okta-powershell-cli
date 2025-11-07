@@ -30,7 +30,7 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$KeyRequest = Initialize-KeyRequest -Name "MyName" # KeyRequest | 
+$KeyRequest = Initialize-OktaKeyRequest -Name "MyName" # KeyRequest | 
 
 # Create a key
 try {
@@ -277,7 +277,7 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $HookKeyId = "MyHookKeyId" # String | 
-$KeyRequest = Initialize-KeyRequest -Name "MyName" # KeyRequest | 
+$KeyRequest = Initialize-OktaKeyRequest -Name "MyName" # KeyRequest | 
 
 # Replace a key
 try {

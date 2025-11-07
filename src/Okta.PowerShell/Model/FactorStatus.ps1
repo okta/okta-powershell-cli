@@ -32,4 +32,3 @@ enum FactorStatus {
     # enum value: "PENDING_ACTIVATION"
     PENDING_ACTIVATION
 }
-

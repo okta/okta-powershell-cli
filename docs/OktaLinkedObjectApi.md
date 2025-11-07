@@ -28,8 +28,8 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$LinkedObjectDetails = Initialize-LinkedObjectDetails -Description "MyDescription" -Name "MyName" -Title "MyTitle" -Type "USER"
-$LinkedObject = Initialize-LinkedObject -Associated $LinkedObjectDetails -Primary $LinkedObjectDetails -Links @{ key_example =  } # LinkedObject | 
+$LinkedObjectDetails = Initialize-OktaLinkedObjectDetails -Description "MyDescription" -Name "MyName" -Title "MyTitle" -Type "USER"
+$LinkedObject = Initialize-OktaLinkedObject -Associated $LinkedObjectDetails -Primary $LinkedObjectDetails -Links @{ key_example =  } # LinkedObject | 
 
 # Create a Linked Object Definition
 try {

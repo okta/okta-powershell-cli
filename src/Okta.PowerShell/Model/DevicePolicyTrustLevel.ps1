@@ -22,4 +22,3 @@ enum DevicePolicyTrustLevel {
     # enum value: "TRUSTED"
     TRUSTED
 }
-

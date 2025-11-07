@@ -22,4 +22,3 @@ enum HostedPageType {
     # enum value: "OKTA_DEFAULT"
     OKTA_DEFAULT
 }
-

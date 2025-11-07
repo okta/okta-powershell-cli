@@ -24,4 +24,3 @@ enum DevicePolicyMDMFramework {
     # enum value: "SAFE"
     SAFE
 }
-

@@ -30,12 +30,12 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$HrefObjectHints = Initialize-HrefObjectHints -Allow "DELETE"
-$HrefObject = Initialize-HrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
+$HrefObjectHints = Initialize-OktaHrefObjectHints -Allow "DELETE"
+$HrefObject = Initialize-OktaHrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
 
-$ApiTokenLink = Initialize-ApiTokenLink -Self $HrefObject
+$ApiTokenLink = Initialize-OktaApiTokenLink -Self $HrefObject
 
-$CAPTCHAInstance = Initialize-CAPTCHAInstance -Id "MyId" -Name "MyName" -SecretKey "MySecretKey" -SiteKey "MySiteKey" -Type "HCAPTCHA" -Links $ApiTokenLink # CAPTCHAInstance | 
+$CAPTCHAInstance = Initialize-OktaCAPTCHAInstance -Id "MyId" -Name "MyName" -SecretKey "MySecretKey" -SiteKey "MySiteKey" -Type "HCAPTCHA" -Links $ApiTokenLink # CAPTCHAInstance | 
 
 # Create a CAPTCHA instance
 try {
@@ -232,12 +232,12 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $CaptchaId = "abcd1234" # String | id of the CAPTCHA
-$HrefObjectHints = Initialize-HrefObjectHints -Allow "DELETE"
-$HrefObject = Initialize-HrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
+$HrefObjectHints = Initialize-OktaHrefObjectHints -Allow "DELETE"
+$HrefObject = Initialize-OktaHrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
 
-$ApiTokenLink = Initialize-ApiTokenLink -Self $HrefObject
+$ApiTokenLink = Initialize-OktaApiTokenLink -Self $HrefObject
 
-$CAPTCHAInstance = Initialize-CAPTCHAInstance -Id "MyId" -Name "MyName" -SecretKey "MySecretKey" -SiteKey "MySiteKey" -Type "HCAPTCHA" -Links $ApiTokenLink # CAPTCHAInstance | 
+$CAPTCHAInstance = Initialize-OktaCAPTCHAInstance -Id "MyId" -Name "MyName" -SecretKey "MySecretKey" -SiteKey "MySiteKey" -Type "HCAPTCHA" -Links $ApiTokenLink # CAPTCHAInstance | 
 
 # Update a CAPTCHA instance
 try {
@@ -290,12 +290,12 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $CaptchaId = "abcd1234" # String | id of the CAPTCHA
-$HrefObjectHints = Initialize-HrefObjectHints -Allow "DELETE"
-$HrefObject = Initialize-HrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
+$HrefObjectHints = Initialize-OktaHrefObjectHints -Allow "DELETE"
+$HrefObject = Initialize-OktaHrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
 
-$ApiTokenLink = Initialize-ApiTokenLink -Self $HrefObject
+$ApiTokenLink = Initialize-OktaApiTokenLink -Self $HrefObject
 
-$CAPTCHAInstance = Initialize-CAPTCHAInstance -Id "MyId" -Name "MyName" -SecretKey "MySecretKey" -SiteKey "MySiteKey" -Type "HCAPTCHA" -Links $ApiTokenLink # CAPTCHAInstance | 
+$CAPTCHAInstance = Initialize-OktaCAPTCHAInstance -Id "MyId" -Name "MyName" -SecretKey "MySecretKey" -SiteKey "MySiteKey" -Type "HCAPTCHA" -Links $ApiTokenLink # CAPTCHAInstance | 
 
 # Replace a CAPTCHA instance
 try {

@@ -20,4 +20,3 @@ enum EventHookChannelType {
     # enum value: "HTTP"
     HTTP
 }
-

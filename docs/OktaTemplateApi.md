@@ -30,7 +30,7 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$SmsTemplate = Initialize-SmsTemplate -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Template "MyTemplate" -Translations  -Type "SMS_VERIFY_CODE" # SmsTemplate | 
+$SmsTemplate = Initialize-OktaSmsTemplate -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Template "MyTemplate" -Translations  -Type "SMS_VERIFY_CODE" # SmsTemplate | 
 
 # Create an SMS Template
 try {
@@ -232,7 +232,7 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $TemplateId = "MyTemplateId" # String | 
-$SmsTemplate = Initialize-SmsTemplate -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Template "MyTemplate" -Translations  -Type "SMS_VERIFY_CODE" # SmsTemplate | 
+$SmsTemplate = Initialize-OktaSmsTemplate -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Template "MyTemplate" -Translations  -Type "SMS_VERIFY_CODE" # SmsTemplate | 
 
 # Update an SMS Template
 try {
@@ -285,7 +285,7 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $TemplateId = "MyTemplateId" # String | 
-$SmsTemplate = Initialize-SmsTemplate -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Template "MyTemplate" -Translations  -Type "SMS_VERIFY_CODE" # SmsTemplate | 
+$SmsTemplate = Initialize-OktaSmsTemplate -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Template "MyTemplate" -Translations  -Type "SMS_VERIFY_CODE" # SmsTemplate | 
 
 # Replace an SMS Template
 try {

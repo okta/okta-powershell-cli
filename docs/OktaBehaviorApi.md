@@ -81,12 +81,12 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$HrefObjectHints = Initialize-HrefObjectHints -Allow "DELETE"
-$HrefObject = Initialize-HrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
+$HrefObjectHints = Initialize-OktaHrefObjectHints -Allow "DELETE"
+$HrefObject = Initialize-OktaHrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
 
-$ApiTokenLink = Initialize-ApiTokenLink -Self $HrefObject
+$ApiTokenLink = Initialize-OktaApiTokenLink -Self $HrefObject
 
-$BehaviorRule = Initialize-BehaviorRule -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Status "ACTIVE" -Type "ANOMALOUS_DEVICE" -Link $ApiTokenLink # BehaviorRule | 
+$BehaviorRule = Initialize-OktaBehaviorRule -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Status "ACTIVE" -Type "ANOMALOUS_DEVICE" -Link $ApiTokenLink # BehaviorRule | 
 
 # Create a Behavior Detection Rule
 try {
@@ -333,12 +333,12 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $BehaviorId = "abcd1234" # String | id of the Behavior Detection Rule
-$HrefObjectHints = Initialize-HrefObjectHints -Allow "DELETE"
-$HrefObject = Initialize-HrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
+$HrefObjectHints = Initialize-OktaHrefObjectHints -Allow "DELETE"
+$HrefObject = Initialize-OktaHrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
 
-$ApiTokenLink = Initialize-ApiTokenLink -Self $HrefObject
+$ApiTokenLink = Initialize-OktaApiTokenLink -Self $HrefObject
 
-$BehaviorRule = Initialize-BehaviorRule -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Status "ACTIVE" -Type "ANOMALOUS_DEVICE" -Link $ApiTokenLink # BehaviorRule | 
+$BehaviorRule = Initialize-OktaBehaviorRule -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Status "ACTIVE" -Type "ANOMALOUS_DEVICE" -Link $ApiTokenLink # BehaviorRule | 
 
 # Replace a Behavior Detection Rule
 try {

@@ -31,7 +31,7 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$EmailDomain = Initialize-EmailDomain -Domain "MyDomain" -DisplayName "MyDisplayName" -UserName "MyUserName" # EmailDomain | 
+$EmailDomain = Initialize-OktaEmailDomain -Domain "MyDomain" -DisplayName "MyDisplayName" -UserName "MyUserName" # EmailDomain | 
 
 # Create an Email Domain
 try {
@@ -278,7 +278,7 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $EmailDomainId = "MyEmailDomainId" # String | 
-$UpdateEmailDomain = Initialize-UpdateEmailDomain -DisplayName "MyDisplayName" -UserName "MyUserName" # UpdateEmailDomain | 
+$UpdateEmailDomain = Initialize-OktaUpdateEmailDomain -DisplayName "MyDisplayName" -UserName "MyUserName" # UpdateEmailDomain | 
 
 # Replace an Email Domain
 try {

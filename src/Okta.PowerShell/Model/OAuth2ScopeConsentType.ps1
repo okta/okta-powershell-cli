@@ -24,4 +24,3 @@ enum OAuth2ScopeConsentType {
     # enum value: "REQUIRED"
     REQUIRED
 }
-

@@ -24,4 +24,3 @@ enum OktaSignOnPolicyFactorPromptMode {
     # enum value: "SESSION"
     SESSION
 }
-

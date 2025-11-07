@@ -24,4 +24,3 @@ enum RequiredEnum {
     # enum value: "NEVER"
     NEVER
 }
-

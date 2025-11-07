@@ -24,4 +24,3 @@ enum GroupOwnerType {
     # enum value: "USER"
     USER
 }
-

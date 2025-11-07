@@ -29,12 +29,12 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$HrefObjectHints = Initialize-HrefObjectHints -Allow "DELETE"
-$HrefObject = Initialize-HrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
+$HrefObjectHints = Initialize-OktaHrefObjectHints -Allow "DELETE"
+$HrefObject = Initialize-OktaHrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
 
-$ApiTokenLink = Initialize-ApiTokenLink -Self $HrefObject
+$ApiTokenLink = Initialize-OktaApiTokenLink -Self $HrefObject
 
-$RiskProvider = Initialize-RiskProvider -Action "enforce_and_log" -ClientId "MyClientId" -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Links $ApiTokenLink # RiskProvider | 
+$RiskProvider = Initialize-OktaRiskProvider -Action "enforce_and_log" -ClientId "MyClientId" -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Links $ApiTokenLink # RiskProvider | 
 
 # Create a Risk Provider
 try {
@@ -231,12 +231,12 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $RiskProviderId = "00rp12r4skkjkjgsn" # String | `id` of the risk provider
-$HrefObjectHints = Initialize-HrefObjectHints -Allow "DELETE"
-$HrefObject = Initialize-HrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
+$HrefObjectHints = Initialize-OktaHrefObjectHints -Allow "DELETE"
+$HrefObject = Initialize-OktaHrefObject -Hints $HrefObjectHints -Href "MyHref" -Name "MyName" -Type "MyType"
 
-$ApiTokenLink = Initialize-ApiTokenLink -Self $HrefObject
+$ApiTokenLink = Initialize-OktaApiTokenLink -Self $HrefObject
 
-$RiskProvider = Initialize-RiskProvider -Action "enforce_and_log" -ClientId "MyClientId" -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Links $ApiTokenLink # RiskProvider | 
+$RiskProvider = Initialize-OktaRiskProvider -Action "enforce_and_log" -ClientId "MyClientId" -Created (Get-Date) -Id "MyId" -LastUpdated (Get-Date) -Name "MyName" -Links $ApiTokenLink # RiskProvider | 
 
 # Replace a Risk Provider
 try {

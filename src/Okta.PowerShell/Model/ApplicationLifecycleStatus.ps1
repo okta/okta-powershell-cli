@@ -24,4 +24,3 @@ enum ApplicationLifecycleStatus {
     # enum value: "INACTIVE"
     INACTIVE
 }
-

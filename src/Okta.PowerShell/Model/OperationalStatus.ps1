@@ -26,4 +26,3 @@ enum OperationalStatus {
     # enum value: "OPERATIONAL"
     OPERATIONAL
 }
-

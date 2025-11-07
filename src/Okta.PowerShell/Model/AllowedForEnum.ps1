@@ -26,4 +26,3 @@ enum AllowedForEnum {
     # enum value: "sso"
     sso
 }
-

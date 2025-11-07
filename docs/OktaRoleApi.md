@@ -86,7 +86,7 @@ $Configuration = Get-OktaConfiguration
 $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
-$CreateIamRoleRequest = Initialize-CreateIamRoleRequest -Description "MyDescription" -Label "MyLabel" -Permissions "okta.apps.assignment.manage" # CreateIamRoleRequest | 
+$CreateIamRoleRequest = Initialize-OktaCreateIamRoleRequest -Description "MyDescription" -Label "MyLabel" -Permissions "okta.apps.assignment.manage" # CreateIamRoleRequest | 
 
 # Create a Role
 try {
@@ -444,7 +444,7 @@ $Configuration.ClientId = "YOUR_CLIENT_ID"
 $Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
 
 $RoleIdOrLabel = "cr0Yq6IJxGIr0ouum0g3" # String | `id` or `label` of the role
-$UpdateIamRoleRequest = Initialize-UpdateIamRoleRequest -Description "MyDescription" -Label "MyLabel" # UpdateIamRoleRequest | 
+$UpdateIamRoleRequest = Initialize-OktaUpdateIamRoleRequest -Description "MyDescription" -Label "MyLabel" # UpdateIamRoleRequest | 
 
 # Replace a Role
 try {

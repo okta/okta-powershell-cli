@@ -22,4 +22,3 @@ enum PolicyNetworkConnection {
     # enum value: "ZONE"
     ZONE
 }
-

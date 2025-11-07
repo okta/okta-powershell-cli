@@ -30,4 +30,3 @@ enum PolicyPlatformOperatingSystemType {
     # enum value: "WINDOWS"
     WINDOWS
 }
-

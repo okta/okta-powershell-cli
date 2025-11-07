@@ -22,4 +22,3 @@ enum OrgOktaSupportSetting {
     # enum value: "ENABLED"
     ENABLED
 }
-

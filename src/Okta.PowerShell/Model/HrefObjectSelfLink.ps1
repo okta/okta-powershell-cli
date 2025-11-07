@@ -13,7 +13,7 @@ No summary available.
 
 .DESCRIPTION
 
-No description available.
+Link to the resource (self)
 
 .PARAMETER Hints
 No description available.

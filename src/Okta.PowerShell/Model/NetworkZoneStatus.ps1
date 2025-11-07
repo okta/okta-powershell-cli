@@ -22,4 +22,3 @@ enum NetworkZoneStatus {
     # enum value: "INACTIVE"
     INACTIVE
 }
-

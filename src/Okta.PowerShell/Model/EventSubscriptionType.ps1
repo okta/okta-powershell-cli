@@ -22,4 +22,3 @@ enum EventSubscriptionType {
     # enum value: "FLOW_EVENT"
     FLOW_EVENT
 }
-

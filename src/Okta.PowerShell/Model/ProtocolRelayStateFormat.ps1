@@ -22,4 +22,3 @@ enum ProtocolRelayStateFormat {
     # enum value: "OPAQUE"
     OPAQUE
 }
-
