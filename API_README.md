@@ -54,6 +54,7 @@ Class | Method | HTTP request | Description
 *OktaApplicationApi* | [**Invoke-OktaListFeaturesForApplication**](docs/OktaApplicationApi.md#Invoke-OktaListFeaturesForApplication) | **GET** /api/v1/apps/{appId}/features | List all Features
 *OktaApplicationApi* | [**Invoke-OktaListOAuth2TokensForApplication**](docs/OktaApplicationApi.md#Invoke-OktaListOAuth2TokensForApplication) | **GET** /api/v1/apps/{appId}/tokens | List all OAuth 2.0 Tokens
 *OktaApplicationApi* | [**Invoke-OktaListScopeConsentGrants**](docs/OktaApplicationApi.md#Invoke-OktaListScopeConsentGrants) | **GET** /api/v1/apps/{appId}/grants | List all Scope Consent Grants
+*OktaApplicationApi* | [**Invoke-OktaPreviewSAMLMetadataForApplication**](docs/OktaApplicationApi.md#Invoke-OktaPreviewSAMLMetadataForApplication) | **GET** /api/v1/apps/{appId}/sso/saml/metadata | Preview SAML Metadata
 *OktaApplicationApi* | [**Publish-OktaCsrFromApplication**](docs/OktaApplicationApi.md#Publish-OktaCsrFromApplication) | **POST** /api/v1/apps/{appId}/credentials/csrs/{csrId}/lifecycle/publish | Publish a Certificate Signing Request
 *OktaApplicationApi* | [**Revoke-OktaCsrFromApplication**](docs/OktaApplicationApi.md#Revoke-OktaCsrFromApplication) | **DELETE** /api/v1/apps/{appId}/credentials/csrs/{csrId} | Revoke a Certificate Signing Request
 *OktaApplicationApi* | [**Revoke-OktaOAuth2TokenForApplication**](docs/OktaApplicationApi.md#Revoke-OktaOAuth2TokenForApplication) | **DELETE** /api/v1/apps/{appId}/tokens/{tokenId} | Revoke an OAuth 2.0 Token

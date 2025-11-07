@@ -4126,6 +4126,141 @@ function Invoke-OktaListScopeConsentGrants {
 <#
 .SYNOPSIS
 
+Preview SAML Metadata
+
+.DESCRIPTION
+
+No description available.
+
+.PARAMETER AppId
+Application ID
+
+.PARAMETER KeyId
+Application key credential ID
+
+.PARAMETER ReturnType
+
+Select the return type (optional): application/xml, application/json
+
+
+.PARAMETER Uri
+
+Specifies the absolute Uri to be used when making the request. Recommended for paginated results. Optional.
+
+.PARAMETER WithHttpInfo
+
+A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
+
+.PARAMETER IncludeNullValues
+
+A switch when turned on will include any null values in the payload; Null values are removed by default. Optional.
+
+.OUTPUTS
+
+String
+#>
+function Invoke-OktaPreviewSAMLMetadataForApplication {
+    [CmdletBinding()]
+    Param (
+        [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${AppId},
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${KeyId},
+        [String]
+        [ValidateSet("application/xml", "application/json")]
+        $ReturnType,
+        [Parameter(ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Uri},
+        [Switch]
+        $WithHttpInfo,
+        [Switch]
+        $IncludeNullValues        
+    )
+
+    Process {
+        'Calling method: Invoke-OktaPreviewSAMLMetadataForApplication' | Write-Debug
+        $PSBoundParameters | Out-DebugParameter | Write-Debug
+
+        $LocalVarAccepts = @()
+        $LocalVarContentTypes = @()
+        $LocalVarQueryParameters = @{}
+        $LocalVarHeaderParameters = @{}
+        $LocalVarFormParameters = @{}
+        $LocalVarPathParameters = @{}
+        $LocalVarCookieParameters = @{}
+        $LocalVarBodyParameter = $null
+
+        $Configuration = Get-OktaConfiguration
+        # HTTP header 'Accept' (if needed)
+        $LocalVarAccepts = @('application/xml', 'application/json')
+
+        if ($ReturnType) {
+            # use the return type (MIME) provided by the user
+            $LocalVarAccepts = @($ReturnType)
+        }
+
+        $LocalVarUri = '/api/v1/apps/{appId}/sso/saml/metadata'
+        if (!$PSCmdlet.MyInvocation.BoundParameters.ContainsKey("AppId") -or $null -eq $AppId) {
+            throw "Error! The required parameter `AppId` missing when calling previewSAMLMetadataForApplication."
+        }
+        $LocalVarUri = $LocalVarUri.replace('{appId}', [System.Web.HTTPUtility]::UrlEncode($AppId))
+
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("Uri")) {
+            $ParsedUri = Invoke-ParseAbsoluteUri -Uri $Uri
+            $LocalVarUri = $ParsedUri["RelativeUri"]
+            $LocalVarQueryParameters = $ParsedUri["QueryParameters"]
+        }
+
+        if ($PSCmdlet.MyInvocation.BoundParameters.ContainsKey("KeyId")) {
+            $LocalVarQueryParameters['keyId'] = $KeyId
+        }
+
+        if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["apiToken"]) {
+            $LocalVarHeaderParameters['apiToken'] = $Configuration["ApiKey"]["apiToken"]
+            Write-Verbose ("Using API key 'apiToken' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
+
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
+        $LocalVarResult = Invoke-OktaApiClient -Method 'GET' `
+                                -Uri $LocalVarUri `
+                                -Accepts $LocalVarAccepts `
+                                -ContentTypes $LocalVarContentTypes `
+                                -Body $LocalVarBodyParameter `
+                                -HeaderParameters $LocalVarHeaderParameters `
+                                -QueryParameters $LocalVarQueryParameters `
+                                -FormParameters $LocalVarFormParameters `
+                                -CookieParameters $LocalVarCookieParameters `
+                                -ReturnType "String" `
+                                -IsBodyNullable $false
+
+        if ($WithHttpInfo.IsPresent) {
+            if ($null -ne $LocalVarResult.Headers.Link) {
+                foreach($Link in $LocalVarResult.Headers.Link)   {
+                    # Link looks like '<https://myorg.okta.com/api/v1/groups?after=00g9erhe4rJGXhdYs5d7&limit=1>;rel="next"
+                    if ($Link.Contains('rel="next"', 'InvariantCultureIgnoreCase')) {
+                        $LinkValue = $Link.split(";")[0].ToString()
+                        $LocalVarResult.NextPageUri = $LinkValue -replace '[<>]',''
+                    }
+                }
+            }
+            return $LocalVarResult
+        } else {
+            return $LocalVarResult["Response"]
+        }
+    }
+}
+
+<#
+.SYNOPSIS
+
 Publish a Certificate Signing Request
 
 .DESCRIPTION

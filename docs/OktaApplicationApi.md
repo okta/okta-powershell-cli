@@ -36,6 +36,7 @@ Method | HTTP request | Description
 [**Invoke-OktaListFeaturesForApplication**](OktaApplicationApi.md#Invoke-OktaListFeaturesForApplication) | **GET** /api/v1/apps/{appId}/features | List all Features
 [**Invoke-OktaListOAuth2TokensForApplication**](OktaApplicationApi.md#Invoke-OktaListOAuth2TokensForApplication) | **GET** /api/v1/apps/{appId}/tokens | List all OAuth 2.0 Tokens
 [**Invoke-OktaListScopeConsentGrants**](OktaApplicationApi.md#Invoke-OktaListScopeConsentGrants) | **GET** /api/v1/apps/{appId}/grants | List all Scope Consent Grants
+[**Invoke-OktaPreviewSAMLMetadataForApplication**](OktaApplicationApi.md#Invoke-OktaPreviewSAMLMetadataForApplication) | **GET** /api/v1/apps/{appId}/sso/saml/metadata | Preview SAML Metadata
 [**Publish-OktaCsrFromApplication**](OktaApplicationApi.md#Publish-OktaCsrFromApplication) | **POST** /api/v1/apps/{appId}/credentials/csrs/{csrId}/lifecycle/publish | Publish a Certificate Signing Request
 [**Revoke-OktaCsrFromApplication**](OktaApplicationApi.md#Revoke-OktaCsrFromApplication) | **DELETE** /api/v1/apps/{appId}/credentials/csrs/{csrId} | Revoke a Certificate Signing Request
 [**Revoke-OktaOAuth2TokenForApplication**](OktaApplicationApi.md#Revoke-OktaOAuth2TokenForApplication) | **DELETE** /api/v1/apps/{appId}/tokens/{tokenId} | Revoke an OAuth 2.0 Token
@@ -1780,6 +1781,59 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="Invoke-OktaPreviewSAMLMetadataForApplication"></a>
+# **Invoke-OktaPreviewSAMLMetadataForApplication**
+> String Invoke-OktaPreviewSAMLMetadataForApplication<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AppId] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-KeyId] <String><br>
+
+Preview SAML Metadata
+
+Previews SAML metadata based on a specific key credential for an application
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-OktaConfiguration
+
+# Configure your client ID and scope for authorization
+$Configuration.ClientId = "YOUR_CLIENT_ID"
+$Configuration.Scope = "OKTA_SCOPES" # for example okta.users.read
+
+$AppId = "MyAppId" # String | Application ID
+$KeyId = "MyKeyId" # String | Application key credential ID (optional)
+
+# Preview SAML Metadata
+try {
+    $Result = Invoke-OktaPreviewSAMLMetadataForApplication -AppId $AppId -KeyId $KeyId
+} catch {
+    Write-Host ("Exception occurred when calling Invoke-OktaPreviewSAMLMetadataForApplication: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **AppId** | **String**| Application ID | 
+ **KeyId** | **String**| Application key credential ID | [optional] 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[apiToken](../README.md#apiToken), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/xml, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
