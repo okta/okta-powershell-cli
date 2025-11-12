@@ -19,7 +19,7 @@ function Remove-NullProperties {
 
     $NewObject = @{ }
     
-    if ($InputObject -is [string] -or $InputObject.GetType().IsPrimitive) {
+    if ($InputObject -is [string] -or $InputObject.GetType().IsPrimitive -or $InputObject.GetType().IsValueType) {
         return $InputObject
     }
     elseif ($InputObject -is [System.Collections.IDictionary]) {
