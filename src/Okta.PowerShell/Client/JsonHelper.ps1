@@ -19,16 +19,36 @@ function Remove-NullProperties {
 
     $NewObject = @{ }
     
+    # Return null as-is
+    if ($null -eq $InputObject) {
+        return $null
+    }
+    
+    # Handle primitives and strings
     if ($InputObject -is [string] -or $InputObject.GetType().IsPrimitive) {
         return $InputObject
     }
-    elseif ($InputObject -is [System.Collections.IDictionary]) {
+    
+    # Handle common .NET value types to prevent infinite recursion
+    # These types have properties that reference themselves (e.g., DateTime.Date returns DateTime)
+    if ($InputObject -is [DateTime] -or 
+        $InputObject -is [DateTimeOffset] -or 
+        $InputObject -is [Guid] -or 
+        $InputObject -is [Uri] -or 
+        $InputObject -is [TimeSpan]) {
+        return $InputObject
+    }
+    
+    # Handle dictionaries
+    if ($InputObject -is [System.Collections.IDictionary]) {
         $NewObject = Remove-NullPropertiesFromHashMap($InputObject)
     }
+    # Handle arrays
     elseif ($InputObject -is [array]){
         [array]$NewArray = Remove-NullPropertiesFromArray($InputObject)
         return $NewArray
     }
+    # Handle custom objects
     else{
         $PropertyList = $InputObject.PSObject.Properties | Where-Object { $null -ne $_.Value }
         
@@ -59,6 +79,12 @@ function Remove-NullPropertiesFromHashMap{
     $OutputHashtable = @{}
     foreach ($Key in $InputObject.Keys) {
         $Value = $InputObject[$Key]
+        
+        # Skip null values
+        if ($null -eq $Value) {
+            continue
+        }
+        
         # explicit cast to avoid arrays to be converted to object (i.e @('foo'))
         if($Value -is [array]){
             [array]$CleanedValue = Remove-NullProperties $Value
@@ -85,6 +111,8 @@ function Remove-NullPropertiesFromArray {
     [array]$NewArray = @()
     
     foreach ($Item in $InputArray) {
+        # Process each item recursively
+        # Note: We keep null items in arrays to preserve array structure
         $NewItem = Remove-NullProperties($Item)
         $NewArray += $NewItem
     }

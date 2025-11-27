@@ -146,4 +146,128 @@ Context 'Remove-NullProperties' {
          $CleanedRule.actions.assignUserToGroups.groupIds[1] | Should -Be "bar"
          $CleanedRule.actions.assignUserToGroups.groupIds[2] | Should -Be "baz"
     }
+
+    It 'Should handle DateTime objects without infinite recursion (Issue #75)' {
+        # Test object with DateTime properties similar to OIDC applications
+        $TestObject = [PSObject]@{
+            id = "test123"
+            name = "Test App"
+            created = Get-Date
+            lastUpdated = Get-Date
+            settings = [PSObject]@{
+                someProperty = "value"
+                timestamp = Get-Date
+            }
+        }
+
+        # This should complete quickly without hanging
+        $CleanedObject = Remove-NullProperties $TestObject
+
+        # Verify DateTime properties are preserved
+        $CleanedObject.id | Should -Be "test123"
+        $CleanedObject.name | Should -Be "Test App"
+        $CleanedObject.created | Should -BeOfType [DateTime]
+        $CleanedObject.lastUpdated | Should -BeOfType [DateTime]
+        $CleanedObject.settings.timestamp | Should -BeOfType [DateTime]
+    }
+
+    It 'Should handle DateTimeOffset objects without infinite recursion' {
+        $TestObject = [PSObject]@{
+            id = "test456"
+            timestamp = [DateTimeOffset]::Now
+        }
+
+        $CleanedObject = Remove-NullProperties $TestObject
+
+        $CleanedObject.id | Should -Be "test456"
+        $CleanedObject.timestamp | Should -BeOfType [DateTimeOffset]
+    }
+
+    It 'Should handle Guid objects without infinite recursion' {
+        $TestObject = [PSObject]@{
+            id = [Guid]::NewGuid()
+            name = "Test"
+        }
+
+        $CleanedObject = Remove-NullProperties $TestObject
+
+        $CleanedObject.id | Should -BeOfType [Guid]
+        $CleanedObject.name | Should -Be "Test"
+    }
+
+    It 'Should handle Uri objects without infinite recursion' {
+        $TestObject = [PSObject]@{
+            url = [Uri]"https://example.com"
+            name = "Test"
+        }
+
+        $CleanedObject = Remove-NullProperties $TestObject
+
+        $CleanedObject.url | Should -BeOfType [Uri]
+        $CleanedObject.name | Should -Be "Test"
+    }
+
+    It 'Should handle TimeSpan objects without infinite recursion' {
+        $TestObject = [PSObject]@{
+            duration = [TimeSpan]::FromHours(2)
+            name = "Test"
+        }
+
+        $CleanedObject = Remove-NullProperties $TestObject
+
+        $CleanedObject.duration | Should -BeOfType [TimeSpan]
+        $CleanedObject.name | Should -Be "Test"
+    }
+
+    It 'Should handle objects with null properties correctly' {
+        $TestObject = [PSObject]@{
+            id = "test123"
+            nullProperty = $null
+            validProperty = "value"
+        }
+        
+        $result = Remove-NullProperties $TestObject
+        
+        # Valid property should exist
+        $result.id | Should -Be "test123"
+        $result.validProperty | Should -Be "value"
+        
+        # Null property should be removed
+        Get-Member -InputObject $result -Name "nullProperty" -MemberType Properties | Should -Be $null
+    }
+
+    It 'Should handle complex objects with mixed DateTime properties and null values' {
+        $TestObject = [PSObject]@{
+            id = "complex123"
+            created = Get-Date
+            nullProp = $null
+            nested = [PSObject]@{
+                timestamp = Get-Date
+                value = "test"
+                anotherNull = $null
+            }
+            array = @(
+                [PSObject]@{
+                    date = Get-Date
+                    nullField = $null
+                }
+            )
+        }
+
+        $CleanedObject = Remove-NullProperties $TestObject
+
+        # DateTime properties should be preserved
+        $CleanedObject.created | Should -BeOfType [DateTime]
+        $CleanedObject.nested.timestamp | Should -BeOfType [DateTime]
+        $CleanedObject.array[0].date | Should -BeOfType [DateTime]
+        
+        # Null properties should be removed
+        Get-Member -InputObject $CleanedObject -Name "nullProp" -MemberType Properties | Should -Be $null
+        Get-Member -InputObject $CleanedObject.nested -Name "anotherNull" -MemberType Properties | Should -Be $null
+        Get-Member -InputObject $CleanedObject.array[0] -Name "nullField" -MemberType Properties | Should -Be $null
+        
+        # Regular properties should be preserved
+        $CleanedObject.id | Should -Be "complex123"
+        $CleanedObject.nested.value | Should -Be "test"
+    }
 }
