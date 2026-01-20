@@ -86,6 +86,14 @@ $Manifest = @{
 New-ModuleManifest @Manifest -Verbose
 
 # ******************************************************************************************************** #
+# Consolidate PS1 files for improved startup performance
+# See: https://github.com/okta/okta-powershell-cli/issues/41
+# ******************************************************************************************************** #
+
+Write-Host "Consolidating PS1 files for improved startup performance..."
+& "$ScriptDir\ConsolidateFiles.ps1" -BasePath "$ScriptDir\src\Okta.PowerShell"
+
+# ******************************************************************************************************** #
 # Private module for testing purposes
 # ******************************************************************************************************** #
 

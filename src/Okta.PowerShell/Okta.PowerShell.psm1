@@ -24,14 +24,15 @@ $Script:Configuration = [System.Collections.HashTable]@{}
 
 $Script:CmdletBindingParameters = @('Verbose','Debug','ErrorAction','WarningAction','InformationAction','ErrorVariable','WarningVariable','InformationVariable','OutVariable','OutBuffer','PipelineVariable')
 
-'Api', 'Model', 'Client', 'Private' | Get-ChildItem -Path {
-    Join-Path $PSScriptRoot $_
-} -Filter '*.ps1' | ForEach-Object {
-    Write-Debug "Importing file: $($_.BaseName)"
+# Load consolidated function files for improved startup performance
+# See: https://github.com/okta/okta-powershell-cli/issues/41
+foreach ($file in @('Api.ps1', 'Model.ps1', 'Client.ps1', 'Private.ps1')) {
+    $filePath = Join-Path $PSScriptRoot $file
+    Write-Debug "Importing consolidated file: $file"
     try {
-        . $_.FullName
+        . $filePath
     } catch {
-        Write-Error -Message "Failed to import function $($_.Fullname): $_"
+        Write-Error -Message "Failed to import consolidated file $file : $_"
     }
 }
 
