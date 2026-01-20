@@ -16,6 +16,10 @@ $Script:CmdletBindingParameters = @('Verbose','Debug','ErrorAction','WarningActi
 Write-Verbose "PrivateFunctions.psm1 is being executed" -Verbose
 Write-Verbose "PSScriptRoot: $PSScriptRoot" -Verbose
 
+# Load OktaApiException class first as it's needed by OktaApiClient
+# This is needed because the class must be available at parse time
+. (Join-Path $PSScriptRoot "Client\OktaApiException.ps1")
+
 'Private' | Get-ChildItem -Path {
     Join-Path $PSScriptRoot $_
 } -Filter '*.ps1' | ForEach-Object {
